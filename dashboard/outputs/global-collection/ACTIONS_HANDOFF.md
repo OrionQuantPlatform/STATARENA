@@ -9,3 +9,5 @@ Rerun: `python3 dashboard/scripts/collect_pitchapi_countries.py --export-local`;
 Snapshot production build passed in a separate sparse worktree: `PATH=/Users/lemonnierhugo/.bun/bin:$PATH bun install --cwd dashboard --frozen-lockfile` followed by `PATH=/Users/lemonnierhugo/.bun/bin:$PATH bun run --cwd dashboard build`. See handoff-build.log. Current scouting UI source was captured as requested, with compilation verified; its full DataScout workflow E2E remains separate ongoing work.
 
 GitHub execution and its first receipt must be read back before claiming that remote collection is running. New raw responses remain separate from the website serving index until a subsequent ingestion step.
+
+Remote readback: run 41480152015 is in progress; checkout and publication setup succeeded, and the country collection step is running. First country publication and timeout continuation are not yet observed; see github-run.json and https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41480152015. The local worker remains stopped.
