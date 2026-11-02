@@ -1,0 +1,2056 @@
+{
+  "checks": [
+    {
+      "name": "LaLiga player aggregation",
+      "expected": {
+        "players": 488,
+        "raphinha": {
+          "matches": 10,
+          "minutes": "72,3",
+          "rating": "8,61",
+          "goals": "1,50",
+          "xg": "1,09",
+          "xa": "0,17"
+        }
+      },
+      "actual": {
+        "count": "Par match\nPar 90 minutes\n488 joueurs",
+        "raphinha": {
+          "cells": [
+            "",
+            "Raphinha\nAttaquant · Barcelona",
+            "10",
+            "72,3",
+            "8,61",
+            "1,50",
+            "0,30",
+            "1,09",
+            "0,17",
+            "1,80",
+            "0,70",
+            "—",
+            "—"
+          ],
+          "id": "p_2DQMAL"
+        },
+        "uniqueIds": 20,
+        "visibleRows": 20
+      },
+      "passed": true
+    },
+    {
+      "name": "Rating threshold after aggregation",
+      "expected": [
+        "p_217YMB",
+        "p_2DQMAL",
+        "p_2e0FPo",
+        "p_4GlcIn"
+      ],
+      "actual": [
+        "p_217YMB",
+        "p_2DQMAL",
+        "p_2e0FPo",
+        "p_4GlcIn"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Rating 9 does not keep individual high-rated matches",
+      "expected": "No LaLiga players with mean >=9, including Raphinha mean 8.612",
+      "actual": "Par match\nPar 90 minutes\n0 joueurs",
+      "passed": true
+    },
+    {
+      "name": "Dominant-position filter",
+      "actual": [
+        {
+          "cells": [
+            "",
+            "Unai Marrero\nGardien · Real Sociedad",
+            "1",
+            "90,0",
+            "8,05",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "2,00",
+            "8,00",
+            "0,43"
+          ],
+          "id": "p_4GlcIn"
+        }
+      ],
+      "expected": "Only Unai Marrero at rating>=8",
+      "passed": true
+    },
+    {
+      "name": "Player average comparison",
+      "actual": "Comparer les joueurs\nMoyennes par match\nIndicateur\tRaphinha\tLamine Yamal\nMatchs\t10\t11\nMin. moy.\t72,3\t82,3\nNote moy.\t8,61\t8,60\nButs\t1,50\t0,91\nPD\t0,30\t0,64\nxG\t1,09\t0,69\nxA\t0,17\t0,43\nOcc. créées\t1,80\t3,09\nDéfense\t0,70\t1,18\nArrêts\t—\t—\nButs évités\t—\t—",
+      "expected": "Raphinha and Lamine, 10 and 11 matches, mean rating 8.61 and 8.60",
+      "passed": true
+    },
+    {
+      "name": "Season profile retains complete sample after average threshold",
+      "expected": "Raphinha: 10 matches, 723 minutes, 8.61 mean under rating>=8",
+      "actual": "10\nmatchs\n723\nminutes\n8,61\nnote PitchAPI moyenne",
+      "passed": true
+    },
+    {
+      "name": "Goal threshold applied to means",
+      "expected": [
+        "p_0PBj5d",
+        "p_0xLNKu",
+        "p_1H3xuS",
+        "p_1IsGxW",
+        "p_1iCYzZ",
+        "p_217YMB",
+        "p_22x1OI",
+        "p_2DQMAL",
+        "p_2e0FPo",
+        "p_2iNGnn",
+        "p_2wB832",
+        "p_3B8j1A",
+        "p_3KXXj9",
+        "p_3LkIQV",
+        "p_3Nhh4z",
+        "p_40qdIy",
+        "p_4foizb",
+        "p_4gGVvq"
+      ],
+      "actual": [
+        "p_0PBj5d",
+        "p_0xLNKu",
+        "p_1H3xuS",
+        "p_1IsGxW",
+        "p_1iCYzZ",
+        "p_217YMB",
+        "p_22x1OI",
+        "p_2DQMAL",
+        "p_2e0FPo",
+        "p_2iNGnn",
+        "p_2wB832",
+        "p_3B8j1A",
+        "p_3KXXj9",
+        "p_3LkIQV",
+        "p_3Nhh4z",
+        "p_40qdIy",
+        "p_4foizb",
+        "p_4gGVvq"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Goal 2 excludes Raphinha mean 1.5 despite individual multi-goal games",
+      "actual": "Par match\nPar 90 minutes\n0 joueurs",
+      "passed": true
+    },
+    {
+      "name": "Per90 display and threshold use observed metric minutes",
+      "actual": [
+        {
+          "cells": [
+            "",
+            "Raphinha\nAttaquant · Barcelona",
+            "10",
+            "72,3",
+            "8,61",
+            "1,87",
+            "0,37",
+            "1,35",
+            "0,21",
+            "2,24",
+            "0,87",
+            "—",
+            "—"
+          ],
+          "id": "p_2DQMAL"
+        }
+      ],
+      "expected": {
+        "rating": "8,61",
+        "goals": "1,87",
+        "xg": "1,35"
+      },
+      "passed": true
+    },
+    {
+      "name": "Refresh persists numeric criteria and per90 basis",
+      "url": "http://127.0.0.1:3016/joueurs?season=2026%2F2027&focus=europe&league=l_0ErfuF&id=&stats=goals%3A1.8&q=Raphinha&basis=per90",
+      "actual": {
+        "count": "Par match\nPar 90 minutes\n1 joueur",
+        "rows": [
+          {
+            "cells": [
+              "",
+              "Raphinha\nAttaquant · Barcelona",
+              "10",
+              "72,3",
+              "8,61",
+              "1,87",
+              "0,37",
+              "1,35",
+              "0,21",
+              "2,24",
+              "0,87",
+              "—",
+              "—"
+            ],
+            "id": "p_2DQMAL"
+          }
+        ],
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Requested heading retained",
+      "actual": "Performances",
+      "passed": true
+    },
+    {
+      "name": "Percentage threshold reads aggregate ratio",
+      "actual": {
+        "count": "Par match\nPar 90 minutes\n1 joueur",
+        "rows": [
+          {
+            "cells": [
+              "",
+              "Raphinha\nAttaquant · Barcelona",
+              "10",
+              "72,3",
+              "8,61",
+              "1,87",
+              "0,37",
+              "1,35",
+              "0,21",
+              "2,24",
+              "0,87",
+              "—",
+              "—"
+            ],
+            "id": "p_2DQMAL"
+          }
+        ],
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Club viewport pages and exhaustive navigation",
+      "first": {
+        "cards": 28,
+        "columns": "342px 342px 342px 342px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 774.1953125,
+        "ids": [
+          "t_0x6Gji",
+          "t_4gF23N",
+          "t_0aaGiw",
+          "t_2jeqmO",
+          "t_1iaglr",
+          "t_0rrO78",
+          "t_3t08JG",
+          "t_30Ofp1",
+          "t_2J5yFC",
+          "t_0ZkdUF",
+          "t_2cGY1H",
+          "t_0LVHGt",
+          "t_1gkhxH",
+          "t_4RqKpo",
+          "t_0r0zEG",
+          "t_3kZPrE",
+          "t_3NIiXl",
+          "t_14USF9",
+          "t_2Vc7mg",
+          "t_1cDwJb",
+          "t_32jSEF",
+          "t_2lHR8t",
+          "t_1cpjqO",
+          "t_0Mzm1V",
+          "t_0QAIlC",
+          "t_0SGPHB",
+          "t_2O0E6I",
+          "t_4QzFe6"
+        ],
+        "page": "Précédents\n1 / 7\nSuivants",
+        "pagerBottom": 820.1953125,
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "last": {
+        "cards": 24,
+        "columns": "342px 342px 342px 342px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 345.1953125,
+        "ids": [
+          "t_1p1AQf",
+          "t_0qB4tc",
+          "t_2xPV6y",
+          "t_0OrDTY",
+          "t_3yN3O4",
+          "t_1fXtzU",
+          "t_0btWrh",
+          "t_4A7FfD",
+          "t_3t6spd",
+          "t_3DwdkH",
+          "t_0zVhE4",
+          "t_2ur07g",
+          "t_1VWvPZ",
+          "t_3pK6v1",
+          "t_2SZyGH",
+          "t_3TftmE",
+          "t_3TALFY",
+          "t_0iJNOA",
+          "t_0jjyWh",
+          "t_1G8RuA",
+          "t_4SV4jg",
+          "t_2S7UQI",
+          "t_2vkbPM",
+          "t_0Y6Ely"
+        ],
+        "page": "Précédents\n7 / 7\nSuivants",
+        "pagerBottom": 391.1953125,
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "pages": 7,
+      "total": 192,
+      "unique": 192,
+      "passed": true
+    },
+    {
+      "name": "Country resets page and hides pager for short list",
+      "actual": {
+        "cards": 18,
+        "columns": "342px 342px 342px 342px",
+        "count": "18 clubs\nRéinitialiser",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 240.6953125,
+        "ids": [
+          "t_0ZkdUF",
+          "t_2Vc7mg",
+          "t_0EMLtg",
+          "t_4BCeSu",
+          "t_0GDAiO",
+          "t_38NVJO",
+          "t_0tnX1I",
+          "t_2lHmy6",
+          "t_0xMlRV",
+          "t_2s2eyG",
+          "t_13gLEF",
+          "t_0QUJ2Y",
+          "t_0LMnwp",
+          "t_41iFW3",
+          "t_3Ng6PH",
+          "t_1p1AQf",
+          "t_3t6spd",
+          "t_0zVhE4"
+        ],
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Country and club search intersect",
+      "actual": {
+        "cards": 2,
+        "columns": "342px 342px 342px 342px",
+        "count": "2 clubs\nRéinitialiser",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 330.1953125,
+        "ids": [
+          "t_0LMnwp",
+          "t_41iFW3"
+        ],
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Club empty/reset returns first page",
+      "actual": {
+        "cards": 24,
+        "columns": "342px 342px 342px 342px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 700.1953125,
+        "ids": [
+          "t_1p1AQf",
+          "t_0qB4tc",
+          "t_2xPV6y",
+          "t_0OrDTY",
+          "t_3yN3O4",
+          "t_1fXtzU",
+          "t_0btWrh",
+          "t_4A7FfD",
+          "t_3t6spd",
+          "t_3DwdkH",
+          "t_0zVhE4",
+          "t_2ur07g",
+          "t_1VWvPZ",
+          "t_3pK6v1",
+          "t_2SZyGH",
+          "t_3TftmE",
+          "t_3TALFY",
+          "t_0iJNOA",
+          "t_0jjyWh",
+          "t_1G8RuA",
+          "t_4SV4jg",
+          "t_2S7UQI",
+          "t_2vkbPM",
+          "t_0Y6Ely"
+        ],
+        "page": "Précédents\n7 / 7\nSuivants",
+        "pagerBottom": 746.1953125,
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": false,
+      "resolvedBy": "Final club reset does not restore an older page"
+    },
+    {
+      "name": "Single home competition control",
+      "actual": {
+        "nativeLeagueSelects": 0,
+        "oldStrips": 0,
+        "trigger": "Ligue 1"
+      },
+      "passed": true
+    },
+    {
+      "name": "Competition picker Escape and focus return",
+      "actual": {
+        "dialogs": 0,
+        "focus": "home-competition-filter"
+      },
+      "passed": true
+    },
+    {
+      "name": "Custom home selection expands focus and clears former single-league constraint",
+      "actual": {
+        "fixtures": [
+          "Ligue 1",
+          "Ligue 2",
+          "Ligue 2",
+          "Ligue 2",
+          "Ligue 2",
+          "Ligue 2"
+        ],
+        "overflow": false,
+        "selected": "2 compétitions",
+        "url": "http://127.0.0.1:3016/?season=2026%2F2027&focus=all"
+      },
+      "passed": true
+    },
+    {
+      "name": "Custom home selection survives refresh",
+      "passed": true
+    },
+    {
+      "name": "Top 7 preset in same home control",
+      "url": "http://127.0.0.1:3016/?season=2026%2F2027&focus=europe",
+      "passed": true
+    },
+    {
+      "name": "Cancel does not apply changed preset",
+      "passed": true
+    },
+    {
+      "name": "All competitions clears saved custom source",
+      "url": "http://127.0.0.1:3016/?season=2026%2F2027&focus=all",
+      "passed": true
+    },
+    {
+      "name": "Full-width standings and removed provider row",
+      "actual": {
+        "cardWidth": 1392,
+        "columns": [
+          "#",
+          "Équipe",
+          "Pts",
+          "J",
+          "G",
+          "N",
+          "D",
+          "BP",
+          "BC",
+          "Diff."
+        ],
+        "containerWidth": 1358,
+        "footerCredit": "Données de classement : SportScore",
+        "headerCredit": null,
+        "mainPadding": [
+          "24px",
+          "24px"
+        ],
+        "mainWidth": 1440,
+        "removedText": false,
+        "rows": 18,
+        "scrollWidth": 1358,
+        "tableWidth": 1358,
+        "teamPosition": "sticky",
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Competition match tab preserved",
+      "actual": "Ligue 1\nFrance\nSaison de compétition\n2026/2027\n2025/2026\n2024/2025\n2023/2024\n2022/2023\n2021/2022\nClassement\nMatchs\nRésultats\nÀ venir\nTous\n\nLes résultats les plus récents en premier\n\n1 nov. 2026\nMarseille\n2 – 0\nToulouse\nLigue 1\n1 nov. 2026\nLyon\n2 – 0\nAngers\nLigue 1\n1 nov. 2026\nParis FC\n3 – 1\nMonaco\nLigue 1\n1 nov. 2026\nStrasbourg\n5 – 1\nAuxerre\nLigue 1\n31 oct. 2026\nTroyes\n2 – 0\nLe Mans\nLigue 1\n30 oct. 2026\nLille\n1 – 0\nLens\nLigue 1\n30 oct. 2026\nNice\n",
+      "passed": true
+    },
+    {
+      "name": "Mobile standings contained horizontal scroll",
+      "actual": {
+        "cardWidth": 362,
+        "columns": [
+          "#",
+          "Équipe",
+          "Pts",
+          "J",
+          "G",
+          "N",
+          "D",
+          "BP",
+          "BC",
+          "Diff."
+        ],
+        "containerWidth": 332,
+        "footerCredit": "Données de classement : SportScore",
+        "headerCredit": null,
+        "mainPadding": [
+          "14px",
+          "14px"
+        ],
+        "mainWidth": 390,
+        "removedText": false,
+        "rows": 18,
+        "scrollWidth": 760,
+        "tableWidth": 760,
+        "teamPosition": "sticky",
+        "viewport": {
+          "height": 844,
+          "scrollWidth": 390,
+          "width": 390
+        }
+      },
+      "before": {
+        "rect": {
+          "bottom": 1673.84375,
+          "height": 809.5,
+          "left": 29,
+          "right": 361,
+          "top": 864.34375,
+          "width": 332,
+          "x": 29,
+          "y": 864.34375
+        },
+        "x": 0
+      },
+      "after": {
+        "teamLeft": 48.5,
+        "x": 36.5
+      },
+      "passed": true
+    },
+    {
+      "name": "Mobile player position and mean filter persist in URL",
+      "actual": {
+        "count": "Par match\nPar 90 minutes\n2 joueurs",
+        "rows": [
+          {
+            "cells": [
+              "",
+              "Raphinha\nAttaquant · Barcelona",
+              "10",
+              "72,3",
+              "8,61",
+              "1,50",
+              "0,30",
+              "1,09",
+              "0,17",
+              "1,80",
+              "0,70",
+              "—",
+              "—"
+            ],
+            "id": "p_2DQMAL"
+          },
+          {
+            "cells": [
+              "",
+              "Kylian Mbappé\nAttaquant · Real Madrid",
+              "11",
+              "89,5",
+              "8,29",
+              "1,09",
+              "0,18",
+              "1,17",
+              "0,18",
+              "1,73",
+              "0,45",
+              "—",
+              "—"
+            ],
+            "id": "p_217YMB"
+          }
+        ],
+        "viewport": {
+          "height": 844,
+          "scrollWidth": 390,
+          "width": 390
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Mobile unified picker fits and scrolls internally",
+      "actual": {
+        "bodyClient": 649,
+        "bodyScroll": 3261,
+        "bottom": 820,
+        "height": 796,
+        "top": 24,
+        "viewport": {
+          "height": 844,
+          "scrollWidth": 390,
+          "width": 390
+        },
+        "width": 358
+      },
+      "passed": true
+    },
+    {
+      "name": "Mobile light theme preserved",
+      "actual": {
+        "background": "rgb(246, 248, 251)",
+        "font": "\"STATARENA Inter\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "logo": [
+          {
+            "loaded": true,
+            "src": "/branding/green/logos/svg/statarena-symbol-light.svg"
+          },
+          {
+            "loaded": true,
+            "src": "/branding/green/logos/svg/statarena-horizontal-light.svg"
+          }
+        ],
+        "scrollWidth": 390,
+        "theme": "light",
+        "width": 390
+      },
+      "passed": true
+    },
+    {
+      "name": "Final mobile club capacity and stable pager",
+      "first": {
+        "cards": 6,
+        "columns": "362px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 770.59375,
+        "ids": [
+          "t_0x6Gji",
+          "t_4gF23N",
+          "t_0aaGiw",
+          "t_2jeqmO",
+          "t_1iaglr",
+          "t_0rrO78"
+        ],
+        "page": "Précédents\n1 / 32\nSuivants",
+        "pagerBottom": 816.59375,
+        "viewport": {
+          "height": 844,
+          "scrollWidth": 390,
+          "width": 390
+        }
+      },
+      "next": {
+        "cards": 6,
+        "columns": "362px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 391.09375,
+        "ids": [
+          "t_3t08JG",
+          "t_30Ofp1",
+          "t_2J5yFC",
+          "t_0ZkdUF",
+          "t_2cGY1H",
+          "t_0LVHGt"
+        ],
+        "page": "Précédents\n2 / 32\nSuivants",
+        "pagerBottom": 437.09375,
+        "viewport": {
+          "height": 844,
+          "scrollWidth": 390,
+          "width": 390
+        }
+      },
+      "passed": false,
+      "resolvedBy": "Final exhaustive clubs and stable pager in document coordinates"
+    },
+    {
+      "name": "Final club reset does not restore an older page",
+      "actual": {
+        "cards": 6,
+        "columns": "362px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 770.59375,
+        "ids": [
+          "t_0x6Gji",
+          "t_4gF23N",
+          "t_0aaGiw",
+          "t_2jeqmO",
+          "t_1iaglr",
+          "t_0rrO78"
+        ],
+        "page": "Précédents\n1 / 32\nSuivants",
+        "pagerBottom": 816.59375,
+        "viewport": {
+          "height": 844,
+          "scrollWidth": 390,
+          "width": 390
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Short desktop viewport adjusts club capacity",
+      "actual": {
+        "cards": 12,
+        "columns": "342px 342px 342px 342px",
+        "count": "192 clubs",
+        "countries": [
+          {
+            "text": "Tous les pays",
+            "value": "all"
+          },
+          {
+            "text": "Allemagne",
+            "value": "GER"
+          },
+          {
+            "text": "Angleterre",
+            "value": "ENG"
+          },
+          {
+            "text": "Autriche",
+            "value": "AUT"
+          },
+          {
+            "text": "Belgique",
+            "value": "BEL"
+          },
+          {
+            "text": "Croatie",
+            "value": "CRO"
+          },
+          {
+            "text": "Danemark",
+            "value": "DEN"
+          },
+          {
+            "text": "Écosse",
+            "value": "SCO"
+          },
+          {
+            "text": "Espagne",
+            "value": "ESP"
+          },
+          {
+            "text": "Finlande",
+            "value": "FIN"
+          },
+          {
+            "text": "France",
+            "value": "FRA"
+          },
+          {
+            "text": "Grèce",
+            "value": "GRE"
+          },
+          {
+            "text": "Israël",
+            "value": "ISR"
+          },
+          {
+            "text": "Italie",
+            "value": "ITA"
+          },
+          {
+            "text": "Lettonie",
+            "value": "LVA"
+          },
+          {
+            "text": "Norvège",
+            "value": "NOR"
+          },
+          {
+            "text": "Pays-Bas",
+            "value": "NED"
+          },
+          {
+            "text": "Pologne",
+            "value": "POL"
+          },
+          {
+            "text": "Portugal",
+            "value": "POR"
+          },
+          {
+            "text": "Roumanie",
+            "value": "ROU"
+          },
+          {
+            "text": "Serbie",
+            "value": "SRB"
+          },
+          {
+            "text": "Slovaquie",
+            "value": "SVK"
+          },
+          {
+            "text": "Suède",
+            "value": "SWE"
+          },
+          {
+            "text": "Suisse",
+            "value": "SUI"
+          },
+          {
+            "text": "Tchéquie",
+            "value": "CZE"
+          },
+          {
+            "text": "Turquie",
+            "value": "TUR"
+          },
+          {
+            "text": "Pays non renseigné",
+            "value": "unknown"
+          }
+        ],
+        "gridBottom": 478.1953125,
+        "ids": [
+          "t_0x6Gji",
+          "t_4gF23N",
+          "t_0aaGiw",
+          "t_2jeqmO",
+          "t_1iaglr",
+          "t_0rrO78",
+          "t_3t08JG",
+          "t_30Ofp1",
+          "t_2J5yFC",
+          "t_0ZkdUF",
+          "t_2cGY1H",
+          "t_0LVHGt"
+        ],
+        "page": "Précédents\n1 / 16\nSuivants",
+        "pagerBottom": 524.1953125,
+        "viewport": {
+          "height": 600,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Final exhaustive clubs and stable pager in document coordinates",
+      "first": {
+        "cards": 28,
+        "gridHeight": 510,
+        "ids": [
+          "t_0x6Gji",
+          "t_4gF23N",
+          "t_0aaGiw",
+          "t_2jeqmO",
+          "t_1iaglr",
+          "t_0rrO78",
+          "t_3t08JG",
+          "t_30Ofp1",
+          "t_2J5yFC",
+          "t_0ZkdUF",
+          "t_2cGY1H",
+          "t_0LVHGt",
+          "t_1gkhxH",
+          "t_4RqKpo",
+          "t_0r0zEG",
+          "t_3kZPrE",
+          "t_3NIiXl",
+          "t_14USF9",
+          "t_2Vc7mg",
+          "t_1cDwJb",
+          "t_32jSEF",
+          "t_2lHR8t",
+          "t_1cpjqO",
+          "t_0Mzm1V",
+          "t_0QAIlC",
+          "t_0SGPHB",
+          "t_2O0E6I",
+          "t_4QzFe6"
+        ],
+        "page": "Précédents\n1 / 7\nSuivants",
+        "pagerDocumentBottom": 820.1953125,
+        "pagerViewportBottom": 820.1953125,
+        "scrollWidth": 1440,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "last": {
+        "cards": 24,
+        "gridHeight": 510,
+        "ids": [
+          "t_1p1AQf",
+          "t_0qB4tc",
+          "t_2xPV6y",
+          "t_0OrDTY",
+          "t_3yN3O4",
+          "t_1fXtzU",
+          "t_0btWrh",
+          "t_4A7FfD",
+          "t_3t6spd",
+          "t_3DwdkH",
+          "t_0zVhE4",
+          "t_2ur07g",
+          "t_1VWvPZ",
+          "t_3pK6v1",
+          "t_2SZyGH",
+          "t_3TftmE",
+          "t_3TALFY",
+          "t_0iJNOA",
+          "t_0jjyWh",
+          "t_1G8RuA",
+          "t_4SV4jg",
+          "t_2S7UQI",
+          "t_2vkbPM",
+          "t_0Y6Ely"
+        ],
+        "page": "Précédents\n7 / 7\nSuivants",
+        "pagerDocumentBottom": 820.1953125,
+        "pagerViewportBottom": 465.1953125,
+        "scrollWidth": 1440,
+        "scrollY": 355,
+        "width": 1440
+      },
+      "total": 192,
+      "unique": 192,
+      "passed": true
+    },
+    {
+      "name": "Unresolved club countries remain browsable",
+      "actual": "17 clubs\nRéinitialiser",
+      "passed": true
+    },
+    {
+      "name": "Final desktop club reset",
+      "actual": {
+        "cards": 28,
+        "gridHeight": 510,
+        "ids": [
+          "t_0x6Gji",
+          "t_4gF23N",
+          "t_0aaGiw",
+          "t_2jeqmO",
+          "t_1iaglr",
+          "t_0rrO78",
+          "t_3t08JG",
+          "t_30Ofp1",
+          "t_2J5yFC",
+          "t_0ZkdUF",
+          "t_2cGY1H",
+          "t_0LVHGt",
+          "t_1gkhxH",
+          "t_4RqKpo",
+          "t_0r0zEG",
+          "t_3kZPrE",
+          "t_3NIiXl",
+          "t_14USF9",
+          "t_2Vc7mg",
+          "t_1cDwJb",
+          "t_32jSEF",
+          "t_2lHR8t",
+          "t_1cpjqO",
+          "t_0Mzm1V",
+          "t_0QAIlC",
+          "t_0SGPHB",
+          "t_2O0E6I",
+          "t_4QzFe6"
+        ],
+        "page": "Précédents\n1 / 7\nSuivants",
+        "pagerDocumentBottom": 820.1953125,
+        "pagerViewportBottom": 820.1953125,
+        "scrollWidth": 1440,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "passed": true
+    },
+    {
+      "name": "Percentage threshold boundary matches independently computed aggregate 84.232%",
+      "expected": "85 excludes, 84 includes Raphinha",
+      "actual": {
+        "count": "Par match\nPar 90 minutes\n1 joueur",
+        "rows": [
+          {
+            "cells": [
+              "",
+              "Raphinha\nAttaquant · Barcelona",
+              "10",
+              "72,3",
+              "8,61",
+              "1,50",
+              "0,30",
+              "1,09",
+              "0,17",
+              "1,80",
+              "0,70",
+              "—",
+              "—"
+            ],
+            "id": "p_2DQMAL"
+          }
+        ],
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Same player grouped across domestic and European competitions",
+      "expected": {
+        "matches": "12",
+        "rating": "8,53",
+        "rows": 1
+      },
+      "actual": {
+        "count": "Par match\nPar 90 minutes\n1 joueur",
+        "rows": [
+          {
+            "cells": [
+              "",
+              "Raphinha\nAttaquant · Barcelona",
+              "12",
+              "71,2",
+              "8,53",
+              "1,42",
+              "0,25",
+              "0,96",
+              "0,16",
+              "2,00",
+              "0,67",
+              "—",
+              "—"
+            ],
+            "id": "p_2DQMAL"
+          }
+        ],
+        "viewport": {
+          "height": 900,
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Player comparison persists across player searches",
+      "actual": "Comparer 2/3\nRaphinha\n×\nLamine Yamal\n×\nComparer les joueurs\nVider",
+      "passed": true
+    },
+    {
+      "name": "Cross-search comparison uses both complete player samples",
+      "actual": "Comparer les joueurs\nMoyennes par match\nIndicateur\tRaphinha\tLamine Yamal\nMatchs\t10\t11\nMin. moy.\t72,3\t82,3\nNote moy.\t8,61\t8,60\nButs\t1,50\t0,91\nPD\t0,30\t0,64\nxG\t1,09\t0,69\nxA\t0,17\t0,43\nOcc. créées\t1,80\t3,09\nDéfense\t0,70\t1,18\nArrêts\t—\t—\nButs évités\t—\t—",
+      "passed": true
+    },
+    {
+      "name": "Performance and aggregate comparison trays never overlap and match selection is retained",
+      "actual": {
+        "performanceTray": "Comparer 2/3\nLamine Yamal\n×\nLamine Yamal\n×\nComparer\nVider",
+        "dirTrays": 0,
+        "returnedTray": "Comparer 2/3\nLamine Yamal\n×\nLamine Yamal\n×\nComparer\nVider"
+      },
+      "passed": true
+    },
+    {
+      "name": "Filter input select and numeric focus have no blue ring",
+      "actual": {
+        "searchFocus": {
+          "border": "rgb(110, 117, 129)",
+          "focused": true,
+          "label": "Rechercher un joueur ou un club",
+          "outline": "none",
+          "shadow": "none",
+          "wrapper": {
+            "border": "rgb(110, 117, 129)",
+            "outline": "none",
+            "shadow": "none"
+          }
+        },
+        "selectFocus": {
+          "border": "rgb(228, 231, 236)",
+          "focused": true,
+          "label": "league-filter",
+          "outline": "none",
+          "shadow": "none",
+          "wrapper": {
+            "border": "rgb(54, 58, 67)",
+            "outline": "none",
+            "shadow": "none"
+          }
+        },
+        "numberFocus": {
+          "border": "rgb(110, 117, 129)",
+          "focused": true,
+          "label": "_r_1_-rating",
+          "outline": "none",
+          "shadow": "none",
+          "wrapper": null
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Neutral selector focus retains selected competition border",
+      "actual": {
+        "triggerFocus": {
+          "border": "rgb(54, 58, 67)",
+          "focused": false,
+          "label": "Compétitions : Top 7 Europe + UEFA",
+          "outline": "none",
+          "shadow": "none",
+          "wrapper": {
+            "border": "rgb(54, 58, 67)",
+            "outline": "none",
+            "shadow": "none"
+          }
+        },
+        "selectedCompetition": {
+          "border": "rgb(59, 142, 255)",
+          "outline": "none",
+          "shadow": "none"
+        }
+      },
+      "passed": true
+    }
+  ],
+  "notes": [
+    "Initial stale previous-turn tab wrapper was replaced with a fresh test tab; no application error.",
+    "Browser read-only evaluator does not expose localStorage; persistence is checked through the visible selector after reload.",
+    "A standings-view locator assumed a group role on an existing segmented control; retargeted the visible Matchs button. Table column rectangles are aligned.",
+    "Pager viewport position changed because the browser automation scrolls controls into view; layout stability is checked in document coordinates.",
+    "The match-comparison clear button has the accessible name Vider la comparaison; the initial Vider locator was corrected.",
+    "An earlier local preview tab was no longer open; the current verified local preview is retained instead."
+  ],
+  "consoleErrors": [],
+  "status": "passed"
+}

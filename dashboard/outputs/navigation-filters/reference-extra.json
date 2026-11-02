@@ -1,0 +1,6 @@
+{
+  "raphinhaEuropeMatches": 12,
+  "raphinhaEuropeRating": 8.525833333333333,
+  "raphinhaLaLigaPassAccuracy": 84.23236514522821,
+  "source": "raw performances joined by playerId, played matches deduplicated; pass accuracy uses only rows with both counts"
+}
