@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "OpenFootball",
+    "url": "https://github.com/openfootball/football.json",
+    "license": "CC0-1.0",
+    "revision": "e6744429ee395bc86f247348c6184bb08d4eb361",
+    "archiveSha256": "16a32f31fdb35697c47682a8e139cd09714bc99f2e8a4bee8ca0dfc0228d478b",
+    "coverage": "Résultats et calendriers seulement ; pas de statistiques joueurs ni xG."
+  },
+  "seasons": [
+    {
+      "id": "2020/2021",
+      "path": "raw/openfootball/2020-2021.json.gz",
+      "competitions": 28,
+      "matches": 8862,
+      "results": 8862,
+      "sha256": "fbdc3e9077561ec52f5beddff234d41296d00082cec4a86b78146d6aa2b9a19c"
+    },
+    {
+      "id": "2019/2020",
+      "path": "raw/openfootball/2019-2020.json.gz",
+      "competitions": 29,
+      "matches": 8781,
+      "results": 8261,
+      "sha256": "5896facd897a1555ae6a349c7f3b637bb9c3dce4b698831e26c4583688af4d83"
+    },
+    {
+      "id": "2018/2019",
+      "path": "raw/openfootball/2018-2019.json.gz",
+      "competitions": 28,
+      "matches": 8569,
+      "results": 8569,
+      "sha256": "91790fcde09d94af539994ed2c382ec4d9387accf538fa29e7f377d83d1ebbaa"
+    },
+    {
+      "id": "2017/2018",
+      "path": "raw/openfootball/2017-2018.json.gz",
+      "competitions": 13,
+      "matches": 4311,
+      "results": 4311,
+      "sha256": "20d0f087a8ca4de990ed58dbe684c5bb0c0d96403f970d1f0646dc312f87b0aa"
+    },
+    {
+      "id": "2016/2017",
+      "path": "raw/openfootball/2016-2017.json.gz",
+      "competitions": 13,
+      "matches": 4309,
+      "results": 4309,
+      "sha256": "7e5bf0633db17482556cbffb3549629497e1bdad3e556d47da2f9dc669791f3f"
+    },
+    {
+      "id": "2015/2016",
+      "path": "raw/openfootball/2015-2016.json.gz",
+      "competitions": 16,
+      "matches": 5967,
+      "results": 5967,
+      "sha256": "66625734161458aded67d39062c18ea013dca641c4d56a9ad7bced2ceee8e5c9"
+    },
+    {
+      "id": "2014/2015",
+      "path": "raw/openfootball/2014-2015.json.gz",
+      "competitions": 17,
+      "matches": 6147,
+      "results": 6147,
+      "sha256": "ec00b4620e8c300e5a575dea8d6f9f7dca1f4d617ae73f2e8787b1acf5151be4"
+    },
+    {
+      "id": "2013/2014",
+      "path": "raw/openfootball/2013-2014.json.gz",
+      "competitions": 13,
+      "matches": 4827,
+      "results": 4827,
+      "sha256": "d42594294fa9b8dafa835908ee446f5e34d70417d38a7495f07677eb521fcba6"
+    },
+    {
+      "id": "2012/2013",
+      "path": "raw/openfootball/2012-2013.json.gz",
+      "competitions": 11,
+      "matches": 3975,
+      "results": 3975,
+      "sha256": "632c809164cb6e5a1810c5f05b22b437acf3b1ee2c683936972922be7a329469"
+    },
+    {
+      "id": "2011/2012",
+      "path": "raw/openfootball/2011-2012.json.gz",
+      "competitions": 8,
+      "matches": 2827,
+      "results": 2827,
+      "sha256": "ed3774a390fb44f4db08f71668431a00729b391e71e32a0583aefbd76895e074"
+    },
+    {
+      "id": "2010/2011",
+      "path": "raw/openfootball/2010-2011.json.gz",
+      "competitions": 7,
+      "matches": 2702,
+      "results": 2702,
+      "sha256": "01c99c6859f5f2a0f36194d0ba6a9ffd4cd7262aa07b5744a1bdbd34f5689c24"
+    }
+  ]
+}
