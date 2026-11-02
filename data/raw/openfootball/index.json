@@ -49,6 +49,14 @@
         "license": "GPL-2.0-or-later",
         "usage": "usage gratuit non commercial ; attribution demandée par la source",
         "sourceManifest": "sources/engsoccerdata/manifest.json"
+      },
+      {
+        "name": "schochastics/football-data (World Club Ratings)",
+        "url": "https://github.com/schochastics/football-data",
+        "license": "ODC-BY-1.0",
+        "revision": "6ba5e7e8f8657b6ccdeb0e89778765423f8d5aaf",
+        "sourceManifest": "sources/worldclub/scotland-manifest.json",
+        "usage": "couverture variable ; Écosse 1915/1916 : 379 résultats sur 380 attendus"
       }
     ]
   },
@@ -326,482 +334,482 @@
     {
       "id": "1993/1994",
       "path": "raw/openfootball/1993-1994.json.gz",
-      "competitions": 10,
-      "matches": 2934,
-      "results": 2934,
+      "competitions": 11,
+      "matches": 3198,
+      "results": 3198,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "d52e872a49cb128fc7fa8a294907993771eb75f9d280c2736bc501cb370a4eeb"
+      "sha256": "2c7ee481137ed4bdbb1c1fed57720229fc26234307665dbdd2e51bc3818309b5"
     },
     {
       "id": "1992/1993",
       "path": "raw/openfootball/1992-1993.json.gz",
-      "competitions": 10,
-      "matches": 3093,
-      "results": 3092,
+      "competitions": 11,
+      "matches": 3357,
+      "results": 3356,
       "unplayed": 1,
       "unverifiedDates": 1,
-      "sha256": "68b5cb573d069700660aa8f44dfb9516c91a32cd0d5fa57f318fb105de7d8bef"
+      "sha256": "73c638a2fdcd273b5438c7822bb68ac10e42e7c3c667496fac12edfb7eac8599"
     },
     {
       "id": "1991/1992",
       "path": "raw/openfootball/1991-1992.json.gz",
-      "competitions": 14,
-      "matches": 4559,
-      "results": 4559,
+      "competitions": 15,
+      "matches": 4823,
+      "results": 4823,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "12ef8786bd06c3b27495dcbd8c83950e5398dd56884ec692e8fa42f5c750f169"
+      "sha256": "1dee64e6bb47c0ed2da8b61072edadeb6cea38112341c29d5cfb581028bb75fd"
     },
     {
       "id": "1990/1991",
       "path": "raw/openfootball/1990-1991.json.gz",
-      "competitions": 13,
-      "matches": 4474,
-      "results": 4474,
+      "competitions": 14,
+      "matches": 4654,
+      "results": 4654,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "91f162efaa55e9dd50836f1fcecfb0d5b1071937b15868443fdb07cc615a5d83"
+      "sha256": "303a768237200e865d5ea1a973931abdfdbc2f2ece706f742e6e29fbde551934"
     },
     {
       "id": "1989/1990",
       "path": "raw/openfootball/1989-1990.json.gz",
-      "competitions": 13,
-      "matches": 4494,
-      "results": 4494,
+      "competitions": 14,
+      "matches": 4674,
+      "results": 4674,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "1f682a460a346a7756dd9f6ccf075e3d3e86efead2b77e354054221aa1c2b870"
+      "sha256": "cb2de1c0f23478eb3c3912e3281465c7b1a68eaaf1de2f052c00ee95fdab769a"
     },
     {
       "id": "1988/1989",
       "path": "raw/openfootball/1988-1989.json.gz",
-      "competitions": 13,
-      "matches": 4479,
-      "results": 4479,
+      "competitions": 14,
+      "matches": 4659,
+      "results": 4659,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "dd07079b5fd3741bc4f3a22ca0a321072d70c74306a5f08e8f4d5e34f632efb9"
+      "sha256": "3aedf04f60eaa2733a3527e89704cefecdc6ec942f2359eb9308c59326ed4aa3"
     },
     {
       "id": "1987/1988",
       "path": "raw/openfootball/1987-1988.json.gz",
-      "competitions": 13,
-      "matches": 4396,
-      "results": 4396,
+      "competitions": 14,
+      "matches": 4660,
+      "results": 4660,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "e56483b28cec676e90b353d69396ac75ac2b480d68b9f43d173ce96537573926"
+      "sha256": "516a8ee5539e093b43796e0ad07a124c11553aef8067126193e839049ae1de5f"
     },
     {
       "id": "1986/1987",
       "path": "raw/openfootball/1986-1987.json.gz",
-      "competitions": 13,
-      "matches": 4415,
-      "results": 4415,
+      "competitions": 14,
+      "matches": 4679,
+      "results": 4679,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "170b12a7677511b8ffa5c2f78a633e55fdcb161e66818704f73105ae9f565682"
+      "sha256": "1726efb4e387fd6a03143cd72f676694df8b571af5a2789678debd810b6e8c2b"
     },
     {
       "id": "1985/1986",
       "path": "raw/openfootball/1985-1986.json.gz",
-      "competitions": 13,
-      "matches": 4336,
-      "results": 4336,
+      "competitions": 14,
+      "matches": 4516,
+      "results": 4516,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "2dbb76ee0b7caab57cd2b8095bbb0a7675f870acd5f83409f077c5f157d5d20c"
+      "sha256": "22c47967e713d4e833bade33276e0ee84fef2c84620c608f4f71dceba2c988fd"
     },
     {
       "id": "1984/1985",
       "path": "raw/openfootball/1984-1985.json.gz",
-      "competitions": 13,
-      "matches": 4332,
-      "results": 4332,
+      "competitions": 14,
+      "matches": 4512,
+      "results": 4512,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "cb6ef1f1d2e1f02d6f521851d2c11a9acad955c0bfd6143c3d800d538e80db15"
+      "sha256": "14ffc65bd539eb4480eb9a4c8757a01b50655f712f1b196c47d0190e2d2023fa"
     },
     {
       "id": "1983/1984",
       "path": "raw/openfootball/1983-1984.json.gz",
-      "competitions": 13,
-      "matches": 4339,
-      "results": 4339,
+      "competitions": 14,
+      "matches": 4519,
+      "results": 4519,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "97015b5de1138b9a1a5c9abb0f0fc024108a4de9af181eb97b1ce72ca6994dbc"
+      "sha256": "3f33306a8ca26af5a7ffd358de5ac96d6382751507934256980b85575a88c53e"
     },
     {
       "id": "1982/1983",
       "path": "raw/openfootball/1982-1983.json.gz",
-      "competitions": 13,
-      "matches": 4322,
-      "results": 4322,
+      "competitions": 14,
+      "matches": 4502,
+      "results": 4502,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "06c55f4f499be9c3ff1ce3bc642624764e2d77dc27ff50212dee613fef55e3ad"
+      "sha256": "57696b40592ed8cf0dcdd3a35b736b709eaf0c80f5738ce1d8c62d3d4fce0844"
     },
     {
       "id": "1981/1982",
       "path": "raw/openfootball/1981-1982.json.gz",
-      "competitions": 13,
-      "matches": 4330,
-      "results": 4330,
+      "competitions": 14,
+      "matches": 4510,
+      "results": 4510,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "68d2348ac29ca3992bd2de8e572d97d44e9ec35359c6a48ec0ef21292a680282"
+      "sha256": "67881ed3d3879c2b535c0bd4382764cc1ac91d5fbd79bb41197690d83f35a036"
     },
     {
       "id": "1980/1981",
       "path": "raw/openfootball/1980-1981.json.gz",
-      "competitions": 14,
-      "matches": 4801,
-      "results": 4801,
+      "competitions": 15,
+      "matches": 4981,
+      "results": 4981,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "26617b88f1b469ef44641f4f867996228d8f6d956575bf2125251d878519402e"
+      "sha256": "83859ebe1024b007678282e20da7a244fff386dd164599e4bb2f3312dfb550f5"
     },
     {
       "id": "1979/1980",
       "path": "raw/openfootball/1979-1980.json.gz",
-      "competitions": 14,
-      "matches": 4759,
-      "results": 4759,
+      "competitions": 15,
+      "matches": 4939,
+      "results": 4939,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "05217d81ad86cff9c7d50b16447441698cc2857d2cb72343de19606f26b5b652"
+      "sha256": "a006e17afe69d1e2694872b7b3f840f0ca92cc08ff3737e4516fd091b7114271"
     },
     {
       "id": "1978/1979",
       "path": "raw/openfootball/1978-1979.json.gz",
-      "competitions": 14,
-      "matches": 4692,
-      "results": 4692,
+      "competitions": 15,
+      "matches": 4872,
+      "results": 4872,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "78a20a1a27f0ec55704b762e7098fc41336700d162d225bef8da3e31f5c6c8e4"
+      "sha256": "09c336659e4cfd1abda102b03978fb8693d8625b6a98b59620d68b79225c36d8"
     },
     {
       "id": "1977/1978",
       "path": "raw/openfootball/1977-1978.json.gz",
-      "competitions": 14,
-      "matches": 4694,
-      "results": 4694,
+      "competitions": 15,
+      "matches": 4874,
+      "results": 4874,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "0ede674b46df83b9c3176b35014af341430aef8562f845aa238beead3eb8161f"
+      "sha256": "5ea30c50267a58ed35e7385f9d5cc85ca53e30db88791d2802aae08f4afacbce"
     },
     {
       "id": "1976/1977",
       "path": "raw/openfootball/1976-1977.json.gz",
-      "competitions": 14,
-      "matches": 4707,
-      "results": 4707,
+      "competitions": 15,
+      "matches": 4887,
+      "results": 4887,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "1f6041389278012dd6319edfae15f89dd0280904019a00c6c8bbd6255b8a930a"
+      "sha256": "e6b2203280ba7e922f8810eee2534cd03a1b1d9fd61b57373df4f2eaa6a01260"
     },
     {
       "id": "1975/1976",
       "path": "raw/openfootball/1975-1976.json.gz",
-      "competitions": 14,
-      "matches": 4687,
-      "results": 4687,
+      "competitions": 15,
+      "matches": 4867,
+      "results": 4867,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "1747eefccfe655b191eef2185f16ab29432743135486a82dd391dcfa80e97385"
+      "sha256": "4db2461d3898a3b61859a09b72e4961f0906891ffc252c015073c1bd3fe6d134"
     },
     {
       "id": "1974/1975",
       "path": "raw/openfootball/1974-1975.json.gz",
-      "competitions": 14,
-      "matches": 4676,
-      "results": 4676,
+      "competitions": 15,
+      "matches": 4982,
+      "results": 4982,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "3e5d6f0ffad1ffa77726fdb9d97b476e516961b27b0cacf91d2507a4f7cf4ba6"
+      "sha256": "683f8a2086334f716aea8a0225e8c2fa1d11bd7c6bbe3f67870904a962247a19"
     },
     {
       "id": "1973/1974",
       "path": "raw/openfootball/1973-1974.json.gz",
-      "competitions": 12,
-      "matches": 3923,
-      "results": 3922,
+      "competitions": 13,
+      "matches": 4229,
+      "results": 4228,
       "unplayed": 1,
       "unverifiedDates": 0,
-      "sha256": "6a7666fc170a19a8fe074b190a83d1f74df6cac9ca304f21c56184fec833c762"
+      "sha256": "f88fdbe2e231f2fb3bc71aadfa839da51616389858ce416d33aef90d93376726"
     },
     {
       "id": "1972/1973",
       "path": "raw/openfootball/1972-1973.json.gz",
-      "competitions": 12,
-      "matches": 3904,
-      "results": 3904,
+      "competitions": 13,
+      "matches": 4210,
+      "results": 4210,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "299dc544e67aaabdcad1611d8573484586f72a4eeb13023ad5b1ccb99a0e41e4"
+      "sha256": "d49e6e72bcd48bad1e8134d3f473c45c8ac77be6a31942e8dedc4f46a44e7d9b"
     },
     {
       "id": "1971/1972",
       "path": "raw/openfootball/1971-1972.json.gz",
-      "competitions": 12,
-      "matches": 3913,
-      "results": 3913,
+      "competitions": 13,
+      "matches": 4219,
+      "results": 4219,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "7da3580c6aa40c138d3d74f032dd6d5453aa69980efb3f2b9fce71c88a68b9a3"
+      "sha256": "9ac8c7b59f09d21665d7eaa51fa5382871cc718d5c11455b01d03b10796846dd"
     },
     {
       "id": "1970/1971",
       "path": "raw/openfootball/1970-1971.json.gz",
-      "competitions": 12,
-      "matches": 3841,
-      "results": 3841,
+      "competitions": 13,
+      "matches": 4147,
+      "results": 4147,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "b739597ba944c9d1932626ffe19517dbeb04818e7873e41c01ee487433f14c26"
+      "sha256": "318f14253226f87a887731f47fb5a82b830a903ad64fbb8b4417ccd26a04ede5"
     },
     {
       "id": "1969/1970",
       "path": "raw/openfootball/1969-1970.json.gz",
-      "competitions": 12,
-      "matches": 3781,
-      "results": 3781,
+      "competitions": 13,
+      "matches": 4087,
+      "results": 4087,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "c7ada9bbfe56c12fc124928e2b8a233c942578130bc22178545f8f02cd5d175f"
+      "sha256": "455546a6cf70509e28da85f8bb2338c87c473d57c331653807d0e0b51d8c8944"
     },
     {
       "id": "1968/1969",
       "path": "raw/openfootball/1968-1969.json.gz",
-      "competitions": 12,
-      "matches": 3752,
-      "results": 3752,
+      "competitions": 13,
+      "matches": 4058,
+      "results": 4058,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "ff071841bff2e0518a0a34163af5045c3285775c4536e3c7e4578b0353432b64"
+      "sha256": "583d3d6e4a2d3dc866e7e2d5832043014061d51c5f17fc2c1df6b1f26518d74d"
     },
     {
       "id": "1967/1968",
       "path": "raw/openfootball/1967-1968.json.gz",
-      "competitions": 12,
-      "matches": 3829,
-      "results": 3829,
+      "competitions": 13,
+      "matches": 4135,
+      "results": 4135,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "f5794d113100decac6d4be0802368edbed11c334bf04644e3ccfa8b458171e11"
+      "sha256": "2dba457949972fd19c418f6fec72e6b3e89542416a68a606537f8919e3bce470"
     },
     {
       "id": "1966/1967",
       "path": "raw/openfootball/1966-1967.json.gz",
-      "competitions": 12,
-      "matches": 3918,
-      "results": 3918,
+      "competitions": 13,
+      "matches": 4224,
+      "results": 4224,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "e307024fd4d39606cfcc5f303c69a4700a6d05ec72add5402c87850b9f657b23"
+      "sha256": "8defdd8801c9880d8dd7333d742351dc112eb3c797ac753437a8b077c2fd971d"
     },
     {
       "id": "1965/1966",
       "path": "raw/openfootball/1965-1966.json.gz",
-      "competitions": 12,
-      "matches": 3817,
-      "results": 3817,
+      "competitions": 13,
+      "matches": 4123,
+      "results": 4123,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "91b6734808a72018e540751fea862a234f49fd29707ac9e21795ddd94ed24ff0"
+      "sha256": "94ef074f6ba8eab4914fb9762567a6e857a5b6f9aa83c8a5a63d2304274815d8"
     },
     {
       "id": "1964/1965",
       "path": "raw/openfootball/1964-1965.json.gz",
-      "competitions": 12,
-      "matches": 3680,
-      "results": 3680,
+      "competitions": 13,
+      "matches": 3986,
+      "results": 3986,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "5dcededdac35cd3c10d419b97d819ceb55413ad2cd799e390c8142f98fef37b5"
+      "sha256": "66f7976d058a2463662d2de659afceecf21164213a82c2a1d5a8e50672a95a31"
     },
     {
       "id": "1963/1964",
       "path": "raw/openfootball/1963-1964.json.gz",
-      "competitions": 12,
-      "matches": 3679,
-      "results": 3679,
+      "competitions": 13,
+      "matches": 3985,
+      "results": 3985,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "4170f2feb1ce9e7c4ad481eb99de086bcd7c55e236f91ce6f3e9afb2abd34af2"
+      "sha256": "f1d8a5a1ef96018a32c8167b8cfbcc874b009254cfd94d8aff910a68af641029"
     },
     {
       "id": "1962/1963",
       "path": "raw/openfootball/1962-1963.json.gz",
-      "competitions": 11,
-      "matches": 3505,
-      "results": 3505,
+      "competitions": 12,
+      "matches": 3811,
+      "results": 3811,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "4a511259dff94a8822a72852b2247fc96f3a0041d71f761495ed7e897da02c71"
+      "sha256": "e4da9150af4280228ca273cbb9d60affbefdabdb6bbf4afc4eaa32b5ccbb4826"
     },
     {
       "id": "1961/1962",
       "path": "raw/openfootball/1961-1962.json.gz",
-      "competitions": 11,
-      "matches": 3566,
-      "results": 3566,
+      "competitions": 12,
+      "matches": 3872,
+      "results": 3872,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "a6578d79cfb67802429e2150e2780e8717cbeda4201ad24d16c64b6bfb77d3e2"
+      "sha256": "bd4012fca518bf3674f18173b0604ad831127f8f18815b4486bac7df8f031a06"
     },
     {
       "id": "1960/1961",
       "path": "raw/openfootball/1960-1961.json.gz",
-      "competitions": 11,
-      "matches": 3592,
-      "results": 3592,
+      "competitions": 12,
+      "matches": 3898,
+      "results": 3898,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "5477933124cee2996aa6ff6d1208f1c9ddf610e29d444b33c1ffb592994cde10"
+      "sha256": "281857a86b8af202e930ed328153916b6f4b1fa8b4aa9f7b980cf354c6bf69b1"
     },
     {
       "id": "1959/1960",
       "path": "raw/openfootball/1959-1960.json.gz",
-      "competitions": 10,
-      "matches": 3468,
-      "results": 3468,
+      "competitions": 11,
+      "matches": 3774,
+      "results": 3774,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "75777397154e5d1b228fced56969ac4ad38457744abfec336ddca5142198b73b"
+      "sha256": "aaab3257284031ed123030061eb3f25441dd8227f45b95e36d392a745e27b6f7"
     },
     {
       "id": "1958/1959",
       "path": "raw/openfootball/1958-1959.json.gz",
-      "competitions": 10,
-      "matches": 3478,
-      "results": 3478,
+      "competitions": 11,
+      "matches": 3784,
+      "results": 3784,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "5a7f6ce449f992708633a8e07ab7c76b87fbd7401eeda545078d5c7e4272c88c"
+      "sha256": "e16c5fc869dd75b1c5bd2176f03dadc8161de5c18dc8579ee6178e87ab1b98a0"
     },
     {
       "id": "1957/1958",
       "path": "raw/openfootball/1957-1958.json.gz",
-      "competitions": 10,
-      "matches": 3386,
-      "results": 3386,
+      "competitions": 11,
+      "matches": 3692,
+      "results": 3692,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "74d006f9dfd0b3f4a33f4572095b0bc22af795eb90116c8ac123208470a0cf48"
+      "sha256": "3d43c061a430665e3ad664e641cc65b00320fcf25109ac54d083f907c30fd964"
     },
     {
       "id": "1956/1957",
       "path": "raw/openfootball/1956-1957.json.gz",
-      "competitions": 10,
-      "matches": 3383,
-      "results": 3383,
+      "competitions": 11,
+      "matches": 3689,
+      "results": 3689,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "f5ecb9408db0c4ff7bed6d2fe9b598f79169ec4047d6e6caeeb2dac5d2ba58b4"
+      "sha256": "841d27c375fedd04ebec2003f0f35cb7f11ac13e380a4f6a1d67575a83c9cd84"
     },
     {
       "id": "1955/1956",
       "path": "raw/openfootball/1955-1956.json.gz",
-      "competitions": 9,
-      "matches": 3064,
-      "results": 3064,
+      "competitions": 10,
+      "matches": 3370,
+      "results": 3370,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "4a5f7de08e55717d9eda03e5006c3edcbcd2d86b8c228e8fd058113518cd5a2b"
+      "sha256": "b2f9be7bc4eea20c35b3e1adaa4b5eb331e6bf3039c6cb72fdc6281df37ad486"
     },
     {
       "id": "1954/1955",
       "path": "raw/openfootball/1954-1955.json.gz",
-      "competitions": 8,
-      "matches": 3042,
-      "results": 3042,
+      "competitions": 9,
+      "matches": 3282,
+      "results": 3282,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "d35b172d7fde867d89711205147827ea7150854d245da3115ddf8ad0c01238d7"
+      "sha256": "d3469a4e4b3b0ea35addb802165167b60fafb6c4dc95f3b39e0aa88a8b646773"
     },
     {
       "id": "1953/1954",
       "path": "raw/openfootball/1953-1954.json.gz",
-      "competitions": 8,
-      "matches": 3050,
-      "results": 3050,
+      "competitions": 9,
+      "matches": 3290,
+      "results": 3290,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "635b1a3a80cefa4a0d14bd7be9cc3418a93ff478cc40e84cb410c4e154c70e7d"
+      "sha256": "e285e46d5daea8f61bcaa63d22197ba469a9dd008339b0fd9b0e8957f8bf3fdc"
     },
     {
       "id": "1952/1953",
       "path": "raw/openfootball/1952-1953.json.gz",
-      "competitions": 8,
-      "matches": 3043,
-      "results": 3043,
+      "competitions": 9,
+      "matches": 3283,
+      "results": 3283,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "812c53ace31843599b09b7f8db34c53c3c3912461441f0ae3fb9fd047f8d6509"
+      "sha256": "6e54f2ef48ad891f12b463a5c7b46f44f1d5896be44a7a344e1a499f2d9cc7e7"
     },
     {
       "id": "1951/1952",
       "path": "raw/openfootball/1951-1952.json.gz",
-      "competitions": 8,
-      "matches": 3117,
-      "results": 3117,
+      "competitions": 9,
+      "matches": 3357,
+      "results": 3357,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "2b754d4f83135a14fd5bed4683d6a99469e6321ab8626bc5204fe2d1d72a42ff"
+      "sha256": "9b60db235aef29a757eb6b2dbd29560af411ac906cd4a98ec85dd737574c4b7d"
     },
     {
       "id": "1950/1951",
       "path": "raw/openfootball/1950-1951.json.gz",
-      "competitions": 8,
-      "matches": 3091,
-      "results": 3091,
+      "competitions": 9,
+      "matches": 3331,
+      "results": 3331,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "7b9dcb40d3fd8bcf287ff1a6a12072cec552002ff9d15d60e71a51adaa1b2f0e"
+      "sha256": "6282f92406f343de04d3df94c4c88cae38bc7d34ab60e65f6d1c9c43b528d29d"
     },
     {
       "id": "1949/1950",
       "path": "raw/openfootball/1949-1950.json.gz",
-      "competitions": 8,
-      "matches": 2860,
-      "results": 2860,
+      "competitions": 9,
+      "matches": 3100,
+      "results": 3100,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "db38a98e11f9bbdf7a61b1fac805e620aeb347b8e7962e992f498d5844d6e3d9"
+      "sha256": "162a687900a5e5960cc255a80795fe1aaae617a0d56d8db24a265269bc02c942"
     },
     {
       "id": "1948/1949",
       "path": "raw/openfootball/1948-1949.json.gz",
-      "competitions": 8,
-      "matches": 2848,
-      "results": 2848,
+      "competitions": 9,
+      "matches": 3088,
+      "results": 3088,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "f0dcaa4858b1a9014d6a82efddef60f72aa9582dfcac7f40d44914eed2e3e132"
+      "sha256": "ed7482f148dccabbd89a67edd5bca761fe6930923f6be36e58612fc8957a918f"
     },
     {
       "id": "1947/1948",
       "path": "raw/openfootball/1947-1948.json.gz",
-      "competitions": 8,
-      "matches": 2859,
-      "results": 2859,
+      "competitions": 9,
+      "matches": 3099,
+      "results": 3099,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "2ce18331a84576462441e753b97c2c0b570241044182d6ab7924380b525bf3bf"
+      "sha256": "11c356f100a185edfa7e4c85a0df71d6571ebb582b23e364c142e386c6d7615f"
     },
     {
       "id": "1946/1947",
       "path": "raw/openfootball/1946-1947.json.gz",
-      "competitions": 8,
-      "matches": 2885,
-      "results": 2885,
+      "competitions": 9,
+      "matches": 3125,
+      "results": 3125,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "7d6a1a0fdab24f6d983beca025b9bc6feb21993029b3dc9a31d9e8c19c882241"
+      "sha256": "c0d21bf919c41205be751e98c93489bb41dad51c267da1fd0ca3c09bb58b78d4"
     },
     {
       "id": "1945/1946",
@@ -876,452 +884,492 @@
     {
       "id": "1938/1939",
       "path": "raw/openfootball/1938-1939.json.gz",
-      "competitions": 7,
-      "matches": 2479,
-      "results": 2479,
+      "competitions": 8,
+      "matches": 2859,
+      "results": 2859,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "ad83f943eaab34861c35f2290d0d97cff34228f88e97569176bb67a1cda3d311"
+      "sha256": "3b76c7e88803cdad458547f59e99134d8e7131b4c53be26a48e3241dee35d536"
     },
     {
       "id": "1937/1938",
       "path": "raw/openfootball/1937-1938.json.gz",
-      "competitions": 6,
-      "matches": 2232,
-      "results": 2232,
+      "competitions": 7,
+      "matches": 2612,
+      "results": 2612,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "9543a007c283681519c996592d0f9d12b0a1ed8081063f2a255d179504751e63"
+      "sha256": "1154057268065c72483e2bda22bac666c23c60c26d4773af9002f6c9286919f0"
     },
     {
       "id": "1936/1937",
       "path": "raw/openfootball/1936-1937.json.gz",
-      "competitions": 7,
-      "matches": 2461,
-      "results": 2461,
+      "competitions": 8,
+      "matches": 2841,
+      "results": 2841,
       "unplayed": 0,
       "unverifiedDates": 240,
-      "sha256": "758b66dc4f9dd5a4f13a70b81f01a73e01581ff2789525cd630433b6397b9cb0"
+      "sha256": "6b4b1caf588e19f6cfff435eaf0eef4a4271ab4cb0d378dbf375b92f8047429f"
     },
     {
       "id": "1935/1936",
       "path": "raw/openfootball/1935-1936.json.gz",
-      "competitions": 8,
-      "matches": 2607,
-      "results": 2607,
+      "competitions": 9,
+      "matches": 2987,
+      "results": 2987,
       "unplayed": 0,
       "unverifiedDates": 240,
-      "sha256": "86ce835f57ded132003ab98c01dafe8c84153e12772f04d61d54d4931c2ac73b"
+      "sha256": "7d7272d60480d550a8c063a099810a5db13a9d7074b042c7809e92db9d5408b7"
     },
     {
       "id": "1934/1935",
       "path": "raw/openfootball/1934-1935.json.gz",
-      "competitions": 8,
-      "matches": 2601,
-      "results": 2601,
+      "competitions": 9,
+      "matches": 2981,
+      "results": 2981,
       "unplayed": 0,
       "unverifiedDates": 240,
-      "sha256": "3e0e6fa79b46c8d2fd824740f50c098edbc8a410d7e082328019c2f2f7451c9a"
+      "sha256": "2769680f76508815bb58d55ad0fb7e6f25358686cfac12e05fc999dc584c49d5"
     },
     {
       "id": "1933/1934",
       "path": "raw/openfootball/1933-1934.json.gz",
-      "competitions": 8,
-      "matches": 2623,
-      "results": 2623,
+      "competitions": 9,
+      "matches": 3003,
+      "results": 3003,
       "unplayed": 0,
       "unverifiedDates": 240,
-      "sha256": "864c9f2b4ed651b2b564656e578c14bda322b50513ada0ad0ff63563a8038fbb"
+      "sha256": "c5661eff1eaa343431a20b66db08e619ad8ea006270523657297e4810a8bb252"
     },
     {
       "id": "1932/1933",
       "path": "raw/openfootball/1932-1933.json.gz",
-      "competitions": 8,
-      "matches": 2568,
-      "results": 2568,
+      "competitions": 9,
+      "matches": 2948,
+      "results": 2948,
       "unplayed": 0,
       "unverifiedDates": 182,
-      "sha256": "88f23fb99480d28aaab9e72a43bc73505e725a545a8dcd421c865b92103db4b4"
+      "sha256": "2ff6967c38ba67ce3abe8726a4f9e51abaca795d9d44c3942aa59394040b68b6"
     },
     {
       "id": "1931/1932",
       "path": "raw/openfootball/1931-1932.json.gz",
-      "competitions": 7,
-      "matches": 2358,
-      "results": 2357,
+      "competitions": 8,
+      "matches": 2738,
+      "results": 2737,
       "unplayed": 1,
       "unverifiedDates": 1,
-      "sha256": "d1ca3a0a2525ba106106b015cf1fd6042267da7f0dffc8ff9f774f5fa38f84bc"
+      "sha256": "80a240cd234940f39ad5b54aaa5a25831c8c8e4331b00017b47a5e38f9d583e4"
     },
     {
       "id": "1930/1931",
       "path": "raw/openfootball/1930-1931.json.gz",
-      "competitions": 7,
-      "matches": 2383,
-      "results": 2383,
+      "competitions": 8,
+      "matches": 2763,
+      "results": 2763,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "418d2738f5b84a9bbf2c88b08cddd7f17ae491a54c158ec2d8ad4734e810f561"
+      "sha256": "2ba72d1021831e57d61c8056545da4a237635f21c9b45d4311ebe061ce18a4e5"
     },
     {
       "id": "1929/1930",
       "path": "raw/openfootball/1929-1930.json.gz",
-      "competitions": 7,
-      "matches": 2389,
-      "results": 2389,
+      "competitions": 8,
+      "matches": 2769,
+      "results": 2769,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "43477cdde6c3f29af5197753f551f5a607a743eb6b6f3357a738e56dcedcc1f9"
+      "sha256": "4caafcc2bca10954693df6b1108de9088fd7810afa989d872f325dfc47d1dc22"
     },
     {
       "id": "1928/1929",
       "path": "raw/openfootball/1928-1929.json.gz",
-      "competitions": 6,
-      "matches": 2074,
-      "results": 2074,
+      "competitions": 7,
+      "matches": 2454,
+      "results": 2454,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "4c4062669e3d9e9845d3b7d1af642800e1c3f2522c62032be8733dd077a1a91b"
+      "sha256": "62dcd2198297ebc1615b694ff66e385aaa1f400d7337cca9960168e51c04a500"
     },
     {
       "id": "1927/1928",
       "path": "raw/openfootball/1927-1928.json.gz",
-      "competitions": 5,
-      "matches": 1979,
-      "results": 1979,
+      "competitions": 6,
+      "matches": 2359,
+      "results": 2359,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "4f3cf54ae27b98b7e4c38f3ccbcf71d1c7d82c6f8a98dab1d62deda5386f5944"
+      "sha256": "3fcda6e47a30012a6c986353286a5fd788704095fc6e8e5186b44c6c9bbbd7c2"
     },
     {
       "id": "1926/1927",
       "path": "raw/openfootball/1926-1927.json.gz",
-      "competitions": 5,
-      "matches": 1998,
-      "results": 1998,
+      "competitions": 6,
+      "matches": 2378,
+      "results": 2378,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "af858f8db9b414cf331a9b66d30d96fc7eef2820b26c5d2d6fce3bf8b1fb002c"
+      "sha256": "20d0d8bb309e441ff19851c17f285be704d47b009c12ba967d1019b0d6cd8764"
     },
     {
       "id": "1925/1926",
       "path": "raw/openfootball/1925-1926.json.gz",
-      "competitions": 5,
-      "matches": 2001,
-      "results": 2001,
+      "competitions": 6,
+      "matches": 2381,
+      "results": 2381,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "7d41f1e9c36233ae0e7ce0954b8ab87f9206138d0f50187106af8492b6c7283c"
+      "sha256": "99e1125d973d6e85401da9a1b53651d579d5d97d412591f3880ddcd5677dd2eb"
     },
     {
       "id": "1924/1925",
       "path": "raw/openfootball/1924-1925.json.gz",
-      "competitions": 5,
-      "matches": 1929,
-      "results": 1929,
+      "competitions": 6,
+      "matches": 2309,
+      "results": 2309,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "0da0c40f5911e2f21ecb200b83d9e764c7b957bb59273aa28395d099b708c140"
+      "sha256": "16c59a7620ad881dc63c686092c7ab6f7330cb1b90c446766f12140a2794f513"
     },
     {
       "id": "1923/1924",
       "path": "raw/openfootball/1923-1924.json.gz",
-      "competitions": 5,
-      "matches": 1937,
-      "results": 1937,
+      "competitions": 6,
+      "matches": 2317,
+      "results": 2317,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "51d762e9c98ef94d29d3d5f371b409df378be1b94495870cfc56bed42b316941"
+      "sha256": "da76c7649f341dbff779566eac18ec32899f0881659954aea3088a6a5f401a5f"
     },
     {
       "id": "1922/1923",
       "path": "raw/openfootball/1922-1923.json.gz",
-      "competitions": 5,
-      "matches": 1854,
-      "results": 1854,
+      "competitions": 6,
+      "matches": 2234,
+      "results": 2234,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "00c128a81c2f2722559606bd28881dcb5e8980ab587268e8d17604287e78ca3b"
+      "sha256": "421c9cd0f8c132c6cda28a6969d6adde4230364caf1a6f78e95ec6beb4cdd5d2"
     },
     {
       "id": "1921/1922",
       "path": "raw/openfootball/1921-1922.json.gz",
-      "competitions": 5,
-      "matches": 1854,
-      "results": 1854,
+      "competitions": 6,
+      "matches": 2316,
+      "results": 2316,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "5b8ef5b817b6dac312c89f25471462a5c5b9e14785052e6c2a80e326a912d5c3"
+      "sha256": "5d71754ae057be4e639d661f79a33ba36ff7a65f89f3760eaf45b84d08969b31"
     },
     {
       "id": "1920/1921",
       "path": "raw/openfootball/1920-1921.json.gz",
-      "competitions": 4,
-      "matches": 1465,
-      "results": 1465,
+      "competitions": 5,
+      "matches": 1927,
+      "results": 1927,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "ce2539817d72d7559e45fad4d40eb816d458d28e1caa58222b906fe222abf58f"
+      "sha256": "b0a6a1afcd4aa9569a1b8afeb0bd9ce507d79b4ca7572b092c49aebd82341c82"
     },
     {
       "id": "1919/1920",
       "path": "raw/openfootball/1919-1920.json.gz",
-      "competitions": 3,
-      "matches": 996,
-      "results": 996,
+      "competitions": 4,
+      "matches": 1458,
+      "results": 1458,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "7fe88cdd0b2b212600d1b677bd132f9c849147b6d8ce4ba6ebb42955583d892e"
+      "sha256": "e3cc7e99dbb20e1912b047e9a6020916d7842aa092c771fce0fa0a8ddc4106a4"
+    },
+    {
+      "id": "1918/1919",
+      "path": "raw/openfootball/1918-1919.json.gz",
+      "competitions": 1,
+      "matches": 306,
+      "results": 306,
+      "unplayed": 0,
+      "unverifiedDates": 0,
+      "sha256": "c3026b0f61690d721853e3254b5a4bb0da68cfc0314cac2d51bd240206b085c0"
+    },
+    {
+      "id": "1917/1918",
+      "path": "raw/openfootball/1917-1918.json.gz",
+      "competitions": 1,
+      "matches": 306,
+      "results": 306,
+      "unplayed": 0,
+      "unverifiedDates": 0,
+      "sha256": "7e71a72254e1a82c88754ee399b7b1a64f1c3095404b67aceb864f10623d12f6"
+    },
+    {
+      "id": "1916/1917",
+      "path": "raw/openfootball/1916-1917.json.gz",
+      "competitions": 1,
+      "matches": 380,
+      "results": 380,
+      "unplayed": 0,
+      "unverifiedDates": 0,
+      "sha256": "a3cd6423164e014050bfda32cb58edcf410d0226a424299f20bc99e14212caa1"
+    },
+    {
+      "id": "1915/1916",
+      "path": "raw/openfootball/1915-1916.json.gz",
+      "competitions": 1,
+      "matches": 379,
+      "results": 379,
+      "unplayed": 0,
+      "unverifiedDates": 0,
+      "sha256": "d1591d61ef3078c0ab3d06e15c80cbddb8b93e658697b2319f05e4ffd5748af4"
     },
     {
       "id": "1914/1915",
       "path": "raw/openfootball/1914-1915.json.gz",
-      "competitions": 3,
-      "matches": 838,
-      "results": 838,
+      "competitions": 4,
+      "matches": 1218,
+      "results": 1218,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "2681e773abc791fd1deb66632b15e630bddc273265a866a0d0bcb0ee9644030f"
+      "sha256": "c698c52c0016e1bfd5a23017f4d4b90123468e3bb591465b8ec861f29d53037e"
     },
     {
       "id": "1913/1914",
       "path": "raw/openfootball/1913-1914.json.gz",
-      "competitions": 3,
-      "matches": 836,
-      "results": 836,
+      "competitions": 4,
+      "matches": 1216,
+      "results": 1216,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "9699e70d3d600788a7e885c9148f53ce517b189f4f0792f59bc36288e4a05316"
+      "sha256": "d9c49ef3c6c6bb711dbb482d86f819d041e8f04c598fc61a875ad42d27df457f"
     },
     {
       "id": "1912/1913",
       "path": "raw/openfootball/1912-1913.json.gz",
-      "competitions": 3,
-      "matches": 843,
-      "results": 843,
+      "competitions": 4,
+      "matches": 1149,
+      "results": 1149,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "ed0b1125d1bdcad4065c36945e311b1a63eddce3f3f0d9bb7f6c81edbcaae257"
+      "sha256": "73298fef54804a2a6d3c39a093efbbba1a3c2e5fa7e27d5f6d861de47cdf9b4f"
     },
     {
       "id": "1911/1912",
       "path": "raw/openfootball/1911-1912.json.gz",
-      "competitions": 3,
-      "matches": 846,
-      "results": 846,
+      "competitions": 4,
+      "matches": 1152,
+      "results": 1152,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "70a3625e743df5cafa503d9ef114b02c3ee18fb0460387c04d2f8786934b8342"
+      "sha256": "a6432344bef673eff6fff10459b43658dc449b8dad60279f742791d5eaef94be"
     },
     {
       "id": "1910/1911",
       "path": "raw/openfootball/1910-1911.json.gz",
-      "competitions": 3,
-      "matches": 832,
-      "results": 831,
+      "competitions": 4,
+      "matches": 1138,
+      "results": 1137,
       "unplayed": 1,
       "unverifiedDates": 0,
-      "sha256": "3a40e2e266d30b68f6b55b54980ebc645daceb64377b29f5165e3ffd26990313"
+      "sha256": "7f688e5c7872bd025ce3cf6a1c93d82b5fd392df3935b64170cbab302cb43570"
     },
     {
       "id": "1909/1910",
       "path": "raw/openfootball/1909-1910.json.gz",
-      "competitions": 3,
-      "matches": 840,
-      "results": 840,
+      "competitions": 4,
+      "matches": 1146,
+      "results": 1146,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "16dd80a674fba7af015529804c6c8c68268b41be250b702423369ae35f0972e1"
+      "sha256": "81cd9ffd9ad077830ad1ae2c7a2ba0e7d85eed68aae8972f9071f1a7b83c22ef"
     },
     {
       "id": "1908/1909",
       "path": "raw/openfootball/1908-1909.json.gz",
-      "competitions": 3,
-      "matches": 845,
-      "results": 845,
+      "competitions": 4,
+      "matches": 1151,
+      "results": 1151,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "5e127ca9b694b5c590e71b12b1fcf553a547c92e4c18089b6ba9dca86ee285b4"
+      "sha256": "f561e394759e349891ef3ca69f84f5a1b0ea433c04d34237321fd4309b72a4cc"
     },
     {
       "id": "1907/1908",
       "path": "raw/openfootball/1907-1908.json.gz",
-      "competitions": 3,
-      "matches": 841,
-      "results": 841,
+      "competitions": 4,
+      "matches": 1147,
+      "results": 1147,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "d863de7cd682710511f11cdfa2c0bde8dcad282ff1a342ac3fb192285a3fe31b"
+      "sha256": "5d7abb5f04d3ee66501ee4e0bb251989c574c00bc6fea4aad0a1173ea0019bc1"
     },
     {
       "id": "1906/1907",
       "path": "raw/openfootball/1906-1907.json.gz",
-      "competitions": 3,
-      "matches": 850,
-      "results": 850,
+      "competitions": 4,
+      "matches": 1156,
+      "results": 1156,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "1980d4716965fa0f7f0f29c2d36cf176bbb6c128ef9015df016120947c85f09a"
+      "sha256": "925a60be1e63e2f8292b9e6b95cafa08278ce69ef46fc527a43b32431a2a818d"
     },
     {
       "id": "1905/1906",
       "path": "raw/openfootball/1905-1906.json.gz",
-      "competitions": 3,
-      "matches": 839,
-      "results": 839,
+      "competitions": 4,
+      "matches": 1079,
+      "results": 1079,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "6cffe147c49178bbefea085d7eec008fdf6c3f73713ef02d16986c44d8c15afd"
+      "sha256": "5c79ec9f6330a0fe9aa036411b87d5e598939c94078c4baec06f763c30262646"
     },
     {
       "id": "1904/1905",
       "path": "raw/openfootball/1904-1905.json.gz",
-      "competitions": 3,
-      "matches": 656,
-      "results": 656,
+      "competitions": 4,
+      "matches": 839,
+      "results": 839,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "feef88fead9c7c181945a9c85cb52e5f7153bd5477926013ba2f7c4c74dbaca0"
+      "sha256": "d17874ee917618eecc036b58f13f4e5b15b1bbb299a0d24176adfb7908e06717"
     },
     {
       "id": "1903/1904",
       "path": "raw/openfootball/1903-1904.json.gz",
-      "competitions": 3,
-      "matches": 651,
-      "results": 651,
+      "competitions": 4,
+      "matches": 833,
+      "results": 833,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "219f657bca885fb71c1467f7ec001e4a1b11b9eb12e9e9157134a7725c2e7b0b"
+      "sha256": "62df46dc35d28439fd088b4749cd86d3e2bdb1c08f682f0744ec2803406cddc5"
     },
     {
       "id": "1902/1903",
       "path": "raw/openfootball/1902-1903.json.gz",
-      "competitions": 3,
-      "matches": 649,
-      "results": 649,
+      "competitions": 4,
+      "matches": 781,
+      "results": 781,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "7f8970509ab8eff6fba88b9e2d7547fcd4e6576039a8c5b405ddaf7f687ac8ae"
+      "sha256": "5ea644019799b9670ae77ae78e7b330a7b703a642e6196c13add496b1f99301e"
     },
     {
       "id": "1901/1902",
       "path": "raw/openfootball/1901-1902.json.gz",
-      "competitions": 3,
-      "matches": 657,
-      "results": 657,
+      "competitions": 4,
+      "matches": 747,
+      "results": 747,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "2f11bca964d6d9cd71401249cc2328f631fd6b8363a250cca4825a91c4f39862"
+      "sha256": "0afe444106f163836dd3ea4602fb4bf7baf737122d643dcf31af093a96654bc1"
     },
     {
       "id": "1900/1901",
       "path": "raw/openfootball/1900-1901.json.gz",
-      "competitions": 3,
-      "matches": 652,
-      "results": 652,
+      "competitions": 4,
+      "matches": 762,
+      "results": 762,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "2bb217f5f081e72982f0e5f6e937be098dd4d9c5837aa6201cb7c83831c75f92"
+      "sha256": "50054189e5c195b53149090911982b62148e85bc8e896026eeec427118204fb5"
     },
     {
       "id": "1899/1900",
       "path": "raw/openfootball/1899-1900.json.gz",
-      "competitions": 3,
-      "matches": 659,
-      "results": 659,
+      "competitions": 4,
+      "matches": 749,
+      "results": 749,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "747fc03043fb271da82fda2de75d71d437aa2b24ffca5c65b3e500dc8534cce2"
+      "sha256": "0b052bc3af411836e7f09b524a82b188769adb9a9c4e977ea44526e772821d12"
     },
     {
       "id": "1898/1899",
       "path": "raw/openfootball/1898-1899.json.gz",
-      "competitions": 3,
-      "matches": 651,
-      "results": 651,
+      "competitions": 4,
+      "matches": 741,
+      "results": 741,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "f10f0fedca4e85b8128a0e452b565e318c563021cf4ced481e0f1e17626cce38"
+      "sha256": "9af47eda173f6add810af098041cb7dfbf1a2efcfcee62d9d128bf95d0cac193"
     },
     {
       "id": "1897/1898",
       "path": "raw/openfootball/1897-1898.json.gz",
-      "competitions": 3,
-      "matches": 517,
-      "results": 517,
+      "competitions": 4,
+      "matches": 607,
+      "results": 607,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "438e163ebaf771fbeb6da9c763fff8ca0b24234e91ed94ed34c5f6d42b23dcc3"
+      "sha256": "4feba1235d682fdf8161422778801998da1f3f14d235781593452e90d51460b9"
     },
     {
       "id": "1896/1897",
       "path": "raw/openfootball/1896-1897.json.gz",
-      "competitions": 3,
-      "matches": 519,
-      "results": 519,
+      "competitions": 4,
+      "matches": 609,
+      "results": 609,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "30cbdb02dc3ac7b1b28207d58b02a09a3c04cf6b89e1cb559d43649f3e5fc645"
+      "sha256": "2a32472f3b0c8864a69dc85fe0e06f940662bb51c52d30c76c68239646fef273"
     },
     {
       "id": "1895/1896",
       "path": "raw/openfootball/1895-1896.json.gz",
-      "competitions": 3,
-      "matches": 517,
-      "results": 517,
+      "competitions": 4,
+      "matches": 607,
+      "results": 607,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "1fd6a874aa5763732b21d1a66ddf30c14fbb4569efbca2f13b6746be423b98c3"
+      "sha256": "a29be17241950b2b65bb63f7344e4fba042f8ea6d009da95a7a23412205ea45d"
     },
     {
       "id": "1894/1895",
       "path": "raw/openfootball/1894-1895.json.gz",
-      "competitions": 3,
-      "matches": 515,
-      "results": 514,
+      "competitions": 4,
+      "matches": 605,
+      "results": 604,
       "unplayed": 1,
       "unverifiedDates": 0,
-      "sha256": "784b0b26b8f1fda6ab12803613420b17fa4118014c1fb41b86fbdbba5490eddb"
+      "sha256": "3baef04a31767ccf01305f199a8f7b7a0f181cadb1ef676b96b50b0d28462855"
     },
     {
       "id": "1893/1894",
       "path": "raw/openfootball/1893-1894.json.gz",
-      "competitions": 3,
-      "matches": 485,
-      "results": 485,
+      "competitions": 4,
+      "matches": 575,
+      "results": 575,
       "unplayed": 0,
       "unverifiedDates": 0,
-      "sha256": "530180540cb0a05f894cefd42437655062240106230aa4eee9fb633c457466cd"
+      "sha256": "99346c3a5181b44b881b5aaa923d5436db5c512a0cef12304a3a94eaf7406ae5"
     },
     {
       "id": "1892/1893",
       "path": "raw/openfootball/1892-1893.json.gz",
-      "competitions": 3,
-      "matches": 409,
-      "results": 407,
+      "competitions": 4,
+      "matches": 499,
+      "results": 497,
       "unplayed": 2,
       "unverifiedDates": 0,
-      "sha256": "9ebf84e3e1a4bb0ddb355f19ee85347436a16621b714c6192796f88b8c089c0a"
+      "sha256": "3d955d1985b0b0d21c1170e77b3a5aff998fbe059c212b396b2e307245e82dd7"
     },
     {
       "id": "1891/1892",
       "path": "raw/openfootball/1891-1892.json.gz",
-      "competitions": 2,
-      "matches": 223,
-      "results": 217,
+      "competitions": 3,
+      "matches": 355,
+      "results": 349,
       "unplayed": 6,
       "unverifiedDates": 0,
-      "sha256": "2e536c59145162e699f04e8c9b3fc309ca0c77b5cc8e16f53d967b7a330fccff"
+      "sha256": "2f9258244635b320cf7d959f4f8e83d4c49074279d9076574d16f7b000a3b61c"
     },
     {
       "id": "1890/1891",
       "path": "raw/openfootball/1890-1891.json.gz",
-      "competitions": 2,
-      "matches": 169,
-      "results": 166,
+      "competitions": 3,
+      "matches": 260,
+      "results": 257,
       "unplayed": 3,
       "unverifiedDates": 0,
-      "sha256": "c26a8336ef3e5b5d584ef6874df31b253bd5c506433e24d3286683a22ac7df29"
+      "sha256": "59c937bf144d61d2ca59a98e084581e51618dbe9006d9cc38f59b3eaf7dfea1a"
     },
     {
       "id": "1889/1890",

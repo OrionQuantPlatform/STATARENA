@@ -1,6 +1,6 @@
 # Match standings and dependent club filters
 
-Verified locally on 2026-11-02 with Bun 1.4.4 / Next.js 16.4.3 and real JSON data. Initial baseline af77c868; first integration through e235adbc, final synchronization through eccc4c0d. Existing neutral/blue themes, green branding, player aggregation and enriched club profiles are preserved. Feature changes do not regenerate or scrape raw data; upstream archive additions were retained.
+Verified locally on 2026-11-02 with Bun 1.4.4 / Next.js 16.4.3 and real JSON data. Initial baseline af77c868; integrations through e235adbc, eccc4c0d and ea58a2a4. Existing neutral/blue themes, green branding, player aggregation and enriched club profiles are preserved. Feature changes do not regenerate or scrape raw data; upstream archive additions were retained.
 
 ## Reproduce
 
@@ -39,7 +39,7 @@ Use browser controls for the steps in PLAN.md and the exact URLs, inputs, expect
 
 ## Failures and corrections retained
 
-`browser-checks.json` contains 52 observations, including four initial failures and their resolving checks:
+`browser-checks.json` contains 53 observations, including four initial failures and their resolving checks:
 
 | Initial observation | Resolution |
 | --- | --- |
@@ -53,3 +53,5 @@ The original integration console error is saved in `console-before-correction.js
 Production builds are logged in `build.log`, `build-clubs.log`, `build-integrated.log`, `build-final.log`, `build-verified.log` and `build-upstream-final.log`. Six final checks after the last synchronization confirm the competition standings/highlights layout, Matchs switch, country-sorted historical-goal selector, current/historical match standings and dependent Clubs filters. Final console remains empty. Normal previews were restarted with logs in `/tmp/statarena-standings-3015.log` and `/tmp/statarena-standings-3016.log` so the saved evidence remains stable. These checks cover the requested workflows; they do not claim every external provider endpoint or all historical seasons were retested. No unit tests were added.
 
 Feature commits: `bc93403d` — `ui: sort competition selectors by country`; `1445be50` — `feat: add standings to match details`; `d4352508` — `feat: filter clubs by country and competition`. This evidence accompanies `docs: record match standings and club filter verification`. All commit bodies contain clear bullet-point descriptions.
+
+Final push synchronization: two concurrent commits added Scottish historical data and removed source labels from club profiles. They were merged through ea58a2a4 without changing the match/filter implementation. `build-published.log` records another passing production build; the 53rd browser observation confirms the PSG sections, navigation back to Clubs, Germany/Bundesliga filtering and no overflow. Final console remains empty.

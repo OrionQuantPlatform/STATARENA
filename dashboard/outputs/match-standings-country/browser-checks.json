@@ -4088,5 +4088,30 @@
     },
     "passed": true,
     "url": "http://127.0.0.1:3016/clubs?season=2026%2F2027&focus=all"
+  },
+  {
+    "name": "Published upstream profile and club-filter smoke",
+    "expected": "PSG profile sections remain, returning to Germany/Bundesliga gives 18 clubs without overflow",
+    "actual": {
+      "profile": {
+        "heading": "Paris Saint-Germain",
+        "sections": [
+          "Paris Saint-Germain",
+          "Le club en bref",
+          "Classement UEFA",
+          "Joueurs référencés",
+          "Matchs du club"
+        ]
+      },
+      "filters": {
+        "country": "GER",
+        "docWidth": 1280,
+        "league": "l_1Isor4",
+        "summary": "18 clubs Réinitialiser",
+        "viewport": 1280
+      }
+    },
+    "passed": true,
+    "url": "http://127.0.0.1:3016/clubs?season=2026%2F2027&focus=europe"
   }
 ]
