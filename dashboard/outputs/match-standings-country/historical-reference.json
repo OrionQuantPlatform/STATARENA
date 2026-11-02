@@ -1,0 +1,188 @@
+{
+  "fixturePath": "data/raw/seasons/2024-2025/fixtures/l_3FJFUl--6c5f33464a46556c.json.gz",
+  "matches": 306,
+  "matchId": "m_3Sg5Uh",
+  "season": "2024/2025",
+  "table": [
+    {
+      "name": "Paris Saint-Germain",
+      "played": 34,
+      "points": 84,
+      "wins": 26,
+      "draws": 6,
+      "losses": 2,
+      "for": 92,
+      "against": 35
+    },
+    {
+      "name": "Marseille",
+      "played": 34,
+      "points": 65,
+      "wins": 20,
+      "draws": 5,
+      "losses": 9,
+      "for": 74,
+      "against": 47
+    },
+    {
+      "name": "Monaco",
+      "played": 34,
+      "points": 61,
+      "wins": 18,
+      "draws": 7,
+      "losses": 9,
+      "for": 63,
+      "against": 41
+    },
+    {
+      "name": "Nice",
+      "played": 34,
+      "points": 60,
+      "wins": 17,
+      "draws": 9,
+      "losses": 8,
+      "for": 66,
+      "against": 41
+    },
+    {
+      "name": "Lille",
+      "played": 34,
+      "points": 60,
+      "wins": 17,
+      "draws": 9,
+      "losses": 8,
+      "for": 52,
+      "against": 36
+    },
+    {
+      "name": "Lyon",
+      "played": 34,
+      "points": 57,
+      "wins": 17,
+      "draws": 6,
+      "losses": 11,
+      "for": 65,
+      "against": 46
+    },
+    {
+      "name": "Strasbourg",
+      "played": 34,
+      "points": 57,
+      "wins": 16,
+      "draws": 9,
+      "losses": 9,
+      "for": 56,
+      "against": 44
+    },
+    {
+      "name": "Lens",
+      "played": 34,
+      "points": 52,
+      "wins": 15,
+      "draws": 7,
+      "losses": 12,
+      "for": 42,
+      "against": 39
+    },
+    {
+      "name": "Brest",
+      "played": 34,
+      "points": 50,
+      "wins": 15,
+      "draws": 5,
+      "losses": 14,
+      "for": 52,
+      "against": 59
+    },
+    {
+      "name": "Toulouse",
+      "played": 34,
+      "points": 42,
+      "wins": 11,
+      "draws": 9,
+      "losses": 14,
+      "for": 44,
+      "against": 43
+    },
+    {
+      "name": "Auxerre",
+      "played": 34,
+      "points": 42,
+      "wins": 11,
+      "draws": 9,
+      "losses": 14,
+      "for": 48,
+      "against": 51
+    },
+    {
+      "name": "Rennes",
+      "played": 34,
+      "points": 41,
+      "wins": 13,
+      "draws": 2,
+      "losses": 19,
+      "for": 51,
+      "against": 50
+    },
+    {
+      "name": "Nantes",
+      "played": 34,
+      "points": 36,
+      "wins": 8,
+      "draws": 12,
+      "losses": 14,
+      "for": 39,
+      "against": 52
+    },
+    {
+      "name": "Angers",
+      "played": 34,
+      "points": 36,
+      "wins": 10,
+      "draws": 6,
+      "losses": 18,
+      "for": 32,
+      "against": 53
+    },
+    {
+      "name": "Le Havre",
+      "played": 34,
+      "points": 34,
+      "wins": 10,
+      "draws": 4,
+      "losses": 20,
+      "for": 40,
+      "against": 71
+    },
+    {
+      "name": "Reims",
+      "played": 34,
+      "points": 33,
+      "wins": 8,
+      "draws": 9,
+      "losses": 17,
+      "for": 33,
+      "against": 47
+    },
+    {
+      "name": "Saint-Étienne",
+      "played": 34,
+      "points": 30,
+      "wins": 8,
+      "draws": 6,
+      "losses": 20,
+      "for": 39,
+      "against": 77
+    },
+    {
+      "name": "Montpellier",
+      "played": 34,
+      "points": 16,
+      "wins": 4,
+      "draws": 4,
+      "losses": 26,
+      "for": 23,
+      "against": 79
+    }
+  ]
+}
