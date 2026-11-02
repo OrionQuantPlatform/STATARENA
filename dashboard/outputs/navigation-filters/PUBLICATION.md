@@ -12,3 +12,5 @@ PATH=/Users/lemonnierhugo/.bun/bin:$PATH bun run --cwd dashboard build
 Expected: successful compilation and generation of every application route. Actual: command exited 0; see publication-build.log. An initial sparse-checkout attempt lacked data/computed/dashboard/index.json; restoring that exact indexed file resolved the setup failure without source changes.
 
 The original checkout and its ongoing match-standings/country-selector modifications were left in place. Unrelated local duplicate files were excluded from the published commits.
+
+A subsequent push encountered the new upstream club-profile commit f2dd2fd8. Its profile components and responsive roster styling were retained alongside the country-filtered directory and full-width standings. Two merge conflicts were resolved in ClubsPage.jsx and styles.css; the final integrated production build passed again. The final build log includes /api/club-wikidata.
