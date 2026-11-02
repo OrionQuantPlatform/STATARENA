@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "schochastics/football-data (World Club Ratings)",
+    "url": "https://github.com/schochastics/football-data",
+    "revision": "6ba5e7e8f8657b6ccdeb0e89778765423f8d5aaf",
+    "license": "ODC-BY-1.0",
+    "licenseUrl": "https://opendatacommons.org/licenses/by/1-0/",
+    "coverage": "Événements de buts disponibles uniquement ; couverture partielle, sans xG ni type de but garanti."
+  },
+  "duplicatesRemoved": 54275,
+  "unassignedEvents": 5881,
+  "seasons": [
+    {
+      "id": "2024/2025",
+      "path": "raw/historical-goals/2024-2025.json.gz",
+      "competitions": 22,
+      "events": 5693,
+      "matches": 1877,
+      "scoreDisagreements": 0,
+      "latestEvent": "2024-11-09",
+      "sha256": "cf075fc9fbc1a02b8ca5a24590fcb1e0d62af49b7c44f08d5ec2e55c4af252ca"
+    },
+    {
+      "id": "2023/2024",
+      "path": "raw/historical-goals/2023-2024.json.gz",
+      "competitions": 23,
+      "events": 16459,
+      "matches": 5299,
+      "scoreDisagreements": 0,
+      "latestEvent": "2024-06-02",
+      "sha256": "2be9a137bc4b61ac7acc12b55777ab0770588e2f20fca0876ee38b9954a02d9b"
+    },
+    {
+      "id": "2022/2023",
+      "path": "raw/historical-goals/2022-2023.json.gz",
+      "competitions": 23,
+      "events": 15887,
+      "matches": 5269,
+      "scoreDisagreements": 2,
+      "latestEvent": "2023-06-11",
+      "sha256": "35443fd681dcd1e1f98d0bbc1479eda5ec20c7ef1d4d7af3cc93eab2f7653ecf"
+    },
+    {
+      "id": "2021/2022",
+      "path": "raw/historical-goals/2021-2022.json.gz",
+      "competitions": 23,
+      "events": 15940,
+      "matches": 5292,
+      "scoreDisagreements": 4,
+      "latestEvent": "2022-05-29",
+      "sha256": "8a6aaae154ef6d9409ff300ec1ff2914570cd9f21e459cee09782c750990fa35"
+    },
+    {
+      "id": "2020/2021",
+      "path": "raw/historical-goals/2020-2021.json.gz",
+      "competitions": 23,
+      "events": 15634,
+      "matches": 5220,
+      "scoreDisagreements": 0,
+      "latestEvent": "2021-05-30",
+      "sha256": "01630521e2e0fa42677c27c9eed5d4be41d0ed460010d63615c811cf1e4a961c"
+    },
+    {
+      "id": "2019/2020",
+      "path": "raw/historical-goals/2019-2020.json.gz",
+      "competitions": 23,
+      "events": 14679,
+      "matches": 4872,
+      "scoreDisagreements": 0,
+      "latestEvent": "2021-04-03",
+      "sha256": "f9afbe4cc29f0069d4c3fcc68de198b93f93e36d1a6f493bae1983bec6cb8f41"
+    },
+    {
+      "id": "2018/2019",
+      "path": "raw/historical-goals/2018-2019.json.gz",
+      "competitions": 23,
+      "events": 15258,
+      "matches": 5074,
+      "scoreDisagreements": 0,
+      "latestEvent": "2019-06-02",
+      "sha256": "e0b8362720da57c7da7a77663a31cc907f06c75cfdb8bea2f2b00a55e4bdb5e8"
+    },
+    {
+      "id": "2017/2018",
+      "path": "raw/historical-goals/2017-2018.json.gz",
+      "competitions": 23,
+      "events": 14964,
+      "matches": 5026,
+      "scoreDisagreements": 0,
+      "latestEvent": "2018-05-27",
+      "sha256": "4c3bc213835cdd2c9df79560b52cb2e6bcefaffbe7fdecf87b466186ecead7ec"
+    },
+    {
+      "id": "2016/2017",
+      "path": "raw/historical-goals/2016-2017.json.gz",
+      "competitions": 22,
+      "events": 13848,
+      "matches": 4643,
+      "scoreDisagreements": 0,
+      "latestEvent": "2017-06-04",
+      "sha256": "61d9eed91d1c7db0792ea7d815adf22c9904bd6d700d4a69ab95541cc37eb9a6"
+    },
+    {
+      "id": "2015/2016",
+      "path": "raw/historical-goals/2015-2016.json.gz",
+      "competitions": 23,
+      "events": 14778,
+      "matches": 4997,
+      "scoreDisagreements": 0,
+      "latestEvent": "2016-05-28",
+      "sha256": "ffc2d2e73e8d3a1e2ef5bd84af34fec4a7d4f7209f653b25af2c79b91770d701"
+    },
+    {
+      "id": "2014/2015",
+      "path": "raw/historical-goals/2014-2015.json.gz",
+      "competitions": 23,
+      "events": 14571,
+      "matches": 4952,
+      "scoreDisagreements": 0,
+      "latestEvent": "2015-06-06",
+      "sha256": "da3f5fa04fb0d7b1a7f8bf1c99eae333b3638f1376b77889d3933d840c020945"
+    },
+    {
+      "id": "2013/2014",
+      "path": "raw/historical-goals/2013-2014.json.gz",
+      "competitions": 22,
+      "events": 14355,
+      "matches": 4805,
+      "scoreDisagreements": 0,
+      "latestEvent": "2014-06-01",
+      "sha256": "cee9bb50d5abd2f74e25e736cab078e03521610706a13ee94b8638057d537356"
+    },
+    {
+      "id": "2012/2013",
+      "path": "raw/historical-goals/2012-2013.json.gz",
+      "competitions": 22,
+      "events": 13853,
+      "matches": 4645,
+      "scoreDisagreements": 6,
+      "latestEvent": "2013-06-02",
+      "sha256": "43b3b11e7bc7a764a7a8deb5a3e766fbc669ddc8a729235a71d80e6ac13c908a"
+    },
+    {
+      "id": "2011/2012",
+      "path": "raw/historical-goals/2011-2012.json.gz",
+      "competitions": 22,
+      "events": 13557,
+      "matches": 4570,
+      "scoreDisagreements": 6,
+      "latestEvent": "2012-05-25",
+      "sha256": "832564dd2a961ccb1b2117e1291cbfe1f5e0dafba9aacef57604864163b5dcd2"
+    },
+    {
+      "id": "2010/2011",
+      "path": "raw/historical-goals/2010-2011.json.gz",
+      "competitions": 20,
+      "events": 12701,
+      "matches": 4309,
+      "scoreDisagreements": 0,
+      "latestEvent": "2011-05-29",
+      "sha256": "36652c2a741f7a16b79bc8a8a107411c2080a3e6ea8f3750da331912e5ec2026"
+    },
+    {
+      "id": "2009/2010",
+      "path": "raw/historical-goals/2009-2010.json.gz",
+      "competitions": 22,
+      "events": 13458,
+      "matches": 4638,
+      "scoreDisagreements": 7,
+      "latestEvent": "2010-05-22",
+      "sha256": "200066c1aaa9c3cde1408f5dee9e16dead38ae7fa94f202cb63cef34d88f0f3c"
+    },
+    {
+      "id": "2008/2009",
+      "path": "raw/historical-goals/2008-2009.json.gz",
+      "competitions": 21,
+      "events": 12421,
+      "matches": 4316,
+      "scoreDisagreements": 0,
+      "latestEvent": "2009-05-31",
+      "sha256": "1cc5efddbc9b285e65ab51d830f294531fc3380004602eb7065c8c5ed5fa000f"
+    },
+    {
+      "id": "2007/2008",
+      "path": "raw/historical-goals/2007-2008.json.gz",
+      "competitions": 21,
+      "events": 12589,
+      "matches": 4400,
+      "scoreDisagreements": 1,
+      "latestEvent": "2008-05-24",
+      "sha256": "73a916f353bdf218fca3c1bbbb8a51af60266e513755919138d53a00ff7f5a76"
+    },
+    {
+      "id": "2006/2007",
+      "path": "raw/historical-goals/2006-2007.json.gz",
+      "competitions": 22,
+      "events": 12998,
+      "matches": 4573,
+      "scoreDisagreements": 15,
+      "latestEvent": "2007-06-23",
+      "sha256": "71a69918475cf1b78cef92507e382d3ce4781e9147e3b82d8589fdf1c8d07944"
+    },
+    {
+      "id": "2005/2006",
+      "path": "raw/historical-goals/2005-2006.json.gz",
+      "competitions": 21,
+      "events": 12479,
+      "matches": 4446,
+      "scoreDisagreements": 0,
+      "latestEvent": "2006-05-20",
+      "sha256": "68b6603987d56e626dc6ee1099f9ea81fc2af22876d778080d8a9f6095758b36"
+    },
+    {
+      "id": "2004/2005",
+      "path": "raw/historical-goals/2004-2005.json.gz",
+      "competitions": 20,
+      "events": 11706,
+      "matches": 4054,
+      "scoreDisagreements": 0,
+      "latestEvent": "2005-06-12",
+      "sha256": "61c10a35385a659f306a9db4d4ae1f12ca28e8a6423a3e3efbd63c5769da2d8a"
+    },
+    {
+      "id": "2003/2004",
+      "path": "raw/historical-goals/2003-2004.json.gz",
+      "competitions": 20,
+      "events": 11904,
+      "matches": 4038,
+      "scoreDisagreements": 0,
+      "latestEvent": "2004-06-11",
+      "sha256": "3ed18e29935885600babcae8807ad88049385e66387144369ec763e99f6e8267"
+    },
+    {
+      "id": "2002/2003",
+      "path": "raw/historical-goals/2002-2003.json.gz",
+      "competitions": 20,
+      "events": 11902,
+      "matches": 4058,
+      "scoreDisagreements": 1,
+      "latestEvent": "2003-06-28",
+      "sha256": "286616ed670f58de3d4170d4b28b87314d2d231b2847c51d49ef8dcd5d8975c4"
+    },
+    {
+      "id": "2001/2002",
+      "path": "raw/historical-goals/2001-2002.json.gz",
+      "competitions": 20,
+      "events": 11444,
+      "matches": 3819,
+      "scoreDisagreements": 0,
+      "latestEvent": "2002-05-15",
+      "sha256": "b97f5e9528fabe229070ce2dcaf11c9f667db23f942c1d76b25bed02df406f03"
+    },
+    {
+      "id": "2000/2001",
+      "path": "raw/historical-goals/2000-2001.json.gz",
+      "competitions": 20,
+      "events": 12527,
+      "matches": 4117,
+      "scoreDisagreements": 0,
+      "latestEvent": "2001-06-30",
+      "sha256": "2751097228840acee3782840449df10689b657c7f249c48d09a2c27f20012e40"
+    },
+    {
+      "id": "1999/2000",
+      "path": "raw/historical-goals/1999-2000.json.gz",
+      "competitions": 17,
+      "events": 10645,
+      "matches": 3573,
+      "scoreDisagreements": 0,
+      "latestEvent": "2000-06-07",
+      "sha256": "bffc811d8effda7f69ab995c7cc74f52da08d58fe535dee526a0077354d5e10e"
+    },
+    {
+      "id": "1998/1999",
+      "path": "raw/historical-goals/1998-1999.json.gz",
+      "competitions": 17,
+      "events": 10167,
+      "matches": 3454,
+      "scoreDisagreements": 0,
+      "latestEvent": "1999-06-20",
+      "sha256": "e7c4956865167580327d05d9fea78aaa7db3bddf4df68fcc8005716fe13d56b4"
+    },
+    {
+      "id": "1997/1998",
+      "path": "raw/historical-goals/1997-1998.json.gz",
+      "competitions": 17,
+      "events": 10529,
+      "matches": 3538,
+      "scoreDisagreements": 7,
+      "latestEvent": "1998-06-10",
+      "sha256": "872a85ca57caa4533eab863808bb1f1bc5e1b2c73f78148f81d2d0ace90294e0"
+    },
+    {
+      "id": "1996/1997",
+      "path": "raw/historical-goals/1996-1997.json.gz",
+      "competitions": 17,
+      "events": 10513,
+      "matches": 3627,
+      "scoreDisagreements": 1,
+      "latestEvent": "1997-06-25",
+      "sha256": "17a881d39286f417f49a62f217ee11ca5a0da780baab7ec5e4f2af7f3e380e69"
+    },
+    {
+      "id": "1995/1996",
+      "path": "raw/historical-goals/1995-1996.json.gz",
+      "competitions": 16,
+      "events": 9949,
+      "matches": 3403,
+      "scoreDisagreements": 41,
+      "latestEvent": "1996-06-12",
+      "sha256": "1777c31811b05f058479c769f45c91718b2b823caecc1127b9f7b74107ad6a37"
+    },
+    {
+      "id": "1994/1995",
+      "path": "raw/historical-goals/1994-1995.json.gz",
+      "competitions": 15,
+      "events": 9868,
+      "matches": 3339,
+      "scoreDisagreements": 3,
+      "latestEvent": "1995-06-24",
+      "sha256": "1e56b25997ad1274f45bdaefdace3e1567566a64aed8db26d660102edd4f61b4"
+    },
+    {
+      "id": "1993/1994",
+      "path": "raw/historical-goals/1993-1994.json.gz",
+      "competitions": 12,
+      "events": 7682,
+      "matches": 2618,
+      "scoreDisagreements": 0,
+      "latestEvent": "1994-06-02",
+      "sha256": "4f4df3b740d54a01137739fc78ae41ad100f06feb606a7d5f9170ed82f2d8177"
+    },
+    {
+      "id": "1992/1993",
+      "path": "raw/historical-goals/1992-1993.json.gz",
+      "competitions": 12,
+      "events": 7778,
+      "matches": 2635,
+      "scoreDisagreements": 1,
+      "latestEvent": "1993-06-20",
+      "sha256": "3cb12c757963567df98e9da5293a3d50c942fb19140cb0601144286f54a01e04"
+    },
+    {
+      "id": "1991/1992",
+      "path": "raw/historical-goals/1991-1992.json.gz",
+      "competitions": 12,
+      "events": 7460,
+      "matches": 2669,
+      "scoreDisagreements": 5,
+      "latestEvent": "1992-06-07",
+      "sha256": "0788a871d66b1624bd784b3859fbc4aa1977775906f04320dde2baa8f3631307"
+    },
+    {
+      "id": "1990/1991",
+      "path": "raw/historical-goals/1990-1991.json.gz",
+      "competitions": 11,
+      "events": 6919,
+      "matches": 2424,
+      "scoreDisagreements": 0,
+      "latestEvent": "1991-06-22",
+      "sha256": "4a21e442b1426a9a931706f2ca1202d14f59d3ddd5ab59a1dc97ad2a18d0a1fa"
+    },
+    {
+      "id": "1989/1990",
+      "path": "raw/historical-goals/1989-1990.json.gz",
+      "competitions": 2,
+      "events": 999,
+      "matches": 339,
+      "scoreDisagreements": 0,
+      "latestEvent": "1990-05-19",
+      "sha256": "e35b87d7f3b4f7f4e6c9c1e633ecbb243912baf2c1967cd2c4f2f1975d8174a8"
+    },
+    {
+      "id": "1988/1989",
+      "path": "raw/historical-goals/1988-1989.json.gz",
+      "competitions": 2,
+      "events": 1140,
+      "matches": 346,
+      "scoreDisagreements": 0,
+      "latestEvent": "1989-06-24",
+      "sha256": "0237ea2d8eda4aae6ad5a2a4132965c09300899f17f4f6b83784d3e479d5ac19"
+    },
+    {
+      "id": "1987/1988",
+      "path": "raw/historical-goals/1987-1988.json.gz",
+      "competitions": 2,
+      "events": 1211,
+      "matches": 354,
+      "scoreDisagreements": 0,
+      "latestEvent": "1988-05-28",
+      "sha256": "45b274b72b8995fd72e4ef9f3044215889ddb6861d21e59f50c3190786c5a31b"
+    },
+    {
+      "id": "1986/1987",
+      "path": "raw/historical-goals/1986-1987.json.gz",
+      "competitions": 2,
+      "events": 1251,
+      "matches": 358,
+      "scoreDisagreements": 0,
+      "latestEvent": "1987-06-20",
+      "sha256": "2f65c56ddfc34317efbe83c9409cb309d0baf98ab1b2c43102ec5dfd83ab55ad"
+    },
+    {
+      "id": "1985/1986",
+      "path": "raw/historical-goals/1985-1986.json.gz",
+      "competitions": 2,
+      "events": 1279,
+      "matches": 354,
+      "scoreDisagreements": 0,
+      "latestEvent": "1986-05-03",
+      "sha256": "652ea0202211b1af5082e7b7724f2d66ff33636afabc08ab1d3fca858f6ef388"
+    },
+    {
+      "id": "1984/1985",
+      "path": "raw/historical-goals/1984-1985.json.gz",
+      "competitions": 2,
+      "events": 1332,
+      "matches": 357,
+      "scoreDisagreements": 0,
+      "latestEvent": "1985-06-08",
+      "sha256": "397553ceebdf2200b0e5112c164264911bca73967cab2f9743f3edf752efcccc"
+    },
+    {
+      "id": "1983/1984",
+      "path": "raw/historical-goals/1983-1984.json.gz",
+      "competitions": 2,
+      "events": 1374,
+      "matches": 353,
+      "scoreDisagreements": 0,
+      "latestEvent": "1984-05-31",
+      "sha256": "459100aed9844ff57affa9507063176705ec6ce8a88ba4426100fc24c103d67d"
+    },
+    {
+      "id": "1982/1983",
+      "path": "raw/historical-goals/1982-1983.json.gz",
+      "competitions": 2,
+      "events": 1281,
+      "matches": 360,
+      "scoreDisagreements": 0,
+      "latestEvent": "1983-06-11",
+      "sha256": "b11501349d2cac828f1f35e51e82e467d9a8bd51c954b5e392dea5e031bd7803"
+    },
+    {
+      "id": "1981/1982",
+      "path": "raw/historical-goals/1981-1982.json.gz",
+      "competitions": 2,
+      "events": 1604,
+      "matches": 428,
+      "scoreDisagreements": 0,
+      "latestEvent": "1982-05-29",
+      "sha256": "df7c51ed43a81149b1a46b874cc374f7ecaa0f491515bcab5b2573d2c90a96cd"
+    },
+    {
+      "id": "1980/1981",
+      "path": "raw/historical-goals/1980-1981.json.gz",
+      "competitions": 2,
+      "events": 1647,
+      "matches": 429,
+      "scoreDisagreements": 4,
+      "latestEvent": "1981-06-13",
+      "sha256": "015b18bd991a1af72549af773768bef59d3f84d924fc98b59d13ecb70fa570db"
+    },
+    {
+      "id": "1979/1980",
+      "path": "raw/historical-goals/1979-1980.json.gz",
+      "competitions": 2,
+      "events": 1605,
+      "matches": 420,
+      "scoreDisagreements": 0,
+      "latestEvent": "1980-06-04",
+      "sha256": "0b00b90e51213a95b0013d325f779746d2d43f5ca18473b73ffe09e445b9462d"
+    },
+    {
+      "id": "1978/1979",
+      "path": "raw/historical-goals/1978-1979.json.gz",
+      "competitions": 2,
+      "events": 1532,
+      "matches": 416,
+      "scoreDisagreements": 0,
+      "latestEvent": "1979-06-23",
+      "sha256": "27ad8aaa8ac8da21b7e5018d8a978e8f7f464a09a274deb868ec4c230593cce9"
+    },
+    {
+      "id": "1977/1978",
+      "path": "raw/historical-goals/1977-1978.json.gz",
+      "competitions": 2,
+      "events": 1550,
+      "matches": 424,
+      "scoreDisagreements": 4,
+      "latestEvent": "1978-04-29",
+      "sha256": "87859621527eb6e32dc822e727bf9fd458d41d7cd460d88d7017eea71d09f2a3"
+    },
+    {
+      "id": "1976/1977",
+      "path": "raw/historical-goals/1976-1977.json.gz",
+      "competitions": 2,
+      "events": 1661,
+      "matches": 420,
+      "scoreDisagreements": 10,
+      "latestEvent": "1977-05-30",
+      "sha256": "6ca9963a8996c5102334dc3883e653db4246bdc3c425ac107fbd793611e74d67"
+    },
+    {
+      "id": "1975/1976",
+      "path": "raw/historical-goals/1975-1976.json.gz",
+      "competitions": 2,
+      "events": 1540,
+      "matches": 419,
+      "scoreDisagreements": 0,
+      "latestEvent": "1976-06-26",
+      "sha256": "4335a85ced0a4daef8f6312df11551cb23e33397cb8ab0dc2c7acb171a7bb259"
+    },
+    {
+      "id": "1974/1975",
+      "path": "raw/historical-goals/1974-1975.json.gz",
+      "competitions": 2,
+      "events": 1582,
+      "matches": 418,
+      "scoreDisagreements": 0,
+      "latestEvent": "1975-06-21",
+      "sha256": "6ab3978ca642effd45ad2f237bbc1a6b64544d7ad11a3e65511a5c8cfa29b894"
+    },
+    {
+      "id": "1973/1974",
+      "path": "raw/historical-goals/1973-1974.json.gz",
+      "competitions": 2,
+      "events": 1226,
+      "matches": 329,
+      "scoreDisagreements": 0,
+      "latestEvent": "1974-08-17",
+      "sha256": "ff92fa1de2b7e27782b016b787ca1cebf1cac0f89e904c89e3144b071a6595dd"
+    },
+    {
+      "id": "1972/1973",
+      "path": "raw/historical-goals/1972-1973.json.gz",
+      "competitions": 2,
+      "events": 1300,
+      "matches": 356,
+      "scoreDisagreements": 0,
+      "latestEvent": "1973-06-23",
+      "sha256": "2855250562d0be9bd291cdfd50160c958ef4e0c17e48d1eb3d305af1dbddac6e"
+    },
+    {
+      "id": "1971/1972",
+      "path": "raw/historical-goals/1971-1972.json.gz",
+      "competitions": 2,
+      "events": 1242,
+      "matches": 348,
+      "scoreDisagreements": 0,
+      "latestEvent": "1972-07-01",
+      "sha256": "a8f757264774ea6be06ff740d4bf4ba37c1363b0f6a7b3cad5da436447b157a3"
+    },
+    {
+      "id": "1970/1971",
+      "path": "raw/historical-goals/1970-1971.json.gz",
+      "competitions": 2,
+      "events": 1055,
+      "matches": 320,
+      "scoreDisagreements": 0,
+      "latestEvent": "1971-06-19",
+      "sha256": "7913558cefa35fa91e95380157c527555cde471da08f7cb6f44d2ca76676c857"
+    },
+    {
+      "id": "1969/1970",
+      "path": "raw/historical-goals/1969-1970.json.gz",
+      "competitions": 2,
+      "events": 1068,
+      "matches": 313,
+      "scoreDisagreements": 0,
+      "latestEvent": "1970-08-29",
+      "sha256": "c3b99ea45c2af676ab82aa5f08d239178a21a0f174538e2007a7474d54583399"
+    },
+    {
+      "id": "1968/1969",
+      "path": "raw/historical-goals/1968-1969.json.gz",
+      "competitions": 2,
+      "events": 974,
+      "matches": 318,
+      "scoreDisagreements": 0,
+      "latestEvent": "1969-06-14",
+      "sha256": "4537b2eb91dec8cf39edfff18b6d0f20b6f92808a826daaea99b0705d231b803"
+    },
+    {
+      "id": "1967/1968",
+      "path": "raw/historical-goals/1967-1968.json.gz",
+      "competitions": 2,
+      "events": 1106,
+      "matches": 323,
+      "scoreDisagreements": 0,
+      "latestEvent": "1968-06-09",
+      "sha256": "6393ae367035ade419b2fba10580a3afd1a10eaee3a71cb327dc8f0edfb1a110"
+    },
+    {
+      "id": "1966/1967",
+      "path": "raw/historical-goals/1966-1967.json.gz",
+      "competitions": 2,
+      "events": 1023,
+      "matches": 324,
+      "scoreDisagreements": 0,
+      "latestEvent": "1967-06-10",
+      "sha256": "465643a469d9bf931009ef63af7f05fb62778ca478dba9e508717bafe82bcf0d"
+    },
+    {
+      "id": "1965/1966",
+      "path": "raw/historical-goals/1965-1966.json.gz",
+      "competitions": 2,
+      "events": 1101,
+      "matches": 319,
+      "scoreDisagreements": 2,
+      "latestEvent": "1966-06-04",
+      "sha256": "4636cc8a96a6aa7e90016152cceec128fa5a2d93584d9ad099cd779e75060423"
+    },
+    {
+      "id": "1964/1965",
+      "path": "raw/historical-goals/1964-1965.json.gz",
+      "competitions": 2,
+      "events": 920,
+      "matches": 260,
+      "scoreDisagreements": 0,
+      "latestEvent": "1965-05-22",
+      "sha256": "b6404a1d1e1284cb0bd4fb571df16f0c8fe2c39c811e25cbd511e4602e8ea1ad"
+    },
+    {
+      "id": "1963/1964",
+      "path": "raw/historical-goals/1963-1964.json.gz",
+      "competitions": 2,
+      "events": 981,
+      "matches": 261,
+      "scoreDisagreements": 0,
+      "latestEvent": "1964-06-13",
+      "sha256": "0e4305456f9b6f34b375cd01cefaea7d32552cebb4020ee681a40b4298d417ad"
+    }
+  ]
+}

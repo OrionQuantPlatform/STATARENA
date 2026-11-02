@@ -3629,5 +3629,464 @@
     },
     "passed": true,
     "url": "http://127.0.0.1:3016/clubs?season=2026%2F2027&focus=all"
+  },
+  {
+    "name": "Latest upstream competition panels integrated",
+    "expected": "18-team shared table, upcoming/results panels, country label and no global overflow",
+    "actual": {
+      "aside": 1,
+      "docWidth": 1280,
+      "headings": [
+        "Ligue 1France",
+        "Prochains matchs",
+        "Derniers résultats"
+      ],
+      "regionWidth": 810,
+      "rows": 18,
+      "tableWidth": 810,
+      "viewport": 1280
+    },
+    "passed": true,
+    "url": "http://127.0.0.1:3016/competitions?season=2026%2F2027&focus=europe&id=l_3FJFUl"
+  },
+  {
+    "name": "Latest competition match-list switch",
+    "expected": "Matchs switches from standings/highlights to results list",
+    "actual": {
+      "aside": 0,
+      "links": 30,
+      "table": 0
+    },
+    "passed": true,
+    "url": "http://127.0.0.1:3016/competitions?season=2026%2F2027&focus=europe&id=l_3FJFUl"
+  },
+  {
+    "name": "New historical-goals country selector",
+    "expected": "New upstream selector also labels countries and sorts country A-Z; calendar-year suffixes retained",
+    "actual": [
+      {
+        "label": "Toutes les compétitions",
+        "value": "all"
+      },
+      {
+        "label": "Bundesliga · Allemagne",
+        "value": "bundesliga"
+      },
+      {
+        "label": "Coupe d’Allemagne · Allemagne",
+        "value": "dfb-pokal"
+      },
+      {
+        "label": "Coupe de la Ligue · Angleterre",
+        "value": "eng-league-cup"
+      },
+      {
+        "label": "FA Cup · Angleterre",
+        "value": "eng-fa-cup"
+      },
+      {
+        "label": "Première division · Angleterre",
+        "value": "eng-premier-league"
+      },
+      {
+        "label": "Bundesliga · Autriche",
+        "value": "aut-bundesliga"
+      },
+      {
+        "label": "Pro League · Belgique",
+        "value": "bel-pro-league"
+      },
+      {
+        "label": "Premiership · Écosse",
+        "value": "sco-premiership"
+      },
+      {
+        "label": "Coupe du Roi · Espagne",
+        "value": "esp-copa-del-rey"
+      },
+      {
+        "label": "Liga · Espagne",
+        "value": "esp-primera-division"
+      },
+      {
+        "label": "Ligue des champions · Europe",
+        "value": "champions-league"
+      },
+      {
+        "label": "Ligue Europa · Europe",
+        "value": "europa-league"
+      },
+      {
+        "label": "Ligue 1 · France",
+        "value": "fra-ligue-1"
+      },
+      {
+        "label": "Super League · Grèce",
+        "value": "gre-super-league"
+      },
+      {
+        "label": "Serie A · Italie",
+        "value": "ita-serie-a"
+      },
+      {
+        "label": "Eliteserien · Norvège · année civile 2024",
+        "value": "nor-eliteserien"
+      },
+      {
+        "label": "Eredivisie · Pays-Bas",
+        "value": "ned-eredivisie"
+      },
+      {
+        "label": "Ekstraklasa · Pologne",
+        "value": "pol-ekstraklasa"
+      },
+      {
+        "label": "Primeira Liga · Portugal",
+        "value": "por-primeira-liga"
+      },
+      {
+        "label": "Super League · Suisse",
+        "value": "sui-super-league"
+      },
+      {
+        "label": "Première division · Tchéquie",
+        "value": "cze-1-fotbalova-liga"
+      },
+      {
+        "label": "Süper Lig · Turquie",
+        "value": "tur-sueperlig"
+      }
+    ],
+    "passed": true,
+    "url": "http://127.0.0.1:3016/competitions?season=2026%2F2027&focus=europe&id=l_3FJFUl"
+  },
+  {
+    "name": "Latest upstream current match standings",
+    "expected": "Current match and Classement survive remote-match loader integration",
+    "actual": {
+      "rows": 18,
+      "selected": "Classement",
+      "title": "Marseille — Toulouse",
+      "url": "http://127.0.0.1:3016/matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl&id=m_22n8XS&competition=l_3FJFUl&sourceSeason=2026%2F2027&view=standings"
+    },
+    "passed": true,
+    "url": "http://127.0.0.1:3016/matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl&id=m_22n8XS&competition=l_3FJFUl&sourceSeason=2026%2F2027&view=standings"
+  },
+  {
+    "name": "Latest upstream historical match standings",
+    "expected": "Historical deep link still uses 2024/2025 with all independently checked table values",
+    "actual": {
+      "rows": [
+        [
+          "1",
+          "Paris Saint-Germain",
+          "84",
+          "34",
+          "26",
+          "6",
+          "2",
+          "92",
+          "35",
+          "+57"
+        ],
+        [
+          "2",
+          "Marseille",
+          "65",
+          "34",
+          "20",
+          "5",
+          "9",
+          "74",
+          "47",
+          "+27"
+        ],
+        [
+          "3",
+          "Monaco",
+          "61",
+          "34",
+          "18",
+          "7",
+          "9",
+          "63",
+          "41",
+          "+22"
+        ],
+        [
+          "4",
+          "Nice",
+          "60",
+          "34",
+          "17",
+          "9",
+          "8",
+          "66",
+          "41",
+          "+25"
+        ],
+        [
+          "5",
+          "Lille",
+          "60",
+          "34",
+          "17",
+          "9",
+          "8",
+          "52",
+          "36",
+          "+16"
+        ],
+        [
+          "6",
+          "Lyon",
+          "57",
+          "34",
+          "17",
+          "6",
+          "11",
+          "65",
+          "46",
+          "+19"
+        ],
+        [
+          "7",
+          "Strasbourg",
+          "57",
+          "34",
+          "16",
+          "9",
+          "9",
+          "56",
+          "44",
+          "+12"
+        ],
+        [
+          "8",
+          "Lens",
+          "52",
+          "34",
+          "15",
+          "7",
+          "12",
+          "42",
+          "39",
+          "+3"
+        ],
+        [
+          "9",
+          "Brest",
+          "50",
+          "34",
+          "15",
+          "5",
+          "14",
+          "52",
+          "59",
+          "-7"
+        ],
+        [
+          "10",
+          "Toulouse",
+          "42",
+          "34",
+          "11",
+          "9",
+          "14",
+          "44",
+          "43",
+          "+1"
+        ],
+        [
+          "11",
+          "Auxerre",
+          "42",
+          "34",
+          "11",
+          "9",
+          "14",
+          "48",
+          "51",
+          "-3"
+        ],
+        [
+          "12",
+          "Rennes",
+          "41",
+          "34",
+          "13",
+          "2",
+          "19",
+          "51",
+          "50",
+          "+1"
+        ],
+        [
+          "13",
+          "Nantes",
+          "36",
+          "34",
+          "8",
+          "12",
+          "14",
+          "39",
+          "52",
+          "-13"
+        ],
+        [
+          "14",
+          "Angers",
+          "36",
+          "34",
+          "10",
+          "6",
+          "18",
+          "32",
+          "53",
+          "-21"
+        ],
+        [
+          "15",
+          "Le Havre",
+          "34",
+          "34",
+          "10",
+          "4",
+          "20",
+          "40",
+          "71",
+          "-31"
+        ],
+        [
+          "16",
+          "Reims",
+          "33",
+          "34",
+          "8",
+          "9",
+          "17",
+          "33",
+          "47",
+          "-14"
+        ],
+        [
+          "17",
+          "Saint-Étienne",
+          "30",
+          "34",
+          "8",
+          "6",
+          "20",
+          "39",
+          "77",
+          "-38"
+        ],
+        [
+          "18",
+          "Montpellier",
+          "16",
+          "34",
+          "4",
+          "4",
+          "26",
+          "23",
+          "79",
+          "-56"
+        ]
+      ],
+      "season": "2024/2025"
+    },
+    "passed": true,
+    "url": "http://127.0.0.1:3016/matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl&id=m_3Sg5Uh&competition=l_3FJFUl&sourceSeason=2024%2F2025&view=standings"
+  },
+  {
+    "name": "Latest upstream Clubs dependent filter",
+    "expected": "All three German competitions and the 18 correct Bundesliga clubs remain after final merge",
+    "actual": {
+      "cards": [
+        {
+          "count": "8 matchs",
+          "id": "t_0x6Gji"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_14USF9"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_2lHR8t"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_1cpjqO"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_386iz1"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_2g37DO"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_0acTGj"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_0qsY4J"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_40kQKX"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_1pQZDX"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_3xyER9"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_3pp390"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_3j2hQL"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_0oqUbb"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_2yQXrt"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_1VWvPZ"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_0iJNOA"
+        },
+        {
+          "count": "8 matchs",
+          "id": "t_2vkbPM"
+        }
+      ],
+      "docWidth": 1280,
+      "options": [
+        "Toutes les compétitions",
+        "2. Bundesliga · Allemagne",
+        "3. Liga · Allemagne",
+        "Bundesliga · Allemagne"
+      ],
+      "viewport": 1280
+    },
+    "passed": true,
+    "url": "http://127.0.0.1:3016/clubs?season=2026%2F2027&focus=all"
   }
 ]
