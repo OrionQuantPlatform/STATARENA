@@ -293,3 +293,84 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Results-only cup competitions from their identified source. */
+.cup-detail {
+  margin-bottom: 16px;
+}
+.cup-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px 16px;
+  margin-bottom: 14px;
+}
+.cup-controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+.cup-controls input[type="search"] {
+  width: min(100%, 260px);
+}
+.card-body > .cup-source {
+  max-width: none;
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+.cup-source a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cup-match {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cup-match:last-child {
+  border-bottom: 0;
+}
+.cup-match-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: var(--text-xs);
+}
+.cup-match-teams {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  color: var(--ink-strong);
+  font-size: var(--text-md);
+}
+.cup-match-teams > span:first-child {
+  text-align: right;
+}
+.cup-match-teams > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cup-match-teams > strong {
+  min-width: 48px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.card-body .cup-match-notes {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .cup-controls input[type="search"] { width: 100%; }
+  .cup-match-teams { gap: 8px; font-size: var(--text-sm); }
+}
+
+.cup-catalog-error { margin-top: 10px; color: var(--muted); font-size: var(--text-sm); }
+.cup-catalog-error button { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
