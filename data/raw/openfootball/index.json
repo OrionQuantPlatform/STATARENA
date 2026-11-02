@@ -38,7 +38,8 @@
         "upstream": {
           "name": "engsoccerdata",
           "url": "https://github.com/jalapic/engsoccerdata",
-          "license": "GPL-2.0-or-later"
+          "license": "GPL-2.0-or-later",
+          "usage": "usage gratuit non commercial ; attribution demandée"
         }
       }
     ]
