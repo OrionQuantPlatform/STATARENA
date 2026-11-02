@@ -1,0 +1,116 @@
+{
+  "setup": "Current source production build on 3016; real local JSON; original palette and fonts, only supplied green imagery",
+  "checks": [
+    {
+      "accent": "#3b8eff",
+      "background": "rgb(14, 15, 18)",
+      "font": "\"STATARENA Inter\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "icons": [
+        "/favicon.svg?brand=green",
+        "/favicon.ico?brand=green",
+        "/branding/green/icons/favicon-32.png"
+      ],
+      "ink": "#e4e7ec",
+      "logoImages": [
+        {
+          "loaded": true,
+          "src": "/branding/green/logos/svg/statarena-symbol-dark.svg",
+          "width": 30
+        },
+        {
+          "loaded": true,
+          "src": "/branding/green/logos/svg/statarena-horizontal-dark.svg",
+          "width": 156
+        }
+      ],
+      "scatterColor": "rgb(59, 142, 255)",
+      "scrollWidth": 954,
+      "surface": "#15171b",
+      "theme": "dark",
+      "viewport": {
+        "height": 1031,
+        "width": 954
+      }
+    },
+    {
+      "accent": "#1d6fd6",
+      "background": "rgb(246, 248, 251)",
+      "font": "\"STATARENA Inter\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "icons": [
+        "/favicon.svg?brand=green",
+        "/favicon.ico?brand=green",
+        "/branding/green/icons/favicon-32.png"
+      ],
+      "ink": "#0d2134",
+      "logoImages": [
+        {
+          "loaded": true,
+          "src": "/branding/green/logos/svg/statarena-symbol-light.svg",
+          "width": 30
+        },
+        {
+          "loaded": true,
+          "src": "/branding/green/logos/svg/statarena-horizontal-light.svg",
+          "width": 156
+        }
+      ],
+      "scatterColor": "rgb(29, 111, 214)",
+      "scrollWidth": 954,
+      "surface": "#fff",
+      "theme": "light",
+      "viewport": {
+        "height": 1031,
+        "width": 954
+      }
+    },
+    {
+      "accent": "#1d6fd6",
+      "background": "rgb(246, 248, 251)",
+      "font": "\"STATARENA Inter\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "icons": [
+        "/favicon.svg?brand=green",
+        "/favicon.ico?brand=green",
+        "/branding/green/icons/favicon-32.png"
+      ],
+      "ink": "#0d2134",
+      "logoImages": [
+        {
+          "loaded": true,
+          "src": "/branding/green/logos/svg/statarena-symbol-light.svg",
+          "width": 30
+        },
+        {
+          "loaded": true,
+          "src": "/branding/green/logos/svg/statarena-horizontal-light.svg",
+          "width": 156
+        }
+      ],
+      "scatterColor": "rgb(29, 111, 214)",
+      "scrollWidth": 390,
+      "surface": "#fff",
+      "theme": "light",
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "action": "ranking navigation",
+      "ranks": 30
+    },
+    {
+      "action": "open performance dialog",
+      "visible": true,
+      "text": "Achraf Hakimi\n\nClub lors de ce match :\nParis Saint-Germain\nDéfenseur\nN° 2\n\n9,84\nNote PitchAPI\nMeilleure note du match\nLigue 1\n30 oct. 2026\nLe Havre\n1\n–\n5\nParis Saint-Germain\nTitulaire71 min\nSynthèse\nToutes les stats\nDonnées brutes\nButs\n3\nPasses décisives\n2\nDuels gagnés\n3\nRécupérations\n2\nProfil de la performance\n\nCentile parmi 622 performances de dé"
+    }
+  ],
+  "notes": [
+    "The full-kit green/navy/Sora trial was stopped and not copied into the source checkout. Port 3016 now serves the production palette with logo imagery only.",
+    "A home checkbox locator was attempted while initial preferences resolved; it found no match and no checkbox action was applied.",
+    "One heading locator used an unsupported level option; it was corrected to the exact visible heading name. The ranking and navigation then passed."
+  ],
+  "consoleErrors": [],
+  "status": "passed"
+}

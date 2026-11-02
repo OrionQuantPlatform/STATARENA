@@ -1,0 +1,36 @@
+{
+  "applicationSha": "ce4ad4b8feaebc103fc870cdda448cce82bc885a",
+  "palette": {
+    "accent": "#3b8eff",
+    "background": "rgb(14, 15, 18)",
+    "font": "\"STATARENA Inter\", Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "icons": [
+      "/favicon.svg?brand=green",
+      "/favicon.ico?brand=green",
+      "/branding/green/icons/favicon-32.png"
+    ],
+    "ink": "#e4e7ec",
+    "logoImages": [
+      {
+        "loaded": true,
+        "src": "/branding/green/logos/svg/statarena-symbol-dark.svg",
+        "width": 30
+      },
+      {
+        "loaded": true,
+        "src": "/branding/green/logos/svg/statarena-horizontal-dark.svg",
+        "width": 156
+      }
+    ],
+    "scatterColor": "rgb(59, 142, 255)",
+    "scrollWidth": 954,
+    "surface": "#15171b",
+    "theme": "dark",
+    "viewport": {
+      "height": 1031,
+      "width": 954
+    }
+  },
+  "consoleErrors": [],
+  "status": "passed"
+}

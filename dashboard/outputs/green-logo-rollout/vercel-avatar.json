@@ -1,0 +1,20 @@
+{
+  "projectId": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+  "name": "statarena-analytics",
+  "asset": "public/branding/green/icons/android-chrome-512.png",
+  "afterReload": {
+    "images": [
+      {
+        "loaded": true,
+        "src": "https://vercel.com/api/www/avatar/8f4a0bf86a738c7a3061be1d809362f7a61f39c2?s=160&dpl=dpl_zXKiBRPuMFk9gpCnRt6G1m61QpKw"
+      }
+    ],
+    "rect": {
+      "height": 80,
+      "width": 80,
+      "x": 1121,
+      "y": 344
+    }
+  },
+  "status": "passed"
+}

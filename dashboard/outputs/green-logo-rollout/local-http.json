@@ -1,0 +1,60 @@
+{
+  "base": "http://127.0.0.1:3016",
+  "checks": [
+    {
+      "path": "/branding/green/logos/svg/statarena-symbol-dark.svg",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "1bc586285d0cc1c86fb7a3f0e4129cdaf173b3554c12749b72737e5d9002d56b"
+    },
+    {
+      "path": "/branding/green/logos/svg/statarena-symbol-light.svg",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "a877552e88d03b0d73d705a7d400b7f02b2d315c375e2337bbf813e162f79fd5"
+    },
+    {
+      "path": "/branding/green/logos/svg/statarena-horizontal-dark.svg",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "f99f5c59531a13520b19f4b17b2a5a304e8fd038bd4271cf1fae0a27687a80e2"
+    },
+    {
+      "path": "/branding/green/logos/svg/statarena-horizontal-light.svg",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "6c2968962e06798ac6463393b407d7ed16c15c11f5488e6419b84f86fc5cfb78"
+    },
+    {
+      "path": "/favicon.svg?brand=green",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "9262c3d1af39e26b9154e9c300d81aef3fb137b66e0029b7272a8343477583be"
+    },
+    {
+      "path": "/favicon.ico?brand=green",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "872a187afcaddfa1744a94c95cc39826ae5f6f5d2927340e32cfbadbcbe65bd3"
+    },
+    {
+      "path": "/apple-touch-icon.png?brand=green",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "b4d25fb8d0af8745af9e8d6d2dc51636b023595bf02dcbbe92af5ba6b04edc86"
+    },
+    {
+      "path": "/og-image.png?brand=green",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "f468934239bc33129d3df04431ca0b9457fef59e4473f10ceef8840b4c683fb6"
+    },
+    {
+      "path": "/site.webmanifest?brand=green",
+      "status": 200,
+      "matches_source": true,
+      "sha256": "7dc21d7ef246ac451ea20d5d9aa4a9a16df44ed4562ab04d754095021bafbcd8"
+    }
+  ],
+  "status": "passed"
+}
