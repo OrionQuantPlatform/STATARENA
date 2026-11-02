@@ -1,5 +1,8 @@
 # Vercel et collecte quotidienne
 
+> Depuis le passage du dépôt en privé, le fonctionnement Git décrit ci-dessous n'est plus opérationnel sur l'espace Vercel Hobby. Pour la configuration adaptée et ses limites, voir [Déploiement avec un dépôt privé](PRIVATE_VERCEL_DEPLOYMENT.md).
+
+
 Site : [statarena-analytics.vercel.app](https://statarena-analytics.vercel.app).
 
 Le projet Vercel est relié à `OrionQuantPlatform/STATARENA`, branche de production `main`. Les pushes déclenchent les déploiements Git. Les commits qui restent uniquement sur une machine ne déclenchent pas Vercel.

@@ -5,7 +5,7 @@ import { appRoot, databaseRoot } from "./config.js";
 import { matchObservation, profileObservation } from "./services/database.js";
 import { publicFile, response, contained } from "./services/files.js";
 import { handlePitchApi } from "./services/pitchapi.js";
-import { dataJson, remoteData } from "./services/data-store.js";
+import { dataJson, remoteData, remoteDataRevision } from "./services/data-store.js";
 
 let credentials;
 async function environment() {
@@ -105,6 +105,16 @@ export async function handleRequest(request) {
     return response("Method not allowed", 405, { Allow: "GET, HEAD" });
   if (pathname === "/dashboard") pathname = "/";
   else if (pathname.startsWith("/dashboard/")) pathname = pathname.slice(10);
+  const versionedData = pathname.match(/^\/data\/([a-f0-9]{40})\/((?:raw|computed)\/.+)$/i);
+  if (versionedData) {
+    try {
+      if (!remoteData || versionedData[1].toLowerCase() !== remoteDataRevision().toLowerCase())
+        return response("Data revision unavailable", 404);
+      return publicFile(databaseRoot, versionedData[2], head, true);
+    } catch {
+      return response("Data revision unavailable", 503);
+    }
+  }
   if (pathname === "/data/dashboard-manifest.json")
     return publicFile(
       databaseRoot,
