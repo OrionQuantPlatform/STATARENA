@@ -22,7 +22,7 @@ export default function ThemeToggle() {
     );
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", next === "light" ? "#F6F8FB" : "#0E0F12");
+      ?.setAttribute("content", next === "light" ? "#f5f6f2" : "#0b1014");
     try {
       localStorage.setItem("statarena.theme", next);
     } catch {}

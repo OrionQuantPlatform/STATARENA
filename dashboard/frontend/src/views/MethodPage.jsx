@@ -22,9 +22,9 @@ export default function MethodPage() {
           <section>
             <h2>Notes et classement</h2>
             <p>
-              Les notes affichées sont celles de PitchAPI. Le classement
-              STATARENA, ses pondérations par rôle et son agrégation saisonnière
-              restent à calibrer et à valider.
+              Les notes affichées sont celles de PitchAPI. Le classement Orion
+              Tech Sport, ses pondérations par rôle et son agrégation
+              saisonnière restent à calibrer et à valider.
             </p>
           </section>
           <section>

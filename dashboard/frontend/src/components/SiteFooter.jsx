@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Icon from "./Icon.jsx";
-import StatarenaLogo from "./StatarenaLogo.jsx";
+import OrionLogo from "./OrionLogo.jsx";
 
 const repository = "https://github.com/OrionQuantPlatform/STATARENA";
 const groups = [
@@ -43,25 +43,22 @@ const groups = [
 
 export default function SiteFooter({ href, path }) {
   return (
-    <footer className="site-footer" aria-label="Pied de page">
-      <div className="site-footer-inner">
-        <div className="site-footer-main">
-          <div className="site-footer-identity">
-            <Link
-              className="site-footer-home"
-              href={href("/")}
-              aria-label="STATARENA, vue d’ensemble"
-            >
-              <StatarenaLogo
-                className="site-footer-logo"
-                width={186}
-                height={40}
-              />
-            </Link>
-          </div>
+    <footer className="site-footer orion-footer" aria-label="Pied de page">
+      <div className="orion-footer-inner">
+        <div className="orion-footer-heading">
+          <Link
+            className="orion-footer-home"
+            href={href("/")}
+            aria-label="Orion Tech Sport, vue d’ensemble"
+          >
+            <OrionLogo compact />
+          </Link>
+          <p>Un autre regard sur le jeu.</p>
+        </div>
+        <div className="orion-footer-groups">
           {groups.map((group) => (
             <nav
-              className="site-footer-column"
+              className="orion-footer-group"
               aria-label={group.title}
               key={group.title}
             >
@@ -85,6 +82,7 @@ export default function SiteFooter({ href, path }) {
                           : {})}
                       >
                         {label}
+                        {external && <Icon name="external" />}
                       </Link>
                     </li>
                   );
@@ -93,19 +91,9 @@ export default function SiteFooter({ href, path }) {
             </nav>
           ))}
         </div>
-        <div className="site-footer-bottom">
-          <div className="site-footer-copyright">
-            <a
-              className="site-footer-github"
-              href={repository}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="STATARENA sur GitHub"
-            >
-              GitHub <Icon name="external" />
-            </a>
-            <span>© {new Date().getFullYear()} STATARENA</span>
-          </div>
+        <div className="orion-footer-bottom">
+          <span>© {new Date().getFullYear()} Orion Tech Sport</span>
+          <span>Football · Data · Analyse</span>
         </div>
       </div>
     </footer>

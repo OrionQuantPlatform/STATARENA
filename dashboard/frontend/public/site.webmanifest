@@ -1,10 +1,12 @@
 {
-  "name": "STATARENA",
-  "short_name": "STATARENA",
+  "name": "Orion Tech Sport",
+  "short_name": "Orion Sport",
+  "description": "Le football, sous un autre angle. Statistiques, analyses et classement des joueurs.",
+  "lang": "fr",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0F0F11",
-  "theme_color": "#0F0F11",
+  "background_color": "#0b1014",
+  "theme_color": "#0b1014",
   "icons": [
     {
       "src": "/android-chrome-192.png",

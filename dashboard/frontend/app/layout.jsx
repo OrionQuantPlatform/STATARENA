@@ -11,15 +11,17 @@ import "../src/fonts.css";
 import "../src/theme.css";
 import "../src/styles.css";
 import "../src/analysis.css";
+import "../src/orion-shell.css";
+import "../src/orion-ranking.css";
 const siteUrl = "https://statarena-analytics.vercel.app";
 const description =
-  "Statistiques de football, analyses de matchs, profils de joueurs et classement du Ballon d’Or.";
+  "Le football, sous un autre angle. Explorez les performances, comparez les joueurs et découvrez la méthode du classement Orion Tech Sport.";
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "STATARENA",
+  applicationName: "Orion Tech Sport",
   title: {
-    default: "STATARENA — Football Analytics",
-    template: "%s — STATARENA",
+    default: "Orion Tech Sport — Football Analytics",
+    template: "%s — Orion Tech Sport",
   },
   description,
   manifest: "/site.webmanifest",
@@ -28,7 +30,7 @@ export const metadata = {
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
       {
-        url: "/branding/icons/favicon-32.png",
+        url: "/favicon-32.png",
         type: "image/png",
         sizes: "32x32",
       },
@@ -38,21 +40,26 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    siteName: "STATARENA",
-    title: "STATARENA — Football Analytics",
+    siteName: "Orion Tech Sport",
+    title: "Orion Tech Sport — Football Analytics",
     description,
     images: [
-      { url: "/og-image.png", width: 1200, height: 630, alt: "STATARENA" },
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Orion Tech Sport — Le football, sous un autre angle.",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "STATARENA — Football Analytics",
+    title: "Orion Tech Sport — Football Analytics",
     description,
     images: ["/og-image.png"],
   },
 };
-export const viewport = { themeColor: "#0E0F12", colorScheme: "dark light" };
+export const viewport = { themeColor: "#0b1014", colorScheme: "dark light" };
 // Start the downloads every page needs while the scripts are still loading:
 // the manifest, then the Top 7 + UEFA chunks of the default season, which
 // both scopes display first.
@@ -102,7 +109,7 @@ export default function RootLayout({ children }) {
         <script
           id="statarena-theme"
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("statarena.theme")==="light"?"light":"dark";document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",t==="light"?"#F6F8FB":"#0E0F12")}catch{}`,
+            __html: `try{var t=localStorage.getItem("statarena.theme")==="light"?"light":"dark";document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",t==="light"?"#f5f6f2":"#0b1014")}catch{}`,
           }}
         />
       </head>

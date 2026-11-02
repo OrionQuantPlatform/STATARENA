@@ -1,0 +1,1032 @@
+/* Orion ranking: the empty state is a designed state, never a fake result. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.orion-ranking-page {
+  --orion-lime: #d0f377;
+  --orion-lime-ink: #d0f377;
+  --orion-faint: rgba(208, 243, 119, 0.07);
+  --orion-line: rgba(208, 243, 119, 0.2);
+}
+.orion-page-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 27px;
+  border-bottom: 1px solid var(--border);
+}
+.orion-breadcrumb {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.015em;
+}
+.orion-breadcrumb > span:nth-child(2) {
+  opacity: 0.4;
+}
+.orion-breadcrumb strong {
+  font-weight: 450;
+  color: var(--ink);
+}
+.orion-method-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.orion-method-shortcut:hover {
+  color: var(--orion-lime-ink);
+}
+.orion-ranking-hero {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: center;
+  min-height: 328px;
+  gap: 20px;
+  position: relative;
+  padding: 34px 0 29px;
+}
+.orion-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+}
+.orion-small-star {
+  font-size: 19px;
+  color: var(--orion-lime-ink);
+  line-height: 1;
+}
+.orion-hero-copy h1 {
+  font-size: clamp(38px, 4.2vw, 64px);
+  font-weight: 580;
+  letter-spacing: -0.055em;
+  line-height: 1.06;
+  margin: 17px 0;
+  color: var(--ink-strong);
+}
+.orion-hero-copy h1 > span {
+  color: var(--orion-lime-ink);
+}
+.orion-hero-copy > p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.85;
+  max-width: 430px;
+}
+.orion-hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--ink-strong);
+  font-weight: 500;
+  font-size: 11px;
+  margin-top: 20px;
+  padding: 0 0 4px;
+  border-bottom: 1px solid var(--border-strong);
+}
+.orion-hero-link svg {
+  transition: transform 0.18s ease;
+  color: var(--orion-lime-ink);
+}
+.orion-hero-link:hover svg {
+  transform: translateY(3px);
+}
+.orion-hero-art {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 0;
+  padding-bottom: 13px;
+}
+.orion-award-art {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: 275px;
+  color: var(--muted);
+}
+.award-orbits {
+  opacity: 0.27;
+}
+.orion-art-caption {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+  color: var(--muted-light);
+}
+.orion-art-caption > span {
+  padding: 0 8px;
+  color: var(--orion-lime-ink);
+}
+.orion-ranking-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 79px;
+  border-block: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+.orion-ranking-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  min-width: 0;
+}
+.orion-status-dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--orion-lime-ink);
+  box-shadow: 0 0 0 4px var(--orion-faint);
+}
+.orion-ranking-status > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.orion-ranking-status strong {
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--ink-strong);
+}
+.orion-ranking-status > div > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.orion-season-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.orion-season-control > span {
+  font-size: 10px;
+  color: var(--muted);
+}
+.orion-season-control .segmented-control {
+  background: var(--surface);
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  gap: 2px;
+}
+.orion-season-control .segmented-control button {
+  min-height: 30px;
+  padding: 0 11px;
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 4px;
+  color: var(--muted);
+}
+.orion-season-control .segmented-control button[aria-pressed="true"] {
+  background: var(--orion-lime);
+  color: #1b2611;
+  box-shadow: none;
+}
+.orion-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 17px;
+}
+.orion-section-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+}
+.orion-section-heading h2 > span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  padding-right: 12px;
+  border-right: 1px solid var(--border-strong);
+}
+.orion-section-heading > p {
+  color: var(--muted);
+  font-size: 10px;
+}
+.orion-podium {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1.08fr 1fr;
+  align-items: end;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+.orion-podium-place {
+  isolation: isolate;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 18px 20px 0;
+  min-height: 245px;
+  display: flex;
+  flex-direction: column;
+}
+.orion-podium-gold {
+  min-height: 266px;
+  border-color: var(--orion-line);
+  background:
+    linear-gradient(145deg, var(--orion-faint), transparent 65%), var(--surface);
+}
+.orion-podium-gold:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--orion-lime),
+    transparent
+  );
+  opacity: 0.7;
+}
+.orion-podium-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.orion-winner-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 7px;
+  letter-spacing: 0.03em;
+  color: var(--orion-lime-ink);
+  text-transform: none;
+  white-space: nowrap;
+}
+.orion-podium-numeral {
+  position: absolute;
+  top: 33px;
+  right: 14px;
+  font-size: 104px;
+  font-weight: 550;
+  line-height: 1;
+  letter-spacing: -0.09em;
+  color: var(--muted);
+  opacity: 0.055;
+  z-index: -1;
+}
+.orion-podium-gold .orion-podium-numeral {
+  font-size: 126px;
+  color: var(--orion-lime-ink);
+  opacity: 0.08;
+  top: 37px;
+  right: 21px;
+}
+.orion-podium-person {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 25px 0 22px;
+}
+.orion-podium-emblem {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  color: var(--muted);
+  background: var(--surface-subtle);
+}
+.orion-podium-emblem > span {
+  position: absolute;
+  inset: -5px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+.orion-podium-gold .orion-podium-emblem {
+  color: var(--orion-lime-ink);
+  background: var(--orion-faint);
+  border-color: var(--orion-line);
+}
+.orion-podium-gold .orion-podium-emblem > span {
+  border-color: var(--orion-line);
+  border-style: dashed;
+}
+.orion-podium-avatar {
+  height: 62px;
+  width: 62px;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+  background: var(--surface-subtle);
+}
+.orion-podium-avatar img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.orion-podium-identity h3 {
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 530;
+  letter-spacing: -0.035em;
+}
+.orion-podium-identity p {
+  font-size: 10px;
+  margin-top: 5px;
+  color: var(--muted);
+}
+.orion-podium-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  min-height: 43px;
+  gap: 15px;
+}
+.orion-podium-score > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  color: var(--muted);
+}
+.orion-podium-score > span svg {
+  opacity: 0.6;
+}
+.orion-podium-score strong {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+}
+.orion-podium-gold .orion-podium-score strong {
+  color: var(--orion-lime-ink);
+}
+.orion-selection {
+  margin-top: 35px;
+}
+.orion-count-tag {
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: var(--surface);
+}
+.orion-rank-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.orion-rank-table-wrap {
+  min-width: 0;
+}
+.orion-rank-table-wrap + .orion-rank-table-wrap {
+  border-left: 1px solid var(--border);
+}
+.orion-rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  table-layout: fixed;
+}
+.orion-rank-table thead {
+  background: var(--surface-subtle);
+}
+.orion-rank-table thead th {
+  height: 36px;
+  font-weight: 450;
+  font-size: 9px;
+  color: var(--muted);
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+.orion-rank-table th:first-child {
+  width: 57px;
+  padding-left: 17px;
+}
+.orion-rank-table th:nth-child(2) {
+  width: auto;
+}
+.orion-rank-table th:nth-child(3) {
+  width: 57px;
+}
+.orion-rank-table th:last-child {
+  width: 60px;
+  text-align: right;
+  padding-right: 17px;
+}
+.orion-rank-table td,
+.orion-rank-table tbody th {
+  height: 47px;
+  border-top: 1px solid var(--border);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.orion-rank-table tbody th {
+  text-align: left;
+  font-weight: 400;
+}
+.orion-rank-number {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.orion-rank-person {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+.orion-rank-person > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.orion-rank-person strong {
+  font-size: 10px;
+  font-weight: 450;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--muted);
+}
+.orion-rank-person > div > span {
+  font-size: 9px;
+  color: var(--muted);
+}
+.orion-rank-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  overflow: hidden;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+}
+.orion-rank-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.orion-rank-unrevealed {
+  color: var(--muted-light);
+}
+.orion-rank-unrevealed .icon {
+  height: 13px;
+  width: 13px;
+  opacity: 0.7;
+}
+.orion-rank-position {
+  font-size: 10px;
+  color: var(--muted-light);
+}
+.orion-rank-value {
+  text-align: right;
+  padding-right: 17px;
+  color: var(--muted-light);
+  font-family: var(--font-mono);
+}
+.orion-ranking-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.6;
+}
+.orion-ranking-note > svg {
+  flex: none;
+  margin-top: 1px;
+}
+.orion-ranking-method {
+  margin-top: 54px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: calc(var(--header-h) + 20px);
+}
+.orion-method-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 24px;
+}
+.orion-method-heading h2 {
+  font-size: 30px;
+  font-weight: 530;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  margin-top: 12px;
+}
+.orion-method-heading > div:last-child {
+  max-width: 290px;
+  justify-self: end;
+  padding-bottom: 3px;
+}
+.orion-method-heading p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.orion-text-link {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--orion-lime-ink);
+  margin-top: 12px;
+}
+.orion-method-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.orion-method-steps > li {
+  padding: 22px 19px 24px;
+}
+.orion-method-steps > li + li {
+  border-left: 1px solid var(--border);
+}
+.orion-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 23px;
+}
+.orion-step-top > span:last-child {
+  font-family: var(--font-mono);
+  color: var(--muted-light);
+  font-size: 9px;
+}
+.orion-step-icon {
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  background: var(--orion-faint);
+  color: var(--orion-lime-ink);
+  border: 1px solid var(--orion-line);
+  border-radius: 7px;
+}
+.orion-step-icon .icon {
+  width: 15px;
+  height: 15px;
+}
+.orion-method-steps h3 {
+  font-size: 11px;
+  font-weight: 550;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.orion-method-steps p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+#orion-podium {
+  scroll-margin-top: calc(var(--header-h) + 20px);
+}
+[data-theme="light"] .orion-ranking-page {
+  --orion-lime-ink: #4f661c;
+  --orion-faint: rgba(105, 138, 47, 0.065);
+  --orion-line: rgba(105, 138, 47, 0.23);
+}
+[data-theme="light"] .orion-podium-numeral {
+  opacity: 0.085;
+}
+[data-theme="light"] .orion-podium-gold .orion-podium-numeral {
+  opacity: 0.1;
+}
+@media (min-width: 1600px) {
+  .orion-ranking-hero {
+    min-height: 375px;
+  }
+  .orion-award-art {
+    height: 320px;
+    max-width: 395px;
+  }
+  .orion-hero-copy h1 {
+    font-size: 70px;
+  }
+  .orion-hero-copy > p {
+    font-size: 14px;
+  }
+  .orion-podium-place {
+    min-height: 270px;
+  }
+  .orion-podium-gold {
+    min-height: 290px;
+  }
+}
+@media (max-width: 1180px) {
+  .orion-ranking-toolbar {
+    flex-wrap: wrap;
+    padding: 17px 0;
+  }
+  .orion-ranking-status > div > span {
+    font-size: 9px;
+  }
+  .orion-podium-place {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .orion-winner-tag {
+    font-size: 0;
+    gap: 0;
+  }
+  .orion-winner-tag svg {
+    width: 14px;
+    height: 14px;
+  }
+  .orion-hero-copy h1 {
+    font-size: 46px;
+  }
+  .orion-hero-copy > p {
+    font-size: 11px;
+  }
+  .orion-ranking-hero {
+    min-height: 310px;
+  }
+  .orion-award-art {
+    height: 255px;
+  }
+  .orion-method-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .orion-method-steps > li:nth-child(3) {
+    border-left: 0;
+  }
+  .orion-method-steps > li:nth-child(n + 3) {
+    border-top: 1px solid var(--border);
+  }
+}
+@media (max-width: 760px) {
+  .orion-page-topline {
+    padding-bottom: 19px;
+  }
+  .orion-breadcrumb {
+    font-size: 10px;
+    gap: 9px;
+  }
+  .orion-method-shortcut {
+    font-size: 0;
+    gap: 0;
+  }
+  .orion-method-shortcut svg {
+    height: 17px;
+    width: 17px;
+  }
+  .orion-ranking-hero {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 0;
+    min-height: 285px;
+    padding: 27px 0;
+  }
+  .orion-hero-copy h1 {
+    font-size: 43px;
+  }
+  .orion-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .orion-small-star {
+    font-size: 15px;
+  }
+  .orion-hero-copy > p {
+    font-size: 10px;
+  }
+  .orion-art-caption {
+    display: none;
+  }
+  .orion-award-art {
+    height: 220px;
+  }
+  .orion-ranking-toolbar {
+    margin-bottom: 28px;
+  }
+  .orion-ranking-status > div > span {
+    font-size: 10px;
+  }
+  .orion-season-control {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .orion-season-control .segmented-control {
+    flex: 1;
+    max-width: 330px;
+  }
+  .orion-season-control .segmented-control button {
+    flex: 1;
+    min-height: 35px;
+    font-size: 11px;
+  }
+  .orion-section-heading > p {
+    font-size: 9px;
+  }
+  .orion-podium {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .orion-podium-place {
+    min-height: 220px;
+    padding: 13px 12px 0;
+  }
+  .orion-podium-gold {
+    min-height: 239px;
+  }
+  .orion-podium-top {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+  .orion-podium-person {
+    padding: 22px 0 18px;
+    gap: 14px;
+  }
+  .orion-podium-emblem {
+    height: 42px;
+    width: 42px;
+  }
+  .orion-podium-emblem svg {
+    height: 19px;
+    width: 19px;
+  }
+  .orion-podium-numeral {
+    font-size: 75px;
+    top: 47px;
+    right: 8px;
+  }
+  .orion-podium-gold .orion-podium-numeral {
+    font-size: 90px;
+    right: 8px;
+    top: 46px;
+  }
+  .orion-podium-identity h3 {
+    font-size: 17px;
+  }
+  .orion-podium-identity p {
+    font-size: 8px;
+    line-height: 1.6;
+  }
+  .orion-podium-score > span {
+    font-size: 8px;
+  }
+  .orion-podium-score > span svg {
+    display: none;
+  }
+  .orion-rank-board {
+    grid-template-columns: 1fr;
+  }
+  .orion-rank-table-wrap + .orion-rank-table-wrap {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+  .orion-rank-table td,
+  .orion-rank-table tbody th {
+    height: 50px;
+  }
+  .orion-rank-person strong {
+    font-size: 11px;
+  }
+  .orion-rank-table th:nth-child(3) {
+    width: 75px;
+  }
+  .orion-rank-table th:last-child {
+    width: 65px;
+  }
+  .orion-ranking-note {
+    font-size: 10px;
+  }
+  .orion-method-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .orion-method-heading > div:last-child {
+    justify-self: start;
+    max-width: 100%;
+  }
+  .orion-method-heading h2 {
+    font-size: 29px;
+  }
+  .orion-method-steps p {
+    font-size: 11px;
+  }
+  .orion-method-steps h3 {
+    font-size: 12px;
+  }
+  .orion-selection {
+    margin-top: 29px;
+  }
+  .orion-ranking-method {
+    margin-top: 40px;
+  }
+  .orion-step-top {
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .orion-ranking-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 27px 0 24px;
+    overflow: hidden;
+  }
+  .orion-hero-copy {
+    position: relative;
+    z-index: 1;
+  }
+  .orion-hero-copy h1 {
+    font-size: 46px;
+  }
+  .orion-hero-copy > p {
+    font-size: 11px;
+    max-width: 290px;
+  }
+  .orion-hero-art {
+    position: absolute;
+    right: -85px;
+    top: 24px;
+    width: 210px;
+    opacity: 0.21;
+    pointer-events: none;
+  }
+  .orion-hero-art svg {
+    height: 210px;
+  }
+  .orion-eyebrow {
+    font-size: 8px;
+  }
+  .orion-hero-link {
+    font-size: 11px;
+  }
+  .orion-podium {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .orion-podium-gold {
+    order: -1;
+  }
+  .orion-podium-place,
+  .orion-podium-gold {
+    min-height: 0;
+    padding: 14px 17px;
+  }
+  .orion-podium-top {
+    font-size: 8px;
+  }
+  .orion-winner-tag {
+    font-size: 8px;
+    gap: 4px;
+  }
+  .orion-podium-person {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    padding: 18px 0 14px;
+  }
+  .orion-podium-emblem {
+    margin-left: 4px;
+    flex: none;
+  }
+  .orion-podium-identity h3 {
+    font-size: 20px;
+  }
+  .orion-podium-identity p {
+    font-size: 10px;
+  }
+  .orion-podium-score {
+    position: absolute;
+    right: 17px;
+    bottom: 33px;
+    border: 0;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0;
+  }
+  .orion-podium-score > span {
+    font-size: 8px;
+  }
+  .orion-podium-score strong {
+    font-size: 23px;
+  }
+  .orion-podium-numeral,
+  .orion-podium-gold .orion-podium-numeral {
+    top: 25px;
+    right: 65px;
+    font-size: 88px;
+  }
+  .orion-podium-identity {
+    padding-right: 60px;
+  }
+  .orion-section-heading h2 {
+    font-size: 14px;
+    gap: 9px;
+  }
+  .orion-section-heading h2 > span {
+    padding-right: 9px;
+  }
+  .orion-section-heading > p {
+    display: none;
+  }
+  .orion-season-control {
+    gap: 9px;
+  }
+  .orion-season-control .segmented-control button {
+    padding: 0 8px;
+    min-height: 36px;
+    font-size: 10px;
+  }
+  .orion-ranking-status > div > span {
+    font-size: 9px;
+  }
+  .orion-method-steps > li {
+    padding: 19px 15px;
+  }
+  .orion-method-steps h3 {
+    font-size: 11px;
+  }
+  .orion-method-steps p {
+    font-size: 10px;
+  }
+  .orion-rank-table th:first-child {
+    width: 52px;
+  }
+  .orion-rank-table th:nth-child(3) {
+    width: 48px;
+  }
+  .orion-rank-table th:last-child {
+    width: 52px;
+  }
+  .orion-ranking-note {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orion-hero-link svg {
+    transition: none;
+  }
+  .orion-hero-link:hover svg {
+    transform: none;
+  }
+}
