@@ -1,0 +1,25 @@
+{
+  "projectId": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+  "oldName": "statarena",
+  "name": "statarena-analytics",
+  "accountId": "team_IYt7KqupdSTtMuQuMvNa9wiJ",
+  "canonical": "https://statarena-analytics.vercel.app",
+  "domains": [
+    "statarena-analytics.vercel.app",
+    "orion-football-ranking.vercel.app",
+    "statarena-hlemonniers-projects.vercel.app",
+    "statarena-git-main-hlemonniers-projects.vercel.app"
+  ],
+  "latestDeployment": {
+    "id": "dpl_8e5QfyboazVw3m6Yr7seKQX2Q3Wk",
+    "url": "statarena-18f9g4765-hlemonniers-projects.vercel.app",
+    "createdAt": 1793619504676,
+    "readyState": "READY",
+    "target": "production"
+  },
+  "avatarAsset": "dashboard/frontend/public/android-chrome-512.png",
+  "avatarVerifiedAfterReload": true,
+  "avatarVerifiedInProjectTile": true,
+  "existingGitRepository": "OrionQuantPlatform/STATARENA",
+  "importSuggestionDismissed": true
+}

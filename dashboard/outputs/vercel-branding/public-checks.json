@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://statarena-analytics.vercel.app/",
+    "status": 200,
+    "bytes": 30626,
+    "brand_in_html": true
+  },
+  {
+    "url": "https://statarena-analytics.vercel.app/favicon.ico",
+    "status": 200,
+    "bytes": 6348,
+    "matches_local": true
+  },
+  {
+    "url": "https://statarena-analytics.vercel.app/favicon.svg",
+    "status": 200,
+    "bytes": 647,
+    "matches_local": true
+  },
+  {
+    "url": "https://statarena-analytics.vercel.app/site.webmanifest",
+    "status": 200,
+    "bytes": 390,
+    "matches_local": true
+  }
+]
