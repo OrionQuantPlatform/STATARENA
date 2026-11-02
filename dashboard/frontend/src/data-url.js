@@ -1,4 +1,4 @@
-/** Include the deployment revision so shared caches never mix data releases. */
+/** Public immutable data bypasses a serverless redirect on every file request. */
 export const dataUrl = (path) => {
   const revision = process.env.NEXT_PUBLIC_DATA_REVISION;
   if (/^[a-f0-9]{40}$/i.test(revision || "")) {
@@ -8,7 +8,7 @@ export const dataUrl = (path) => {
         : path === "football-manifest.json"
           ? "raw/index.json"
           : path;
-    return `/data/${revision}/${relative}`;
+    return `https://raw.githubusercontent.com/OrionQuantPlatform/STATARENA/${revision}/data/${relative}`;
   }
   return `/data/${path}`;
 };

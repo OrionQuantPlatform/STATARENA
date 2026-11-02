@@ -303,7 +303,13 @@ export default function CompetitionsPage() {
   const complete = useDeferredValue(true, false);
   const groups = competitionGroups(rows, complete ? Infinity : 120);
   const internationalCups = [WORLD_CUP_ID, "open-cup:euro", "open-cup:club-world-cup"].map((key) => expandedCatalog.find((competition) => competition.id === key)).filter(Boolean);
-  const nationalCups = ["open-cup:france-cup", "open-matchday:ESP_CUP_copa-del-rey", "open-matchday:ENG_CUP_efl-cup", "open-matchday:ENG_CUP_fa-cup", "open-matchday:GER_CUP_dfb-pokal", "open-matchday:ITA_CUP_coppa-italia"].map((key) => expandedCatalog.find((competition) => competition.id === key)).filter(Boolean);
+  const nationalCups = expandedCatalog.filter((competition) =>
+    competition.id === "open-cup:france-cup" || competition.source === "open-matchday",
+  );
+  const nationalCupGroups = competitionGroups(nationalCups);
+  const selectedNationalCup = nationalCups.some((competition) => competition.id === selected?.id)
+    ? selected.id
+    : "";
   useEffect(() => {
     if (!id || f.focus !== "europe" || EUROPE_FOCUS_IDS.has(id)) return;
     const url = new URL(window.location.href);
@@ -387,7 +393,30 @@ export default function CompetitionsPage() {
               </div>
             )}
             {internationalCups.length > 0 && <div className="league-spotlight-cups"><span>Coupes internationales</span>{internationalCups.map((c) => <button key={c.id} type="button" className="league-cup-button" aria-pressed={selected?.id === c.id} onClick={() => chooseCompetition(c.id)}><Media name={c.name} url={c.imageUrl} /><span>{c.name}</span></button>)}</div>}
-            {nationalCups.length > 0 && <div className="league-spotlight-cups"><span>Coupes nationales</span>{nationalCups.map((c) => <button key={c.id} type="button" className="league-cup-button" aria-pressed={selected?.id === c.id} onClick={() => chooseCompetition(c.id)}><Media name={c.name} url={c.imageUrl} /><span>{c.name}{c.coverage ? " · " + c.coverage : ""}</span></button>)}</div>}
+            {nationalCupGroups.length > 0 && (
+              <div className="league-spotlight-cups">
+                <span id="national-cups-label">Coupes nationales</span>
+                <div className="national-cup-picker" data-selected={Boolean(selectedNationalCup)}>
+                  <select
+                    aria-labelledby="national-cups-label"
+                    value={selectedNationalCup}
+                    onChange={(event) => chooseCompetition(event.target.value)}
+                  >
+                    <option value="" disabled>Choisir une coupe</option>
+                    {nationalCupGroups.map((group) => (
+                      <optgroup key={group.key} label={group.label}>
+                        {group.competitions.map((competition) => (
+                          <option key={competition.id} value={competition.id}>
+                            {competition.name}{competition.coverage ? " · " + competition.coverage : ""}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                  <Icon name="chevron" />
+                </div>
+              </div>
+            )}
             {cupIndex.error && <p className="cup-catalog-error" role="status">Les autres coupes nationales sont temporairement indisponibles. <button type="button" onClick={cupIndex.retry}>Réessayer</button></p>}
           </section>
         <div className="historical-archive-entry"><button className="button button-secondary" onClick={() => setHistorical("results")}>Archives de résultats</button>{" "}<button className="button button-secondary" onClick={() => setHistorical("goals")}>Archives de buts</button></div>

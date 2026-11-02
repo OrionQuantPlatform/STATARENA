@@ -1,0 +1,14 @@
+{
+  "pid": 61432,
+  "alive": true,
+  "catalogue_leagues": 77,
+  "league_season_pairs": 303,
+  "counts": {
+    "downloaded": 343,
+    "pending": 1183114,
+    "reused": 509
+  },
+  "resume_preserved_completed_tasks": 164,
+  "unique_task_keys": true,
+  "second_worker_refused": true
+}

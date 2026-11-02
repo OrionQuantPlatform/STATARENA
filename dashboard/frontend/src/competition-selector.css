@@ -101,6 +101,46 @@
   height: 21px;
   flex: 0 0 21px;
 }
+.national-cup-picker {
+  position: relative;
+  width: min(100%, 310px);
+}
+.national-cup-picker select {
+  appearance: none;
+  width: 100%;
+  min-height: var(--control-h);
+  padding: 6px 36px 6px 12px;
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--text-sm);
+  text-overflow: ellipsis;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.national-cup-picker select:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+.national-cup-picker select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.national-cup-picker[data-selected="true"] select {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.national-cup-picker > .icon {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  width: 14px;
+  height: 14px;
+  color: var(--muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
 .competition-detail-title {
   display: inline-flex;
   align-items: center;

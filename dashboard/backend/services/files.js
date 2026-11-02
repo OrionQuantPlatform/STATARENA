@@ -1,7 +1,7 @@
 import path from "node:path";
 import { realpath, stat } from "node:fs/promises";
 import { databaseRoot } from "../config.js";
-import { fetchRemoteData, remoteData, remoteDataUrl } from "./data-store.js";
+import { remoteData, remoteDataUrl } from "./data-store.js";
 export const response = (body, status = 200, headers = {}) =>
   new Response(body, {
     status,
@@ -15,7 +15,7 @@ export function contained(root, file) {
   const rel = path.relative(root, file);
   return rel !== "" && !rel.startsWith("..") && !path.isAbsolute(rel);
 }
-export async function publicFile(root, relative, head = false, immutable = false) {
+export async function publicFile(root, relative, head = false) {
   if (
     relative.split("/").some((x) => x.startsWith(".")) ||
     !contained(root, path.resolve(root, relative))
@@ -23,23 +23,12 @@ export async function publicFile(root, relative, head = false, immutable = false
     return response("Forbidden", 403);
   if (remoteData && root === databaseRoot) {
     try {
-      if (process.env.GITHUB_DATA_TOKEN) {
-        const upstream = await fetchRemoteData(relative);
-        if (!upstream.ok) {
-          return response("Data unavailable", upstream.status === 404 ? 404 : 503);
-        }
-        if (head) upstream.body?.cancel().catch(() => {});
-        return response(head ? null : upstream.body, 200, {
-          "Content-Type": relative.endsWith(".gz") ? "application/gzip" : "application/json; charset=utf-8",
-          "Cache-Control": immutable ? "public, max-age=31536000, s-maxage=31536000, immutable" : "no-store",
-        });
-      }
       return response(null, 307, {
         Location: remoteDataUrl(relative),
         "Cache-Control": "no-store",
       });
     } catch {
-      return response("Data unavailable", 503);
+      return response("Data revision unavailable", 503);
     }
   }
   try {

@@ -49,7 +49,7 @@ test("competition page renders a result-derived league table and its limits", as
     "../components/MatchLink.jsx": { MatchLink: ({ match }) => elem("p", { "data-match": match.id }, match.id) },
     "../components/MatchdaySchedule.jsx": { __esModule: true, default: ({ matches, initialStatus }) => elem("section", { "data-matchday-status": initialStatus }, matches.map((match) => elem("p", { key: match.id, "data-match": match.id }, match.id))) },
     "../services/format.js": { normalizeText: String, seasonLabel: String, number: String, date: String },
-    "../services/resources.js": { useResource: (key, _loader, enabled = true) => ({ value: key === "supplemental-cup-index" ? { competitions: [{ folder: "ESP_CUP_copa-del-rey", name: "Copa del Rey", country_code: "ESP", tables: { results: { path: "raw/seasons/2026-2027/x.gz", rows: 1 } } }] } : key.startsWith("sportscore-standings:") && enabled && externalTable ? externalTable : { matches, source: "snapshot" } }), json: () => {}, download: () => {} },
+    "../services/resources.js": { useResource: (key, _loader, enabled = true) => ({ value: key === "supplemental-cup-index" ? { competitions: [{ folder: "ESP_CUP_copa-del-rey", name: "Copa del Rey", country_code: "ESP", tables: { results: { path: "raw/seasons/2026-2027/x.gz", rows: 1 } } }, { folder: "SUI_CUP_swiss-cup", name: "Swiss Cup", country_code: "SUI", tables: { results: { path: "raw/seasons/2026-2027/y.gz", rows: 1 } } }] } : key.startsWith("sportscore-standings:") && enabled && externalTable ? externalTable : { matches, source: "snapshot" } }), json: () => {}, download: () => {} },
     "../model.js": { csvString: () => "" }, "../data-url.js": { dataUrl: (x) => x },
     "../components/CompetitionScope.jsx": { __esModule: true, default: () => null },
     "../../../shared/competition-scope.js": { EUROPE_FOCUS_IDS: new Set() },
@@ -83,6 +83,13 @@ test("competition page renders a result-derived league table and its limits", as
   assert.match(html, /Euro/);
   assert.match(html, /Coupe du Roi/);
   assert.match(html, /Coupe de France/);
+  const nationalPicker = html.match(/<select aria-labelledby="national-cups-label"[\s\S]*?<\/select>/)?.[0];
+  assert.ok(nationalPicker, "national cups have a labelled selector");
+  assert.match(nationalPicker, /<optgroup label="Espagne">[\s\S]*Coupe du Roi/);
+  assert.match(nationalPicker, /<optgroup label="France">[\s\S]*Coupe de France · Archive 2024\/2025/);
+  assert.match(nationalPicker, /<optgroup label="Suisse">[\s\S]*Coupe de Suisse/);
+  assert.ok(nationalPicker.indexOf("Espagne") < nationalPicker.indexOf("France"));
+  assert.ok(nationalPicker.indexOf("France") < nationalPicker.indexOf("Suisse"));
   assert.match(html, /Archives de résultats/);
   assert.match(html, /Archives de buts/);
   assert.match(html, /France/);
@@ -115,6 +122,7 @@ test("competition page renders a result-derived league table and its limits", as
   context.focus = "all";
   const spanishCup = renderToStaticMarkup(elem(mod.exports.default));
   assert.match(spanishCup, /data-cup-id="open-matchday:ESP_CUP_copa-del-rey"/);
+  assert.match(spanishCup, /<option value="open-matchday:ESP_CUP_copa-del-rey" selected=""/);
   requestedId = "l_3FJFUl";
 
   forceMatchView = true;

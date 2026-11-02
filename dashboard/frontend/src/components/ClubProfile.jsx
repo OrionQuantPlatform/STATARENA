@@ -142,7 +142,7 @@ export function ClubRoster({ clubId, appearances, href, season }) {
   );
   return (
     <Card
-      title="Joueurs référencés"
+      title="Joueurs"
       action={
         <span className="club-roster-count">
           {number(total)} joueurs · {season}
@@ -150,9 +150,8 @@ export function ClubRoster({ clubId, appearances, href, season }) {
       }
     >
       <p className="club-roster-note">
-        Joueurs inscrits dans les matchs collectés cette saison. Le poste
-        correspond au dernier poste renseigné dans une composition ; cette liste
-        ne représente pas nécessairement l’effectif actuel complet.
+        Le poste indiqué est le dernier renseigné ; l’effectif affiché peut
+        être incomplet.
       </p>
       {total ? (
         ROSTER_GROUPS.filter(([key]) => groups[key].length > 0).map(
@@ -187,7 +186,7 @@ export function ClubRoster({ clubId, appearances, href, season }) {
           ),
         )
       ) : (
-        <p>Aucun joueur référencé pour cette sélection.</p>
+        <p>Aucun joueur disponible pour cette sélection.</p>
       )}
     </Card>
   );

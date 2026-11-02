@@ -1,0 +1,9 @@
+{
+  "existing_archive_reference": {
+    "path": "raw/seasons/2024-2025/observations/match/0018d08c3871c28e866a5cf0.json.gz",
+    "ordinal": 0
+  },
+  "network_calls_for_archive_reuse": 0,
+  "new_response_sha256_valid": true,
+  "unique_tasks": true
+}

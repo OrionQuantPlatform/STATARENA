@@ -1,6 +1,5 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { packagedDataRevision } from "../shared/data-revision.js";
 const directory = path.dirname(fileURLToPath(import.meta.url));
 /** @type {import('next').NextConfig} */
 const config = {
@@ -10,7 +9,7 @@ const config = {
   devIndicators: false,
   env: {
     NEXT_PUBLIC_DATA_REVISION:
-      packagedDataRevision || process.env.ORION_DATA_REVISION || process.env.VERCEL_GIT_COMMIT_SHA,
+      process.env.ORION_DATA_REVISION || process.env.VERCEL_GIT_COMMIT_SHA || "",
   },
   outputFileTracingRoot: path.resolve(directory, "../.."),
   turbopack: { root: path.resolve(directory, "../..") },
