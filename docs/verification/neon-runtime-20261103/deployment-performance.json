@@ -1,0 +1,231 @@
+{
+  "setup": "Ready production deployment, Neon read-only, measured after browser checks completed. curl uses negotiated HTTP/2 and compression.",
+  "origin": "https://statarena-analytics-p1ff84geo-hlemonniers-projects.vercel.app/data/dashboard-manifest.json",
+  "command": "curl --silent --show-error --compressed --output /dev/null --write-out \"%{json}\" <manifest URL>; 10 sequential requests then 20 concurrent subprocesses.",
+  "expected": "All requests HTTP 200 with Neon-backed manifest; measure complete transfer separately from TTFB.",
+  "sequential": [
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32545,
+      "time_starttransfer": 0.511953,
+      "time_total": 0.566426
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.067215,
+      "time_total": 0.068929
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.048817,
+      "time_total": 0.050432
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.088499,
+      "time_total": 0.089783
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.064908,
+      "time_total": 0.06653
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.064718,
+      "time_total": 0.06639
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.04095,
+      "time_total": 0.042664
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.043835,
+      "time_total": 0.045308
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.050819,
+      "time_total": 0.051268
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.083234,
+      "time_total": 0.085072
+    }
+  ],
+  "concurrent": [
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.070589,
+      "time_total": 0.071922
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.074679,
+      "time_total": 0.076092
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.180352,
+      "time_total": 0.181415
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.168817,
+      "time_total": 0.169477
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.086738,
+      "time_total": 0.087862
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.177199,
+      "time_total": 0.17915
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.282563,
+      "time_total": 0.283036
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.267119,
+      "time_total": 0.268708
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.395542,
+      "time_total": 0.397083
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.261178,
+      "time_total": 0.263146
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.278522,
+      "time_total": 0.279053
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.262168,
+      "time_total": 0.266008
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.292729,
+      "time_total": 0.294248
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.341196,
+      "time_total": 0.341642
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.3343,
+      "time_total": 0.334974
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.335564,
+      "time_total": 0.336044
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.348161,
+      "time_total": 0.349409
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.329735,
+      "time_total": 0.330271
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.335662,
+      "time_total": 0.336618
+    },
+    {
+      "http_code": 200,
+      "http_version": "2",
+      "size_download": 32555,
+      "time_starttransfer": 0.335344,
+      "time_total": 0.336078
+    }
+  ],
+  "status": "passed",
+  "sequentialSummary": {
+    "p50Ms": 66,
+    "p95Ms": 90,
+    "maxMs": 566
+  },
+  "concurrentSummary": {
+    "p50Ms": 281,
+    "p95Ms": 349,
+    "maxMs": 397
+  }
+}

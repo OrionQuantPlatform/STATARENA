@@ -1,0 +1,20 @@
+{
+  "command": "python dashboard/scripts/cleanup_verified_neon_local.py --root <Football_ranking/data> --canonical /tmp/statarena-neon-local-canonical-verified.json --extras docs/verification/neon-runtime-20261103/local-extra-backup.json --versions docs/verification/neon-runtime-20261103/local-versions-backup.json --report docs/verification/neon-runtime-20261103/local-cleanup.json --delete",
+  "expected": "Delete only exact verified backups after live Neon validation; preserve changes and unverified iCloud material.",
+  "mode": "delete",
+  "candidateFiles": 126205,
+  "verifiedFiles": 126205,
+  "alreadyAbsent": 0,
+  "changed": [],
+  "deletedFiles": 126205,
+  "deletedAllocatedBytes": 3507556352,
+  "remaining": [
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/computed/pitchapi-world/queue 2.sqlite-wal",
+      "size": 8252392,
+      "allocated": 0
+    }
+  ],
+  "remainingFileCount": 1,
+  "status": "passed"
+}

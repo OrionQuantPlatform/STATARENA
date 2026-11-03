@@ -1,0 +1,312 @@
+{
+  "setup": "Verified per-file SQLite receipt from the original transfer; live PostgreSQL catalog.",
+  "command": "NEON_DATABASE_URL=<admin URL> python dashboard/scripts/verify_neon_catalog.py --inventory /tmp/statarena-neon-file-layout/progress.sqlite --report docs/verification/neon-runtime-20261103/catalog-integrity.json",
+  "expected": "Every original path, size and SHA-256 matches; no missing resource references; runtime cannot write.",
+  "originalFiles": 250748,
+  "originalBytes": 2692640453,
+  "catalogFiles": 287591,
+  "mismatches": [],
+  "versionedSources": [
+    {
+      "sourcePath": "computed/dashboard/index.json",
+      "archivePath": "raw/neon/versions/84f8f82ee98d97cca6c95992ca227846f8bd8ba962134a6b0780bcb9bc1819a3.json"
+    },
+    {
+      "sourcePath": "computed/matchdays/2021-2022.json.gz",
+      "archivePath": "raw/neon/versions/c4f00274a873f12e0804931e83fe3993e8bbf8196b8420a612d748185eb36af2.json.gz"
+    },
+    {
+      "sourcePath": "computed/matchdays/2022-2023.json.gz",
+      "archivePath": "raw/neon/versions/0719bf3f2ac2f43327c5e9cc762dd7653e68c9c2c769bbe043bb7455af463746.json.gz"
+    },
+    {
+      "sourcePath": "computed/matchdays/2023-2024.json.gz",
+      "archivePath": "raw/neon/versions/02769cf7bd9fa72625fd9b8f702e8ba7bba63bf6a799d46a100dfcda9715f476.json.gz"
+    },
+    {
+      "sourcePath": "computed/matchdays/2025-2026.json.gz",
+      "archivePath": "raw/neon/versions/ee343c63cb425000a504b0c25d787cfb1016db02bf0bc36ad3be0bfab6723db0.json.gz"
+    },
+    {
+      "sourcePath": "computed/matchdays/2026-2027.json.gz",
+      "archivePath": "raw/neon/versions/c69c4256051e4a0aa4aba9067ebb0d28aaebccac0cb731c2e56e51d4679235f0.json.gz"
+    },
+    {
+      "sourcePath": "raw/index.json",
+      "archivePath": "raw/neon/versions/bba23aa15da2d2755f4455f914588838ddb6cd3f847a935b4d10c7befeb82dc5.json"
+    }
+  ],
+  "missingResourceObjects": 0,
+  "runtimeCanWrite": false,
+  "databaseBytes": 549265408,
+  "plans": {
+    "object": [
+      {
+        "Plan": {
+          "Node Type": "Index Scan",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Scan Direction": "Forward",
+          "Index Name": "objects_pkey",
+          "Relation Name": "objects",
+          "Alias": "objects",
+          "Startup Cost": 0.55,
+          "Total Cost": 8.56,
+          "Plan Rows": 1,
+          "Plan Width": 118,
+          "Actual Startup Time": 0.015,
+          "Actual Total Time": 0.016,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Index Cond": "(path = 'computed/dashboard/index.json'::text)",
+          "Rows Removed by Index Recheck": 0,
+          "Index Searches": 1,
+          "Shared Hit Blocks": 5,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning": {
+          "Shared Hit Blocks": 3,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.092,
+        "Triggers": [],
+        "Execution Time": 0.047
+      }
+    ],
+    "resource": [
+      {
+        "Plan": {
+          "Node Type": "Index Scan",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Scan Direction": "Forward",
+          "Index Name": "resources_pkey",
+          "Relation Name": "resources",
+          "Alias": "resources",
+          "Startup Cost": 0.42,
+          "Total Cost": 8.44,
+          "Plan Rows": 1,
+          "Plan Width": 181,
+          "Actual Startup Time": 1.139,
+          "Actual Total Time": 1.14,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Index Cond": "((endpoint = '/players/p_01fuwy'::text) AND (params = '{}'::text))",
+          "Rows Removed by Index Recheck": 0,
+          "Index Searches": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 3,
+          "Shared Dirtied Blocks": 1,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning": {
+          "Shared Hit Blocks": 9,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.086,
+        "Triggers": [],
+        "Execution Time": 1.169
+      }
+    ],
+    "date": [
+      {
+        "Plan": {
+          "Node Type": "Sort",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 96.39,
+          "Total Cost": 96.46,
+          "Plan Rows": 26,
+          "Plan Width": 665,
+          "Actual Startup Time": 0.065,
+          "Actual Total Time": 0.067,
+          "Actual Rows": 45.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Sort Key": [
+            "id"
+          ],
+          "Sort Method": "quicksort",
+          "Sort Space Used": 57,
+          "Sort Space Type": "Memory",
+          "Shared Hit Blocks": 15,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "fixtures_day",
+              "Relation Name": "fixtures",
+              "Alias": "fixtures",
+              "Startup Cost": 0.29,
+              "Total Cost": 95.78,
+              "Plan Rows": 26,
+              "Plan Width": 665,
+              "Actual Startup Time": 0.014,
+              "Actual Total Time": 0.045,
+              "Actual Rows": 45.0,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Index Cond": "(day = '2026-11-03'::date)",
+              "Rows Removed by Index Recheck": 0,
+              "Index Searches": 1,
+              "Shared Hit Blocks": 12,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 92,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 1,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.238,
+        "Triggers": [],
+        "Execution Time": 0.093
+      }
+    ],
+    "league": [
+      {
+        "Plan": {
+          "Node Type": "Sort",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 750.04,
+          "Total Cost": 750.6,
+          "Plan Rows": 222,
+          "Plan Width": 669,
+          "Actual Startup Time": 0.113,
+          "Actual Total Time": 0.119,
+          "Actual Rows": 132.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Sort Key": [
+            "day",
+            "id"
+          ],
+          "Sort Method": "quicksort",
+          "Sort Space Used": 107,
+          "Sort Space Type": "Memory",
+          "Shared Hit Blocks": 20,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "fixtures_league_season",
+              "Relation Name": "fixtures",
+              "Alias": "fixtures",
+              "Startup Cost": 0.29,
+              "Total Cost": 741.39,
+              "Plan Rows": 222,
+              "Plan Width": 669,
+              "Actual Startup Time": 0.028,
+              "Actual Total Time": 0.075,
+              "Actual Rows": 132.0,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Index Cond": "((league_id = 'l_4d6Bwl'::text) AND (season = '2026/2027'::text))",
+              "Rows Removed by Index Recheck": 0,
+              "Index Searches": 1,
+              "Shared Hit Blocks": 17,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 11,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.129,
+        "Triggers": [],
+        "Execution Time": 0.149
+      }
+    ]
+  },
+  "status": "passed"
+}

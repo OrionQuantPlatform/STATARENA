@@ -1,0 +1,501 @@
+portraits	Set up job	﻿2026-11-03T15:20:46.6023109Z Current runner version: '2.338.2'
+portraits	Set up job	2026-11-03T15:20:46.6062210Z ##[group]Runner Image Provisioner
+portraits	Set up job	2026-11-03T15:20:46.6063731Z Hosted Compute Agent
+portraits	Set up job	2026-11-03T15:20:46.6065179Z Version: 20261021.618
+portraits	Set up job	2026-11-03T15:20:46.6066316Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+portraits	Set up job	2026-11-03T15:20:46.6068513Z Build Date: 2026-10-21T00:45:21Z
+portraits	Set up job	2026-11-03T15:20:46.6069788Z Worker ID: {3f5e3f07-ad8e-46b4-9d3a-eb4d26ed48b3}
+portraits	Set up job	2026-11-03T15:20:46.6071195Z Region: eastus
+portraits	Set up job	2026-11-03T15:20:46.6072271Z Cloud: Azure
+portraits	Set up job	2026-11-03T15:20:46.6073316Z ##[endgroup]
+portraits	Set up job	2026-11-03T15:20:46.6076141Z ##[group]Operating System
+portraits	Set up job	2026-11-03T15:20:46.6077485Z Ubuntu
+portraits	Set up job	2026-11-03T15:20:46.6078587Z 24.04.5
+portraits	Set up job	2026-11-03T15:20:46.6079718Z LTS
+portraits	Set up job	2026-11-03T15:20:46.6080693Z ##[endgroup]
+portraits	Set up job	2026-11-03T15:20:46.6081749Z ##[group]Runner Image
+portraits	Set up job	2026-11-03T15:20:46.6082982Z Image: ubuntu-24.04
+portraits	Set up job	2026-11-03T15:20:46.6084032Z Version: 20261025.353.1
+portraits	Set up job	2026-11-03T15:20:46.6086422Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+portraits	Set up job	2026-11-03T15:20:46.6089694Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+portraits	Set up job	2026-11-03T15:20:46.6091524Z ##[endgroup]
+portraits	Set up job	2026-11-03T15:20:46.6093783Z ##[group]GITHUB_TOKEN Permissions
+portraits	Set up job	2026-11-03T15:20:46.6097290Z Contents: read
+portraits	Set up job	2026-11-03T15:20:46.6098526Z Metadata: read
+portraits	Set up job	2026-11-03T15:20:46.6099561Z ##[endgroup]
+portraits	Set up job	2026-11-03T15:20:46.6102936Z Secret source: Actions
+portraits	Set up job	2026-11-03T15:20:46.6104919Z Cache mode: write
+portraits	Set up job	2026-11-03T15:20:46.6106621Z Prepare workflow directory
+portraits	Set up job	2026-11-03T15:20:46.6880710Z Prepare all required actions
+portraits	Set up job	2026-11-03T15:20:46.6957713Z Getting action download info
+portraits	Set up job	2026-11-03T15:20:46.9229349Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+portraits	Set up job	2026-11-03T15:20:47.0533645Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+portraits	Set up job	2026-11-03T15:20:47.1355636Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+portraits	Set up job	2026-11-03T15:20:47.2242405Z Download action repository 'oven-sh/setup-bun@v2' (SHA:0c5077e51419868618aeaa5fe8019c62421857d6)
+portraits	Set up job	2026-11-03T15:20:47.4831434Z Complete job name: portraits
+portraits	Run actions/checkout@v4	﻿2026-11-03T15:20:47.5713101Z ##[group]Run actions/checkout@v4
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5714089Z with:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5714817Z   sparse-checkout: dashboard
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5715371Z   filter: blob:none
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5715901Z   repository: OrionQuantPlatform/STATARENA
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5719933Z   token: ***
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5720397Z   ssh-strict: true
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5720867Z   ssh-user: git
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5721346Z   persist-credentials: true
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5721859Z   clean: true
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5722340Z   sparse-checkout-cone-mode: true
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5722898Z   fetch-depth: 1
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5723363Z   fetch-tags: false
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5723837Z   show-progress: true
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5724451Z   lfs: false
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5724909Z   submodules: false
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5725408Z   set-safe-directory: true
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5725941Z   allow-unsafe-pr-checkout: false
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5726757Z env:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5728309Z   NEON_DATABASE_URL: ***
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5729150Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5729742Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5730334Z   NEON_STORAGE_REGION: us-east-2
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5731050Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5732006Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.5732556Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8469348Z Syncing repository: OrionQuantPlatform/STATARENA
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8472885Z ##[group]Getting Git version info
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8474778Z Working directory is '/home/runner/work/STATARENA/STATARENA'
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8477280Z [command]/usr/bin/git version
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8556177Z git version 2.56.0
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8575575Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8586873Z Temporarily overriding HOME='/home/runner/work/_temp/fc534374-cf5f-487d-a69c-db48d3fa501c' before making global git config changes
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8736491Z Adding repository directory to the temporary git global config as a safe directory
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8738988Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8744202Z Deleting the contents of '/home/runner/work/STATARENA/STATARENA'
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8746377Z ##[group]Initializing the repository
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8747271Z [command]/usr/bin/git init /home/runner/work/STATARENA/STATARENA
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8803744Z hint: Using 'master' as the name for the initial branch. This default branch name
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8808634Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8810827Z hint: to use in all of your new repositories, which will suppress this warning,
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8812538Z hint: call:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8813846Z hint:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8815767Z hint: 	git config --global init.defaultBranch <name>
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8817668Z hint:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8819948Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8822401Z hint: 'development'. The just-created branch can be renamed via this command:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8824588Z hint:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8826045Z hint: 	git branch -m <name>
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8827784Z hint:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8829445Z hint: Disable this message with "git config set advice.defaultBranchName false"
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8831563Z Initialized empty Git repository in /home/runner/work/STATARENA/STATARENA/.git/
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8833727Z [command]/usr/bin/git remote add origin https://github.com/OrionQuantPlatform/STATARENA
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8880856Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8881875Z ##[group]Disabling automatic garbage collection
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8886495Z [command]/usr/bin/git config --local gc.auto 0
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8924710Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8925787Z ##[group]Setting up auth
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8933244Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.8973354Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.9371241Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.9421842Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.9688472Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.9739052Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+portraits	Run actions/checkout@v4	2026-11-03T15:20:47.9991579Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.0046451Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.0047783Z ##[group]Fetching the repository
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.0059963Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +c21380df6efc6e023b415be779eadc586fac4493:refs/remotes/origin/main
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3130240Z From https://github.com/OrionQuantPlatform/STATARENA
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3133455Z  * [new ref]         c21380df6efc6e023b415be779eadc586fac4493 -> origin/main
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3139158Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3141486Z ##[group]Determining the checkout info
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3144010Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3146850Z ##[group]Setting up sparse checkout
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3148951Z [command]/usr/bin/git sparse-checkout set dashboard
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3224457Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3227507Z ##[group]Checking out the ref
+portraits	Run actions/checkout@v4	2026-11-03T15:20:48.3230771Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1433297Z Updating files:   0% (1/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1455474Z Updating files:   1% (11/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1465315Z Updating files:   2% (22/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1465989Z Updating files:   3% (33/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1482319Z Updating files:   4% (43/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1497925Z Updating files:   5% (54/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1531992Z Updating files:   6% (65/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1543865Z Updating files:   7% (75/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1550091Z Updating files:   8% (86/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1569800Z Updating files:   9% (97/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1588225Z Updating files:  10% (107/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1630540Z Updating files:  11% (118/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1644472Z Updating files:  12% (129/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1649105Z Updating files:  13% (140/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1663434Z Updating files:  14% (150/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1676688Z Updating files:  15% (161/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1685793Z Updating files:  16% (172/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1697809Z Updating files:  17% (182/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1710211Z Updating files:  18% (193/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1719916Z Updating files:  19% (204/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1731277Z Updating files:  20% (214/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1744480Z Updating files:  21% (225/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1753762Z Updating files:  22% (236/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1762842Z Updating files:  23% (247/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1773144Z Updating files:  24% (257/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1783986Z Updating files:  25% (268/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1794971Z Updating files:  26% (279/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1850659Z Updating files:  27% (289/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1865938Z Updating files:  28% (300/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1892500Z Updating files:  29% (311/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1899303Z Updating files:  30% (321/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1906440Z Updating files:  31% (332/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1916892Z Updating files:  32% (343/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1922312Z Updating files:  33% (354/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.1990010Z Updating files:  34% (364/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2006106Z Updating files:  35% (375/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2029399Z Updating files:  36% (386/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2062013Z Updating files:  37% (396/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2080342Z Updating files:  38% (407/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2130961Z Updating files:  39% (418/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2180180Z Updating files:  40% (428/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2195367Z Updating files:  41% (439/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2233563Z Updating files:  42% (450/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2250820Z Updating files:  43% (461/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2276800Z Updating files:  44% (471/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2296547Z Updating files:  45% (482/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2302752Z Updating files:  46% (493/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2320074Z Updating files:  47% (503/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2330083Z Updating files:  48% (514/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2346080Z Updating files:  49% (525/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2358861Z Updating files:  50% (535/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2364042Z Updating files:  51% (546/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2372867Z Updating files:  52% (557/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2382353Z Updating files:  53% (568/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2402054Z Updating files:  54% (578/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2410777Z Updating files:  55% (589/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2420419Z Updating files:  56% (600/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2433769Z Updating files:  57% (610/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2453235Z Updating files:  58% (621/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2473660Z Updating files:  59% (632/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2486288Z Updating files:  60% (642/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2500146Z Updating files:  61% (653/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2513367Z Updating files:  62% (664/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2527323Z Updating files:  63% (675/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2539072Z Updating files:  64% (685/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2543840Z Updating files:  65% (696/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2550094Z Updating files:  66% (707/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2557907Z Updating files:  67% (717/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2565305Z Updating files:  68% (728/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2579038Z Updating files:  69% (739/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2586426Z Updating files:  70% (749/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2617274Z Updating files:  71% (760/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2738879Z Updating files:  72% (771/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2763222Z Updating files:  73% (782/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2768327Z Updating files:  74% (792/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2788509Z Updating files:  75% (803/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2836480Z Updating files:  76% (814/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2846433Z Updating files:  77% (824/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2856898Z Updating files:  78% (835/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2868060Z Updating files:  79% (846/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2880231Z Updating files:  80% (856/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2889971Z Updating files:  81% (867/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2908240Z Updating files:  82% (878/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2918649Z Updating files:  83% (889/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2928370Z Updating files:  84% (899/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2939169Z Updating files:  85% (910/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2945975Z Updating files:  86% (921/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2952032Z Updating files:  87% (931/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2960724Z Updating files:  88% (942/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2983034Z Updating files:  89% (953/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2991367Z Updating files:  90% (963/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.2995714Z Updating files:  91% (974/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3004915Z Updating files:  92% (985/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3013113Z Updating files:  93% (996/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3021758Z Updating files:  94% (1006/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3028493Z Updating files:  95% (1017/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3036034Z Updating files:  96% (1028/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3042245Z Updating files:  97% (1038/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3049382Z Updating files:  98% (1049/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3054839Z Updating files:  99% (1060/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3055239Z Updating files: 100% (1070/1070)
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3055596Z Updating files: 100% (1070/1070), done.
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3085282Z Switched to a new branch 'main'
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3091110Z branch 'main' set up to track 'origin/main'.
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3105707Z ##[endgroup]
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3160961Z [command]/usr/bin/git log -1 --format=%H
+portraits	Run actions/checkout@v4	2026-11-03T15:20:50.3199396Z c21380df6efc6e023b415be779eadc586fac4493
+portraits	Run actions/setup-python@v5	﻿2026-11-03T15:20:50.3483961Z ##[group]Run actions/setup-python@v5
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3484586Z with:
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3484816Z   python-version: 3.13
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3485051Z   cache: pip
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3485368Z   cache-dependency-path: dashboard/scripts/neon-requirements.txt
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3485767Z   check-latest: false
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3488208Z   token: ***
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3488438Z   update-environment: true
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3488693Z   allow-prereleases: false
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3488940Z   freethreaded: false
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3489187Z env:
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3490063Z   NEON_DATABASE_URL: ***
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3490521Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3490789Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3491087Z   NEON_STORAGE_REGION: us-east-2
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3491461Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3491970Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.3492243Z ##[endgroup]
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.4915661Z ##[group]Installed versions
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.5096353Z (node:2263) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.5097370Z (Use `node --trace-deprecation ...` to show where the warning was created)
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.5098045Z Successfully set up CPython (3.13.17)
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.5099072Z ##[endgroup]
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:50.5536680Z [command]/opt/hostedtoolcache/Python/3.13.17/x64/bin/pip cache dir
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:51.6764103Z /home/runner/.cache/pip
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:51.8084850Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:51.8202628Z (node:2263) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:52.0348219Z Received 23446066 of 23446066 (100.0%), 118.3 MBs/sec
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:52.0348805Z Cache Size: ~22 MB (23446066 B)
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:52.0378671Z [command]/usr/bin/tar -xf /home/runner/work/_temp/4512dadd-ace5-4769-9957-750e85476fcd/cache.tzst -P -C /home/runner/work/STATARENA/STATARENA --use-compress-program unzstd
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:52.0913550Z Cache restored successfully
+portraits	Run actions/setup-python@v5	2026-11-03T15:20:52.0929452Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+portraits	Run actions/setup-node@v4	﻿2026-11-03T15:20:52.1186318Z ##[group]Run actions/setup-node@v4
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1186666Z with:
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1186886Z   node-version: 26
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1187120Z   always-auth: false
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1187351Z   check-latest: false
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1189728Z   token: ***
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1189955Z env:
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1190859Z   NEON_DATABASE_URL: ***
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1191338Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1191624Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1191924Z   NEON_STORAGE_REGION: us-east-2
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1192305Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1192818Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1193171Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1193645Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1194111Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1194752Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1195206Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1195623Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.1195971Z ##[endgroup]
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.2686894Z Attempting to download 26...
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.2798122Z (node:2297) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.2799487Z (Use `node --trace-deprecation ...` to show where the warning was created)
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:52.9595680Z Acquiring 26.13.0 - x64 from https://github.com/actions/node-versions/releases/download/26.13.0-41378513395/node-26.13.0-linux-x64.tar.gz
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:53.4970545Z Extracting ...
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:53.5108029Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/9bb0af89-4552-4159-adbe-bf776b4d6582 -f /home/runner/work/_temp/092ccfb3-6980-4524-98c8-92ae85ed3cae
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:54.8408569Z Adding to the cache ...
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:56.7406056Z ##[group]Environment details
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:56.9870966Z node: v26.13.0
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:56.9871387Z npm: 11.20.0
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:56.9871784Z yarn: 1.22.22
+portraits	Run actions/setup-node@v4	2026-11-03T15:20:56.9872405Z ##[endgroup]
+portraits	Run oven-sh/setup-bun@v2	﻿2026-11-03T15:20:57.0123488Z ##[group]Run oven-sh/setup-bun@v2
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0123822Z with:
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0124052Z   bun-version: 1.4.4
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0124731Z   no-cache: false
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0127122Z   token: ***
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0127357Z env:
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0128204Z   NEON_DATABASE_URL: ***
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0128681Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0128958Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0129255Z   NEON_STORAGE_REGION: us-east-2
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0129634Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0130141Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0130501Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0130980Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0131671Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0132109Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0132525Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0132993Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.0133351Z ##[endgroup]
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:57.8384762Z Cache hit for: bun-vyrKTwhw5PEh6pGRz1Zgyle11uQ=
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.2380188Z Received 50544723 of 50544723 (100.0%), 137.3 MBs/sec
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.2381223Z Cache Size: ~48 MB (50544723 B)
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.2450848Z [command]/usr/bin/tar -xf /home/runner/work/_temp/6545ea30-10f7-4566-b7a4-a130631da410/cache.tzst -P -C /home/runner/work/STATARENA/STATARENA --use-compress-program unzstd
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.4426524Z Cache restored successfully
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.4457366Z [command]/home/runner/.bun/bin/bun --revision
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.4543327Z 1.4.4+38afee6c8
+portraits	Run oven-sh/setup-bun@v2	2026-11-03T15:20:58.4550386Z Using a cached version of Bun: 1.4.4+38afee6c8
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	﻿2026-11-03T15:20:58.4772374Z ##[group]Run pip install -r dashboard/scripts/neon-requirements.txt
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4773026Z ^[[36;1mpip install -r dashboard/scripts/neon-requirements.txt^[[0m
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4799156Z shell: /usr/bin/bash -e {0}
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4799468Z env:
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4800495Z   NEON_DATABASE_URL: ***
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4800981Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4801273Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4801578Z   NEON_STORAGE_REGION: us-east-2
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4801961Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4802486Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4802850Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4803333Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4803793Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4804589Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4805044Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4805503Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:58.4805865Z ##[endgroup]
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.6758525Z Collecting boto3==1.43.123 (from -r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.6774315Z   Using cached boto3-1.43.123-py3-none-any.whl.metadata (6.6 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.7060683Z Collecting psycopg==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.7079710Z   Using cached psycopg-3.3.7-py3-none-any.whl.metadata (4.4 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.9404567Z Collecting botocore<1.44.0,>=1.43.123 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.9417920Z   Using cached botocore-1.43.123-py3-none-any.whl.metadata (5.6 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.9593971Z Collecting jmespath<2.0.0,>=0.7.1 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.9607535Z   Using cached jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.9818058Z Collecting s3transfer<0.20.0,>=0.19.0 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:20:59.9833062Z   Using cached s3transfer-0.19.3-py3-none-any.whl.metadata (1.7 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.1356451Z Collecting psycopg-binary==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.1370603Z   Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.1561158Z Collecting python-dateutil<3.0.0,>=2.1 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.1576690Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.1836645Z Collecting urllib3!=2.2.0,<3,>=1.25.4 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.1849327Z   Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2039937Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.1->botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2051807Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2234884Z Using cached boto3-1.43.123-py3-none-any.whl (140 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2246511Z Using cached psycopg-3.3.7-py3-none-any.whl (216 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2259273Z Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2293043Z Using cached botocore-1.43.123-py3-none-any.whl (16.2 MB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2369828Z Using cached jmespath-1.1.0-py3-none-any.whl (20 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2384069Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2397101Z Using cached s3transfer-0.19.3-py3-none-any.whl (90 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2411813Z Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.2423818Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:00.4467578Z Installing collected packages: urllib3, six, psycopg-binary, psycopg, jmespath, python-dateutil, botocore, s3transfer, boto3
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:01.6322161Z 
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:01.6341052Z Successfully installed boto3-1.43.123 botocore-1.43.123 jmespath-1.1.0 psycopg-3.3.7 psycopg-binary-3.3.7 python-dateutil-2.9.0.post0 s3transfer-0.19.3 six-1.17.0 urllib3-2.8.0
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:01.6349249Z 
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:01.6349807Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+portraits	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T15:21:01.6350650Z [notice] To update, run: pip install --upgrade pip
+portraits	Run bun install --frozen-lockfile	﻿2026-11-03T15:21:01.7371992Z ##[group]Run bun install --frozen-lockfile
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7372414Z ^[[36;1mbun install --frozen-lockfile^[[0m
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7394570Z shell: /usr/bin/bash -e {0}
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7394975Z env:
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7396100Z   NEON_DATABASE_URL: ***
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7396623Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7396916Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7397221Z   NEON_STORAGE_REGION: us-east-2
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7397613Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7398141Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7398502Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7398959Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7399409Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7399816Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7400213Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7400656Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7401007Z ##[endgroup]
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:01.7474396Z bun install v1.4.4 (38afee6c8)
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9677826Z 
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9685827Z + prettier@3.9.10
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9686450Z + @aws-sdk/client-s3@3.1161.0
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9686980Z + lucide-react@1.66.0
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9687405Z + next@16.4.3
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9687782Z + pg@8.23.1
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9688138Z + react@19.3.1
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9688541Z + react-dom@19.3.1
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9688780Z 
+portraits	Run bun install --frozen-lockfile	2026-11-03T15:21:02.9689046Z 66 packages installed [1221.00ms]
+portraits	Refresh priority club portraits	﻿2026-11-03T15:21:02.9775106Z ##[group]Run node dashboard/scripts/neon_coach_photos.mjs --priority-only
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9775764Z ^[[36;1mnode dashboard/scripts/neon_coach_photos.mjs --priority-only^[[0m
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9797037Z shell: /usr/bin/bash -e {0}
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9797338Z env:
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9798354Z   NEON_DATABASE_URL: ***
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9798851Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9799149Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9799648Z   NEON_STORAGE_REGION: us-east-2
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9800073Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9800610Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9800984Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9801450Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9801913Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9802339Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9802785Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9803206Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Refresh priority club portraits	2026-11-03T15:21:02.9803567Z ##[endgroup]
+portraits	Refresh priority club portraits	2026-11-03T15:21:04.5290556Z {"coachPortraitRefresh":{"total":15,"updated":0,"unavailable":0,"failed":0}}
+portraits	Store priority portraits	﻿2026-11-03T15:21:04.5412953Z ##[group]Run python dashboard/scripts/neon_assets.py --limit 3000 --retry-commons
+portraits	Store priority portraits	2026-11-03T15:21:04.5413651Z ^[[36;1mpython dashboard/scripts/neon_assets.py --limit 3000 --retry-commons^[[0m
+portraits	Store priority portraits	2026-11-03T15:21:04.5436369Z shell: /usr/bin/bash -e {0}
+portraits	Store priority portraits	2026-11-03T15:21:04.5436662Z env:
+portraits	Store priority portraits	2026-11-03T15:21:04.5437609Z   NEON_DATABASE_URL: ***
+portraits	Store priority portraits	2026-11-03T15:21:04.5438097Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Store priority portraits	2026-11-03T15:21:04.5438391Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Store priority portraits	2026-11-03T15:21:04.5438700Z   NEON_STORAGE_REGION: us-east-2
+portraits	Store priority portraits	2026-11-03T15:21:04.5439080Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Store priority portraits	2026-11-03T15:21:04.5439601Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Store priority portraits	2026-11-03T15:21:04.5439965Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store priority portraits	2026-11-03T15:21:04.5440437Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Store priority portraits	2026-11-03T15:21:04.5440905Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store priority portraits	2026-11-03T15:21:04.5441321Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store priority portraits	2026-11-03T15:21:04.5441765Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store priority portraits	2026-11-03T15:21:04.5442186Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Store priority portraits	2026-11-03T15:21:04.5442543Z ##[endgroup]
+portraits	Store priority portraits	2026-11-03T15:21:05.9096274Z Pending asset batch: 153
+portraits	Store priority portraits	2026-11-03T15:24:11.2044894Z {"images": 85, "failed": 15, "bytes": 3769359, "errors": {"HTTPError:429": 15}}
+portraits	Store priority portraits	2026-11-03T15:25:54.4307254Z {"images": 129, "failed": 24, "bytes": 6006761, "errors": {"HTTPError:429": 24}}
+portraits	Refresh remaining coach portraits	﻿2026-11-03T15:25:54.5397082Z ##[group]Run node dashboard/scripts/neon_coach_photos.mjs --remaining-only
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5397745Z ^[[36;1mnode dashboard/scripts/neon_coach_photos.mjs --remaining-only^[[0m
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5419814Z shell: /usr/bin/bash -e {0}
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5420116Z env:
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5421095Z   NEON_DATABASE_URL: ***
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5421597Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5421907Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5422222Z   NEON_STORAGE_REGION: us-east-2
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5422624Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5423212Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5423593Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5424078Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5425056Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5425496Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5425955Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5426385Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:54.5426752Z ##[endgroup]
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:56.0785123Z {"processed":20,"updated":0,"unavailable":2,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:25:57.9652512Z {"processed":40,"updated":0,"unavailable":10,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:00.0001382Z {"processed":60,"updated":0,"unavailable":18,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:02.2805093Z {"processed":80,"updated":0,"unavailable":29,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:04.0847725Z {"processed":100,"updated":0,"unavailable":34,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:08.5840599Z {"processed":120,"updated":0,"unavailable":46,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:19.5689549Z {"processed":140,"updated":0,"unavailable":55,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:24.3526609Z {"processed":160,"updated":0,"unavailable":67,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:26.6890793Z {"processed":180,"updated":0,"unavailable":78,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:28.4022117Z {"processed":200,"updated":0,"unavailable":84,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:29.9771596Z {"processed":220,"updated":0,"unavailable":92,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:32.6769414Z {"processed":240,"updated":0,"unavailable":100,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:33.6691212Z {"processed":260,"updated":0,"unavailable":102,"failed":0,"total":279}
+portraits	Refresh remaining coach portraits	2026-11-03T15:26:34.2943004Z {"coachPortraitRefresh":{"total":279,"updated":0,"unavailable":107,"failed":0}}
+portraits	Store remaining portraits	﻿2026-11-03T15:26:34.3107149Z ##[group]Run python dashboard/scripts/neon_assets.py --limit 3000 --retry-commons
+portraits	Store remaining portraits	2026-11-03T15:26:34.3108241Z ^[[36;1mpython dashboard/scripts/neon_assets.py --limit 3000 --retry-commons^[[0m
+portraits	Store remaining portraits	2026-11-03T15:26:34.3136260Z shell: /usr/bin/bash -e {0}
+portraits	Store remaining portraits	2026-11-03T15:26:34.3136556Z env:
+portraits	Store remaining portraits	2026-11-03T15:26:34.3137517Z   NEON_DATABASE_URL: ***
+portraits	Store remaining portraits	2026-11-03T15:26:34.3138002Z   NEON_STORAGE_ENDPOINT: ***
+portraits	Store remaining portraits	2026-11-03T15:26:34.3138307Z   NEON_STORAGE_BUCKET: statarena-data
+portraits	Store remaining portraits	2026-11-03T15:26:34.3138612Z   NEON_STORAGE_REGION: us-east-2
+portraits	Store remaining portraits	2026-11-03T15:26:34.3138999Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+portraits	Store remaining portraits	2026-11-03T15:26:34.3139529Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+portraits	Store remaining portraits	2026-11-03T15:26:34.3139892Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store remaining portraits	2026-11-03T15:26:34.3140361Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+portraits	Store remaining portraits	2026-11-03T15:26:34.3140820Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store remaining portraits	2026-11-03T15:26:34.3141237Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store remaining portraits	2026-11-03T15:26:34.3142162Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+portraits	Store remaining portraits	2026-11-03T15:26:34.3142916Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+portraits	Store remaining portraits	2026-11-03T15:26:34.3143569Z ##[endgroup]
+portraits	Store remaining portraits	2026-11-03T15:26:35.0574717Z Pending asset batch: 24
+portraits	Store remaining portraits	2026-11-03T15:27:12.4796072Z {"images": 21, "failed": 3, "bytes": 1056889, "errors": {"HTTPError:429": 3}}
+portraits	Post Run oven-sh/setup-bun@v2	﻿2026-11-03T15:27:12.5517086Z Post job cleanup.
+portraits	Post Run actions/setup-node@v4	﻿2026-11-03T15:27:12.7372988Z Post job cleanup.
+portraits	Post Run actions/setup-node@v4	2026-11-03T15:27:12.8671884Z (node:2586) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+portraits	Post Run actions/setup-node@v4	2026-11-03T15:27:12.8673397Z (Use `node --trace-deprecation ...` to show where the warning was created)
+portraits	Post Run actions/setup-python@v5	﻿2026-11-03T15:27:12.8886891Z Post job cleanup.
+portraits	Post Run actions/setup-python@v5	2026-11-03T15:27:13.0154666Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc, not saving cache.
+portraits	Post Run actions/setup-python@v5	2026-11-03T15:27:13.0156867Z (node:2594) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+portraits	Post Run actions/setup-python@v5	2026-11-03T15:27:13.0158123Z (Use `node --trace-deprecation ...` to show where the warning was created)
+portraits	Post Run actions/checkout@v4	﻿2026-11-03T15:27:13.0292028Z Post job cleanup.
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1171167Z [command]/usr/bin/git version
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1219379Z git version 2.56.0
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1296735Z Temporarily overriding HOME='/home/runner/work/_temp/0bd88ce0-9a2a-4134-bd80-29e85e4c8c54' before making global git config changes
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1298548Z Adding repository directory to the temporary git global config as a safe directory
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1301040Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1343223Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1383175Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1667664Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1698941Z http.https://github.com/.extraheader
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1713607Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.1757051Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.2041935Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+portraits	Post Run actions/checkout@v4	2026-11-03T15:27:13.2089178Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+portraits	Complete job	﻿2026-11-03T15:27:13.2522909Z Cleaning up orphan processes
+portraits	Complete job	2026-11-03T15:27:13.2884872Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

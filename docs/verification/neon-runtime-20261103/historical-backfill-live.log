@@ -1,0 +1,474 @@
+backfill	Set up job	﻿2026-11-03T13:41:08.1180505Z Current runner version: '2.338.2'
+backfill	Set up job	2026-11-03T13:41:08.1205431Z ##[group]Runner Image Provisioner
+backfill	Set up job	2026-11-03T13:41:08.1206765Z Hosted Compute Agent
+backfill	Set up job	2026-11-03T13:41:08.1207478Z Version: 20261021.618
+backfill	Set up job	2026-11-03T13:41:08.1208277Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+backfill	Set up job	2026-11-03T13:41:08.1209069Z Build Date: 2026-10-21T00:45:21Z
+backfill	Set up job	2026-11-03T13:41:08.1209914Z Worker ID: {a8296001-eeae-4ca6-8526-6a78e7456011}
+backfill	Set up job	2026-11-03T13:41:08.1210739Z Region: westus
+backfill	Set up job	2026-11-03T13:41:08.1211728Z Cloud: Azure
+backfill	Set up job	2026-11-03T13:41:08.1212381Z ##[endgroup]
+backfill	Set up job	2026-11-03T13:41:08.1213940Z ##[group]Operating System
+backfill	Set up job	2026-11-03T13:41:08.1214789Z Ubuntu
+backfill	Set up job	2026-11-03T13:41:08.1215400Z 24.04.5
+backfill	Set up job	2026-11-03T13:41:08.1216023Z LTS
+backfill	Set up job	2026-11-03T13:41:08.1217050Z ##[endgroup]
+backfill	Set up job	2026-11-03T13:41:08.1217742Z ##[group]Runner Image
+backfill	Set up job	2026-11-03T13:41:08.1218498Z Image: ubuntu-24.04
+backfill	Set up job	2026-11-03T13:41:08.1219104Z Version: 20261025.353.1
+backfill	Set up job	2026-11-03T13:41:08.1220351Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+backfill	Set up job	2026-11-03T13:41:08.1222258Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+backfill	Set up job	2026-11-03T13:41:08.1223300Z ##[endgroup]
+backfill	Set up job	2026-11-03T13:41:08.1224580Z ##[group]GITHUB_TOKEN Permissions
+backfill	Set up job	2026-11-03T13:41:08.1226846Z Contents: read
+backfill	Set up job	2026-11-03T13:41:08.1227747Z Metadata: read
+backfill	Set up job	2026-11-03T13:41:08.1228371Z ##[endgroup]
+backfill	Set up job	2026-11-03T13:41:08.1230927Z Secret source: Actions
+backfill	Set up job	2026-11-03T13:41:08.1231999Z Cache mode: write
+backfill	Set up job	2026-11-03T13:41:08.1232867Z Prepare workflow directory
+backfill	Set up job	2026-11-03T13:41:08.1816236Z Prepare all required actions
+backfill	Set up job	2026-11-03T13:41:08.1862941Z Getting action download info
+backfill	Set up job	2026-11-03T13:41:08.5320190Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+backfill	Set up job	2026-11-03T13:41:08.6528036Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+backfill	Set up job	2026-11-03T13:41:08.7287969Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+backfill	Set up job	2026-11-03T13:41:08.8172949Z Download action repository 'oven-sh/setup-bun@v2' (SHA:0c5077e51419868618aeaa5fe8019c62421857d6)
+backfill	Set up job	2026-11-03T13:41:09.2256788Z Complete job name: backfill
+backfill	Run actions/checkout@v4	﻿2026-11-03T13:41:09.3087789Z ##[group]Run actions/checkout@v4
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3088746Z with:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3089241Z   sparse-checkout: dashboard
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3089788Z   filter: blob:none
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3090326Z   repository: OrionQuantPlatform/STATARENA
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3094109Z   token: ***
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3094578Z   ssh-strict: true
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3095066Z   ssh-user: git
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3095547Z   persist-credentials: true
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3096074Z   clean: true
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3096777Z   sparse-checkout-cone-mode: true
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3097367Z   fetch-depth: 1
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3097843Z   fetch-tags: false
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3098336Z   show-progress: true
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3098819Z   lfs: false
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3099277Z   submodules: false
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3099790Z   set-safe-directory: true
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3100332Z   allow-unsafe-pr-checkout: false
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3101147Z env:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3102688Z   NEON_DATABASE_URL: ***
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3103562Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3104162Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3104765Z   NEON_STORAGE_REGION: us-east-2
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3105499Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3106640Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.3107229Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5852914Z Syncing repository: OrionQuantPlatform/STATARENA
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5855778Z ##[group]Getting Git version info
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5857221Z Working directory is '/home/runner/work/STATARENA/STATARENA'
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5858661Z [command]/usr/bin/git version
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5950461Z git version 2.56.0
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5976918Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5994076Z Temporarily overriding HOME='/home/runner/work/_temp/7da2a2ce-181c-4482-a05b-9d47efff2141' before making global git config changes
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.5997265Z Adding repository directory to the temporary git global config as a safe directory
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6001037Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6058651Z Deleting the contents of '/home/runner/work/STATARENA/STATARENA'
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6063993Z ##[group]Initializing the repository
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6069694Z [command]/usr/bin/git init /home/runner/work/STATARENA/STATARENA
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6189533Z hint: Using 'master' as the name for the initial branch. This default branch name
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6190824Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6191833Z hint: to use in all of your new repositories, which will suppress this warning,
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6192636Z hint: call:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6193085Z hint:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6193656Z hint: 	git config --global init.defaultBranch <name>
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6194385Z hint:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6195017Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6196019Z hint: 'development'. The just-created branch can be renamed via this command:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6197170Z hint:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6197673Z hint: 	git branch -m <name>
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6198207Z hint:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6198893Z hint: Disable this message with "git config set advice.defaultBranchName false"
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6214572Z Initialized empty Git repository in /home/runner/work/STATARENA/STATARENA/.git/
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6225911Z [command]/usr/bin/git remote add origin https://github.com/OrionQuantPlatform/STATARENA
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6278773Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6279719Z ##[group]Disabling automatic garbage collection
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6282512Z [command]/usr/bin/git config --local gc.auto 0
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6319249Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6320515Z ##[group]Setting up auth
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6327725Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6369418Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6904479Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.6911392Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.7136981Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.7182387Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.7428486Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.7479584Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.7480513Z ##[group]Fetching the repository
+backfill	Run actions/checkout@v4	2026-11-03T13:41:09.7492652Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +61300b313705e849b7bf0a90180d2c595740e6aa:refs/remotes/origin/main
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5866581Z From https://github.com/OrionQuantPlatform/STATARENA
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5867906Z  * [new ref]         61300b313705e849b7bf0a90180d2c595740e6aa -> origin/main
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5907748Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5928082Z ##[group]Determining the checkout info
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5929166Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5929894Z ##[group]Setting up sparse checkout
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5930368Z [command]/usr/bin/git sparse-checkout set dashboard
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5955245Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5956171Z ##[group]Checking out the ref
+backfill	Run actions/checkout@v4	2026-11-03T13:41:11.5962632Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9076071Z Updating files:   0% (1/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9091276Z Updating files:   1% (11/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9094171Z Updating files:   2% (22/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9100859Z Updating files:   3% (33/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9113916Z Updating files:   4% (44/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9125338Z Updating files:   5% (54/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9156018Z Updating files:   6% (65/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9164730Z Updating files:   7% (76/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9169540Z Updating files:   8% (87/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9186239Z Updating files:   9% (97/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9200866Z Updating files:  10% (108/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9231504Z Updating files:  11% (119/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9244070Z Updating files:  12% (130/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9249434Z Updating files:  13% (140/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9263905Z Updating files:  14% (151/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9273939Z Updating files:  15% (162/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9282420Z Updating files:  16% (173/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9292200Z Updating files:  17% (183/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9301585Z Updating files:  18% (194/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9311081Z Updating files:  19% (205/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9318828Z Updating files:  20% (216/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9327516Z Updating files:  21% (226/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9333945Z Updating files:  22% (237/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9341641Z Updating files:  23% (248/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9348264Z Updating files:  24% (259/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9355443Z Updating files:  25% (269/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9368387Z Updating files:  26% (280/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9404154Z Updating files:  27% (291/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9422251Z Updating files:  28% (302/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9437952Z Updating files:  29% (313/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9443810Z Updating files:  30% (323/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9450244Z Updating files:  31% (334/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9457564Z Updating files:  32% (345/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9463182Z Updating files:  33% (356/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9530579Z Updating files:  34% (366/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9544757Z Updating files:  35% (377/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9564479Z Updating files:  36% (388/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9596267Z Updating files:  37% (399/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9626149Z Updating files:  38% (409/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9680580Z Updating files:  39% (420/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9722362Z Updating files:  40% (431/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9728718Z Updating files:  41% (442/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9766812Z Updating files:  42% (452/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9789843Z Updating files:  43% (463/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9808906Z Updating files:  44% (474/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9827442Z Updating files:  45% (485/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9842491Z Updating files:  46% (495/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9853763Z Updating files:  47% (506/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9864596Z Updating files:  48% (517/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9880804Z Updating files:  49% (528/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9891151Z Updating files:  50% (538/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9895519Z Updating files:  51% (549/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9905367Z Updating files:  52% (560/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9915899Z Updating files:  53% (571/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9935190Z Updating files:  54% (582/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9944862Z Updating files:  55% (592/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9963673Z Updating files:  56% (603/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:12.9979942Z Updating files:  57% (614/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0003462Z Updating files:  58% (625/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0041597Z Updating files:  59% (635/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0049286Z Updating files:  60% (646/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0065528Z Updating files:  61% (657/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0091979Z Updating files:  62% (668/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0110312Z Updating files:  63% (678/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0119162Z Updating files:  64% (689/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0126708Z Updating files:  65% (700/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0135617Z Updating files:  66% (711/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0145707Z Updating files:  67% (721/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0156267Z Updating files:  68% (732/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0174657Z Updating files:  69% (743/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0185344Z Updating files:  70% (754/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0243987Z Updating files:  71% (764/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0380576Z Updating files:  72% (775/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0393144Z Updating files:  73% (786/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0397053Z Updating files:  74% (797/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0416754Z Updating files:  75% (807/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0455917Z Updating files:  76% (818/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0470750Z Updating files:  77% (829/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0478625Z Updating files:  78% (840/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0491830Z Updating files:  79% (851/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0500477Z Updating files:  80% (861/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0518148Z Updating files:  81% (872/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0530981Z Updating files:  82% (883/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0557029Z Updating files:  83% (894/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0557662Z Updating files:  84% (904/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0558104Z Updating files:  85% (915/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0565427Z Updating files:  86% (926/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0570804Z Updating files:  87% (937/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0582143Z Updating files:  88% (947/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0602086Z Updating files:  89% (958/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0610722Z Updating files:  90% (969/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0618718Z Updating files:  91% (980/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0626042Z Updating files:  92% (990/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0634158Z Updating files:  93% (1001/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0643867Z Updating files:  94% (1012/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0650527Z Updating files:  95% (1023/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0657693Z Updating files:  96% (1033/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0664223Z Updating files:  97% (1044/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0671502Z Updating files:  98% (1055/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0692855Z Updating files:  99% (1066/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0693347Z Updating files: 100% (1076/1076)
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.0693699Z Updating files: 100% (1076/1076), done.
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.3172283Z Switched to a new branch 'main'
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.3178423Z branch 'main' set up to track 'origin/main'.
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.3250675Z ##[endgroup]
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.3308748Z [command]/usr/bin/git log -1 --format=%H
+backfill	Run actions/checkout@v4	2026-11-03T13:41:13.3344609Z 61300b313705e849b7bf0a90180d2c595740e6aa
+backfill	Run actions/setup-python@v5	﻿2026-11-03T13:41:13.3619454Z ##[group]Run actions/setup-python@v5
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3619788Z with:
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3620006Z   python-version: 3.13
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3620250Z   cache: pip
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3620563Z   cache-dependency-path: dashboard/scripts/neon-requirements.txt
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3620960Z   check-latest: false
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3623581Z   token: ***
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3623809Z   update-environment: true
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3624083Z   allow-prereleases: false
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3624337Z   freethreaded: false
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3624581Z env:
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3625498Z   NEON_DATABASE_URL: ***
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3625980Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3626266Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3626816Z   NEON_STORAGE_REGION: us-east-2
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3627221Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3627752Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.3628026Z ##[endgroup]
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.5059003Z ##[group]Installed versions
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.5158066Z (node:2299) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.5159467Z (Use `node --trace-deprecation ...` to show where the warning was created)
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.5160312Z Successfully set up CPython (3.13.17)
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.5161266Z ##[endgroup]
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:13.5680725Z [command]/opt/hostedtoolcache/Python/3.13.17/x64/bin/pip cache dir
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:15.4743920Z /home/runner/.cache/pip
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:15.7627139Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:15.7736244Z (node:2299) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:17.0508068Z Received 15057458 of 23446066 (64.2%), 14.3 MBs/sec
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:17.1313987Z Received 23446066 of 23446066 (100.0%), 20.7 MBs/sec
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:17.1314815Z Cache Size: ~22 MB (23446066 B)
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:17.1341887Z [command]/usr/bin/tar -xf /home/runner/work/_temp/bdd679b3-7bd2-4657-a7c3-eb44e288d4c3/cache.tzst -P -C /home/runner/work/STATARENA/STATARENA --use-compress-program unzstd
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:17.1823191Z Cache restored successfully
+backfill	Run actions/setup-python@v5	2026-11-03T13:41:17.1839877Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+backfill	Run actions/setup-node@v4	﻿2026-11-03T13:41:17.2082434Z ##[group]Run actions/setup-node@v4
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2082756Z with:
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2082973Z   node-version: 26
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2083205Z   always-auth: false
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2083438Z   check-latest: false
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2086004Z   token: ***
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2086221Z env:
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2087684Z   NEON_DATABASE_URL: ***
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2088183Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2088471Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2088779Z   NEON_STORAGE_REGION: us-east-2
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2089167Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2089693Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2090060Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2090553Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2091015Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2091447Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2091886Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2092309Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.2092665Z ##[endgroup]
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.3640078Z Attempting to download 26...
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.3805813Z (node:2334) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:17.3807297Z (Use `node --trace-deprecation ...` to show where the warning was created)
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:18.0380887Z Acquiring 26.13.0 - x64 from https://github.com/actions/node-versions/releases/download/26.13.0-41378513395/node-26.13.0-linux-x64.tar.gz
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:18.5516498Z Extracting ...
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:18.5659114Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/0bab7471-1d5b-48f9-ad8a-34dda464890e -f /home/runner/work/_temp/4b9d6d45-9b01-43a9-b3c8-b6af2f4c91c2
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:19.9150758Z Adding to the cache ...
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:21.8318049Z ##[group]Environment details
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:22.0752151Z node: v26.13.0
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:22.0752630Z npm: 11.20.0
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:22.0753011Z yarn: 1.22.22
+backfill	Run actions/setup-node@v4	2026-11-03T13:41:22.0753761Z ##[endgroup]
+backfill	Run oven-sh/setup-bun@v2	﻿2026-11-03T13:41:22.1007073Z ##[group]Run oven-sh/setup-bun@v2
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1007410Z with:
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1007627Z   bun-version: 1.4.4
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1007856Z   no-cache: false
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1010345Z   token: ***
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1010565Z env:
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1011405Z   NEON_DATABASE_URL: ***
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1011910Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1012191Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1012499Z   NEON_STORAGE_REGION: us-east-2
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1012876Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1013393Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1013741Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1014412Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1014867Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1015264Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1015660Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1016091Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.1016652Z ##[endgroup]
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:22.5518273Z Cache hit for: bun-vyrKTwhw5PEh6pGRz1Zgyle11uQ=
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:23.8760349Z Received 8388608 of 50544723 (16.6%), 8.0 MBs/sec
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.2268145Z Received 50544723 of 50544723 (100.0%), 35.7 MBs/sec
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.2273152Z Cache Size: ~48 MB (50544723 B)
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.2321801Z [command]/usr/bin/tar -xf /home/runner/work/_temp/0b5a7a4c-4fba-4b95-93ab-01342ef392ca/cache.tzst -P -C /home/runner/work/STATARENA/STATARENA --use-compress-program unzstd
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.4291266Z Cache restored successfully
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.4321731Z [command]/home/runner/.bun/bin/bun --revision
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.4397957Z 1.4.4+38afee6c8
+backfill	Run oven-sh/setup-bun@v2	2026-11-03T13:41:24.4398640Z Using a cached version of Bun: 1.4.4+38afee6c8
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	﻿2026-11-03T13:41:24.4577336Z ##[group]Run pip install -r dashboard/scripts/neon-requirements.txt
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4578320Z ^[[36;1mpip install -r dashboard/scripts/neon-requirements.txt^[[0m
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4604128Z shell: /usr/bin/bash -e {0}
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4604427Z env:
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4605396Z   NEON_DATABASE_URL: ***
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4605900Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4606208Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4606904Z   NEON_STORAGE_REGION: us-east-2
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4607354Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4607891Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4608261Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4608734Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4609222Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4609638Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4610051Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4610514Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:24.4610872Z ##[endgroup]
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:25.9997673Z Collecting boto3==1.43.123 (from -r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.0014139Z   Using cached boto3-1.43.123-py3-none-any.whl.metadata (6.6 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.0116324Z Collecting psycopg==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.0130620Z   Using cached psycopg-3.3.7-py3-none-any.whl.metadata (4.4 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.2194125Z Collecting botocore<1.44.0,>=1.43.123 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.2208836Z   Using cached botocore-1.43.123-py3-none-any.whl.metadata (5.6 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.2267925Z Collecting jmespath<2.0.0,>=0.7.1 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.2279900Z   Using cached jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.2370962Z Collecting s3transfer<0.20.0,>=0.19.0 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.2382804Z   Using cached s3transfer-0.19.3-py3-none-any.whl.metadata (1.7 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.3784618Z Collecting psycopg-binary==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.3798850Z   Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.3878015Z Collecting python-dateutil<3.0.0,>=2.1 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.3890309Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4028062Z Collecting urllib3!=2.2.0,<3,>=1.25.4 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4039993Z   Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4113644Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.1->botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4125369Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4302398Z Using cached boto3-1.43.123-py3-none-any.whl (140 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4314765Z Using cached psycopg-3.3.7-py3-none-any.whl (216 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4327680Z Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4359743Z Using cached botocore-1.43.123-py3-none-any.whl (16.2 MB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4434048Z Using cached jmespath-1.1.0-py3-none-any.whl (20 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4445875Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4457753Z Using cached s3transfer-0.19.3-py3-none-any.whl (90 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4472086Z Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.4483803Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:26.6427538Z Installing collected packages: urllib3, six, psycopg-binary, psycopg, jmespath, python-dateutil, botocore, s3transfer, boto3
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:27.8266803Z 
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:27.8286179Z Successfully installed boto3-1.43.123 botocore-1.43.123 jmespath-1.1.0 psycopg-3.3.7 psycopg-binary-3.3.7 python-dateutil-2.9.0.post0 s3transfer-0.19.3 six-1.17.0 urllib3-2.8.0
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:27.8294413Z 
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:27.8295034Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+backfill	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T13:41:27.8295926Z [notice] To update, run: pip install --upgrade pip
+backfill	Run bun install --frozen-lockfile	﻿2026-11-03T13:41:27.9469900Z ##[group]Run bun install --frozen-lockfile
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9470313Z ^[[36;1mbun install --frozen-lockfile^[[0m
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9492365Z shell: /usr/bin/bash -e {0}
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9492652Z env:
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9493825Z   NEON_DATABASE_URL: ***
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9494368Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9494660Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9494965Z   NEON_STORAGE_REGION: us-east-2
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9495364Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9495895Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9496271Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9497068Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9497536Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9497947Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9498363Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9498809Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9499150Z ##[endgroup]
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:27.9572099Z bun install v1.4.4 (38afee6c8)
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3197585Z 
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3198546Z + prettier@3.9.10
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3199111Z + @aws-sdk/client-s3@3.1161.0
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3199639Z + lucide-react@1.66.0
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3200068Z + next@16.4.3
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3200455Z + pg@8.23.1
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3200836Z + react@19.3.1
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3201249Z + react-dom@19.3.1
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3201495Z 
+backfill	Run bun install --frozen-lockfile	2026-11-03T13:41:29.3201778Z 66 packages installed [1363.00ms]
+backfill	Complete missing resources without Git data commits	﻿2026-11-03T13:41:29.3282256Z ##[group]Run python dashboard/scripts/neon_ingest.py --mode historical --minutes "$SYNC_MINUTES" --max-requests "$SYNC_REQUESTS"
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3283314Z ^[[36;1mpython dashboard/scripts/neon_ingest.py --mode historical --minutes "$SYNC_MINUTES" --max-requests "$SYNC_REQUESTS"^[[0m
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3305160Z shell: /usr/bin/bash -e {0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3305441Z env:
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3306697Z   NEON_DATABASE_URL: ***
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3307220Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3307510Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3307807Z   NEON_STORAGE_REGION: us-east-2
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3308195Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3308718Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3309074Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3309530Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3309992Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3310434Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3310838Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3311245Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3311747Z   PITCHAPI_API_KEY: ***
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3311992Z   SYNC_MINUTES: 0.2
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3312215Z   SYNC_REQUESTS: 3
+backfill	Complete missing resources without Git data commits	2026-11-03T13:41:29.3312433Z ##[endgroup]
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:06.9489333Z {"fixtures":217,"materialized":"l_2Mh0jT","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:14.4698500Z {"fixtures":240,"materialized":"l_0kSJLz","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:21.7403642Z {"fixtures":306,"materialized":"l_214sqK","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:28.1272289Z {"fixtures":182,"materialized":"l_2xBPKk","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:34.4985278Z {"fixtures":132,"materialized":"l_49Zmno","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:42.0692520Z {"fixtures":380,"materialized":"l_4WFCIZ","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:48.4484113Z {"fixtures":306,"materialized":"l_3FJFUl","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:42:54.7497678Z {"fixtures":182,"materialized":"l_3xwVF2","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:43:02.2785374Z {"fixtures":177,"materialized":"l_3Ci5Cg","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:45:29.6398441Z {"fixtures":380,"materialized":"l_1BFfna","season":"2026/2027","updatedMatches":129}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:45:36.3829467Z {"fixtures":380,"materialized":"l_49KZaB","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:45:42.4565930Z {"fixtures":182,"materialized":"l_16Sq13","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:45:50.2711230Z {"fixtures":196,"materialized":"l_1XsMdH","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:45:57.6285766Z {"fixtures":552,"materialized":"l_1W6idJ","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:05.1878886Z {"fixtures":552,"materialized":"l_4DWyTT","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:14.5012752Z {"fixtures":306,"materialized":"l_0275VP","season":"2025/2026","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:21.0216900Z {"fixtures":297,"materialized":"l_0275VP","season":"2026/2027","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:31.2917414Z {"fixtures":380,"materialized":"l_0ALvwF","season":"2021/2022","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:42.1516286Z {"fixtures":381,"materialized":"l_0ALvwF","season":"2022/2023","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:52.7121294Z {"fixtures":380,"materialized":"l_0ALvwF","season":"2023/2024","updatedMatches":0}
+backfill	Complete missing resources without Git data commits	2026-11-03T13:46:53.6840856Z {"downloaded":0,"elapsedSeconds":322.4,"objectBytes":3828262108,"paused":false,"processed":0,"reused":0,"sqlBytes":549216256,"state":"success","statuses":{}}
+backfill	Store newly discovered images in Neon	﻿2026-11-03T13:46:53.8378334Z ##[group]Run python dashboard/scripts/neon_assets.py --limit 3000
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8378879Z ^[[36;1mpython dashboard/scripts/neon_assets.py --limit 3000^[[0m
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8400583Z shell: /usr/bin/bash -e {0}
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8400859Z env:
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8401789Z   NEON_DATABASE_URL: ***
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8402273Z   NEON_STORAGE_ENDPOINT: ***
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8402563Z   NEON_STORAGE_BUCKET: statarena-data
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8403055Z   NEON_STORAGE_REGION: us-east-2
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8403444Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8403967Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8404330Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8404797Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8405254Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8405672Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8406089Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8406827Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:53.8407178Z ##[endgroup]
+backfill	Store newly discovered images in Neon	2026-11-03T13:46:55.5817846Z Pending asset batch: 0
+backfill	Post Run oven-sh/setup-bun@v2	﻿2026-11-03T13:46:55.6547385Z Post job cleanup.
+backfill	Post Run actions/setup-node@v4	﻿2026-11-03T13:46:55.8370082Z Post job cleanup.
+backfill	Post Run actions/setup-node@v4	2026-11-03T13:46:55.9818351Z (node:2566) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+backfill	Post Run actions/setup-node@v4	2026-11-03T13:46:55.9819981Z (Use `node --trace-deprecation ...` to show where the warning was created)
+backfill	Post Run actions/setup-python@v5	﻿2026-11-03T13:46:56.0025431Z Post job cleanup.
+backfill	Post Run actions/setup-python@v5	2026-11-03T13:46:56.1362356Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc, not saving cache.
+backfill	Post Run actions/setup-python@v5	2026-11-03T13:46:56.1365035Z (node:2574) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+backfill	Post Run actions/setup-python@v5	2026-11-03T13:46:56.1366993Z (Use `node --trace-deprecation ...` to show where the warning was created)
+backfill	Post Run actions/checkout@v4	﻿2026-11-03T13:46:56.1530238Z Post job cleanup.
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2471778Z [command]/usr/bin/git version
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2522820Z git version 2.56.0
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2565531Z Temporarily overriding HOME='/home/runner/work/_temp/a8b6ecce-0af8-49b5-b9c4-09dfa3ee1e59' before making global git config changes
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2567826Z Adding repository directory to the temporary git global config as a safe directory
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2573097Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2622796Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.2679892Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.3481129Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.3526928Z http.https://github.com/.extraheader
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.3542585Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.3592271Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.4278167Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+backfill	Post Run actions/checkout@v4	2026-11-03T13:46:56.4327651Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+backfill	Complete job	﻿2026-11-03T13:46:56.5088979Z Cleaning up orphan processes
+backfill	Complete job	2026-11-03T13:46:56.5576679Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

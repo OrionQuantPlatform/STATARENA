@@ -1,0 +1,136 @@
+{
+  "expected": "Remove only generated archive parts after all original members were independently preserved and verified in Neon.",
+  "sourceFiles": 250748,
+  "sourceBytes": 2692640453,
+  "parts": [
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0001.tar.gz",
+      "sha256": "befaa375c7f0e7fc3396c03c08d5cc6a0b548b457adc7d15608cf2502c643386",
+      "bytes": 132898111,
+      "allocated": 132898816
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0002.tar.gz",
+      "sha256": "aba18fc2e3e5f21ebab86f4555249bed253acbb1ed3ed2282374b62c530381da",
+      "bytes": 136798576,
+      "allocated": 136802304
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0003.tar.gz",
+      "sha256": "071e45e0620700c554c32a3a65326e2ad698577cdfe4f648e79716a9ab6fcf06",
+      "bytes": 118593463,
+      "allocated": 118595584
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0004.tar.gz",
+      "sha256": "a77ea7f35c99ff8d6fe6b7a817937aff519d3b63b552eeb5ef0ea43d65715ff5",
+      "bytes": 134552045,
+      "allocated": 134553600
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0005.tar.gz",
+      "sha256": "679ff1f4eef39c6e029eee508e264af8518e2f8f64c50e7608e0c81d9166e842",
+      "bytes": 134339142,
+      "allocated": 134340608
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0006.tar.gz",
+      "sha256": "5e068aefe59c78946547335193f70dcf4369eaa862b5434be44d112b1f23e456",
+      "bytes": 134248211,
+      "allocated": 134250496
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0007.tar.gz",
+      "sha256": "4305b50b79ce3237a6e38bca9e348a5a4636e26254dc18fd608c3a541b734585",
+      "bytes": 134749936,
+      "allocated": 134750208
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0008.tar.gz",
+      "sha256": "a3d8893b1ee5d4e257a600d0f034448e71ac3271ab84bf9d47216574fb340261",
+      "bytes": 133848842,
+      "allocated": 133849088
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0009.tar.gz",
+      "sha256": "f9deb6e1954affb313586890aebdb3263b5b7698827d7e1aea91cb41dc9210b1",
+      "bytes": 134779395,
+      "allocated": 134782976
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0010.tar.gz",
+      "sha256": "065c6d366a0abda9b8940f46cec667cb9a4e12cbd146df78f5786a421c46987c",
+      "bytes": 133880458,
+      "allocated": 133881856
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0011.tar.gz",
+      "sha256": "ce3cc014a61d503f5037a43e7a37ea8785e15e752ee600453284c29d41cfcb8a",
+      "bytes": 134592168,
+      "allocated": 134594560
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0012.tar.gz",
+      "sha256": "7aab629f7809439ead331d586e0aa064efc3ffdf806f36809e0235139fa099e4",
+      "bytes": 132737599,
+      "allocated": 132739072
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0013.tar.gz",
+      "sha256": "6b849fc7d70699447cc018f62942dc0d99079325e42ce2492d331103b52dc9f1",
+      "bytes": 133740218,
+      "allocated": 133742592
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0014.tar.gz",
+      "sha256": "d8dfd890a40fb749593ce4d150627761853005747698d1195fcec02171a440b5",
+      "bytes": 133570767,
+      "allocated": 133574656
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0015.tar.gz",
+      "sha256": "5290ad0d5ac6316203a0de916e62e01d1d7ef1f172815327f78664173686cccb",
+      "bytes": 133651350,
+      "allocated": 133652480
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0016.tar.gz",
+      "sha256": "24a1a7b9b519ebc87a8cd35e005309c5c466ca4cbd353eb6d920a2a8897cf66b",
+      "bytes": 133614633,
+      "allocated": 133615616
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0017.tar.gz",
+      "sha256": "89c94093f41129dc1799adc115179947aac6f162d6b78dca2598e109ef2000e2",
+      "bytes": 133305436,
+      "allocated": 133308416
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0018.tar.gz",
+      "sha256": "1a403b80332474e67d92973ea67de78107523920746181549c9c92d935c5b4e9",
+      "bytes": 133183647,
+      "allocated": 133185536
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0019.tar.gz",
+      "sha256": "4aad3e7c2536b0a40e73c9559b59b7f0b7ea0f5094f308aa419f13d40a97a0e9",
+      "bytes": 133755609,
+      "allocated": 133758976
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0020.tar.gz",
+      "sha256": "9b90cb70d219696a131702f280300ed5a22f01651ec6a9512abc9a7f7c0222ad",
+      "bytes": 128393619,
+      "allocated": 128397312
+    },
+    {
+      "path": "/tmp/statarena-neon-data-579b4710/part-0021.tar.gz",
+      "sha256": "1deae07fb8bf3459c2caf651d1e9234127b135932f4502d42e43166560f81761",
+      "bytes": 6465908,
+      "allocated": 6467584
+    }
+  ],
+  "deletedBytes": 2665699133,
+  "deletedAllocatedBytes": 2665742336,
+  "status": "passed"
+}
