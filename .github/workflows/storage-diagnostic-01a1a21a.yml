@@ -1,0 +1,36 @@
+name: Storage diagnostic (read only)
+on:
+  push:
+    branches: [codex/storage-diagnostic-01a1a21a]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      NEON_DATABASE_URL: ${{ secrets.NEON_INGEST_DATABASE_URL }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install 'psycopg[binary]==3.3.7'
+      - name: Read aggregate storage statistics
+        run: |
+          python - <<'PY'
+          import json, os, psycopg
+          from psycopg.rows import dict_row
+          with psycopg.connect(os.environ['NEON_DATABASE_URL'], autocommit=True, row_factory=dict_row, options='-c default_transaction_read_only=on -c statement_timeout=120000') as db:
+              db.execute('BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY')
+              def rows(sql):
+                  return db.execute(sql).fetchall()
+              report = {}
+              report['database'] = rows('SELECT pg_database_size(current_database()) AS bytes')[0]
+              report['objects'] = rows('SELECT count(*) AS count, coalesce(sum(size),0) AS bytes, count(body) AS inline_count, coalesce(sum(octet_length(body)),0) AS inline_bytes FROM statarena.objects')[0]
+              report['objects_by_tree'] = rows("SELECT split_part(path, '/', 1) AS tree, count(*) AS count, sum(size) AS bytes FROM statarena.objects GROUP BY 1 ORDER BY bytes DESC")
+              report['object_duplicates'] = rows('SELECT coalesce(sum(n-1),0) AS extra_paths, coalesce(sum(bytes-largest),0) AS extra_logical_bytes FROM (SELECT count(*) AS n, sum(size) AS bytes, max(size) AS largest FROM statarena.objects GROUP BY sha256 HAVING count(*)>1) AS grouped')[0]
+              report['tables'] = rows("SELECT c.relname AS name, pg_total_relation_size(c.oid) AS total_bytes, pg_relation_size(c.oid) AS heap_bytes FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='statarena' AND c.relkind='r' ORDER BY total_bytes DESC")
+              report['counts'] = rows("SELECT (SELECT count(*) FROM statarena.resources) AS resources, (SELECT count(*) FROM statarena.fixtures) AS fixtures, (SELECT count(*) FROM statarena.jobs WHERE state='pending') AS pending_jobs")[0]
+              db.execute('COMMIT')
+          print(json.dumps(report, default=str, sort_keys=True))
+          PY
