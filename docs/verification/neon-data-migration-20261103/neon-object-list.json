@@ -1,0 +1,156 @@
+{
+  "folders": [],
+  "objects": [
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/README.md",
+      "size": 857,
+      "last_modified": "2026-11-03T10:14:28Z",
+      "etag": "fb628e6a1273de94d1fc247a325ea1f5"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/VERIFIED.json",
+      "size": 4683,
+      "last_modified": "2026-11-03T10:14:32Z",
+      "etag": "85db529dc289f1b148927aef99af6313"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/manifest.jsonl.gz",
+      "size": 25681384,
+      "last_modified": "2026-11-03T10:14:24Z",
+      "etag": "41e107788015101066b1121e93f46b97"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0001.tar.gz",
+      "size": 132898111,
+      "last_modified": "2026-11-03T10:12:11Z",
+      "etag": "40bab0efdf43c1a2d863aa6b99fa4cdf"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0002.tar.gz",
+      "size": 136798576,
+      "last_modified": "2026-11-03T10:12:11Z",
+      "etag": "99bf4f2934aaa4b5094feaf29e50ca05"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0003.tar.gz",
+      "size": 118593463,
+      "last_modified": "2026-11-03T10:12:11Z",
+      "etag": "eeb68650ea466e6271578b8b64686695"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0004.tar.gz",
+      "size": 134552045,
+      "last_modified": "2026-11-03T10:12:28Z",
+      "etag": "558e3ae83d8ae70abcb98937a495e2c6"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0005.tar.gz",
+      "size": 134339142,
+      "last_modified": "2026-11-03T10:12:29Z",
+      "etag": "e8848127f869d196ed31149153c460ad"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0006.tar.gz",
+      "size": 134248211,
+      "last_modified": "2026-11-03T10:12:34Z",
+      "etag": "7086f61ab28a106a9addb85779830ce2"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0007.tar.gz",
+      "size": 134749936,
+      "last_modified": "2026-11-03T10:12:49Z",
+      "etag": "b4b98ebbfa978c8598fc8912092a14f2"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0008.tar.gz",
+      "size": 133848842,
+      "last_modified": "2026-11-03T10:12:57Z",
+      "etag": "13650daeadf2337333a8669b5a7b7250"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0009.tar.gz",
+      "size": 134779395,
+      "last_modified": "2026-11-03T10:12:58Z",
+      "etag": "060c5894d2ef20002040b2d144a24188"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0010.tar.gz",
+      "size": 133880458,
+      "last_modified": "2026-11-03T10:13:05Z",
+      "etag": "c0f5b872b5a60eb76cf79743d5eb044a"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0011.tar.gz",
+      "size": 134592168,
+      "last_modified": "2026-11-03T10:13:17Z",
+      "etag": "52104a08e504d440353b8a02e83e4739"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0012.tar.gz",
+      "size": 132737599,
+      "last_modified": "2026-11-03T10:13:19Z",
+      "etag": "4762a7d57ad6ade2df1e163af28b5792"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0013.tar.gz",
+      "size": 133740218,
+      "last_modified": "2026-11-03T10:13:24Z",
+      "etag": "92a25d03b0496915629fd7af3b919ea9"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0014.tar.gz",
+      "size": 133570767,
+      "last_modified": "2026-11-03T10:13:35Z",
+      "etag": "ea0ea2abce3a789306ffe49e4bfa9e59"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0015.tar.gz",
+      "size": 133651350,
+      "last_modified": "2026-11-03T10:13:41Z",
+      "etag": "488d348077bcb429260b1fe7f7c67d82"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0016.tar.gz",
+      "size": 133614633,
+      "last_modified": "2026-11-03T10:13:46Z",
+      "etag": "8da2a32679518bdf647c4fb3312430e8"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0017.tar.gz",
+      "size": 133305436,
+      "last_modified": "2026-11-03T10:13:52Z",
+      "etag": "8d434677dee40700b5de0d513cb2792b"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0018.tar.gz",
+      "size": 133183647,
+      "last_modified": "2026-11-03T10:14:02Z",
+      "etag": "33653d30fcedd6bb1c55205aa8d42b8d"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0019.tar.gz",
+      "size": 133755609,
+      "last_modified": "2026-11-03T10:14:11Z",
+      "etag": "a13b86e9b69913b3fcd8f06338bac3c6"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0020.tar.gz",
+      "size": 128393619,
+      "last_modified": "2026-11-03T10:14:15Z",
+      "etag": "c3cbe172e9c7b5f4029b6b6d17235981"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/part-0021.tar.gz",
+      "size": 6465908,
+      "last_modified": "2026-11-03T10:14:21Z",
+      "etag": "7baf60f17a0e21977210d116841739e0"
+    },
+    {
+      "key": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/snapshot.json",
+      "size": 4839,
+      "last_modified": "2026-11-03T10:14:29Z",
+      "etag": "8f6b97ed064dd8a7d7b03bd4786ee03a"
+    }
+  ],
+  "prefix": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/"
+}

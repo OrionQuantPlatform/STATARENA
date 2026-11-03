@@ -1,0 +1,148 @@
+{
+  "snapshot": "579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9",
+  "sourceUrl": "https://codeload.github.com/OrionQuantPlatform/STATARENA/tar.gz/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9",
+  "files": 250748,
+  "rawBytes": 2692640453,
+  "locallyVerifiedFiles": 250748,
+  "prefix": "snapshots/579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9/",
+  "objects": [
+    {
+      "file": "part-0001.tar.gz",
+      "size": 132898111,
+      "sha256": "befaa375c7f0e7fc3396c03c08d5cc6a0b548b457adc7d15608cf2502c643386",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0002.tar.gz",
+      "size": 136798576,
+      "sha256": "aba18fc2e3e5f21ebab86f4555249bed253acbb1ed3ed2282374b62c530381da",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0003.tar.gz",
+      "size": 118593463,
+      "sha256": "071e45e0620700c554c32a3a65326e2ad698577cdfe4f648e79716a9ab6fcf06",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0004.tar.gz",
+      "size": 134552045,
+      "sha256": "a77ea7f35c99ff8d6fe6b7a817937aff519d3b63b552eeb5ef0ea43d65715ff5",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0005.tar.gz",
+      "size": 134339142,
+      "sha256": "679ff1f4eef39c6e029eee508e264af8518e2f8f64c50e7608e0c81d9166e842",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0006.tar.gz",
+      "size": 134248211,
+      "sha256": "5e068aefe59c78946547335193f70dcf4369eaa862b5434be44d112b1f23e456",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0007.tar.gz",
+      "size": 134749936,
+      "sha256": "4305b50b79ce3237a6e38bca9e348a5a4636e26254dc18fd608c3a541b734585",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0008.tar.gz",
+      "size": 133848842,
+      "sha256": "a3d8893b1ee5d4e257a600d0f034448e71ac3271ab84bf9d47216574fb340261",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0009.tar.gz",
+      "size": 134779395,
+      "sha256": "f9deb6e1954affb313586890aebdb3263b5b7698827d7e1aea91cb41dc9210b1",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0010.tar.gz",
+      "size": 133880458,
+      "sha256": "065c6d366a0abda9b8940f46cec667cb9a4e12cbd146df78f5786a421c46987c",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0011.tar.gz",
+      "size": 134592168,
+      "sha256": "ce3cc014a61d503f5037a43e7a37ea8785e15e752ee600453284c29d41cfcb8a",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0012.tar.gz",
+      "size": 132737599,
+      "sha256": "7aab629f7809439ead331d586e0aa064efc3ffdf806f36809e0235139fa099e4",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0013.tar.gz",
+      "size": 133740218,
+      "sha256": "6b849fc7d70699447cc018f62942dc0d99079325e42ce2492d331103b52dc9f1",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0014.tar.gz",
+      "size": 133570767,
+      "sha256": "d8dfd890a40fb749593ce4d150627761853005747698d1195fcec02171a440b5",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0015.tar.gz",
+      "size": 133651350,
+      "sha256": "5290ad0d5ac6316203a0de916e62e01d1d7ef1f172815327f78664173686cccb",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0016.tar.gz",
+      "size": 133614633,
+      "sha256": "24a1a7b9b519ebc87a8cd35e005309c5c466ca4cbd353eb6d920a2a8897cf66b",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0017.tar.gz",
+      "size": 133305436,
+      "sha256": "89c94093f41129dc1799adc115179947aac6f162d6b78dca2598e109ef2000e2",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0018.tar.gz",
+      "size": 133183647,
+      "sha256": "1a403b80332474e67d92973ea67de78107523920746181549c9c92d935c5b4e9",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0019.tar.gz",
+      "size": 133755609,
+      "sha256": "4aad3e7c2536b0a40e73c9559b59b7f0b7ea0f5094f308aa419f13d40a97a0e9",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0020.tar.gz",
+      "size": 128393619,
+      "sha256": "9b90cb70d219696a131702f280300ed5a22f01651ec6a9512abc9a7f7c0222ad",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "part-0021.tar.gz",
+      "size": 6465908,
+      "sha256": "1deae07fb8bf3459c2caf651d1e9234127b135932f4502d42e43166560f81761",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "manifest.jsonl.gz",
+      "size": 25681384,
+      "sha256": "c932cef06b521d53db5ae41d99786445e377b9d301b10ea148ecfa7c402d5f09",
+      "contentType": "application/gzip"
+    },
+    {
+      "file": "README.md",
+      "size": 857,
+      "sha256": "93dc3962943b63b9a05a22c48940ccee3b4a24cc548abffd44ae7c29d163abf5",
+      "contentType": "text/markdown"
+    }
+  ]
+}
