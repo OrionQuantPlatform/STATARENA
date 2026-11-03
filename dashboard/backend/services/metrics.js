@@ -52,6 +52,9 @@ function routeLabel(request) {
     return "/invalid";
   }
   if (pathname.startsWith("/data/")) return "/data/:file";
+  if (pathname === "/api/fixtures") return pathname;
+  if (/^\/api\/matches\/m_[A-Za-z0-9]{6}\/summary$/.test(pathname))
+    return "/api/matches/:id/summary";
   if (
     /^\/api\/(health|settings|status|assets|standings|open-cups|openligadb|nations-results|club-wikidata|coach-portrait|stadium|player-honours)$/.test(
       pathname,

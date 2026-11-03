@@ -2,6 +2,7 @@ import { normalizeArchive } from "./format.js";
 import { dataUrl } from "../data-url.js";
 import { cupWorkerSnapshot } from "./cup-worker-client.js";
 import { SAUDI_PRO_LEAGUE, reconcileSaudiFixtures } from "./saudi-fixtures.js";
+import { allFixturePages } from "./fixture-pages.js";
 /** Data access only: no view builders, document selectors or event delegation. */
 let clientSequence = 0;
 export class FootballDataClient {
@@ -125,11 +126,20 @@ export class FootballDataClient {
       try {
         if (!this.configured)
           throw new Error("Les données en direct ne sont pas disponibles.");
-        const payload = await this.request(
-          browseMode === "day"
-            ? `date/${day}?status=all`
-            : `leagues/${league.id}/matches?season=${encodeURIComponent(season)}&status=all`,
-        );
+        let payload;
+        try {
+          payload = await allFixturePages(
+            browseMode === "day"
+              ? { from: day, to: day, status: "all" }
+              : { league: league.id, season, status: "all" },
+          );
+        } catch {
+          payload = await this.request(
+            browseMode === "day"
+              ? `date/${day}?status=all`
+              : `leagues/${league.id}/matches?season=${encodeURIComponent(season)}&status=all`,
+          );
+        }
         const matches = payload.data?.matches || [];
         result = {
           matches:
@@ -221,17 +231,6 @@ export class FootballDataClient {
     this.payloads.set(key, { loading: true });
     if (force) this.shards.delete(match.id);
     await this.statusPromise;
-    if (!force) {
-      const shard = await this.loadShard(match.id);
-      if (shard?.[section] && Object.hasOwn(shard[section], "data")) {
-        this.payloads.set(key, {
-          data: shard[section].data,
-          source: "snapshot",
-        });
-        this.redraw();
-        return;
-      }
-    }
     let apiError;
     if (this.configured) {
       try {
@@ -244,6 +243,13 @@ export class FootballDataClient {
       } catch (error) {
         apiError = error;
       }
+    }
+    // Deterministic unavailable responses already resolved the archive fallback
+    // on the server; do not download every other family to retry that absence.
+    if (apiError && [400, 403, 404, 410, 422, 429].includes(apiError.status)) {
+      this.payloads.set(key, { error: apiError.message, code: apiError.code });
+      this.redraw();
+      return;
     }
     const shard = await this.loadShard(match.id);
     if (shard?.[section] && Object.hasOwn(shard[section], "data"))

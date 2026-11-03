@@ -137,16 +137,27 @@ export async function objectMeta(path, { fresh = false } = {}) {
   )
     throw new Error("Invalid data path");
   if (fresh) metadata.delete(path);
-  const meta = await metadata(
-    path,
-    async () =>
-      (
-        await query(
-          "SELECT path,size,encode(sha256,'hex') AS sha256,etag,content_type,body IS NOT NULL AS inline FROM statarena.objects WHERE path=$1",
-          [path],
-        )
-      )[0] || null,
-  );
+  const meta = await metadata(path, async () => {
+    const columns =
+      "SELECT path,size,encode(sha256,'hex') AS sha256,etag,content_type,body IS NOT NULL AS inline";
+    try {
+      return (
+        (
+          await query(
+            columns + ",storage_key FROM statarena.objects WHERE path=$1",
+            [path],
+          )
+        )[0] || null
+      );
+    } catch (error) {
+      if (error.code !== "42703") throw error;
+      return (
+        (
+          await query(columns + " FROM statarena.objects WHERE path=$1", [path])
+        )[0] || null
+      );
+    }
+  });
   if (meta) observeVersion(meta.sha256);
   return meta;
 }
@@ -162,13 +173,14 @@ export async function objectBody(meta) {
             [meta.path, meta.sha256],
           )
         )[0];
-        if (!row) {
+        if (!row && !meta.storage_key) {
           const error = new Error("Neon object version changed");
           error.code = "ESTALE";
           throw error;
         }
-        body = row.body;
-      } else {
+        body = row?.body;
+      }
+      if (!body) {
         storage ||= new S3Client({
           endpoint: process.env.NEON_STORAGE_ENDPOINT,
           region: process.env.NEON_STORAGE_REGION || "us-east-2",
@@ -186,7 +198,7 @@ export async function objectBody(meta) {
           const result = await storage.send(
             new GetObjectCommand({
               Bucket: process.env.NEON_STORAGE_BUCKET || "statarena-data",
-              Key: "data/" + meta.path,
+              Key: meta.storage_key || "data/" + meta.path,
             }),
             { abortSignal: AbortSignal.timeout(20000) },
           );

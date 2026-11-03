@@ -4,6 +4,7 @@ import { handlePitchApi } from "./services/pitchapi.js";
 import { query, canonical, configured, cache } from "./services/neon.js";
 import { instrumentRequest, serializeJson } from "./services/metrics.js";
 import { cacheHeaders, noStoreHeaders } from "./services/cache-policy.js";
+import { matchSummary, fixturePage } from "./services/match-reads.js";
 const assetLookup = cache(4 * 1024 * 1024, { name: "asset" });
 export function handleRequest(request) {
   return instrumentRequest(request, async () => {
@@ -33,6 +34,11 @@ async function routeRequest(request) {
   if (!["GET", "HEAD"].includes(request.method))
     return response("Method not allowed", 405, { Allow: "GET, HEAD" });
   try {
+    const summary = pathname.match(
+      /^\/api\/matches\/(m_[A-Za-z0-9]{6})\/summary$/,
+    );
+    if (summary) return await matchSummary(summary[1], request);
+    if (pathname === "/api/fixtures") return await fixturePage(request);
     if (pathname === "/api/health") {
       const [state] = await query(
         "SELECT value,updated_at FROM statarena.state WHERE name='revision'",

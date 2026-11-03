@@ -1,5 +1,6 @@
 import { cupSnapshotPath } from "../../../shared/cup-worker.js";
 import { dataUrl } from "../data-url.js";
+import { allFixturePages } from "./fixture-pages.js";
 
 /** Both the stored publication and fresh indexed views come from Neon. */
 export async function cupWorkerSnapshot(
@@ -18,7 +19,13 @@ export async function cupWorkerSnapshot(
     throw new Error("Route de données invalide.");
   const requests = await Promise.allSettled([
     fetch(path),
-    api ? fetch(api) : Promise.resolve(null),
+    api
+      ? kind === "native"
+        ? allFixturePages({ league: competition, season, status: "all" })
+            .then((body) => ({ ok: true, json: async () => body }))
+            .catch(() => fetch(api))
+        : fetch(api)
+      : Promise.resolve(null),
   ]);
   let saved = null,
     fresh = null,
