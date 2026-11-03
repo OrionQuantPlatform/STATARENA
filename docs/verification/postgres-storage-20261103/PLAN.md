@@ -1,0 +1,13 @@
+# PostgreSQL storage measurement — E2E contract
+
+Goal: run a real import of the complete committed `data/` snapshot on GitHub Actions and measure PostgreSQL bytes, without changing collection or production.
+
+- Use PostgreSQL 17, logged tables, default compression, inferred scalar columns (boolean, bigint, double precision, text); preserve mixed/nested values as JSONB. Every top-level array entry is a row, not a compressed file/blob. Unpack packed dashboard tables into their original rows. Source archive members are decoded, not stored as archive bytes.
+- Keep canonical `raw/`, duplicate original `sources/`, duplicate `computed/`, and inventory metadata in separately measured schemas. Preserve all versions and duplicates; do not claim this is an optimized production schema or a universal database size.
+- Inventory **all tracked data files**, including tar/zip members; unknown binary formats, parsing errors, oversized schemas, missing files or copy errors fail the run. Text documentation is retained as text. Empty containers are recorded in the inventory.
+- Infer columns from every input row, not a sample. Preserve missing versus null. Build provenance/row primary keys and B-tree indexes on scalar entity/match/player/team identifiers. Count every imported table, compare a complete readback digest of every row against the input, and require all inventoried files to be processed.
+- Measure tables/TOAST/indexes with PostgreSQL size functions after ANALYZE/CHECKPOINT; report `pg_database_size` separately from application relation bytes. Exclude WAL, backups and replication from that database number, and explicitly label those exclusions.
+- Failure modes: empty data, malformed JSON/CSV, unsafe archive members (never extract to disk), unsupported formats, SQL type conflicts, identifier collisions, stale import summaries, disk exhaustion, failed artifacts, or incomplete import. Fail closed and preserve partial evidence; never publish an incomplete run as a successful measurement.
+- Evidence: source commit, Python/PostgreSQL versions, exact command and workflow link, tracked-file manifest with sizes/SHA256/row counts, generated DDL/schema mapping, expected/actual counts and digests, per-table and per-schema bytes, whole-database bytes, logs and failure details. Publish in the run summary and a downloadable artifact.
+
+E2E rerun: push the measurement workflow/script on `codex/measure-postgres-storage`, or use its workflow_dispatch after registration on the default branch. The workflow checks out one immutable commit. The full real-data run is the E2E; no unit tests are added after implementation.

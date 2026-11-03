@@ -1,0 +1,70 @@
+name: Measure actual PostgreSQL storage
+
+on:
+  push:
+    branches: [codex/measure-postgres-storage]
+    paths:
+      - .github/workflows/measure-postgres-storage.yml
+      - dashboard/scripts/measure_postgres_storage.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: postgres-storage-measurement
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: statarena_measure
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d statarena_measure"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - name: Free space on the disposable runner
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /opt/hostedtoolcache
+          df -h /
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 1
+          lfs: true
+      - name: Install the pinned PostgreSQL client
+        run: |
+          python3 -m venv "$RUNNER_TEMP/storage-venv"
+          "$RUNNER_TEMP/storage-venv/bin/python" -m pip install 'psycopg[binary]==3.2.3'
+      - name: Import every tracked data file and measure actual storage
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/statarena_measure
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/storage-evidence"
+          "$RUNNER_TEMP/storage-venv/bin/python" -u dashboard/scripts/measure_postgres_storage.py \
+            --output "$RUNNER_TEMP/storage-evidence" 2>&1 | tee "$RUNNER_TEMP/storage-evidence/import.log"
+      - name: Record runner and database disk usage
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/storage-evidence"
+          df -B1 > "$RUNNER_TEMP/storage-evidence/runner-disk.txt"
+          docker ps --no-trunc > "$RUNNER_TEMP/storage-evidence/containers.txt"
+      - name: Upload complete measurement evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: postgres-storage-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/storage-evidence/
+          if-no-files-found: error
+          retention-days: 14
