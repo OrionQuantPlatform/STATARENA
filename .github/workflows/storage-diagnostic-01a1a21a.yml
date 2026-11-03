@@ -1,4 +1,4 @@
-name: Storage diagnostic (read only)
+name: Verify stored file copies
 on:
   push:
     branches: [codex/storage-diagnostic-01a1a21a]
@@ -7,30 +7,49 @@ permissions:
 jobs:
   inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       NEON_DATABASE_URL: ${{ secrets.NEON_INGEST_DATABASE_URL }}
+      NEON_STORAGE_ENDPOINT: ${{ secrets.NEON_STORAGE_ENDPOINT }}
+      NEON_STORAGE_ACCESS_KEY_ID: ${{ secrets.NEON_INGEST_STORAGE_ACCESS_KEY_ID }}
+      NEON_STORAGE_SECRET_ACCESS_KEY: ${{ secrets.NEON_INGEST_STORAGE_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - run: pip install 'psycopg[binary]==3.3.7'
-      - name: Read aggregate storage statistics
+      - run: pip install 'psycopg[binary]==3.3.7' 'boto3==1.43.123'
+      - name: Compare all in-database copies with stored files
         run: |
           python - <<'PY'
-          import json, os, psycopg
-          from psycopg.rows import dict_row
-          with psycopg.connect(os.environ['NEON_DATABASE_URL'], autocommit=True, row_factory=dict_row, options='-c default_transaction_read_only=on -c statement_timeout=120000') as db:
-              db.execute('BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY')
-              def rows(sql):
-                  return db.execute(sql).fetchall()
-              report = {}
-              report['database'] = rows('SELECT pg_database_size(current_database()) AS bytes')[0]
-              report['objects'] = rows('SELECT count(*) AS count, coalesce(sum(size),0) AS bytes, count(body) AS inline_count, coalesce(sum(octet_length(body)),0) AS inline_bytes FROM statarena.objects')[0]
-              report['objects_by_tree'] = rows("SELECT split_part(path, '/', 1) AS tree, count(*) AS count, sum(size) AS bytes FROM statarena.objects GROUP BY 1 ORDER BY bytes DESC")
-              report['object_duplicates'] = rows('SELECT coalesce(sum(n-1),0) AS extra_paths, coalesce(sum(bytes-largest),0) AS extra_logical_bytes FROM (SELECT count(*) AS n, sum(size) AS bytes, max(size) AS largest FROM statarena.objects GROUP BY sha256 HAVING count(*)>1) AS grouped')[0]
-              report['tables'] = rows("SELECT c.relname AS name, pg_total_relation_size(c.oid) AS total_bytes, pg_relation_size(c.oid) AS heap_bytes FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='statarena' AND c.relkind='r' ORDER BY total_bytes DESC")
-              report['counts'] = rows("SELECT (SELECT count(*) FROM statarena.resources) AS resources, (SELECT count(*) FROM statarena.fixtures) AS fixtures, (SELECT count(*) FROM statarena.jobs WHERE state='pending') AS pending_jobs")[0]
-              db.execute('COMMIT')
-          print(json.dumps(report, default=str, sort_keys=True))
+          import concurrent.futures, hashlib, json, os
+          import boto3, psycopg
+          from botocore.config import Config
+          with psycopg.connect(os.environ['NEON_DATABASE_URL'], options='-c default_transaction_read_only=on -c statement_timeout=120000') as db:
+              rows = db.execute('SELECT path,size,sha256,body FROM statarena.objects WHERE body IS NOT NULL ORDER BY path').fetchall()
+          s3 = boto3.client('s3', endpoint_url=os.environ['NEON_STORAGE_ENDPOINT'], region_name='us-east-2', aws_access_key_id=os.environ['NEON_STORAGE_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['NEON_STORAGE_SECRET_ACCESS_KEY'], config=Config(signature_version='s3v4', s3={'addressing_style':'path'}, request_checksum_calculation='when_required', response_checksum_validation='when_required', retries={'max_attempts':4}, max_pool_connections=12))
+          def check(row):
+              path, size, digest, body = row
+              expected = bytes(digest)
+              try:
+                  if len(body) != size or hashlib.sha256(body).digest() != expected:
+                      return 'database_mismatch'
+                  result = s3.get_object(Bucket='statarena-data', Key='data/' + path)
+                  stream = result['Body']
+                  hasher = hashlib.sha256()
+                  n = 0
+                  while True:
+                      chunk = stream.read(1024*1024)
+                      if not chunk: break
+                      hasher.update(chunk)
+                      n += len(chunk)
+                  stream.close()
+                  if n != size or hasher.digest() != expected: return 'file_mismatch'
+                  return 'matched'
+              except Exception as e:
+                  return type(e).__name__
+          with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+              outcomes = list(pool.map(check, rows))
+          counts = {key: outcomes.count(key) for key in sorted(set(outcomes))}
+          print(json.dumps({'objects': len(rows), 'bytes': sum(r[1] for r in rows), 'outcomes': counts}, sort_keys=True))
+          if counts.get('matched', 0) != len(rows): raise SystemExit('File copy verification incomplete')
           PY
