@@ -42,9 +42,11 @@ class Database:
     def __init__(self):
         self.rows = {}
         self.last_insert = None
+        self.last_select = None
 
     def execute(self, sql, values):
-        if sql.startswith("select body,sha256,size"):
+        if sql.startswith("select body,sha256,size") or sql.startswith("select null::bytea,sha256,size"):
+            self.last_select = sql
             return Result(self.rows.get(values[0]))
         if sql.startswith("select sha256"):
             row = self.rows.get(values[0])
@@ -87,6 +89,7 @@ class ManagedStorageTest(unittest.TestCase):
         self.assertIsNone(store.db.last_insert[4])
         store.db.rows["raw/x.json"] = (b"stale SQL bytes", hashlib.sha256(body).digest(), len(body))
         self.assertEqual(store.bytes("raw/x.json"), body)
+        self.assertTrue(store.db.last_select.startswith("select null::bytea"))
 
 
 if __name__ == "__main__":

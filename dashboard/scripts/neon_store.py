@@ -41,7 +41,9 @@ class Store:
 
     def bytes(self, path):
         row = self.db.execute(
-            "select body,sha256,size from statarena.objects where path=%s", (path,)
+            ("select null::bytea,sha256,size" if self.external else "select body,sha256,size")
+            + " from statarena.objects where path=%s",
+            (path,),
         ).fetchone()
         if not row:
             raise FileNotFoundError(path)
