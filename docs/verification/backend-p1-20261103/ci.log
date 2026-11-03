@@ -1,0 +1,420 @@
+verify	Set up job	﻿2026-11-03T22:45:38.0724921Z Current runner version: '2.338.2'
+verify	Set up job	2026-11-03T22:45:38.0751949Z ##[group]Runner Image Provisioner
+verify	Set up job	2026-11-03T22:45:38.0753265Z Hosted Compute Agent
+verify	Set up job	2026-11-03T22:45:38.0753933Z Version: 20261021.618
+verify	Set up job	2026-11-03T22:45:38.0754616Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+verify	Set up job	2026-11-03T22:45:38.0755411Z Build Date: 2026-10-21T00:45:21Z
+verify	Set up job	2026-11-03T22:45:38.0756111Z Worker ID: {cf62a135-e37b-4ae5-9cd9-880bc77d1118}
+verify	Set up job	2026-11-03T22:45:38.0756808Z Region: westus
+verify	Set up job	2026-11-03T22:45:38.0757428Z Cloud: Azure
+verify	Set up job	2026-11-03T22:45:38.0757967Z ##[endgroup]
+verify	Set up job	2026-11-03T22:45:38.0760128Z ##[group]Operating System
+verify	Set up job	2026-11-03T22:45:38.0760830Z Ubuntu
+verify	Set up job	2026-11-03T22:45:38.0761387Z 24.04.5
+verify	Set up job	2026-11-03T22:45:38.0762058Z LTS
+verify	Set up job	2026-11-03T22:45:38.0762616Z ##[endgroup]
+verify	Set up job	2026-11-03T22:45:38.0763199Z ##[group]Runner Image
+verify	Set up job	2026-11-03T22:45:38.0763826Z Image: ubuntu-24.04
+verify	Set up job	2026-11-03T22:45:38.0764401Z Version: 20261025.353.1
+verify	Set up job	2026-11-03T22:45:38.0765524Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+verify	Set up job	2026-11-03T22:45:38.0767377Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+verify	Set up job	2026-11-03T22:45:38.0768876Z ##[endgroup]
+verify	Set up job	2026-11-03T22:45:38.0770143Z ##[group]GITHUB_TOKEN Permissions
+verify	Set up job	2026-11-03T22:45:38.0772437Z Contents: read
+verify	Set up job	2026-11-03T22:45:38.0773125Z Metadata: read
+verify	Set up job	2026-11-03T22:45:38.0773788Z ##[endgroup]
+verify	Set up job	2026-11-03T22:45:38.0775983Z Secret source: Actions
+verify	Set up job	2026-11-03T22:45:38.0777054Z Cache mode: write
+verify	Set up job	2026-11-03T22:45:38.0778425Z Prepare workflow directory
+verify	Set up job	2026-11-03T22:45:38.1291999Z Prepare all required actions
+verify	Set up job	2026-11-03T22:45:38.1340273Z Getting action download info
+verify	Set up job	2026-11-03T22:45:38.4983071Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+verify	Set up job	2026-11-03T22:45:38.6213398Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+verify	Set up job	2026-11-03T22:45:38.8124041Z Complete job name: verify
+verify	Initialize containers	﻿2026-11-03T22:45:38.8806796Z ##[group]Checking docker version
+verify	Initialize containers	2026-11-03T22:45:38.8826094Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+verify	Initialize containers	2026-11-03T22:45:38.9700567Z '1.48'
+verify	Initialize containers	2026-11-03T22:45:38.9723155Z Docker daemon API version: '1.48'
+verify	Initialize containers	2026-11-03T22:45:38.9723977Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+verify	Initialize containers	2026-11-03T22:45:38.9917338Z '1.48'
+verify	Initialize containers	2026-11-03T22:45:38.9935584Z Docker client API version: '1.48'
+verify	Initialize containers	2026-11-03T22:45:38.9942127Z ##[endgroup]
+verify	Initialize containers	2026-11-03T22:45:38.9946425Z ##[group]Clean up resources from previous jobs
+verify	Initialize containers	2026-11-03T22:45:38.9952802Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=ee4b70"
+verify	Initialize containers	2026-11-03T22:45:39.0132074Z ##[command]/usr/bin/docker network prune --force --filter "label=ee4b70"
+verify	Initialize containers	2026-11-03T22:45:39.0297609Z ##[endgroup]
+verify	Initialize containers	2026-11-03T22:45:39.0298601Z ##[group]Create local container network
+verify	Initialize containers	2026-11-03T22:45:39.0309131Z ##[command]/usr/bin/docker network create --label ee4b70 github_network_06513dc8d68649fd82411386446e7d9c
+verify	Initialize containers	2026-11-03T22:45:39.0912771Z af5da8fa4d2ebe2b73e4335906b54a01fbcefcf6ca889e594ded1b4795b91b21
+verify	Initialize containers	2026-11-03T22:45:39.0921586Z ##[endgroup]
+verify	Initialize containers	2026-11-03T22:45:39.0946082Z ##[group]Starting postgres service container
+verify	Initialize containers	2026-11-03T22:45:39.0967849Z ##[command]/usr/bin/docker pull postgres:16
+verify	Initialize containers	2026-11-03T22:45:39.9834526Z 16: Pulling from library/postgres
+verify	Initialize containers	2026-11-03T22:45:40.2471764Z 6fc242d221a6: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2472435Z d06edb2e3f43: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2473056Z 3795839385bc: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2473398Z cea4f0db46a6: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2473708Z 9b1a18996a22: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2474224Z fbc84e711712: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2474538Z 879995175298: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2474852Z d89068781d71: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2475313Z 5c4d204f6daa: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2475636Z 28d8a96df569: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2475947Z b355a8fcc1d3: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2476498Z dc3e98153fd4: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2477285Z c60d02d02e9b: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2477764Z 7ee6ed8de1c8: Pulling fs layer
+verify	Initialize containers	2026-11-03T22:45:40.2478275Z cea4f0db46a6: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2478643Z 9b1a18996a22: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2479094Z 5c4d204f6daa: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2479381Z fbc84e711712: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2479655Z 879995175298: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2479982Z 28d8a96df569: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2480341Z d89068781d71: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2480604Z b355a8fcc1d3: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2480866Z dc3e98153fd4: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2481192Z 7ee6ed8de1c8: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.2481611Z c60d02d02e9b: Waiting
+verify	Initialize containers	2026-11-03T22:45:40.4653324Z d06edb2e3f43: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.4654670Z d06edb2e3f43: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.4873031Z 3795839385bc: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.4879816Z 3795839385bc: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.5737971Z 6fc242d221a6: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.5739005Z 6fc242d221a6: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.6953599Z cea4f0db46a6: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.7233355Z 9b1a18996a22: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.7234639Z 9b1a18996a22: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.8109637Z fbc84e711712: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.8110768Z fbc84e711712: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.9275820Z 879995175298: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.9277238Z 879995175298: Download complete
+verify	Initialize containers	2026-11-03T22:45:40.9375847Z d89068781d71: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:40.9376778Z d89068781d71: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.1467407Z b355a8fcc1d3: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:41.1469505Z b355a8fcc1d3: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.1470769Z 28d8a96df569: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:41.1471886Z 28d8a96df569: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.3570401Z dc3e98153fd4: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:41.3572043Z dc3e98153fd4: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.3596167Z c60d02d02e9b: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:41.3597507Z c60d02d02e9b: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.5624558Z 5c4d204f6daa: Verifying Checksum
+verify	Initialize containers	2026-11-03T22:45:41.5625591Z 5c4d204f6daa: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.5721871Z 7ee6ed8de1c8: Download complete
+verify	Initialize containers	2026-11-03T22:45:41.6919398Z 6fc242d221a6: Pull complete
+verify	Initialize containers	2026-11-03T22:45:42.5564048Z d06edb2e3f43: Pull complete
+verify	Initialize containers	2026-11-03T22:45:42.7214301Z 3795839385bc: Pull complete
+verify	Initialize containers	2026-11-03T22:45:42.7572566Z cea4f0db46a6: Pull complete
+verify	Initialize containers	2026-11-03T22:45:43.0615086Z 9b1a18996a22: Pull complete
+verify	Initialize containers	2026-11-03T22:45:43.1200270Z fbc84e711712: Pull complete
+verify	Initialize containers	2026-11-03T22:45:43.1287049Z 879995175298: Pull complete
+verify	Initialize containers	2026-11-03T22:45:43.1377486Z d89068781d71: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1243133Z 5c4d204f6daa: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1373353Z 28d8a96df569: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1503268Z b355a8fcc1d3: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1584795Z dc3e98153fd4: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1673566Z c60d02d02e9b: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1756785Z 7ee6ed8de1c8: Pull complete
+verify	Initialize containers	2026-11-03T22:45:46.1793803Z Digest: sha256:5db6dac2ef5dcff512f4f00a009c3c332b9f2f28f24277175bf3e4a3d02ef83a
+verify	Initialize containers	2026-11-03T22:45:46.1809628Z Status: Downloaded newer image for postgres:16
+verify	Initialize containers	2026-11-03T22:45:46.1820356Z docker.io/library/postgres:16
+verify	Initialize containers	2026-11-03T22:45:46.1885483Z ##[command]/usr/bin/docker create --name a6a5f1e0abcb4ca59db27558a6d68dc1_postgres16_97f4ff --label ee4b70 --network github_network_06513dc8d68649fd82411386446e7d9c --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U postgres -d statarena_test" --health-interval 10s --health-timeout 5s --health-retries 5 -e "POSTGRES_USER=postgres" -e "POSTGRES_PASSWORD=postgres" -e "POSTGRES_DB=statarena_test" -e GITHUB_ACTIONS=true -e CI=true postgres:16
+verify	Initialize containers	2026-11-03T22:45:46.2159840Z d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:46.2187883Z ##[command]/usr/bin/docker start d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:46.4322750Z d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:46.4346709Z ##[command]/usr/bin/docker ps --all --filter id=d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+verify	Initialize containers	2026-11-03T22:45:46.4497341Z d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb Up Less than a second (health: starting)
+verify	Initialize containers	2026-11-03T22:45:46.4524323Z ##[command]/usr/bin/docker port d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:46.4685938Z 5432/tcp -> 0.0.0.0:5432
+verify	Initialize containers	2026-11-03T22:45:46.4686709Z 5432/tcp -> [::]:5432
+verify	Initialize containers	2026-11-03T22:45:46.4766584Z ##[endgroup]
+verify	Initialize containers	2026-11-03T22:45:46.4780250Z ##[group]Waiting for all services to be ready
+verify	Initialize containers	2026-11-03T22:45:46.4794702Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:46.4959046Z starting
+verify	Initialize containers	2026-11-03T22:45:46.4988503Z postgres service is starting, waiting 2 seconds before checking again.
+verify	Initialize containers	2026-11-03T22:45:48.4989897Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:48.5140090Z starting
+verify	Initialize containers	2026-11-03T22:45:48.5157636Z postgres service is starting, waiting 4 seconds before checking again.
+verify	Initialize containers	2026-11-03T22:45:52.5669215Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:52.5825348Z starting
+verify	Initialize containers	2026-11-03T22:45:52.5843003Z postgres service is starting, waiting 7 seconds before checking again.
+verify	Initialize containers	2026-11-03T22:45:59.8461947Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Initialize containers	2026-11-03T22:45:59.8621602Z healthy
+verify	Initialize containers	2026-11-03T22:45:59.8645140Z postgres service is healthy.
+verify	Initialize containers	2026-11-03T22:45:59.8645957Z ##[endgroup]
+verify	Run actions/checkout@v4	﻿2026-11-03T22:45:59.9023918Z ##[group]Run actions/checkout@v4
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9024520Z with:
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9024761Z   repository: OrionQuantPlatform/STATARENA
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9027306Z   token: ***
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9027512Z   ssh-strict: true
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9027713Z   ssh-user: git
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9027917Z   persist-credentials: true
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9028370Z   clean: true
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9028590Z   sparse-checkout-cone-mode: true
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9028841Z   fetch-depth: 1
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9029045Z   fetch-tags: false
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9029250Z   show-progress: true
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9029454Z   lfs: false
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9029634Z   submodules: false
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9029836Z   set-safe-directory: true
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9030078Z   allow-unsafe-pr-checkout: false
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9030624Z env:
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9031135Z   TEST_DATABASE_URL: ***localhost:5432/statarena_test
+verify	Run actions/checkout@v4	2026-11-03T22:45:59.9031452Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1768991Z Syncing repository: OrionQuantPlatform/STATARENA
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1770778Z ##[group]Getting Git version info
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1771209Z Working directory is '/home/runner/work/STATARENA/STATARENA'
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1771811Z [command]/usr/bin/git version
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1861826Z git version 2.56.0
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1884288Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1899433Z Temporarily overriding HOME='/home/runner/work/_temp/0a560623-3173-4ac4-a9a0-65d2d669fd1a' before making global git config changes
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1900825Z Adding repository directory to the temporary git global config as a safe directory
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1904997Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1989968Z Deleting the contents of '/home/runner/work/STATARENA/STATARENA'
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1994619Z ##[group]Initializing the repository
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.1999063Z [command]/usr/bin/git init /home/runner/work/STATARENA/STATARENA
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2117622Z hint: Using 'master' as the name for the initial branch. This default branch name
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2118835Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2120047Z hint: to use in all of your new repositories, which will suppress this warning,
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2120682Z hint: call:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2121022Z hint:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2121666Z hint: 	git config --global init.defaultBranch <name>
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2122347Z hint:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2122840Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2123727Z hint: 'development'. The just-created branch can be renamed via this command:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2124414Z hint:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2124800Z hint: 	git branch -m <name>
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2125305Z hint:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2125876Z hint: Disable this message with "git config set advice.defaultBranchName false"
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2131324Z Initialized empty Git repository in /home/runner/work/STATARENA/STATARENA/.git/
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2143808Z [command]/usr/bin/git remote add origin https://github.com/OrionQuantPlatform/STATARENA
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2195112Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2195881Z ##[group]Disabling automatic garbage collection
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2200788Z [command]/usr/bin/git config --local gc.auto 0
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2235474Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2236204Z ##[group]Setting up auth
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2247965Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2290134Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2694619Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.2743947Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.3012223Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.3058819Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.3306451Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.3360266Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.3360753Z ##[group]Fetching the repository
+verify	Run actions/checkout@v4	2026-11-03T22:46:00.3375029Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a4ade8c17b15157d88a4057cc42c9f9b064cbd08:refs/remotes/origin/codex/backend-p1-reads-publication
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0097205Z From https://github.com/OrionQuantPlatform/STATARENA
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0098693Z  * [new ref]         a4ade8c17b15157d88a4057cc42c9f9b064cbd08 -> origin/codex/backend-p1-reads-publication
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0104103Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0104963Z ##[group]Determining the checkout info
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0107439Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0115689Z [command]/usr/bin/git sparse-checkout disable
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0182597Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0231187Z ##[group]Checking out the ref
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.0239408Z [command]/usr/bin/git checkout --progress --force -B codex/backend-p1-reads-publication refs/remotes/origin/codex/backend-p1-reads-publication
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.2871314Z Switched to a new branch 'codex/backend-p1-reads-publication'
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.2876804Z branch 'codex/backend-p1-reads-publication' set up to track 'origin/codex/backend-p1-reads-publication'.
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.2896657Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.2961791Z [command]/usr/bin/git log -1 --format=%H
+verify	Run actions/checkout@v4	2026-11-03T22:46:02.2988216Z a4ade8c17b15157d88a4057cc42c9f9b064cbd08
+verify	Run actions/setup-python@v5	﻿2026-11-03T22:46:02.3258576Z ##[group]Run actions/setup-python@v5
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3258896Z with:
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3259097Z   python-version: 3.13
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3259313Z   cache: pip
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3259609Z   cache-dependency-path: dashboard/scripts/neon-requirements.txt
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3259970Z   check-latest: false
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3262351Z   token: ***
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3262563Z   update-environment: true
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3262797Z   allow-prereleases: false
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3263019Z   freethreaded: false
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3263217Z env:
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3263615Z   TEST_DATABASE_URL: ***localhost:5432/statarena_test
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.3263910Z ##[endgroup]
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.4662106Z ##[group]Installed versions
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.4754537Z (node:2715) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.4755586Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.4756436Z Successfully set up CPython (3.13.17)
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.4757461Z ##[endgroup]
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.5139390Z [command]/opt/hostedtoolcache/Python/3.13.17/x64/bin/pip cache dir
+verify	Run actions/setup-python@v5	2026-11-03T22:46:02.8256251Z /home/runner/.cache/pip
+verify	Run actions/setup-python@v5	2026-11-03T22:46:03.1200758Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+verify	Run actions/setup-python@v5	2026-11-03T22:46:03.1313561Z (node:2715) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+verify	Run actions/setup-python@v5	2026-11-03T22:46:04.4425558Z Received 4194304 of 23446066 (17.9%), 4.0 MBs/sec
+verify	Run actions/setup-python@v5	2026-11-03T22:46:04.6073943Z Received 23446066 of 23446066 (100.0%), 19.2 MBs/sec
+verify	Run actions/setup-python@v5	2026-11-03T22:46:04.6074495Z Cache Size: ~22 MB (23446066 B)
+verify	Run actions/setup-python@v5	2026-11-03T22:46:04.6100440Z [command]/usr/bin/tar -xf /home/runner/work/_temp/cbe60e45-c837-4fa3-9076-b0d9f91427fa/cache.tzst -P -C /home/runner/work/STATARENA/STATARENA --use-compress-program unzstd
+verify	Run actions/setup-python@v5	2026-11-03T22:46:04.6564058Z Cache restored successfully
+verify	Run actions/setup-python@v5	2026-11-03T22:46:04.6587700Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	﻿2026-11-03T22:46:04.6796966Z ##[group]Run pip install -r dashboard/scripts/neon-requirements.txt
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6797556Z ^[[36;1mpip install -r dashboard/scripts/neon-requirements.txt^[[0m
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6824494Z shell: /usr/bin/bash -e {0}
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6824770Z env:
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6825277Z   TEST_DATABASE_URL: ***localhost:5432/statarena_test
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6825668Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6826133Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6826568Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6826952Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6827372Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6827772Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:04.6828405Z ##[endgroup]
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.4822049Z Collecting boto3==1.43.123 (from -r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.4837404Z   Using cached boto3-1.43.123-py3-none-any.whl.metadata (6.6 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.4984837Z Collecting psycopg==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.4998158Z   Using cached psycopg-3.3.7-py3-none-any.whl.metadata (4.4 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.7077824Z Collecting botocore<1.44.0,>=1.43.123 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.7096316Z   Using cached botocore-1.43.123-py3-none-any.whl.metadata (5.6 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.7194813Z Collecting jmespath<2.0.0,>=0.7.1 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.7206996Z   Using cached jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.7334388Z Collecting s3transfer<0.20.0,>=0.19.0 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.7347775Z   Using cached s3transfer-0.19.3-py3-none-any.whl.metadata (1.7 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.8819380Z Collecting psycopg-binary==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.8832896Z   Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.8950453Z Collecting python-dateutil<3.0.0,>=2.1 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.8962009Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9145899Z Collecting urllib3!=2.2.0,<3,>=1.25.4 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9157293Z   Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9269239Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.1->botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9280848Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9461121Z Using cached boto3-1.43.123-py3-none-any.whl (140 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9472688Z Using cached psycopg-3.3.7-py3-none-any.whl (216 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9485527Z Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9516874Z Using cached botocore-1.43.123-py3-none-any.whl (16.2 MB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9587770Z Using cached jmespath-1.1.0-py3-none-any.whl (20 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9599163Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9611010Z Using cached s3transfer-0.19.3-py3-none-any.whl (90 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9623051Z Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:05.9634762Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:06.0555146Z Installing collected packages: urllib3, six, psycopg-binary, psycopg, jmespath, python-dateutil, botocore, s3transfer, boto3
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:07.2353053Z 
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:07.2372074Z Successfully installed boto3-1.43.123 botocore-1.43.123 jmespath-1.1.0 psycopg-3.3.7 psycopg-binary-3.3.7 python-dateutil-2.9.0.post0 s3transfer-0.19.3 six-1.17.0 urllib3-2.8.0
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:07.2381407Z 
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:07.2381852Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+verify	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-03T22:46:07.2382401Z [notice] To update, run: pip install --upgrade pip
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	﻿2026-11-03T22:46:07.3567068Z ##[group]Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3567710Z ^[[36;1mpython -m unittest discover -s tests -p 'test_daily_refresh.py' -v^[[0m
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3589350Z shell: /usr/bin/bash -e {0}
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3589622Z env:
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3590114Z   TEST_DATABASE_URL: ***localhost:5432/statarena_test
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3590510Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3590945Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3591380Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3591763Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3592158Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3592548Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:07.3592890Z ##[endgroup]
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0329070Z test_daily_jobs_preempt_historical_backfill_and_force_recent_data (test_daily_refresh.DailyRefreshTest.test_daily_jobs_preempt_historical_backfill_and_force_recent_data) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0552870Z test_daily_publication_prioritizes_both_requested_leagues (test_daily_refresh.DailyRefreshTest.test_daily_publication_prioritizes_both_requested_leagues) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0555280Z test_force_uses_run_start_not_the_six_hour_cache (test_daily_refresh.DailyRefreshTest.test_force_uses_run_start_not_the_six_hour_cache) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0560910Z test_morning_discovery_queues_only_games_in_the_refresh_window (test_daily_refresh.DailyRefreshTest.test_morning_discovery_queues_only_games_in_the_refresh_window) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0563054Z test_morning_refresh_selects_recent_games_across_leagues (test_daily_refresh.DailyRefreshTest.test_morning_refresh_selects_recent_games_across_leagues) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0565120Z test_morning_seed_does_not_replay_the_full_league_inventory (test_daily_refresh.DailyRefreshTest.test_morning_seed_does_not_replay_the_full_league_inventory) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0567459Z test_recently_discovered_matches_are_refreshed_without_replaying_old_seasons (test_daily_refresh.DailyRefreshTest.test_recently_discovered_matches_are_refreshed_without_replaying_old_seasons) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0576338Z test_updated_provider_goal_changes_the_normalized_player_stat (test_daily_refresh.DailyRefreshTest.test_updated_provider_goal_changes_the_normalized_player_stat) ... ok
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0577559Z 
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0577869Z ----------------------------------------------------------------------
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0578835Z Ran 8 tests in 0.025s
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0579101Z 
+verify	Run python -m unittest discover -s tests -p 'test_daily_refresh.py' -v	2026-11-03T22:46:08.0579248Z OK
+verify	Run python tests/daily_refresh_postgres.py	﻿2026-11-03T22:46:08.1068647Z ##[group]Run python tests/daily_refresh_postgres.py
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1069111Z ^[[36;1mpython tests/daily_refresh_postgres.py^[[0m
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1089927Z shell: /usr/bin/bash -e {0}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1090182Z env:
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1090676Z   TEST_DATABASE_URL: ***localhost:5432/statarena_test
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1091071Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1091518Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1091974Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1092357Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1092746Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1093131Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.1093483Z ##[endgroup]
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.4471956Z {"fixtures":1,"materialized":"l_0eg6C9","season":"2026/2027","updatedMatches":1}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.4631701Z {"fixtures":1,"materialized":"l_0eg6C9","season":"2026/2027","updatedMatches":1}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.4808580Z {"fixtures":1,"materialized":"l_0Lpz1f","season":"2026/2027","updatedMatches":1}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.4942995Z {"fixtures":1,"materialized":"l_0Lpz1f","season":"2026/2027","updatedMatches":1}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.5086130Z {"fixtures":1,"materialized":"l_0eg6C9","season":"2026/2027","updatedMatches":1}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.5285518Z {"fixtures":1,"materialized":"l_0eg6C9","season":"2026/2027","updatedMatches":1}
+verify	Run python tests/daily_refresh_postgres.py	2026-11-03T22:46:08.5311807Z {"daily_refresh": "passed", "pulse_refresh": "passed", "goal_before": 0, "goal_after": 1, "leagues": ["MLS", "Saudi Pro League"]}
+verify	Post Run actions/setup-python@v5	﻿2026-11-03T22:46:08.5787257Z Post job cleanup.
+verify	Post Run actions/setup-python@v5	2026-11-03T22:46:08.7061202Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc, not saving cache.
+verify	Post Run actions/setup-python@v5	2026-11-03T22:46:08.7063293Z (node:2830) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Post Run actions/setup-python@v5	2026-11-03T22:46:08.7064586Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Post Run actions/checkout@v4	﻿2026-11-03T22:46:08.7202388Z Post job cleanup.
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8090691Z [command]/usr/bin/git version
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8137956Z git version 2.56.0
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8184124Z Temporarily overriding HOME='/home/runner/work/_temp/4d7f4f41-91ba-4dcf-8dff-30bcf4c670ff' before making global git config changes
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8185556Z Adding repository directory to the temporary git global config as a safe directory
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8190723Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8237526Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8280799Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8560726Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8591122Z http.https://github.com/.extraheader
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8604423Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8654783Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.8987182Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify	Post Run actions/checkout@v4	2026-11-03T22:46:08.9034352Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify	Stop containers	﻿2026-11-03T22:46:08.9417962Z Print service container logs: a6a5f1e0abcb4ca59db27558a6d68dc1_postgres16_97f4ff
+verify	Stop containers	2026-11-03T22:46:08.9422727Z ##[command]/usr/bin/docker logs --details d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Stop containers	2026-11-03T22:46:08.9575168Z  The files belonging to this database system will be owned by user "postgres".
+verify	Stop containers	2026-11-03T22:46:08.9575778Z  This user must also own the server process.
+verify	Stop containers	2026-11-03T22:46:08.9576075Z  
+verify	Stop containers	2026-11-03T22:46:08.9576630Z  The database cluster will be initialized with locale "en_US.utf8".
+verify	Stop containers	2026-11-03T22:46:08.9577491Z  The default database encoding has accordingly been set to "UTF8".
+verify	Stop containers	2026-11-03T22:46:08.9578512Z  The default text search configuration will be set to "english".
+verify	Stop containers	2026-11-03T22:46:08.9579033Z  
+verify	Stop containers	2026-11-03T22:46:08.9579238Z  Data page checksums are disabled.
+verify	Stop containers	2026-11-03T22:46:08.9579512Z  
+verify	Stop containers	2026-11-03T22:46:08.9579816Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+verify	Stop containers	2026-11-03T22:46:08.9580229Z  creating subdirectories ... ok
+verify	Stop containers	2026-11-03T22:46:08.9580605Z  selecting dynamic shared memory implementation ... posix
+verify	Stop containers	2026-11-03T22:46:08.9582428Z  initdb: warning: enabling "trust" authentication for local connections
+verify	Stop containers	2026-11-03T22:46:08.9583206Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+verify	Stop containers	2026-11-03T22:46:08.9583845Z  selecting default max_connections ... 100
+verify	Stop containers	2026-11-03T22:46:08.9584146Z  selecting default shared_buffers ... 128MB
+verify	Stop containers	2026-11-03T22:46:08.9585193Z  2026-11-03 22:45:47.378 UTC [1] LOG:  starting PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+verify	Stop containers	2026-11-03T22:46:08.9585881Z  selecting default time zone ... Etc/UTC
+verify	Stop containers	2026-11-03T22:46:08.9586564Z  2026-11-03 22:45:47.378 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+verify	Stop containers	2026-11-03T22:46:08.9586991Z  creating configuration files ... ok
+verify	Stop containers	2026-11-03T22:46:08.9587624Z  2026-11-03 22:45:47.378 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+verify	Stop containers	2026-11-03T22:46:08.9588034Z  running bootstrap script ... ok
+verify	Stop containers	2026-11-03T22:46:08.9589003Z  2026-11-03 22:45:47.380 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+verify	Stop containers	2026-11-03T22:46:08.9589505Z  performing post-bootstrap initialization ... ok
+verify	Stop containers	2026-11-03T22:46:08.9589987Z  2026-11-03 22:45:47.382 UTC [64] LOG:  database system was shut down at 2026-11-03 22:45:47 UTC
+verify	Stop containers	2026-11-03T22:46:08.9590516Z  2026-11-03 22:45:47.387 UTC [1] LOG:  database system is ready to accept connections
+verify	Stop containers	2026-11-03T22:46:08.9591155Z  syncing data to disk ... ok
+verify	Stop containers	2026-11-03T22:46:08.9591876Z  
+verify	Stop containers	2026-11-03T22:46:08.9592186Z  
+verify	Stop containers	2026-11-03T22:46:08.9592515Z  Success. You can now start the database server using:
+verify	Stop containers	2026-11-03T22:46:08.9593057Z  
+verify	Stop containers	2026-11-03T22:46:08.9593477Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+verify	Stop containers	2026-11-03T22:46:08.9593990Z  
+verify	Stop containers	2026-11-03T22:46:08.9595079Z  waiting for server to start....2026-11-03 22:45:47.067 UTC [48] LOG:  starting PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+verify	Stop containers	2026-11-03T22:46:08.9596605Z  2026-11-03 22:45:47.068 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+verify	Stop containers	2026-11-03T22:46:08.9597354Z  2026-11-03 22:45:47.071 UTC [51] LOG:  database system was shut down at 2026-11-03 22:45:46 UTC
+verify	Stop containers	2026-11-03T22:46:08.9597870Z  2026-11-03 22:45:47.075 UTC [48] LOG:  database system is ready to accept connections
+verify	Stop containers	2026-11-03T22:46:08.9598780Z   done
+verify	Stop containers	2026-11-03T22:46:08.9599101Z  server started
+verify	Stop containers	2026-11-03T22:46:08.9599430Z  CREATE DATABASE
+verify	Stop containers	2026-11-03T22:46:08.9599758Z  
+verify	Stop containers	2026-11-03T22:46:08.9600040Z  
+verify	Stop containers	2026-11-03T22:46:08.9600554Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+verify	Stop containers	2026-11-03T22:46:08.9601218Z  
+verify	Stop containers	2026-11-03T22:46:08.9601644Z  2026-11-03 22:45:47.256 UTC [48] LOG:  received fast shutdown request
+verify	Stop containers	2026-11-03T22:46:08.9602539Z  waiting for server to shut down....2026-11-03 22:45:47.256 UTC [48] LOG:  aborting any active transactions
+verify	Stop containers	2026-11-03T22:46:08.9604027Z  2026-11-03 22:45:47.258 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+verify	Stop containers	2026-11-03T22:46:08.9604950Z  2026-11-03 22:45:47.258 UTC [49] LOG:  shutting down
+verify	Stop containers	2026-11-03T22:46:08.9605606Z  2026-11-03 22:45:47.259 UTC [49] LOG:  checkpoint starting: shutdown immediate
+verify	Stop containers	2026-11-03T22:46:08.9607447Z  2026-11-03 22:45:47.275 UTC [49] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.012 s, sync=0.004 s, total=0.017 s; sync files=301, longest=0.003 s, average=0.001 s; distance=4273 kB, estimate=4273 kB; lsn=0/191F0F0, redo lsn=0/191F0F0
+verify	Stop containers	2026-11-03T22:46:08.9609599Z  2026-11-03 22:45:47.282 UTC [48] LOG:  database system is shut down
+verify	Stop containers	2026-11-03T22:46:08.9610167Z   done
+verify	Stop containers	2026-11-03T22:46:08.9610460Z  server stopped
+verify	Stop containers	2026-11-03T22:46:08.9610806Z  
+verify	Stop containers	2026-11-03T22:46:08.9611199Z  PostgreSQL init process complete; ready for start up.
+verify	Stop containers	2026-11-03T22:46:08.9611708Z  
+verify	Stop containers	2026-11-03T22:46:08.9622647Z Stop and remove container: a6a5f1e0abcb4ca59db27558a6d68dc1_postgres16_97f4ff
+verify	Stop containers	2026-11-03T22:46:08.9627480Z ##[command]/usr/bin/docker rm --force d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Stop containers	2026-11-03T22:46:09.3116095Z d0a2b11f3ef6d310a669811679c7a8779420cf55e4109ccfd65c1c540c1477eb
+verify	Stop containers	2026-11-03T22:46:09.3147562Z Remove container network: github_network_06513dc8d68649fd82411386446e7d9c
+verify	Stop containers	2026-11-03T22:46:09.3152800Z ##[command]/usr/bin/docker network rm github_network_06513dc8d68649fd82411386446e7d9c
+verify	Stop containers	2026-11-03T22:46:09.4074813Z github_network_06513dc8d68649fd82411386446e7d9c
+verify	Complete job	﻿2026-11-03T22:46:09.4160903Z Cleaning up orphan processes
+verify	Complete job	2026-11-03T22:46:09.4775833Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

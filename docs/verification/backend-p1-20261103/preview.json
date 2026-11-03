@@ -1,0 +1,15 @@
+{
+  "checkedAtUTC": "2026-11-03T22:47:02.537Z",
+  "id": "dpl_2TdsMb4B5XQpuigEjay5G2MBHJZ4",
+  "url": "statarena-analytics-g2ve28jah-hlemonniers-projects.vercel.app",
+  "state": "READY",
+  "target": null,
+  "source": {
+    "githubCommitRef": "codex/backend-p1-reads-publication",
+    "githubCommitSha": "a4ade8c17b15157d88a4057cc42c9f9b064cbd08",
+    "githubCommitMessage": "docs: record P1 delivery and staged activation state\n\n- Update current worklog with committed features and measured per-lot changes\n- Preserve parallel operations and reader-first migration and writer activation gates",
+    "githubRepo": "STATARENA",
+    "githubOrg": "OrionQuantPlatform"
+  },
+  "note": "Preview build readiness only. P1 production schema, writers and backfill are not activated."
+}

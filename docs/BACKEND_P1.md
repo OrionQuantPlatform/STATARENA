@@ -1,6 +1,6 @@
 # Backend P1 : bounded reads and immutable publication
 
-Status: implemented and verified locally on `codex/backend-p1-reads-publication`. P0 is already published. P1 has not changed production schemas, objects, workflows or the active materialization job. Numerical results and exact reruns: [ANALYSE.md](verification/backend-p1-20261103/ANALYSE.md).
+Status: implemented, verified locally and pushed on `codex/backend-p1-reads-publication`. GitHub ingestion CI is successful; its Vercel preview build is READY on a4ade8c17b. These receipts cover the code before this documentation-only update. P0 is already published. P1 has not changed production schemas, objects, workflows or the active materialization job. Numerical results and exact reruns: [ANALYSE.md](verification/backend-p1-20261103/ANALYSE.md).
 
 ## Match overview
 

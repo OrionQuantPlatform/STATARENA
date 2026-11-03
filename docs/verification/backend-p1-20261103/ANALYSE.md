@@ -1,6 +1,6 @@
 # P1 : analyse chiffrée et état de livraison
 
-Le lot résumés de matchs, pagination et publication immuable est implémenté et validé localement. Le P0 est déjà poussé et vérifié sur Vercel. **Le P1 n'est pas activé en production** : les lecteurs compatibles, les migrations et la fin des anciens jobs doivent précéder les nouveaux writers. Le job 41723613754 était encore actif lors du contrôle ; il n'a pas été interrompu.
+Le lot résumés de matchs, pagination et publication immuable est implémenté, validé localement et poussé sur `codex/backend-p1-reads-publication`. La CI GitHub41733564574 est réussie et la prévisualisation Vercel est READY sur a4ade8c17b (avant la seule mise à jour documentaire de livraison). Les reçus sont `ci.json`, `ci.log`, `preview.json` et `CI_REPLAY.md`. Le P0 est déjà poussé et vérifié sur Vercel. **Le P1 n'est pas activé en production** : les lecteurs compatibles, les migrations et la fin des anciens jobs doivent précéder les nouveaux writers. Le job 41723613754 était encore actif lors du contrôle ; il n'a pas été interrompu.
 
 ## Mesures contrôlées
 
