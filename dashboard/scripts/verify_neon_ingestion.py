@@ -2,16 +2,22 @@
 """E2E: real Neon test branch and branch storage, controlled HTTP provider."""
 
 import argparse, collections, http.server, json, os, subprocess, threading
+from urllib.parse import urlparse
 from pathlib import Path
 import psycopg
 
 p = argparse.ArgumentParser()
 p.add_argument("--report", required=True)
 a = p.parse_args()
-test_branch = os.environ.get("NEON_TEST_BRANCH_ID")
-assert test_branch and os.environ["NEON_STORAGE_ENDPOINT"].startswith(
-    "https://" + test_branch + ".storage."
-), "Set the isolated test branch ID and storage endpoint"
+local_test = os.environ.get("STATARENA_LOCAL_TEST") == "1"
+if local_test:
+    target = urlparse(os.environ["NEON_DATABASE_URL"])
+    assert target.hostname in ("127.0.0.1", "localhost", "::1") and target.path == "/statarena_file_test" and os.environ.get("FILE_STORAGE_ROOT"), "Local tests require the isolated local fixture database and files"
+else:
+    test_branch = os.environ.get("NEON_TEST_BRANCH_ID")
+    assert test_branch and os.environ["NEON_STORAGE_ENDPOINT"].startswith(
+        "https://" + test_branch + ".storage."
+    ), "Set the isolated test branch ID and storage endpoint"
 report = {
     "command": "NEON_DATABASE_URL=<test writer direct URL> NEON_STORAGE_*=<test branch> python dashboard/scripts/verify_neon_ingestion.py --report docs/verification/neon-runtime-20261103/ingestion-e2e.json",
     "setup": "Real isolated Neon branch and inherited private bucket. Local HTTP fixture provider, no real Pitch key. Tests success/403/404/401/429, duplicate ingestion, lease recovery, locking and materialized pages.",

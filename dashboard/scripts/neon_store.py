@@ -4,6 +4,7 @@ import os, json, gzip, hashlib, base64
 import boto3, psycopg
 from botocore.config import Config
 from psycopg.types.json import Jsonb
+from file_object_store import FileObjectStore
 
 
 def canonical(params=None):
@@ -20,19 +21,24 @@ class Store:
             application_name="statarena-ingestion",
             options="-c statement_timeout=120000",
         )
-        self.s3 = boto3.client(
-            "s3",
-            endpoint_url=os.environ["NEON_STORAGE_ENDPOINT"],
-            region_name=os.environ.get("NEON_STORAGE_REGION", "us-east-2"),
-            aws_access_key_id=os.environ["NEON_STORAGE_ACCESS_KEY_ID"],
-            aws_secret_access_key=os.environ["NEON_STORAGE_SECRET_ACCESS_KEY"],
-            config=Config(
-                signature_version="s3v4",
-                s3={"addressing_style": "path"},
-                request_checksum_calculation="when_required",
-                response_checksum_validation="when_required",
-                retries={"max_attempts": 4},
-            ),
+        self.local_files = bool(os.environ.get("FILE_STORAGE_ROOT"))
+        self.s3 = (
+            FileObjectStore(os.environ["FILE_STORAGE_ROOT"])
+            if self.local_files
+            else boto3.client(
+                "s3",
+                endpoint_url=os.environ["NEON_STORAGE_ENDPOINT"],
+                region_name=os.environ.get("NEON_STORAGE_REGION", "us-east-2"),
+                aws_access_key_id=os.environ["NEON_STORAGE_ACCESS_KEY_ID"],
+                aws_secret_access_key=os.environ["NEON_STORAGE_SECRET_ACCESS_KEY"],
+                config=Config(
+                    signature_version="s3v4",
+                    s3={"addressing_style": "path"},
+                    request_checksum_calculation="when_required",
+                    response_checksum_validation="when_required",
+                    retries={"max_attempts": 4},
+                ),
+            )
         )
         self.bucket = os.environ.get("NEON_STORAGE_BUCKET", "statarena-data")
         self.queue = {}
@@ -43,13 +49,22 @@ class Store:
         ).fetchone()
         if not row:
             raise FileNotFoundError(path)
-        body = (
-            bytes(row[0])
-            if row[0] is not None
-            else self.s3.get_object(Bucket=self.bucket, Key="data/" + path)[
-                "Body"
-            ].read()
-        )
+        def read(key):
+            return self.s3.get_object(Bucket=self.bucket, Key="data/" + key)["Body"].read()
+
+        is_mutable = path in ["raw/index.json", "computed/dashboard/index.json"] or path.startswith("computed/matchdays/")
+        extension = ".json.gz" if path.endswith(".gz") else ".json"
+        previous = "raw/neon/versions/" + bytes(row[1]).hex() + extension
+        try:
+            body = bytes(row[0]) if row[0] is not None and not self.local_files else read(path)
+        except FileNotFoundError:
+            if not self.local_files or not is_mutable:
+                raise
+            body = read(previous)
+        if self.local_files and is_mutable and (
+            hashlib.sha256(body).digest() != bytes(row[1]) or len(body) != row[2]
+        ):
+            body = read(previous)
         if hashlib.sha256(body).digest() != bytes(row[1]) or len(body) != row[2]:
             raise ValueError("Neon object checksum mismatch: " + path)
         return body
@@ -64,9 +79,17 @@ class Store:
         old = self.db.execute(
             "select sha256 from statarena.objects where path=%s", (path,)
         ).fetchone()
-        if old and bytes(old[0]) == digest:
-            return False
-        if old and (
+        same_digest = bool(old and bytes(old[0]) == digest)
+        if same_digest:
+            if not self.local_files:
+                return False
+            try:
+                existing = self.s3.get_object(Bucket=self.bucket, Key="data/" + path)["Body"].read()
+                if len(existing) == len(body) and hashlib.sha256(existing).digest() == digest:
+                    return False
+            except FileNotFoundError:
+                pass
+        if old and not same_digest and (
             path in ["raw/index.json", "computed/dashboard/index.json"]
             or path.startswith("computed/matchdays/")
         ):
@@ -88,7 +111,7 @@ class Store:
             raise ValueError("Neon server MD5 mismatch")
         self.db.execute(
             "insert into statarena.objects(path,size,sha256,etag,body,content_type) values(%s,%s,%s,%s,%s,%s) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,updated_at=now()",
-            (path, len(body), digest, etag, body if hot else None, content_type),
+            (path, len(body), digest, etag, body if hot and not self.local_files else None, content_type),
         )
         return True
 

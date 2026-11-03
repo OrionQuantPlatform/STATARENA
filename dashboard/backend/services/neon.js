@@ -1,13 +1,15 @@
 import pg from "pg";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { createHash } from "node:crypto";
+import { readFile, realpath } from "node:fs/promises";
+import path from "node:path";
 let pool, storage;
 export const configured = () =>
-  Boolean(process.env.NEON_DATABASE_URL && process.env.NEON_STORAGE_ENDPOINT);
+  Boolean(process.env.NEON_DATABASE_URL && (process.env.FILE_STORAGE_ROOT || process.env.NEON_STORAGE_ENDPOINT));
 export function database() {
   if (!process.env.NEON_DATABASE_URL) throw new Error("Neon is not configured");
   const url = new URL(process.env.NEON_DATABASE_URL);
-  url.searchParams.set("sslmode", "verify-full");
+  url.searchParams.set("sslmode", process.env.STATARENA_DATABASE_SSLMODE || "verify-full");
   if (pool) return pool;
   pool = new pg.Pool({
     connectionString: url.href,
@@ -88,7 +90,7 @@ export async function objectMeta(path, withBody = true) {
       (
         await query(
           "SELECT path,size,encode(sha256,'hex') AS sha256,etag,content_type" +
-            (withBody ? ",body" : "") +
+            (withBody && !process.env.FILE_STORAGE_ROOT ? ",body" : "") +
             " FROM statarena.objects WHERE path=$1",
           [path],
         )
@@ -100,7 +102,31 @@ export async function objectBody(meta) {
     meta.sha256,
     async () => {
       let body = meta.body;
-      if (!body) {
+      if (process.env.FILE_STORAGE_ROOT) {
+        const root = await realpath(path.join(process.env.FILE_STORAGE_ROOT, "data"));
+        const read = async (relative) => {
+          const target = await realpath(path.join(root, relative));
+          const relation = path.relative(root, target);
+          if (relation.startsWith(".." + path.sep) || relation === ".." || path.isAbsolute(relation))
+            throw new Error("Invalid local file path");
+          return readFile(target);
+        };
+        const mutable = meta.path === "raw/index.json" ||
+          meta.path === "computed/dashboard/index.json" ||
+          meta.path.startsWith("computed/matchdays/");
+        const ext = meta.path.endsWith(".gz") ? ".json.gz" : ".json";
+        const previous = () => read("raw/neon/versions/" + meta.sha256 + ext);
+        try {
+          body = await read(meta.path);
+        } catch (error) {
+          if (!mutable || error.code !== "ENOENT") throw error;
+          body = await previous();
+        }
+        const valid = (value) =>
+          value.length === Number(meta.size) &&
+          createHash("sha256").update(value).digest("hex") === meta.sha256;
+        if (!valid(body) && mutable) body = await previous();
+      } else if (!body) {
         storage ||= new S3Client({
           endpoint: process.env.NEON_STORAGE_ENDPOINT,
           region: process.env.NEON_STORAGE_REGION || "us-east-2",

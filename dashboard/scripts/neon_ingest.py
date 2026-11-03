@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Durable, idempotent Daily Sync / Historical Backfill; Pitch is ingestion-only."""
 
-import argparse, datetime as dt, gzip, hashlib, json, os, re, time, urllib.parse, urllib.request, urllib.error
+import argparse, datetime as dt, gzip, hashlib, json, os, re, shutil, time, urllib.parse, urllib.request, urllib.error
 from psycopg.types.json import Jsonb
 from neon_store import Store, canonical
 from functools import lru_cache
@@ -353,10 +353,17 @@ def capacity(store):
     objects = store.db.execute(
         "select coalesce(sum(size),0) from statarena.objects"
     ).fetchone()[0]
+    local = store.local_files
+    sql_limit = int(os.environ.get("STATARENA_SQL_LIMIT_BYTES", "0" if local else "900000000"))
+    object_limit = int(os.environ.get("STATARENA_OBJECT_LIMIT_BYTES", "0" if local else "4750000000"))
+    free_bytes = shutil.disk_usage(os.environ["FILE_STORAGE_ROOT"]).free if local else None
     return {
         "sqlBytes": size,
         "objectBytes": int(objects),
-        "paused": size > 900_000_000 or objects > 4_750_000_000,
+        **({"diskFreeBytes": free_bytes} if local else {}),
+        "paused": (sql_limit > 0 and size > sql_limit)
+        or (object_limit > 0 and objects > object_limit)
+        or (local and free_bytes < 512_000_000),
     }
 
 
