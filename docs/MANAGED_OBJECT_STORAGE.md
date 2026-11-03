@@ -1,0 +1,17 @@
+# Managed file storage with direct delivery
+
+This optional mode retains the existing PostgreSQL catalog and collector state, while storing file bodies in a private S3-compatible bucket. Set `STATARENA_EXTERNAL_STORAGE=1` after migration. The existing `NEON_STORAGE_*` variable names are retained for compatibility and must point to the new bucket; runtime credentials must be read-only and ingestion credentials need write access. Set `STATARENA_S3_PATH_STYLE=0` if the provider requires virtual-hosted bucket URLs.
+
+`STATARENA_DIRECT_DOWNLOADS=1` makes the application redirect requests for content-addressed files to short-lived, signed object URLs. Mutable files and dynamic API responses still pass through the application, and PostgreSQL is still used for indexed records, fixtures and projections. Configure the bucket's CORS policy to allow the website origin and GET/HEAD requests. Signed URLs are valid for five minutes and must not be cached beyond their expiry. Direct responses rely on the verified migration and storage provider for integrity; unlike proxied responses, the server does not rehash their bytes on every read.
+
+This avoids sending the redirected file bodies through Vercel; Vercel's own bandwidth allowance still applies to pages, dynamic API responses and any other proxied content. Keep `STATARENA_DIRECT_DOWNLOADS` disabled until the destination's CORS, signed access and browser behavior have been verified.
+
+## Copy and verify before cutover
+
+Run `dashboard/scripts/copy_object_storage.py` with `NEON_DATABASE_URL` set to the source read-only catalog, `SOURCE_STORAGE_ENDPOINT`, `SOURCE_STORAGE_BUCKET`, `SOURCE_STORAGE_REGION`, `SOURCE_STORAGE_ACCESS_KEY_ID`, `SOURCE_STORAGE_SECRET_ACCESS_KEY`, and equivalent `TARGET_STORAGE_*` variables. Set `TARGET_STORAGE_PATH_STYLE=0` if needed. The script checks the catalog's SHA-256 and size before upload, then downloads and hashes the target object. It preserves each original `data/...` key and skips already verified objects on rerun. Use `--verify-only` for a later read-only verification.
+
+The source catalog and objects continue to change while ingestion runs. Do an initial copy, then coordinate a final pass with the collectors stopped and verify the full catalog before switching runtime and ingestion credentials. A failure or changed source file leaves the run incomplete; rerun it before cutover. Preserve the source objects and SQL catalog until the new reader and both ingestion workflows are verified.
+
+The last catalog measurement on 3 November 2026 contained approximately 289,000 objects and 3.93 GB. A full source copy therefore consumes roughly that much source egress, and at least one destination write per missing object plus verification reads. On Tigris Standard, the published free allowance is 5 GiB of storage, 10,000 Class A requests and 100,000 Class B requests per month. At the published rates, approximately 289,000 initial single-part uploads would exceed the free Class A allowance by about $1.40, before retries, other operations, taxes or any provider-specific account conditions. Usage and pricing can change; confirm the current plan before running the transfer.
+
+The ingestion soft limits remain 900 MB for SQL and 4.75 GB for the object catalog by default. `STATARENA_OBJECT_LIMIT_BYTES` can be set in GitHub repository variables for the selected provider. This preparation does not create an account, move data, change credentials, or deploy the application.

@@ -356,7 +356,8 @@ def capacity(store):
     return {
         "sqlBytes": size,
         "objectBytes": int(objects),
-        "paused": size > 900_000_000 or objects > 4_750_000_000,
+        "paused": size > int(os.environ.get("STATARENA_SQL_LIMIT_BYTES") or "900000000")
+        or objects > int(os.environ.get("STATARENA_OBJECT_LIMIT_BYTES") or "4750000000"),
     }
 
 

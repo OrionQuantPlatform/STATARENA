@@ -1,13 +1,45 @@
 import pg from "pg";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { createHash } from "node:crypto";
 let pool, storage;
+export const externalStorage = () =>
+  process.env.STATARENA_EXTERNAL_STORAGE === "1";
+function storageClient() {
+  storage ||= new S3Client({
+    endpoint: process.env.NEON_STORAGE_ENDPOINT,
+    region: process.env.NEON_STORAGE_REGION || "us-east-2",
+    forcePathStyle: process.env.STATARENA_S3_PATH_STYLE !== "0",
+    credentials: {
+      accessKeyId: process.env.NEON_STORAGE_ACCESS_KEY_ID,
+      secretAccessKey: process.env.NEON_STORAGE_SECRET_ACCESS_KEY,
+    },
+    requestChecksumCalculation: "WHEN_REQUIRED",
+    responseChecksumValidation: "WHEN_REQUIRED",
+    maxAttempts: 3,
+  });
+  return storage;
+}
+export async function signedObjectUrl(meta) {
+  if (!externalStorage()) throw new Error("External storage is not enabled");
+  return getSignedUrl(
+    storageClient(),
+    new GetObjectCommand({
+      Bucket: process.env.NEON_STORAGE_BUCKET || "statarena-data",
+      Key: "data/" + meta.path,
+    }),
+    { expiresIn: 300 },
+  );
+}
 export const configured = () =>
   Boolean(process.env.NEON_DATABASE_URL && process.env.NEON_STORAGE_ENDPOINT);
 export function database() {
   if (!process.env.NEON_DATABASE_URL) throw new Error("Neon is not configured");
   const url = new URL(process.env.NEON_DATABASE_URL);
-  url.searchParams.set("sslmode", "verify-full");
+  url.searchParams.set(
+    "sslmode",
+    process.env.STATARENA_DATABASE_SSLMODE || "verify-full",
+  );
   if (pool) return pool;
   pool = new pg.Pool({
     connectionString: url.href,
@@ -88,7 +120,7 @@ export async function objectMeta(path, withBody = true) {
       (
         await query(
           "SELECT path,size,encode(sha256,'hex') AS sha256,etag,content_type" +
-            (withBody ? ",body" : "") +
+            (withBody && !externalStorage() ? ",body" : "") +
             " FROM statarena.objects WHERE path=$1",
           [path],
         )
@@ -99,28 +131,44 @@ export async function objectBody(meta) {
   return bodies(
     meta.sha256,
     async () => {
-      let body = meta.body;
+      let body = externalStorage() ? null : meta.body;
       if (!body) {
-        storage ||= new S3Client({
-          endpoint: process.env.NEON_STORAGE_ENDPOINT,
-          region: process.env.NEON_STORAGE_REGION || "us-east-2",
-          forcePathStyle: true,
-          credentials: {
-            accessKeyId: process.env.NEON_STORAGE_ACCESS_KEY_ID,
-            secretAccessKey: process.env.NEON_STORAGE_SECRET_ACCESS_KEY,
-          },
-          requestChecksumCalculation: "WHEN_REQUIRED",
-          responseChecksumValidation: "WHEN_REQUIRED",
-          maxAttempts: 3,
-        });
-        const result = await storage.send(
-          new GetObjectCommand({
-            Bucket: process.env.NEON_STORAGE_BUCKET || "statarena-data",
-            Key: "data/" + meta.path,
-          }),
-          { abortSignal: AbortSignal.timeout(20000) },
-        );
-        body = Buffer.from(await result.Body.transformToByteArray());
+        const read = async (key) => {
+          const result = await storageClient().send(
+            new GetObjectCommand({
+              Bucket: process.env.NEON_STORAGE_BUCKET || "statarena-data",
+              Key: "data/" + key,
+            }),
+            { abortSignal: AbortSignal.timeout(20000) },
+          );
+          return Buffer.from(await result.Body.transformToByteArray());
+        };
+        const mutable =
+          meta.path === "raw/index.json" ||
+          meta.path === "computed/dashboard/index.json" ||
+          meta.path.startsWith("computed/matchdays/");
+        const ext = meta.path.endsWith(".gz") ? ".json.gz" : ".json";
+        const previous = () => read("raw/neon/versions/" + meta.sha256 + ext);
+        try {
+          body = await read(meta.path);
+        } catch (error) {
+          if (
+            !externalStorage() ||
+            !mutable ||
+            (!["NoSuchKey", "NotFound"].includes(error.name) &&
+              error.$metadata?.httpStatusCode !== 404)
+          )
+            throw error;
+          body = await previous();
+        }
+        if (
+          externalStorage() &&
+          mutable &&
+          (body.length !== Number(meta.size) ||
+            createHash("sha256").update(body).digest("hex") !== meta.sha256)
+        ) {
+          body = await previous();
+        }
       }
       if (
         body.length !== Number(meta.size) ||
