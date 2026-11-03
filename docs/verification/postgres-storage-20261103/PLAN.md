@@ -11,3 +11,5 @@ Goal: run a real import of the complete committed `data/` snapshot on GitHub Act
 - Evidence: source commit, Python/PostgreSQL versions, exact command and workflow link, tracked-file manifest with sizes/SHA256/row counts, generated DDL/schema mapping, expected/actual counts and digests, per-table and per-schema bytes, whole-database bytes, logs and failure details. Publish in the run summary and a downloadable artifact.
 
 E2E rerun: push the measurement workflow/script on `codex/measure-postgres-storage`, or use its workflow_dispatch after registration on the default branch. The workflow checks out one immutable commit. The full real-data run is the E2E; no unit tests are added after implementation.
+
+Rerun acceptance after first failure: top-level files such as `data/README.md` must be retained in `other_data`, not treated as a missing subdirectory. Reuse the complete real-data workflow as the E2E; preserve the original failed run and its evidence.

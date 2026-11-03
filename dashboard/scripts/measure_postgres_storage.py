@@ -68,6 +68,8 @@ def merged(left, right):
 
 def family(path, member=''):
     parts = Path(path).parts
+    if len(parts) == 2:
+        return 'other_data', Path(parts[1]).name.split('.')[0]
     schema = SCHEMAS.get(parts[1], 'other_data')
     rest = list(parts[2:])
     if parts[1] == 'raw' and rest[:1] == ['seasons']:
