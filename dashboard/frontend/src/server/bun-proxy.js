@@ -41,6 +41,7 @@ export async function proxy(request) {
       "content-disposition",
       "allow",
       "retry-after",
+      "location",
       "etag",
       "content-length",
       "x-data-source",
