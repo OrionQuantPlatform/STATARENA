@@ -1,0 +1,2080 @@
+{
+  "command": "NEON_DATABASE_URL=<production writer> NEON_STORAGE_*=<production> python dashboard/scripts/backup_local_neon_extras.py --root <Football_ranking/data> --inventory /tmp/statarena-neon-local-inventory.json --report docs/verification/neon-runtime-20261103/local-extra-backup.json",
+  "expected": "Every unique materialized local file uploaded under its original key, server MD5 and independent GET SHA-256 verified before deletion.",
+  "files": [
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/countries.json",
+      "state": "backed-up",
+      "size": 195,
+      "sha256": "db48b0e2b1ded87d800572af0b45c822cfd3ce12853444e6d27335102db33a5b",
+      "etag": "075ec05d94666aa133d38d6e87ac4652",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/countries.json"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/56.json.gz",
+      "state": "backed-up",
+      "size": 29917,
+      "sha256": "be3ca30eb5e4c695ebe961e0cbcff1691a6eee697c48e77c12da0b810f7e69b5",
+      "etag": "87fd4a5873ef6777a097013b96f25496",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/56.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/fd.json.gz",
+      "state": "backed-up",
+      "size": 29767,
+      "sha256": "82fa9f6a9e26d45e4074e672682f45f5448ad3e5494fd0b1f62772767f23c8d2",
+      "etag": "13640ac1f78c2464168bfea315bd1356",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/fd.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/69.json.gz",
+      "state": "backed-up",
+      "size": 27345,
+      "sha256": "08fd6d0f173f434a8f0ba47b7ab409707c787091169d03850a3985e8445bb0de",
+      "etag": "d82695446c82b5ced5afd857ba7cb338",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/69.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/4f.json.gz",
+      "state": "backed-up",
+      "size": 30712,
+      "sha256": "cf979f0388a6dac30dd297125f0a06195165f16a92909ac9cc6eaee2a5345b0c",
+      "etag": "894edd7720a9a7068c2dd9054497480f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/4f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b9.json.gz",
+      "state": "backed-up",
+      "size": 29793,
+      "sha256": "a619e2dbcddf06415253f2fe8cea7995f7ac77ae621094bd84d9cc05ce7ec7a7",
+      "etag": "8a6668305342ceb48fca41b1edcd2902",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b9.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c9.json.gz",
+      "state": "backed-up",
+      "size": 29821,
+      "sha256": "b89bff3f9601ec7c902c3279b016196b719c7be61373604319d5d0067a2f8000",
+      "etag": "ce8a11cbf493bcd8a6f169c23a5addf6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c9.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a6.json.gz",
+      "state": "backed-up",
+      "size": 28392,
+      "sha256": "b930de28e6285134c63d688e0e72091bf2dac459165b748d0805ee8d8f5b032f",
+      "etag": "0ccc6bf9726cd9f189cb7c13edabb366",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a6.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f4.json.gz",
+      "state": "backed-up",
+      "size": 28285,
+      "sha256": "e640c3cb624738908675bda59d4837b964eb9aa3bb2c0c707c56fd3fb30fe654",
+      "etag": "42960630b20df7df66eb5cf14ee93f0e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f4.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/79.json.gz",
+      "state": "backed-up",
+      "size": 28126,
+      "sha256": "7026041592327b1ed1eda8ad2917431156ce60547de626baaa0f7b3b436fc2ea",
+      "etag": "fbfe0faab242e5551fdc46a5dea15330",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/79.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/5f.json.gz",
+      "state": "backed-up",
+      "size": 28948,
+      "sha256": "7a204fb2c73ed9b57f8f15ed63e638feb6990b7a4985b791d4c1597d57c89a37",
+      "etag": "f6ce27caa0671fdfd240148f6223f083",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/5f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/2d.json.gz",
+      "state": "backed-up",
+      "size": 27439,
+      "sha256": "81efb0aa5a0e1f0dbdeb2de7f6467bf16227461652414526143871e22b659a6b",
+      "etag": "f57c9db729d5f0b842eed854205b5be9",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/2d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/3d.json.gz",
+      "state": "backed-up",
+      "size": 27154,
+      "sha256": "e47b552bcc16e463b7f0ad63d367f2870e97ac9550aff856df392f28041dafe3",
+      "etag": "c56dcee4cad480cb7212b0d8c5a5976b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/3d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/46.json.gz",
+      "state": "backed-up",
+      "size": 28764,
+      "sha256": "4f72543ea17d3d3549a9980c4805e71396320991650485893ccbb52ab6509c3d",
+      "etag": "ba6177189ef411a69eb74059297310bc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/46.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/cup-worker/native/l_2WZ2tt/2026-2027.json",
+      "state": "backed-up",
+      "size": 79350,
+      "sha256": "2559585125562a89fce99d3eb3a5473f4af103906f091c3f776c404190747870",
+      "etag": "d843dadb27aaefc16d7e522389e2ec1d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/cup-worker/native/l_2WZ2tt/2026-2027.json"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/cup-worker/native/l_0bfbkO/2026-2027.json",
+      "state": "backed-up",
+      "size": 108728,
+      "sha256": "f197b8fdd5a20744c7429128f66c7169a957954dc9fe4fa48fca2aad4a5c90c5",
+      "etag": "2b3115d4683b3d0c1d43047580d441b1",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/cup-worker/native/l_0bfbkO/2026-2027.json"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/34.json.gz",
+      "state": "backed-up",
+      "size": 27299,
+      "sha256": "a3bca1e19f4fdbe2c383eb0fd79700f19c9dabd4ddce92f76480665e9ab0cd30",
+      "etag": "3f9046fd519d0689f81d95e5305ba491",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/34.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/eb.json.gz",
+      "state": "backed-up",
+      "size": 28519,
+      "sha256": "343c7399e8b9bf89d3898954e2e4ed553ceae19f7daa63b5059b6da1bfbaaa98",
+      "etag": "fa9263e81e12c1278eee68be1e882a82",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/eb.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/24.json.gz",
+      "state": "backed-up",
+      "size": 27640,
+      "sha256": "41a7c867df1a1c5965d134d9700c325e33d0600bec7e46fe1c2fa5ae8c9ca050",
+      "etag": "cf0c918a5cf7d9c96268083dcd69cd8d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/24.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/70.json.gz",
+      "state": "backed-up",
+      "size": 28467,
+      "sha256": "9d109132975a3c90cf4fe8e558ade2efe55e96bbd60c7b8ab6f5bdcbb2f27342",
+      "etag": "14065e18e18eb734f27069ec8d9ae013",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/70.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/60.json.gz",
+      "state": "backed-up",
+      "size": 29306,
+      "sha256": "335e716a9b6d73a4460ecbfdb6eda68f4c10cac907b93d47db992d14f03596c3",
+      "etag": "1dae95882082c755d8ab73ec639442cf",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/60.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/02.json.gz",
+      "state": "backed-up",
+      "size": 31314,
+      "sha256": "887ccafa87432284311e7058f7856f6ed4768604ef98d86b25bf9c7981ac9e36",
+      "etag": "0432531da84915933a2d21cfb33ce04e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/02.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/8d.json.gz",
+      "state": "backed-up",
+      "size": 28332,
+      "sha256": "0121104173396708bbf43ec13550955cae8c14978b65b54f7fa418b6483eb5af",
+      "etag": "9823434bead51bdfc569f8a76761f94e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/8d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/12.json.gz",
+      "state": "backed-up",
+      "size": 30790,
+      "sha256": "ff5560a335ae534b7a9b622fa272d596a1bdb8a3c054a747ee0fe83f97a2aa85",
+      "etag": "568383d154f6d41f5da812d886fd3f17",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/12.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/af.json.gz",
+      "state": "backed-up",
+      "size": 28134,
+      "sha256": "dcd6cb6b46ce45dbb31ecf0aeacfe7af56d786fbec08a7618a9fe283d133ac42",
+      "etag": "5b9a972be19c823291b7b6804d7c7a65",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/af.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/94.json.gz",
+      "state": "backed-up",
+      "size": 29861,
+      "sha256": "1603004babf4f3126e07fb77c47138bcbd49ede00af544aaed2c89269c9a242b",
+      "etag": "8e804c29f3cf4a867a525fa4a79fdefe",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/94.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/9d.json.gz",
+      "state": "backed-up",
+      "size": 32147,
+      "sha256": "f32f496ed3d3f7b497014c9c380cb1c95397adc4ce0a7eeafb830794615d5ab2",
+      "etag": "982a6a3bd4b7c42fad352d3b8e0f62b0",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/9d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/84.json.gz",
+      "state": "backed-up",
+      "size": 30293,
+      "sha256": "8198925200d3ce981de37cae4c7c9cb574a446b9d9f8464e2fdf4c55c73eb3e1",
+      "etag": "51adf46f03018efc13e386fd2c693762",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/84.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e2.json.gz",
+      "state": "backed-up",
+      "size": 30190,
+      "sha256": "8c8cefcc2cb645aea0655ba008817a1e794a2609787fdf9866a2975eb5ce6d6b",
+      "etag": "82abea6e06c2983e0db65f7a49407039",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e2.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/db.json.gz",
+      "state": "backed-up",
+      "size": 31934,
+      "sha256": "246e3de778306537ed1d8193d1b5b6aa21e1ea26aa0cb1cd184de942960d95b8",
+      "etag": "311b7ed28fcdf09a97bff9e25f4c00a8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/db.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d2.json.gz",
+      "state": "backed-up",
+      "size": 30440,
+      "sha256": "014b934dafe86e7030ad5084543d4a0cb31927b7a57aa85abf8e2589c589e654",
+      "etag": "61cc7dedbdb7090954211d18bb1f220e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d2.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c0.json.gz",
+      "state": "backed-up",
+      "size": 30581,
+      "sha256": "d5d8dccf53899e5797fbc874303686b37b7482d80676b3e38c62edbd208adf46",
+      "etag": "1b3e1a01cd09dac46baadae2a35e4566",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c0.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b0.json.gz",
+      "state": "backed-up",
+      "size": 27598,
+      "sha256": "5e3f275dad25c22b3e9965e5172ec9e1784586afe88c37a6a83c0def804910ec",
+      "etag": "066ba06aaffb53ce6d4404e3edced6bc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b0.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/1b.json.gz",
+      "state": "backed-up",
+      "size": 30030,
+      "sha256": "0f8b8d343f799c7ebfbce144117881e6a9ae5a3feb89334aadde8e07b9e60118",
+      "etag": "8bff5703d1b873174a4a7c69c59897c6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/1b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ca.json.gz",
+      "state": "backed-up",
+      "size": 29092,
+      "sha256": "fbf17a20cca5ba1164796f53437ba06eb993fa0f651d0e1c1e56b8465efcfbb2",
+      "etag": "4e41f856c1396685a7b7c6208ebd5d08",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ca.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/13.json.gz",
+      "state": "backed-up",
+      "size": 26746,
+      "sha256": "959837f0edae8e2ad6fadc857110655f08f5b5f16e7ed98b715a8caaaa1391d7",
+      "etag": "02589996c2f2f1a25de0356eab3d5f14",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/13.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ba.json.gz",
+      "state": "backed-up",
+      "size": 28767,
+      "sha256": "ffd95f3711f08642882e584d64e096826e24bcab451ad17c1adad3654a157469",
+      "etag": "f68e9fa5482b7dedde80d2c41bc7f171",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ba.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/0b.json.gz",
+      "state": "backed-up",
+      "size": 27523,
+      "sha256": "f3287e443163a677f1825286634131145d81d90a230fd64482b7813163b1e734",
+      "etag": "773ca6caa386ae899b06234a61480864",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/0b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/71.json.gz",
+      "state": "backed-up",
+      "size": 27393,
+      "sha256": "19edb5d81580f70b49dbbcf04921aea3bda3195ea47abf8745c0ade864bc28bd",
+      "etag": "3b83c1ae13a38f9d60f1a211fc5713b8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/71.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/03.json.gz",
+      "state": "backed-up",
+      "size": 30073,
+      "sha256": "9b53f16ba1119025e5edc198fb7fd1fdc504973cad17baee8522bcc96c0d8e67",
+      "etag": "9d9f56123c811b9b52c6f640676cb01b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/03.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/9e.json.gz",
+      "state": "backed-up",
+      "size": 29967,
+      "sha256": "877986674860657fbbf01774c1ae57262d9fba5580db3d20910a24f259dbd5f3",
+      "etag": "9c902b6c33b7f7812fb0b080780261be",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/9e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/61.json.gz",
+      "state": "backed-up",
+      "size": 27160,
+      "sha256": "d62d728310aeaa3c9d88359d00e9520e7abe56fdc2d6220177ef48e411f5bf60",
+      "etag": "7038632b7c45495b1a0f3420601c52c9",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/61.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ec.json.gz",
+      "state": "backed-up",
+      "size": 29036,
+      "sha256": "4525d236a424e2f20a686e8137613e73cf0ef62751e532d08efe83541aa696d9",
+      "etag": "069749ab088ad63f6ddb344903de759b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ec.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/dc.json.gz",
+      "state": "backed-up",
+      "size": 29124,
+      "sha256": "5a636c4457b8a3769cbaa225429307935ad4c89254d4202e3522f97c42593b33",
+      "etag": "555aabab5557d27ec17f6920aa2ea388",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/dc.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/8e.json.gz",
+      "state": "backed-up",
+      "size": 31956,
+      "sha256": "675c0605f306815d087e49db9fd26550460cfd2dff3cb54e995d81fb3c226432",
+      "etag": "e8361d99967a7377b31ac2a2e7508b9e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/8e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/7a.json.gz",
+      "state": "backed-up",
+      "size": 31389,
+      "sha256": "f02fd174832137a94e3e10dec83f1d642706d85666fe42afeb9d26b2e58f2d3f",
+      "etag": "df7deef946ac231551fb6b7842914df4",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/7a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/6a.json.gz",
+      "state": "backed-up",
+      "size": 30154,
+      "sha256": "fbacad9580e71765763271fc964087bd51f99b28d434ed747b34df0a2ceb07c4",
+      "etag": "cc36837c0b525e41557e34c6b5da7956",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/6a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d3.json.gz",
+      "state": "backed-up",
+      "size": 29951,
+      "sha256": "1f6b86582e57e1211bd3467a2744af03fc76a71ced78f547c2d9654b72c88664",
+      "etag": "b906e024af4bb5a015293b6d2d7fe032",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d3.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e3.json.gz",
+      "state": "backed-up",
+      "size": 27170,
+      "sha256": "6935fccba29fb2d9a3e070f50528e66dc4ce142d5d3bd5b5440dc5cb54312306",
+      "etag": "4edb662368162ec1604492c21767f93d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e3.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/95.json.gz",
+      "state": "backed-up",
+      "size": 30727,
+      "sha256": "de7cb7073ce63e1b6d5229b0ebe471246e286abda5ff652afb080e7bbd095b50",
+      "etag": "d041555137053daf75d52536ba0f2219",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/95.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/85.json.gz",
+      "state": "backed-up",
+      "size": 31381,
+      "sha256": "17d6b89aa2b710e09f057d12cdc5dd84fd919ef157bb067035dd6a3b40c790e5",
+      "etag": "8acb2ef367c0e41f7d1d4d5355ee3c88",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/85.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/68.json.gz",
+      "state": "backed-up",
+      "size": 27385,
+      "sha256": "d8c283085239f38064dbd1d57a285510c86254c342ad48874b083f206de4b985",
+      "etag": "ca02965a0c7e78b1c99941990bfc3301",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/68.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c1.json.gz",
+      "state": "backed-up",
+      "size": 29696,
+      "sha256": "f6f04ae8acce18183523d6edc68ec59ec2815756defbe30d7820381d9f7ca039",
+      "etag": "f8f0fe72c212049f80cc672de568edb3",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c1.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/1c.json.gz",
+      "state": "backed-up",
+      "size": 29402,
+      "sha256": "41546062ea36dab71b2aee6b70e5fa3059899d6ea15bde3032267f56dae9a524",
+      "etag": "7cf8f17e4b47d94d351a4ecfd57990d4",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/1c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/78.json.gz",
+      "state": "backed-up",
+      "size": 28238,
+      "sha256": "93d19d7029c44b7118597d8da491f368582097aa54599dd3147136cf9480443a",
+      "etag": "9ba48e70f6a1242b945a968c733e0856",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/78.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b1.json.gz",
+      "state": "backed-up",
+      "size": 27554,
+      "sha256": "08e8887bbf3faa52bae82473c72bd0be52fda6f9b43cb309b6c0413b1f0fe284",
+      "etag": "c6742a7e956d29b75402118e174eb867",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b1.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/3e.json.gz",
+      "state": "backed-up",
+      "size": 30595,
+      "sha256": "a8ab37b932792024c5e5b1da1030cecbf999bcb33416b270bef75054d4857a9f",
+      "etag": "cff051a2f02be5996ad3d45f9485e99e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/3e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/0c.json.gz",
+      "state": "backed-up",
+      "size": 30123,
+      "sha256": "eceff13db85dfc4b12cd5234b60b2d692dea1b8f5688239db1e479308e4fe8cb",
+      "etag": "e0cbf6d8af87d4bfbd19d97015e3f636",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/0c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a7.json.gz",
+      "state": "backed-up",
+      "size": 30481,
+      "sha256": "d2561a7a870dc1748ebeb7a77ade521057380766670e4b7dbce9d92e6496621c",
+      "etag": "2746e898738e1f68ad03dd7b2729158f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a7.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/2e.json.gz",
+      "state": "backed-up",
+      "size": 29626,
+      "sha256": "ea1e042f6e938cd63b8d9e5a1fd659f9a35e83d32419241dc19f02b51f26e04c",
+      "etag": "15a0df2b4d0cbd1630a71ec4520d06b8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/2e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f5.json.gz",
+      "state": "backed-up",
+      "size": 29806,
+      "sha256": "bfbc6ad835c7fe3f09c53fa3a6858ae82ee2c204225c536bc728007a53ac6604",
+      "etag": "5f410b9990cd0c0dffca441acdd9a4f1",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f5.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c8.json.gz",
+      "state": "backed-up",
+      "size": 27909,
+      "sha256": "b5e6524dd15ccc231899a8dac6905215eff706b51849f8947ea530cbb2f3371a",
+      "etag": "60d8ebced4ac6c83e786bbd1ead07d23",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c8.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b8.json.gz",
+      "state": "backed-up",
+      "size": 30810,
+      "sha256": "7ecc61e4c2a656c2981face64d70889c9a88aec5bb5c6e2c9941059de6ff463d",
+      "etag": "bc243f01ad049317f1949f0a4e430129",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b8.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/fe.json.gz",
+      "state": "backed-up",
+      "size": 30546,
+      "sha256": "cf39c839abe9cc7e1a2c161d34f98a2c6a01c7c23d71c4d1a2623b96fec9285c",
+      "etag": "4aff97857bfc19a86f37c71157e65279",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/fe.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ea.json.gz",
+      "state": "backed-up",
+      "size": 29832,
+      "sha256": "8fc1e22e1b9f1d94824c12add2b94af827ce407f279fe66ea630af20b1c76a4c",
+      "etag": "0d9311ba80c3e660a3887bc953f3deb7",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ea.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/47.json.gz",
+      "state": "backed-up",
+      "size": 28359,
+      "sha256": "36792075617c876c6f6760d43e4ef3cb0a02b9d66213cd4954967f62439ebc23",
+      "etag": "3d28822fc040008dd4aca55f3e52e3c2",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/47.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/57.json.gz",
+      "state": "backed-up",
+      "size": 28263,
+      "sha256": "778f32c675b8881b91aff7c1bc00aea682569a5ebc0d4919236eb637c9418598",
+      "etag": "c484bb56d9c0992f476ac12511900b17",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/57.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/da.json.gz",
+      "state": "backed-up",
+      "size": 29195,
+      "sha256": "07beb851f1b88e01c50bf1b0d874f5b0efb4210c36288e2c280d0aa6a603dc2f",
+      "etag": "06d5e3ead04bc8ed3f4d02329f8f0305",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/da.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/73.json.gz",
+      "state": "backed-up",
+      "size": 30062,
+      "sha256": "8e2beb8e1f4d3884d90d416aec25e1b2e2f1653151f3218e4e575df9302e7f43",
+      "etag": "5250b06fa019bf43f0c8753553e32b00",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/73.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/63.json.gz",
+      "state": "backed-up",
+      "size": 29343,
+      "sha256": "d9b326c9dca22ff3efc13d5dc99a1c0d884bb902f2efea94a42d8e1074f1f0ad",
+      "etag": "5b356b141ec05d5fe6da87e3763e5954",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/63.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/25.json.gz",
+      "state": "backed-up",
+      "size": 28869,
+      "sha256": "0d712ea7bd21bbe454d37be37bed8fd9ff8c1924178dee42e276c2c190a381a5",
+      "etag": "9d30a780787fd303b0e0045290ef2cb6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/25.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/11.json.gz",
+      "state": "backed-up",
+      "size": 29675,
+      "sha256": "c0fbf8f1a0a1206a2bff4fc80e33db117b0140bc33b2646916d2c769677e2926",
+      "etag": "c050111c124bec40001994f8137af945",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/11.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/35.json.gz",
+      "state": "backed-up",
+      "size": 29324,
+      "sha256": "f61e1ca054d9e9f390a86bc491d3b21b209ade64ce5e87efa6b649ebf0a02f0b",
+      "etag": "e874c41e81411844cef228b20d706003",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/35.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/01.json.gz",
+      "state": "backed-up",
+      "size": 29358,
+      "sha256": "31cf5b3244b271d72d0944ad305a118cc85edba6ded3f68aba50e27ea308f172",
+      "etag": "805331c36f7b06b13817f12774e12b88",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/01.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/bc.json.gz",
+      "state": "backed-up",
+      "size": 28530,
+      "sha256": "76e92e27a81d3b5e1a75b08a078ac2597ffc65ece5ff8e4b8261ed4e37d92cac",
+      "etag": "e74e7256600a4688209d836728e73f32",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/bc.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/cc.json.gz",
+      "state": "backed-up",
+      "size": 27884,
+      "sha256": "a280c9739365a871a3790182f97fac8a6b9825b598d6c1db39854c2a410dff35",
+      "etag": "3cf912892c2ac7b146eb5ea6518ec1dd",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/cc.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/0a.json.gz",
+      "state": "backed-up",
+      "size": 30638,
+      "sha256": "5bafed03427f7ba5d21b0929e777698c509a43447ac9d648bb670d0317b5ee88",
+      "etag": "ae766e43cfe0db489796c54ab4f2839f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/0a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/1a.json.gz",
+      "state": "backed-up",
+      "size": 32371,
+      "sha256": "d0e080e9936da93bbe16e22ac5aaea52b5bc06f7e20ad1f9dc5e1708294e8f3b",
+      "etag": "6efcf8aef9d0e873f6c45a2eed9739c9",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/1a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c3.json.gz",
+      "state": "backed-up",
+      "size": 28328,
+      "sha256": "c9a9072897e3a393d2dd66e2ec71f24dad0d9e9d7b40b44068be7433281f40ad",
+      "etag": "86d0ceea707da59ee9d5ad446ae8e2f8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c3.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b3.json.gz",
+      "state": "backed-up",
+      "size": 29073,
+      "sha256": "d7d1cab62b0bb455a719d47bf2f16b10f64018f1602b019795e3db0eb163293a",
+      "etag": "5c424063df599b38b5faf0742b976b14",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b3.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/97.json.gz",
+      "state": "backed-up",
+      "size": 28317,
+      "sha256": "bcf74737af2c7e46124c08451043f1546b5d538d39d9ec4e107fc6a6d8c703b4",
+      "etag": "43b35aa6f119d38df0ea10c6a6d4662a",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/97.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/87.json.gz",
+      "state": "backed-up",
+      "size": 30823,
+      "sha256": "ab14232f3736a7cba843acae4e10b489e8299cd98a2cdf956f4d9b697aad7d86",
+      "etag": "4c2490e78d3329f2ed0f13c7757b5f20",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/87.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d1.json.gz",
+      "state": "backed-up",
+      "size": 33370,
+      "sha256": "3b2853025c54ba1fc9ab8415cc0925c3ccd71afc0ebe43f38bdbad17f6c6caca",
+      "etag": "36ca4f0bf1fdc8691d696a3d543c5699",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d1.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/6c.json.gz",
+      "state": "backed-up",
+      "size": 29298,
+      "sha256": "efce26d921861c3cec20e572152e5fe83b3562f350c7b0d6da155f3d313b1be5",
+      "etag": "9cc0a561c5b0a31452f58ba5d95e59d7",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/6c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f7.json.gz",
+      "state": "backed-up",
+      "size": 30461,
+      "sha256": "9f8e64ac1e7247a88ddb027efc25c4cf863775432a55b9cf01895a16884f21ad",
+      "etag": "3db92cc0e2cb8ff8036dd0a2055246f2",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f7.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e1.json.gz",
+      "state": "backed-up",
+      "size": 31036,
+      "sha256": "7eae093879f8a7b77fa1d5ca2e98d29a91093600a47179a64a5d609a0a8e8659",
+      "etag": "a017162caa041f5adbc40026cc3601ce",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e1.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/7c.json.gz",
+      "state": "backed-up",
+      "size": 30107,
+      "sha256": "e9345d58344f8603a2dbb7d077546cae53fefe5113b34660b4a361f7973247f0",
+      "etag": "699ab135423e70bb5891bb3868842b3c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/7c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/18.json.gz",
+      "state": "backed-up",
+      "size": 29313,
+      "sha256": "a7f5fdc22a1b8947dfe3ac0b12b9a7784eb47896bb1b01ebf156f1e2ad1ce8f3",
+      "etag": "33b9f697330b87947e3f4e7729fe5d41",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/18.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/5e.json.gz",
+      "state": "backed-up",
+      "size": 28435,
+      "sha256": "6ad0186ee00c8507dcd4f7621d6c814d9368421d64e7f435759db823d6f4c525",
+      "etag": "3d3408cce2e21b47c98a0808f46fad62",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/5e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/4e.json.gz",
+      "state": "backed-up",
+      "size": 28589,
+      "sha256": "70e626086aa90f6e13b24406138359901b76c8c8c1718bd065dda14de66673f3",
+      "etag": "d306770561c99daec8b2eee2be6402f5",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/4e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a5.json.gz",
+      "state": "backed-up",
+      "size": 28892,
+      "sha256": "f6aecd7d8c4d1a60315d569f5b9570426e2b65efb5c13d4ca0cc918322f51a48",
+      "etag": "8ce835bab4aa65e37fe7473dc0f646b6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a5.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/08.json.gz",
+      "state": "backed-up",
+      "size": 27978,
+      "sha256": "da5b684bce34c63e09939bdefb11dbb67705229a515eb8a7636ce7bdebabf237",
+      "etag": "d23897ef65aab370f4f411466450968f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/08.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ae.json.gz",
+      "state": "backed-up",
+      "size": 28433,
+      "sha256": "bebee0540d0eebf81faa2766fb8ec0329e56ffdcc272dcd138643f900ed2342f",
+      "etag": "ef7d716d20c2e7c87a62e0714a6e9946",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ae.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/27.json.gz",
+      "state": "backed-up",
+      "size": 30890,
+      "sha256": "fd901d350aa9f2b73ab1494b9fcb65d5ab9e4c9f805c82f33b869a4f7113fdab",
+      "etag": "4807f79ed66663f339bb4f33a2dd4da8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/27.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/37.json.gz",
+      "state": "backed-up",
+      "size": 30008,
+      "sha256": "184d454e27ad8da42ce1d127349e38017ce49800e67674f2b7c2ca9060fa9e53",
+      "etag": "90ebe4a8377dcd7d7d7a70d787105ae9",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/37.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d8.json.gz",
+      "state": "backed-up",
+      "size": 28841,
+      "sha256": "807874dfdc1153423869ea2dc5e1cf5b641d7fa394a082e51d2e1e4a3e190afc",
+      "etag": "cf9261ad831f2b71fb0282dbb0d5af62",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d8.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e8.json.gz",
+      "state": "backed-up",
+      "size": 27120,
+      "sha256": "f370a902e10e67147a5dca486af7f57539fbd00cb92a07c2cc870dd348bbcd4a",
+      "etag": "44bd7697c6c2933925fd7c2256bba626",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e8.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/45.json.gz",
+      "state": "backed-up",
+      "size": 29256,
+      "sha256": "2577c4c60eec5fe7974952f43bfdbfe662e574f2a1c759884982b8af457a00d5",
+      "etag": "9390ea7cd9eb3648e7cd504db35f0273",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/45.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/19.json.gz",
+      "state": "backed-up",
+      "size": 30213,
+      "sha256": "cbe381dcf772e8ab3ef6b3a22fec906308d95194f07a66bbe73054c200a3a1b1",
+      "etag": "360e7a5b3ebd587eceee1f2039c1a713",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/19.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/55.json.gz",
+      "state": "backed-up",
+      "size": 29665,
+      "sha256": "ec45b9611260f40dcc115ce9ab6d602511eeb84a93d1dc6e056d1555c9cbe0a0",
+      "etag": "0e7ac8726c077f7a04f22dd147aa0c61",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/55.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/5d.json.gz",
+      "state": "backed-up",
+      "size": 31211,
+      "sha256": "e373a9ec89d0f5886a5283ec02181a19f39804b91443467343b108a67bb8bd58",
+      "etag": "00f252630be57e4740fc7e0a8269ca7c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/5d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/4d.json.gz",
+      "state": "backed-up",
+      "size": 28773,
+      "sha256": "c7d5b5351de3cacd90f93e5b236f377d6e5d2fd44452a40683079c1b83949a25",
+      "etag": "d487a06b6d65a818fa7c0e9b2fae1732",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/4d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/09.json.gz",
+      "state": "backed-up",
+      "size": 29734,
+      "sha256": "634761078b5ba43422839be5f158f061cdb62dea198773116176e28e253c5490",
+      "etag": "9c4f27fb5dad79144fd58155b9074198",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/09.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/3f.json.gz",
+      "state": "backed-up",
+      "size": 29882,
+      "sha256": "800f0ec910fc2884749613894e39f858173a305f59e137f8b1c9427de705c2bd",
+      "etag": "e5adf5672c1bb573f438c52f112d23c6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/3f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f6.json.gz",
+      "state": "backed-up",
+      "size": 29130,
+      "sha256": "49dc4d93bc76769deffe8592edf7063caaea311a7b66f01b078b559e749057af",
+      "etag": "f5eeda4aa1e7df91a7458e8587f9e90b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f6.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a4.json.gz",
+      "state": "backed-up",
+      "size": 29644,
+      "sha256": "de4c6284fd5971c862cae3669065dfd9499caee1ef99609bae74eb882876d9d3",
+      "etag": "089d85f34eb8736d6822a9a111697750",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a4.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/2f.json.gz",
+      "state": "backed-up",
+      "size": 28008,
+      "sha256": "b93b0bb706072efbf5120c3292114e1c2f124cd59d143fec3f6f9234d7512897",
+      "etag": "8b71968d1ca8ad446e02bfca22e1f3dc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/2f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e9.json.gz",
+      "state": "backed-up",
+      "size": 29614,
+      "sha256": "119a3d7b2dd61ef5f03c0b3726bccec115ab5a918d8b3f97560a56c63a5c4806",
+      "etag": "89853d0727545a12ca92e7a1374abe86",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e9.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d9.json.gz",
+      "state": "backed-up",
+      "size": 28706,
+      "sha256": "a19d399ec6737df94a67840619df5922815e9bc20ab50756cefb7afc2b9ec31d",
+      "etag": "5f92a4a2edf275d2877797437d6fdb6f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d9.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ad.json.gz",
+      "state": "backed-up",
+      "size": 28801,
+      "sha256": "8ea6e21e21ef0c0ade3d774409442cdc177725e570c3a3c0efc5f2ed2011b66b",
+      "etag": "94ea917e0e5fa859d735388d07a914b8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ad.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/36.json.gz",
+      "state": "backed-up",
+      "size": 29704,
+      "sha256": "8f24be4799b0277025968e086dd46f3bc02fe54f3ca3d89e7362aebf6b68acf4",
+      "etag": "871b5ea777906db5b065663f3877ca83",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/36.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/26.json.gz",
+      "state": "backed-up",
+      "size": 30475,
+      "sha256": "7995787062a22127599bf1f3ff8546cf1e79614c7341073ff2ca2f0d8fcf23f7",
+      "etag": "01a337ef2f698e12563d7b102567ec91",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/26.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/54.json.gz",
+      "state": "backed-up",
+      "size": 29359,
+      "sha256": "2cae65ab1207835791c34b6fb39bcfeb7b7a1109af29a8c936412ae67875dd75",
+      "etag": "753d2efd2779d91ef6c1423098aa44d7",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/54.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ff.json.gz",
+      "state": "backed-up",
+      "size": 30051,
+      "sha256": "5286bb19111c880319975e7211e2dd3818fdb542e546655fd445db18101a7ea9",
+      "etag": "292ba15958e52957ee1ffceedfdb36d4",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ff.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/44.json.gz",
+      "state": "backed-up",
+      "size": 28004,
+      "sha256": "7fb267e4ad918b676cdb7b15ee45b89fc177ad25e1875792f1c982a09c009947",
+      "etag": "fb4b76ac99edb99a39ee01b53bcb3239",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/44.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/8f.json.gz",
+      "state": "backed-up",
+      "size": 30510,
+      "sha256": "954972bd74bfa6d1044f3e44d7ec305406b151f6fd244b0b659f51fa650c0865",
+      "etag": "ebb3b967e795b1f9231224a97a3160c2",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/8f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/62.json.gz",
+      "state": "backed-up",
+      "size": 28962,
+      "sha256": "b0eb2a8bf43d281b479ef26f4a5065805328abd7de0495d7529f7b7a6d14dbb0",
+      "etag": "bab7a8b9ca2736620d63210111a074bb",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/62.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/9f.json.gz",
+      "state": "backed-up",
+      "size": 29552,
+      "sha256": "4971613cf085be45a86423176505d3769aefaa0887363b1bc1d8b3d180a87173",
+      "etag": "6a68c071abba28cbe74d3bfc6e0e6868",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/9f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/10.json.gz",
+      "state": "backed-up",
+      "size": 30705,
+      "sha256": "a8c80a566cfc921effb4c7ddf23ef31c71b329f966412d2a6565308b4f4d5ba7",
+      "etag": "e3abe05d36f67f89a3e0ea0b5ab16f04",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/10.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/72.json.gz",
+      "state": "backed-up",
+      "size": 29005,
+      "sha256": "04a03c0b0fb98fc2cbb930d8519f23aa15cabc03547f53b9506e69d35e0d9ae6",
+      "etag": "632acaef114fbe08d527336cc68be33b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/72.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/00.json.gz",
+      "state": "backed-up",
+      "size": 31292,
+      "sha256": "ea7c4abfb5ea8cecb7f2543e91e171e7beae0534694b36163dda369eb67aff05",
+      "etag": "ec4489aff321fa610ec46567f1601b11",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/00.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/bb.json.gz",
+      "state": "backed-up",
+      "size": 26228,
+      "sha256": "50bd296ea19370339e9b652406724728ee1e5014aa9d1f35020ee1e0fc2db7a9",
+      "etag": "6a5c5b4943039cac8df32aab0c8f3e22",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/bb.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/cb.json.gz",
+      "state": "backed-up",
+      "size": 29585,
+      "sha256": "1f2352ec8098ee32246425f4be27f9b6944296d61055710a118307005f435cb4",
+      "etag": "5e5a2f61d25d651ad8e9f5c3a2f74efc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/cb.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b2.json.gz",
+      "state": "backed-up",
+      "size": 29754,
+      "sha256": "c6abccb5fef8ec214da983438027c9274f58af6c5ca3d7e24cabd1c68fbd676b",
+      "etag": "05df1b6c9152f1ea7345b243cc14e595",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b2.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c2.json.gz",
+      "state": "backed-up",
+      "size": 28722,
+      "sha256": "fb4d852e1fc2c13da9cde24252388528d223c2324c801d13d3b0940e55d7ee26",
+      "etag": "ed02bedbadc631f0a2fc22583e568afc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c2.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d0.json.gz",
+      "state": "backed-up",
+      "size": 29526,
+      "sha256": "8f46c359d62f925b8f73b726abf6ce0de3122e31b977c612d1dc9a8a069cadf5",
+      "etag": "01f8770c468fee93c5aa0ec187568299",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d0.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e0.json.gz",
+      "state": "backed-up",
+      "size": 28767,
+      "sha256": "eee7db6267129eac9eb6ccc4a4370799e5d6d4741d09c21b44d3926aaff2ea04",
+      "etag": "f09fc074c90c5378423de77b5190ecb2",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e0.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/96.json.gz",
+      "state": "backed-up",
+      "size": 31541,
+      "sha256": "a9918ae8427160aa60005bde219a5fc1f8f745362c82cf4e38a12b00b29ea818",
+      "etag": "f6a145e49a487411525d176efb46d6df",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/96.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/7b.json.gz",
+      "state": "backed-up",
+      "size": 31298,
+      "sha256": "8ee135af9ac85f2949b10484ef1ca21a2808c403d5c3bd425746afe8085b3ffc",
+      "etag": "df98cf421248b20b813ead645465ad25",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/7b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/86.json.gz",
+      "state": "backed-up",
+      "size": 28445,
+      "sha256": "ebba4f837030ca5018706c96ed4bfa3feaf8c35c34720c9d8aaaec483df48418",
+      "etag": "b4e1fd9f00ce5b22c6270338c02ac7cb",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/86.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c7.json.gz",
+      "state": "backed-up",
+      "size": 29401,
+      "sha256": "08c9112abdbfb5d9c91816fcb16c09c6c8bdbeaa413d631bfdbc437982da3d47",
+      "etag": "3b12bba4832213765d0fb4b4ec6e2f61",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c7.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/48.json.gz",
+      "state": "backed-up",
+      "size": 30803,
+      "sha256": "ea006eb4acbb8c3ca92ccd6158ff5402cfad6eb44e4b63e432c6ecf4e17394ac",
+      "etag": "5d8a1b6990f3bc6bcbc54012b40a03d0",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/48.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/58.json.gz",
+      "state": "backed-up",
+      "size": 30541,
+      "sha256": "f197ab28ea0dbe7340975cf2572c38f28d888a38b161abe01fb65b4a5395c7de",
+      "etag": "3871b9deea598d1c0d0c4c83587c03b0",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/58.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/6b.json.gz",
+      "state": "backed-up",
+      "size": 28455,
+      "sha256": "c405d78b3fdbb59a578b53212431498e8977599881ef44f39431d1211b6fe5a2",
+      "etag": "fe713803eaaeb02fd60bb2e4718c17fe",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/6b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/1e.json.gz",
+      "state": "backed-up",
+      "size": 28890,
+      "sha256": "2673f9f0ada90fbfea7d276b6edc3ac74378851e3848578473065a48bfc48ac8",
+      "etag": "66084babed54dc042c15d4d5fa76774f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/1e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b7.json.gz",
+      "state": "backed-up",
+      "size": 28786,
+      "sha256": "81ee8a9355934ace0c4932b1756166314b0e322eba1b8143dca39dae33a235b1",
+      "etag": "2725aac2b20c74cb31d73a7e4caacd6b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b7.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/0e.json.gz",
+      "state": "backed-up",
+      "size": 31375,
+      "sha256": "ac7777aecd877bc484560d537a59d60d137358636d10a8c4b923034a767ef42a",
+      "etag": "c5fdfe4882e322bd24705f5e1b8b4237",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/0e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e5.json.gz",
+      "state": "backed-up",
+      "size": 28824,
+      "sha256": "a5696f9b619d50240b5f2ae4bbcdf395b4a210f633a4fe3e52f846657badee3b",
+      "etag": "5e1077123c07f926542a61516c8341f8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e5.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d5.json.gz",
+      "state": "backed-up",
+      "size": 29095,
+      "sha256": "5652ae94465b5c912b7dd92e5ddcbeff3d2ddb9ed110d2a8b5bd49e862d7a00b",
+      "etag": "14f1f1c95d03d815588013e067eba7b3",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d5.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/83.json.gz",
+      "state": "backed-up",
+      "size": 28224,
+      "sha256": "92d3934a07986ac8ac67b50a39a30660c3bd8aaeb3cd16d4eff58cb13ccff110",
+      "etag": "4fd48b870d7e150b9171f0721cd01001",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/83.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/93.json.gz",
+      "state": "backed-up",
+      "size": 30749,
+      "sha256": "152f2467ddf30ab610c4a707e00a3ae6d436e61eb73e07976e9d79c97dc16298",
+      "etag": "90646412f24eb7fc034adb92746e2a7d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/93.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a8.json.gz",
+      "state": "backed-up",
+      "size": 29489,
+      "sha256": "c3f218904e96204421a0f67c52016e9e4ea572be3bf5c9d035775d9ac193dd7f",
+      "etag": "3a979d5b1e72bc24d2621dfcacdface8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a8.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/67.json.gz",
+      "state": "backed-up",
+      "size": 30113,
+      "sha256": "437eca7e0235a6e8eb5fad1ffede290dd4254c03505547af63f5e6b6b4d783cf",
+      "etag": "77fb1694f2856e856f08c429da740737",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/67.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/77.json.gz",
+      "state": "backed-up",
+      "size": 28660,
+      "sha256": "9ff63a39519f30ceaec2e3c3b328223f8e725374edf8dc5bd9f1a4cb9f789d3f",
+      "etag": "3bb83c6d8971369e56546e26a02aa5ee",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/77.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/15.json.gz",
+      "state": "backed-up",
+      "size": 28645,
+      "sha256": "e1756772cba5936ec51ebe4da9319bbd226e8a15909f55b6f281e90d617ee56e",
+      "etag": "190b43d394f5806c021892777b39952a",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/15.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ee.json.gz",
+      "state": "backed-up",
+      "size": 28592,
+      "sha256": "05af90d60e997aa9c9112d81392b04401791495208a42435b261e00008ba4df5",
+      "etag": "05c20d6b883c50c8dc4ee7a7b1cc8571",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ee.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/de.json.gz",
+      "state": "backed-up",
+      "size": 30439,
+      "sha256": "98b5334f6f8f5b38f0553e5db95aa416581724c4a6c9ce641dbcbc35e3cafca3",
+      "etag": "ef3f1600c10178eb37a19dbc7a444754",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/de.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/05.json.gz",
+      "state": "backed-up",
+      "size": 28007,
+      "sha256": "5e6be063d9b6e0034c431573f368a269cf2b1a858cc5913ec71446c2daeb9126",
+      "etag": "892808d41430a0c7d3a0cff1f1f06daa",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/05.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/8c.json.gz",
+      "state": "backed-up",
+      "size": 28755,
+      "sha256": "94dbdea927f4ef977cb89f1203cf2686bc23def73585b2dce1d7549c2cbfba68",
+      "etag": "60a3819eff6fbf00c833b8092e205582",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/8c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/9c.json.gz",
+      "state": "backed-up",
+      "size": 30848,
+      "sha256": "3c1450785f81a501468112f42203241785ff3b400d819bf3abc1bc63751ebd62",
+      "etag": "2dcb8aaa787a1f20e2411bbe1efe4efd",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/9c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/fc.json.gz",
+      "state": "backed-up",
+      "size": 29157,
+      "sha256": "e2734c6e8329992ed3eb86c5f4ff3c5a471e2418b58cb45410870138d5df230b",
+      "etag": "4f2bbdb01805e9de2511293e9284e2e3",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/fc.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/41.json.gz",
+      "state": "backed-up",
+      "size": 28901,
+      "sha256": "cd69326e2bdaa71566c231a4b8716c275237cd19f3d99b2832a278b419b50870",
+      "etag": "956dfa0538ca208504f1ae4cde2a679a",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/41.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/23.json.gz",
+      "state": "backed-up",
+      "size": 29477,
+      "sha256": "c6960f238fd307132f71d38d75dbcba841af42efdb99802b06186463c4758368",
+      "etag": "2948cb804ce7825946c24ff3d3272e0f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/23.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/51.json.gz",
+      "state": "backed-up",
+      "size": 27652,
+      "sha256": "a919e023741714be51ac59e78f2f05ded8d4f0409d379872b326b20262f80439",
+      "etag": "a9c9b26f889bc445492d8b7aa97cbbf3",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/51.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/aa.json.gz",
+      "state": "backed-up",
+      "size": 31079,
+      "sha256": "5d9008aa28dd4a9be5f6a3a459f8dfe0fe4f79d303cf2d6c65be8beaf346e59f",
+      "etag": "953c9833240633b5e9c3ab5555fb4c8e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/aa.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/33.json.gz",
+      "state": "backed-up",
+      "size": 28768,
+      "sha256": "e8c61ff57874c7ec9565438c1c94114c4a23fb62a2702ec483a48577dad4dbc3",
+      "etag": "74f4c4cb869c52a66bda9c4dffb5c5c3",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/33.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f3.json.gz",
+      "state": "backed-up",
+      "size": 29366,
+      "sha256": "49bc3763b512be85ad5639430d3e6ebc55c72ecf51ef4b7646f9a4a0cca13228",
+      "etag": "c56b9c54117dca66d2c0bf6e4d388ee1",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f3.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/2c.json.gz",
+      "state": "backed-up",
+      "size": 28996,
+      "sha256": "b3d66ca97c3cfb06e6fef7f1f0db4e0d6db74ff33f050c1cc6d2847e5cb3e694",
+      "etag": "651c4f4dd30a39cc99245282c8b2afe2",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/2c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/5a.json.gz",
+      "state": "backed-up",
+      "size": 27486,
+      "sha256": "f1036339e195ddc791d3ecf9025e1c54186b332847f1a545879581212129a716",
+      "etag": "fd881ea4b571ef9da1def0e6d9757794",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/5a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/4a.json.gz",
+      "state": "backed-up",
+      "size": 29761,
+      "sha256": "8b6f30ebc129d9d00cbb581ecef4562130a75343483bb5a81f87c0e6f77ef4ef",
+      "etag": "547e769e6d9dc6729c4a7de44f4f8c8f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/4a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a1.json.gz",
+      "state": "backed-up",
+      "size": 29437,
+      "sha256": "1205b89f352e9c4415ff91aa07ef1d2802ddfe596486dcbecdada1bc14544ea3",
+      "etag": "03dae94ea14baef675c58936b1818a10",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a1.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/3c.json.gz",
+      "state": "backed-up",
+      "size": 28816,
+      "sha256": "72f03fd164cfd1f1814aae24b0af0ed73bb619b1a9259cedf4f7756bc5116c83",
+      "etag": "fb38ffd3a23f4dde2ea3b7e4bf181d84",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/3c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/22.json.gz",
+      "state": "backed-up",
+      "size": 27957,
+      "sha256": "30364c90608f7a60940ec01e0c6e71e526811164c2d7629c1d035db6c7fc9082",
+      "etag": "2c7c5c2eb48f1bf2a8f0a8461f29284d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/22.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/fb.json.gz",
+      "state": "backed-up",
+      "size": 30904,
+      "sha256": "79ccc8d92398f67adfc7a481889610375b86c592f6c78b547a94b60621d5f617",
+      "etag": "c4ce1c01411ac646a4a0550c63c95168",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/fb.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/32.json.gz",
+      "state": "backed-up",
+      "size": 31178,
+      "sha256": "d8a71c3b70de5b0e7a8d6b35cc18eba342d2f8cfe711584870d6b62743365b45",
+      "etag": "88ff1d99cbf248736595fb4700e33026",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/32.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/50.json.gz",
+      "state": "backed-up",
+      "size": 27645,
+      "sha256": "51188025529d3213f1bf11958c111502dd19d721dfffca3ab19ea6a87aee3f6a",
+      "etag": "4512fe0f9d1c820792bc4b0865efc900",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/50.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/40.json.gz",
+      "state": "backed-up",
+      "size": 27953,
+      "sha256": "f0cc0839f2c51a37d987246fc6b0f92307c9c1bce4bfc6c10393bcfa97c869b1",
+      "etag": "03491eab2b724397c708999e9e32ac0e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/40.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f2.json.gz",
+      "state": "backed-up",
+      "size": 28508,
+      "sha256": "5ef12cf77292efb2cac2ab6453c309f38d6f7c2c51d7857b082fd7e81fd47d8e",
+      "etag": "cc0e1810163da6681effc705af0a5d99",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f2.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/3b.json.gz",
+      "state": "backed-up",
+      "size": 29688,
+      "sha256": "c26a497f325f7497847878c6897569469b0d0f080f30efeab569f42e00604519",
+      "etag": "c7055ee067683db6203be374756b6e28",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/3b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b6.json.gz",
+      "state": "backed-up",
+      "size": 28569,
+      "sha256": "ab8f6a60abcdab4dd1ecf6ccda146a26004e2dca430db36a91e4396704c7a865",
+      "etag": "137c729a40f886ceaecafd4989f98c39",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b6.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/2b.json.gz",
+      "state": "backed-up",
+      "size": 28844,
+      "sha256": "b7eccac919f4d93ab0e47ec3e29a92cf97da498a8262c95bb2e72e37d93b6052",
+      "etag": "611631134c54fc9362e9f918b22ce793",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/2b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a0.json.gz",
+      "state": "backed-up",
+      "size": 29873,
+      "sha256": "921ef8e80cb06e8a0a9854e040c69df5bcf279c4efe6cefd61f64d198e9ba78b",
+      "etag": "45a1298961dd812fc1deab3dc8934eb4",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a0.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c6.json.gz",
+      "state": "backed-up",
+      "size": 29258,
+      "sha256": "025708f6a2f83253c49608dfb779122c99a8bd3f370c66287689fddabb941a9a",
+      "etag": "05f51056e571a8e0d12748eafa5f178e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c6.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/0d.json.gz",
+      "state": "backed-up",
+      "size": 29080,
+      "sha256": "a6dc3a5adf2acc1ca53101229e0401d14a87c0f161b7e192b557abd725f689cb",
+      "etag": "cb6ae3fc9016b06a9530e90bc560bc95",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/0d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/1d.json.gz",
+      "state": "backed-up",
+      "size": 26881,
+      "sha256": "7abebb117315c6d684cf6bc88786700cb46ad1fcd1868f0d90b85cfaa522f08d",
+      "etag": "8194ffbdd0afcf7650444dd564cafb23",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/1d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/49.json.gz",
+      "state": "backed-up",
+      "size": 31415,
+      "sha256": "69cc69492c8efb5f63bdaad90a58f7ee0592791b8a054c6ce37d1979b692959e",
+      "etag": "160c44dfcba2d44e0464becdc446589d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/49.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/6f.json.gz",
+      "state": "backed-up",
+      "size": 29459,
+      "sha256": "e0f86e417e0e2fab07faa09363024e5e3adeb391138f812dacdbc0bfbfffbb67",
+      "etag": "bbeeb27647f398190d1fef2f4053b933",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/6f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/59.json.gz",
+      "state": "backed-up",
+      "size": 30281,
+      "sha256": "230de44b65894da01650c25d782d5ca9700dfd32609e2314db1b2671c90210c1",
+      "etag": "b7133ffa78351680b1d19bb06752381b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/59.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/7f.json.gz",
+      "state": "backed-up",
+      "size": 29525,
+      "sha256": "c21254e641fb1c152c00651bed103e3fd504bc12e795395197bc62c3bbe623b3",
+      "etag": "7b94c5cf79c8ed13ded5399483b80558",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/7f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e4.json.gz",
+      "state": "backed-up",
+      "size": 30581,
+      "sha256": "065631d6e98e98e35347ae07ec03051f6ef5fc9c418caad3b0220cd72fe79ce5",
+      "etag": "a765d615d6c28aef4050f26f65d49a27",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e4.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/92.json.gz",
+      "state": "backed-up",
+      "size": 30292,
+      "sha256": "65a6c8241a3b6adbbffcee431524bd73d833a11fc66fb07bc699d7a2d6a6fb47",
+      "etag": "d8d0cfc736b8f3b3f148b41a324f4fe7",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/92.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/82.json.gz",
+      "state": "backed-up",
+      "size": 30172,
+      "sha256": "e70ff9b4b98ba733da57fa7e1968545acf476be8ab2684fb0af23d8b4b8c7b69",
+      "etag": "13218767521264cde67992c2dc0e5892",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/82.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d4.json.gz",
+      "state": "backed-up",
+      "size": 30425,
+      "sha256": "ba7d8e3cb6bc542b7b22707efd6cb71f81c21f06b7d2a6c242afff924a1bf087",
+      "etag": "3845d56499799de298c86d1630ade78d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d4.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/66.json.gz",
+      "state": "backed-up",
+      "size": 30300,
+      "sha256": "04eb1ec022c9f9ce6d861f1df8b098f2705f5bb419618a87be53c49dcb5b6510",
+      "etag": "6d27992c0dd0ec5fcd74237673b33d5f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/66.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/9b.json.gz",
+      "state": "backed-up",
+      "size": 28719,
+      "sha256": "597b9a2bfdac494dae7cfa83ec6d83c7367dfe59dab45f6b9102908bb3648fc5",
+      "etag": "eba98a3586988b13dd9fadd473f62cca",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/9b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ed.json.gz",
+      "state": "backed-up",
+      "size": 28665,
+      "sha256": "d1285e53aab4481fddda41aab98852ae6c6393fd88b1cd8cb5d8699c6fb65eda",
+      "etag": "d5c8145d267d702973e580578ba5ae1d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ed.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/76.json.gz",
+      "state": "backed-up",
+      "size": 31761,
+      "sha256": "1feb775a9a48284c7b4b8dadd8dfbdd10db0ab9969b20d507dc4c2a491b676a5",
+      "etag": "4a5baa593d3f5cb8c0b5b0425b7e4b66",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/76.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/dd.json.gz",
+      "state": "backed-up",
+      "size": 27405,
+      "sha256": "1ace6fa32064766cbd6595e9c031cb18b93ab5ee78e63560e48c170ed9b0d7bd",
+      "etag": "96f90108b1336596aeff57b8556b26c8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/dd.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/8b.json.gz",
+      "state": "backed-up",
+      "size": 28876,
+      "sha256": "1eacbdb25b03d77ae537210e395f977132a5d789c99418e91b26fd0b88e19b82",
+      "etag": "991c0f2cf04ed1fba3258c5d611626e6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/8b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/bf.json.gz",
+      "state": "backed-up",
+      "size": 28058,
+      "sha256": "374a3039c5f58cfcad5c78b80168d941c04d8dd386effbfda358e01c1a2f38d0",
+      "etag": "7f75c53bd8b79833ffea72a50ecc9399",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/bf.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a9.json.gz",
+      "state": "backed-up",
+      "size": 29729,
+      "sha256": "fe3a62f83d1f54b024efc4f379e1de1a692badfc508e0769a283dbb1752d244e",
+      "etag": "e7050da53b0ba78c9f792a435e847b03",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a9.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/cf.json.gz",
+      "state": "backed-up",
+      "size": 31500,
+      "sha256": "ef8881e66df2bab3155cf470da5a0ca4a0636c9163acaf66f8a01d186f4b0652",
+      "etag": "1e36166ccc821c46c5787b382fc4ad11",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/cf.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/14.json.gz",
+      "state": "backed-up",
+      "size": 31379,
+      "sha256": "3a08495ce546b279868addff6132810b739b2a3f2d8343b16822bb78918e2734",
+      "etag": "5586530e43e8a38c533fc29ad775ceb9",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/14.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/04.json.gz",
+      "state": "backed-up",
+      "size": 30444,
+      "sha256": "08ee8153352a58d0905bf21238cefae7353a944498d16670420b924c3a1d55ae",
+      "etag": "7c41f05ca97d5af9184096da426b231a",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/04.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/42.json.gz",
+      "state": "backed-up",
+      "size": 27534,
+      "sha256": "ec765c9b494e86fba2fff01daf73f57fcc9e5268b255079cb25dbc5d97adc1a5",
+      "etag": "c10df7b881dc532e973dba37afeac222",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/42.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/52.json.gz",
+      "state": "backed-up",
+      "size": 29105,
+      "sha256": "96a101830789a1826e282b1449dd060134547581f97a9b80e820dc898fd4711d",
+      "etag": "dced77f8bc8e2711fddd5456e6b8f44c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/52.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ab.json.gz",
+      "state": "backed-up",
+      "size": 30081,
+      "sha256": "7cbe4800bba08e34af6977f66940755013af7c9c5474830d09a1fb5d192276a5",
+      "etag": "c886a857ab93e3b63b575e6ac40b0228",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ab.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/20.json.gz",
+      "state": "backed-up",
+      "size": 31446,
+      "sha256": "a90ac51df042068ad62b2de86911c74bff22b21b05af7e5d62c03ef2a6a11075",
+      "etag": "c835ca4c542a2c505466aedfce8487b5",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/20.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/30.json.gz",
+      "state": "backed-up",
+      "size": 30923,
+      "sha256": "271a6693c0605bd1218718c4e22946ed17292c04fb9dba45ccd25d2024b7e01d",
+      "etag": "cefe8d93a068d82ca3370c497b7e33de",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/30.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f0.json.gz",
+      "state": "backed-up",
+      "size": 29467,
+      "sha256": "086f7b48696ef4b499ea5779270a2b99d5d44853ec5ef87b948213bfb15b08c5",
+      "etag": "f6b8130d4006afbf2277724cee12edf6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f0.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/99.json.gz",
+      "state": "backed-up",
+      "size": 30264,
+      "sha256": "d37bada2f12471ebe8f0291fe1396b23fd2de8bf10771dc2ed55007263e19f3c",
+      "etag": "c6f633fee566e0fdebcd31f7c11faa30",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/99.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a2.json.gz",
+      "state": "backed-up",
+      "size": 29702,
+      "sha256": "72814be33e9ae32bc78e118728e7145ebe08dac764b1e71a5fd3ba1681d8002d",
+      "etag": "e51c06ee37ee9d85e56683f26d3bcdd8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a2.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/89.json.gz",
+      "state": "backed-up",
+      "size": 29436,
+      "sha256": "99d7aa36cda807c4a74e9dfd629f84f9bd481ff05124f7fc0286761cb5f5d0b4",
+      "etag": "f38070ee18394a3e6dbe85618368b7f8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/89.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/5b.json.gz",
+      "state": "backed-up",
+      "size": 27056,
+      "sha256": "dc9557762b0ebc41e7dd5a417ee5b293606a29cd2cdf9fe39bcb1961239a99fb",
+      "etag": "1954af759f7d93b2b77309ab3dadf499",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/5b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/4b.json.gz",
+      "state": "backed-up",
+      "size": 29512,
+      "sha256": "3d76779f7f2df8c2a7fb886622e113e142b2ce45646129921d9a8409cdf9e7af",
+      "etag": "44f9bac26705ea3f5c69afb9ff390792",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/4b.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/39.json.gz",
+      "state": "backed-up",
+      "size": 30698,
+      "sha256": "aca8827915b23395f0e0f2e1fa31ecd9a256a293eff2507ca154f4f9ec174af7",
+      "etag": "e6eb00463c8fcf9611096ce4d4d0409b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/39.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/29.json.gz",
+      "state": "backed-up",
+      "size": 31018,
+      "sha256": "f4cb455b0c2d4382ca0a6d500b6c9b1564de845e7f52586f9a479b55ecb3bdf3",
+      "etag": "008930522296d47f54f53d6d0b579d51",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/29.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d6.json.gz",
+      "state": "backed-up",
+      "size": 27467,
+      "sha256": "d8c062172ca8347d25b61951071db519fb4f5c7662049e50aee2d70a46964fc0",
+      "etag": "0c397ab441388652bebba416cb4c3ecd",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d6.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e6.json.gz",
+      "state": "backed-up",
+      "size": 28392,
+      "sha256": "e828b43f45bb48223b052ec5a68ec61cedad172b6c5a58c0c7ea83c32f81cab9",
+      "etag": "cad93ee1e48bb98344b5fc0479f1f05f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e6.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/80.json.gz",
+      "state": "backed-up",
+      "size": 29252,
+      "sha256": "d1843ec421f8a84e9bbd8663f9e5562ae3b0c6867a3c65905da73e3ac9115a5e",
+      "etag": "8fbef8846776c2cb97c8cf3674b23e87",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/80.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/6d.json.gz",
+      "state": "backed-up",
+      "size": 30102,
+      "sha256": "c7bdbd2666c2cee55be628d5974249912288851911fd356f93ac872cd74bc310",
+      "etag": "24c7fc60cab37fde7e1b3b065eddee0b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/6d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/90.json.gz",
+      "state": "backed-up",
+      "size": 30001,
+      "sha256": "e1e9b79e6f341f56c8f84dbe7e325642a2145f891724ffa89a2d7f0ae3829b77",
+      "etag": "df889bd761987d4ca87916b9de7c9c0d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/90.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/7d.json.gz",
+      "state": "backed-up",
+      "size": 28459,
+      "sha256": "b4d88c96de607d222db9fe7b6911826d3fc889e233f1e88d9007ecdaa02a3b52",
+      "etag": "67faa90ab945875595d679aa2cf65e00",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/7d.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/0f.json.gz",
+      "state": "backed-up",
+      "size": 30873,
+      "sha256": "99b0fe695f9b9528f0c823288bf44120bd9a39d32e928c0daa23ee39da2af33f",
+      "etag": "578db60773e59957118af39998e0ab4e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/0f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/1f.json.gz",
+      "state": "backed-up",
+      "size": 29438,
+      "sha256": "35668668016d6a26d1892e296302662b006b686adbbe39efc4ee8cec873a8f1e",
+      "etag": "8320df91f5f922b1396e03ad113cc01c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/1f.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c4.json.gz",
+      "state": "backed-up",
+      "size": 29147,
+      "sha256": "55a0dca8784f74d91642a0cedc8c807c79d91438c0c3fbf0214dda829423e44b",
+      "etag": "e2fdf18f5cafdaf404327b749e64d8bb",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c4.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b4.json.gz",
+      "state": "backed-up",
+      "size": 27990,
+      "sha256": "2909ec8f938bfbe74ec88d45f2ef501f0ca2c8f9a2738aec2817cbc5997d7082",
+      "etag": "f1d0d2311b4e1586469d96c3b75908b5",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b4.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f9.json.gz",
+      "state": "backed-up",
+      "size": 30172,
+      "sha256": "7a729b4a4c5f62f8067d25789a7dff17b223bbf20c13935d82414ee056a060b4",
+      "etag": "d666fb512ea3df85c30cf04850d4c053",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f9.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/cd.json.gz",
+      "state": "backed-up",
+      "size": 28193,
+      "sha256": "7a9bfe364228b6d550da6ba2fbd343cb096ba9c5f9b33aff31d1ee352ed06edb",
+      "etag": "06402c92824e9622a40e66c35a40c92d",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/cd.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/bd.json.gz",
+      "state": "backed-up",
+      "size": 29237,
+      "sha256": "4b0ebb3d1a7b354f589b31ce6d300c84fc8846b52f3e5ddb1f61e8b9192afcd9",
+      "etag": "9804f836f4f5412d0a1c9e07b657a625",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/bd.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/16.json.gz",
+      "state": "backed-up",
+      "size": 29595,
+      "sha256": "58edfe7c6e83cdf750b4a9d6076edfb18e2bf8ec888ee3707f9243091875cdb1",
+      "etag": "f290efb4a6204e56427f97a7aa2c5d98",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/16.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/df.json.gz",
+      "state": "backed-up",
+      "size": 30042,
+      "sha256": "750498cfa1220f322a7199c5751346fed45c3abb56ffaa333ba2d4ed372a9ecd",
+      "etag": "e4c7b440d18709bdda50c883788a4f95",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/df.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/64.json.gz",
+      "state": "backed-up",
+      "size": 29427,
+      "sha256": "b21d5dee88a2ee593bff61800d7c7f854ccec74551933073aa395a2c3e9ae00b",
+      "etag": "4d0cfdc0e3877d2616b1c3ca298a6785",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/64.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ef.json.gz",
+      "state": "backed-up",
+      "size": 30588,
+      "sha256": "f7b9797158d2cf4a274a6e878f79f00fd338a52013edb91ac8f94020bdabed69",
+      "etag": "6f7cbd37abdba43fb707521a4ebf4b41",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ef.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/06.json.gz",
+      "state": "backed-up",
+      "size": 28022,
+      "sha256": "b30e97466f8661d9eeeb1f539f5bc0cffe5a924a0ef9b852da61fc36c307cc68",
+      "etag": "9d4e7db75cd97c4e7c69ab59d9448322",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/06.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/74.json.gz",
+      "state": "backed-up",
+      "size": 30099,
+      "sha256": "31b4f7b5e1b0187abff86ee1ba4da72843e8f6fe550af74d497955287a50c85c",
+      "etag": "cb9d6deeb5ed243394a3490535d9c6c5",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/74.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/81.json.gz",
+      "state": "backed-up",
+      "size": 29120,
+      "sha256": "2d3a23d08d06e017402afd3b366cc7d5576fd35fc29407d435ba727f0fa77f86",
+      "etag": "645c3cc9b3209979c806645d73d849f8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/81.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/91.json.gz",
+      "state": "backed-up",
+      "size": 27557,
+      "sha256": "844efda74ff93759cd7b96dfe8592200e1c75b1cabc4fb6a92fd6df23de88de6",
+      "etag": "cef5be090935a3a674845a6ad782bfcb",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/91.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/d7.json.gz",
+      "state": "backed-up",
+      "size": 31608,
+      "sha256": "3ef029e00430f3852db4aee189247f3cf31d28618ff31c4b2bb9814ca57811e7",
+      "etag": "c08a3dbef0aad17da0dab954fdb6daba",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/d7.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/e7.json.gz",
+      "state": "backed-up",
+      "size": 28683,
+      "sha256": "78a1238265f3c49a3486cca0743a630c28506aab613eb99a260e1120b72660fb",
+      "etag": "3a7d7473a7e282411b2c585a05776f0c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/e7.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/7e.json.gz",
+      "state": "backed-up",
+      "size": 29799,
+      "sha256": "d55fdf34a7ac432e4c43169fa0a4587c57ddb9d3686dc52b4013ac121748ed25",
+      "etag": "65df917835d6baaf5836b6effc2aedc6",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/7e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/6e.json.gz",
+      "state": "backed-up",
+      "size": 29386,
+      "sha256": "2b3fc5b7760acbeddaf3db591950ab8b5cf88ecb65d68cd870ed6076d58d448e",
+      "etag": "6799c7fd532bf7f1f624831dc2d8c4c3",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/6e.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/28.json.gz",
+      "state": "backed-up",
+      "size": 28471,
+      "sha256": "d4669d40e1cd7be21432fa88809f4336f4d5cd93d8a211eaaa303f997e9708a4",
+      "etag": "9b8c994924085b3b2266754837a92075",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/28.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/38.json.gz",
+      "state": "backed-up",
+      "size": 25937,
+      "sha256": "5ac9909f42676946ed8280813f4166abfa47dc785f533d2232391da7cbbe0cb8",
+      "etag": "8484e7959a65a3b58c40a20e7c43f82e",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/38.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/b5.json.gz",
+      "state": "backed-up",
+      "size": 30582,
+      "sha256": "95fbf30c2ec6ac2e74675e9a8fe78ae66f2d64124c8eaa72a1e736cce110ee96",
+      "etag": "74fca3d2bfd63f749d72c52b91018767",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/b5.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/c5.json.gz",
+      "state": "backed-up",
+      "size": 28511,
+      "sha256": "081c539f2c5abdb7ab9568d9599fe0a55d6efa6325ec2a56ea250990d04b7338",
+      "etag": "71fb001cf2c5ec662ef788ddcd411760",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/c5.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/17.json.gz",
+      "state": "backed-up",
+      "size": 28887,
+      "sha256": "dddc51594de56af4caf2c4ac2b315a72cca2dd651adc361481c51fc213fb75a1",
+      "etag": "23fefe67f1f8fc3935006fea1e840bb4",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/17.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/9a.json.gz",
+      "state": "backed-up",
+      "size": 28825,
+      "sha256": "f6a9d6bb036720d89049233a33a7dd537db979be155c31e41098aab3c3efa991",
+      "etag": "4139b94a7eaf94bed871ae19af37d5bc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/9a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/8a.json.gz",
+      "state": "backed-up",
+      "size": 27288,
+      "sha256": "26cc68bfb5dc22dbdb024a3d3c59af001bcf28149894e0be79c8afd586872a45",
+      "etag": "95e8c574e17f79f84f17640c7e801545",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/8a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/be.json.gz",
+      "state": "backed-up",
+      "size": 29387,
+      "sha256": "593a9833ce8b04ee53449e7322f80ea2869f09adf9ad022b1524f6078872e4ea",
+      "etag": "5887b1672cceb8339e93bda02ab22d20",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/be.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ce.json.gz",
+      "state": "backed-up",
+      "size": 28942,
+      "sha256": "98d721aae9dc69214c87358218c1dde656dd02bcbf2b4168e7572bc7dda15126",
+      "etag": "ec1467fdef62185278fe63e646e02b4b",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ce.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/75.json.gz",
+      "state": "backed-up",
+      "size": 28443,
+      "sha256": "ba2c890b87ab9507f8f18012370dce5073e93ff69edb0ecf242a97433b216487",
+      "etag": "57ce137e439f4f50d77be2f92b31f462",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/75.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/07.json.gz",
+      "state": "backed-up",
+      "size": 32051,
+      "sha256": "6a9718245caadcd7041b57b9fb9e39cc9ea7baa0eb568a7fdb7330bbc5a1ba24",
+      "etag": "caeb180b9b80a378d85861b618329775",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/07.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f8.json.gz",
+      "state": "backed-up",
+      "size": 31887,
+      "sha256": "08fbb02acc8912089e99ffaf820b402a4d603c7d2b2c18d2fe4f77f43e468824",
+      "etag": "fa667637c30073c2b27b4de8404ecb9c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f8.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/65.json.gz",
+      "state": "backed-up",
+      "size": 29540,
+      "sha256": "285b387c8f884a5ff5ca1583c534ab97cb75ebbcdf7fe5e164e9811ee31e0258",
+      "etag": "3da871f150083a19e8bb7ddcbddfe8ce",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/65.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/53.json.gz",
+      "state": "backed-up",
+      "size": 28295,
+      "sha256": "721c1a863d0c6eb8de357f69371560a50b8308919f03eb283356806893557f4b",
+      "etag": "14bc80bc2b104bae291f7acb6bf574f7",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/53.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/43.json.gz",
+      "state": "backed-up",
+      "size": 28242,
+      "sha256": "dfb3ffd97bc8641d90ccd729a9f96e3cbdb10066465ef516e0c40dfc5a8c0a67",
+      "etag": "eade50ce0ce92620cd6e5ea9f42c8fe8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/43.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/fa.json.gz",
+      "state": "backed-up",
+      "size": 31061,
+      "sha256": "9126cd88c5dc893111fdd3a3ec6b01d6b815133a5b9ea3f615cf9641b67ef952",
+      "etag": "f618914dcdbc5b392d61aadcabedddbc",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/fa.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/98.json.gz",
+      "state": "backed-up",
+      "size": 30842,
+      "sha256": "3fdab250d52f806d5d435c84fc612a79f4600d20cb26cd0651138663a0ebdcbb",
+      "etag": "51ebd0d01a02acc564c555d509130807",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/98.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/88.json.gz",
+      "state": "backed-up",
+      "size": 27203,
+      "sha256": "e72a925e39a7d90e2622643c3fc09ea9a10fa906bbe273321e4944fe544219c1",
+      "etag": "ea5cb1bdb9e877782c23bca7318d2a76",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/88.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/ac.json.gz",
+      "state": "backed-up",
+      "size": 31096,
+      "sha256": "fc7565b9ec33ee66a468085fbc8ff096c11cf835a3692bedebf0f25b4898d5b4",
+      "etag": "1b2779b99c67773830684b9e926501a9",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/ac.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/21.json.gz",
+      "state": "backed-up",
+      "size": 27739,
+      "sha256": "4197583cef6ccd681fb2bb047390bced7e5d217ddd1fb48ba70ce883a356f66e",
+      "etag": "5f194cde83be1c2f3c210fa23ca5a187",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/21.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/31.json.gz",
+      "state": "backed-up",
+      "size": 28838,
+      "sha256": "67d0b7e71b5857aac34aa8534d3ec258ec476107f78506c7bdc577ba9e0404d8",
+      "etag": "7fb7961e2d7da6fb560fb404dc6afaf4",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/31.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/a3.json.gz",
+      "state": "backed-up",
+      "size": 28650,
+      "sha256": "84644c5d73a8701700031fa83ef2b47b429f248925147010a6e19a0eb744efd7",
+      "etag": "f2f285d7539f49b2e1e165d5fca1c5b8",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/a3.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/5c.json.gz",
+      "state": "backed-up",
+      "size": 28454,
+      "sha256": "f496e6d8d4b6bdf36551c30efa049f09db7ac387f5f49a42e3f5b20f0e75605c",
+      "etag": "a938e227117776dbe3af548d066f3a1c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/5c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/f1.json.gz",
+      "state": "backed-up",
+      "size": 29324,
+      "sha256": "d0b0ebbc3de3174d72c158a7e773b7bdf535e2b7d6d4ea731bae8f70e52aa666",
+      "etag": "dc05508f468aefe9ec10a8e3eec66a5c",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/f1.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/2a.json.gz",
+      "state": "backed-up",
+      "size": 30289,
+      "sha256": "ecf58d17b4783e1c3016b63385a03e079311728050d903849baa5430913e665d",
+      "etag": "e78b150828d75b052cf0fa18fa47f07f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/2a.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/4c.json.gz",
+      "state": "backed-up",
+      "size": 27884,
+      "sha256": "287bf922ecd197bd3af10061226cad9a7ef23833d71bedc5b2472124052cbf60",
+      "etag": "677fff2b28a02ecc1b8226c52fb971bf",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/4c.json.gz"
+    },
+    {
+      "path": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/data/raw/pitchapi-world/checkpoints/3a.json.gz",
+      "state": "backed-up",
+      "size": 29292,
+      "sha256": "5329421063b55d752d881ca7a9813731057fc7bf004c5a593e56292861e5a586",
+      "etag": "1e7e326be2b79bdddda7d5245827860f",
+      "neonKey": "data/raw/neon/local-backup-20261103/raw/pitchapi-world/checkpoints/3a.json.gz"
+    }
+  ],
+  "failures": [],
+  "status": "passed"
+}

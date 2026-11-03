@@ -1,0 +1,197 @@
+{
+  "command": "NEON_DATABASE_URL=<test writer direct URL> NEON_STORAGE_*=<test branch> python dashboard/scripts/verify_neon_ingestion.py --report docs/verification/neon-runtime-20261103/ingestion-e2e.json",
+  "setup": "Real isolated Neon branch and inherited private bucket. Local HTTP fixture provider, no real Pitch key. Tests success/403/404/401/429, duplicate ingestion, lease recovery, locking and materialized pages.",
+  "expected": "Refusals skipped; successful data in SQL and S3 once; authentication fatal; expired leases resumable; materialized data visible via normal store contract.",
+  "checks": [
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/matches/m_0WN2RZ",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"downloaded\":0,\"elapsedSeconds\":4.86,\"objectBytes\":2965563933,\"paused\":false,\"processed\":1,\"reused\":1,\"sqlBytes\":472702976,\"state\":\"success\",\"statuses\":{\"200\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "reusedOriginalMatch": "m_0WN2RZ",
+      "providerRequests": 0,
+      "reference": {
+        "path": "raw/seasons/2021-2022/observations/match/0146e69fd40d0215c2dbf5b6.json.gz",
+        "documentId": "b2a3289d799c11b53c139fc3f4ed5f4b02525a10959dff4162929b6cc2d408c9"
+      }
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "2",
+        "--seed-endpoint",
+        "/players/p_TEST03",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"downloaded\":2,\"elapsedSeconds\":3.34,\"objectBytes\":2965563933,\"paused\":false,\"processed\":2,\"reused\":0,\"sqlBytes\":472702976,\"state\":\"success\",\"statuses\":{\"200\":1,\"403\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST02",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"downloaded\":0,\"elapsedSeconds\":0.94,\"objectBytes\":2965563933,\"paused\":false,\"processed\":0,\"reused\":0,\"sqlBytes\":472702976,\"state\":\"success\",\"statuses\":{}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST05",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"downloaded\":1,\"elapsedSeconds\":2.25,\"objectBytes\":2965563933,\"paused\":false,\"processed\":1,\"reused\":0,\"sqlBytes\":472702976,\"state\":\"success\",\"statuses\":{\"404\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST06",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"downloaded\":1,\"elapsedSeconds\":2.14,\"objectBytes\":2965563933,\"paused\":false,\"processed\":1,\"reused\":0,\"sqlBytes\":472702976,\"state\":\"success\",\"statuses\":{\"200\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST04",
+        "--skip-materialize"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 484, in <module>\n    main()\n    ~~~~^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 407, in main\n    status, body = request(endpoint, params, key, base)\n                   ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 237, in request\n    raise RuntimeError(\"Pitch authentication refused (401)\")\nRuntimeError: Pitch authentication refused (401)\n"
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "2",
+        "--seed-endpoint",
+        "/players/p_TEST08",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"downloaded\":2,\"elapsedSeconds\":2.84,\"objectBytes\":2965563933,\"paused\":false,\"processed\":2,\"reused\":0,\"sqlBytes\":472702976,\"state\":\"success\",\"statuses\":{\"200\":2}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST09",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "Another ingestion owns the lease; leaving pending work intact\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "30",
+        "--seed-endpoint",
+        "/leagues/l_TEST01/matches"
+      ],
+      "exit": 0,
+      "stdout": "{\"fixtures\":195,\"materialized\":\"l_3zsMpo\",\"season\":\"2021/2022\",\"updatedMatches\":1}\n{\"downloaded\":17,\"elapsedSeconds\":60.12,\"objectBytes\":2967706540,\"paused\":false,\"processed\":17,\"reused\":0,\"sqlBytes\":473456640,\"state\":\"success\",\"statuses\":{\"200\":17}}\n",
+      "stderr": ""
+    },
+    {
+      "materializedChunk": "computed/dashboard/2010-2011/l_TEST01-e334fd5de65a7a66bda3defd.json.gz",
+      "fixtures": 1
+    }
+  ],
+  "status": "passed",
+  "providerRequests": {
+    "/players/p_TEST03": 1,
+    "/players/p_TEST02": 1,
+    "/players/p_TEST05": 1,
+    "/players/p_TEST06": 3,
+    "/players/p_TEST04": 1,
+    "/players/p_TEST08": 1,
+    "/players/p_TEST07": 1,
+    "/leagues/l_TEST01/matches": 1,
+    "/matches/m_TEST01": 1,
+    "/matches/m_TEST01/shots": 1,
+    "/matches/m_TEST01/momentum": 1,
+    "/matches/m_TEST01/events": 1,
+    "/matches/m_TEST01/players": 1,
+    "/matches/m_TEST01/players/halves": 1,
+    "/matches/m_TEST01/lineups": 1,
+    "/matches/m_TEST01/h2h": 1,
+    "/matches/m_TEST01/stats": 1,
+    "/matches/m_TEST01/advanced": 1,
+    "/matches/m_TEST01/advanced/players": 1,
+    "/matches/m_TEST01/advanced/network": 1,
+    "/matches/m_TEST01/heatmaps": 2,
+    "/teams/t_TEST01": 1,
+    "/teams/t_TEST02": 1
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "command": "STATARENA_TEST_ORIGIN=http://127.0.0.1:3002 bun dashboard/scripts/verify_neon_runtime.mjs",
+  "setup": "Running Next.js with Neon-only runtime, pooled read-only PostgreSQL and private read-only S3; no data/ directory or Pitch key.",
+  "expected": "All pages 200, real verified chunks and archives, backend-only data, 304/HEAD semantics, invalid paths rejected, warm request coalescing.",
+  "checks": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "bytes": 44,
+      "ms": 1049,
+      "source": null
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 18760,
+      "ms": 14,
+      "source": null
+    },
+    {
+      "path": "/matchs",
+      "status": 200,
+      "bytes": 19477,
+      "ms": 6,
+      "source": null
+    },
+    {
+      "path": "/calendrier",
+      "status": 200,
+      "bytes": 17786,
+      "ms": 62,
+      "source": null
+    },
+    {
+      "path": "/joueurs",
+      "status": 200,
+      "bytes": 19222,
+      "ms": 10,
+      "source": null
+    },
+    {
+      "path": "/clubs",
+      "status": 200,
+      "bytes": 19212,
+      "ms": 7,
+      "source": null
+    },
+    {
+      "path": "/competitions",
+      "status": 200,
+      "bytes": 19250,
+      "ms": 14,
+      "source": null
+    },
+    {
+      "path": "/archives",
+      "status": 200,
+      "bytes": 18959,
+      "ms": 7,
+      "source": null
+    },
+    {
+      "path": "/classement-joueurs",
+      "status": 200,
+      "bytes": 19060,
+      "ms": 6,
+      "source": null
+    },
+    {
+      "path": "/methode",
+      "status": 200,
+      "bytes": 19023,
+      "ms": 5,
+      "source": null
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 636,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 304,
+      "bytes": 0,
+      "ms": 2,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 0,
+      "ms": 114,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2026-2027/l_4d6Bwl-04115d53d81beb2a2d1fa736.json.gz",
+      "status": 200,
+      "bytes": 231999,
+      "ms": 265,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2025-2026/l_4d6Bwl-4e7ab51837e97e4b1c44b480.json.gz",
+      "status": 200,
+      "bytes": 634880,
+      "ms": 298,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2024-2025/l_4d6Bwl-bf429bac2c3e9dfae06442ac.json.gz",
+      "status": 200,
+      "bytes": 626066,
+      "ms": 284,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2023-2024/l_4d6Bwl-35f098a5ebb8cd263079db23.json.gz",
+      "status": 200,
+      "bytes": 614631,
+      "ms": 281,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2022-2023/l_4d6Bwl-43d0a0a5e86e56577442905d.json.gz",
+      "status": 200,
+      "bytes": 486696,
+      "ms": 186,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2021-2022/l_4d6Bwl-a6977aef4973c09d8fae70f7.json.gz",
+      "status": 200,
+      "bytes": 494154,
+      "ms": 182,
+      "source": "Neon"
+    },
+    {
+      "path": "/api/archive/matches/m_33I8vp",
+      "status": 200,
+      "bytes": 351296,
+      "ms": 2912,
+      "source": "Neon"
+    },
+    {
+      "path": "/api/pitchapi/matches/m_33I8vp",
+      "status": 200,
+      "bytes": 752,
+      "ms": 123,
+      "source": "Neon"
+    },
+    {
+      "path": "/api/archive/profiles/players/p_01fuwy",
+      "status": 200,
+      "bytes": 279,
+      "ms": 450,
+      "source": "Neon"
+    },
+    {
+      "path": "/api/pitchapi/teams/t_0nmcie",
+      "status": 200,
+      "bytes": 163,
+      "ms": 420,
+      "source": "Neon"
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_4d6Bwl/matches?season=2026%2F2027&status=all",
+      "status": 200,
+      "bytes": 61608,
+      "ms": 448,
+      "source": "Neon"
+    },
+    {
+      "path": "/api/pitchapi/date/2026-07-25?status=all",
+      "status": 200,
+      "bytes": 13924,
+      "ms": 375,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/raw/not-present.json",
+      "status": 404,
+      "bytes": 9,
+      "ms": 110,
+      "source": null
+    },
+    {
+      "path": "/api/pitchapi/players/p_zzzzzz",
+      "status": 404,
+      "bytes": 95,
+      "ms": 111,
+      "source": null
+    },
+    {
+      "path": "/api/pitchapi/leagues?url=https://api.pitchapi.dev",
+      "status": 400,
+      "bytes": 104,
+      "ms": 1,
+      "source": null
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 405,
+      "bytes": 18,
+      "ms": 1,
+      "source": null
+    },
+    {
+      "path": "/data/raw/%2eenv",
+      "status": 403,
+      "bytes": 9,
+      "ms": 1,
+      "source": null
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 1,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 2,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 3,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 4,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 4,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 5,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 6,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 6,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 7,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 8,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 8,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 9,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 10,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 10,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 11,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 12,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 13,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 14,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 14,
+      "source": "Neon"
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 122512,
+      "ms": 15,
+      "source": "Neon"
+    }
+  ],
+  "status": "passed",
+  "warmMs": [
+    1,
+    2,
+    3,
+    4,
+    4,
+    5,
+    6,
+    6,
+    7,
+    8,
+    8,
+    9,
+    10,
+    10,
+    11,
+    12,
+    13,
+    14,
+    14,
+    15
+  ],
+  "sample": {
+    "match": "m_33I8vp",
+    "player": "p_01fuwy",
+    "team": "t_0nmcie",
+    "season": "2026/2027"
+  }
+}

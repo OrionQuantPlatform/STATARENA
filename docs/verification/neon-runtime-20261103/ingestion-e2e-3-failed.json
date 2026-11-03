@@ -1,0 +1,169 @@
+{
+  "command": "NEON_DATABASE_URL=<test writer direct URL> NEON_STORAGE_*=<test branch> python dashboard/scripts/verify_neon_ingestion.py --report docs/verification/neon-runtime-20261103/ingestion-e2e.json",
+  "setup": "Real isolated Neon branch and inherited private bucket. Local HTTP fixture provider, no real Pitch key. Tests success/403/404/401/429, duplicate ingestion, lease recovery, locking and materialized pages.",
+  "expected": "Refusals skipped; successful data in SQL and S3 once; authentication fatal; expired leases resumable; materialized data visible via normal store contract.",
+  "checks": [
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "2",
+        "--seed-endpoint",
+        "/players/p_TEST03",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"elapsedSeconds\":3.05,\"objectBytes\":2965177022,\"paused\":false,\"processed\":2,\"sqlBytes\":477061120,\"state\":\"success\",\"statuses\":{\"200\":1,\"403\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST02",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"elapsedSeconds\":0.79,\"objectBytes\":2965177022,\"paused\":false,\"processed\":0,\"sqlBytes\":477061120,\"state\":\"success\",\"statuses\":{}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST05",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"elapsedSeconds\":1.72,\"objectBytes\":2965177022,\"paused\":false,\"processed\":1,\"sqlBytes\":477061120,\"state\":\"success\",\"statuses\":{\"404\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST06",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"elapsedSeconds\":1.79,\"objectBytes\":2965177022,\"paused\":false,\"processed\":1,\"sqlBytes\":477061120,\"state\":\"success\",\"statuses\":{\"200\":1}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST04",
+        "--skip-materialize"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 166, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 144, in main\n    status,body=request(endpoint,params,key,base)\n                ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 80, in request\n    if status==401:raise RuntimeError('Pitch authentication refused (401)')\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Pitch authentication refused (401)\n"
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "2",
+        "--seed-endpoint",
+        "/players/p_TEST08",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "{\"elapsedSeconds\":2.6,\"objectBytes\":2965177022,\"paused\":false,\"processed\":2,\"sqlBytes\":477061120,\"state\":\"success\",\"statuses\":{\"200\":2}}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "1",
+        "--seed-endpoint",
+        "/players/p_TEST09",
+        "--skip-materialize"
+      ],
+      "exit": 0,
+      "stdout": "Another ingestion owns the lease; leaving pending work intact\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "dashboard/scripts/neon_ingest.py",
+        "--mode",
+        "historical",
+        "--minutes",
+        "5",
+        "--max-requests",
+        "30",
+        "--seed-endpoint",
+        "/leagues/l_TEST01/matches"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 166, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 162, in main\n    materialize(store,max_partitions=20)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_materialize.py\", line 91, in materialize\n    with store.db.transaction():return _materialize(store,max_partitions)\n                                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_materialize.py\", line 31, in _materialize\n    one=build_snapshot({'samples':[sample]},{'data':{'leagues':[]}})\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/build_dashboard_data.py\", line 164, in build_snapshot\n    source_periods = endpoint(sample, \"shots\", {}).get(\"periods\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'list' object has no attribute 'get'\n"
+    }
+  ],
+  "status": "failed",
+  "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 166, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_ingest.py\", line 162, in main\n    materialize(store,max_partitions=20)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_materialize.py\", line 91, in materialize\n    with store.db.transaction():return _materialize(store,max_partitions)\n                                       ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/neon_materialize.py\", line 31, in _materialize\n    one=build_snapshot({'samples':[sample]},{'data':{'leagues':[]}})\n  File \"/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/build_dashboard_data.py\", line 164, in build_snapshot\n    source_periods = endpoint(sample, \"shots\", {}).get(\"periods\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'list' object has no attribute 'get'\n",
+  "providerRequests": {
+    "/players/p_TEST03": 1,
+    "/players/p_TEST02": 1,
+    "/players/p_TEST05": 1,
+    "/players/p_TEST06": 3,
+    "/players/p_TEST04": 1,
+    "/players/p_TEST08": 1,
+    "/players/p_TEST07": 1,
+    "/leagues/l_TEST01/matches": 1,
+    "/matches/m_TEST01": 1,
+    "/matches/m_TEST01/shots": 1,
+    "/matches/m_TEST01/momentum": 1,
+    "/matches/m_TEST01/events": 1,
+    "/matches/m_TEST01/players": 1,
+    "/matches/m_TEST01/players/halves": 1,
+    "/matches/m_TEST01/lineups": 1,
+    "/matches/m_TEST01/h2h": 1,
+    "/matches/m_TEST01/stats": 1,
+    "/matches/m_TEST01/advanced": 1,
+    "/matches/m_TEST01/advanced/players": 1,
+    "/matches/m_TEST01/advanced/network": 1,
+    "/matches/m_TEST01/heatmaps": 2,
+    "/teams/t_TEST01": 1,
+    "/teams/t_TEST02": 1
+  }
+}
