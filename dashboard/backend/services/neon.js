@@ -134,7 +134,11 @@ export async function objectBody(meta) {
       try {
         body = await read(meta.path);
       } catch (error) {
-        if (!mutable || !["NoSuchKey", "NotFound"].includes(error.name))
+        if (
+          !mutable ||
+          (!["NoSuchKey", "NotFound"].includes(error.name) &&
+            error.$metadata?.httpStatusCode !== 404)
+        )
           throw error;
         body = await previous();
       }
