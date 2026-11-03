@@ -1,0 +1,8 @@
+{
+  "expected": "Native cup fixtures and rounds read through Neon, no provider requests or page errors",
+  "url": "http://127.0.0.1:3002/matchs?competition=l_0bfbkO&season=2026%2F2027",
+  "text": "Calendrier\n\nTop 7 + UEFA affich\u00e9s, autres comp\u00e9titions en cours de chargement\u2026\n\n\u00c0 venir\nR\u00e9sultats\nMes matchs\nRecherche\nComp\u00e9tition\nToutes les comp\u00e9titions\n2. Bundesliga \u00b7 Allemagne\n3. Liga \u00b7 Allemagne\nBundesliga \u00b7 Allemagne\nChampionship \u00b7 Angleterre\nLeague One \u00b7 Angleterre\nLeague Two \u00b7 Angleterre\nPremier League \u00b7 Angleterre\nBundesliga \u00b7 Autriche\nChallenger Pro League \u00b7 Belgique\nFirst Division A \u00b7 Belgique\nHNL \u00b7 Croatie\n1. Division \u00b7 Danemark\nSuperligaen \u00b7 Danemark\nPremiership \u00b7 \u00c9cosse\nLaLiga \u00b7 E",
+  "errors": [],
+  "external": [],
+  "status": "passed"
+}
