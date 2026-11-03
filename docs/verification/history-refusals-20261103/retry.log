@@ -1,0 +1,11 @@
+{"endpoint": "/players/p_ARG000", "status": 200, "recovered": true, "error": null}
+{"endpoint": "/players/p_DENIED", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "Fixture refusal"}}
+[main 463a33e] data: checkpoint PitchAPI collection for refusal-retry [skip ci]
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 data/raw/pitchapi-world/refusal-retries/fixture-retry-1793694479181242000.json.gz
+From /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/history-refusal-e2e-295798b3/normal-remote
+ * branch            main       -> FETCH_HEAD
+Current branch main is up to date.
+To /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/history-refusal-e2e-295798b3/normal-remote.git
+   1b335c3..463a33e  HEAD -> main
+{"targets": 2, "attempted": 2, "recovered": 1, "remainingRefusals": 1}

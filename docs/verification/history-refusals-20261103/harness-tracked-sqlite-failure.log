@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "/private/tmp/statarena-history-refusals-20261103/docs/verification/history-refusals-20261103/e2e.py", line 130, in <module>
+    assert run(root,'resume-recovery',('--minutes','2','--publish'))=='continue=false\n'
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/statarena-history-refusals-20261103/docs/verification/history-refusals-20261103/e2e.py", line 86, in run
+    assert result.returncode == expected, result.stdout
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Starting country ARG
+{"country": "ARG", "state": "complete_with_errors", "requestsVisited": 4, "failures": 1, "failedRequests": [{"endpoint": "/players/p_DENIED", "params": {}, "status": 403, "state": "blocked", "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "Fixture refusal"}}], "updatedAt": "2026-11-03T08:27:16Z", "globalCheckpointRequests": 8, "networkRequests": 1}
+[main 8423db0] data: finish PitchAPI collection for ARG [skip ci]
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+From /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/history-refusal-e2e-2ecefver/normal-remote
+ * branch            main       -> FETCH_HEAD
+error: cannot rebase: You have unstaged changes.
+error: Please commit or stash them.
+{"country": "ARG", "state": "partial", "requestsVisited": 4, "failures": 1, "failedRequests": [{"endpoint": "/players/p_DENIED", "params": {}, "status": 403, "state": "blocked", "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "Fixture refusal"}}], "updatedAt": "2026-11-03T08:27:17Z", "globalCheckpointRequests": 8, "networkRequests": 1}
+[main 23e952e] data: checkpoint PitchAPI collection for ARG [skip ci]
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+From /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/history-refusal-e2e-2ecefver/normal-remote
+ * branch            main       -> FETCH_HEAD
+error: cannot rebase: You have unstaged changes.
+error: Please commit or stash them.
+Traceback (most recent call last):
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 199, in main
+    complete = worker.run_countries(args.country)
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 184, in run_countries
+    self.save(finished=True)
+    ~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 147, in save
+    if self.publishing: publish(self.country,finished)
+                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 56, in publish
+    subprocess.run(['git','rebase','origin/main'], check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'rebase', 'origin/main']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 17, in <module>
+    module.main()
+    ~~~~~~~~~~~^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 201, in main
+    if worker.country != 'catalogue': worker.save()
+                                      ~~~~~~~~~~~^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 147, in save
+    if self.publishing: publish(self.country,finished)
+                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 56, in publish
+    subprocess.run(['git','rebase','origin/main'], check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'rebase', 'origin/main']' returned non-zero exit status 1.
+

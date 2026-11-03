@@ -1,0 +1,14 @@
+Starting country ARG
+{"country": "ARG", "state": "partial", "requestsVisited": 2, "failures": 0, "failedRequests": [], "updatedAt": "2026-11-03T08:28:02Z", "globalCheckpointRequests": 4, "networkRequests": 4}
+Traceback (most recent call last):
+  File "<string>", line 17, in <module>
+    module.main()
+    ~~~~~~~~~~~^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 199, in main
+    complete = worker.run_countries(args.country)
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 176, in run_countries
+    value = self.response(key,endpoint,params)
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/collect_pitchapi_countries.py", line 129, in response
+    if status == 401: raise RuntimeError('PitchAPI authentication refused')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: PitchAPI authentication refused

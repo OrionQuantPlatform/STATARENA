@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/private/tmp/statarena-history-refusals-20261103/docs/verification/history-refusals-20261103/e2e.py", line 99, in <module>
+    assert run(root,'traverse',('--minutes','2','--publish')) == 'continue=false\n'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
