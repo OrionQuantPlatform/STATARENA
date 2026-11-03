@@ -1,0 +1,242 @@
+diff --git a/dashboard/backend/app.js b/dashboard/backend/app.js
+index eb1118ad28..2323481314 100644
+--- a/dashboard/backend/app.js
++++ b/dashboard/backend/app.js
+@@ -2,8 +2,12 @@ import { matchObservation, profileObservation } from "./services/database.js";
+ import { publicFile, response } from "./services/files.js";
+ import { handlePitchApi } from "./services/pitchapi.js";
+ import { query, canonical, configured, cache } from "./services/neon.js";
++import { instrumentRequest } from "./services/metrics.js";
+ const assetLookup = cache(4 * 1024 * 1024);
+-export async function handleRequest(request) {
++export function handleRequest(request) {
++  return instrumentRequest(request, () => routeRequest(request));
++}
++async function routeRequest(request) {
+   const head = request.method === "HEAD";
+   let pathname;
+   try {
+diff --git a/dashboard/backend/services/data-store.js b/dashboard/backend/services/data-store.js
+index 044593613c..b6ab4de634 100644
+--- a/dashboard/backend/services/data-store.js
++++ b/dashboard/backend/services/data-store.js
+@@ -1,6 +1,7 @@
+ import { gunzipSync } from "node:zlib";
+ import { objectMeta, objectBody, cache } from "./neon.js";
+-const parsed = cache(64 * 1024 * 1024);
++import { record, timeSync } from "./metrics.js";
++const parsed = cache(64 * 1024 * 1024, { name: "parsed" });
+ export async function dataJson(path) {
+   const meta = await objectMeta(path);
+   if (!meta) {
+@@ -12,13 +13,13 @@ export async function dataJson(path) {
+     meta.sha256,
+     async () => {
+       const body = await objectBody(meta);
+-      return JSON.parse(
+-        path.endsWith(".gz")
+-          ? gunzipSync(body, { maxOutputLength: 128 * 1024 * 1024 }).toString(
+-              "utf8",
+-            )
+-          : body.toString("utf8"),
+-      );
++      let decoded = body;
++      if (path.endsWith(".gz")) {
++        decoded = timeSync("gzip_ms", () => gunzipSync(body, { maxOutputLength: 128 * 1024 * 1024 }));
++        record("gzip_bytes", decoded.length);
++      }
++      record("parse_bytes", decoded.length);
++      return timeSync("parse_ms", () => JSON.parse(decoded.toString("utf8")));
+     },
+     15 * 60 * 1000,
+   );
+diff --git a/dashboard/backend/services/database.js b/dashboard/backend/services/database.js
+index 0565c288da..d458f1f9fb 100644
+--- a/dashboard/backend/services/database.js
++++ b/dashboard/backend/services/database.js
+@@ -1,6 +1,6 @@
+ import { dataJson } from "./data-store.js";
+ import { query, canonical, cache } from "./neon.js";
+-const resources = cache(16 * 1024 * 1024);
++const resources = cache(16 * 1024 * 1024, { name: "resource" });
+ export async function savedResource(endpoint, params = {}) {
+   return resources(endpoint + "?" + canonical(params), async () => {
+     const row = (
+diff --git a/dashboard/backend/services/neon.js b/dashboard/backend/services/neon.js
+index 30d5f3911e..7416ca1201 100644
+--- a/dashboard/backend/services/neon.js
++++ b/dashboard/backend/services/neon.js
+@@ -1,6 +1,7 @@
+ import pg from "pg";
+ import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+ import { createHash } from "node:crypto";
++import { measuring, record, timeSync } from "./metrics.js";
+ let pool, storage;
+ export const configured = () =>
+   Boolean(process.env.NEON_DATABASE_URL && process.env.NEON_STORAGE_ENDPOINT);
+@@ -23,7 +24,31 @@ export function database() {
+   return pool;
+ }
+ export async function query(sql, values = []) {
+-  return (await database().query(sql, values)).rows;
++  if (!measuring()) return (await database().query(sql, values)).rows;
++  const poolStart = performance.now();
++  let client;
++  record("sql_count");
++  try {
++    client = await database().connect();
++    record("pool_wait_ms", performance.now() - poolStart);
++    const start = performance.now();
++    let result;
++    try { result = await client.query(sql, values); }
++    finally { record("sql_ms", performance.now() - start); }
++    record("sql_rows", result.rows.length);
++    for (const row of result.rows) {
++      const { body, ...metadata } = row;
++      record("sql_metadata_bytes_estimate", Buffer.byteLength(JSON.stringify(metadata)));
++      if (Buffer.isBuffer(body)) record("sql_body_bytes", body.length);
++      // Do not stringify jsonb bodies merely to measure them.
++      else if (body !== undefined && body !== null) record("sql_json_rows");
++    }
++    return result.rows;
++  } catch (error) {
++    if (!client) record("pool_wait_ms", performance.now() - poolStart);
++    record("sql_errors");
++    throw error;
++  } finally { client?.release(); }
+ }
+ export const canonical = (params = {}) =>
+   JSON.stringify(
+@@ -32,22 +57,28 @@ export const canonical = (params = {}) =>
+     ),
+   );
+ // Byte-bounded LRU with coalescing; failed loads are never retained.
+-export function cache(limit) {
++export function cache(limit, { name = "local" } = {}) {
+   const entries = new Map(),
+     pending = new Map();
+   let bytes = 0;
+   return async function load(key, loader, ttl = 30000) {
+     const old = entries.get(key);
+     if (old && old.until > Date.now()) {
++      record(`cache_${name}_hit`);
+       entries.delete(key);
+       entries.set(key, old);
+       return old.value;
+     }
+     if (old) {
++      record(`cache_${name}_expired`);
+       bytes -= old.size;
+       entries.delete(key);
+     }
+-    if (pending.has(key)) return pending.get(key);
++    if (pending.has(key)) {
++      record(`cache_${name}_coalesced`);
++      return pending.get(key);
++    }
++    record(`cache_${name}_miss`);
+     const promise = (async () => {
+       const value = await loader();
+       const size = Buffer.isBuffer(value)
+@@ -59,10 +90,13 @@ export function cache(limit) {
+         const first = entries.keys().next().value;
+         bytes -= entries.get(first).size;
+         entries.delete(first);
++        record(`cache_${name}_evicted`);
+       }
+       if (size <= limit) {
+         entries.set(key, { value, size, until: Date.now() + ttl });
+         bytes += size;
++      } else {
++        record(`cache_${name}_rejected`);
+       }
+       return value;
+     })();
+@@ -74,8 +108,8 @@ export function cache(limit) {
+     }
+   };
+ }
+-const metadata = cache(24 * 1024 * 1024),
+-  bodies = cache(64 * 1024 * 1024);
++const metadata = cache(24 * 1024 * 1024, { name: "metadata" }),
++  bodies = cache(64 * 1024 * 1024, { name: "body" });
+ export async function objectMeta(path, withBody = true) {
+   if (
+     !/^(raw|computed|sources)\/[A-Za-z0-9_./-]+$/.test(path) ||
+@@ -121,10 +155,11 @@ export async function objectBody(meta) {
+           { abortSignal: AbortSignal.timeout(20000) },
+         );
+         body = Buffer.from(await result.Body.transformToByteArray());
++        record("object_bytes", body.length);
+       }
+       if (
+         body.length !== Number(meta.size) ||
+-        createHash("sha256").update(body).digest("hex") !== meta.sha256
++        timeSync("integrity_ms", () => createHash("sha256").update(body).digest("hex")) !== meta.sha256
+       )
+         throw new Error("Neon object integrity failure");
+       return body;
+diff --git a/dashboard/backend/services/metrics.js b/dashboard/backend/services/metrics.js
+new file mode 100644
+index 0000000000..0e777c422d
+--- /dev/null
++++ b/dashboard/backend/services/metrics.js
+@@ -0,0 +1,58 @@
++import { AsyncLocalStorage } from "node:async_hooks";
++
++const requests = new AsyncLocalStorage();
++const rate = Number(process.env.STATARENA_METRICS_SAMPLE_RATE ?? "0.01");
++const sampleRate = Number.isFinite(rate) ? Math.max(0, Math.min(1, rate)) : 0.01;
++const timingHeaders = process.env.STATARENA_SERVER_TIMING === "1";
++
++export function record(name, amount = 1) {
++  const context = requests.getStore();
++  if (context && Number.isFinite(amount))
++    context.metrics[name] = (context.metrics[name] || 0) + amount;
++}
++export const measuring = () => Boolean(requests.getStore());
++
++export function timeSync(name, operation) {
++  if (!measuring()) return operation();
++  const start = performance.now();
++  try {
++    return operation();
++  } finally {
++    record(name, performance.now() - start);
++  }
++}
++
++function routeLabel(request) {
++  let pathname;
++  try { pathname = new URL(request.url).pathname; } catch { return "/invalid"; }
++  if (pathname.startsWith("/data/")) return "/data/:file";
++  if (/^\/api\/(health|settings|status|assets|standings|open-cups|openligadb|nations-results|club-wikidata|coach-portrait|stadium|player-honours)$/.test(pathname)) return pathname;
++  if (/^\/api\/archive\/matches\/m_[A-Za-z0-9]{6}$/.test(pathname)) return "/api/archive/matches/:id";
++  const profile = pathname.match(/^\/api\/archive\/profiles\/(leagues|teams|players)\/[ltp]_[A-Za-z0-9]{6}$/);
++  if (profile) return `/api/archive/profiles/${profile[1]}/:id`;
++  if (/^\/api\/pitchapi\/(leagues|teams|players|matches|date)(?:\/[A-Za-z0-9_/-]+)?$/.test(pathname)) {
++    const normalized = pathname.replace(/\/[lmpts]_[A-Za-z0-9]{6}(?=\/|$)/g, "/:id").replace(/\/\d{4}-\d{2}-\d{2}$/, "/:date");
++    // Unknown paths are grouped rather than allowing arbitrary log labels.
++    if (/^\/api\/pitchapi\/(?:leagues|teams|players|matches|date)(?:\/(?:\:id|\:date|matches|shots|momentum|events|players|halves|stats|h2h|advanced|network|lineups|heatmaps))*$/.test(normalized)) return normalized;
++  }
++  return "/other";
++}
++
++/** Origin measurements only; no claim about CDN HITs or provider wire egress. */
++export async function instrumentRequest(request, handler) {
++  if (sampleRate === 0 || Math.random() >= sampleRate) return handler();
++  return requests.run({ metrics: {} }, async () => {
++    const context = requests.getStore(), start = performance.now();
++    let response;
++    try {
++      response = await handler();
++      if (timingHeaders) {
++        response.headers.set("Server-Timing", `origin;dur=${(performance.now() - start).toFixed(2)}, sql;dur=${(context.metrics.sql_ms || 0).toFixed(2)}, pool;dur=${(context.metrics.pool_wait_ms || 0).toFixed(2)}`);
++      }
++      return response;
++    } finally {
++      const metrics = Object.fromEntries(Object.entries(context.metrics).map(([key, value]) => [key, Math.round(value * 1000) / 1000]));
++      console.log(JSON.stringify({ event: "statarena.request", route: routeLabel(request), method: ["GET", "HEAD"].includes(request.method) ? request.method : "OTHER", status: response?.status || 500, duration_ms: Math.round((performance.now() - start) * 1000) / 1000, deployment: process.env.VERCEL_DEPLOYMENT_ID || "local", region: process.env.VERCEL_REGION || "local", metrics }));
++    }
++  });
++}

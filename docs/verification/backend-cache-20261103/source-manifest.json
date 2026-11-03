@@ -1,0 +1,18 @@
+{
+  "base": "bb7812bd1e",
+  "next": "16.4.3",
+  "node": "v26.4.0",
+  "files": {
+    "dashboard/.env.example": "8e82e88e636354275b7c6c24bd4d18db3895192825129d8bdd5754e7f5421421",
+    "dashboard/backend/app.js": "2d80b3d4ec6fc8d1c3f749c3d55124d926fcb67cd7623fdb6d099d0320a7b348",
+    "dashboard/backend/services/neon.js": "86e6d57c9e4bf5e28f9d2c8944142fc7c0aaa4316b4685db75205a13ef3037d6",
+    "dashboard/backend/services/data-store.js": "f5413483b667da8f0ebebeb705e620ff11fe5c3e318632ee91b0761d1a4632ac",
+    "dashboard/backend/services/database.js": "6dc281ef2dde58f21eee28f3b71ce7a37c8f857a3cb3236b87f5c1c4f3ff1e8c",
+    "dashboard/backend/services/files.js": "2d183db6c3a7282c20b9392705b2dadcd7109cf10994c8f4c9ac138b0f5109ec",
+    "dashboard/backend/services/pitchapi.js": "17561b6fccbac402715e4a89445b881054c04ee4bba949b61d164e25d50ae88a",
+    "dashboard/backend/services/cache-policy.js": "cb4692cdf1ef876d160e1ea2788e0ac1729e81f1ee5fa1e63606e9b74c79a0f0",
+    "dashboard/backend/services/metrics.js": "fa9a541dfc335d07bb4c9e95217627af541d518140779eefb06802236f2f4ddb",
+    "dashboard/frontend/src/server/bun-proxy.js": "6cb1e2396786915591bd12c82da582c9a42a953334744a1494cb81c5ecb589ac",
+    "dashboard/scripts/verify_backend_cache.mjs": "0be10a332284fcfb2e39c06721822acd27d0deee827129938c27db788a6ce415"
+  }
+}
