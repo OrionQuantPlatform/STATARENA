@@ -1,0 +1,26 @@
+{
+  "files": 331,
+  "samples": [
+    {
+      "path": "data/README.md",
+      "size": 1228,
+      "sha256": "80095ebf16024db37e66ecb18115f3b38dc58104c62bfed96f123418468b9fe5"
+    },
+    {
+      "path": "data/computed/dashboard/2026-2027/l_1XsMdH-1bda64cef2dee553981d2a04.json.gz",
+      "size": 490616,
+      "sha256": "63bcf9219bec2c4bc5393ec43433b43c65408aabbd616be2f78dbe289afc3bd9"
+    },
+    {
+      "path": "data/raw/historical-goals/2016-2017.json.gz",
+      "size": 211090,
+      "sha256": "61d9eed91d1c7db0792ea7d815adf22c9904bd6d700d4a69ab95541cc37eb9a6"
+    }
+  ],
+  "archiveReplaced": true,
+  "stage": "live-first-part-preflight",
+  "sourceCommit": "579b47107e0cd4fa4f9a12a5a95dd6a1be274ed9",
+  "python": "3.14.6",
+  "boto3": "1.43.123",
+  "botocore": "1.43.123"
+}

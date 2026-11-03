@@ -1,0 +1,32 @@
+{"stage": "part-already-complete", "part": "part-0001.tar.gz"}
+{"stage": "start-part", "part": "part-0002.tar.gz", "files": 115016, "alreadyUploaded": 16066}
+{"stage": "upload", "files": 17001, "elapsedSeconds": 12}
+{"stage": "upload", "files": 18001, "elapsedSeconds": 31}
+{"stage": "upload", "files": 19000, "elapsedSeconds": 43}
+{"stage": "upload", "files": 20000, "elapsedSeconds": 60}
+{"stage": "upload", "files": 21000, "elapsedSeconds": 71}
+{"stage": "upload", "files": 22000, "elapsedSeconds": 79}
+{"stage": "upload", "files": 23000, "elapsedSeconds": 86}
+{"stage": "upload", "files": 24000, "elapsedSeconds": 104}
+{"stage": "upload", "files": 25000, "elapsedSeconds": 118}
+{"stage": "upload", "files": 26000, "elapsedSeconds": 137}
+{"stage": "upload", "files": 27000, "elapsedSeconds": 147}
+Traceback (most recent call last):
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/restore_neon_file_layout.py", line 179, in <module>
+    db.execute('insert into parts values(?,?)',(part,json.dumps(receipt)));db.commit()
+    ^^
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/restore_neon_file_layout.py", line 143, in main
+    nonlocal pending, uploaded
+    
+  File "/private/tmp/statarena-history-refusals-20261103/dashboard/scripts/restore_neon_file_layout.py", line 124, in drain
+    db = sqlite3.connect(args.state/'progress.sqlite')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 300, in wait
+    waiter.event.wait(timeout)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+    ~~~~~~~~~~~~~~^^
+KeyboardInterrupt

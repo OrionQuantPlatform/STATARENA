@@ -1,5 +1,7 @@
 # StatArena data transfer to Neon — completed
 
+**Superseded by the original file layout:** following the user correction, all generated cloud archive parts and metadata described below were replaced with individual objects at their original data/... paths. See [current verification](../neon-file-layout-20261103/RESULTS.md). The historical archive checks below remain as provenance; the old cloud archive download instructions no longer describe the current bucket.
+
 ## Outcome
 
 - All five StatArena GitHub workflows are disabled (`workflows.json`). Both active runs were cancelled; a final scan of the latest 100 runs found zero non-completed runs (`runs.json`).

@@ -1,0 +1,74 @@
+{"stage": "part-already-complete", "part": "part-0001.tar.gz"}
+{"stage": "start-part", "part": "part-0002.tar.gz", "files": 115016, "alreadyUploaded": 27677}
+{"stage": "upload", "files": 115347, "elapsedSeconds": 884}
+{"stage": "part-complete", "part": "part-0002.tar.gz", "files": 115347, "partFiles": 115016, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0003.tar.gz", "files": 83102, "alreadyUploaded": 115347}
+{"stage": "upload", "files": 198449, "elapsedSeconds": 1767}
+{"stage": "part-complete", "part": "part-0003.tar.gz", "files": 198449, "partFiles": 83102, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0004.tar.gz", "files": 6441, "alreadyUploaded": 198449}
+{"stage": "upload", "files": 204890, "elapsedSeconds": 1843}
+{"stage": "part-complete", "part": "part-0004.tar.gz", "files": 204890, "partFiles": 6441, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0005.tar.gz", "files": 4528, "alreadyUploaded": 204890}
+{"stage": "upload", "files": 209418, "elapsedSeconds": 1884}
+{"stage": "part-complete", "part": "part-0005.tar.gz", "files": 209418, "partFiles": 4528, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0006.tar.gz", "files": 3885, "alreadyUploaded": 209418}
+{"stage": "upload", "files": 213303, "elapsedSeconds": 1929}
+{"stage": "part-complete", "part": "part-0006.tar.gz", "files": 213303, "partFiles": 3885, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0007.tar.gz", "files": 6154, "alreadyUploaded": 213303}
+{"stage": "upload", "files": 219457, "elapsedSeconds": 1988}
+{"stage": "part-complete", "part": "part-0007.tar.gz", "files": 219457, "partFiles": 6154, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0008.tar.gz", "files": 2246, "alreadyUploaded": 219457}
+{"stage": "upload", "files": 221703, "elapsedSeconds": 2013}
+{"stage": "part-complete", "part": "part-0008.tar.gz", "files": 221703, "partFiles": 2246, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0009.tar.gz", "files": 6640, "alreadyUploaded": 221703}
+{"stage": "upload", "files": 228343, "elapsedSeconds": 2070}
+{"stage": "part-complete", "part": "part-0009.tar.gz", "files": 228343, "partFiles": 6640, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0010.tar.gz", "files": 2003, "alreadyUploaded": 228343}
+{"stage": "upload", "files": 230346, "elapsedSeconds": 2110}
+{"stage": "part-complete", "part": "part-0010.tar.gz", "files": 230346, "partFiles": 2003, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0011.tar.gz", "files": 8610, "alreadyUploaded": 230346}
+{"stage": "upload", "files": 238956, "elapsedSeconds": 2188}
+{"stage": "part-complete", "part": "part-0011.tar.gz", "files": 238956, "partFiles": 8610, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0012.tar.gz", "files": 6795, "alreadyUploaded": 238956}
+{"stage": "upload", "files": 245751, "elapsedSeconds": 2252}
+{"stage": "part-complete", "part": "part-0012.tar.gz", "files": 245751, "partFiles": 6795, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0013.tar.gz", "files": 402, "alreadyUploaded": 245751}
+{"stage": "upload", "files": 246153, "elapsedSeconds": 2278}
+{"stage": "part-complete", "part": "part-0013.tar.gz", "files": 246153, "partFiles": 402, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0014.tar.gz", "files": 382, "alreadyUploaded": 246153}
+{"stage": "upload", "files": 246535, "elapsedSeconds": 2285}
+{"stage": "part-complete", "part": "part-0014.tar.gz", "files": 246535, "partFiles": 382, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0015.tar.gz", "files": 272, "alreadyUploaded": 246535}
+{"stage": "upload", "files": 246807, "elapsedSeconds": 2293}
+{"stage": "part-complete", "part": "part-0015.tar.gz", "files": 246807, "partFiles": 272, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0016.tar.gz", "files": 274, "alreadyUploaded": 246807}
+{"stage": "upload", "files": 247081, "elapsedSeconds": 2299}
+{"stage": "part-complete", "part": "part-0016.tar.gz", "files": 247081, "partFiles": 274, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0017.tar.gz", "files": 284, "alreadyUploaded": 247081}
+{"stage": "upload", "files": 247365, "elapsedSeconds": 2304}
+{"stage": "part-complete", "part": "part-0017.tar.gz", "files": 247365, "partFiles": 284, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0018.tar.gz", "files": 273, "alreadyUploaded": 247365}
+{"stage": "upload", "files": 247638, "elapsedSeconds": 2310}
+{"stage": "part-complete", "part": "part-0018.tar.gz", "files": 247638, "partFiles": 273, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0019.tar.gz", "files": 580, "alreadyUploaded": 247638}
+{"stage": "upload", "files": 248218, "elapsedSeconds": 2319}
+{"stage": "part-complete", "part": "part-0019.tar.gz", "files": 248218, "partFiles": 580, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0020.tar.gz", "files": 2465, "alreadyUploaded": 248218}
+{"stage": "upload", "files": 250683, "elapsedSeconds": 2348}
+{"stage": "part-complete", "part": "part-0020.tar.gz", "files": 250683, "partFiles": 2465, "downloadSamples": 3}
+{"stage": "start-part", "part": "part-0021.tar.gz", "files": 65, "alreadyUploaded": 250683}
+{"stage": "upload", "files": 250748, "elapsedSeconds": 2352}
+{"stage": "part-complete", "part": "part-0021.tar.gz", "files": 250748, "partFiles": 65, "downloadSamples": 3}
+{"stage": "inventory", "pages": 20, "files": 20000, "bytes": 174822473}
+{"stage": "inventory", "pages": 40, "files": 40000, "bytes": 194546461}
+{"stage": "inventory", "pages": 60, "files": 60000, "bytes": 214221951}
+{"stage": "inventory", "pages": 80, "files": 80000, "bytes": 233740473}
+{"stage": "inventory", "pages": 100, "files": 100000, "bytes": 253394687}
+{"stage": "inventory", "pages": 120, "files": 120000, "bytes": 273008547}
+{"stage": "inventory", "pages": 140, "files": 140000, "bytes": 292866813}
+{"stage": "inventory", "pages": 160, "files": 160000, "bytes": 312497057}
+{"stage": "inventory", "pages": 180, "files": 180000, "bytes": 332097856}
+{"stage": "inventory", "pages": 200, "files": 200000, "bytes": 419461254}
+{"stage": "inventory", "pages": 220, "files": 220000, "bytes": 979963162}
+{"stage": "inventory", "pages": 240, "files": 240000, "bytes": 1478371635}
+{"status": "failed", "errorType": "ClientError", "errorCode": "504", "httpStatus": 504, "detail": null}
