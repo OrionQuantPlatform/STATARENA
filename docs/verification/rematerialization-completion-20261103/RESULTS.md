@@ -2,7 +2,7 @@
 
 The initial run 41711363014 was cancelled after public data verification found that archived partitions were cleared from the dirty queue without receiving enrichment. Their fixtures exist, but standalone `/matches/{id}` resources do not: successful original responses are in observation shards. The materializer required a newer standalone match resource and skipped those archived matches.
 
-The corrected materializer loads standalone and archived indexes for each partition, prefers successful recent resources, and falls back to stored archive summaries/players/shots/lineups/stats. A fixture can be normalized without a collected match summary when its actual player/shot/stat responses exist. Missing families retain previous normalized data and player references. Archived response tables are indexed once per shard; no provider call is introduced.
+The corrected materializer loads standalone and archived indexes for each partition, prefers successful recent resources, and falls back to stored archive summaries/players/shots/lineups/stats. A fixture can be normalized without a collected match summary when its actual player/shot/stat responses exist. Missing families retain previous normalized data and player references. Each archive file is read once per partition, retaining only responses needed for that partition; no provider call is introduced.
 
 ## Regression reproduction
 
@@ -28,3 +28,9 @@ The system Python already supplies psycopg. The runner creates a temporary clust
 The original cancelled-run log is retained. It contains 58 partition reports with zero updated matches, despite stored archives. The public six-season Ligue 1 sample records new path digests but absent historical columns, versus enriched current-season rows. These observations demonstrate why `remaining: 0` alone is insufficient.
 
 Because earlier archived partitions were incorrectly cleared, the fixed version requires one new full queue initialization. Subsequent resumptions must use queue_all=false. Completion and live site verification are still pending; this report does not claim that the production regeneration has finished.
+
+## Archive read regression
+
+The first corrected run exposed repeated source reads while the first transaction was pending. A second PostgreSQL scenario was written before modifying this path: 32 matches interleaved across 16 archive shards. The 16-entry LRU caches reloaded the 96 needed files twice (192 reads). The revised code streams each shard once and retains only selected match responses: all 96 source files are read once, all 32 matches are normalized, and every player reference remains consistent. All five PostgreSQL scenarios pass, and the existing daily/pulse workflow still passes.
+
+Run 41721830156 was cancelled for this replacement. Resume the same dirty queue with queue_all=false after publication; already correctly published partitions must not be requeued.
