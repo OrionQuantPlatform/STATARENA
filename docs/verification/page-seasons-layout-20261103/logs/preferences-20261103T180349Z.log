@@ -1,0 +1,141 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run const report = {
+npm notice run   setup: "Dedicated browser profile; local server and real read-only Neon data.",
+npm notice run   command: "python3 output/playwright/page-seasons-layout-20261103/run_cli.py preferences",
+npm notice run   expected: "Europe competition filter is active for new profiles; explicit All selection persists; missing/invalid page-season storage falls back safely; unavailable storage still permits navigation.",
+npm notice run   checks: [],
+npm notice run   status: "failed",
+npm notice run };
+npm notice run const check = (name, actual, expected) => {
+npm notice run   report.checks.push({name,actual,expected,passed:actual === expected});
+npm notice run   if (actual !== expected) throw new Error(`${name}: ${actual} instead of ${expected}`);
+npm notice run };
+npm notice run try {
+npm notice run   await page.goto("http://127.0.0.1:3000/");
+npm notice run   await page.evaluate(() => {sessionStorage.clear();localStorage.clear();});
+npm notice run   await page.goto("http://127.0.0.1:3000/");
+npm notice run   await page.locator("#home-competition-filter").waitFor({timeout:30000});
+npm notice run   check("new profile default competition scope", await page.locator("#home-competition-filter").getAttribute("aria-label"), "Filtrer les compétitions : Top 7 Europe + UEFA");
+npm notice run   check("new profile filter is active", await page.locator("#home-competition-filter").evaluate((el) => el.classList.contains("is-active")), true);
+npm notice run   await page.locator("#home-competition-filter").click();
+npm notice run   const modal = page.getByRole("dialog");
+npm notice run   await modal.getByRole("button", {name:"Toutes les compétitions",exact:true}).click();
+npm notice run   await modal.getByRole("button", {name:"Appliquer",exact:true}).click();
+npm notice run   await page.waitForFunction(() => new URL(location.href).searchParams.get("focus") === "all");
+npm notice run   await page.reload();
+npm notice run   await page.locator("#home-competition-filter").waitFor({timeout:30000});
+npm notice run   check("explicit All survives reload", await page.locator("#home-competition-filter").getAttribute("aria-label"), "Filtrer les compétitions : Toutes les compétitions");
+npm notice run   await page.evaluate(() => sessionStorage.setItem("statarena:page-seasons:v1", JSON.stringify({"/joueurs":"1900/1901","/clubs":42})));
+npm notice run   await page.goto("http://127.0.0.1:3000/joueurs?focus=europe");
+npm notice run   await page.locator("#season-filter").waitFor({timeout:30000});
+npm notice run   const current = await page.evaluate(() => fetch("/data/dashboard-manifest.json").then((r)=>r.json()).then((m)=>m.defaultSeason));
+npm notice run   check("invalid saved page year falls back", await page.locator("#season-filter").inputValue(), current);
+npm notice run   await page.evaluate(() => sessionStorage.setItem("statarena:page-seasons:v1", "{invalid"));
+npm notice run   await page.goto("http://127.0.0.1:3000/matchs?focus=europe");
+npm notice run   await page.locator("#season-filter").waitFor({timeout:30000});
+npm notice run   check("corrupt saved state falls back", await page.locator("#season-filter").inputValue(), current);
+npm notice run   const blocked = await page.context().newPage();
+npm notice run   await blocked.addInitScript(() => {
+npm notice run     Object.defineProperty(window,"sessionStorage",{get(){throw new DOMException("Blocked","SecurityError");}});
+npm notice run     Object.defineProperty(window,"localStorage",{get(){throw new DOMException("Blocked","SecurityError");}});
+npm notice run   });
+npm notice run   try {
+npm notice run     await blocked.goto("http://127.0.0.1:3000/?focus=europe");
+npm notice run     await blocked.locator("#season-filter").waitFor({timeout:30000});
+npm notice run     await blocked.locator("#season-filter").selectOption("2025/2026");
+npm notice run     await blocked.waitForFunction(() => new URL(location.href).searchParams.get("season") === "2025/2026");
+npm notice run     await blocked.getByRole("navigation",{name:"Navigation principale"}).getByRole("link",{name:"Joueurs",exact:true}).click();
+npm notice run     await blocked.waitForURL((url) => url.pathname.startsWith("/joueurs"));
+npm notice run     await blocked.waitForFunction(() => document.querySelector(".main-nav [aria-current=page]")?.textContent === "Joueurs");
+npm notice run     await blocked.locator("#season-filter").waitFor({timeout:30000});
+npm notice run     check("blocked storage leaves other page on current year", await blocked.locator("#season-filter").inputValue(), current);
+npm notice run     await blocked.getByRole("navigation",{name:"Navigation principale"}).getByRole("link",{name:"Vue d’ensemble",exact:true}).click();
+npm notice run     await blocked.waitForURL((url) => url.pathname === "/");
+npm notice run     await blocked.waitForFunction(() => document.querySelector(".main-nav [aria-current=page]")?.textContent === "Vue d’ensemble");
+npm notice run     await blocked.locator("#season-filter").waitFor({timeout:30000});
+npm notice run     check("blocked storage keeps independent in-memory selection", await blocked.locator("#season-filter").inputValue(), "2025/2026");
+npm notice run   } finally { await blocked.close(); }
+npm notice run   report.status = "passed";
+npm notice run } catch (error) {
+npm notice run   report.error = error.message;
+npm notice run   await page.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/preferences-failure.png",fullPage:true});
+npm notice run }
+npm notice run return report;
+npm notice run
+npm notice run }
+### Result
+{"setup":"Dedicated browser profile; local server and real read-only Neon data.","command":"python3 output/playwright/page-seasons-layout-20261103/run_cli.py preferences","expected":"Europe competition filter is active for new profiles; explicit All selection persists; missing/invalid page-season storage falls back safely; unavailable storage still permits navigation.","checks":[{"name":"new profile default competition scope","actual":"Filtrer les compétitions : Top 7 Europe + UEFA","expected":"Filtrer les compétitions : Top 7 Europe + UEFA","passed":true},{"name":"new profile filter is active","actual":true,"expected":true,"passed":true},{"name":"explicit All survives reload","actual":"Filtrer les compétitions : Toutes les compétitions","expected":"Filtrer les compétitions : Toutes les compétitions","passed":true},{"name":"invalid saved page year falls back","actual":"2026/2027","expected":"2026/2027","passed":true},{"name":"corrupt saved state falls back","actual":"2026/2027","expected":"2026/2027","passed":true},{"name":"blocked storage leaves other page on current year","actual":"2026/2027","expected":"2026/2027","passed":true},{"name":"blocked storage keeps independent in-memory selection","actual":"2025/2026","expected":"2025/2026","passed":true}],"status":"passed"}
+### Ran Playwright code
+```js
+await (async (page) => {
+const report = {
+  setup: "Dedicated browser profile; local server and real read-only Neon data.",
+  command: "python3 output/playwright/page-seasons-layout-20261103/run_cli.py preferences",
+  expected: "Europe competition filter is active for new profiles; explicit All selection persists; missing/invalid page-season storage falls back safely; unavailable storage still permits navigation.",
+  checks: [],
+  status: "failed",
+};
+const check = (name, actual, expected) => {
+  report.checks.push({name,actual,expected,passed:actual === expected});
+  if (actual !== expected) throw new Error(`${name}: ${actual} instead of ${expected}`);
+};
+try {
+  await page.goto("http://127.0.0.1:3000/");
+  await page.evaluate(() => {sessionStorage.clear();localStorage.clear();});
+  await page.goto("http://127.0.0.1:3000/");
+  await page.locator("#home-competition-filter").waitFor({timeout:30000});
+  check("new profile default competition scope", await page.locator("#home-competition-filter").getAttribute("aria-label"), "Filtrer les compétitions : Top 7 Europe + UEFA");
+  check("new profile filter is active", await page.locator("#home-competition-filter").evaluate((el) => el.classList.contains("is-active")), true);
+  await page.locator("#home-competition-filter").click();
+  const modal = page.getByRole("dialog");
+  await modal.getByRole("button", {name:"Toutes les compétitions",exact:true}).click();
+  await modal.getByRole("button", {name:"Appliquer",exact:true}).click();
+  await page.waitForFunction(() => new URL(location.href).searchParams.get("focus") === "all");
+  await page.reload();
+  await page.locator("#home-competition-filter").waitFor({timeout:30000});
+  check("explicit All survives reload", await page.locator("#home-competition-filter").getAttribute("aria-label"), "Filtrer les compétitions : Toutes les compétitions");
+  await page.evaluate(() => sessionStorage.setItem("statarena:page-seasons:v1", JSON.stringify({"/joueurs":"1900/1901","/clubs":42})));
+  await page.goto("http://127.0.0.1:3000/joueurs?focus=europe");
+  await page.locator("#season-filter").waitFor({timeout:30000});
+  const current = await page.evaluate(() => fetch("/data/dashboard-manifest.json").then((r)=>r.json()).then((m)=>m.defaultSeason));
+  check("invalid saved page year falls back", await page.locator("#season-filter").inputValue(), current);
+  await page.evaluate(() => sessionStorage.setItem("statarena:page-seasons:v1", "{invalid"));
+  await page.goto("http://127.0.0.1:3000/matchs?focus=europe");
+  await page.locator("#season-filter").waitFor({timeout:30000});
+  check("corrupt saved state falls back", await page.locator("#season-filter").inputValue(), current);
+  const blocked = await page.context().newPage();
+  await blocked.addInitScript(() => {
+    Object.defineProperty(window,"sessionStorage",{get(){throw new DOMException("Blocked","SecurityError");}});
+    Object.defineProperty(window,"localStorage",{get(){throw new DOMException("Blocked","SecurityError");}});
+  });
+  try {
+    await blocked.goto("http://127.0.0.1:3000/?focus=europe");
+    await blocked.locator("#season-filter").waitFor({timeout:30000});
+    await blocked.locator("#season-filter").selectOption("2025/2026");
+    await blocked.waitForFunction(() => new URL(location.href).searchParams.get("season") === "2025/2026");
+    await blocked.getByRole("navigation",{name:"Navigation principale"}).getByRole("link",{name:"Joueurs",exact:true}).click();
+    await blocked.waitForURL((url) => url.pathname.startsWith("/joueurs"));
+    await blocked.waitForFunction(() => document.querySelector(".main-nav [aria-current=page]")?.textContent === "Joueurs");
+    await blocked.locator("#season-filter").waitFor({timeout:30000});
+    check("blocked storage leaves other page on current year", await blocked.locator("#season-filter").inputValue(), current);
+    await blocked.getByRole("navigation",{name:"Navigation principale"}).getByRole("link",{name:"Vue d’ensemble",exact:true}).click();
+    await blocked.waitForURL((url) => url.pathname === "/");
+    await blocked.waitForFunction(() => document.querySelector(".main-nav [aria-current=page]")?.textContent === "Vue d’ensemble");
+    await blocked.locator("#season-filter").waitFor({timeout:30000});
+    check("blocked storage keeps independent in-memory selection", await blocked.locator("#season-filter").inputValue(), "2025/2026");
+  } finally { await blocked.close(); }
+  report.status = "passed";
+} catch (error) {
+  report.error = error.message;
+  await page.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/preferences-failure.png",fullPage:true});
+}
+return report;
+
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:3000/matchs?focus=europe&season=2026%2F2027
+- Page Title: Calendrier — STATARENA
+### Events
+- New console entries: ../../../.playwright-cli/console-2026-11-03T17-50-53-718Z.log#L142-L175

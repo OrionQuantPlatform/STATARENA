@@ -1,0 +1,50 @@
+{
+  "setup": "Dedicated browser profile; local server and real read-only Neon data.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py preferences",
+  "expected": "Europe competition filter is active for new profiles; explicit All selection persists; missing/invalid page-season storage falls back safely; unavailable storage still permits navigation.",
+  "checks": [
+    {
+      "name": "new profile default competition scope",
+      "actual": "Filtrer les compétitions : Top 7 Europe + UEFA",
+      "expected": "Filtrer les compétitions : Top 7 Europe + UEFA",
+      "passed": true
+    },
+    {
+      "name": "new profile filter is active",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "explicit All survives reload",
+      "actual": "Filtrer les compétitions : Toutes les compétitions",
+      "expected": "Filtrer les compétitions : Toutes les compétitions",
+      "passed": true
+    },
+    {
+      "name": "invalid saved page year falls back",
+      "actual": "2026/2027",
+      "expected": "2026/2027",
+      "passed": true
+    },
+    {
+      "name": "corrupt saved state falls back",
+      "actual": "2026/2027",
+      "expected": "2026/2027",
+      "passed": true
+    },
+    {
+      "name": "blocked storage leaves other page on current year",
+      "actual": "2026/2027",
+      "expected": "2026/2027",
+      "passed": true
+    },
+    {
+      "name": "blocked storage keeps independent in-memory selection",
+      "actual": "2025/2026",
+      "expected": "2025/2026",
+      "passed": true
+    }
+  ],
+  "status": "passed"
+}

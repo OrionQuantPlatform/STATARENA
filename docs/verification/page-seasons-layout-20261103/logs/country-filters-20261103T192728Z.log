@@ -1,0 +1,87 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run const report={setup:"Real 2026/2027 Neon records in Chromium; country groups in native selectors and the home picker.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py country-filters",expected:"Competition entries remain available under one country heading; selecting/resetting a league still filters the page; home country search and mobile remain usable.",checks:[],status:"failed"};
+npm notice run const check=(name,passed,actual)=>{report.checks.push({name,passed,actual});if(!passed)throw new Error(name+": "+JSON.stringify(actual));};
+npm notice run const base="http://127.0.0.1:3000", folder="/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/";
+npm notice run async function inspect(selector,name){
+npm notice run  const el=page.locator(selector); await el.waitFor({timeout:30000});
+npm notice run  await page.waitForFunction((selector)=>document.querySelector(selector)?.querySelectorAll("optgroup").length>0,selector);
+npm notice run  const state=await el.evaluate((el)=>({groups:[...el.querySelectorAll("optgroup")].map((g)=>({label:g.label,options:[...g.children].map((o)=>({value:o.value,label:o.textContent}))})),ungrouped:[...el.children].filter((x)=>x.tagName==="OPTION").map((o)=>o.value),france:el.querySelector('option[value="l_3FJFUl"]')?.parentElement.label,uefa:el.querySelector('option[value="l_0bfbkO"]')?.parentElement.label}));
+npm notice run  check(name+" has country groups",state.groups.length>=3,state);
+npm notice run  check(name+" preserves Ligue 1 under France and Champions League under Europe",state.france==="France"&&state.uefa==="Europe",state);
+npm notice run  check(name+" leaves only the All option ungrouped",state.ungrouped.length===1&&state.ungrouped[0]==="all",state.ungrouped);
+npm notice run  check(name+" has no duplicate option IDs",new Set(state.groups.flatMap((g)=>g.options.map((o)=>o.value))).size===state.groups.reduce((n,g)=>n+g.options.length,0),state.groups.map((g)=>g.label));
+npm notice run }
+npm notice run try{
+npm notice run  await page.setViewportSize({width:1440,height:1000}); await page.goto(base+"/");await page.evaluate(()=>{localStorage.clear();sessionStorage.clear();});
+npm notice run  for(const [path,selector,name] of [["/joueurs?playersView=table","#league-filter","players"],["/calendrier?tab=upcoming","#league-filter","calendar"],["/clubs?clubsView=explore","select[aria-label='Compétition des clubs']","clubs"]]){
+npm notice run   await page.goto(base+path+"&season=2026%2F2027&focus=europe"); await inspect(selector,name);
+npm notice run   await page.locator(selector).selectOption("l_3FJFUl");
+npm notice run   await page.waitForFunction((selector)=>document.querySelector(selector)?.value==="l_3FJFUl",selector);
+npm notice run   check(name+" keeps selection actionable",await page.locator(selector).inputValue()==="l_3FJFUl",page.url());
+npm notice run   await page.locator(selector).selectOption("all");
+npm notice run   check(name+" can return to all",await page.locator(selector).inputValue()==="all",page.url());
+npm notice run  }
+npm notice run  await page.goto(base+"/?season=2026%2F2027&focus=europe");await page.locator("#home-competition-filter").click();const modal=page.getByRole("dialog");
+npm notice run  const groups=await modal.locator(".home-competition-section h3").allTextContents();
+npm notice run  check("home picker groups its countries",groups.includes("France")&&groups.includes("Europe")&&new Set(groups).size===groups.length,groups);
+npm notice run  await modal.getByRole("textbox",{name:"Rechercher une compétition"}).fill("France");
+npm notice run  await page.waitForFunction(()=>[...document.querySelectorAll(".home-competition-section h3")].every((el)=>el.textContent==="France"));
+npm notice run  check("country search keeps the country heading",JSON.stringify(await modal.locator("h3").allTextContents())===JSON.stringify(["France"]),await modal.locator("h3").allTextContents());
+npm notice run  const choices=await modal.getByRole("checkbox").count();check("country search keeps actual competitions",choices>0,choices);
+npm notice run  await modal.screenshot({path:folder+"competition-groups.png"});await page.setViewportSize({width:390,height:844});
+npm notice run  check("mobile picker has no document overflow",await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth})));
+npm notice run  await modal.screenshot({path:folder+"competition-groups-mobile.png"});await modal.getByRole("button",{name:"Annuler",exact:true}).click();
+npm notice run  report.status="passed";
+npm notice run }catch(error){report.error=error.message;report.url=page.url();await page.screenshot({path:folder+"country-filters-failure.png",fullPage:true});}
+npm notice run return report;
+npm notice run
+npm notice run }
+### Result
+{"setup":"Real 2026/2027 Neon records in Chromium; country groups in native selectors and the home picker.","command":"python3 output/playwright/page-seasons-layout-20261103/run_cli.py country-filters","expected":"Competition entries remain available under one country heading; selecting/resetting a league still filters the page; home country search and mobile remain usable.","checks":[{"name":"players has country groups","passed":true,"actual":{"groups":[{"label":"Allemagne","options":[{"value":"l_1Isor4","label":"Bundesliga"}]},{"label":"Angleterre","options":[{"value":"l_4WFCIZ","label":"Premier League"}]},{"label":"Espagne","options":[{"value":"l_0ErfuF","label":"LaLiga"}]},{"label":"Europe","options":[{"value":"l_0bfbkO","label":"Champions League"},{"value":"l_38d9HA","label":"Europa League"},{"value":"l_2WZ2tt","label":"Conference League"}]},{"label":"France","options":[{"value":"l_3FJFUl","label":"Ligue 1"}]},{"label":"Italie","options":[{"value":"l_0ALvwF","label":"Serie A"}]},{"label":"Pays-Bas","options":[{"value":"l_4H43wr","label":"Eredivisie"}]},{"label":"Portugal","options":[{"value":"l_4QexZg","label":"Liga Portugal"}]}],"ungrouped":["all"],"france":"France","uefa":"Europe"}},{"name":"players preserves Ligue 1 under France and Champions League under Europe","passed":true,"actual":{"groups":[{"label":"Allemagne","options":[{"value":"l_1Isor4","label":"Bundesliga"}]},{"label":"Angleterre","options":[{"value":"l_4WFCIZ","label":"Premier League"}]},{"label":"Espagne","options":[{"value":"l_0ErfuF","label":"LaLiga"}]},{"label":"Europe","options":[{"value":"l_0bfbkO","label":"Champions League"},{"value":"l_38d9HA","label":"Europa League"},{"value":"l_2WZ2tt","label":"Conference League"}]},{"label":"France","options":[{"value":"l_3FJFUl","label":"Ligue 1"}]},{"label":"Italie","options":[{"value":"l_0ALvwF","label":"Serie A"}]},{"label":"Pays-Bas","options":[{"value":"l_4H43wr","label":"Eredivisie"}]},{"label":"Portugal","options":[{"value":"l_4QexZg","label":"Liga Portugal"}]}],"ungrouped":["all"],"france":"France","uefa":"Europe"}},{"name":"players leaves only the All option ungrouped","passed":true,"actual":["all"]},{"name":"players has no duplicate option IDs","passed":true,"actual":["Allemagne","Angleterre","Espagne","Europe","France","Italie","Pays-Bas","Portugal"]},{"name":"players keeps selection actionable","passed":true,"actual":"http://127.0.0.1:3000/joueurs?playersView=table&season=2026%2F2027&focus=europe&league=l_3FJFUl"},{"name":"players can return to all","passed":false,"actual":"http://127.0.0.1:3000/joueurs?playersView=table&season=2026%2F2027&focus=europe"}],"status":"failed","error":"players can return to all: \"http://127.0.0.1:3000/joueurs?playersView=table&season=2026%2F2027&focus=europe\"","url":"http://127.0.0.1:3000/joueurs?playersView=table&season=2026%2F2027&focus=europe"}
+### Ran Playwright code
+```js
+await (async (page) => {
+const report={setup:"Real 2026/2027 Neon records in Chromium; country groups in native selectors and the home picker.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py country-filters",expected:"Competition entries remain available under one country heading; selecting/resetting a league still filters the page; home country search and mobile remain usable.",checks:[],status:"failed"};
+const check=(name,passed,actual)=>{report.checks.push({name,passed,actual});if(!passed)throw new Error(name+": "+JSON.stringify(actual));};
+const base="http://127.0.0.1:3000", folder="/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/";
+async function inspect(selector,name){
+ const el=page.locator(selector); await el.waitFor({timeout:30000});
+ await page.waitForFunction((selector)=>document.querySelector(selector)?.querySelectorAll("optgroup").length>0,selector);
+ const state=await el.evaluate((el)=>({groups:[...el.querySelectorAll("optgroup")].map((g)=>({label:g.label,options:[...g.children].map((o)=>({value:o.value,label:o.textContent}))})),ungrouped:[...el.children].filter((x)=>x.tagName==="OPTION").map((o)=>o.value),france:el.querySelector('option[value="l_3FJFUl"]')?.parentElement.label,uefa:el.querySelector('option[value="l_0bfbkO"]')?.parentElement.label}));
+ check(name+" has country groups",state.groups.length>=3,state);
+ check(name+" preserves Ligue 1 under France and Champions League under Europe",state.france==="France"&&state.uefa==="Europe",state);
+ check(name+" leaves only the All option ungrouped",state.ungrouped.length===1&&state.ungrouped[0]==="all",state.ungrouped);
+ check(name+" has no duplicate option IDs",new Set(state.groups.flatMap((g)=>g.options.map((o)=>o.value))).size===state.groups.reduce((n,g)=>n+g.options.length,0),state.groups.map((g)=>g.label));
+}
+try{
+ await page.setViewportSize({width:1440,height:1000}); await page.goto(base+"/");await page.evaluate(()=>{localStorage.clear();sessionStorage.clear();});
+ for(const [path,selector,name] of [["/joueurs?playersView=table","#league-filter","players"],["/calendrier?tab=upcoming","#league-filter","calendar"],["/clubs?clubsView=explore","select[aria-label='Compétition des clubs']","clubs"]]){
+  await page.goto(base+path+"&season=2026%2F2027&focus=europe"); await inspect(selector,name);
+  await page.locator(selector).selectOption("l_3FJFUl");
+  await page.waitForFunction((selector)=>document.querySelector(selector)?.value==="l_3FJFUl",selector);
+  check(name+" keeps selection actionable",await page.locator(selector).inputValue()==="l_3FJFUl",page.url());
+  await page.locator(selector).selectOption("all");
+  check(name+" can return to all",await page.locator(selector).inputValue()==="all",page.url());
+ }
+ await page.goto(base+"/?season=2026%2F2027&focus=europe");await page.locator("#home-competition-filter").click();const modal=page.getByRole("dialog");
+ const groups=await modal.locator(".home-competition-section h3").allTextContents();
+ check("home picker groups its countries",groups.includes("France")&&groups.includes("Europe")&&new Set(groups).size===groups.length,groups);
+ await modal.getByRole("textbox",{name:"Rechercher une compétition"}).fill("France");
+ await page.waitForFunction(()=>[...document.querySelectorAll(".home-competition-section h3")].every((el)=>el.textContent==="France"));
+ check("country search keeps the country heading",JSON.stringify(await modal.locator("h3").allTextContents())===JSON.stringify(["France"]),await modal.locator("h3").allTextContents());
+ const choices=await modal.getByRole("checkbox").count();check("country search keeps actual competitions",choices>0,choices);
+ await modal.screenshot({path:folder+"competition-groups.png"});await page.setViewportSize({width:390,height:844});
+ check("mobile picker has no document overflow",await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth})));
+ await modal.screenshot({path:folder+"competition-groups-mobile.png"});await modal.getByRole("button",{name:"Annuler",exact:true}).click();
+ report.status="passed";
+}catch(error){report.error=error.message;report.url=page.url();await page.screenshot({path:folder+"country-filters-failure.png",fullPage:true});}
+return report;
+
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:3000/joueurs?playersView=table&season=2026%2F2027&focus=europe
+- Page Title: Joueurs — STATARENA
+### Events
+- New console entries: .playwright-cli/console-2026-11-03T18-43-08-801Z.log#L579-L661

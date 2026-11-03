@@ -1,0 +1,135 @@
+{
+  "setup": "Real archived 2025/2026 Neon season, Europe scope, local Next server, Chromium.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py layout",
+  "expected": "The chart uses its container width with readable labels; no empty grid wrappers, no horizontal overflow, working competition tabs/tooltips, no footer.",
+  "checks": [
+    {
+      "name": "wide-light chart fills its available width",
+      "actual": {
+        "width": 1590,
+        "height": 360,
+        "viewBox": "0 0 1590 360",
+        "plotFraction": 0.9647798742138365,
+        "scale": 1,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "wide-light has no empty wrappers or overflow",
+      "actual": {
+        "width": 1590,
+        "height": 360,
+        "viewBox": "0 0 1590 360",
+        "plotFraction": 0.9647798742138365,
+        "scale": 1,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "desktop-light chart fills its available width",
+      "actual": {
+        "width": 1109.984375,
+        "height": 359.984375,
+        "viewBox": "0 0 1110 360",
+        "plotFraction": 0.9495217024764175,
+        "scale": 0.9999565972222222,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "desktop-light has no empty wrappers or overflow",
+      "actual": {
+        "width": 1109.984375,
+        "height": 359.984375,
+        "viewBox": "0 0 1110 360",
+        "plotFraction": 0.9495217024764175,
+        "scale": 0.9999565972222222,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "tablet-light chart fills its available width",
+      "actual": {
+        "width": 570,
+        "height": 319,
+        "viewBox": "0 0 570 319",
+        "plotFraction": 0.9017543859649123,
+        "scale": 1,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "tablet-light has no empty wrappers or overflow",
+      "actual": {
+        "width": 570,
+        "height": 319,
+        "viewBox": "0 0 570 319",
+        "plotFraction": 0.9017543859649123,
+        "scale": 1,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "mobile-light chart fills its available width",
+      "actual": {
+        "width": 324,
+        "height": 210,
+        "viewBox": "0 0 324 210",
+        "plotFraction": 0.8271604938271605,
+        "scale": 1,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "mobile-light has no empty wrappers or overflow",
+      "actual": {
+        "width": 324,
+        "height": 210,
+        "viewBox": "0 0 324 210",
+        "plotFraction": 0.8271604938271605,
+        "scale": 1,
+        "overflow": false,
+        "emptyWrappers": 0,
+        "footer": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "hover has matchday and team points",
+      "actual": "Journée 19\nParis Saint-Germain\n45 pts\nLens\n43 pts\nMarseille\n38 pts\nLyon\n36 pts\nLille\n32 pts\nRennes\n31 pts",
+      "passed": true
+    },
+    {
+      "name": "competition tab changes",
+      "actual": "Points cumulés du top 6 après 38 journées",
+      "passed": true
+    },
+    {
+      "name": "changing competition clears stale tooltip",
+      "actual": 0,
+      "passed": true
+    }
+  ],
+  "status": "passed"
+}

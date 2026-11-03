@@ -1,0 +1,9 @@
+usage: neon_materialize.py [-h] [--all] [--batch BATCH] [--minutes MINUTES]
+
+Rebuild the published dashboard partitions from the responses stored in Neon.
+
+options:
+  -h, --help         show this help message and exit
+  --all              queue every published partition first
+  --batch BATCH
+  --minutes MINUTES

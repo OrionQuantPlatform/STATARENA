@@ -1,0 +1,116 @@
+{
+  "setup": "Read-only same-origin Neon backend; one Ligue 1 published partition sampled per available season. No DB or object mutations.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/audit-published.py",
+  "scope": "Column presence is not field completeness; this sample does not prove every season/competition has been fully regenerated.",
+  "manualWorkflowDispatched": false,
+  "samples": [
+    {
+      "season": "2026/2027",
+      "path": "computed/dashboard/2026-2027/l_3FJFUl-d6fc6f04775cd8f7f26a0dac.json.gz",
+      "retrievedAt": "2026-11-02T02:15:21.745Z",
+      "shots": {
+        "rows": 2150,
+        "enrichedColumns": []
+      },
+      "players": {
+        "rows": 3197,
+        "columns": 46,
+        "captainColumn": false
+      },
+      "matches": {
+        "rows": 80,
+        "metadataColumns": []
+      }
+    },
+    {
+      "season": "2025/2026",
+      "path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "retrievedAt": "2026-11-02T12:38:23.535Z",
+      "shots": {
+        "rows": 7618,
+        "enrichedColumns": []
+      },
+      "players": {
+        "rows": 12200,
+        "columns": 46,
+        "captainColumn": false
+      },
+      "matches": {
+        "rows": 306,
+        "metadataColumns": []
+      }
+    },
+    {
+      "season": "2024/2025",
+      "path": "computed/dashboard/2024-2025/l_3FJFUl-a3593b1b88182e74de2048a9.json.gz",
+      "retrievedAt": "2026-11-02T12:38:23.535Z",
+      "shots": {
+        "rows": 7655,
+        "enrichedColumns": []
+      },
+      "players": {
+        "rows": 12215,
+        "columns": 46,
+        "captainColumn": false
+      },
+      "matches": {
+        "rows": 306,
+        "metadataColumns": []
+      }
+    },
+    {
+      "season": "2023/2024",
+      "path": "computed/dashboard/2023-2024/l_3FJFUl-3b7d1c53f6fab8b4060e3031.json.gz",
+      "retrievedAt": "2026-11-02T12:38:23.535Z",
+      "shots": {
+        "rows": 7797,
+        "enrichedColumns": []
+      },
+      "players": {
+        "rows": 12225,
+        "columns": 46,
+        "captainColumn": false
+      },
+      "matches": {
+        "rows": 306,
+        "metadataColumns": []
+      }
+    },
+    {
+      "season": "2022/2023",
+      "path": "computed/dashboard/2022-2023/l_3FJFUl-d74f8f84b33055b62c4b819a.json.gz",
+      "retrievedAt": "2026-11-02T15:33:54.198Z",
+      "shots": {
+        "rows": 9350,
+        "enrichedColumns": []
+      },
+      "players": {
+        "rows": 15057,
+        "columns": 46,
+        "captainColumn": false
+      },
+      "matches": {
+        "rows": 380,
+        "metadataColumns": []
+      }
+    },
+    {
+      "season": "2021/2022",
+      "path": "computed/dashboard/2021-2022/l_3FJFUl-1a4973a005a4e3ed2813f654.json.gz",
+      "retrievedAt": "2026-11-02T18:22:27.112Z",
+      "shots": {
+        "rows": 9152,
+        "enrichedColumns": []
+      },
+      "players": {
+        "rows": 15092,
+        "columns": 46,
+        "captainColumn": false
+      },
+      "matches": {
+        "rows": 380,
+        "metadataColumns": []
+      }
+    }
+  ]
+}

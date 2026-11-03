@@ -1,0 +1,55 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run await page.setViewportSize({width:1920,height:1080});
+npm notice run await page.goto("http://127.0.0.1:3000/?season=2026%2F2027&focus=europe");
+npm notice run await page.locator(".home-motw").waitFor({timeout:30000});
+npm notice run await page.locator(".home-race").waitFor();
+npm notice run const metrics=await page.evaluate(()=>{
+npm notice run   const rect=(s)=>document.querySelector(s)?.getBoundingClientRect();
+npm notice run   return {
+npm notice run     weeklyHeight:rect(".home-motw")?.height,
+npm notice run     playerHeight:rect(".home-potw")?.height,
+npm notice run     playerBottomGap:rect(".home-potw-match")?.top-rect(".home-potw-season")?.bottom,
+npm notice run     chartHeight:rect(".home-xg-race")?.height,
+npm notice run     pitchHeight:rect(".home-shot-map")?.height,
+npm notice run     raceBottomGap:rect(".home-race")?.bottom-Math.max(rect(".home-race-chart")?.bottom||0,rect(".home-race-legend")?.bottom||0),
+npm notice run     raceTeams:document.querySelectorAll(".home-race-row").length,
+npm notice run   };
+npm notice run });
+npm notice run await page.locator(".home-motw").screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/weekly-before.png"});
+npm notice run await page.locator(".home-race").screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/race-gap-before.png"});
+npm notice run return {setup:"Real 2026/2027 season, Europe scope, 1920px Chromium before compacting the weekly row.",expected:"Record current weekly row, chart imbalance, player-card spacer and title-race bottom gap.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py weekly-before",status:"observed",metrics};
+npm notice run
+npm notice run }
+### Result
+{"setup":"Real 2026/2027 season, Europe scope, 1920px Chromium before compacting the weekly row.","expected":"Record current weekly row, chart imbalance, player-card spacer and title-race bottom gap.","command":"python3 output/playwright/page-seasons-layout-20261103/run_cli.py weekly-before","status":"observed","metrics":{"weeklyHeight":795.640625,"playerHeight":676.25,"playerBottomGap":120,"chartHeight":252.390625,"pitchHeight":344.046875,"raceBottomGap":68.453125,"raceTeams":5}}
+### Ran Playwright code
+```js
+await (async (page) => {
+await page.setViewportSize({width:1920,height:1080});
+await page.goto("http://127.0.0.1:3000/?season=2026%2F2027&focus=europe");
+await page.locator(".home-motw").waitFor({timeout:30000});
+await page.locator(".home-race").waitFor();
+const metrics=await page.evaluate(()=>{
+  const rect=(s)=>document.querySelector(s)?.getBoundingClientRect();
+  return {
+    weeklyHeight:rect(".home-motw")?.height,
+    playerHeight:rect(".home-potw")?.height,
+    playerBottomGap:rect(".home-potw-match")?.top-rect(".home-potw-season")?.bottom,
+    chartHeight:rect(".home-xg-race")?.height,
+    pitchHeight:rect(".home-shot-map")?.height,
+    raceBottomGap:rect(".home-race")?.bottom-Math.max(rect(".home-race-chart")?.bottom||0,rect(".home-race-legend")?.bottom||0),
+    raceTeams:document.querySelectorAll(".home-race-row").length,
+  };
+});
+await page.locator(".home-motw").screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/weekly-before.png"});
+await page.locator(".home-race").screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/race-gap-before.png"});
+return {setup:"Real 2026/2027 season, Europe scope, 1920px Chromium before compacting the weekly row.",expected:"Record current weekly row, chart imbalance, player-card spacer and title-race bottom gap.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py weekly-before",status:"observed",metrics};
+
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:3000/?season=2026%2F2027&focus=europe
+- Page Title: Vue d’ensemble — STATARENA
+### Events
+- New console entries: .playwright-cli/console-2026-11-03T18-43-08-801Z.log#L3-L17

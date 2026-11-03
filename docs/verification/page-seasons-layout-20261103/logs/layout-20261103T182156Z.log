@@ -1,0 +1,145 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run const folder = "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/";
+npm notice run const report = {
+npm notice run   setup: "Real archived 2025/2026 Neon season, Europe scope, local Next server, Chromium.",
+npm notice run   command: "python3 output/playwright/page-seasons-layout-20261103/run_cli.py layout",
+npm notice run   expected: "The chart uses its container width with readable labels; no empty grid wrappers, no horizontal overflow, working competition tabs/tooltips, no footer.",
+npm notice run   checks: [],
+npm notice run   status: "failed",
+npm notice run };
+npm notice run const check = (name, passed, actual) => {
+npm notice run   report.checks.push({name, actual, passed});
+npm notice run   if (!passed) throw new Error(name + ": " + JSON.stringify(actual));
+npm notice run };
+npm notice run try {
+npm notice run   await page.goto("http://127.0.0.1:3000/?season=2025%2F2026&focus=europe");
+npm notice run   await page.locator(".home-race-chart").waitFor({timeout: 30000});
+npm notice run   const theme = page.getByRole("button", {name: /Activer le thème/});
+npm notice run   if ((await theme.getAttribute("aria-label"))?.includes("clair")) await theme.click();
+npm notice run   for (const [width, height, label] of [[1920,1080,"wide-light"],[1440,1000,"desktop-light"],[900,1000,"tablet-light"],[390,844,"mobile-light"]]) {
+npm notice run     await page.setViewportSize({width,height});
+npm notice run     await page.waitForFunction(() => {
+npm notice run       const svg = document.querySelector(".home-race-chart");
+npm notice run       return svg && Math.abs(svg.viewBox.baseVal.width - svg.clientWidth) < 2;
+npm notice run     });
+npm notice run     const metrics = await page.evaluate(() => {
+npm notice run       const svg = document.querySelector(".home-race-chart");
+npm notice run       const box = svg.getBoundingClientRect();
+npm notice run       const siblings = [...document.querySelectorAll(".home-bento > div")];
+npm notice run       return {
+npm notice run         width: box.width,
+npm notice run         height: box.height,
+npm notice run         viewBox: svg.getAttribute("viewBox"),
+npm notice run         plotFraction: (svg.viewBox.baseVal.width - 56) * svg.getScreenCTM().a / box.width,
+npm notice run         scale: svg.getScreenCTM().a,
+npm notice run         overflow: document.documentElement.scrollWidth > window.innerWidth,
+npm notice run         emptyWrappers: siblings.filter((el) => !el.children.length).length,
+npm notice run         footer: document.querySelectorAll("footer").length,
+npm notice run       };
+npm notice run     });
+npm notice run     check(label + " chart fills its available width", metrics.scale > 0.99 && metrics.plotFraction > 0.78, metrics);
+npm notice run     check(label + " has no empty wrappers or overflow", !metrics.overflow && metrics.emptyWrappers === 0 && metrics.footer === 0, metrics);
+npm notice run     await page.locator(".home-race").screenshot({path: folder + label + "-race.png"});
+npm notice run     if (width === 390) await page.screenshot({path: folder + "mobile-light-page.png", fullPage: true});
+npm notice run   }
+npm notice run   await theme.click();
+npm notice run   await page.locator(".home-race").screenshot({path: folder + "mobile-dark-race.png"});
+npm notice run   await page.setViewportSize({width:1920,height:1080});
+npm notice run   await page.waitForFunction(() => { const svg = document.querySelector(".home-race-chart"); return Math.abs(svg.viewBox.baseVal.width - svg.clientWidth) < 2; });
+npm notice run   await page.locator(".home-tabs button").filter({hasText: /^Ligue 1$/}).click();
+npm notice run   const svg = page.locator(".home-race-chart");
+npm notice run   const box = await svg.boundingBox();
+npm notice run   await svg.hover({position:{x:box.width * 0.55,y:box.height * 0.5}});
+npm notice run   await page.locator(".home-race .home-tip").waitFor({state:"visible"});
+npm notice run   const tooltip = await page.locator(".home-race .home-tip").innerText();
+npm notice run   check("hover has matchday and team points", /Journée \d+/.test(tooltip) && /pts/.test(tooltip), tooltip);
+npm notice run   await page.locator(".home-race").screenshot({path:folder+"wide-dark-tooltip.png"});
+npm notice run   await page.locator(".home-tabs button").filter({hasText:/^Premier League$/}).click();
+npm notice run   check("competition tab changes", await page.locator(".home-tabs button").filter({hasText:/^Premier League$/}).getAttribute("aria-pressed") === "true", await page.locator(".home-race-chart").getAttribute("aria-label"));
+npm notice run   check("changing competition clears stale tooltip", await page.locator(".home-race .home-tip").count() === 0, await page.locator(".home-race .home-tip").count());
+npm notice run   report.status = "passed";
+npm notice run } catch (error) {
+npm notice run   report.error = error.message;
+npm notice run   await page.screenshot({path:folder+"layout-failure.png",fullPage:true});
+npm notice run }
+npm notice run return report;
+npm notice run
+npm notice run }
+### Result
+{"setup":"Real archived 2025/2026 Neon season, Europe scope, local Next server, Chromium.","command":"python3 output/playwright/page-seasons-layout-20261103/run_cli.py layout","expected":"The chart uses its container width with readable labels; no empty grid wrappers, no horizontal overflow, working competition tabs/tooltips, no footer.","checks":[{"name":"wide-light chart fills its available width","actual":{"width":1590,"height":300,"viewBox":"0 0 1590 300","plotFraction":0.9647798742138365,"scale":1,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"wide-light has no empty wrappers or overflow","actual":{"width":1590,"height":300,"viewBox":"0 0 1590 300","plotFraction":0.9647798742138365,"scale":1,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"desktop-light chart fills its available width","actual":{"width":1109.9921875,"height":299.9921875,"viewBox":"0 0 1110 300","plotFraction":0.9495315047731661,"scale":0.9999739583333334,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"desktop-light has no empty wrappers or overflow","actual":{"width":1109.9921875,"height":299.9921875,"viewBox":"0 0 1110 300","plotFraction":0.9495315047731661,"scale":0.9999739583333334,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"tablet-light chart fills its available width","actual":{"width":570,"height":300,"viewBox":"0 0 570 300","plotFraction":0.9017543859649123,"scale":1,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"tablet-light has no empty wrappers or overflow","actual":{"width":570,"height":300,"viewBox":"0 0 570 300","plotFraction":0.9017543859649123,"scale":1,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"mobile-light chart fills its available width","actual":{"width":324,"height":210,"viewBox":"0 0 324 210","plotFraction":0.8271604938271605,"scale":1,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"mobile-light has no empty wrappers or overflow","actual":{"width":324,"height":210,"viewBox":"0 0 324 210","plotFraction":0.8271604938271605,"scale":1,"overflow":false,"emptyWrappers":0,"footer":0},"passed":true},{"name":"hover has matchday and team points","actual":"Journée 19\nParis Saint-Germain\n45 pts\nLens\n43 pts\nMarseille\n38 pts\nLyon\n36 pts\nLille\n32 pts","passed":true},{"name":"competition tab changes","actual":"Points cumulés du top 5 après 38 journées","passed":true},{"name":"changing competition clears stale tooltip","actual":0,"passed":true}],"status":"passed"}
+### Ran Playwright code
+```js
+await (async (page) => {
+const folder = "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/";
+const report = {
+  setup: "Real archived 2025/2026 Neon season, Europe scope, local Next server, Chromium.",
+  command: "python3 output/playwright/page-seasons-layout-20261103/run_cli.py layout",
+  expected: "The chart uses its container width with readable labels; no empty grid wrappers, no horizontal overflow, working competition tabs/tooltips, no footer.",
+  checks: [],
+  status: "failed",
+};
+const check = (name, passed, actual) => {
+  report.checks.push({name, actual, passed});
+  if (!passed) throw new Error(name + ": " + JSON.stringify(actual));
+};
+try {
+  await page.goto("http://127.0.0.1:3000/?season=2025%2F2026&focus=europe");
+  await page.locator(".home-race-chart").waitFor({timeout: 30000});
+  const theme = page.getByRole("button", {name: /Activer le thème/});
+  if ((await theme.getAttribute("aria-label"))?.includes("clair")) await theme.click();
+  for (const [width, height, label] of [[1920,1080,"wide-light"],[1440,1000,"desktop-light"],[900,1000,"tablet-light"],[390,844,"mobile-light"]]) {
+    await page.setViewportSize({width,height});
+    await page.waitForFunction(() => {
+      const svg = document.querySelector(".home-race-chart");
+      return svg && Math.abs(svg.viewBox.baseVal.width - svg.clientWidth) < 2;
+    });
+    const metrics = await page.evaluate(() => {
+      const svg = document.querySelector(".home-race-chart");
+      const box = svg.getBoundingClientRect();
+      const siblings = [...document.querySelectorAll(".home-bento > div")];
+      return {
+        width: box.width,
+        height: box.height,
+        viewBox: svg.getAttribute("viewBox"),
+        plotFraction: (svg.viewBox.baseVal.width - 56) * svg.getScreenCTM().a / box.width,
+        scale: svg.getScreenCTM().a,
+        overflow: document.documentElement.scrollWidth > window.innerWidth,
+        emptyWrappers: siblings.filter((el) => !el.children.length).length,
+        footer: document.querySelectorAll("footer").length,
+      };
+    });
+    check(label + " chart fills its available width", metrics.scale > 0.99 && metrics.plotFraction > 0.78, metrics);
+    check(label + " has no empty wrappers or overflow", !metrics.overflow && metrics.emptyWrappers === 0 && metrics.footer === 0, metrics);
+    await page.locator(".home-race").screenshot({path: folder + label + "-race.png"});
+    if (width === 390) await page.screenshot({path: folder + "mobile-light-page.png", fullPage: true});
+  }
+  await theme.click();
+  await page.locator(".home-race").screenshot({path: folder + "mobile-dark-race.png"});
+  await page.setViewportSize({width:1920,height:1080});
+  await page.waitForFunction(() => { const svg = document.querySelector(".home-race-chart"); return Math.abs(svg.viewBox.baseVal.width - svg.clientWidth) < 2; });
+  await page.locator(".home-tabs button").filter({hasText: /^Ligue 1$/}).click();
+  const svg = page.locator(".home-race-chart");
+  const box = await svg.boundingBox();
+  await svg.hover({position:{x:box.width * 0.55,y:box.height * 0.5}});
+  await page.locator(".home-race .home-tip").waitFor({state:"visible"});
+  const tooltip = await page.locator(".home-race .home-tip").innerText();
+  check("hover has matchday and team points", /Journée \d+/.test(tooltip) && /pts/.test(tooltip), tooltip);
+  await page.locator(".home-race").screenshot({path:folder+"wide-dark-tooltip.png"});
+  await page.locator(".home-tabs button").filter({hasText:/^Premier League$/}).click();
+  check("competition tab changes", await page.locator(".home-tabs button").filter({hasText:/^Premier League$/}).getAttribute("aria-pressed") === "true", await page.locator(".home-race-chart").getAttribute("aria-label"));
+  check("changing competition clears stale tooltip", await page.locator(".home-race .home-tip").count() === 0, await page.locator(".home-race .home-tip").count());
+  report.status = "passed";
+} catch (error) {
+  report.error = error.message;
+  await page.screenshot({path:folder+"layout-failure.png",fullPage:true});
+}
+return report;
+
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:3000/?season=2025%2F2026&focus=europe
+- Page Title: Vue d’ensemble — STATARENA
+### Events
+- New console entries: .playwright-cli/console-2026-11-03T18-21-19-205Z.log#L60-L67

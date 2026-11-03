@@ -1,0 +1,65 @@
+{
+  "setup": "Real Python CLI using boto3 installed outside the repository; no GITHUB_ACTIONS, Neon or Pitch credentials in child processes. Workflow YAML and Bash checked locally.",
+  "rerun": [
+    "python3 -m pip install --target /tmp/statarena-rematerialize-deps-20261103 boto3==1.43.123",
+    "python3 output/playwright/page-seasons-layout-20261103/verify-rematerialize.py"
+  ],
+  "expected": "CLI help works; local mutation attempt is refused before DB construction; manual workflow shares locking/permissions and invokes the existing stored-data-only CLI.",
+  "checks": [
+    {
+      "name": "real CLI help exposes all/batch/minutes",
+      "passed": true,
+      "actual": "usage: neon_materialize.py [-h] [--all] [--batch BATCH] [--minutes MINUTES]\n\nRebuild the published dashboard partitions from the responses stored in Neon.\n\noptions:\n  -h, --help         show this help message and exit\n  --all              queue every published partition first\n  --batch BATCH\n  --minutes MINUTES\n"
+    },
+    {
+      "name": "real CLI refuses writes outside Actions before Store construction",
+      "passed": true,
+      "actual": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/neon_materialize.py\", line 437, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/neon_materialize.py\", line 411, in main\n    raise RuntimeError(\"Materialization writes to Neon and must run in GitHub Actions\")\nRuntimeError: Materialization writes to Neon and must run in GitHub Actions\n"
+    },
+    {
+      "name": "manual workflow only",
+      "passed": true,
+      "actual": [
+        "workflow_dispatch"
+      ]
+    },
+    {
+      "name": "first checkbox defaults off",
+      "passed": true,
+      "actual": {
+        "description": "Requeue every published season (first run only)",
+        "type": "boolean",
+        "default": "false"
+      }
+    },
+    {
+      "name": "shared ingestion concurrency",
+      "passed": true,
+      "actual": {
+        "group": "statarena-neon-ingestion",
+        "cancel-in-progress": "false",
+        "queue": "max"
+      }
+    },
+    {
+      "name": "GitHub content permissions remain read-only",
+      "passed": true,
+      "actual": {
+        "contents": "read"
+      }
+    },
+    {
+      "name": "publication shell parses",
+      "passed": true,
+      "actual": ""
+    },
+    {
+      "name": "workflow invokes stored-data CLI and no provider collection",
+      "passed": true,
+      "actual": "set -euo pipefail\nargs=(--minutes \"$MATERIALIZE_MINUTES\" --batch \"$MATERIALIZE_BATCH\")\nif [ \"$QUEUE_ALL\" = \"true\" ]; then args+=(--all); fi\npython dashboard/scripts/neon_materialize.py \"${args[@]}\" | tee rematerialize.log\n"
+    }
+  ],
+  "productionWorkflowDispatched": false,
+  "unverified": "GitHub Actions execution, writer secrets, full historical publication and remaining:0 are not verified.",
+  "status": "passed"
+}

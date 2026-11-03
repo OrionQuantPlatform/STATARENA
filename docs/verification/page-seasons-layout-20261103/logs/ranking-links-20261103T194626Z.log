@@ -1,0 +1,195 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run const report={setup:"Real 2026/2027 Neon data; independent Chromium profile; home cards → complete player rankings.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py ranking-links",expected:"Each shortcut preserves its mode, season and competition sample; totals and leading players match the card; reload/profile/back/reset remain usable.",checks:[],status:"failed"};
+npm notice run const check=(name,passed,actual)=>{report.checks.push({name,passed,actual});if(!passed)throw new Error(name+": "+JSON.stringify(actual));};
+npm notice run const base="http://127.0.0.1:3000";
+npm notice run async function home(extra=""){
+npm notice run   await page.goto(base+"/?season=2026%2F2027&focus=europe"+extra);
+npm notice run   await page.locator(".home-finishing").waitFor({timeout:30000});
+npm notice run   await page.locator(".home-season-scorers").waitFor();
+npm notice run }
+npm notice run async function openRanking(key,extra=""){
+npm notice run   await home(extra);
+npm notice run   const card=page.locator(key==="clinical"||key==="wasteful"?".home-finishing":".home-season-scorers");
+npm notice run   const labels={clinical:"Efficaces",wasteful:"Maladroits",goals:"Buteurs",assists:"Passeurs"};
+npm notice run   await card.getByRole("button",{name:labels[key],exact:true}).click();
+npm notice run   const expected=await card.locator("li[data-player-id]").evaluateAll((items)=>items.map((el)=>el.dataset.playerId));
+npm notice run   const link=card.getByRole("link",{name:"Tous les joueurs",exact:true});
+npm notice run   const href=await link.getAttribute("href");
+npm notice run   const target=new URL(href,page.url());
+npm notice run   check(key+" explicit season and ranking",target.searchParams.get("ranking")===key&&target.searchParams.get("season")==="2026/2027"&&target.searchParams.get("basis")==="total",href);
+npm notice run   await link.click();
+npm notice run   await page.waitForURL((url)=>url.pathname.startsWith("/joueurs")&&url.searchParams.get("ranking")===key);
+npm notice run   await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+npm notice run   await page.waitForFunction(({ids,key})=>{
+npm notice run     const rows=[...document.querySelectorAll(".player-directory-table tbody tr")].slice(0,ids.length).map((el)=>el.dataset.playerId);
+npm notice run     return document.querySelector("#player-ranking-filter")?.value===key&&JSON.stringify(rows)===JSON.stringify(ids);
+npm notice run   },{ids:expected,key});
+npm notice run   const actual=await page.locator(".player-directory-table tbody tr").evaluateAll((items)=>items.map((el)=>el.dataset.playerId));
+npm notice run   check(key+" leading players match the home",expected.length>0&&JSON.stringify(actual.slice(0,expected.length))===JSON.stringify(expected),{expected,actual:actual.slice(0,expected.length)});
+npm notice run   check(key+" totals control is active",await page.locator(".player-directory-toolbar").getByRole("button",{name:"Total",exact:true}).getAttribute("aria-pressed")==="true",await page.locator("#player-ranking-filter").inputValue());
+npm notice run   return {target,expected,actual};
+npm notice run }
+npm notice run try{
+npm notice run   await page.goto(base+"/");
+npm notice run   await page.evaluate(()=>localStorage.clear());
+npm notice run   for(const key of ["clinical","wasteful","goals","assists"]){
+npm notice run     const result=await openRanking(key);
+npm notice run     check(key+" expands beyond the home shortlist",result.actual.length>result.expected.length,{home:result.expected.length,directory:result.actual.length});
+npm notice run     if(key==="goals"){
+npm notice run       await page.reload();
+npm notice run       await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+npm notice run       check("scorer ranking survives reload",await page.locator("#player-ranking-filter").inputValue()==="goals",page.url());
+npm notice run     }
+npm notice run   }
+npm notice run   await openRanking("clinical","&league=l_3FJFUl");
+npm notice run   check("single competition stays selected",await page.locator("#league-filter").inputValue()==="l_3FJFUl",page.url());
+npm notice run   await page.locator("#player-ranking-filter").selectOption("");
+npm notice run   await page.waitForFunction(()=>!new URL(location.href).searchParams.has("ranking")&&document.querySelector("#player-ranking-filter")?.value==="");
+npm notice run   check("ranking can be removed",await page.locator("#player-ranking-filter").inputValue()==="",page.url());
+npm notice run   await home();
+npm notice run   await page.locator("#home-competition-filter").click();
+npm notice run   const modal=page.getByRole("dialog");
+npm notice run   await modal.getByRole("button",{name:"Toutes les compétitions",exact:true}).click();
+npm notice run   await modal.getByRole("button",{name:"Appliquer",exact:true}).click();
+npm notice run   await page.evaluate(()=>{
+npm notice run     const key=Object.keys(localStorage).find((name)=>{try{return Array.isArray(JSON.parse(localStorage.getItem(name)).favoriteLeagueIds);}catch{return false;}});
+npm notice run     if(!key)throw new Error("Saved competition preferences missing");
+npm notice run     const saved=JSON.parse(localStorage.getItem(key));
+npm notice run     localStorage.setItem(key,JSON.stringify({...saved,focus:"all",favoriteLeagueIds:["l_3FJFUl","l_4WFCIZ"],onboardingComplete:true}));
+npm notice run   });
+npm notice run   await page.goto(base+"/?season=2026%2F2027&focus=all");
+npm notice run   await page.locator(".home-season-scorers").waitFor({timeout:30000});
+npm notice run   const customCard=page.locator(".home-season-scorers");
+npm notice run   const expected=await customCard.locator("li[data-player-id]").evaluateAll((items)=>items.map((el)=>el.dataset.playerId));
+npm notice run   await customCard.getByRole("link",{name:"Tous les joueurs",exact:true}).click();
+npm notice run   await page.waitForURL((url)=>url.pathname.startsWith("/joueurs")&&url.searchParams.get("ranking")==="goals");
+npm notice run   await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+npm notice run   await page.waitForFunction((ids)=>JSON.stringify([...document.querySelectorAll(".player-directory-table tbody tr")].slice(0,ids.length).map((el)=>el.dataset.playerId))===JSON.stringify(ids),expected);
+npm notice run   const cohorts=new URL(page.url()).searchParams.get("leagues").split(",").sort();
+npm notice run   check("custom competition cohort survives shortcut",JSON.stringify(cohorts)===JSON.stringify(["l_3FJFUl","l_4WFCIZ"].sort()),cohorts);
+npm notice run   check("custom cohort is visible and removable",await page.getByRole("button",{name:"Retirer les compétitions de l’accueil",exact:true}).count()===1,page.url());
+npm notice run   const first=page.locator(".player-directory-table tbody tr").first();
+npm notice run   await first.getByRole("checkbox").check();
+npm notice run   await page.waitForFunction((ids)=>JSON.parse(localStorage.getItem("statarena.research.v1"))?.comparison.some((p)=>JSON.stringify(p.scope.leagues)===JSON.stringify(ids)),cohorts);
+npm notice run   check("saved comparison retains custom cohort",true,cohorts);
+npm notice run   const name=await first.locator(".player-name").innerText();
+npm notice run   await first.locator(".table-player").click();
+npm notice run   await page.waitForURL((url)=>url.searchParams.has("id"));
+npm notice run   await page.getByRole("heading",{name,exact:true}).first().waitFor({state:"visible",timeout:30000});
+npm notice run   check("profile retains ranking and cohort",new URL(page.url()).searchParams.get("ranking")==="goals"&&new URL(page.url()).searchParams.has("leagues"),page.url());
+npm notice run   await page.goBack();
+npm notice run   await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+npm notice run   await page.getByRole("button",{name:"Retirer les compétitions de l’accueil",exact:true}).click();
+npm notice run   await page.waitForFunction(()=>!new URL(location.href).searchParams.has("leagues"));
+npm notice run   check("cohort can be removed",true,page.url());
+npm notice run   await page.setViewportSize({width:390,height:844});
+npm notice run   check("ranking page has no mobile document overflow",await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth})));
+npm notice run   await page.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/ranking-mobile.png",fullPage:true});
+npm notice run   report.status="passed";
+npm notice run }catch(error){report.error=error.message;report.url=page.url();report.visibleRanking=await page.locator("#player-ranking-filter").inputValue().catch(()=>null);report.visiblePlayerIds=await page.locator(".player-directory-table tbody tr").evaluateAll((rows)=>rows.map((row)=>row.dataset.playerId)).catch(()=>[]);await page.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/ranking-links-failure.png",fullPage:true});}
+npm notice run return report;
+npm notice run
+npm notice run }
+### Result
+{"setup":"Real 2026/2027 Neon data; independent Chromium profile; home cards → complete player rankings.","command":"python3 output/playwright/page-seasons-layout-20261103/run_cli.py ranking-links","expected":"Each shortcut preserves its mode, season and competition sample; totals and leading players match the card; reload/profile/back/reset remain usable.","checks":[{"name":"clinical explicit season and ranking","passed":true,"actual":"/joueurs?season=2026%2F2027&focus=europe&ranking=clinical&leagues=l_4WFCIZ%2Cl_0ErfuF%2Cl_1Isor4%2Cl_0ALvwF%2Cl_3FJFUl%2Cl_4QexZg%2Cl_4H43wr%2Cl_0bfbkO%2Cl_38d9HA%2Cl_2WZ2tt&playersView=table&basis=total&minutes=1"},{"name":"clinical leading players match the home","passed":true,"actual":{"expected":["p_2DQMAL","p_0En7i6","p_3WzTQX","p_3qk3tO","p_17yWWC","p_1XctKT","p_40qdIy","p_3giUjN"],"actual":["p_2DQMAL","p_0En7i6","p_3WzTQX","p_3qk3tO","p_17yWWC","p_1XctKT","p_40qdIy","p_3giUjN"]}},{"name":"clinical totals control is active","passed":true,"actual":"clinical"},{"name":"clinical expands beyond the home shortlist","passed":true,"actual":{"home":8,"directory":20}},{"name":"wasteful explicit season and ranking","passed":true,"actual":"/joueurs?season=2026%2F2027&focus=europe&ranking=wasteful&leagues=l_4WFCIZ%2Cl_0ErfuF%2Cl_1Isor4%2Cl_0ALvwF%2Cl_3FJFUl%2Cl_4QexZg%2Cl_4H43wr%2Cl_0bfbkO%2Cl_38d9HA%2Cl_2WZ2tt&playersView=table&basis=total&minutes=1"},{"name":"wasteful leading players match the home","passed":true,"actual":{"expected":["p_0jxrL1","p_3NMweX","p_3RpFTA","p_2NyWHJ","p_2190i5","p_18STgI","p_3Sy6aW","p_0tCuI7"],"actual":["p_0jxrL1","p_3NMweX","p_3RpFTA","p_2NyWHJ","p_2190i5","p_18STgI","p_3Sy6aW","p_0tCuI7"]}},{"name":"wasteful totals control is active","passed":true,"actual":"wasteful"},{"name":"wasteful expands beyond the home shortlist","passed":true,"actual":{"home":8,"directory":20}},{"name":"goals explicit season and ranking","passed":true,"actual":"/joueurs?season=2026%2F2027&focus=europe&ranking=goals&leagues=l_4WFCIZ%2Cl_0ErfuF%2Cl_1Isor4%2Cl_0ALvwF%2Cl_3FJFUl%2Cl_4QexZg%2Cl_4H43wr%2Cl_0bfbkO%2Cl_38d9HA%2Cl_2WZ2tt&playersView=table&basis=total&minutes=1"},{"name":"goals leading players match the home","passed":true,"actual":{"expected":["p_2DQMAL","p_217YMB","p_3WzTQX","p_1BdwT6","p_2e0FPo","p_3lf3TC","p_4g8W7t","p_2vjh4B","p_0mvFmY","p_1vKrAw"],"actual":["p_2DQMAL","p_217YMB","p_3WzTQX","p_1BdwT6","p_2e0FPo","p_3lf3TC","p_4g8W7t","p_2vjh4B","p_0mvFmY","p_1vKrAw"]}},{"name":"goals totals control is active","passed":true,"actual":"goals"},{"name":"goals expands beyond the home shortlist","passed":true,"actual":{"home":10,"directory":20}},{"name":"scorer ranking survives reload","passed":true,"actual":"http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=europe&ranking=goals&leagues=l_4WFCIZ%2Cl_0ErfuF%2Cl_1Isor4%2Cl_0ALvwF%2Cl_3FJFUl%2Cl_4QexZg%2Cl_4H43wr%2Cl_0bfbkO%2Cl_38d9HA%2Cl_2WZ2tt&playersView=table&basis=total&minutes=1"},{"name":"assists explicit season and ranking","passed":true,"actual":"/joueurs?season=2026%2F2027&focus=europe&ranking=assists&leagues=l_4WFCIZ%2Cl_0ErfuF%2Cl_1Isor4%2Cl_0ALvwF%2Cl_3FJFUl%2Cl_4QexZg%2Cl_4H43wr%2Cl_0bfbkO%2Cl_38d9HA%2Cl_2WZ2tt&playersView=table&basis=total&minutes=1"},{"name":"assists leading players match the home","passed":true,"actual":{"expected":["p_2e0FPo","p_4SOI8C","p_3ZaT4X","p_1hZtL3","p_4foizb","p_3wmmvm","p_2jjKzx","p_3u5uGP","p_4S7FIE","p_07AzDA"],"actual":["p_2e0FPo","p_4SOI8C","p_3ZaT4X","p_1hZtL3","p_4foizb","p_3wmmvm","p_2jjKzx","p_3u5uGP","p_4S7FIE","p_07AzDA"]}},{"name":"assists totals control is active","passed":true,"actual":"assists"},{"name":"assists expands beyond the home shortlist","passed":true,"actual":{"home":10,"directory":20}},{"name":"clinical explicit season and ranking","passed":true,"actual":"/joueurs?season=2026%2F2027&focus=europe&league=l_3FJFUl&ranking=clinical&playersView=table&basis=total&minutes=1"},{"name":"clinical leading players match the home","passed":true,"actual":{"expected":["p_3hj3bU","p_1me0Tq","p_1xJbWg","p_3dw0Uw","p_2ySwt7","p_3chd12","p_2ISbEC","p_3LVhBd"],"actual":["p_3hj3bU","p_1me0Tq","p_1xJbWg","p_3dw0Uw","p_2ySwt7","p_3chd12","p_2ISbEC","p_3LVhBd"]}},{"name":"clinical totals control is active","passed":true,"actual":"clinical"},{"name":"single competition stays selected","passed":true,"actual":"http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=europe&league=l_3FJFUl&ranking=clinical&playersView=table&basis=total&minutes=1"},{"name":"ranking can be removed","passed":true,"actual":"http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=europe&league=l_3FJFUl&playersView=table&basis=total"},{"name":"custom competition cohort survives shortcut","passed":true,"actual":["l_3FJFUl","l_4WFCIZ"]},{"name":"custom cohort is visible and removable","passed":true,"actual":"http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=all&ranking=goals&leagues=l_3FJFUl%2Cl_4WFCIZ&playersView=table&basis=total&minutes=1"},{"name":"saved comparison retains custom cohort","passed":true,"actual":["l_3FJFUl","l_4WFCIZ"]},{"name":"profile retains ranking and cohort","passed":true,"actual":"http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=all&basis=total&ranking=goals&leagues=l_3FJFUl%2Cl_4WFCIZ&playersView=table&id=p_3WzTQX"},{"name":"cohort can be removed","passed":true,"actual":"http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=all&ranking=goals&playersView=table&basis=total"},{"name":"ranking page has no mobile document overflow","passed":true,"actual":{"width":390,"scroll":390}}],"status":"passed"}
+### Ran Playwright code
+```js
+await (async (page) => {
+const report={setup:"Real 2026/2027 Neon data; independent Chromium profile; home cards → complete player rankings.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py ranking-links",expected:"Each shortcut preserves its mode, season and competition sample; totals and leading players match the card; reload/profile/back/reset remain usable.",checks:[],status:"failed"};
+const check=(name,passed,actual)=>{report.checks.push({name,passed,actual});if(!passed)throw new Error(name+": "+JSON.stringify(actual));};
+const base="http://127.0.0.1:3000";
+async function home(extra=""){
+  await page.goto(base+"/?season=2026%2F2027&focus=europe"+extra);
+  await page.locator(".home-finishing").waitFor({timeout:30000});
+  await page.locator(".home-season-scorers").waitFor();
+}
+async function openRanking(key,extra=""){
+  await home(extra);
+  const card=page.locator(key==="clinical"||key==="wasteful"?".home-finishing":".home-season-scorers");
+  const labels={clinical:"Efficaces",wasteful:"Maladroits",goals:"Buteurs",assists:"Passeurs"};
+  await card.getByRole("button",{name:labels[key],exact:true}).click();
+  const expected=await card.locator("li[data-player-id]").evaluateAll((items)=>items.map((el)=>el.dataset.playerId));
+  const link=card.getByRole("link",{name:"Tous les joueurs",exact:true});
+  const href=await link.getAttribute("href");
+  const target=new URL(href,page.url());
+  check(key+" explicit season and ranking",target.searchParams.get("ranking")===key&&target.searchParams.get("season")==="2026/2027"&&target.searchParams.get("basis")==="total",href);
+  await link.click();
+  await page.waitForURL((url)=>url.pathname.startsWith("/joueurs")&&url.searchParams.get("ranking")===key);
+  await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+  await page.waitForFunction(({ids,key})=>{
+    const rows=[...document.querySelectorAll(".player-directory-table tbody tr")].slice(0,ids.length).map((el)=>el.dataset.playerId);
+    return document.querySelector("#player-ranking-filter")?.value===key&&JSON.stringify(rows)===JSON.stringify(ids);
+  },{ids:expected,key});
+  const actual=await page.locator(".player-directory-table tbody tr").evaluateAll((items)=>items.map((el)=>el.dataset.playerId));
+  check(key+" leading players match the home",expected.length>0&&JSON.stringify(actual.slice(0,expected.length))===JSON.stringify(expected),{expected,actual:actual.slice(0,expected.length)});
+  check(key+" totals control is active",await page.locator(".player-directory-toolbar").getByRole("button",{name:"Total",exact:true}).getAttribute("aria-pressed")==="true",await page.locator("#player-ranking-filter").inputValue());
+  return {target,expected,actual};
+}
+try{
+  await page.goto(base+"/");
+  await page.evaluate(()=>localStorage.clear());
+  for(const key of ["clinical","wasteful","goals","assists"]){
+    const result=await openRanking(key);
+    check(key+" expands beyond the home shortlist",result.actual.length>result.expected.length,{home:result.expected.length,directory:result.actual.length});
+    if(key==="goals"){
+      await page.reload();
+      await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+      check("scorer ranking survives reload",await page.locator("#player-ranking-filter").inputValue()==="goals",page.url());
+    }
+  }
+  await openRanking("clinical","&league=l_3FJFUl");
+  check("single competition stays selected",await page.locator("#league-filter").inputValue()==="l_3FJFUl",page.url());
+  await page.locator("#player-ranking-filter").selectOption("");
+  await page.waitForFunction(()=>!new URL(location.href).searchParams.has("ranking")&&document.querySelector("#player-ranking-filter")?.value==="");
+  check("ranking can be removed",await page.locator("#player-ranking-filter").inputValue()==="",page.url());
+  await home();
+  await page.locator("#home-competition-filter").click();
+  const modal=page.getByRole("dialog");
+  await modal.getByRole("button",{name:"Toutes les compétitions",exact:true}).click();
+  await modal.getByRole("button",{name:"Appliquer",exact:true}).click();
+  await page.evaluate(()=>{
+    const key=Object.keys(localStorage).find((name)=>{try{return Array.isArray(JSON.parse(localStorage.getItem(name)).favoriteLeagueIds);}catch{return false;}});
+    if(!key)throw new Error("Saved competition preferences missing");
+    const saved=JSON.parse(localStorage.getItem(key));
+    localStorage.setItem(key,JSON.stringify({...saved,focus:"all",favoriteLeagueIds:["l_3FJFUl","l_4WFCIZ"],onboardingComplete:true}));
+  });
+  await page.goto(base+"/?season=2026%2F2027&focus=all");
+  await page.locator(".home-season-scorers").waitFor({timeout:30000});
+  const customCard=page.locator(".home-season-scorers");
+  const expected=await customCard.locator("li[data-player-id]").evaluateAll((items)=>items.map((el)=>el.dataset.playerId));
+  await customCard.getByRole("link",{name:"Tous les joueurs",exact:true}).click();
+  await page.waitForURL((url)=>url.pathname.startsWith("/joueurs")&&url.searchParams.get("ranking")==="goals");
+  await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+  await page.waitForFunction((ids)=>JSON.stringify([...document.querySelectorAll(".player-directory-table tbody tr")].slice(0,ids.length).map((el)=>el.dataset.playerId))===JSON.stringify(ids),expected);
+  const cohorts=new URL(page.url()).searchParams.get("leagues").split(",").sort();
+  check("custom competition cohort survives shortcut",JSON.stringify(cohorts)===JSON.stringify(["l_3FJFUl","l_4WFCIZ"].sort()),cohorts);
+  check("custom cohort is visible and removable",await page.getByRole("button",{name:"Retirer les compétitions de l’accueil",exact:true}).count()===1,page.url());
+  const first=page.locator(".player-directory-table tbody tr").first();
+  await first.getByRole("checkbox").check();
+  await page.waitForFunction((ids)=>JSON.parse(localStorage.getItem("statarena.research.v1"))?.comparison.some((p)=>JSON.stringify(p.scope.leagues)===JSON.stringify(ids)),cohorts);
+  check("saved comparison retains custom cohort",true,cohorts);
+  const name=await first.locator(".player-name").innerText();
+  await first.locator(".table-player").click();
+  await page.waitForURL((url)=>url.searchParams.has("id"));
+  await page.getByRole("heading",{name,exact:true}).first().waitFor({state:"visible",timeout:30000});
+  check("profile retains ranking and cohort",new URL(page.url()).searchParams.get("ranking")==="goals"&&new URL(page.url()).searchParams.has("leagues"),page.url());
+  await page.goBack();
+  await page.locator("#player-ranking-filter").waitFor({timeout:30000});
+  await page.getByRole("button",{name:"Retirer les compétitions de l’accueil",exact:true}).click();
+  await page.waitForFunction(()=>!new URL(location.href).searchParams.has("leagues"));
+  check("cohort can be removed",true,page.url());
+  await page.setViewportSize({width:390,height:844});
+  check("ranking page has no mobile document overflow",await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth})));
+  await page.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/ranking-mobile.png",fullPage:true});
+  report.status="passed";
+}catch(error){report.error=error.message;report.url=page.url();report.visibleRanking=await page.locator("#player-ranking-filter").inputValue().catch(()=>null);report.visiblePlayerIds=await page.locator(".player-directory-table tbody tr").evaluateAll((rows)=>rows.map((row)=>row.dataset.playerId)).catch(()=>[]);await page.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/ranking-links-failure.png",fullPage:true});}
+return report;
+
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=all&ranking=goals&playersView=table&basis=total
+- Page Title: Joueurs — STATARENA
+### Events
+- New console entries: .playwright-cli/console-2026-11-03T19-44-56-303Z.log#L111-L194

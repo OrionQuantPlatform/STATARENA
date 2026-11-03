@@ -1,0 +1,18 @@
+[
+  {
+    "source": ".git/refs/heads/main 2",
+    "backup": ".git/codex-ref-quarantine-20261103/refs/heads/main 2",
+    "inode": 141017427,
+    "bytes": 41,
+    "flags": 1073774688,
+    "reason": "Invalid Git ref name containing a space; preserved by same-filesystem rename without reading the iCloud placeholder."
+  },
+  {
+    "source": ".git/refs/remotes/origin/main 2",
+    "backup": ".git/codex-ref-quarantine-20261103/refs/remotes/origin/main 2",
+    "inode": 141036304,
+    "bytes": 41,
+    "flags": 1073774688,
+    "reason": "Invalid Git ref name containing a space; preserved by same-filesystem rename without reading the iCloud placeholder."
+  }
+]

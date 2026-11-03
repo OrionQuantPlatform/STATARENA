@@ -1,0 +1,18 @@
+{
+  "setup": "Final worktree inventory; excludes Git internals, dependencies, caches and generated evidence.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/cleanup-final.py",
+  "inputs": "delete-plan.json (42 reviewed paths)",
+  "expected": "All 42 reviewed copies absent; only the unpaired WAL retained; canonical files and distinct prototypes B/C retained.",
+  "reviewed": 42,
+  "remainingReviewed": [],
+  "otherNumbered": [
+    "data/computed/pitchapi-world/queue 2.sqlite-wal"
+  ],
+  "distinctPrototypes": {
+    "index.html": true,
+    "option-b.html": true,
+    "option-c.html": true
+  },
+  "gitRefsRecovery": ".git/codex-ref-quarantine-20261103/RESULTS.json",
+  "status": "passed"
+}

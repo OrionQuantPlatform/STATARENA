@@ -1,0 +1,10 @@
+{"case": "navigation", "exitCode": 0, "report": "navigation-20261103T194550Z.json", "status": "passed", "checks": 16}
+{"case": "preferences", "exitCode": 0, "report": "preferences-20261103T194558Z.json", "status": "passed", "checks": 7}
+{"case": "layout", "exitCode": 0, "report": "layout-20261103T194601Z.json", "status": "passed", "checks": 11}
+{"case": "finishing", "exitCode": 0, "report": "finishing-20261103T194604Z.json", "status": "passed", "checks": 9}
+{"case": "loading", "exitCode": 0, "report": "loading-20261103T194609Z.json", "status": "passed", "checks": 5}
+{"case": "ranking-links", "exitCode": 0, "report": "ranking-links-20261103T194626Z.json", "status": "passed", "checks": 28}
+{"case": "widget-layout", "exitCode": 0, "report": "widget-layout-20261103T194629Z.json", "status": "passed", "checks": 14}
+{"case": "country-filters", "exitCode": 0, "report": "country-filters-20261103T194635Z.json", "status": "passed", "checks": 22}
+{"case": "personal-fixtures", "exitCode": 0, "report": "personal-fixtures-20261103T194636Z.json", "status": "passed", "checks": 9}
+{"case": "extra-country-filters", "exitCode": 0, "report": "extra-country-filters-20261103T194643Z.json", "status": "passed", "checks": 10}

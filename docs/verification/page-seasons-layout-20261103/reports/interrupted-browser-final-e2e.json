@@ -1,0 +1,17 @@
+{
+  "setup": "Local Next server and read-only Neon data, dedicated Chromium session. Personal-fixture workflow uses explicitly controlled browser-only packed responses.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_all.py",
+  "expected": "All ten complete browser workflows pass.",
+  "results": [
+    {
+      "case": "navigation",
+      "exitCode": 1,
+      "report": "navigation-20261103T191616Z.json",
+      "status": "passed",
+      "checks": 16
+    }
+  ],
+  "assertions": 16,
+  "status": "failed",
+  "completedAt": "2026-11-03T19:43:47.073301+00:00"
+}

@@ -1,0 +1,132 @@
+{
+  "setup": "Real Neon records; player comparison, Arsenal club scope and archive selector in Chromium.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py extra-country-filters",
+  "expected": "Secondary competition selectors use country groups without losing their all/reset or selection behavior.",
+  "checks": [
+    {
+      "name": "comparison player 1 has countries",
+      "passed": true,
+      "actual": [
+        "Espagne",
+        "Europe",
+        "International"
+      ]
+    },
+    {
+      "name": "comparison player 2 has countries",
+      "passed": true,
+      "actual": [
+        "Espagne",
+        "Europe",
+        "International"
+      ]
+    },
+    {
+      "name": "comparison competition remains selectable",
+      "passed": true,
+      "actual": "l_0ErfuF"
+    },
+    {
+      "name": "club analysis has grouped unique entries",
+      "passed": true,
+      "actual": {
+        "groups": [
+          "Angleterre",
+          "Europe"
+        ],
+        "ids": [
+          "l_4WFCIZ",
+          "l_0bfbkO"
+        ],
+        "direct": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "club analysis retains a single All option",
+      "passed": true,
+      "actual": [
+        "all"
+      ]
+    },
+    {
+      "name": "club analysis resolves domestic and Europe countries",
+      "passed": true,
+      "actual": [
+        "Angleterre",
+        "Europe"
+      ]
+    },
+    {
+      "name": "club analysis scope remains in URL",
+      "passed": true,
+      "actual": "http://127.0.0.1:3000/clubs?season=2026%2F2027&focus=europe&id=t_1gkhxH&clubsView=explore&clubScope=l_4WFCIZ"
+    },
+    {
+      "name": "archives has grouped unique entries",
+      "passed": true,
+      "actual": {
+        "groups": [
+          "Allemagne",
+          "Angleterre",
+          "Autriche",
+          "Belgique",
+          "Écosse",
+          "Espagne",
+          "Europe",
+          "France",
+          "Grèce",
+          "Italie",
+          "Norvège",
+          "Pays-Bas",
+          "Pologne",
+          "Portugal",
+          "Suisse",
+          "Tchéquie",
+          "Turquie"
+        ],
+        "ids": [
+          "g:bundesliga",
+          "g:dfb-pokal",
+          "g:eng-league-cup",
+          "g:eng-fa-cup",
+          "g:eng-premier-league",
+          "g:aut-bundesliga",
+          "g:bel-pro-league",
+          "g:sco-premiership",
+          "g:esp-copa-del-rey",
+          "g:esp-primera-division",
+          "g:champions-league",
+          "g:europa-league",
+          "g:fra-ligue-1",
+          "g:gre-super-league",
+          "g:ita-serie-a",
+          "g:nor-eliteserien",
+          "g:ned-eredivisie",
+          "g:pol-ekstraklasa",
+          "g:por-primeira-liga",
+          "g:sui-super-league",
+          "g:cze-1-fotbalova-liga",
+          "g:tur-sueperlig"
+        ],
+        "direct": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "archives retains a single All option",
+      "passed": true,
+      "actual": [
+        "all"
+      ]
+    },
+    {
+      "name": "archive competition remains in URL",
+      "passed": true,
+      "actual": "http://127.0.0.1:3000/archives?season=2026%2F2027&focus=europe&ac=g%3Abundesliga"
+    }
+  ],
+  "status": "passed"
+}

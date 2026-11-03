@@ -1,0 +1,9 @@
+{
+  "setup": "Real Neon records; player comparison, Arsenal club scope and archive selector in Chromium.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py extra-country-filters",
+  "expected": "Secondary competition selectors use country groups without losing their all/reset or selection behavior.",
+  "checks": [],
+  "status": "failed",
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+  "url": "http://127.0.0.1:3000/joueurs?season=2026%2F2027&focus=europe&playersView=table&ranking=goals&basis=total"
+}

@@ -1,0 +1,98 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run const report = {
+npm notice run   setup: "A fresh Chromium tab; real Neon chunk requests paused briefly at the browser boundary, then continued unchanged.",
+npm notice run   command: "python3 output/playwright/page-seasons-layout-20261103/run_cli.py loading",
+npm notice run   expected: "Loading shell has no footer and links to another page's own year; archived data loads after requests resume; archived home has no empty wrappers.",
+npm notice run   checks: [],
+npm notice run   status: "failed",
+npm notice run };
+npm notice run const check = (name, actual, expected) => {
+npm notice run   report.checks.push({name,actual,expected,passed:actual === expected});
+npm notice run   if (actual !== expected) throw new Error(`${name}: ${actual} instead of ${expected}`);
+npm notice run };
+npm notice run const tab = await page.context().newPage();
+npm notice run let resume;
+npm notice run const paused = new Promise((resolve) => {resume = resolve;});
+npm notice run await tab.route("**/data/computed/dashboard/**", async (route) => {await paused;await route.continue();});
+npm notice run try {
+npm notice run   await tab.goto("http://127.0.0.1:3000/?season=2021%2F2022&focus=europe",{waitUntil:"domcontentloaded"});
+npm notice run   await tab.locator(".season-loading").waitFor({state:"visible",timeout:15000});
+npm notice run   check("loading footer removed",await tab.locator("footer").count(),0);
+npm notice run   const href = await tab.getByRole("navigation",{name:"Navigation principale"}).getByRole("link",{name:"Joueurs",exact:true}).getAttribute("href");
+npm notice run   check("loading navigation has independent year",new URL(href,tab.url()).searchParams.get("season"),"2026/2027");
+npm notice run   await tab.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/loading-no-footer.png",fullPage:true});
+npm notice run   resume();
+npm notice run   await tab.locator("#season-filter").waitFor({state:"visible",timeout:30000});
+npm notice run   check("oldest season loads",await tab.locator("#season-filter").inputValue(),"2021/2022");
+npm notice run   check("archived home footer removed",await tab.locator("footer").count(),0);
+npm notice run   const layout = await tab.evaluate(() => ({
+npm notice run     empty:[...document.querySelectorAll(".home-bento > div")].filter((el)=>!el.children.length).length,
+npm notice run     race:document.querySelectorAll(".home-race").length,
+npm notice run     weekly:document.querySelectorAll(".home-potw").length,
+npm notice run   }));
+npm notice run   check("oldest season has no empty widget wrappers",layout.empty,0);
+npm notice run   report.layout = layout;
+npm notice run   await tab.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/oldest-season-page.png",fullPage:true});
+npm notice run   report.status = "passed";
+npm notice run } catch (error) {
+npm notice run   report.error = error.message;
+npm notice run   await tab.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/loading-failure.png",fullPage:true});
+npm notice run } finally {resume();await tab.close();}
+npm notice run return report;
+npm notice run
+npm notice run }
+### Result
+{"setup":"A fresh Chromium tab; real Neon chunk requests paused briefly at the browser boundary, then continued unchanged.","command":"python3 output/playwright/page-seasons-layout-20261103/run_cli.py loading","expected":"Loading shell has no footer and links to another page's own year; archived data loads after requests resume; archived home has no empty wrappers.","checks":[{"name":"loading footer removed","actual":0,"expected":0,"passed":true},{"name":"loading navigation has independent year","actual":null,"expected":"2026/2027","passed":false}],"status":"failed","error":"loading navigation has independent year: null instead of 2026/2027"}
+### Ran Playwright code
+```js
+await (async (page) => {
+const report = {
+  setup: "A fresh Chromium tab; real Neon chunk requests paused briefly at the browser boundary, then continued unchanged.",
+  command: "python3 output/playwright/page-seasons-layout-20261103/run_cli.py loading",
+  expected: "Loading shell has no footer and links to another page's own year; archived data loads after requests resume; archived home has no empty wrappers.",
+  checks: [],
+  status: "failed",
+};
+const check = (name, actual, expected) => {
+  report.checks.push({name,actual,expected,passed:actual === expected});
+  if (actual !== expected) throw new Error(`${name}: ${actual} instead of ${expected}`);
+};
+const tab = await page.context().newPage();
+let resume;
+const paused = new Promise((resolve) => {resume = resolve;});
+await tab.route("**/data/computed/dashboard/**", async (route) => {await paused;await route.continue();});
+try {
+  await tab.goto("http://127.0.0.1:3000/?season=2021%2F2022&focus=europe",{waitUntil:"domcontentloaded"});
+  await tab.locator(".season-loading").waitFor({state:"visible",timeout:15000});
+  check("loading footer removed",await tab.locator("footer").count(),0);
+  const href = await tab.getByRole("navigation",{name:"Navigation principale"}).getByRole("link",{name:"Joueurs",exact:true}).getAttribute("href");
+  check("loading navigation has independent year",new URL(href,tab.url()).searchParams.get("season"),"2026/2027");
+  await tab.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/loading-no-footer.png",fullPage:true});
+  resume();
+  await tab.locator("#season-filter").waitFor({state:"visible",timeout:30000});
+  check("oldest season loads",await tab.locator("#season-filter").inputValue(),"2021/2022");
+  check("archived home footer removed",await tab.locator("footer").count(),0);
+  const layout = await tab.evaluate(() => ({
+    empty:[...document.querySelectorAll(".home-bento > div")].filter((el)=>!el.children.length).length,
+    race:document.querySelectorAll(".home-race").length,
+    weekly:document.querySelectorAll(".home-potw").length,
+  }));
+  check("oldest season has no empty widget wrappers",layout.empty,0);
+  report.layout = layout;
+  await tab.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/oldest-season-page.png",fullPage:true});
+  report.status = "passed";
+} catch (error) {
+  report.error = error.message;
+  await tab.screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/loading-failure.png",fullPage:true});
+} finally {resume();await tab.close();}
+return report;
+
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:3000/matchs?focus=europe&season=2026%2F2027
+- Page Title: Calendrier — STATARENA
+- Console: 0 errors, 2 warnings
+### Events
+- New console entries: ../../../.playwright-cli/console-2026-11-03T17-50-53-718Z.log#L176-L179

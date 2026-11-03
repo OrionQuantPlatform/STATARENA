@@ -1,0 +1,46 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run const metrics = await page.evaluate(() => {
+npm notice run   const svg = document.querySelector(".home-race-chart");
+npm notice run   const box = svg.getBoundingClientRect();
+npm notice run   const nav = [...document.querySelectorAll(".main-nav a")].find((link) => link.textContent === "Joueurs");
+npm notice run   return {
+npm notice run     url: location.href,
+npm notice run     navPlayers: nav?.getAttribute("href"),
+npm notice run     width: box.width,
+npm notice run     height: box.height,
+npm notice run     viewBox: svg.getAttribute("viewBox"),
+npm notice run     plotFraction: (svg.viewBox.baseVal.width - 56) * svg.getScreenCTM().a / box.width,
+npm notice run     hasHomeSeasonControl: Boolean(document.querySelector("#season-filter")),
+npm notice run     emptyWrappers: [...document.querySelectorAll(".home-bento > div")].filter((el) => !el.children.length).length,
+npm notice run   };
+npm notice run });
+npm notice run await page.locator(".home-race").screenshot({path: "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/before-race.png"});
+npm notice run return metrics;
+npm notice run
+npm notice run }
+### Result
+{"url":"http://127.0.0.1:3000/?season=2025%2F2026&focus=europe","navPlayers":"/joueurs?season=2025%2F2026&focus=europe","width":1270,"height":300,"viewBox":"0 0 520 290","plotFraction":0.37795275590551186,"hasHomeSeasonControl":false,"emptyWrappers":0}
+### Ran Playwright code
+```js
+await (async (page) => {
+const metrics = await page.evaluate(() => {
+  const svg = document.querySelector(".home-race-chart");
+  const box = svg.getBoundingClientRect();
+  const nav = [...document.querySelectorAll(".main-nav a")].find((link) => link.textContent === "Joueurs");
+  return {
+    url: location.href,
+    navPlayers: nav?.getAttribute("href"),
+    width: box.width,
+    height: box.height,
+    viewBox: svg.getAttribute("viewBox"),
+    plotFraction: (svg.viewBox.baseVal.width - 56) * svg.getScreenCTM().a / box.width,
+    hasHomeSeasonControl: Boolean(document.querySelector("#season-filter")),
+    emptyWrappers: [...document.querySelectorAll(".home-bento > div")].filter((el) => !el.children.length).length,
+  };
+});
+await page.locator(".home-race").screenshot({path: "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/before-race.png"});
+return metrics;
+
+})(page);
+```

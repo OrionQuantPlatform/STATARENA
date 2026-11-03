@@ -1,0 +1,26 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons run-code async (page) => {
+npm notice run await page.setViewportSize({width:1920,height:1080});
+npm notice run await page.goto("http://127.0.0.1:3000/?season=2026%2F2027&focus=europe");
+npm notice run await page.locator(".home-motw").waitFor({timeout:30000});
+npm notice run await page.locator(".home-race").waitFor();
+npm notice run const metrics=await page.evaluate(()=>{
+npm notice run   const rect=(s)=>document.querySelector(s)?.getBoundingClientRect();
+npm notice run   return {
+npm notice run     weeklyHeight:rect(".home-motw")?.height,
+npm notice run     playerHeight:rect(".home-potw")?.height,
+npm notice run     playerBottomGap:rect(".home-potw-match")?.top-rect(".home-potw-season")?.bottom,
+npm notice run     chartHeight:rect(".home-xg-race")?.height,
+npm notice run     pitchHeight:rect(".home-shot-map")?.height,
+npm notice run     raceBottomGap:rect(".home-race")?.bottom-Math.max(rect(".home-race-chart")?.bottom||0,rect(".home-race-legend")?.bottom||0),
+npm notice run     raceTeams:document.querySelectorAll(".home-race-row").length,
+npm notice run   };
+npm notice run });
+npm notice run await page.locator(".home-motw").screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/weekly-before.png"});
+npm notice run await page.locator(".home-race").screenshot({path:"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/output/playwright/page-seasons-layout-20261103/race-gap-before.png"});
+npm notice run return {setup:"Real 2026/2027 season, Europe scope, 1920px Chromium before compacting the weekly row.",expected:"Record current weekly row, chart imbalance, player-card spacer and title-race bottom gap.",command:"python3 output/playwright/page-seasons-layout-20261103/run_cli.py weekly-before",status:"observed",metrics};
+npm notice run
+npm notice run }
+The browser 'statarena-seasons' is not open, please run open first
+
+  playwright-cli -s=statarena-seasons open [params]

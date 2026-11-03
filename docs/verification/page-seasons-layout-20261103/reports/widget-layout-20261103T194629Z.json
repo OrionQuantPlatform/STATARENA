@@ -1,0 +1,150 @@
+{
+  "setup": "Real 2026/2027 Neon data, Top 7 Europe + UEFA, 1920px/390px Chromium.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py widget-layout",
+  "expected": "Compact weekly row and spacers; six title-race teams; wider readable tooltips; ten scorers/assist providers; three distinct defensive teams; no document overflow.",
+  "checks": [
+    {
+      "name": "weekly row is shorter than 700px (baseline 796px)",
+      "passed": true,
+      "actual": {
+        "weeklyHeight": 680.90625,
+        "playerBottomGap": 29.265625,
+        "raceBottomGap": 17,
+        "raceTeams": 6,
+        "defenceTeams": 3,
+        "defenceBottomGap": 17,
+        "scorers": 10,
+        "scorerBottomGap": 17,
+        "scorerListGap": 10.046875,
+        "stats": 8
+      }
+    },
+    {
+      "name": "player card spacer is compact (baseline 120px)",
+      "passed": true,
+      "actual": 29.265625
+    },
+    {
+      "name": "title race has six teams and compact bottom",
+      "passed": true,
+      "actual": {
+        "weeklyHeight": 680.90625,
+        "playerBottomGap": 29.265625,
+        "raceBottomGap": 17,
+        "raceTeams": 6,
+        "defenceTeams": 3,
+        "defenceBottomGap": 17,
+        "scorers": 10,
+        "scorerBottomGap": 17,
+        "scorerListGap": 10.046875,
+        "stats": 8
+      }
+    },
+    {
+      "name": "defence card has three teams and compact bottom",
+      "passed": true,
+      "actual": {
+        "weeklyHeight": 680.90625,
+        "playerBottomGap": 29.265625,
+        "raceBottomGap": 17,
+        "raceTeams": 6,
+        "defenceTeams": 3,
+        "defenceBottomGap": 17,
+        "scorers": 10,
+        "scorerBottomGap": 17,
+        "scorerListGap": 10.046875,
+        "stats": 8
+      }
+    },
+    {
+      "name": "ten scorers without bottom void",
+      "passed": true,
+      "actual": {
+        "weeklyHeight": 680.90625,
+        "playerBottomGap": 29.265625,
+        "raceBottomGap": 17,
+        "raceTeams": 6,
+        "defenceTeams": 3,
+        "defenceBottomGap": 17,
+        "scorers": 10,
+        "scorerBottomGap": 17,
+        "scorerListGap": 10.046875,
+        "stats": 8
+      }
+    },
+    {
+      "name": "all eight match statistics preserved",
+      "passed": true,
+      "actual": 8
+    },
+    {
+      "name": "defensive teams are distinct and linked",
+      "passed": true,
+      "actual": [
+        "t_0dVrhE",
+        "t_1gkhxH",
+        "t_2TePe3"
+      ]
+    },
+    {
+      "name": "ten assist providers",
+      "passed": true,
+      "actual": 10
+    },
+    {
+      "name": "tooltip is wider with single-line team names",
+      "passed": true,
+      "actual": {
+        "width": 250,
+        "left": 379.96875,
+        "right": 629.96875,
+        "rows": [
+          16.1875,
+          16.1875
+        ],
+        "text": "75′Bayern München4,15 xGBorussia Dortmund0,50 xG"
+      }
+    },
+    {
+      "name": "tooltip stays in viewport",
+      "passed": true,
+      "actual": {
+        "width": 250,
+        "left": 379.96875,
+        "right": 629.96875,
+        "rows": [
+          16.1875,
+          16.1875
+        ],
+        "text": "75′Bayern München4,15 xGBorussia Dortmund0,50 xG"
+      }
+    },
+    {
+      "name": "shot map interaction preserved",
+      "passed": true,
+      "actual": [
+        "7′Bayern München0,02 xGBorussia Dortmund0,00 xGTir de Harry Kane · 0,02 xG · Arrêté",
+        "Harry Kane7′ · 0,02 xG · pied droitCoup de pied arrêté · Arrêté"
+      ]
+    },
+    {
+      "name": "complete match action retains match ID",
+      "passed": true,
+      "actual": "/matchs?season=2026%2F2027&focus=europe&tab=results&id=m_4BXbtD&competition=l_1Isor4&sourceSeason=2026%2F2027"
+    },
+    {
+      "name": "mobile does not overflow horizontally",
+      "passed": true,
+      "actual": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "name": "footer stays removed",
+      "passed": true,
+      "actual": 0
+    }
+  ],
+  "status": "passed"
+}

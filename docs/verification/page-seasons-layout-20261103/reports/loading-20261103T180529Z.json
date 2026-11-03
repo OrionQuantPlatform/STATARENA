@@ -1,0 +1,21 @@
+{
+  "setup": "A fresh Chromium tab; real Neon chunk requests paused briefly at the browser boundary, then continued unchanged.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py loading",
+  "expected": "Loading shell has no footer and links to another page's own year; archived data loads after requests resume; archived home has no empty wrappers.",
+  "checks": [
+    {
+      "name": "loading footer removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "loading navigation has independent year",
+      "actual": null,
+      "expected": "2026/2027",
+      "passed": false
+    }
+  ],
+  "status": "failed",
+  "error": "loading navigation has independent year: null instead of 2026/2027"
+}

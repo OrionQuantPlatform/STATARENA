@@ -1,0 +1,378 @@
+{
+  "setup": "Complete homepage in an isolated Chromium tab with browser-only controlled packed Neon responses. Source and production records are untouched.",
+  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py personal-fixtures",
+  "expected": "Saved clubs and current clubs of saved players lead. On the same Paris day: Champions, Europa, Conference, domestic. Old/national clubs, duplicates, outside-scope and out-of-horizon fixtures must not leak into priorities; no preferences retains editorial fallback.",
+  "checks": [
+    {
+      "name": "personal European match leads the card",
+      "passed": true,
+      "actual": [
+        "m_Champions",
+        "m_EuropaPlayer",
+        "m_Conference",
+        "m_Domestic",
+        "m_Editorial"
+      ]
+    },
+    {
+      "name": "same-day European order and current player's club",
+      "passed": true,
+      "actual": [
+        "m_Champions",
+        "m_EuropaPlayer",
+        "m_Conference",
+        "m_Domestic",
+        "m_Editorial"
+      ]
+    },
+    {
+      "name": "all lists participate",
+      "passed": true,
+      "actual": [
+        "m_Champions",
+        "m_EuropaPlayer",
+        "m_Conference",
+        "m_Domestic",
+        "m_Editorial"
+      ]
+    },
+    {
+      "name": "former/national/outside/far fixtures stay out",
+      "passed": true,
+      "actual": [
+        "m_Champions",
+        "m_EuropaPlayer",
+        "m_Conference",
+        "m_Domestic",
+        "m_Editorial"
+      ]
+    },
+    {
+      "name": "fixtures are distinct",
+      "passed": true,
+      "actual": [
+        "m_Champions",
+        "m_EuropaPlayer",
+        "m_Conference",
+        "m_Domestic",
+        "m_Editorial"
+      ]
+    },
+    {
+      "name": "main action retains fixture and season",
+      "passed": true,
+      "actual": "/matchs?season=2026%2F2027&focus=europe&id=m_Champions&competition=l_0bfbkO&sourceSeason=2026%2F2027&from=upcoming&tab=upcoming"
+    },
+    {
+      "name": "personal fixtures fit mobile",
+      "passed": true,
+      "actual": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "name": "empty preferences restore editorial fallback",
+      "passed": true,
+      "actual": "CL\nChampions League\nDans 24 h\nPS\nParis Saint-Germain\n21:00\nRM\nReal Madrid"
+    },
+    {
+      "name": "explicit domestic filter remains respected",
+      "passed": true,
+      "actual": [
+        "m_Domestic"
+      ]
+    }
+  ],
+  "status": "passed",
+  "inputs": {
+    "now": 1793734220014,
+    "future": "2026-11-04",
+    "saved": [
+      {
+        "id": "t_Domestic",
+        "name": "Club national suivi E2E",
+        "kind": "clubs",
+        "season": "2026/2027"
+      },
+      {
+        "id": "t_Champions",
+        "name": "Club LDC suivi E2E",
+        "kind": "clubs",
+        "season": "2026/2027"
+      },
+      {
+        "id": "t_Conference",
+        "name": "Club Conference suivi E2E",
+        "kind": "clubs",
+        "season": "2026/2027"
+      },
+      {
+        "id": "p_Saved",
+        "name": "Joueur suivi E2E",
+        "kind": "players",
+        "season": "2026/2027"
+      }
+    ],
+    "fixtures": [
+      {
+        "id": "m_Domestic",
+        "league": {
+          "id": "l_4WFCIZ",
+          "name": "Premier League",
+          "country": "ENG"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T12:00:00Z",
+        "home_team": {
+          "id": "t_Domestic",
+          "name": "Club national suivi E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_Conference",
+        "league": {
+          "id": "l_2WZ2tt",
+          "name": "Conference League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T18:00:00Z",
+        "home_team": {
+          "id": "t_Conference",
+          "name": "Club Conference suivi E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_EuropaPlayer",
+        "league": {
+          "id": "l_38d9HA",
+          "name": "Europa League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T19:00:00Z",
+        "home_team": {
+          "id": "t_Current",
+          "name": "Club actuel du joueur E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_Champions",
+        "league": {
+          "id": "l_0bfbkO",
+          "name": "Champions League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T21:00:00Z",
+        "home_team": {
+          "id": "t_Champions",
+          "name": "Club LDC suivi E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_Editorial",
+        "league": {
+          "id": "l_0bfbkO",
+          "name": "Champions League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T20:00:00Z",
+        "home_team": {
+          "id": "t_41iFW3",
+          "name": "Paris Saint-Germain"
+        },
+        "away_team": {
+          "id": "t_0dVrhE",
+          "name": "Real Madrid"
+        }
+      },
+      {
+        "id": "m_OldClub",
+        "league": {
+          "id": "l_0bfbkO",
+          "name": "Champions League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T10:00:00Z",
+        "home_team": {
+          "id": "t_Old",
+          "name": "Ancien club E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_NationalTeam",
+        "league": {
+          "id": "l_0bfbkO",
+          "name": "Champions League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T11:00:00Z",
+        "home_team": {
+          "id": "t_National",
+          "name": "Sélection nationale E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_Outside",
+        "league": {
+          "id": "l_Outside",
+          "name": "Outside scope"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T21:00:00Z",
+        "home_team": {
+          "id": "t_Champions",
+          "name": "Club LDC suivi E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_TooFar",
+        "league": {
+          "id": "l_0bfbkO",
+          "name": "Champions League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-12",
+        "time_utc": "2026-11-12T21:00:00Z",
+        "home_team": {
+          "id": "t_Champions",
+          "name": "Club LDC suivi E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      },
+      {
+        "id": "m_Champions",
+        "league": {
+          "id": "l_0bfbkO",
+          "name": "Champions League",
+          "country": "UEFA"
+        },
+        "season": "2026/2027",
+        "status": "not_started",
+        "date": "2026-11-04",
+        "time_utc": "2026-11-04T21:00:00Z",
+        "home_team": {
+          "id": "t_Champions",
+          "name": "Club LDC suivi E2E"
+        },
+        "away_team": {
+          "id": "t_Opponent",
+          "name": "Adversaire E2E"
+        }
+      }
+    ],
+    "performances": [
+      {
+        "id": "a_old",
+        "playerRef": "p_Saved",
+        "playerId": "p_Saved",
+        "name": "Joueur suivi E2E",
+        "matchId": "a_old",
+        "teamId": "t_Old",
+        "team": "t_Old",
+        "season": "2026/2027",
+        "country": "ENG",
+        "leagueId": "l_4WFCIZ",
+        "date": "2026-10-01",
+        "minutes": 90,
+        "rating": 7,
+        "goals": 0,
+        "assists": 0,
+        "xg": 0,
+        "xa": 0
+      },
+      {
+        "id": "a_current",
+        "playerRef": "p_Saved",
+        "playerId": "p_Saved",
+        "name": "Joueur suivi E2E",
+        "matchId": "a_current",
+        "teamId": "t_Current",
+        "team": "t_Current",
+        "season": "2026/2027",
+        "country": "ENG",
+        "leagueId": "l_4WFCIZ",
+        "date": "2026-10-30",
+        "minutes": 90,
+        "rating": 7,
+        "goals": 0,
+        "assists": 0,
+        "xg": 0,
+        "xa": 0
+      },
+      {
+        "id": "a_national",
+        "playerRef": "p_Saved",
+        "playerId": "p_Saved",
+        "name": "Joueur suivi E2E",
+        "matchId": "a_national",
+        "teamId": "t_National",
+        "team": "t_National",
+        "season": "2026/2027",
+        "country": "INT",
+        "leagueId": "l_WorldCup",
+        "date": "2026-11-01",
+        "minutes": 90,
+        "rating": 7,
+        "goals": 0,
+        "assists": 0,
+        "xg": 0,
+        "xa": 0
+      }
+    ]
+  }
+}

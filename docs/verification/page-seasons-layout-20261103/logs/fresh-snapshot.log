@@ -1,0 +1,710 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-seasons snapshot
+### Page
+- Page URL: http://127.0.0.1:3000/?season=2025%2F2026&focus=europe
+- Page Title: Vue d’ensemble — STATARENA
+- Console: 0 errors, 1 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=e1]:
+  - alert [ref=e79]
+  - link "Aller au contenu" [ref=e1068] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e1069]:
+    - banner [ref=e1070]:
+      - link "STATARENA, vue d’ensemble" [ref=e1071] [cursor=pointer]:
+        - /url: /?season=2025%2F2026&focus=europe
+        - img "STATARENA" [ref=e1073]
+      - navigation "Navigation principale" [ref=e1074]:
+        - link "Vue d’ensemble" [ref=e1075] [cursor=pointer]:
+          - /url: /?season=2025%2F2026&focus=europe
+        - link "Compétitions" [ref=e1076] [cursor=pointer]:
+          - /url: /competitions?season=2026%2F2027&focus=europe
+        - link "Clubs" [ref=e1077] [cursor=pointer]:
+          - /url: /clubs?season=2026%2F2027&focus=europe
+        - link "Joueurs" [ref=e1078] [cursor=pointer]:
+          - /url: /joueurs?season=2026%2F2027&focus=europe
+        - link "Calendrier" [ref=e1079] [cursor=pointer]:
+          - /url: /matchs?season=2026%2F2027&focus=europe
+      - generic [ref=e1080]:
+        - generic [ref=e1082]:
+          - combobox "Rechercher un joueur, un club ou une compétition" [ref=e1083]
+          - generic [aria-hidden]: /
+        - button "Activer le thème clair" [ref=e1084] [cursor=pointer]
+    - main [ref=e1091]:
+      - heading "Vue d’ensemble" [level=1] [ref=e1092]
+      - generic [ref=e1093]:
+        - generic [ref=e1094]:
+          - generic [ref=e1095]: Saison
+          - combobox "Saison" [ref=e1097] [cursor=pointer]:
+            - option "2026/2027"
+            - option "2025/2026" [selected]
+            - option "2024/2025"
+            - option "2023/2024"
+            - option "2022/2023"
+            - option "2021/2022"
+        - 'button "Filtrer les compétitions : Top 7 Europe + UEFA" [ref=e1098] [cursor=pointer]':
+          - generic [ref=e1100]: Top 7 Europe + UEFA
+      - navigation "Résultats de la semaine" [ref=e1101]:
+        - generic [ref=e1102]: sam. 30 mai
+        - generic [ref=e1103]:
+          - link "LDC Terminé" [ref=e1104] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0DIsqq&competition=l_0bfbkO&sourceSeason=2025%2F2026
+            - generic [ref=e1105]: LDC
+            - generic [ref=e1106]: Terminé
+          - link "Paris Saint-Germain 1" [ref=e1107] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_41iFW3
+            - generic [ref=e1109]: Paris Saint-Germain
+            - generic [ref=e1110]: "1"
+          - link "Arsenal 1" [ref=e1111] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_1gkhxH
+            - generic [ref=e1113]: Arsenal
+            - generic [ref=e1114]: "1"
+          - link "Voir Paris Saint-Germain – Arsenal" [ref=e1115] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0DIsqq&competition=l_0bfbkO&sourceSeason=2025%2F2026
+            - generic [ref=e1119]:
+              - generic [ref=e1120]: 1,72 xG
+              - generic [ref=e1121]: 0,51
+        - generic [ref=e1122]: mer. 27 mai
+        - generic [ref=e1123]:
+          - link "LC Terminé" [ref=e1124] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0KBQTK&competition=l_2WZ2tt&sourceSeason=2025%2F2026
+            - generic [ref=e1125]: LC
+            - generic [ref=e1126]: Terminé
+          - link "Crystal Palace 1" [ref=e1127] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_4bz4EP
+            - generic [ref=e1129]: Crystal Palace
+            - generic [ref=e1130]: "1"
+          - link "Rayo Vallecano 0" [ref=e1131] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_17aOG3
+            - generic [ref=e1133]: Rayo Vallecano
+            - generic [ref=e1134]: "0"
+          - link "Voir Crystal Palace – Rayo Vallecano" [ref=e1135] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0KBQTK&competition=l_2WZ2tt&sourceSeason=2025%2F2026
+            - generic [ref=e1139]:
+              - generic [ref=e1140]: 2,58 xG
+              - generic [ref=e1141]: 0,56
+        - generic [ref=e1142]: dim. 24 mai
+        - generic [ref=e1143]:
+          - link "LIGA Terminé" [ref=e1144] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1CchVn&competition=l_0ErfuF&sourceSeason=2025%2F2026
+            - generic [ref=e1145]: LIGA
+            - generic [ref=e1146]: Terminé
+          - link "Villarreal 5" [ref=e1147] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_4SV4jg
+            - generic [ref=e1149]: Villarreal
+            - generic [ref=e1150]: "5"
+          - link "Atlético Madrid 1" [ref=e1151] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_3NIiXl
+            - generic [ref=e1153]: Atlético Madrid
+            - generic [ref=e1154]: "1"
+          - link "Voir Villarreal – Atlético Madrid" [ref=e1155] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1CchVn&competition=l_0ErfuF&sourceSeason=2025%2F2026
+            - generic [ref=e1159]:
+              - generic [ref=e1160]: 2,48 xG
+              - generic [ref=e1161]: 1,16
+        - generic [ref=e1162]:
+          - link "SA Terminé" [ref=e1163] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1CXpzk&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1164]: SA
+            - generic [ref=e1165]: Terminé
+          - link "Hellas Verona 0" [ref=e1166] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_0YcbNh
+            - generic [ref=e1168]: Hellas Verona
+            - generic [ref=e1169]: "0"
+          - link "Roma 2" [ref=e1170] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_0RhqmW
+            - generic [ref=e1172]: Roma
+            - generic [ref=e1173]: "2"
+          - link "Voir Hellas Verona – Roma" [ref=e1174] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1CXpzk&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1178]:
+              - generic [ref=e1179]: 0,84 xG
+              - generic [ref=e1180]: 3,39
+        - generic [ref=e1181]:
+          - link "SA Terminé" [ref=e1182] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_34UmrP&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1183]: SA
+            - generic [ref=e1184]: Terminé
+          - link "Napoli 1" [ref=e1185] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_2toJRF
+            - generic [ref=e1187]: Napoli
+            - generic [ref=e1188]: "1"
+          - link "Udinese 0" [ref=e1189] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_2ur07g
+            - generic [ref=e1191]: Udinese
+            - generic [ref=e1192]: "0"
+          - link "Voir Napoli – Udinese" [ref=e1193] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_34UmrP&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1197]:
+              - generic [ref=e1198]: 1,76 xG
+              - generic [ref=e1199]: 0,37
+        - generic [ref=e1200]:
+          - link "PL Terminé" [ref=e1201] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0RzVJW&competition=l_4WFCIZ&sourceSeason=2025%2F2026
+            - generic [ref=e1202]: PL
+            - generic [ref=e1203]: Terminé
+          - link "Manchester City 1" [ref=e1204] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_0UCNPX
+            - generic [ref=e1206]: Manchester City
+            - generic [ref=e1207]: "1"
+          - link "Aston Villa 2" [ref=e1208] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_4RqKpo
+            - generic [ref=e1210]: Aston Villa
+            - generic [ref=e1211]: "2"
+          - link "Voir Manchester City – Aston Villa" [ref=e1212] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0RzVJW&competition=l_4WFCIZ&sourceSeason=2025%2F2026
+            - generic [ref=e1216]:
+              - generic [ref=e1217]: 1,34 xG
+              - generic [ref=e1218]: 1,77
+        - generic [ref=e1219]:
+          - link "PL Terminé" [ref=e1220] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1gBZfF&competition=l_4WFCIZ&sourceSeason=2025%2F2026
+            - generic [ref=e1221]: PL
+            - generic [ref=e1222]: Terminé
+          - link "Crystal Palace 1" [ref=e1223] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_4bz4EP
+            - generic [ref=e1225]: Crystal Palace
+            - generic [ref=e1226]: "1"
+          - link "Arsenal 2" [ref=e1227] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_1gkhxH
+            - generic [ref=e1229]: Arsenal
+            - generic [ref=e1230]: "2"
+          - link "Voir Crystal Palace – Arsenal" [ref=e1231] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1gBZfF&competition=l_4WFCIZ&sourceSeason=2025%2F2026
+            - generic [ref=e1235]:
+              - generic [ref=e1236]: 0,98 xG
+              - generic [ref=e1237]: 2,53
+        - generic [ref=e1238]:
+          - link "PL Terminé" [ref=e1239] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_3Thvr1&competition=l_4WFCIZ&sourceSeason=2025%2F2026
+            - generic [ref=e1240]: PL
+            - generic [ref=e1241]: Terminé
+          - link "Brighton & Hove Albion 0" [ref=e1242] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_3eV7Ev
+            - generic [ref=e1244]: Brighton & Hove Albion
+            - generic [ref=e1245]: "0"
+          - link "Manchester United 3" [ref=e1246] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_2I313i
+            - generic [ref=e1248]: Manchester United
+            - generic [ref=e1249]: "3"
+          - link "Voir Brighton & Hove Albion – Manchester United" [ref=e1250] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_3Thvr1&competition=l_4WFCIZ&sourceSeason=2025%2F2026
+            - generic [ref=e1254]:
+              - generic [ref=e1255]: 0,79 xG
+              - generic [ref=e1256]: 1,66
+        - generic [ref=e1257]:
+          - link "SA Terminé" [ref=e1258] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0zFuVQ&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1259]: SA
+            - generic [ref=e1260]: Terminé
+          - link "Torino 2" [ref=e1261] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_1fXtzU
+            - generic [ref=e1263]: Torino
+            - generic [ref=e1264]: "2"
+          - link "Juventus 2" [ref=e1265] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_4ZwKDn
+            - generic [ref=e1267]: Juventus
+            - generic [ref=e1268]: "2"
+          - link "Voir Torino – Juventus" [ref=e1269] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0zFuVQ&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1273]:
+              - generic [ref=e1274]: 0,85 xG
+              - generic [ref=e1275]: 1,92
+        - generic [ref=e1276]:
+          - link "SA Terminé" [ref=e1277] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_4WV5SZ&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1278]: SA
+            - generic [ref=e1279]: Terminé
+          - link "Milan 1" [ref=e1280] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_1DYf1D
+            - generic [ref=e1282]: Milan
+            - generic [ref=e1283]: "1"
+          - link "Cagliari 2" [ref=e1284] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_3V0mmv
+            - generic [ref=e1286]: Cagliari
+            - generic [ref=e1287]: "2"
+          - link "Voir Milan – Cagliari" [ref=e1288] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_4WV5SZ&competition=l_0ALvwF&sourceSeason=2025%2F2026
+            - generic [ref=e1292]:
+              - generic [ref=e1293]: 1,57 xG
+              - generic [ref=e1294]: 2,65
+      - generic [ref=e1295]:
+        - article [ref=e1297]:
+          - generic [ref=e1298]:
+            - generic [ref=e1299]: Le choc de la semaine
+            - generic [ref=e1300]: Champions League · sam. 30 mai
+          - generic [ref=e1302]:
+            - link [ref=e1303] [cursor=pointer]:
+              - /url: /clubs?season=2025%2F2026&focus=europe&id=t_41iFW3
+              - generic [ref=e1305]:
+                - strong [ref=e1306]: Paris Saint-Germain
+                - generic [ref=e1307]:
+                  - text: 1er ·
+                  - 'generic "Forme : victoire, nul, victoire, victoire, défaite" [ref=e1308]'
+            - link "Score 1 à 1, voir le match" [ref=e1314] [cursor=pointer]:
+              - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0DIsqq&competition=l_0bfbkO&sourceSeason=2025%2F2026
+              - text: "1"
+              - generic [ref=e1315]: –
+              - text: "1"
+            - link [ref=e1316] [cursor=pointer]:
+              - /url: /clubs?season=2025%2F2026&focus=europe&id=t_1gkhxH
+              - generic [ref=e1318]:
+                - strong [ref=e1319]: Arsenal
+                - generic [ref=e1320]:
+                  - text: 1er ·
+                  - 'generic "Forme : victoire, victoire, victoire, victoire, victoire" [ref=e1321]'
+          - generic [ref=e1327]:
+            - button "Dembélé 65′ (p)" [ref=e1329] [cursor=pointer]
+            - generic [ref=e1330]: Terminé
+            - button "Havertz 6′" [ref=e1332] [cursor=pointer]
+          - paragraph [ref=e1333]: Paris Saint-Germain a créé 1,7 xG contre 0,5, mais repart avec un nul.
+          - generic [ref=e1334]:
+            - figure "xG cumulés Paris Saint-Germain Arsenal" [ref=e1335]:
+              - generic [ref=e1336]:
+                - generic [ref=e1337]: xG cumulés
+                - generic [ref=e1338]:
+                  - generic [ref=e1339]: Paris Saint-Germain
+                  - generic [ref=e1341]: Arsenal
+              - 'img "xG cumulés : Paris Saint-Germain 1,61, Arsenal 0,42" [ref=e1344]':
+                - generic [ref=e1346]: "0"
+                - generic [ref=e1348]: "1"
+                - generic [ref=e1350]: 0′
+                - generic [ref=e1351]: 15′
+                - generic [ref=e1352]: 30′
+                - generic [ref=e1353]: 45′
+                - generic [ref=e1354]: 60′
+                - generic [ref=e1355]: 75′
+                - generic [ref=e1356]: 90′
+                - generic [ref=e1361]: Havertz 6′
+                - generic [ref=e1364]: Dembélé 65′ (p)
+            - figure "Carte des tirs ● but ○ tir · taille = xG" [ref=e1367]:
+              - generic [ref=e1368]:
+                - generic [ref=e1369]: Carte des tirs
+                - generic [ref=e1370]:
+                  - generic [ref=e1371]: ● but
+                  - generic [ref=e1372]: ○ tir · taille = xG
+              - img "Carte des 22 tirs du match" [ref=e1374]:
+                - generic [ref=e1382] [cursor=pointer]
+                - generic [ref=e1385] [cursor=pointer]
+                - generic [ref=e1388] [cursor=pointer]
+                - generic [ref=e1391] [cursor=pointer]
+                - generic [ref=e1394] [cursor=pointer]
+                - generic [ref=e1397] [cursor=pointer]
+                - generic [ref=e1400] [cursor=pointer]
+                - generic [ref=e1403] [cursor=pointer]
+                - generic [ref=e1406] [cursor=pointer]
+                - generic [ref=e1409] [cursor=pointer]
+                - generic [ref=e1412] [cursor=pointer]
+                - generic [ref=e1415] [cursor=pointer]
+                - generic [ref=e1418] [cursor=pointer]
+                - generic [ref=e1421] [cursor=pointer]
+                - generic [ref=e1424] [cursor=pointer]
+                - generic [ref=e1427] [cursor=pointer]
+                - generic [ref=e1430] [cursor=pointer]
+                - generic [ref=e1433] [cursor=pointer]
+                - generic [ref=e1436] [cursor=pointer]
+                - generic [ref=e1439] [cursor=pointer]
+                - generic [ref=e1442] [cursor=pointer]
+                - generic [ref=e1445] [cursor=pointer]
+          - generic [ref=e1448]:
+            - generic [ref=e1449]:
+              - generic [ref=e1450]:
+                - generic [ref=e1451]: 75 %
+                - generic [ref=e1454]: Possession
+                - generic [ref=e1457]: 25 %
+              - generic [ref=e1458]:
+                - generic [ref=e1459]: "21"
+                - generic [ref=e1462]: Tirs
+                - generic [ref=e1465]: "7"
+              - generic [ref=e1466]:
+                - generic [ref=e1467]: "4"
+                - generic [ref=e1470]: Cadrés
+                - generic [ref=e1473]: "1"
+              - generic [ref=e1474]:
+                - generic [ref=e1475]: 1,72
+                - generic [ref=e1478]: xG
+                - generic [ref=e1481]: 0,51
+              - generic [ref=e1482]:
+                - generic [ref=e1483]: "3"
+                - generic [ref=e1486]: Grosses occasions
+                - generic [ref=e1489]: "1"
+              - generic [ref=e1490]:
+                - generic [ref=e1491]: "57"
+                - generic [ref=e1494]: Duels gagnés
+                - generic [ref=e1497]: "48"
+              - generic [ref=e1498]:
+                - generic [ref=e1499]: "11"
+                - generic [ref=e1502]: Corners
+                - generic [ref=e1505]: "3"
+              - generic [ref=e1506]:
+                - generic [ref=e1507]: "0"
+                - generic [ref=e1509]: Arrêts
+                - generic [ref=e1512]: "3"
+            - generic [ref=e1513]:
+              - button "Meilleure note du match David Raya Arsenal 7,95" [ref=e1514] [cursor=pointer]:
+                - generic [ref=e1516]:
+                  - generic [ref=e1517]: Meilleure note du match
+                  - strong [ref=e1518]: David Raya
+                  - generic [ref=e1519]: Arsenal
+                - generic [ref=e1520]: 7,95
+              - link "Analyse complète du match" [ref=e1521] [cursor=pointer]:
+                - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_0DIsqq&competition=l_0bfbkO&sourceSeason=2025%2F2026
+        - generic [ref=e1524]:
+          - article [ref=e1525]:
+            - generic [aria-hidden]: Pérez
+            - generic [ref=e1526]:
+              - generic [ref=e1527]: Joueur de la semaine
+              - generic [ref=e1528]: dim. 24 mai
+            - button "Ayoze Pérez Villarreal" [ref=e1529] [cursor=pointer]:
+              - generic [ref=e1531]:
+                - strong [ref=e1532]: Ayoze Pérez
+                - generic [ref=e1533]: Villarreal
+            - generic [ref=e1534]:
+              - generic [ref=e1535]:
+                - generic [ref=e1536]: 9,25
+                - text: Note du match
+              - generic [ref=e1537]:
+                - generic [ref=e1538]: "2"
+                - text: Buts
+              - generic [ref=e1539]:
+                - generic [ref=e1540]: "1"
+                - text: Passes déc.
+            - generic [ref=e1541]:
+              - generic [ref=e1542]:
+                - term [ref=e1543]: xG
+                - definition [ref=e1544]: 0,49
+              - generic [ref=e1545]:
+                - term [ref=e1546]: Tirs (cadrés)
+                - definition [ref=e1547]: 4 (2)
+              - generic [ref=e1548]:
+                - term [ref=e1549]: Occasions créées
+                - definition [ref=e1550]: "1"
+              - generic [ref=e1551]:
+                - term [ref=e1552]: Passes réussies
+                - definition [ref=e1553]: 78 %
+              - generic [ref=e1554]:
+                - term [ref=e1555]: Duels gagnés
+                - definition [ref=e1556]: 4/11
+              - generic [ref=e1557]:
+                - term [ref=e1558]: Touches
+                - definition [ref=e1559]: "44"
+              - generic [ref=e1560]:
+                - term [ref=e1561]: Actions défensives
+                - definition [ref=e1562]: "2"
+              - generic [ref=e1563]:
+                - term [ref=e1564]: Temps de jeu
+                - definition [ref=e1565]: 75′
+            - generic [ref=e1566]:
+              - text: Ses derniers matchs
+              - list [ref=e1567]:
+                - listitem "jeu. 23 avr. · 6,68" [ref=e1568]:
+                  - generic [ref=e1570]: 6,7
+                - listitem "sam. 2 mai · 6,32" [ref=e1571]:
+                  - generic [ref=e1573]: 6,3
+                - listitem "dim. 10 mai · 7,06" [ref=e1574]:
+                  - generic [ref=e1576]: 7,1
+                - listitem "mer. 13 mai · 5,89" [ref=e1577]:
+                  - generic [ref=e1579]: 5,9
+                - listitem "dim. 17 mai · 5,86" [ref=e1580]:
+                  - generic [ref=e1582]: 5,9
+                - listitem "dim. 24 mai · 9,25" [ref=e1583]:
+                  - generic [ref=e1585]: 9,3
+            - paragraph [ref=e1586]: "Sur la saison : 5 buts, 4 passes, note moyenne 6,75 en 30 matchs."
+            - generic [ref=e1587]:
+              - generic [ref=e1588]:
+                - text: Villarreal
+                - generic [ref=e1589]: 5–1
+                - text: Atlético Madrid
+              - link "Le match" [ref=e1590] [cursor=pointer]:
+                - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1CchVn&competition=l_0ErfuF&sourceSeason=2025%2F2026
+          - 'link "4 Le chiffre de la semaine buts d’écart : Villarreal 5–1 Atlético Madrid en LaLiga. Le plus large score de la semaine." [ref=e1593] [cursor=pointer]':
+            - /url: /matchs?season=2025%2F2026&focus=europe&tab=results&id=m_1CchVn&competition=l_0ErfuF&sourceSeason=2025%2F2026
+            - generic [ref=e1594]: "4"
+            - generic [ref=e1595]:
+              - generic [ref=e1596]: Le chiffre de la semaine
+              - generic [ref=e1597]:
+                - text: "buts d’écart :"
+                - generic [ref=e1598]: Villarreal 5–1 Atlético Madrid
+                - text: en LaLiga. Le plus large score de la semaine.
+        - article [ref=e1600]:
+          - generic [ref=e1601]:
+            - generic [ref=e1602]:
+              - generic [ref=e1603]: Course au titre
+              - heading "Qui décroche en tête ?" [level=2] [ref=e1604]
+            - link "Classement complet" [ref=e1605] [cursor=pointer]:
+              - /url: /competitions?season=2025%2F2026&focus=europe&id=l_3FJFUl
+          - group "Championnat" [ref=e1608]:
+            - button "Premier League" [ref=e1609] [cursor=pointer]
+            - button "LaLiga" [ref=e1611] [cursor=pointer]
+            - button "Bundesliga" [ref=e1613] [cursor=pointer]
+            - button "Serie A" [ref=e1615] [cursor=pointer]
+            - button "Ligue 1" [pressed] [ref=e1617] [cursor=pointer]
+            - button "Liga Portugal" [ref=e1619] [cursor=pointer]
+            - button "Eredivisie" [ref=e1621] [cursor=pointer]
+          - generic [ref=e1623]:
+            - img "Points cumulés du top 5 après 34 journées" [ref=e1625]:
+              - generic [ref=e1627]: "0"
+              - generic [ref=e1629]: "20"
+              - generic [ref=e1631]: "40"
+              - generic [ref=e1633]: "60"
+              - generic [ref=e1635]: J4
+              - generic [ref=e1636]: J8
+              - generic [ref=e1637]: J12
+              - generic [ref=e1638]: J16
+              - generic [ref=e1639]: J20
+              - generic [ref=e1640]: J24
+              - generic [ref=e1641]: J28
+              - generic [ref=e1642]: J32
+            - generic [ref=e1658]:
+              - 'link "Paris Saint-Germain +6 pts d’avance · Forme : victoire, nul, victoire, victoire, défaite 76" [ref=e1659] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&id=t_41iFW3
+                - generic [ref=e1662]:
+                  - strong [ref=e1663]: Paris Saint-Germain
+                  - generic [ref=e1664]:
+                    - text: +6 pts d’avance ·
+                    - 'generic "Forme : victoire, nul, victoire, victoire, défaite" [ref=e1665]'
+                - generic [ref=e1671]: "76"
+              - 'link "Lens −6 pts · Forme : nul, nul, victoire, défaite, victoire 70" [ref=e1672] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&id=t_38NVJO
+                - generic [ref=e1675]:
+                  - strong [ref=e1676]: Lens
+                  - generic [ref=e1677]:
+                    - text: −6 pts ·
+                    - 'generic "Forme : nul, nul, victoire, défaite, victoire" [ref=e1678]'
+                - generic [ref=e1684]: "70"
+              - 'link "Lille −15 pts · Forme : nul, victoire, nul, victoire, défaite 61" [ref=e1685] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&id=t_0tnX1I
+                - generic [ref=e1688]:
+                  - strong [ref=e1689]: Lille
+                  - generic [ref=e1690]:
+                    - text: −15 pts ·
+                    - 'generic "Forme : nul, victoire, nul, victoire, défaite" [ref=e1691]'
+                - generic [ref=e1697]: "61"
+              - 'link "Lyon −16 pts · Forme : victoire, victoire, victoire, défaite, défaite 60" [ref=e1698] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&id=t_0xMlRV
+                - generic [ref=e1701]:
+                  - strong [ref=e1702]: Lyon
+                  - generic [ref=e1703]:
+                    - text: −16 pts ·
+                    - 'generic "Forme : victoire, victoire, victoire, défaite, défaite" [ref=e1704]'
+                - generic [ref=e1710]: "60"
+              - 'link "Marseille −17 pts · Forme : défaite, nul, défaite, victoire, victoire 59" [ref=e1711] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&id=t_2s2eyG
+                - generic [ref=e1714]:
+                  - strong [ref=e1715]: Marseille
+                  - generic [ref=e1716]:
+                    - text: −17 pts ·
+                    - 'generic "Forme : défaite, nul, défaite, victoire, victoire" [ref=e1717]'
+                - generic [ref=e1723]: "59"
+        - article [ref=e1725]:
+          - generic [ref=e1726]:
+            - generic [ref=e1727]: Devant le but
+            - generic "Efficacité" [ref=e1728]:
+              - button "Efficaces" [pressed] [ref=e1729] [cursor=pointer]
+              - button "Maladroits" [ref=e1730] [cursor=pointer]
+          - heading "Ils marquent plus que prévu" [level=3] [ref=e1731]
+          - paragraph [ref=e1732]: Buts marqués (●) comparés aux buts attendus (○ xG) sur la saison.
+          - list [ref=e1733]:
+            - listitem [ref=e1734]:
+              - button "Harry Kane Bayern München · 50 buts, 36,2 xG +13,8" [ref=e1735] [cursor=pointer]:
+                - generic [ref=e1738]:
+                  - strong [ref=e1739]: Harry Kane
+                  - generic [ref=e1740]: Bayern München · 50 buts, 36,2 xG
+                - generic [ref=e1745]: +13,8
+            - listitem [ref=e1746]:
+              - button "Yanis Begraoui Estoril · 20 buts, 13,0 xG +7,0" [ref=e1747] [cursor=pointer]:
+                - generic [ref=e1750]:
+                  - strong [ref=e1751]: Yanis Begraoui
+                  - generic [ref=e1752]: Estoril · 20 buts, 13,0 xG
+                - generic [ref=e1757]: +7,0
+            - listitem [ref=e1758]:
+              - button "Khvicha Kvaratskhelia Paris Saint-Germain · 18 buts, 12,1 xG +5,9" [ref=e1759] [cursor=pointer]:
+                - generic [ref=e1762]:
+                  - strong [ref=e1763]: Khvicha Kvaratskhelia
+                  - generic [ref=e1764]: Paris Saint-Germain · 18 buts, 12,1 xG
+                - generic [ref=e1769]: +5,9
+            - listitem [ref=e1770]:
+              - button "Antoine Semenyo Manchester City · 17 buts, 11,3 xG +5,7" [ref=e1771] [cursor=pointer]:
+                - generic [ref=e1774]:
+                  - strong [ref=e1775]: Antoine Semenyo
+                  - generic [ref=e1776]: Manchester City · 17 buts, 11,3 xG
+                - generic [ref=e1781]: +5,7
+            - listitem [ref=e1782]:
+              - button "Can Uzun Eintracht Frankfurt · 10 buts, 4,3 xG +5,7" [ref=e1783] [cursor=pointer]:
+                - generic [ref=e1786]:
+                  - strong [ref=e1787]: Can Uzun
+                  - generic [ref=e1788]: Eintracht Frankfurt · 10 buts, 4,3 xG
+                - generic [ref=e1793]: +5,7
+            - listitem [ref=e1794]:
+              - button "Ricardo Pepi PSV Eindhoven · 19 buts, 13,4 xG +5,6" [ref=e1795] [cursor=pointer]:
+                - generic [ref=e1798]:
+                  - strong [ref=e1799]: Ricardo Pepi
+                  - generic [ref=e1800]: PSV Eindhoven · 19 buts, 13,4 xG
+                - generic [ref=e1805]: +5,6
+        - article [ref=e1807]:
+          - generic [ref=e1808]:
+            - generic [ref=e1809]: Buteurs de la saison
+            - generic "Classement" [ref=e1810]:
+              - button "Buteurs" [pressed] [ref=e1811] [cursor=pointer]
+              - button "Passeurs" [ref=e1812] [cursor=pointer]
+          - list [ref=e1813]:
+            - listitem [ref=e1814]:
+              - button "1 Harry Kane Bayern München · 36,2 xG · 44 matchs 50" [ref=e1815] [cursor=pointer]:
+                - generic [ref=e1816]: "1"
+                - generic [ref=e1818]:
+                  - strong [ref=e1819]: Harry Kane
+                  - generic [ref=e1820]: Bayern München · 36,2 xG · 44 matchs
+                - generic [ref=e1821]: "50"
+            - listitem [ref=e1822]:
+              - button "2 Kylian Mbappé Real Madrid · 34,7 xG · 42 matchs 40" [ref=e1823] [cursor=pointer]:
+                - generic [ref=e1824]: "2"
+                - generic [ref=e1826]:
+                  - strong [ref=e1827]: Kylian Mbappé
+                  - generic [ref=e1828]: Real Madrid · 34,7 xG · 42 matchs
+                - generic [ref=e1829]: "40"
+            - listitem [ref=e1830]:
+              - button "3 Erling Haaland Manchester City · 32,3 xG · 45 matchs 35" [ref=e1831] [cursor=pointer]:
+                - generic [ref=e1832]: "3"
+                - generic [ref=e1834]:
+                  - strong [ref=e1835]: Erling Haaland
+                  - generic [ref=e1836]: Manchester City · 32,3 xG · 45 matchs
+                - generic [ref=e1837]: "35"
+            - listitem [ref=e1838]:
+              - button "4 Luis Suárez Sporting CP · 28,6 xG · 44 matchs 33" [ref=e1839] [cursor=pointer]:
+                - generic [ref=e1840]: "4"
+                - generic [ref=e1842]:
+                  - strong [ref=e1843]: Luis Suárez
+                  - generic [ref=e1844]: Sporting CP · 28,6 xG · 44 matchs
+                - generic [ref=e1845]: "33"
+            - listitem [ref=e1846]:
+              - button "5 Ayase Ueda Feyenoord · 20,8 xG · 37 matchs 26" [ref=e1847] [cursor=pointer]:
+                - generic [ref=e1848]: "5"
+                - generic [ref=e1850]:
+                  - strong [ref=e1851]: Ayase Ueda
+                  - generic [ref=e1852]: Feyenoord · 20,8 xG · 37 matchs
+                - generic [ref=e1853]: "26"
+            - listitem [ref=e1854]:
+              - button "6 Vangelis Pavlidis Benfica · 25,6 xG · 43 matchs 24" [ref=e1855] [cursor=pointer]:
+                - generic [ref=e1856]: "6"
+                - generic [ref=e1858]:
+                  - strong [ref=e1859]: Vangelis Pavlidis
+                  - generic [ref=e1860]: Benfica · 25,6 xG · 43 matchs
+                - generic [ref=e1861]: "24"
+            - listitem [ref=e1862]:
+              - button "7 Vedat Muriqi Mallorca · 18,5 xG · 37 matchs 23" [ref=e1863] [cursor=pointer]:
+                - generic [ref=e1864]: "7"
+                - generic [ref=e1866]:
+                  - strong [ref=e1867]: Vedat Muriqi
+                  - generic [ref=e1868]: Mallorca · 18,5 xG · 37 matchs
+                - generic [ref=e1869]: "23"
+            - listitem [ref=e1870]:
+              - button "8 Donyell Malen Roma · 21,5 xG · 47 matchs 22" [ref=e1871] [cursor=pointer]:
+                - generic [ref=e1872]: "8"
+                - generic [ref=e1874]:
+                  - strong [ref=e1875]: Donyell Malen
+                  - generic [ref=e1876]: Roma · 21,5 xG · 47 matchs
+                - generic [ref=e1877]: "22"
+          - link "Tous les joueurs" [ref=e1878] [cursor=pointer]:
+            - /url: /joueurs?season=2025%2F2026&focus=europe
+        - generic [ref=e1881]:
+          - article [ref=e1882]:
+            - generic [ref=e1883]: En série
+            - generic [ref=e1884]:
+              - generic [ref=e1885]: "5"
+              - generic [ref=e1886]:
+                - strong [ref=e1887]: victoires d’affilée
+                - link "Arsenal" [ref=e1888] [cursor=pointer]:
+                  - /url: /clubs?season=2025%2F2026&focus=europe&id=t_1gkhxH
+            - paragraph [ref=e1896]: 1er de Premier League · 85 pts en 38 matchs
+          - link "Le mur 0,53 but encaissé par match FC Porto Buts encaissés 18 Matchs sans encaisser 21 Classement 1er · POR" [ref=e1897] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&id=t_0dVrhE
+            - generic [ref=e1898]: Le mur
+            - generic [ref=e1899]:
+              - generic [ref=e1900]: 0,53
+              - generic [ref=e1901]:
+                - strong [ref=e1902]: but encaissé par match
+                - generic [ref=e1903]: FC Porto
+            - generic [ref=e1905]:
+              - generic [ref=e1906]:
+                - term [ref=e1907]: Buts encaissés
+                - definition [ref=e1908]: "18"
+              - generic [ref=e1909]:
+                - term [ref=e1910]: Matchs sans encaisser
+                - definition [ref=e1911]: "21"
+              - generic [ref=e1912]:
+                - term [ref=e1913]: Classement
+                - definition [ref=e1914]: 1er · POR
+        - 'link "100 % de la saison jouée Ballon d’Or STATARENA · la course est lancée Le classement n’est pas encore publié Chaque joueur est comparé à ce qu’on attend à son poste, match par match. Les quarts de finale de la Ligue des champions sont joués : la course s’affiche ici dès que le classement est calculé. Podium à révéler" [ref=e1916] [cursor=pointer]':
+          - /url: /classement-joueurs?season=2025%2F2026&focus=europe
+          - generic [ref=e1921]:
+            - generic [ref=e1922]: 100 %
+            - text: de la saison jouée
+          - generic [ref=e1923]:
+            - generic [ref=e1924]: Ballon d’Or STATARENA · la course est lancée
+            - generic [ref=e1932]: Le classement n’est pas encore publié
+            - generic [ref=e1933]: "Chaque joueur est comparé à ce qu’on attend à son poste, match par match. Les quarts de finale de la Ligue des champions sont joués : la course s’affiche ici dès que le classement est calculé."
+          - generic [ref=e1934]: Podium à révéler
+      - region [ref=e1941]:
+        - generic [ref=e1942]:
+          - heading "Ils ont aussi brillé Meilleures notes de la semaine, 60 min minimum" [level=2] [ref=e1943]
+          - link "Tous les joueurs" [ref=e1944] [cursor=pointer]:
+            - /url: /joueurs?season=2025%2F2026&focus=europe
+        - generic [ref=e1947]:
+          - button "9,19 Paulo Dybala Roma 0 but · 2 passes · Hellas Verona 0–2 Roma" [ref=e1948] [cursor=pointer]:
+            - generic [ref=e1949]: 9,19
+            - generic [ref=e1952]:
+              - strong [ref=e1953]: Paulo Dybala
+              - text: Roma
+            - generic [ref=e1954]: 0 but · 2 passes · Hellas Verona 0–2 Roma
+          - button "9,07 Lucas Da Cunha Como 2 buts · 0 passe · Cremonese 1–4 Como" [ref=e1955] [cursor=pointer]:
+            - generic [ref=e1956]: 9,07
+            - generic [ref=e1959]:
+              - strong [ref=e1960]: Lucas Da Cunha
+              - text: Como
+            - generic [ref=e1961]: 2 buts · 0 passe · Cremonese 1–4 Como
+          - button "9,01 Ollie Watkins Aston Villa 2 buts · 0 passe · Manchester City 1–2 Aston Villa" [ref=e1962] [cursor=pointer]:
+            - generic [ref=e1963]: 9,01
+            - generic [ref=e1966]:
+              - strong [ref=e1967]: Ollie Watkins
+              - text: Aston Villa
+            - generic [ref=e1968]: 2 buts · 0 passe · Manchester City 1–2 Aston Villa
+          - button "8,92 Nicolas Pépé Villarreal 0 but · 2 passes · Villarreal 5–1 Atlético Madrid" [ref=e1969] [cursor=pointer]:
+            - generic [ref=e1970]: 8,92
+            - generic [ref=e1973]:
+              - strong [ref=e1974]: Nicolas Pépé
+              - text: Villarreal
+            - generic [ref=e1975]: 0 but · 2 passes · Villarreal 5–1 Atlético Madrid
+          - button "8,89 João Palhinha Tottenham Hotspur 1 but · 0 passe · Tottenham Hotspur 1–0 Everton" [ref=e1976] [cursor=pointer]:
+            - generic [ref=e1977]: 8,89
+            - generic [ref=e1980]:
+              - strong [ref=e1981]: João Palhinha
+              - text: Tottenham Hotspur
+            - generic [ref=e1982]: 1 but · 0 passe · Tottenham Hotspur 1–0 Everton
+          - button "8,88 Bruno Fernandes Manchester United 1 but · 1 passe · Brighton & Hove Albion 0–3 Manchester United" [ref=e1983] [cursor=pointer]:
+            - generic [ref=e1984]: 8,88
+            - generic [ref=e1987]:
+              - strong [ref=e1988]: Bruno Fernandes
+              - text: Manchester United
+            - generic [ref=e1989]: 1 but · 1 passe · Brighton & Hove Albion 0–3 Manchester United
+          - button "8,85 Dušan Vlahović Juventus 2 buts · 0 passe · Torino 2–2 Juventus" [ref=e1990] [cursor=pointer]:
+            - generic [ref=e1991]: 8,85
+            - generic [ref=e1994]:
+              - strong [ref=e1995]: Dušan Vlahović
+              - text: Juventus
+            - generic [ref=e1996]: 2 buts · 0 passe · Torino 2–2 Juventus
+          - button "8,74 Mike Maignan Milan 0 but · 0 passe · Milan 1–2 Cagliari" [ref=e1997] [cursor=pointer]:
+            - generic [ref=e1998]: 8,74
+            - generic [ref=e2001]:
+              - strong [ref=e2002]: Mike Maignan
+              - text: Milan
+            - generic [ref=e2003]: 0 but · 0 passe · Milan 1–2 Cagliari
+          - button "8,67 Adrien Truffert AFC Bournemouth 0 but · 1 passe · Nottingham Forest 1–1 AFC Bournemouth" [ref=e2004] [cursor=pointer]:
+            - generic [ref=e2005]: 8,67
+            - generic [ref=e2008]:
+              - strong [ref=e2009]: Adrien Truffert
+              - text: AFC Bournemouth
+            - generic [ref=e2010]: 0 but · 1 passe · Nottingham Forest 1–1 AFC Bournemouth
+```
+### Events
+- New console entries: ../../../.playwright-cli/console-2026-11-03T17-50-53-718Z.log#L10-L26
