@@ -1,0 +1,26 @@
+{
+  "setup": "Two unused numbered files reappeared after the initially clean worktree check. Both are byte-identical to committed canonical source files.",
+  "checkedAt": "2026-11-03T20:20:49.430389+00:00",
+  "expected": "Archive and hash-verify identical copies, remove only those copies, preserve originals.",
+  "files": [
+    {
+      "copy": "dashboard/frontend/src/components/SeasonFilter 2.jsx",
+      "original": "dashboard/frontend/src/components/SeasonFilter.jsx",
+      "sha256": "3b32d529bec2cfd4d2b5c84611da87818195458990cd98f5048d9ffe3e01e449",
+      "size": 814,
+      "activeReferences": []
+    },
+    {
+      "copy": "dashboard/frontend/src/services/player-leaderboard 2.js",
+      "original": "dashboard/frontend/src/services/player-leaderboard.js",
+      "sha256": "0ca8cd827796647d71dd63aa92696fcd7bb1e4f8b434926bab7f2dc28dacf656",
+      "size": 2175,
+      "activeReferences": []
+    }
+  ],
+  "archive": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-reappearing-copies-20261103-xy6mkyry/copies.tar.gz",
+  "archiveSha256": "77149234df7c57c23a4f6a0af34a24a66f850371fce89611f2519e7e7946ceaf",
+  "gitCanonicalRecoveryCommit": "25033cbaa8a5b44f2cbdb7a2e6dc43cd6357657a",
+  "actual": "Both copies removed; canonical hashes unchanged; no active references.",
+  "status": "passed"
+}

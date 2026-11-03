@@ -1,0 +1,58 @@
+{
+  "objective": "User-authorized launch of the full dashboard rematerialization from stored Neon responses.",
+  "previousPublication": {
+    "commit": "25033cbaa8a5b44f2cbdb7a2e6dc43cd6357657a",
+    "remoteVerified": true,
+    "worktreeInitiallyClean": true
+  },
+  "command": "gh workflow run rematerialize.yml --repo OrionQuantPlatform/STATARENA --ref main --field queue_all=true --field minutes=100 --field batch=10",
+  "dispatchExitCode": 0,
+  "requestedInputs": {
+    "queue_all": true,
+    "minutes": "100",
+    "batch": "10"
+  },
+  "checkedAt": "2026-11-03T20:19:43.041Z",
+  "run": {
+    "id": 41711363014,
+    "url": "https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41711363014",
+    "name": "Rematerialize Dashboard",
+    "event": "workflow_dispatch",
+    "branch": "main",
+    "headSha": "25033cbaa8a5b44f2cbdb7a2e6dc43cd6357657a",
+    "status": "pending",
+    "conclusion": null,
+    "createdAt": "2026-11-03T20:18:32Z",
+    "updatedAt": "2026-11-03T20:18:34Z"
+  },
+  "queue": [
+    {
+      "id": 41711363014,
+      "name": "Rematerialize Dashboard",
+      "status": "pending",
+      "createdAt": "2026-11-03T20:18:32Z",
+      "startedAt": "2026-11-03T20:18:32Z",
+      "url": "https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41711363014"
+    },
+    {
+      "id": 41690340992,
+      "name": "Daily Sync",
+      "status": "in_progress",
+      "createdAt": "2026-11-03T18:04:50Z",
+      "startedAt": "2026-11-03T18:04:50Z",
+      "url": "https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41690340992"
+    }
+  ],
+  "expected": "One manual workflow run on the published main commit, with every published season queued once; the ingestion concurrency group serializes production writes.",
+  "observed": "GitHub accepted the dispatch and created run 41711363014. It is pending behind the active Daily Sync; no rematerialization job has started.",
+  "regenerationComplete": false,
+  "remainingPartitions": null,
+  "limitations": "Launch is verified. Publication progress, remaining:0 and all enriched historical fields are not yet verified.",
+  "inspectionCommands": [
+    "gh run view 41711363014 --repo OrionQuantPlatform/STATARENA",
+    "gh run view 41711363014 --repo OrionQuantPlatform/STATARENA --log",
+    "gh workflow run rematerialize.yml --repo OrionQuantPlatform/STATARENA --ref main --field queue_all=false --field minutes=100 --field batch=10"
+  ],
+  "resumePolicy": "Only after this run ends with remaining > 0, resume with queue_all=false. Never dispatch queue_all=true again merely to resume.",
+  "noProviderCollectionRequested": true
+}
