@@ -50,4 +50,6 @@ Un seul journal iCloud non matérialisé, `data/computed/pitchapi-world/queue 2.
 
 La migration de l'existant est complète ; l'exhaustivité de toute l'histoire mondiale n'est pas revendiquée. Les refus fournisseur restent enregistrés et sautés. Certaines identités/photos externes restent indisponibles ou limitées en fréquence et sont réessayées par l'ingestion ; le site conserve ses états indisponibles. Cartes et iframes officielles des stades utilisent leurs services de rendu existants ; les métadonnées et aperçus proviennent de Neon. Des seuils de capacité arrêtent l'ingestion avant saturation du plan gratuit.
 
+La copie de migration jetable et l'export Vercel ont enfin été supprimés après confirmation de leur commit dans `main` local et distant (`temporary-checkout-cleanup.json`). Le cumul des fichiers supprimés représente **11,354,628,096 octets alloués (11.35 Go)** ; les extents partagés APFS et les nettoyages d'autres processus empêchent d'assimiler ce chiffre à la variation globale d'espace libre. Le code utilisateur, ses dépendances de travail et son historique Git sont conservés.
+
 Commit proposé : `docs: record Neon cutover verification and verified cleanup`.
