@@ -74,22 +74,21 @@ export function cache(limit) {
     }
   };
 }
-const metadata = cache(24 * 1024 * 1024),
-  bodies = cache(64 * 1024 * 1024);
-export async function objectMeta(path, withBody = true) {
+// Coalesce concurrent reads without retaining file contents between requests.
+const metadata = cache(0),
+  bodies = cache(0);
+export async function objectMeta(path) {
   if (
     !/^(raw|computed|sources)\/[A-Za-z0-9_./-]+$/.test(path) ||
     path.split("/").some((p) => p.startsWith("."))
   )
     throw new Error("Invalid data path");
   return metadata(
-    path + ":" + withBody,
+    path,
     async () =>
       (
         await query(
-          "SELECT path,size,encode(sha256,'hex') AS sha256,etag,content_type" +
-            (withBody ? ",body" : "") +
-            " FROM statarena.objects WHERE path=$1",
+          "SELECT path,size,encode(sha256,'hex') AS sha256,etag,content_type FROM statarena.objects WHERE path=$1",
           [path],
         )
       )[0] || null,
@@ -99,36 +98,54 @@ export async function objectBody(meta) {
   return bodies(
     meta.sha256,
     async () => {
-      let body = meta.body;
-      if (!body) {
-        storage ||= new S3Client({
-          endpoint: process.env.NEON_STORAGE_ENDPOINT,
-          region: process.env.NEON_STORAGE_REGION || "us-east-2",
-          forcePathStyle: true,
-          credentials: {
-            accessKeyId: process.env.NEON_STORAGE_ACCESS_KEY_ID,
-            secretAccessKey: process.env.NEON_STORAGE_SECRET_ACCESS_KEY,
-          },
-          requestChecksumCalculation: "WHEN_REQUIRED",
-          responseChecksumValidation: "WHEN_REQUIRED",
-          maxAttempts: 3,
-        });
+      storage ||= new S3Client({
+        endpoint: process.env.NEON_STORAGE_ENDPOINT,
+        region: process.env.NEON_STORAGE_REGION || "us-east-2",
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: process.env.NEON_STORAGE_ACCESS_KEY_ID,
+          secretAccessKey: process.env.NEON_STORAGE_SECRET_ACCESS_KEY,
+        },
+        requestChecksumCalculation: "WHEN_REQUIRED",
+        responseChecksumValidation: "WHEN_REQUIRED",
+        maxAttempts: 3,
+      });
+      const read = async (path) => {
         const result = await storage.send(
           new GetObjectCommand({
             Bucket: process.env.NEON_STORAGE_BUCKET || "statarena-data",
-            Key: "data/" + meta.path,
+            Key: "data/" + path,
           }),
           { abortSignal: AbortSignal.timeout(20000) },
         );
-        body = Buffer.from(await result.Body.transformToByteArray());
+        return Buffer.from(await result.Body.transformToByteArray());
+      };
+      const matches = (body) =>
+        body.length === Number(meta.size) &&
+        createHash("sha256").update(body).digest("hex") === meta.sha256;
+      const mutable =
+        meta.path === "raw/index.json" ||
+        meta.path === "computed/dashboard/index.json" ||
+        meta.path.startsWith("computed/matchdays/");
+      const extension = meta.path.endsWith(".gz") ? ".json.gz" : ".json";
+      const previous = () =>
+        read("raw/neon/versions/" + meta.sha256 + extension);
+      let body;
+      try {
+        body = await read(meta.path);
+      } catch (error) {
+        if (!mutable || !["NoSuchKey", "NotFound"].includes(error.name))
+          throw error;
+        body = await previous();
       }
-      if (
-        body.length !== Number(meta.size) ||
-        createHash("sha256").update(body).digest("hex") !== meta.sha256
-      )
+      // Mutable manifests are versioned before replacement. A reader can see
+      // the new object before its metadata transaction commits; use the exact
+      // previously published bytes until that transaction becomes visible.
+      if (!matches(body) && mutable) body = await previous();
+      if (!matches(body))
         throw new Error("Neon object integrity failure");
       return body;
     },
-    15 * 60 * 1000,
+    0,
   );
 }

@@ -17,7 +17,7 @@ export async function publicFile(relative, request) {
   )
     return response("Forbidden", 403);
   try {
-    const meta = await objectMeta(relative, request.method !== "HEAD");
+    const meta = await objectMeta(relative);
     if (!meta) return response("Not found", 404);
     const etag = '"' + meta.sha256 + '"';
     const headers = {

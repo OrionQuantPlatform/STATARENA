@@ -3,12 +3,19 @@
 import os, json, gzip, hashlib, base64
 import boto3, psycopg
 from botocore.config import Config
+from botocore.exceptions import ClientError
 from psycopg.types.json import Jsonb
 
 
 def canonical(params=None):
     return json.dumps(
         params or {}, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    )
+
+
+def mutable(path):
+    return path in ("raw/index.json", "computed/dashboard/index.json") or path.startswith(
+        "computed/matchdays/"
     )
 
 
@@ -39,18 +46,33 @@ class Store:
 
     def bytes(self, path):
         row = self.db.execute(
-            "select body,sha256,size from statarena.objects where path=%s", (path,)
+            "select sha256,size from statarena.objects where path=%s", (path,)
         ).fetchone()
         if not row:
             raise FileNotFoundError(path)
-        body = (
-            bytes(row[0])
-            if row[0] is not None
-            else self.s3.get_object(Bucket=self.bucket, Key="data/" + path)[
+        def read(key):
+            return self.s3.get_object(Bucket=self.bucket, Key="data/" + key)[
                 "Body"
             ].read()
-        )
-        if hashlib.sha256(body).digest() != bytes(row[1]) or len(body) != row[2]:
+
+        def matches(body):
+            return hashlib.sha256(body).digest() == bytes(row[0]) and len(body) == row[1]
+
+        def previous():
+            extension = ".json.gz" if path.endswith(".gz") else ".json"
+            return read("raw/neon/versions/" + bytes(row[0]).hex() + extension)
+
+        try:
+            body = read(path)
+        except ClientError as error:
+            if not mutable(path) or error.response["Error"].get("Code") not in (
+                "NoSuchKey", "NotFound", "404"
+            ):
+                raise
+            body = previous()
+        if not matches(body) and mutable(path):
+            body = previous()
+        if not matches(body):
             raise ValueError("Neon object checksum mismatch: " + path)
         return body
 
@@ -64,12 +86,19 @@ class Store:
         old = self.db.execute(
             "select sha256 from statarena.objects where path=%s", (path,)
         ).fetchone()
-        if old and bytes(old[0]) == digest:
-            return False
-        if old and (
-            path in ["raw/index.json", "computed/dashboard/index.json"]
-            or path.startswith("computed/matchdays/")
-        ):
+        same_digest = bool(old and bytes(old[0]) == digest)
+        if same_digest:
+            try:
+                current = self.s3.get_object(Bucket=self.bucket, Key="data/" + path)[
+                    "Body"
+                ].read()
+            except ClientError as error:
+                if error.response["Error"].get("Code") not in ("NoSuchKey", "NotFound", "404"):
+                    raise
+            else:
+                if len(current) == len(body) and hashlib.sha256(current).digest() == digest:
+                    return False
+        if old and not same_digest and mutable(path):
             previous = self.bytes(path)
             archive = (
                 "raw/neon/versions/"
@@ -88,7 +117,7 @@ class Store:
             raise ValueError("Neon server MD5 mismatch")
         self.db.execute(
             "insert into statarena.objects(path,size,sha256,etag,body,content_type) values(%s,%s,%s,%s,%s,%s) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,updated_at=now()",
-            (path, len(body), digest, etag, body if hot else None, content_type),
+            (path, len(body), digest, etag, None, content_type),
         )
         return True
 

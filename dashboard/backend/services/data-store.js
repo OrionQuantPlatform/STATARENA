@@ -1,6 +1,6 @@
 import { gunzipSync } from "node:zlib";
 import { objectMeta, objectBody, cache } from "./neon.js";
-const parsed = cache(64 * 1024 * 1024);
+const parsed = cache(0);
 export async function dataJson(path) {
   const meta = await objectMeta(path);
   if (!meta) {
@@ -20,6 +20,6 @@ export async function dataJson(path) {
           : body.toString("utf8"),
       );
     },
-    15 * 60 * 1000,
+    0,
   );
 }

@@ -54,12 +54,12 @@ def main():
                     size,
                     bytes.fromhex(sha),
                     etag,
-                    b,
+                    None,
                     "application/gzip" if path.endswith(".gz") else "application/json",
                 )
             )
     db.execute(
-        "insert into statarena.objects select * from import_objects on conflict(path) do update set body=excluded.body where statarena.objects.sha256=excluded.sha256"
+        "insert into statarena.objects select * from import_objects on conflict(path) do nothing"
     )
     db.commit()
     print("catalog imported", flush=True)
