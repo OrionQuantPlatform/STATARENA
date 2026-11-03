@@ -1,0 +1,13 @@
+2026-11-03T08:29:32.2394182Z {"endpoint": "/players/p_0dlXyI", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:32.6605483Z {"endpoint": "/players/p_0oljtL", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:33.0747409Z {"endpoint": "/players/p_1JFcJs", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:33.4992655Z {"endpoint": "/players/p_1n5P19", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:33.9148355Z {"endpoint": "/players/p_2VsLTP", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:34.3797581Z {"endpoint": "/players/p_2lYOod", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:34.8566793Z {"endpoint": "/players/p_3RtCpC", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:35.2722197Z {"endpoint": "/players/p_3qvR6C", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:35.4765464Z {"endpoint": "/players/p_3xoLUT", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:35.6806086Z {"endpoint": "/players/p_4PPYLn", "status": 403, "recovered": false, "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "this league is on the Pro plan"}}
+2026-11-03T08:29:36.3694082Z  create mode 100644 data/raw/pitchapi-world/refusal-retries/41603644923-1793694575680361443.json.gz
+2026-11-03T08:29:38.2744999Z    c91b602..4aeed40  HEAD -> main
+2026-11-03T08:29:38.2779757Z {"targets": 10, "attempted": 10, "recovered": 0, "remainingRefusals": 10}
