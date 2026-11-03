@@ -34,3 +34,24 @@ Because earlier archived partitions were incorrectly cleared, the fixed version 
 The first corrected run exposed repeated source reads while the first transaction was pending. A second PostgreSQL scenario was written before modifying this path: 32 matches interleaved across 16 archive shards. The 16-entry LRU caches reloaded the 96 needed files twice (192 reads). The revised code streams each shard once and retains only selected match responses: all 96 source files are read once, all 32 matches are normalized, and every player reference remains consistent. All five PostgreSQL scenarios pass, and the existing daily/pulse workflow still passes.
 
 Run 41721830156 was cancelled for this replacement. Resume the same dirty queue with queue_all=false after publication; already correctly published partitions must not be requeued.
+
+## Live UI checkpoint and continued operation
+
+On the public production site, an explicitly selected Ligue 1 match passed 12 browser checks: actual noncentral goal-line coordinates, visible source height, block coordinates, retained player/match actions, captain/attempted-pass payloads, mobile layout and no application exception. Screenshots and its timestamped report/log are included. This is a real partial-scope checkpoint, not a claim that all historic seasons are regenerated.
+
+The efficient reader is pushed in 58acaf1428. Run 41723613754 resumes the existing queue with queue_all=false, minutes=100 and batch=10. At 21:42 UTC on 3 November, 220 partitions remained. A five-minute heartbeat in this chat (terminer-la-r-g-n-ration-statarena) is active to resume incomplete runs, require remaining:0 plus an empty SQL queue, then run the full public checks and publish the final evidence. It stops after completion.
+
+Full final verification commands, after copying these prepared scripts to the output directory and opening the dedicated Chromium session:
+
+```sh
+python3 output/playwright/rematerialization-completion-20261103/verify_public_data.py
+python3 output/playwright/rematerialization-completion-20261103/run_cli.py production-ui
+```
+
+The already completed partial-scope browser command was:
+
+```sh
+python3 output/playwright/rematerialization-completion-20261103/run_cli.py production-ui '{"league":"l_3FJFUl"}'
+```
+
+The final default-scope browser run and six-season HTTP assertions remain pending until the queue drains.
