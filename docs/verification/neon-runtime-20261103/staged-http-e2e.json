@@ -1,0 +1,86 @@
+{
+  "command": "STATARENA_TEST_ORIGIN=https://statarena-analytics-ljjar5ejx-hlemonniers-projects.vercel.app bun dashboard/scripts/verify_neon_runtime.mjs",
+  "setup": "Running Next.js with Neon-only runtime, pooled read-only PostgreSQL and private read-only S3; no data/ directory or Pitch key.",
+  "expected": "All pages 200, real verified chunks and archives, backend-only data, 304/HEAD semantics, invalid paths rejected, warm request coalescing.",
+  "checks": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "bytes": 44,
+      "ms": 615,
+      "source": null
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 19190,
+      "ms": 177,
+      "source": null
+    },
+    {
+      "path": "/matchs",
+      "status": 200,
+      "bytes": 19937,
+      "ms": 296,
+      "source": null
+    },
+    {
+      "path": "/calendrier",
+      "status": 200,
+      "bytes": 18126,
+      "ms": 1207,
+      "source": null
+    },
+    {
+      "path": "/joueurs",
+      "status": 200,
+      "bytes": 19652,
+      "ms": 280,
+      "source": null
+    },
+    {
+      "path": "/clubs",
+      "status": 200,
+      "bytes": 19642,
+      "ms": 411,
+      "source": null
+    },
+    {
+      "path": "/competitions",
+      "status": 200,
+      "bytes": 19680,
+      "ms": 334,
+      "source": null
+    },
+    {
+      "path": "/archives",
+      "status": 200,
+      "bytes": 19359,
+      "ms": 298,
+      "source": null
+    },
+    {
+      "path": "/classement-joueurs",
+      "status": 200,
+      "bytes": 19460,
+      "ms": 315,
+      "source": null
+    },
+    {
+      "path": "/methode",
+      "status": 200,
+      "bytes": 19423,
+      "ms": 290,
+      "source": null
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 404,
+      "bytes": 18879,
+      "ms": 291,
+      "source": null
+    }
+  ],
+  "status": "failed",
+  "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+}
