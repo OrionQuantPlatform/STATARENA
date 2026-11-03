@@ -1,0 +1,2 @@
+$ bun scripts/verify_application.mjs
+{"status":"passed","checks":50,"report":"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/worktree-publication-20261103/http-e2e.json"}
