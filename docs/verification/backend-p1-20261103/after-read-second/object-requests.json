@@ -1,0 +1,18 @@
+[
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-object.json"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-corrupt.json"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-corrupt.json"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-missing-storage.json"
+  }
+]

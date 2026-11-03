@@ -1,0 +1,22 @@
+[
+  {
+    "method": "GET",
+    "key": "data/versions/3917a31f88f036d1d16c5c118ae7c5223fbb12d3f8a9eb7bf59cef22a31b8ebf"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-object.json"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-corrupt.json"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-corrupt.json"
+  },
+  {
+    "method": "GET",
+    "key": "data/raw/fixture-missing-storage.json"
+  }
+]

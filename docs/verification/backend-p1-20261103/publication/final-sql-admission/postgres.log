@@ -1,0 +1,1223 @@
+The files belonging to this database system will be owned by user "lemonnierhugo".
+This user must also own the server process.
+
+
+The database cluster will be initialized with this locale configuration:
+  locale provider:   libc
+  LC_COLLATE:  C.UTF-8
+  LC_CTYPE:    C.UTF-8
+  LC_MESSAGES: en_US.UTF-8
+  LC_MONETARY: C.UTF-8
+  LC_NUMERIC:  C.UTF-8
+  LC_TIME:     C.UTF-8
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are enabled.
+
+creating directory /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-publication-TUw9oQ/data ... ok
+creating subdirectories ... 
+ok
+
+selecting dynamic shared memory implementation ... 
+posix
+selecting default "max_connections" ... 
+100
+selecting default "shared_buffers" ... 
+128MB
+selecting default time zone ... 
+Europe/Paris
+creating configuration files ... 
+ok
+running bootstrap script ... 
+ok
+
+performing post-bootstrap initialization ... 
+ok
+syncing data to disk ... 
+ok
+
+Success. You can now start the database server using:
+
+    '/private/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl' -D /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-publication-TUw9oQ/data -l logfile start
+
+
+2026-11-03 23:30:03.118 CET [53053] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+
+2026-11-03 23:30:03.118 CET [53053] LOG:  listening on IPv4 address "127.0.0.1", port 55643
+
+2026-11-03 23:30:03.119 CET [53053] LOG:  listening on Unix socket "/tmp/.s.PGSQL.55643"
+
+2026-11-03 23:30:03.124 CET [53059] LOG:  database system was shut down at 2026-11-03 23:30:03 CET
+
+2026-11-03 23:30:03.126 CET [53053] LOG:  database system is ready to accept connections
+
+2026-11-03 23:30:03.152 CET [53063] LOG:  statement: CREATE DATABASE "publication_e2e"
+
+2026-11-03 23:30:03.549 CET [53065] LOG:  statement: -- Additive migration: original sources stay in private Neon Object Storage.
+	CREATE SCHEMA IF NOT EXISTS statarena;
+	CREATE TABLE IF NOT EXISTS statarena.objects (
+	 path text PRIMARY KEY, size bigint NOT NULL CHECK(size>=0), sha256 bytea NOT NULL,
+	 etag text NOT NULL, body bytea, content_type text NOT NULL DEFAULT 'application/json',
+	 updated_at timestamptz NOT NULL DEFAULT now(), storage_key text
+	);
+	-- Keep fresh installs aligned with additive migration 002_immutable_storage.sql.
+	ALTER TABLE statarena.objects ADD COLUMN IF NOT EXISTS storage_key text;
+	CREATE TABLE IF NOT EXISTS statarena.object_storage (
+	 storage_key text PRIMARY KEY,
+	 sha256 bytea NOT NULL CHECK(octet_length(sha256)=32),
+	 size bigint NOT NULL CHECK(size>=0),
+	 etag text NOT NULL,
+	 state text NOT NULL CHECK(state IN ('reserved','verified')),
+	 created_at timestamptz NOT NULL DEFAULT now(),
+	 updated_at timestamptz NOT NULL DEFAULT now()
+	);
+	DO $$
+	DECLARE permission record;
+	BEGIN
+	 FOR permission IN
+	  SELECT r.rolname, a.privilege_type
+	  FROM pg_class c
+	  CROSS JOIN LATERAL aclexplode(coalesce(c.relacl,acldefault('r',c.relowner))) a
+	  JOIN pg_roles r ON r.oid=a.grantee
+	  WHERE c.oid='statarena.objects'::regclass AND a.grantee<>0
+	    AND a.privilege_type IN ('SELECT','INSERT','UPDATE')
+	 LOOP
+	  EXECUTE format('GRANT %s ON TABLE statarena.object_storage TO %I', permission.privilege_type, permission.rolname);
+	 END LOOP;
+	END;
+	$$;
+	CREATE OR REPLACE FUNCTION statarena.reset_legacy_storage_key()
+	RETURNS trigger LANGUAGE plpgsql AS $$
+	BEGIN
+	 IF NEW.sha256 IS DISTINCT FROM OLD.sha256
+	    AND NEW.storage_key IS NOT DISTINCT FROM OLD.storage_key THEN
+	  NEW.storage_key := NULL;
+	 END IF;
+	 RETURN NEW;
+	END;
+	$$;
+	CREATE OR REPLACE TRIGGER objects_legacy_storage_key
+	BEFORE UPDATE ON statarena.objects
+	FOR EACH ROW EXECUTE FUNCTION statarena.reset_legacy_storage_key();
+	CREATE TABLE IF NOT EXISTS statarena.resources (
+	 endpoint text NOT NULL, params text NOT NULL DEFAULT '{}', status smallint NOT NULL,
+	 ref jsonb, error jsonb, updated_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(endpoint,params)
+	);
+	CREATE TABLE IF NOT EXISTS statarena.shards (id text PRIMARY KEY, ref jsonb NOT NULL);
+	CREATE TABLE IF NOT EXISTS statarena.observations (id text PRIMARY KEY, shard text NOT NULL REFERENCES statarena.shards(id), ordinal integer NOT NULL);
+	CREATE TABLE IF NOT EXISTS statarena.fixtures (
+	 id text PRIMARY KEY, league_id text NOT NULL, season text NOT NULL, day date,
+	 status text, body jsonb NOT NULL, updated_at timestamptz NOT NULL DEFAULT now()
+	);
+	CREATE INDEX IF NOT EXISTS fixtures_day ON statarena.fixtures(day,status);
+	CREATE INDEX IF NOT EXISTS fixtures_league_season ON statarena.fixtures(league_id,season,status);
+	CREATE TABLE IF NOT EXISTS statarena.jobs (
+	 endpoint text NOT NULL, params text NOT NULL DEFAULT '{}', priority smallint NOT NULL DEFAULT 3,
+	 state text NOT NULL DEFAULT 'pending' CHECK(state IN('pending','running','done','unavailable')),
+	 attempts integer NOT NULL DEFAULT 0, available_at timestamptz NOT NULL DEFAULT now(),
+	 lease_until timestamptz, last_status smallint, last_error text, PRIMARY KEY(endpoint,params)
+	);
+	CREATE INDEX IF NOT EXISTS jobs_pending ON statarena.jobs(priority,available_at) WHERE state='pending';
+	CREATE INDEX IF NOT EXISTS jobs_leases ON statarena.jobs(lease_until) WHERE state='running';
+	CREATE TABLE IF NOT EXISTS statarena.state (name text PRIMARY KEY, value jsonb NOT NULL, updated_at timestamptz NOT NULL DEFAULT now());
+	CREATE TABLE IF NOT EXISTS statarena.projections (name text NOT NULL, params text NOT NULL DEFAULT '{}', body jsonb NOT NULL, updated_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(name,params));
+	CREATE TABLE IF NOT EXISTS statarena.assets (url text PRIMARY KEY, path text NOT NULL REFERENCES statarena.objects(path), content_type text NOT NULL);
+	CREATE TABLE IF NOT EXISTS statarena.dirty_partitions (season text NOT NULL, league_id text NOT NULL, changed_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(season,league_id));
+	INSERT INTO statarena.state(name,value) VALUES('revision','1'::jsonb) ON CONFLICT DO NOTHING;
+	
+	CREATE TABLE IF NOT EXISTS statarena.asset_jobs(url text PRIMARY KEY,attempts int NOT NULL DEFAULT 0,next_attempt timestamptz NOT NULL DEFAULT now(),error text);
+	CREATE TABLE IF NOT EXISTS statarena.ingest_failures(endpoint text NOT NULL,params text NOT NULL,status smallint NOT NULL,error jsonb,updated_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(endpoint,params));
+	
+
+2026-11-03 23:30:03.567 CET [53065] LOG:  statement: select version()
+
+2026-11-03 23:30:03.568 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values('raw/migration-preserved.json',$1,$2,$3,$4)
+2026-11-03 23:30:03.568 CET [53065] DETAIL:  Parameters: $1 = '25', $2 = '\x9226db6e80868563f0144832187ccc48a85b0f72994ac66411a4fdc333600fd3', $3 = 'c2ca192497b5b1ea657681adbca2bb25', $4 = '\x7b226d6967726174696f6e223a22707265736572766564227d'
+
+2026-11-03 23:30:03.568 CET [53065] LOG:  statement: alter table statarena.objects drop column storage_key
+
+2026-11-03 23:30:03.568 CET [53065] LOG:  statement: create role fixture_ingest login password 'fixture-role-only'
+
+2026-11-03 23:30:03.584 CET [53065] LOG:  statement: grant usage on schema statarena to fixture_ingest
+
+2026-11-03 23:30:03.584 CET [53065] LOG:  statement: grant select,insert,update on statarena.objects to fixture_ingest
+
+2026-11-03 23:30:03.584 CET [53065] LOG:  statement: -- Reader-first migration. NULL retains the legacy data/<path> lookup.
+	ALTER TABLE statarena.objects ADD COLUMN IF NOT EXISTS storage_key text;
+	
+	-- Physical uploads are reserved/accounted independently of publication commits.
+	-- A reserved entry may overcount a failed upload until a verified inventory reconciles it.
+	CREATE TABLE IF NOT EXISTS statarena.object_storage (
+	 storage_key text PRIMARY KEY,
+	 sha256 bytea NOT NULL CHECK(octet_length(sha256)=32),
+	 size bigint NOT NULL CHECK(size>=0),
+	 etag text NOT NULL,
+	 state text NOT NULL CHECK(state IN ('reserved','verified')),
+	 created_at timestamptz NOT NULL DEFAULT now(),
+	 updated_at timestamptz NOT NULL DEFAULT now()
+	);
+	
+	-- Preserve explicit catalog-role capabilities without exposing the ledger to PUBLIC.
+	DO $$
+	DECLARE permission record;
+	BEGIN
+	 FOR permission IN
+	  SELECT r.rolname, a.privilege_type
+	  FROM pg_class c
+	  CROSS JOIN LATERAL aclexplode(coalesce(c.relacl,acldefault('r',c.relowner))) a
+	  JOIN pg_roles r ON r.oid=a.grantee
+	  WHERE c.oid='statarena.objects'::regclass AND a.grantee<>0
+	    AND a.privilege_type IN ('SELECT','INSERT','UPDATE')
+	 LOOP
+	  EXECUTE format('GRANT %s ON TABLE statarena.object_storage TO %I', permission.privilege_type, permission.rolname);
+	 END LOOP;
+	END;
+	$$;
+	
+	CREATE OR REPLACE FUNCTION statarena.reset_legacy_storage_key()
+	RETURNS trigger LANGUAGE plpgsql AS $$
+	BEGIN
+	 IF NEW.sha256 IS DISTINCT FROM OLD.sha256
+	    AND NEW.storage_key IS NOT DISTINCT FROM OLD.storage_key THEN
+	  NEW.storage_key := NULL;
+	 END IF;
+	 RETURN NEW;
+	END;
+	$$;
+	CREATE OR REPLACE TRIGGER objects_legacy_storage_key
+	BEFORE UPDATE ON statarena.objects
+	FOR EACH ROW EXECUTE FUNCTION statarena.reset_legacy_storage_key();
+	
+
+2026-11-03 23:30:03.585 CET [53065] LOG:  statement: -- Reader-first migration. NULL retains the legacy data/<path> lookup.
+	ALTER TABLE statarena.objects ADD COLUMN IF NOT EXISTS storage_key text;
+	
+	-- Physical uploads are reserved/accounted independently of publication commits.
+	-- A reserved entry may overcount a failed upload until a verified inventory reconciles it.
+	CREATE TABLE IF NOT EXISTS statarena.object_storage (
+	 storage_key text PRIMARY KEY,
+	 sha256 bytea NOT NULL CHECK(octet_length(sha256)=32),
+	 size bigint NOT NULL CHECK(size>=0),
+	 etag text NOT NULL,
+	 state text NOT NULL CHECK(state IN ('reserved','verified')),
+	 created_at timestamptz NOT NULL DEFAULT now(),
+	 updated_at timestamptz NOT NULL DEFAULT now()
+	);
+	
+	-- Preserve explicit catalog-role capabilities without exposing the ledger to PUBLIC.
+	DO $$
+	DECLARE permission record;
+	BEGIN
+	 FOR permission IN
+	  SELECT r.rolname, a.privilege_type
+	  FROM pg_class c
+	  CROSS JOIN LATERAL aclexplode(coalesce(c.relacl,acldefault('r',c.relowner))) a
+	  JOIN pg_roles r ON r.oid=a.grantee
+	  WHERE c.oid='statarena.objects'::regclass AND a.grantee<>0
+	    AND a.privilege_type IN ('SELECT','INSERT','UPDATE')
+	 LOOP
+	  EXECUTE format('GRANT %s ON TABLE statarena.object_storage TO %I', permission.privilege_type, permission.rolname);
+	 END LOOP;
+	END;
+	$$;
+	
+	CREATE OR REPLACE FUNCTION statarena.reset_legacy_storage_key()
+	RETURNS trigger LANGUAGE plpgsql AS $$
+	BEGIN
+	 IF NEW.sha256 IS DISTINCT FROM OLD.sha256
+	    AND NEW.storage_key IS NOT DISTINCT FROM OLD.storage_key THEN
+	  NEW.storage_key := NULL;
+	 END IF;
+	 RETURN NEW;
+	END;
+	$$;
+	CREATE OR REPLACE TRIGGER objects_legacy_storage_key
+	BEFORE UPDATE ON statarena.objects
+	FOR EACH ROW EXECUTE FUNCTION statarena.reset_legacy_storage_key();
+	
+
+2026-11-03 23:30:03.586 CET [53065] LOG:  statement: select column_name from information_schema.columns where table_schema='statarena' and table_name='objects' and column_name='storage_key'
+
+2026-11-03 23:30:03.588 CET [53065] LOG:  statement: select body,storage_key from statarena.objects where path='raw/migration-preserved.json'
+
+2026-11-03 23:30:03.588 CET [53065] LOG:  statement: select 1 from information_schema.columns where table_schema='statarena' and table_name='objects' and column_name='storage_key'
+
+2026-11-03 23:30:03.607 CET [53066] LOG:  statement: select storage_key from statarena.objects limit 0
+
+2026-11-03 23:30:03.607 CET [53066] LOG:  statement: select storage_key from statarena.object_storage limit 0
+
+2026-11-03 23:30:03.608 CET [53066] LOG:  statement: select clock_timestamp()
+
+2026-11-03 23:30:03.676 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:03.676 CET [53065] DETAIL:  Parameters: $1 = 'raw/legacy-read-False.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL
+
+2026-11-03 23:30:03.676 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:03.676 CET [53066] DETAIL:  Parameters: $1 = 'raw/legacy-read-False.json'
+
+2026-11-03 23:30:03.679 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:03.679 CET [53065] DETAIL:  Parameters: $1 = 'raw/legacy-read-True.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = '\x7b2276657273696f6e223a317d'
+
+2026-11-03 23:30:03.679 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:03.679 CET [53066] DETAIL:  Parameters: $1 = 'raw/legacy-read-True.json'
+
+2026-11-03 23:30:03.680 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:03.680 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-visible.json'
+
+2026-11-03 23:30:03.698 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:03.698 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:03.698 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:03.700 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:03.700 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:03.700 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:03.701 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:03.701 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $2 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $3 = '13', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'reserved'
+
+2026-11-03 23:30:03.701 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:04.707 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:04.707 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:04.710 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:04.710 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-visible.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:04.711 CET [53065] LOG:  execute <unnamed>: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:04.711 CET [53065] DETAIL:  Parameters: $1 = 'raw/publication-visible.json'
+
+2026-11-03 23:30:04.712 CET [53066] LOG:  statement: BEGIN
+
+2026-11-03 23:30:04.712 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:04.712 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-visible.json'
+
+2026-11-03 23:30:04.712 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:04.712 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:04.712 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:04.714 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:04.714 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:04.714 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:04.715 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:04.715 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $2 = '\x732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $3 = '13', $4 = '815eb7e11c62e2b313b8258505d0131e', $5 = 'reserved'
+
+2026-11-03 23:30:04.715 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:05.722 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:05.722 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:05.724 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:05.724 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'application/json', $6 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:05.725 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:05.725 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-visible.json', $2 = '13', $3 = '\x732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $4 = '815eb7e11c62e2b313b8258505d0131e', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:05.727 CET [53065] LOG:  execute <unnamed>: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:05.727 CET [53065] DETAIL:  Parameters: $1 = 'raw/publication-visible.json'
+
+2026-11-03 23:30:05.730 CET [53066] LOG:  statement: COMMIT
+
+2026-11-03 23:30:05.730 CET [53065] LOG:  execute <unnamed>: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:05.730 CET [53065] DETAIL:  Parameters: $1 = 'raw/publication-visible.json'
+
+2026-11-03 23:30:05.730 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:05.730 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-visible.json'
+
+2026-11-03 23:30:05.731 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:05.731 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json'
+
+2026-11-03 23:30:05.731 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:05.732 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:05.732 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:05.733 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:05.733 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:05.733 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:05.733 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:05.733 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:05.733 CET [53065] LOG:  execute <unnamed>: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:05.733 CET [53065] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json'
+
+2026-11-03 23:30:05.733 CET [53066] LOG:  statement: BEGIN
+
+2026-11-03 23:30:05.733 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:05.733 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json'
+
+2026-11-03 23:30:05.734 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:05.734 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:05.734 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:05.734 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:05.734 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478'
+
+2026-11-03 23:30:05.735 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:05.735 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:05.735 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478', $2 = '\x4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478', $3 = '17', $4 = 'b7d0785dc5b6b346014939252c41f38c', $5 = 'reserved'
+
+2026-11-03 23:30:05.735 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:06.742 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:06.742 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478'
+
+2026-11-03 23:30:06.743 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:06.743 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'application/json', $6 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:06.744 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:06.744 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json', $2 = '17', $3 = '\x4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478', $4 = 'b7d0785dc5b6b346014939252c41f38c', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478'
+
+2026-11-03 23:30:06.744 CET [53066] LOG:  statement: ROLLBACK
+
+2026-11-03 23:30:06.744 CET [53065] LOG:  execute <unnamed>: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:06.744 CET [53065] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json'
+
+2026-11-03 23:30:06.747 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:06.747 CET [53066] DETAIL:  Parameters: $1 = 'raw/publication-rollback.json'
+
+2026-11-03 23:30:06.748 CET [53065] LOG:  execute <unnamed>: select state,size from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:06.748 CET [53065] DETAIL:  Parameters: $1 = 'data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478'
+
+2026-11-03 23:30:06.748 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:06.748 CET [53065] DETAIL:  Parameters: $1 = 'raw/legacy-conversion.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL
+
+2026-11-03 23:30:06.749 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:06.749 CET [53066] DETAIL:  Parameters: $1 = 'raw/legacy-conversion.json'
+
+2026-11-03 23:30:06.749 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:06.749 CET [53066] DETAIL:  Parameters: $1 = 'raw/legacy-conversion.json'
+
+2026-11-03 23:30:06.750 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:06.750 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:06.750 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:06.752 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()
+2026-11-03 23:30:06.752 CET [53067] DETAIL:  Parameters: $1 = 'data/raw/legacy-conversion.json', $2 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $3 = '13', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'verified'
+
+2026-11-03 23:30:06.752 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:06.752 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:06.752 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:06.752 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:06.753 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:06.753 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:06.753 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:06.753 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:06.753 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:06.753 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:06.754 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:06.754 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:06.754 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:06.754 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:06.754 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'application/json', $6 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:06.754 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:06.754 CET [53066] DETAIL:  Parameters: $1 = 'raw/legacy-conversion.json', $2 = '13', $3 = '\x732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $4 = '815eb7e11c62e2b313b8258505d0131e', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:06.755 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:06.755 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json'
+
+2026-11-03 23:30:06.756 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:06.756 CET [53066] DETAIL:  Parameters: $1 = 'raw/legacy-conversion.json'
+
+2026-11-03 23:30:06.757 CET [53065] LOG:  execute <unnamed>: select state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:06.757 CET [53065] DETAIL:  Parameters: $1 = 'data/raw/legacy-conversion.json'
+
+2026-11-03 23:30:06.757 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:06.757 CET [53065] DETAIL:  Parameters: $1 = 'raw/upload-deny_put.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = '\x7b2276657273696f6e223a317d'
+
+2026-11-03 23:30:06.758 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:06.758 CET [53066] DETAIL:  Parameters: $1 = 'raw/upload-deny_put.json'
+
+2026-11-03 23:30:06.758 CET [53066] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:06.758 CET [53066] DETAIL:  Parameters: $1 = 'raw/upload-deny_put.json'
+
+2026-11-03 23:30:06.758 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:06.758 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:06.758 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:06.759 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()
+2026-11-03 23:30:06.759 CET [53067] DETAIL:  Parameters: $1 = 'data/raw/upload-deny_put.json', $2 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $3 = '13', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'reserved'
+
+2026-11-03 23:30:06.759 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:06.759 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:06.759 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:06.759 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:06.760 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:06.760 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:06.760 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:06.760 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:06.760 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:06.760 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:06.761 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:06.761 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646'
+
+2026-11-03 23:30:06.761 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:06.762 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:06.762 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646', $2 = '\x99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646', $3 = '22', $4 = 'dbd363de71073d02fbe6134feaa54664', $5 = 'reserved'
+
+2026-11-03 23:30:06.762 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:07.775 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:07.775 CET [53065] DETAIL:  Parameters: $1 = 'raw/upload-deny_put.json'
+
+2026-11-03 23:30:07.775 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:07.775 CET [53066] DETAIL:  Parameters: $1 = 'raw/upload-deny_put.json'
+
+2026-11-03 23:30:07.776 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:07.776 CET [53065] DETAIL:  Parameters: $1 = 'raw/upload-bad_etag.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = '\x7b2276657273696f6e223a317d'
+
+2026-11-03 23:30:07.776 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:07.776 CET [53066] DETAIL:  Parameters: $1 = 'raw/upload-bad_etag.json'
+
+2026-11-03 23:30:07.776 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:07.776 CET [53066] DETAIL:  Parameters: $1 = 'raw/upload-bad_etag.json'
+
+2026-11-03 23:30:07.777 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:07.777 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:07.777 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:07.780 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()
+2026-11-03 23:30:07.780 CET [53067] DETAIL:  Parameters: $1 = 'data/raw/upload-bad_etag.json', $2 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $3 = '13', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'reserved'
+
+2026-11-03 23:30:07.780 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:07.780 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:07.781 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:07.781 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:07.782 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:07.782 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:07.782 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:07.783 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:07.783 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:07.783 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:07.784 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:07.784 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074'
+
+2026-11-03 23:30:07.784 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:07.785 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:07.785 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074', $2 = '\xa5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074', $3 = '22', $4 = 'aff07ccfdbcb709351350102543bdfdc', $5 = 'reserved'
+
+2026-11-03 23:30:07.785 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:08.790 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:08.790 CET [53065] DETAIL:  Parameters: $1 = 'raw/upload-bad_etag.json'
+
+2026-11-03 23:30:08.790 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:08.790 CET [53066] DETAIL:  Parameters: $1 = 'raw/upload-bad_etag.json'
+
+2026-11-03 23:30:08.791 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:08.791 CET [53066] DETAIL:  Parameters: $1 = 'raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json'
+
+2026-11-03 23:30:08.791 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:08.791 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:08.791 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:08.792 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:08.792 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:08.792 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:08.793 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:08.793 CET [53066] DETAIL:  Parameters: $1 = 'raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:08.793 CET [53066] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:08.793 CET [53066] DETAIL:  Parameters: $1 = 'raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json'
+
+2026-11-03 23:30:08.793 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:08.793 CET [53066] DETAIL:  Parameters: $1 = 'raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json'
+
+2026-11-03 23:30:08.795 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:08.795 CET [53066] DETAIL:  Parameters: $1 = 'raw/idempotent.json'
+
+2026-11-03 23:30:08.795 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:08.796 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:08.796 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:08.797 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:08.797 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7'
+
+2026-11-03 23:30:08.797 CET [53067] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:08.798 CET [53067] LOG:  execute _pg3_4: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:08.798 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7', $2 = '\x07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7', $3 = '14', $4 = '4632ad839070329aad64620e266005b8', $5 = 'reserved'
+
+2026-11-03 23:30:08.798 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.801 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:09.801 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7'
+
+2026-11-03 23:30:09.802 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:09.802 CET [53066] DETAIL:  Parameters: $1 = 'raw/idempotent.json', $2 = '14', $3 = '\x07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7', $4 = '4632ad839070329aad64620e266005b8', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7'
+
+2026-11-03 23:30:09.802 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:09.802 CET [53066] DETAIL:  Parameters: $1 = 'raw/idempotent.json'
+
+2026-11-03 23:30:09.803 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:09.803 CET [53066] DETAIL:  Parameters: $1 = 'raw/shared-bytes.json'
+
+2026-11-03 23:30:09.803 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.803 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.803 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.805 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:09.805 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7'
+
+2026-11-03 23:30:09.805 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.806 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:09.806 CET [53066] DETAIL:  Parameters: $1 = 'raw/shared-bytes.json', $2 = '14', $3 = '\x07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7', $4 = '4632ad839070329aad64620e266005b8', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7'
+
+2026-11-03 23:30:09.806 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:09.806 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer.json'
+
+2026-11-03 23:30:09.806 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.806 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.806 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.808 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:09.808 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:09.808 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.808 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:09.808 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:09.809 CET [53065] LOG:  execute <unnamed>: update statarena.objects set sha256=$1,size=$2,etag=$3,body=null where path=$4
+2026-11-03 23:30:09.809 CET [53065] DETAIL:  Parameters: $1 = '\x732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $2 = '13', $3 = '815eb7e11c62e2b313b8258505d0131e', $4 = 'raw/old-writer.json'
+
+2026-11-03 23:30:09.809 CET [53065] LOG:  execute <unnamed>: select storage_key from statarena.objects where path=$1
+2026-11-03 23:30:09.809 CET [53065] DETAIL:  Parameters: $1 = 'raw/old-writer.json'
+
+2026-11-03 23:30:09.809 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:09.809 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer.json'
+
+2026-11-03 23:30:09.812 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:09.812 CET [53065] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL
+
+2026-11-03 23:30:09.812 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:09.812 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json'
+
+2026-11-03 23:30:09.813 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:09.813 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json'
+
+2026-11-03 23:30:09.814 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.815 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.815 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.816 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()
+2026-11-03 23:30:09.816 CET [53067] DETAIL:  Parameters: $1 = 'data/raw/old-writer-repaired.json', $2 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $3 = '13', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'verified'
+
+2026-11-03 23:30:09.816 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.816 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.817 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.817 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.818 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:09.818 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:09.818 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.818 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.818 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.818 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.819 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:09.819 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:09.819 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.819 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:09.819 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'application/json', $6 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:09.820 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:09.820 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json', $2 = '13', $3 = '\x732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $4 = '815eb7e11c62e2b313b8258505d0131e', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:09.820 CET [53065] LOG:  execute <unnamed>: update statarena.objects set sha256=$1,size=$2,etag=$3,body=null where path=$4
+2026-11-03 23:30:09.820 CET [53065] DETAIL:  Parameters: $1 = '\x9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b', $2 = '13', $3 = '6dbd5863e342cb37067957d71dc661de', $4 = 'raw/old-writer-repaired.json'
+
+2026-11-03 23:30:09.821 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:09.821 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json'
+
+2026-11-03 23:30:09.821 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:09.821 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json'
+
+2026-11-03 23:30:09.823 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.823 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.823 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.824 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()
+2026-11-03 23:30:09.824 CET [53067] DETAIL:  Parameters: $1 = 'data/raw/old-writer-repaired.json', $2 = '\x9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b', $3 = '13', $4 = '6dbd5863e342cb37067957d71dc661de', $5 = 'verified'
+
+2026-11-03 23:30:09.824 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:09.824 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:09.824 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:09.825 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:09.825 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:09.825 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b'
+
+2026-11-03 23:30:09.826 CET [53067] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:09.826 CET [53067] LOG:  execute _pg3_4: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:09.826 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b', $2 = '\x9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b', $3 = '13', $4 = '6dbd5863e342cb37067957d71dc661de', $5 = 'reserved'
+
+2026-11-03 23:30:09.826 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:10.831 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:10.831 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b'
+
+2026-11-03 23:30:10.831 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:10.831 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:10.831 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:10.834 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:10.834 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2'
+
+2026-11-03 23:30:10.834 CET [53067] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:10.834 CET [53067] LOG:  execute _pg3_4: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:10.834 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2', $2 = '\x99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2', $3 = '13', $4 = 'c0f45e34ed60c6e660c5cd0b292c5b9c', $5 = 'reserved'
+
+2026-11-03 23:30:10.834 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:11.841 CET [53067] LOG:  execute _pg3_5: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:11.841 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2'
+
+2026-11-03 23:30:11.843 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:11.843 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b.json', $2 = '13', $3 = '\x9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b', $4 = '6dbd5863e342cb37067957d71dc661de', $5 = 'application/json', $6 = 'data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b'
+
+2026-11-03 23:30:11.843 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:11.843 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json', $2 = '13', $3 = '\x99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2', $4 = 'c0f45e34ed60c6e660c5cd0b292c5b9c', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2'
+
+2026-11-03 23:30:11.844 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:11.844 CET [53066] DETAIL:  Parameters: $1 = 'raw/old-writer-repaired.json'
+
+2026-11-03 23:30:11.846 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:11.846 CET [53066] DETAIL:  Parameters: $1 = 'raw/read-integrity.json'
+
+2026-11-03 23:30:11.846 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:11.846 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:11.846 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:11.848 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:11.848 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e'
+
+2026-11-03 23:30:11.848 CET [53067] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:11.848 CET [53067] LOG:  execute _pg3_4: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:11.848 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e', $2 = '\xa9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e', $3 = '18', $4 = '77312b80cec4591fccd916e54fd7fc73', $5 = 'reserved'
+
+2026-11-03 23:30:11.849 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:12.856 CET [53067] LOG:  execute _pg3_5: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:12.856 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e'
+
+2026-11-03 23:30:12.858 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:12.858 CET [53066] DETAIL:  Parameters: $1 = 'raw/read-integrity.json', $2 = '18', $3 = '\xa9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e', $4 = '77312b80cec4591fccd916e54fd7fc73', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e'
+
+2026-11-03 23:30:12.858 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:12.858 CET [53065] DETAIL:  Parameters: $1 = 'raw/read-integrity.json'
+
+2026-11-03 23:30:12.858 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:12.858 CET [53066] DETAIL:  Parameters: $1 = 'raw/read-integrity.json'
+
+2026-11-03 23:30:12.882 CET [53143] LOG:  statement: select storage_key from statarena.objects limit 0
+
+2026-11-03 23:30:12.882 CET [53143] LOG:  statement: select storage_key from statarena.object_storage limit 0
+
+2026-11-03 23:30:12.883 CET [53143] LOG:  statement: select clock_timestamp()
+
+2026-11-03 23:30:12.886 CET [53143] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:12.886 CET [53143] DETAIL:  Parameters: $1 = 'raw/role-permissions.json'
+
+2026-11-03 23:30:12.906 CET [53144] LOG:  statement: BEGIN
+
+2026-11-03 23:30:12.907 CET [53144] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:12.907 CET [53144] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:12.909 CET [53144] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:12.909 CET [53144] DETAIL:  Parameters: $1 = 'data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca'
+
+2026-11-03 23:30:12.909 CET [53144] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:12.910 CET [53144] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:12.910 CET [53144] DETAIL:  Parameters: $1 = 'data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca', $2 = '\x515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca', $3 = '19', $4 = '97a38c12d35b0b092d5f46be5b9b5a8e', $5 = 'reserved'
+
+2026-11-03 23:30:12.910 CET [53144] LOG:  statement: COMMIT
+
+2026-11-03 23:30:13.915 CET [53144] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:13.915 CET [53144] DETAIL:  Parameters: $1 = 'data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca'
+
+2026-11-03 23:30:13.916 CET [53143] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:13.916 CET [53143] DETAIL:  Parameters: $1 = 'raw/role-permissions.json', $2 = '19', $3 = '\x515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca', $4 = '97a38c12d35b0b092d5f46be5b9b5a8e', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca'
+
+2026-11-03 23:30:13.916 CET [53143] LOG:  execute <unnamed>: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:13.916 CET [53143] DETAIL:  Parameters: $1 = 'raw/role-permissions.json'
+
+2026-11-03 23:30:13.918 CET [53143] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:13.918 CET [53065] LOG:  statement: select exists(select 1 from pg_class c, lateral aclexplode(c.relacl) a where c.oid='statarena.object_storage'::regclass and a.grantee=0)
+
+2026-11-03 23:30:13.919 CET [53065] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:13.919 CET [53065] DETAIL:  Parameters: $1 = 'raw/ledger-legacy-growth.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL
+
+2026-11-03 23:30:13.919 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:13.919 CET [53066] DETAIL:  Parameters: $1 = 'raw/ledger-legacy-growth.json'
+
+2026-11-03 23:30:13.919 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:13.919 CET [53066] DETAIL:  Parameters: $1 = 'raw/ledger-legacy-growth.json'
+
+2026-11-03 23:30:13.921 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.921 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.921 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.922 CET [53067] LOG:  execute _pg3_6: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()
+2026-11-03 23:30:13.922 CET [53067] DETAIL:  Parameters: $1 = 'data/raw/ledger-legacy-growth.json', $2 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $3 = '13', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'verified'
+
+2026-11-03 23:30:13.922 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:13.923 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.923 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.923 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.923 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.923 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:13.924 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:13.924 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.924 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.924 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.925 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.925 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:13.925 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:13.925 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:13.925 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'application/json', $6 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:13.925 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:13.925 CET [53066] DETAIL:  Parameters: $1 = 'raw/ledger-legacy-growth.json', $2 = '13', $3 = '\x732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $4 = '815eb7e11c62e2b313b8258505d0131e', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d'
+
+2026-11-03 23:30:13.925 CET [53065] LOG:  execute <unnamed>: update statarena.objects set sha256=$1,size=$2,etag=$3,body=null where path=$4
+2026-11-03 23:30:13.925 CET [53065] DETAIL:  Parameters: $1 = '\x3e12086dc86ea2c661a00969c6ce4bde574f6e03bdcadaa31330182d6ec07d93', $2 = '1012', $3 = '0e2039645ff33b1ce1a838edf2147070', $4 = 'raw/ledger-legacy-growth.json'
+
+2026-11-03 23:30:13.926 CET [53066] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:13.926 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:13.926 CET [53066] DETAIL:  Parameters: $1 = 'raw/ledger-legacy-growth.json'
+
+2026-11-03 23:30:13.928 CET [53066] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:13.928 CET [53065] LOG:  statement: select count(*) from statarena.object_storage where state='reserved'
+
+2026-11-03 23:30:13.928 CET [53065] LOG:  statement: select storage_key,size,state from statarena.object_storage order by storage_key
+
+2026-11-03 23:30:13.929 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:13.929 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:13.929 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.929 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.929 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.930 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.930 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:13.930 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:13.930 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:13.930 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:13.930 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:13.930 CET [53065] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:13.930 CET [53066] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:13.931 CET [53065] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values('fixture/capacity-fill',$1,$2,'fixture-size-only','reserved')
+2026-11-03 23:30:13.931 CET [53065] DETAIL:  Parameters: $1 = '\x52889565e0885d7a4fcfb9d3b5696612eaf761bde2e42773b4cb3037eb396bc2', $2 = '4749998708'
+
+2026-11-03 23:30:13.931 CET [53066] LOG:  statement: select pg_advisory_lock(97813003)
+
+2026-11-03 23:30:13.931 CET [53067] LOG:  statement: set statement_timeout=2000
+
+2026-11-03 23:30:13.931 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:13.931 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:13.931 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.931 CET [53067] LOG:  execute _pg3_0: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.931 CET [53067] LOG:  execute _pg3_1: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.932 CET [53067] LOG:  execute _pg3_2: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.932 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6'
+
+2026-11-03 23:30:13.932 CET [53067] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:13.932 CET [53067] LOG:  statement: ROLLBACK
+
+2026-11-03 23:30:13.932 CET [53067] LOG:  statement: DEALLOCATE ALL
+
+2026-11-03 23:30:13.932 CET [53066] LOG:  statement: select pg_advisory_unlock(97813003)
+
+2026-11-03 23:30:13.933 CET [53067] LOG:  statement: set statement_timeout=120000
+
+2026-11-03 23:30:13.933 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:13.933 CET [53065] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:13.933 CET [53065] LOG:  execute <unnamed>: select 1 from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.933 CET [53065] DETAIL:  Parameters: $1 = 'data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6'
+
+2026-11-03 23:30:13.933 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:13.933 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:13.934 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:13.934 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-existing-bytes.json'
+
+2026-11-03 23:30:13.934 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.934 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.934 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.935 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.935 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:13.935 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:13.935 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:13.935 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-existing-bytes.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:13.935 CET [53065] LOG:  statement: delete from statarena.object_storage where storage_key='fixture/capacity-fill'
+
+2026-11-03 23:30:13.936 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:13.936 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:13.936 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:13.936 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:13.936 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:13.936 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:13.936 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6'
+
+2026-11-03 23:30:13.937 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:13.937 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:13.937 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6', $2 = '\xa8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6', $3 = '32', $4 = 'b7a15733d634868de5e30eb1b3050808', $5 = 'reserved'
+
+2026-11-03 23:30:13.937 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:14.940 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:14.940 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6'
+
+2026-11-03 23:30:14.941 CET [53066] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values($1,$2,$3,$4,$5,$6) on conflict(path) do nothing
+2026-11-03 23:30:14.941 CET [53066] DETAIL:  Parameters: $1 = 'raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json', $2 = '13', $3 = '\x2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '77efb8e3fa276d4674932392a66555e4', $5 = 'application/json', $6 = 'data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8'
+
+2026-11-03 23:30:14.941 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:14.941 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json', $2 = '32', $3 = '\xa8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6', $4 = 'b7a15733d634868de5e30eb1b3050808', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6'
+
+2026-11-03 23:30:14.942 CET [53066] LOG:  execute _pg3_0: select body,sha256,size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:14.942 CET [53066] DETAIL:  Parameters: $1 = 'raw/quota-admission.json'
+
+2026-11-03 23:30:14.943 CET [53066] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:14.943 CET [53065] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values('fixture/capacity-fill',$1,$2,'fixture-size-only','reserved')
+2026-11-03 23:30:14.943 CET [53065] DETAIL:  Parameters: $1 = '\x52889565e0885d7a4fcfb9d3b5696612eaf761bde2e42773b4cb3037eb396bc2', $2 = '4749998657'
+
+2026-11-03 23:30:14.962 CET [53216] LOG:  statement: select storage_key from statarena.objects limit 0
+2026-11-03 23:30:14.962 CET [53217] LOG:  statement: select storage_key from statarena.objects limit 0
+
+2026-11-03 23:30:14.963 CET [53216] LOG:  statement: select storage_key from statarena.object_storage limit 0
+2026-11-03 23:30:14.963 CET [53217] LOG:  statement: select storage_key from statarena.object_storage limit 0
+
+2026-11-03 23:30:14.963 CET [53216] LOG:  statement: select clock_timestamp()
+
+2026-11-03 23:30:14.963 CET [53217] LOG:  statement: select clock_timestamp()
+
+2026-11-03 23:30:14.968 CET [53217] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:14.968 CET [53217] DETAIL:  Parameters: $1 = 'raw/concurrent-admission-1.json'
+2026-11-03 23:30:14.968 CET [53216] LOG:  execute <unnamed>: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:14.968 CET [53216] DETAIL:  Parameters: $1 = 'raw/concurrent-admission-0.json'
+
+2026-11-03 23:30:14.986 CET [53220] LOG:  statement: BEGIN
+2026-11-03 23:30:14.986 CET [53221] LOG:  statement: BEGIN
+
+2026-11-03 23:30:14.986 CET [53220] LOG:  statement: select pg_advisory_xact_lock(97813004)
+2026-11-03 23:30:14.986 CET [53221] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:14.987 CET [53221] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:14.988 CET [53221] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:14.988 CET [53221] DETAIL:  Parameters: $1 = 'data/versions/b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2'
+
+2026-11-03 23:30:14.988 CET [53221] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:14.989 CET [53221] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:14.989 CET [53221] DETAIL:  Parameters: $1 = 'data/versions/b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2', $2 = '\xb3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2', $3 = '19', $4 = '1e2e4419fcbd8738b73da228e389b196', $5 = 'reserved'
+
+2026-11-03 23:30:14.989 CET [53221] LOG:  statement: COMMIT
+
+2026-11-03 23:30:14.991 CET [53220] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:14.992 CET [53220] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:14.992 CET [53220] DETAIL:  Parameters: $1 = 'data/versions/e089f22013f3c46c983392d58b81d81eaee1df4929ac94e78269f7ab5e32f214'
+
+2026-11-03 23:30:14.992 CET [53220] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:14.993 CET [53220] LOG:  statement: ROLLBACK
+
+2026-11-03 23:30:15.994 CET [53221] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:15.994 CET [53221] DETAIL:  Parameters: $1 = 'data/versions/b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2'
+
+2026-11-03 23:30:15.995 CET [53217] LOG:  execute <unnamed>: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:15.995 CET [53217] DETAIL:  Parameters: $1 = 'raw/concurrent-admission-1.json', $2 = '19', $3 = '\xb3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2', $4 = '1e2e4419fcbd8738b73da228e389b196', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2'
+
+2026-11-03 23:30:15.997 CET [53066] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:15.997 CET [53066] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:15.998 CET [53065] LOG:  statement: delete from statarena.object_storage where storage_key='fixture/capacity-fill'
+
+2026-11-03 23:30:15.998 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:15.998 CET [53066] DETAIL:  Parameters: $1 = 'raw/sql-quota-existing.json'
+
+2026-11-03 23:30:15.998 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:15.999 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:15.999 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:16.001 CET [53067] LOG:  execute <unnamed>: select sha256,size,etag,state from statarena.object_storage where storage_key=$1
+2026-11-03 23:30:16.001 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07dd3ca0977784c622fc495a1c7f34836f10fdbb3ce0efc3915bd9874259b461'
+
+2026-11-03 23:30:16.001 CET [53067] LOG:  statement: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:16.001 CET [53067] LOG:  execute <unnamed>: insert into statarena.object_storage(storage_key,sha256,size,etag,state) values($1,$2,$3,$4,$5)
+2026-11-03 23:30:16.001 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07dd3ca0977784c622fc495a1c7f34836f10fdbb3ce0efc3915bd9874259b461', $2 = '\x07dd3ca0977784c622fc495a1c7f34836f10fdbb3ce0efc3915bd9874259b461', $3 = '18', $4 = 'b85821c5913afce2eac9ff3dc5947e55', $5 = 'reserved'
+
+2026-11-03 23:30:16.001 CET [53067] LOG:  statement: COMMIT
+
+2026-11-03 23:30:17.007 CET [53067] LOG:  execute <unnamed>: update statarena.object_storage set state='verified',updated_at=now() where storage_key=$1
+2026-11-03 23:30:17.007 CET [53067] DETAIL:  Parameters: $1 = 'data/versions/07dd3ca0977784c622fc495a1c7f34836f10fdbb3ce0efc3915bd9874259b461'
+
+2026-11-03 23:30:17.008 CET [53066] LOG:  execute _pg3_2: insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values($1,$2,$3,$4,$5,$6,$7) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()
+2026-11-03 23:30:17.008 CET [53066] DETAIL:  Parameters: $1 = 'raw/sql-quota-existing.json', $2 = '18', $3 = '\x07dd3ca0977784c622fc495a1c7f34836f10fdbb3ce0efc3915bd9874259b461', $4 = 'b85821c5913afce2eac9ff3dc5947e55', $5 = NULL, $6 = 'application/json', $7 = 'data/versions/07dd3ca0977784c622fc495a1c7f34836f10fdbb3ce0efc3915bd9874259b461'
+
+2026-11-03 23:30:17.009 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:17.009 CET [53065] DETAIL:  Parameters: $1 = 'raw/sql-quota-existing.json'
+
+2026-11-03 23:30:17.009 CET [53065] LOG:  statement: select count(*) from statarena.objects
+
+2026-11-03 23:30:17.009 CET [53066] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:17.010 CET [53065] LOG:  statement: select pg_catalog.pg_database_size(current_database())
+
+2026-11-03 23:30:17.011 CET [53065] LOG:  statement: create function public.pg_database_size(name) returns bigint language sql as 'select 900000001::bigint'
+
+2026-11-03 23:30:17.011 CET [53067] LOG:  statement: set search_path=public,pg_catalog
+
+2026-11-03 23:30:17.012 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:17.012 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:17.012 CET [53066] DETAIL:  Parameters: $1 = 'raw/sql-quota-existing.json'
+
+2026-11-03 23:30:17.012 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:17.012 CET [53066] DETAIL:  Parameters: $1 = 'raw/sql-quota-new-alias.json'
+
+2026-11-03 23:30:17.012 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:17.012 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:17.012 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:17.013 CET [53067] LOG:  statement: ROLLBACK
+
+2026-11-03 23:30:17.013 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:17.013 CET [53066] DETAIL:  Parameters: $1 = 'raw/sql-quota-existing.json'
+
+2026-11-03 23:30:17.013 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:17.013 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:17.013 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:17.013 CET [53067] LOG:  statement: ROLLBACK
+
+2026-11-03 23:30:17.014 CET [53066] LOG:  execute _pg3_1: select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=$1
+2026-11-03 23:30:17.014 CET [53066] DETAIL:  Parameters: $1 = 'raw/sql-quota-unique.json'
+
+2026-11-03 23:30:17.014 CET [53067] LOG:  statement: BEGIN
+
+2026-11-03 23:30:17.014 CET [53067] LOG:  statement: select pg_advisory_xact_lock(97813004)
+
+2026-11-03 23:30:17.014 CET [53067] LOG:  statement: select pg_database_size(current_database())
+
+2026-11-03 23:30:17.014 CET [53067] LOG:  statement: ROLLBACK
+
+2026-11-03 23:30:17.014 CET [53065] LOG:  statement: select count(*) from statarena.objects
+
+2026-11-03 23:30:17.014 CET [53065] LOG:  execute _pg3_0: select encode(sha256,'hex'),size,storage_key from statarena.objects where path=$1
+2026-11-03 23:30:17.014 CET [53065] DETAIL:  Parameters: $1 = 'raw/sql-quota-existing.json'
+
+2026-11-03 23:30:17.015 CET [53066] LOG:  execute _pg3_3: select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)
+
+2026-11-03 23:30:17.015 CET [53067] LOG:  statement: reset search_path
+
+2026-11-03 23:30:17.015 CET [53065] LOG:  statement: drop function public.pg_database_size(name)
+
+2026-11-03 23:30:17.015 CET [53065] LOG:  statement: DEALLOCATE ALL
+
+2026-11-03 23:30:17.015 CET [53065] LOG:  statement: drop table if exists statarena.object_storage
+
+2026-11-03 23:30:17.040 CET [53222] LOG:  statement: select storage_key from statarena.objects limit 0
+
+2026-11-03 23:30:17.040 CET [53222] LOG:  statement: select storage_key from statarena.object_storage limit 0
+
+2026-11-03 23:30:17.041 CET [53222] ERROR:  relation "statarena.object_storage" does not exist at character 25
+2026-11-03 23:30:17.041 CET [53222] STATEMENT:  select storage_key from statarena.object_storage limit 0
+
+2026-11-03 23:30:17.041 CET [53065] LOG:  statement: -- Reader-first migration. NULL retains the legacy data/<path> lookup.
+	ALTER TABLE statarena.objects ADD COLUMN IF NOT EXISTS storage_key text;
+	
+	-- Physical uploads are reserved/accounted independently of publication commits.
+	-- A reserved entry may overcount a failed upload until a verified inventory reconciles it.
+	CREATE TABLE IF NOT EXISTS statarena.object_storage (
+	 storage_key text PRIMARY KEY,
+	 sha256 bytea NOT NULL CHECK(octet_length(sha256)=32),
+	 size bigint NOT NULL CHECK(size>=0),
+	 etag text NOT NULL,
+	 state text NOT NULL CHECK(state IN ('reserved','verified')),
+	 created_at timestamptz NOT NULL DEFAULT now(),
+	 updated_at timestamptz NOT NULL DEFAULT now()
+	);
+	
+	-- Preserve explicit catalog-role capabilities without exposing the ledger to PUBLIC.
+	DO $$
+	DECLARE permission record;
+	BEGIN
+	 FOR permission IN
+	  SELECT r.rolname, a.privilege_type
+	  FROM pg_class c
+	  CROSS JOIN LATERAL aclexplode(coalesce(c.relacl,acldefault('r',c.relowner))) a
+	  JOIN pg_roles r ON r.oid=a.grantee
+	  WHERE c.oid='statarena.objects'::regclass AND a.grantee<>0
+	    AND a.privilege_type IN ('SELECT','INSERT','UPDATE')
+	 LOOP
+	  EXECUTE format('GRANT %s ON TABLE statarena.object_storage TO %I', permission.privilege_type, permission.rolname);
+	 END LOOP;
+	END;
+	$$;
+	
+	CREATE OR REPLACE FUNCTION statarena.reset_legacy_storage_key()
+	RETURNS trigger LANGUAGE plpgsql AS $$
+	BEGIN
+	 IF NEW.sha256 IS DISTINCT FROM OLD.sha256
+	    AND NEW.storage_key IS NOT DISTINCT FROM OLD.storage_key THEN
+	  NEW.storage_key := NULL;
+	 END IF;
+	 RETURN NEW;
+	END;
+	$$;
+	CREATE OR REPLACE TRIGGER objects_legacy_storage_key
+	BEFORE UPDATE ON statarena.objects
+	FOR EACH ROW EXECUTE FUNCTION statarena.reset_legacy_storage_key();
+	
+
+2026-11-03 23:30:17.574 CET [53053] LOG:  received fast shutdown request
+
+2026-11-03 23:30:17.574 CET [53053] LOG:  aborting any active transactions
+
+2026-11-03 23:30:17.575 CET [53053] LOG:  background worker "logical replication launcher" (PID 53062) exited with exit code 1
+
+2026-11-03 23:30:17.575 CET [53057] LOG:  shutting down
+
+2026-11-03 23:30:17.576 CET [53057] LOG:  checkpoint starting: shutdown immediate
+
+2026-11-03 23:30:17.633 CET [53057] LOG:  checkpoint complete: wrote 993 buffers (6.1%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.045 s, sync=0.012 s, total=0.058 s; sync files=370, longest=0.001 s, average=0.001 s; distance=4806 kB, estimate=4806 kB; lsn=0/1C3AA58, redo lsn=0/1C3AA58
+
+2026-11-03 23:30:17.638 CET [53053] LOG:  database system is shut down

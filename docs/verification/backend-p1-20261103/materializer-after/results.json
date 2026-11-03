@@ -1,0 +1,38 @@
+{
+  "setup": "Isolated temporary PostgreSQL 18, actual schema/materializer/normalizer/packing; stored object fixtures implement the same JSON/SQL publication contract. No provider or production writes.",
+  "command": "node output/playwright/rematerialization-completion-20261103/run_archive_postgres.mjs <before|after>",
+  "expected": "Archived-only and recent responses rebuild enrichment with correct precedence; partial families preserve old data and references.",
+  "cases": [
+    {
+      "name": "archive-only",
+      "checks": [],
+      "status": "failed",
+      "error": "duplicate key value violates unique constraint \"dirty_partitions_pkey\"\nDETAIL:  Key (season, league_id)=(2021/2022, l_000001) already exists."
+    },
+    {
+      "name": "fixture-without-summary",
+      "checks": [],
+      "status": "failed",
+      "error": "duplicate key value violates unique constraint \"dirty_partitions_pkey\"\nDETAIL:  Key (season, league_id)=(2021/2022, l_000001) already exists."
+    },
+    {
+      "name": "recent-precedence",
+      "checks": [],
+      "status": "failed",
+      "error": "duplicate key value violates unique constraint \"dirty_partitions_pkey\"\nDETAIL:  Key (season, league_id)=(2021/2022, l_000001) already exists."
+    },
+    {
+      "name": "partial-families",
+      "checks": [],
+      "status": "failed",
+      "error": "duplicate key value violates unique constraint \"dirty_partitions_pkey\"\nDETAIL:  Key (season, league_id)=(2021/2022, l_000001) already exists."
+    },
+    {
+      "name": "archive-shard-reuse",
+      "checks": [],
+      "status": "failed",
+      "error": "duplicate key value violates unique constraint \"dirty_partitions_pkey\"\nDETAIL:  Key (season, league_id)=(2021/2022, l_000001) already exists."
+    }
+  ],
+  "status": "failed"
+}

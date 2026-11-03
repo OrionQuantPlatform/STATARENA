@@ -1,0 +1,6 @@
+{
+  "command": "STATARENA_TEST_TOOLS=/tmp/statarena-cache-test-tools STATARENA_SUMMARY_EVIDENCE=docs/verification/backend-p1-20261103/materializer-before bun dashboard/scripts/verify_match_summary_materializer.mjs",
+  "setup": "Temporary PostgreSQL18, real Python normalizer/materializer, stored-archive fixtures. No production/provider requests.",
+  "expected": "All archive scenarios also publish exact bounded summaries and acknowledge their dirty queue atomically.",
+  "exitCode": 1
+}

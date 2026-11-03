@@ -1,0 +1,6 @@
+{
+  "command": "STATARENA_TEST_TOOLS=/tmp/statarena-cache-test-tools STATARENA_SUMMARY_EVIDENCE=docs/verification/backend-p1-20261103/daily-final bun dashboard/scripts/verify_match_summary_materializer.mjs --daily",
+  "setup": "Temporary PostgreSQL18, real Python normalizer/materializer, stored-archive fixtures. No production/provider requests.",
+  "expected": "Daily and pulse publication preserve civil/split-year seasons and publish changed saved match data.",
+  "exitCode": 0
+}

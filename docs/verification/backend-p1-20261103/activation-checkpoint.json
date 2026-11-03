@@ -1,0 +1,25 @@
+{
+  "observedAtUTC": "2026-11-03T22:40:45.109847+00:00",
+  "activeOldWriter": {
+    "conclusion": "",
+    "databaseId": 41723613754,
+    "headSha": "58acaf14288a939ee0d3843316f54be877fab74a",
+    "status": "in_progress"
+  },
+  "p1MigrationApplied": false,
+  "p1ProductionActivated": false,
+  "runtimePermissions": {
+    "setup": "Existing Neon runtime role, read-only permission diagnostic; no credentials or role identity printed.",
+    "expected": {
+      "object_read": true,
+      "fixture_read": true,
+      "object_write": false
+    },
+    "actual": {
+      "object_read": true,
+      "fixture_read": true,
+      "object_write": false
+    }
+  },
+  "note": "Read-only inspection only. No workflow cancellation, production migration, provider collection or production upload by P1."
+}

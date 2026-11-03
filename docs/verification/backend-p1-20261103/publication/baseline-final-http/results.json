@@ -1,0 +1,433 @@
+{
+  "setup": "Real PostgreSQL 18 + real psycopg and boto3 using local HTTP S3; fixed UTF-8 JSON bytes; no credentials inherited",
+  "command": "node docs/verification/backend-p1-20261103/publication/run.mjs baseline-final-http",
+  "expected": "PROTOCOL.md",
+  "phase": "baseline-final-http",
+  "cases": [
+    {
+      "name": "idempotent migration",
+      "expected": "002 applies twice and exposes storage_key/ledger",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 73, in migrate\n    assert migration.exists(), \"additive migration 002 required\"\n           ~~~~~~~~~~~~~~~~^^\nAssertionError: additive migration 002 required\n",
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "legacy reads",
+      "expected": "unchanged cold/inline legacy bytes",
+      "status": "passed",
+      "actual": {
+        "cold_and_inline": "exact bytes"
+      },
+      "operations": [
+        {
+          "method": "GET",
+          "key": "data/raw/legacy-read-False.json",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 0,
+        "GET": 1,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "publication visibility",
+      "expected": "old SQL/bytes during transaction; new pointer after commit",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 113, in visibility\n    assert old_readable, \"old physical bytes overwritten before commit\"\n           ^^^^^^^^^^^^\nAssertionError: old physical bytes overwritten before commit\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/publication-visible.json",
+          "bytes": 13,
+          "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/raw/publication-visible.json",
+          "bytes": 13,
+          "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "different_byte_overwrite": true,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/raw/publication-visible.json",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 1,
+        "different_byte_overwrites": 1
+      }
+    },
+    {
+      "name": "callback rollback",
+      "expected": "old version remains readable; uploaded orphan still accounted",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 131, in rollback\n    assert unchanged and readable, \"rollback left committed alias pointing at replaced bytes\"\n           ^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: rollback left committed alias pointing at replaced bytes\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/publication-rollback.json",
+          "bytes": 13,
+          "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/raw/publication-rollback.json",
+          "bytes": 17,
+          "sha256": "4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+          "different_byte_overwrite": true,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/raw/publication-rollback.json",
+          "bytes": 17
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 1,
+        "different_byte_overwrites": 1
+      }
+    },
+    {
+      "name": "first legacy conversion",
+      "expected": "legacy bytes preserved, old SHA recovery catalogued, replacement readable",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 142, in first_conversion\n    assert objects[\"data/\" + path] == v1, \"legacy object overwritten\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: legacy object overwritten\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/legacy-conversion.json",
+          "bytes": 13,
+          "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "different_byte_overwrite": true,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 1
+      }
+    },
+    {
+      "name": "deny_put",
+      "expected": "failed/unverified upload never publishes alias",
+      "status": "passed",
+      "actual": {
+        "publication_rejected": true,
+        "old_version_readable": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/upload-deny_put.json",
+          "bytes": 22,
+          "sha256": "99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+          "different_byte_overwrite": true,
+          "denied": true
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 1
+      }
+    },
+    {
+      "name": "bad_etag",
+      "expected": "failed/unverified upload never publishes alias",
+      "status": "passed",
+      "actual": {
+        "publication_rejected": true,
+        "old_version_readable": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/upload-bad_etag.json",
+          "bytes": 22,
+          "sha256": "a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+          "different_byte_overwrite": true,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 1
+      }
+    },
+    {
+      "name": "immutable public URL",
+      "expected": "different bytes rejected before PUT",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 173, in immutable_collision\n    assert rejected, \"content-versioned public URL was overwritten\"\n           ^^^^^^^^\nAssertionError: content-versioned public URL was overwritten\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json",
+          "bytes": 13,
+          "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json",
+          "bytes": 13,
+          "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "different_byte_overwrite": true,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 0,
+        "different_byte_overwrites": 1
+      }
+    },
+    {
+      "name": "idempotence and deduplication",
+      "expected": "zero repeat PUTs including shared-byte alias",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 186, in idempotent\n    assert not any(r[\"method\"] == \"PUT\" for r in requests[start:]), \"same bytes uploaded for a second alias\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: same bytes uploaded for a second alias\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/idempotent.json",
+          "bytes": 14,
+          "sha256": "07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/raw/shared-bytes.json",
+          "bytes": 14,
+          "sha256": "07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+          "different_byte_overwrite": false,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "legacy writer compatibility",
+      "expected": "old-style SHA update clears stale pointer",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 191, in old_writer\n    assert has_key\n           ^^^^^^^\nAssertionError\n",
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "read integrity",
+      "expected": "size/hash verification retained",
+      "status": "passed",
+      "actual": {
+        "corrupt_bytes_rejected": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/raw/read-integrity.json",
+          "bytes": 18,
+          "sha256": "a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/raw/read-integrity.json",
+          "bytes": 7
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 1,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "retained version capacity",
+      "expected": "ledger includes retained versions, rollback uploads and failed reservations",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 226, in capacity\n    counted = store.storage_bytes()\n              ^^^^^^^^^^^^^^^^^^^\nAttributeError: 'Store' object has no attribute 'storage_bytes'\n",
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "required migration guard",
+      "expected": "new writer refuses unmigrated storage schema before any S3 request",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 62, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 246, in migration_required\n    assert rejected, \"writer accepted missing required storage migration\"\n           ^^^^^^^^\nAssertionError: writer accepted missing required storage migration\n",
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    }
+  ],
+  "inputs": {
+    "v1": "{\"version\":1}",
+    "v2": "{\"version\":2}"
+  },
+  "status": "failed",
+  "versions": {
+    "python": "3.14.6",
+    "boto3": "1.43.123",
+    "psycopg": "3.3.7",
+    "postgres": "PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit"
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "key": "data/raw/legacy-read-False.json",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/publication-visible.json",
+      "bytes": 13,
+      "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/publication-visible.json",
+      "bytes": 13,
+      "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "different_byte_overwrite": true,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/publication-visible.json",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/publication-rollback.json",
+      "bytes": 13,
+      "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/publication-rollback.json",
+      "bytes": 17,
+      "sha256": "4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+      "different_byte_overwrite": true,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/publication-rollback.json",
+      "bytes": 17
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/legacy-conversion.json",
+      "bytes": 13,
+      "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "different_byte_overwrite": true,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/upload-deny_put.json",
+      "bytes": 22,
+      "sha256": "99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+      "different_byte_overwrite": true,
+      "denied": true
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/upload-bad_etag.json",
+      "bytes": 22,
+      "sha256": "a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+      "different_byte_overwrite": true,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json",
+      "bytes": 13,
+      "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/blob-2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json",
+      "bytes": 13,
+      "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "different_byte_overwrite": true,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/idempotent.json",
+      "bytes": 14,
+      "sha256": "07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/shared-bytes.json",
+      "bytes": 14,
+      "sha256": "07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/raw/read-integrity.json",
+      "bytes": 18,
+      "sha256": "a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/read-integrity.json",
+      "bytes": 7
+    }
+  ],
+  "totals": {
+    "PUT": 12,
+    "GET": 4,
+    "different_byte_overwrites": 6
+  }
+}

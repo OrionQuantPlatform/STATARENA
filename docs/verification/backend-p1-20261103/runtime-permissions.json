@@ -1,0 +1,13 @@
+{
+  "setup": "Existing Neon runtime role, read-only permission diagnostic; no credentials or role identity printed.",
+  "expected": {
+    "object_read": true,
+    "fixture_read": true,
+    "object_write": false
+  },
+  "actual": {
+    "object_read": true,
+    "fixture_read": true,
+    "object_write": false
+  }
+}

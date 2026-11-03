@@ -14,15 +14,20 @@ from test_dashboard_data import synthetic,metric
 from build_dashboard_data import build_snapshot,EXTRA_PLAYER_METRICS,ATTEMPTED_METRICS
 from build_dashboard_views import pack_table
 from bootstrap_neon import unpack
+if os.environ.get('STATARENA_MATERIALIZER_MODULE'):
+ import importlib.util
+ spec=importlib.util.spec_from_file_location('neon_materialize',os.environ['STATARENA_MATERIALIZER_MODULE']);module=importlib.util.module_from_spec(spec);sys.modules['neon_materialize']=module;spec.loader.exec_module(module)
 from neon_materialize import materialize
 
 p=argparse.ArgumentParser();p.add_argument('--report',required=True);a=p.parse_args()
 url=os.environ['TEST_DATABASE_URL'];target=urlparse(url)
 assert target.hostname=='127.0.0.1' and target.path=='/archive_materialization_e2e', 'Temporary local database required'
-report={'setup':'Isolated temporary PostgreSQL 18, actual schema/materializer/normalizer/packing; stored object fixtures implement the same JSON/SQL publication contract. No provider or production writes.','command':'node output/playwright/rematerialization-completion-20261103/run_archive_postgres.mjs <before|after>','expected':'Archived-only and recent responses rebuild enrichment with correct precedence; partial families preserve old data and references.','cases':[],'status':'failed'}
+report={'setup':'Isolated temporary PostgreSQL 18, actual schema/materializer/normalizer/packing; stored object fixtures implement the same JSON/SQL publication contract. No provider or production writes.','command':os.environ.get('STATARENA_E2E_COMMAND','node output/playwright/rematerialization-completion-20261103/run_archive_postgres.mjs <before|after>'),'expected':'Archived-only and recent responses rebuild enrichment with correct precedence; partial families preserve old data and references.','cases':[],'status':'failed'}
 with psycopg.connect(url,autocommit=True) as db:
  db.execute((ROOT/'dashboard/backend/migrations/001_neon.sql').read_text())
- for kind in ['archive-only','fixture-without-summary','recent-precedence','partial-families','archive-shard-reuse']:
+ if os.environ.get('STATARENA_SUMMARY_CHECKS')=='1':
+  db.execute((ROOT/'dashboard/backend/migrations/003_match_reads.sql').read_text())
+ for kind in ['archive-only','fixture-without-summary','recent-precedence','partial-families','archive-shard-reuse']+(['summary-rollback','summary-concurrent-source','summary-capacity'] if os.environ.get('STATARENA_SUMMARY_CHECKS')=='1' else []):
   case={'name':kind,'checks':[],'status':'failed'};report['cases'].append(case)
   def check(name,passed,actual):
    case['checks'].append({'name':name,'passed':passed,'actual':actual})
@@ -86,8 +91,45 @@ with psycopg.connect(url,autocommit=True) as db:
      if path.startswith('reused-'):reads[path]=reads.get(path,0)+1
      return read(path)
     store.json=counted
-   db.execute('INSERT INTO statarena.dirty_partitions(season,league_id) VALUES(%s,%s)',(sid,league))
+   db.execute('INSERT INTO statarena.dirty_partitions(season,league_id) VALUES(%s,%s) ON CONFLICT(season,league_id) DO UPDATE SET changed_at=now()',(sid,league))
+   if kind=='summary-rollback':
+    store.put_json('computed/dashboard/index.json',objects['computed/dashboard/index.json'])
+    old_alias=db.execute("SELECT sha256 FROM statarena.objects WHERE path='computed/dashboard/index.json'").fetchone()[0]
+    original_objects=copy.deepcopy(store.objects)
+    db.execute("CREATE FUNCTION statarena.fail_summary_publication() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'fixture publication failure'; END $$")
+    db.execute("CREATE TRIGGER fail_summary_publication BEFORE DELETE ON statarena.dirty_partitions FOR EACH ROW EXECUTE FUNCTION statarena.fail_summary_publication()")
+    try:
+     try:materialize(store,max_partitions=1)
+     except psycopg.errors.RaiseException:pass
+     else:raise AssertionError('Expected publication failure')
+    finally:db.execute('DROP TRIGGER fail_summary_publication ON statarena.dirty_partitions');db.execute('DROP FUNCTION statarena.fail_summary_publication()')
+    check('failed publication leaves summary absent',db.execute('SELECT count(*) FROM statarena.match_summaries').fetchone()[0]==0,db.execute('SELECT count(*) FROM statarena.match_summaries').fetchone()[0])
+    check('failed publication retains dirty work',db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0]>0,db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0])
+    check('failed publication preserves committed manifest',bytes(db.execute("SELECT sha256 FROM statarena.objects WHERE path='computed/dashboard/index.json'").fetchone()[0])==bytes(old_alias),'same committed SHA')
+    store.objects=original_objects
+   if kind=='summary-concurrent-source':
+    read=store.json;touched=[False]
+    def concurrent_source(path):
+     if path=='old-packed' and not touched[0]:
+      touched[0]=True
+      with psycopg.connect(url,autocommit=True) as other:other.execute("UPDATE statarena.shards SET ref=ref||'{\"generation\":2}'::jsonb WHERE id='archive-shard'")
+     return read(path)
+    store.json=concurrent_source
+   if kind=='summary-capacity':
+    import match_summaries
+    original_limit=getattr(match_summaries,'SQL_BUDGET_BYTES',900_000_000);match_summaries.SQL_BUDGET_BYTES=0
+    try:
+     try:materialize(store,max_partitions=1)
+     except RuntimeError as error:
+      if 'capacity' not in str(error).lower():raise
+     else:raise AssertionError('Summary SQL capacity must refuse publication')
+    finally:match_summaries.SQL_BUDGET_BYTES=original_limit
+    check('capacity refusal leaves summary absent',db.execute('SELECT count(*) FROM statarena.match_summaries').fetchone()[0]==0,db.execute('SELECT count(*) FROM statarena.match_summaries').fetchone()[0])
+    check('capacity refusal retains pending work',db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0]>0,db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0])
    materialize(store,max_partitions=1)
+   if kind=='summary-concurrent-source':
+    check('concurrent source dirty marker is not lost',db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0]>0,db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0])
+    materialize(store,max_partitions=1)
    manifest=store.objects['computed/dashboard/index.json'];chunk=manifest['seasons'][0]['chunks'][0];published=store.objects[chunk['path']];rows={k:unpack(t) for k,t in published['tables'].items()}
    p_row=rows['performances'][0];s_row=rows['shots'][0];m_row=rows['matches'][0]
    check('published shot endpoint and height',s_row.get('goalCrossedY')==32.2 and s_row.get('goalCrossedZ')==1.4,{k:s_row.get(k) for k in ['goalCrossedY','goalCrossedZ']})
@@ -104,6 +146,14 @@ with psycopg.connect(url,autocommit=True) as db:
     check('each source archive file read once',len(reads)==96 and max(reads.values())==1,{'files':len(reads),'reads':sum(reads.values()),'maxReadsPerFile':max(reads.values())})
     check('all interleaved matches normalized',len(rows['matches'])==32,len(rows['matches']))
    check('no provider jobs created',db.execute('SELECT count(*) FROM statarena.jobs').fetchone()[0]==0,db.execute('SELECT count(*) FROM statarena.jobs').fetchone()[0]);case['status']='passed'
-  except Exception as error:case['error']=str(error)
+   if os.environ.get('STATARENA_SUMMARY_CHECKS')=='1':
+    summaries=db.execute('SELECT match_id,body,size,sha256 FROM statarena.match_summaries ORDER BY match_id').fetchall()
+    check('one committed summary per fixture',len(summaries)==len(rows['fixtures']),{'summaries':len(summaries),'fixtures':len(rows['fixtures'])})
+    check('summary size and exact hash',all(len(bytes(body))==size and __import__('hashlib').sha256(bytes(body)).digest()==bytes(sha) and size<=262144 for _,body,size,sha in summaries),[r[2] for r in summaries])
+    objects_hashed=db.execute("SELECT path,sha256 FROM statarena.objects WHERE path ~ '-[a-f0-9]{64}\\.json\\.gz$'").fetchall()
+    check('new public paths hash final encoded bytes',bool(objects_hashed) and all(path.rsplit('-',1)[-1].split('.')[0]==bytes(sha).hex() for path,sha in objects_hashed),len(objects_hashed))
+    summary=json.loads(bytes(summaries[0][1]));check('summary preserves identity and zero/null',summary['data']['match']['id']==mid and summary['data']['match']['home']['score']==m_row['home']['score'],summary['data']['match']['home'])
+    check('summary queue acknowledged after publication',db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0]==0,db.execute('SELECT count(*) FROM statarena.dirty_match_summaries').fetchone()[0])
+  except Exception as error:case['status']='failed';case['error']=str(error)
 report['status']='passed' if all(c['status']=='passed' for c in report['cases']) else 'failed'
 Path(a.report).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'status':report['status'],'cases':[{k:c.get(k) for k in ['name','status','error']} for c in report['cases']]}));raise SystemExit(report['status']!='passed')

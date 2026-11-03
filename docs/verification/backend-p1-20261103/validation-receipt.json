@@ -1,0 +1,73 @@
+{
+  "checkedAtUTC": "2026-11-03T22:42:01.028355+00:00",
+  "productionBuild": {
+    "exitCode": 0,
+    "log": "build/final-build.log"
+  },
+  "javascriptFormatting": {
+    "exitCode": 0,
+    "tool": "dashboard bunx prettier --check",
+    "files": [
+      "dashboard/backend/app.js",
+      "dashboard/backend/services/match-reads.js",
+      "dashboard/backend/services/metrics.js",
+      "dashboard/backend/services/neon.js",
+      "dashboard/frontend/src/components/MatchDetail.jsx",
+      "dashboard/frontend/src/components/MatchSections.jsx",
+      "dashboard/frontend/src/components/PlayerData.jsx",
+      "dashboard/frontend/src/services/cup-worker-client.js",
+      "dashboard/frontend/src/services/fixture-pages.js",
+      "dashboard/frontend/src/services/football-client.js",
+      "dashboard/frontend/src/services/remote-match.js",
+      "dashboard/scripts/verify_backend_cache.mjs",
+      "dashboard/scripts/verify_backend_p1.mjs",
+      "dashboard/scripts/verify_backend_p1_cases.mjs",
+      "dashboard/scripts/verify_match_summary_materializer.mjs"
+    ]
+  },
+  "pythonCompilation": {
+    "exitCode": 0,
+    "files": [
+      "dashboard/scripts/match_summaries.py",
+      "dashboard/scripts/neon_ingest.py",
+      "dashboard/scripts/neon_materialize.py",
+      "dashboard/scripts/neon_store.py",
+      "tests/daily_refresh_postgres.py",
+      "tests/rematerialize_archive_postgres.py"
+    ]
+  },
+  "gitDiffCheck": {
+    "exitCode": 0
+  },
+  "sourceManifest": "source-manifest.json",
+  "httpWorkflow": {
+    "status": "passed",
+    "checks": 34,
+    "evidence": "final-all/"
+  },
+  "materializer": {
+    "status": "passed",
+    "cases": 8,
+    "assertions": 103,
+    "evidence": "materializer-final/"
+  },
+  "dailyPulse": {
+    "exitCode": 0,
+    "evidence": "daily-final/"
+  },
+  "immutablePublication": {
+    "status": "passed",
+    "cases": 18,
+    "evidence": "publication/final-sql-admission/"
+  },
+  "browser": {
+    "status": "passed",
+    "assertions": 11,
+    "evidence": "browser/"
+  },
+  "existingCiTests": {
+    "command": "PYTHONPATH=/tmp/statarena-archive-remat-pg/python python3 -m unittest discover -s tests -p test_daily_refresh.py -v",
+    "exitCode": 0,
+    "log": "existing-ci-tests.log"
+  }
+}

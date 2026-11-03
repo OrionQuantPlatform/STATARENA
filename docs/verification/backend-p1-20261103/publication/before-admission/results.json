@@ -1,0 +1,751 @@
+{
+  "setup": "Real PostgreSQL 18 + real psycopg and boto3 using local HTTP S3; fixed UTF-8 JSON bytes; no credentials inherited",
+  "command": "node docs/verification/backend-p1-20261103/publication/run.mjs before-admission",
+  "expected": "PROTOCOL.md",
+  "phase": "before-admission",
+  "cases": [
+    {
+      "name": "idempotent migration",
+      "expected": "002 applies twice and exposes storage_key/ledger",
+      "status": "passed",
+      "actual": {
+        "applied_twice": true,
+        "legacy_inline_bytes_preserved": true
+      },
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "legacy reads",
+      "expected": "unchanged cold/inline legacy bytes",
+      "status": "passed",
+      "actual": {
+        "cold_and_inline": "exact bytes"
+      },
+      "operations": [
+        {
+          "method": "GET",
+          "key": "data/raw/legacy-read-False.json",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 0,
+        "GET": 1,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "publication visibility",
+      "expected": "old SQL/bytes during transaction; new pointer after commit",
+      "status": "passed",
+      "actual": {
+        "old": {
+          "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "size": 13,
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8"
+        },
+        "new": {
+          "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "size": 13,
+          "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d"
+        },
+        "old_version_readable": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "bytes": 13,
+          "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "bytes": 13,
+          "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 2,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "callback rollback",
+      "expected": "old version remains readable; uploaded orphan still accounted",
+      "status": "passed",
+      "actual": {
+        "sql_unchanged": true,
+        "old_version_readable": true,
+        "uploaded_version_still_accounted": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+          "bytes": 17,
+          "sha256": "4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 2,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "first legacy conversion",
+      "expected": "legacy bytes preserved, old SHA recovery catalogued, replacement readable",
+      "status": "passed",
+      "actual": {
+        "recovery_path": "raw/neon/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8.json",
+        "legacy_and_immutable_old_versions_readable": true
+      },
+      "operations": [
+        {
+          "method": "GET",
+          "key": "data/raw/legacy-conversion.json",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 0,
+        "GET": 3,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "deny_put",
+      "expected": "failed/unverified upload never publishes alias",
+      "status": "passed",
+      "actual": {
+        "publication_rejected": true,
+        "old_version_readable": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+          "bytes": 22,
+          "sha256": "99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+          "different_byte_overwrite": false,
+          "denied": true
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "bad_etag",
+      "expected": "failed/unverified upload never publishes alias",
+      "status": "passed",
+      "actual": {
+        "publication_rejected": true,
+        "old_version_readable": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+          "bytes": 22,
+          "sha256": "a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+          "different_byte_overwrite": false,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "immutable public URL",
+      "expected": "different bytes rejected before PUT",
+      "status": "passed",
+      "actual": {
+        "replacement_rejected_before_upload": true
+      },
+      "operations": [
+        {
+          "method": "GET",
+          "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 0,
+        "GET": 1,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "idempotence and deduplication",
+      "expected": "zero repeat PUTs including shared-byte alias",
+      "status": "passed",
+      "actual": {
+        "repeat_and_second_alias_PUTs": 0
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+          "bytes": 14,
+          "sha256": "07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+          "different_byte_overwrite": false,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "legacy writer compatibility",
+      "expected": "old-style SHA update clears stale pointer",
+      "status": "passed",
+      "actual": {
+        "legacy_update_cleared_pointer": true,
+        "subsequent_publication_preserved_legacy_bytes": true
+      },
+      "operations": [
+        {
+          "method": "GET",
+          "key": "data/raw/old-writer.json",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/raw/old-writer-repaired.json",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/raw/old-writer-repaired.json",
+          "bytes": 13
+        },
+        {
+          "method": "PUT",
+          "key": "data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b",
+          "bytes": 13,
+          "sha256": "9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+          "bytes": 13,
+          "sha256": "99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+          "bytes": 13
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 4,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "read integrity",
+      "expected": "size/hash verification retained",
+      "status": "passed",
+      "actual": {
+        "corrupt_bytes_rejected": true
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+          "bytes": 18,
+          "sha256": "a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+          "bytes": 7
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 1,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "ingestion role ACL",
+      "expected": "existing restricted ingestion permissions work without PUBLIC grants",
+      "status": "passed",
+      "actual": {
+        "restricted_ingestion_role_published": true,
+        "PUBLIC_privileges": false
+      },
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+          "bytes": 19,
+          "sha256": "515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "GET",
+          "key": "data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+          "bytes": 19
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 1,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "legacy writer size growth",
+      "expected": "overlapping ledger record cannot hide a larger current legacy object",
+      "status": "passed",
+      "actual": {
+        "legacy_growth_bytes": 999,
+        "physical_fixture_bytes": 1245,
+        "conservative_capacity_bytes": 1292
+      },
+      "operations": [
+        {
+          "method": "GET",
+          "key": "data/raw/ledger-legacy-growth.json",
+          "bytes": 13
+        },
+        {
+          "method": "GET",
+          "key": "data/raw/ledger-legacy-growth.json",
+          "bytes": 1012
+        }
+      ],
+      "counts": {
+        "PUT": 0,
+        "GET": 2,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "retained version capacity",
+      "expected": "ledger includes retained versions, rollback uploads and failed reservations",
+      "status": "passed",
+      "actual": {
+        "physical_fixture_bytes": 1245,
+        "conservative_capacity_bytes": 1292,
+        "overcount_bytes": 47
+      },
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "quota admission before upload",
+      "expected": "full known ledger refuses unique bytes before PUT; aliases/dedup/retry remain safe",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 63, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 300, in quota_admission\n    assert rejected and puts == 0, f\"full ledger accepted new upload: rejected={rejected}, PUTs={puts}\"\n           ^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: full ledger accepted new upload: rejected=False, PUTs=1\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6",
+          "bytes": 32,
+          "sha256": "a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6",
+          "different_byte_overwrite": false,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 1,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "concurrent reservation admission",
+      "expected": "space for one unique object admits one of two simultaneous writers",
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 63, in check\n    case[\"actual\"] = fn()\n                     ~~^^\n  File \"/private/tmp/statarena-backend-p1-20261103/docs/verification/backend-p1-20261103/publication/scenario.py\", line 340, in concurrent_admission\n    assert sorted(results) == [\"capacity_refused\",\"published\"], results\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ['published', 'published']\n",
+      "operations": [
+        {
+          "method": "PUT",
+          "key": "data/versions/b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2",
+          "bytes": 19,
+          "sha256": "b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2",
+          "different_byte_overwrite": false,
+          "denied": false
+        },
+        {
+          "method": "PUT",
+          "key": "data/versions/e089f22013f3c46c983392d58b81d81eaee1df4929ac94e78269f7ab5e32f214",
+          "bytes": 19,
+          "sha256": "e089f22013f3c46c983392d58b81d81eaee1df4929ac94e78269f7ab5e32f214",
+          "different_byte_overwrite": false,
+          "denied": false
+        }
+      ],
+      "counts": {
+        "PUT": 2,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    },
+    {
+      "name": "required migration guard",
+      "expected": "new writer refuses unmigrated storage schema before any S3 request",
+      "status": "passed",
+      "actual": {
+        "writer_rejected_before_network": true
+      },
+      "operations": [],
+      "counts": {
+        "PUT": 0,
+        "GET": 0,
+        "different_byte_overwrites": 0
+      }
+    }
+  ],
+  "inputs": {
+    "v1": "{\"version\":1}",
+    "v2": "{\"version\":2}"
+  },
+  "status": "failed",
+  "versions": {
+    "python": "3.14.6",
+    "boto3": "1.43.123",
+    "psycopg": "3.3.7",
+    "postgres": "PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit"
+  },
+  "ledger": [
+    {
+      "key": "data/raw/ledger-legacy-growth.json",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/raw/legacy-conversion.json",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/raw/old-writer-repaired.json",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/raw/upload-bad_etag.json",
+      "bytes": 13,
+      "state": "reserved"
+    },
+    {
+      "key": "data/raw/upload-deny_put.json",
+      "bytes": 13,
+      "state": "reserved"
+    },
+    {
+      "key": "data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+      "bytes": 14,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+      "bytes": 17,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+      "bytes": 19,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+      "bytes": 22,
+      "state": "reserved"
+    },
+    {
+      "key": "data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b",
+      "bytes": 13,
+      "state": "verified"
+    },
+    {
+      "key": "data/versions/a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+      "bytes": 22,
+      "state": "reserved"
+    },
+    {
+      "key": "data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+      "bytes": 18,
+      "state": "verified"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "key": "data/raw/legacy-read-False.json",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13,
+      "sha256": "2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "bytes": 13,
+      "sha256": "732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+      "bytes": 17,
+      "sha256": "4e692fc6d64ddd4b22f28e85901e71d5ea26c0ebe8541c273c465be36b31f478",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/legacy-conversion.json",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+      "bytes": 22,
+      "sha256": "99130c40604c400eb50552ddbc63df9af5e7d0f6b72ffd1b8fb4dd159c32d646",
+      "different_byte_overwrite": false,
+      "denied": true
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+      "bytes": 22,
+      "sha256": "a5f873fe7f06232ecbec7b53823cd874cf5973c06e4d9362ad0ff59eb3226074",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+      "bytes": 14,
+      "sha256": "07e187c8a393235531f226cc3f2430e56ccccf4d0bb7078eed6fd47bce9c3ea7",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/old-writer.json",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/old-writer-repaired.json",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/old-writer-repaired.json",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b",
+      "bytes": 13,
+      "sha256": "9af23cea10a478f3bb916ff35c07a36debe444adf9b56814ab63861ec674ab8b",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+      "bytes": 13,
+      "sha256": "99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/99fd67c89da37e7ca5f6d62c8c814dbb3dae1ba7e760c3e8ff804a45590680b2",
+      "bytes": 13
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+      "bytes": 18,
+      "sha256": "a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/a9954471f7c7fae3c1f491ce16160b36a39d87fca41984e98ecc3be6d35a354e",
+      "bytes": 7
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+      "bytes": 19,
+      "sha256": "515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "GET",
+      "key": "data/versions/515801d63a008a1cbc2958a39c362578cd64c36b160b778d8c73ff5ff7f875ca",
+      "bytes": 19
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/ledger-legacy-growth.json",
+      "bytes": 13
+    },
+    {
+      "method": "GET",
+      "key": "data/raw/ledger-legacy-growth.json",
+      "bytes": 1012
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6",
+      "bytes": 32,
+      "sha256": "a8c6d8b396bfc9791c0825849b76bb8d3567be047465b63867f0f675c78b49f6",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2",
+      "bytes": 19,
+      "sha256": "b3c6eabba40e1dcd917469af9668fb5f2534a080f1d612430f77dbf4e5631cd2",
+      "different_byte_overwrite": false,
+      "denied": false
+    },
+    {
+      "method": "PUT",
+      "key": "data/versions/e089f22013f3c46c983392d58b81d81eaee1df4929ac94e78269f7ab5e32f214",
+      "bytes": 19,
+      "sha256": "e089f22013f3c46c983392d58b81d81eaee1df4929ac94e78269f7ab5e32f214",
+      "different_byte_overwrite": false,
+      "denied": false
+    }
+  ],
+  "totals": {
+    "PUT": 13,
+    "GET": 17,
+    "different_byte_overwrites": 0
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "sourceEvidence": {
+    "http": "final-all/",
+    "materializer": "materializer-final/",
+    "publication": "publication/final-sql-admission/",
+    "browser": "browser/"
+  },
+  "summary": {
+    "legacy": {
+      "status": 200,
+      "bytes": 108211,
+      "gzipBytes": 592,
+      "sql": 40,
+      "sourceBytes": 107696
+    },
+    "summary": {
+      "status": 200,
+      "bytes": 305,
+      "gzipBytes": 205,
+      "sql": 1,
+      "sourceBytes": 305
+    }
+  },
+  "pagination": {
+    "legacyStatus": 200,
+    "legacyBytes": 1048934,
+    "pageStatus": 200,
+    "pageBytes": 21468,
+    "legacyGzipBytes": 3345,
+    "pageGzipBytes": 817
+  },
+  "materializer": {
+    "status": "passed",
+    "cases": 8,
+    "assertions": 103,
+    "summaryBytes": {
+      "min": 1237,
+      "max": 1284
+    }
+  },
+  "browser": {
+    "setup": "Built Next production on3155; real read-only Neon bootstrap; synthetic QA match summary and targeted detail HTTP responses intercepted only for m_QA0001. No production writes.",
+    "command": "playwright-cli -s=statarena-p1 run-code --filename=workflow.js",
+    "expected": "Overview without full archive/heavy detail, selected-tab-only requests and cache reuse; desktop/mobile light/dark without overflow or app exceptions.",
+    "checks": [
+      {
+        "name": "summary consumed",
+        "passed": true,
+        "actual": [
+          "/api/matches/m_QA0001/summary"
+        ]
+      },
+      {
+        "name": "no full archive or heavy request on overview",
+        "passed": true,
+        "actual": [
+          "/api/matches/m_QA0001/summary"
+        ]
+      },
+      {
+        "name": "shots only when selected",
+        "passed": true,
+        "actual": [
+          "/api/matches/m_QA0001/summary",
+          "/api/pitchapi/matches/m_QA0001/shots"
+        ]
+      },
+      {
+        "name": "shots reused",
+        "passed": true,
+        "actual": [
+          "/api/matches/m_QA0001/summary",
+          "/api/pitchapi/matches/m_QA0001/shots"
+        ]
+      },
+      {
+        "name": "heatmap on demand, no unrelated network",
+        "passed": true,
+        "actual": [
+          "/api/matches/m_QA0001/summary",
+          "/api/pitchapi/matches/m_QA0001/shots",
+          "/api/pitchapi/matches/m_QA0001/events",
+          "/api/pitchapi/matches/m_QA0001/heatmaps"
+        ]
+      },
+      {
+        "name": "desktop light no overflow",
+        "passed": true,
+        "actual": {
+          "viewport": 1440,
+          "document": 1440
+        }
+      },
+      {
+        "name": "desktop dark no overflow",
+        "passed": true,
+        "actual": {
+          "viewport": 1440,
+          "document": 1440
+        }
+      },
+      {
+        "name": "mobile light no overflow",
+        "passed": true,
+        "actual": {
+          "viewport": 390,
+          "document": 390
+        }
+      },
+      {
+        "name": "mobile dark no overflow",
+        "passed": true,
+        "actual": {
+          "viewport": 390,
+          "document": 390
+        }
+      },
+      {
+        "name": "no aggregate archive request",
+        "passed": true,
+        "actual": [
+          "/api/matches/m_QA0001/summary",
+          "/api/pitchapi/matches/m_QA0001/shots",
+          "/api/pitchapi/matches/m_QA0001/events",
+          "/api/pitchapi/matches/m_QA0001/heatmaps"
+        ]
+      },
+      {
+        "name": "no application exception",
+        "passed": true,
+        "actual": []
+      }
+    ],
+    "requests": [
+      "/api/matches/m_QA0001/summary",
+      "/api/pitchapi/matches/m_QA0001/shots",
+      "/api/pitchapi/matches/m_QA0001/events",
+      "/api/pitchapi/matches/m_QA0001/heatmaps"
+    ],
+    "pageErrors": [],
+    "status": "passed"
+  }
+}

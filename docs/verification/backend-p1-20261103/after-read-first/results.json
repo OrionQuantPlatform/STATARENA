@@ -1,0 +1,4280 @@
+{
+  "setup": "Disposable PostgreSQL 18 over verified TLS; runtime schema; real Bun handler and S3 SDK against local object fixture; virtual cache clock only in fixture server.",
+  "command": "STATARENA_TEST_TOOLS=/tmp/statarena-cache-test-tools STATARENA_TEST_EVIDENCE=docs/verification/backend-p1-20261103/after-read-first bun dashboard/scripts/verify_backend_cache.mjs",
+  "versions": {
+    "bun": "1.4.4",
+    "node": "v26.3.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "postgresPackage": "18.6.0-beta.19"
+  },
+  "expected": "PROTOCOL.md; same data/status contracts; no redundant source reads on retained-version/304/HEAD paths; effective route TTLs; oversized admission preserves small entries.",
+  "checks": [
+    {
+      "name": "P1 pagination versus legacy bytes",
+      "expected": "legacy returns123 complete; default page50 excludes heavy fields with smaller bytes",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:29:12)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:24:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 6.95008299999995,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "P1 cursor traversal and null/tie ordering",
+      "expected": "three stable pages, no omissions or duplicates; null dates last",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:37:38)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:34:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 0.4163340000000062,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "P1 filters, ceilings and errors",
+      "expected": "explicit upcoming semantics,50/100 bounds, invalid parameters400 and filter-bound cursor",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:47:41)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:46:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 0.2555839999999989,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "P1 publication invalidates cursor",
+      "expected": "a changed fixture generation returns409 rather than mixing pages",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:55:41)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:54:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 0.18270800000004783,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "P1 precomputed summary bounded GET",
+      "expected": "one SQL, exact small body, no archive/object/parse",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:68:12)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:66:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 0.4980829999999514,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "P1 summary HEAD and validators",
+      "expected": "metadata-only HEAD/304 with exact size/hash and zero SQLbody",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:72:99)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:71:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 2.113540999999941,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "P1 dirty/missing summary stays truthful",
+      "expected": "source change gives pending fixture, null preserved; absent fixture404; stale ETag never304",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:78:111)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:76:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 0.9190410000001066,
+      "sql": [
+        "2026-11-03 22:57:34.813 CET [33925] LOG:  statement: UPDATE statarena.fixtures SET body=body||'{\"score_home\":null}'::jsonb,updated_at=now() WHERE id='m_100001'\n"
+      ],
+      "objects": []
+    },
+    {
+      "name": "P1 target detail precedes full archive",
+      "expected": "client requests one selected section without a preceding whole-shard request",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   'archive'\n-   'matches/m_100001/stats'\n  ]\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:87:66)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_p1_cases.mjs:81:9)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:500:23)",
+      "ms": 13.708417000000054,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "cold inline bytes",
+      "expected": "200 with original bytes; record cold query count and durations",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:507:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:502:11)",
+      "ms": 0.4945829999999205,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "304 after metadata expiry",
+      "expected": "strong, weak, list, wildcard: zero source bodies or parsing",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 304\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:538:18)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:516:11)",
+      "ms": 0.997333000000026,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "retained body after metadata expiry",
+      "expected": "200 identical bytes, refreshed metadata only",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:552:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:546:11)",
+      "ms": 0.2460000000000946,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "HEAD file and missing wildcard",
+      "expected": "size/ETag from metadata; missing stays 404",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:567:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:559:11)",
+      "ms": 0.3177499999999327,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "S3 HEAD then cold GET",
+      "expected": "HEAD no object GET; cold GET exactly one metadata query, one object fetch",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:591:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:583:11)",
+      "ms": 0.19533400000000256,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "integrity and retry",
+      "expected": "corrupt S3 bytes => 503 no-store; valid retry => 200",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 503\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:609:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:604:11)",
+      "ms": 0.21737499999994725,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "version changed between HEAD and GET",
+      "expected": "completed publication returns current bytes/ETag after one metadata retry",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:638:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:628:11)",
+      "ms": 1.338166000000001,
+      "sql": [
+        "2026-11-03 22:57:34.831 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:34.831 CET [33925] DETAIL:  Parameters: $1 = 'raw/fixture-race.json', $2 = '13', $3 = '2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '\\x7b2276657273696f6e223a317d', $5 = 'application/json'\n",
+        "2026-11-03 22:57:34.831 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:34.831 CET [33925] DETAIL:  Parameters: $1 = 'raw/fixture-race.json', $2 = '13', $3 = '732322c128ed67841ef5aa42c7cd04ffcd74a61b2d17d710cd502b713d62930d', $4 = '\\x7b2276657273696f6e223a327d', $5 = 'application/json'\n"
+      ],
+      "objects": []
+    },
+    {
+      "name": "parsed version publication race",
+      "expected": "JSON path refreshes stale metadata once and returns current data",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:667:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:648:11)",
+      "ms": 1.358167000000094,
+      "sql": [
+        "2026-11-03 22:57:34.832 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:34.832 CET [33925] DETAIL:  Parameters: $1 = 'raw/fixture-new-profile.json.gz', $2 = '58', $3 = '2cf9fae82667569f507ee19283eea7caa456b093d64f8ce6f479db81b15122ed', $4 = '\\x1f8b0800000000000013ab564a492c4954b2aa56ca4bcc4d55b2524a4a4dcb2f4a5528284dcac94c4e2cc9cccf53aaad0500a3e59bcf26000000', $5 = 'application/json'\n",
+        "2026-11-03 22:57:34.832 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.resources(endpoint,ref,status) VALUES('/players/p_000004',$1,200)\n2026-11-03 22:57:34.832 CET [33925] DETAIL:  Parameters: $1 = '{\"path\": \"raw/fixture-new-profile.json.gz\"}'\n",
+        "2026-11-03 22:57:34.833 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:34.833 CET [33925] DETAIL:  Parameters: $1 = 'raw/fixture-new-profile.json.gz', $2 = '57', $3 = 'b5860cf2abbee86253b1d04b85a66ae5f049fe43fa52e0b42696da599d7d6b0e', $4 = '\\x1f8b0800000000000013ab564a492c4954b2aa56ca4bcc4d55b2524a4c2b492d5228284dcac94c4e2cc9cccf53aaad0500b0b8c31a25000000', $5 = 'application/json'\n"
+      ],
+      "objects": []
+    },
+    {
+      "name": "parsed version retained after expiry",
+      "expected": "profile remains identical with zero SQL bodies/gzip/parse on warm version",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:678:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:672:11)",
+      "ms": 0.20841700000005403,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "TTL by successful route family",
+      "expected": "declared s-maxage used on GET and HEAD, browser max-age=0",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:721:18)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:689:11)",
+      "ms": 3.9662089999999353,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "dynamic HEAD statuses and unavailable values",
+      "expected": "GET status preserved for envelopes, missing, failure, fallback, empty list and validations",
+      "status": "failed",
+      "error": "SyntaxError: JSON Parse error: Unexpected identifier \"Invalid\"\n    at <parse> (:0)\n    at parse (unknown)\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:781:11)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:740:11)",
+      "ms": 5.86850000000004,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "projection HEAD avoids JSON bodies",
+      "expected": "existence query only, no row.body transfer",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:797:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:792:11)",
+      "ms": 0.24099999999998545,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "mutable alias versus versioned path",
+      "expected": "asset alias mutable; direct content-versioned path immutable; manifest mutable",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:811:16)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:803:11)",
+      "ms": 0.47374999999988177,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "oversized entry preserves small entries",
+      "expected": "A/B load once, huge not retained",
+      "status": "passed",
+      "ms": 108.17041700000004,
+      "details": {
+        "length": 200,
+        "loads": {
+          "a": 1,
+          "b": 1,
+          "huge": 2
+        }
+      },
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "cache concurrency, expiry and failed retry",
+      "expected": "one load for 20 same-key requests; failures never retained; expiry reloads",
+      "status": "passed",
+      "ms": 106.62004100000013,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "league manifest fallback",
+      "expected": "saved row absent: valid manifest 200; malformed/missing manifest 503 on GET and HEAD",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 200\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:927:20)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:876:11)",
+      "ms": 123.80433400000015,
+      "sql": [
+        "2026-11-03 22:57:35.059 CET [33925] LOG:  statement: DELETE FROM statarena.resources WHERE endpoint='/leagues'\n",
+        "2026-11-03 22:57:35.060 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:35.060 CET [33925] DETAIL:  Parameters: $1 = 'computed/dashboard/index.json', $2 = '87', $3 = 'bba7f520f3eaa0451004d7ac8861e8f7ca281dfddfb701817d6445f71e118135', $4 = '\\x7b22736561736f6e73223a5b7b226368756e6b73223a5b7b22636f6d7065746974696f6e73223a5b7b226964223a226c5f303030303031222c226e616d65223a2246697874757265204c6561677565227d5d7d5d7d5d7d', $5 = 'application/json'\n",
+        "2026-11-03 22:57:35.124 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:35.124 CET [33925] DETAIL:  Parameters: $1 = 'computed/dashboard/index.json', $2 = '1', $3 = '021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96', $4 = '\\x7b', $5 = 'application/json'\n",
+        "2026-11-03 22:57:35.125 CET [33925] LOG:  execute <unnamed>: DELETE FROM statarena.objects WHERE path=$1\n2026-11-03 22:57:35.125 CET [33925] DETAIL:  Parameters: $1 = 'computed/dashboard/index.json'\n",
+        "2026-11-03 22:57:35.126 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:35.126 CET [33925] DETAIL:  Parameters: $1 = 'computed/dashboard/index.json', $2 = '32', $3 = '9c4866e8bb3b689d668b8bffe8f5b614004e0bbd80d7a33bf1ef213e1fa9a7cb', $4 = '\\x7b2266697874757265223a22696e6c696e65222c2276657273696f6e223a317d', $5 = 'application/json'\n",
+        "2026-11-03 22:57:35.126 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.resources(endpoint,ref,status) VALUES('/leagues',$1,200)\n2026-11-03 22:57:35.126 CET [33925] DETAIL:  Parameters: $1 = '{\"path\": \"raw/fixture-leagues.json\"}'\n"
+      ],
+      "objects": []
+    },
+    {
+      "name": "repeated publication race is bounded",
+      "expected": "two metadata/body attempts, then 503; no indefinite retries",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 503\n\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:957:18)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:939:11)",
+      "ms": 6.6260409999999865,
+      "sql": [
+        "2026-11-03 22:57:35.183 CET [33925] LOG:  execute <unnamed>: INSERT INTO statarena.objects(path,size,sha256,etag,body,content_type) VALUES($1,$2,decode($3,'hex'),$3,$4,$5) ON CONFLICT(path) DO UPDATE SET size=excluded.size,sha256=excluded.sha256,body=excluded.body\n2026-11-03 22:57:35.183 CET [33925] DETAIL:  Parameters: $1 = 'raw/fixture-racing.json', $2 = '13', $3 = '2430f1a2ad2982d0067885488a4c89e21ad1d7c83b115ba8f1b20acc88dfaea8', $4 = '\\x7b2276657273696f6e223a317d', $5 = 'application/json'\n",
+        "2026-11-03 22:57:35.185 CET [33925] LOG:  statement: ALTER TABLE statarena.objects RENAME TO fixture_objects\n",
+        "2026-11-03 22:57:35.186 CET [33925] LOG:  statement: CREATE FUNCTION statarena.fixture_race(p text, incoming bytea) RETURNS bytea LANGUAGE plpgsql VOLATILE AS $$ BEGIN IF p='raw/fixture-racing.json' THEN UPDATE statarena.fixture_objects SET body=body||' '::bytea, size=size+1, sha256=sha256(body||' '::bytea) WHERE path=p; END IF; RETURN incoming; END $$\n",
+        "2026-11-03 22:57:35.186 CET [33925] LOG:  statement: CREATE VIEW statarena.objects AS SELECT path,size,sha256,etag,statarena.fixture_race(path,body) AS body,content_type,updated_at FROM statarena.fixture_objects\n",
+        "2026-11-03 22:57:35.188 CET [33925] LOG:  statement: DROP VIEW IF EXISTS statarena.objects\n",
+        "2026-11-03 22:57:35.189 CET [33925] LOG:  statement: ALTER TABLE statarena.fixture_objects RENAME TO objects\n",
+        "2026-11-03 22:57:35.189 CET [33925] LOG:  statement: DROP FUNCTION IF EXISTS statarena.fixture_race(text,bytea)\n"
+      ],
+      "objects": []
+    },
+    {
+      "name": "1/5/20 concurrent public reads",
+      "expected": "no cross-request metric contamination, all exact bytes",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: false == true\n    at <anonymous> (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:986:18)\n    at async check (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:156:29)\n    at async run (/private/tmp/statarena-backend-p1-20261103/dashboard/scripts/verify_backend_cache.mjs:972:11)",
+      "ms": 0.9651669999998376,
+      "sql": [],
+      "objects": []
+    },
+    {
+      "name": "metrics sampling and redaction",
+      "expected": "sample=0 emits no event; sample=1 no identifiers or fixture URL/password",
+      "status": "passed",
+      "ms": 62.12300000000005,
+      "details": {
+        "sampledEvents": 128
+      },
+      "sql": [],
+      "objects": []
+    }
+  ],
+  "requests": [
+    {
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "headers": {
+        "content-length": "2",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 4.8627500000000055
+    },
+    {
+      "scenario": "P1 pagination versus legacy bytes",
+      "path": "/api/pitchapi/leagues/l_100001/matches?season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.85, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 2.235584000000017
+    },
+    {
+      "scenario": "P1 pagination versus legacy bytes",
+      "path": "/api/fixtures?league=l_100001&season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.46033299999999144
+    },
+    {
+      "scenario": "P1 cursor traversal and null/tie ordering",
+      "path": "/api/fixtures?league=l_100001&season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.28262500000005275
+    },
+    {
+      "scenario": "P1 filters, ceilings and errors",
+      "path": "/api/fixtures?league=l_100001&season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11683300000004238
+    },
+    {
+      "scenario": "P1 publication invalidates cursor",
+      "path": "/api/fixtures?league=l_100001&season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11695799999984047
+    },
+    {
+      "scenario": "P1 precomputed summary bounded GET",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1062,
+      "sha256": "d7c21ff90c5cbcbe69324a9dbdecf08c168a059b7924f5522f0cc509971ed97c",
+      "headers": {
+        "content-length": "1062",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.15108399999985522
+    },
+    {
+      "scenario": "P1 precomputed summary bounded GET",
+      "path": "/api/matches/m_100001/summary",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12454100000013568
+    },
+    {
+      "scenario": "P1 precomputed summary bounded GET",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 208,
+      "sha256": "649a257462097ebd0be70c6f600543043d3f9f86ab1430a348a7bc912b11f93e",
+      "headers": {
+        "content-length": "208",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.10037499999998545
+    },
+    {
+      "scenario": "P1 summary HEAD and validators",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "headers": {
+        "content-length": "2",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.16383399999995163
+    },
+    {
+      "scenario": "P1 summary HEAD and validators",
+      "path": "/api/matches/m_100001/summary",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.33, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 1.7897080000000187
+    },
+    {
+      "scenario": "P1 dirty/missing summary stays truthful",
+      "path": "/api/matches/m_100001/summary",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.19775000000004184
+    },
+    {
+      "scenario": "cold inline bytes",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.3975829999999405
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16,
+      "sha256": "63e5b637509190d5a1048d049167e0c07f2f79caa7ae23264b7e5c7d46ec651d",
+      "headers": {
+        "content-length": "16",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.12370800000007875
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12170800000012605
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 838,
+      "sha256": "f2a30d14a63197dca930c454988367363e7d2676f65db42be3c88a273f781900",
+      "headers": {
+        "content-length": "838",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.12324999999987085
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14266699999984667
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11516699999992852
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09904199999982666
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 637,
+      "sha256": "6eca7681bcf27932ce20db58f2ffc7419b2039448e2a81d253f0fd2ea72d02c2",
+      "headers": {
+        "content-length": "637",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.08220800000003692
+    },
+    {
+      "scenario": "retained body after metadata expiry",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16,
+      "sha256": "f576082a95e41eaa39bb26590c9555da63d2856988a12db7a054e8621b7cf541",
+      "headers": {
+        "content-length": "16",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.08187499999985448
+    },
+    {
+      "scenario": "retained body after metadata expiry",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.0963329999999587
+    },
+    {
+      "scenario": "HEAD file and missing wildcard",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16,
+      "sha256": "021c598c9e9198af89a01fda3561ce955c4e8c2e506c665113e1fef1aea3c404",
+      "headers": {
+        "content-length": "16",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.09270799999990231
+    },
+    {
+      "scenario": "HEAD file and missing wildcard",
+      "path": "/data/dashboard-manifest.json",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12629199999992125
+    },
+    {
+      "scenario": "S3 HEAD then cold GET",
+      "path": "/data/raw/fixture-object.json",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11958400000003166
+    },
+    {
+      "scenario": "integrity and retry",
+      "path": "/data/raw/fixture-corrupt.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12858299999993505
+    },
+    {
+      "scenario": "version changed between HEAD and GET",
+      "path": "/data/raw/fixture-race.json",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13458299999979317
+    },
+    {
+      "scenario": "version changed between HEAD and GET",
+      "path": "/data/raw/fixture-race.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14937499999996362
+    },
+    {
+      "scenario": "parsed version publication race",
+      "path": "/data/raw/fixture-new-profile.json.gz",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1436670000000504
+    },
+    {
+      "scenario": "parsed version publication race",
+      "path": "/api/pitchapi/players/p_000004",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14041599999995924
+    },
+    {
+      "scenario": "parsed version retained after expiry",
+      "path": "/api/pitchapi/players/p_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13370800000006966
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/leagues",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13095799999996416
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/leagues",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.15408300000012787
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/leagues/l_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.7511670000001232
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/leagues/l_000001",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.18179200000008677
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/teams/t_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1569170000000213
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/teams/t_000001",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14779200000020865
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/players/p_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12708299999985684
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/players/p_000001",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12037499999996726
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11608299999988958
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13654199999996308
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001/stats",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10320799999999508
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001/stats",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.06, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.18308300000012423
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001/lineups",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1540420000001177
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001/lineups",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13629100000002836
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001/heatmaps?frame=acting_ltr",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1212919999998121
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/matches/m_000001/heatmaps?frame=acting_ltr",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10891700000001947
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/leagues/l_000001/matches?season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13304199999993216
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/leagues/l_000001/matches?season=2026%2F2027&status=all",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11850000000004002
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/date/2026-11-03?status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.2988749999999527
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/api/pitchapi/date/2026-11-03?status=all",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11725000000001273
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 6531,
+      "sha256": "476782c8935ed3005a6cb9bf20c8c6f4a917037888123bce9f40d46350ba958e",
+      "headers": {
+        "content-length": "6531",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.11454200000002857
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/health",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13049999999998363
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/health",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11195900000006986
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/settings",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09812499999998181
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/settings",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14637500000003456
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/status",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09645799999998417
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/status",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10454100000015387
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/standings",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12304199999994125
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/standings",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1224170000000413
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/stadium",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11704199999985576
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/stadium",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11320799999998599
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/matches/m_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10316699999998491
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/matches/m_000001",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1020410000000993
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/matches/m_000002",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11445800000001327
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/matches/m_000002",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09220800000002782
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/matches/m_999999",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09224999999992178
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/matches/m_999999",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.096416999999974
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/profiles/players/p_000001",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1069999999999709
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/profiles/players/p_000001",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11358399999994617
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/profiles/players/p_000002",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10062500000003638
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/profiles/players/p_000002",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09770800000001145
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/profiles/players/p_000003",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.08200000000010732
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/archive/profiles/players/p_000003",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11358399999994617
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000002",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1306250000000091
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000002",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11879100000010112
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_999999",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11183300000016061
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_999999",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12591599999996106
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/matches/m_000002",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12837500000000546
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/matches/m_000002",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12916599999994105
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/matches/m_000002/stats",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09725000000003092
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/matches/m_000002/stats",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10929200000009587
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000403",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11954199999991033
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000403",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11695799999984047
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000429",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1195829999999205
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000429",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10499999999979082
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000503",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10149999999998727
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/players/p_000503",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09720900000002075
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/date/2026-11-04?status=all",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10879100000011022
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/date/2026-11-04?status=all",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.1611249999998563
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/date/2026-02-30",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.15854200000012497
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/date/2026-02-30",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10275000000001455
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/leagues?url=secret",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10074999999983447
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/leagues?url=secret",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11012499999992542
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/data/raw/%2eenv",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09029199999986304
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/data/raw/%2eenv",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.10766699999999219
+    },
+    {
+      "scenario": "dynamic HEAD statuses and unavailable values",
+      "path": "/api/pitchapi/matches/m_000001/stats",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.00, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.09066600000005565
+    },
+    {
+      "scenario": "projection HEAD avoids JSON bodies",
+      "path": "/api/standings",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.11266699999987395
+    },
+    {
+      "scenario": "mutable alias versus versioned path",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fasset.png",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.12008300000002237
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 10535,
+      "sha256": "225afc05abfcdb7d3d3ecb0620f409ef60490ecc018f4c72532f79ec1d16471b",
+      "headers": {
+        "content-length": "10535",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.15025000000014188
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/a",
+      "method": "GET",
+      "status": 200,
+      "bytes": 30,
+      "sha256": "744dfdbe7a8432c0fe51d9790219a3b0916f41ad3797b7f8230f9c5b15086e21",
+      "headers": {
+        "content-length": "30",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.49, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 27.541958000000022
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/b",
+      "method": "GET",
+      "status": 200,
+      "bytes": 36,
+      "sha256": "17b8a985d5e747a4f47bdc15cabe021caba16090f7c2e27668e1adb4799fad3b",
+      "headers": {
+        "content-length": "36",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.09, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.39866700000016
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/huge",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46,
+      "sha256": "5d934300de2e9655edfbe2af2bf34ff973204cd44b367b5d097895de515d6a15",
+      "headers": {
+        "content-length": "46",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.09, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.452082999999902
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/a",
+      "method": "GET",
+      "status": 200,
+      "bytes": 45,
+      "sha256": "409ed650ba2ac03f848ef8e0656da36246c798c844e8858b9291064c4e16771a",
+      "headers": {
+        "content-length": "45",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 0.27662500000019463
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/b",
+      "method": "GET",
+      "status": 200,
+      "bytes": 45,
+      "sha256": "409ed650ba2ac03f848ef8e0656da36246c798c844e8858b9291064c4e16771a",
+      "headers": {
+        "content-length": "45",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 0.2442500000001928
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/huge",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46,
+      "sha256": "b1eaacd429f00bb9b37307a55f10c8ca08aed6a58547ac8d19b0f632e136774f",
+      "headers": {
+        "content-length": "46",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.10, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.49066700000003
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/cache/a",
+      "method": "GET",
+      "status": 200,
+      "bytes": 45,
+      "sha256": "8eb3eeea0fa964d07e86a4ad4fc540924bfaec6737185adc29cf8703d2603323",
+      "headers": {
+        "content-length": "45",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 0.18983299999990777
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1620,
+      "sha256": "db1d267b387afefdd695a118e74db1ada0997c0eb6e9b916162cc3d01e7d206d",
+      "headers": {
+        "content-length": "1620",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.13808399999993526
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.13, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61829200000011
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.37, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61324999999988
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.14, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.613833000000113
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.13, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61291600000004
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.03, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61262499999998
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.02, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.611999999999853
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.02, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61200000000008
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.613292
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.02, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.614709000000175
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.02, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61458300000004
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.613083000000188
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.02, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61262499999998
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61241700000005
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61675000000014
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.616625000000113
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.616417000000183
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.01, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.613458000000037
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.00, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61287500000003
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.00, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.613374999999905
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 60,
+      "sha256": "4b409d92c5e48664d35f65be18421ac9e405468c5a8b0d4d48aa4053ad91fc47",
+      "headers": {
+        "content-length": "60",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.00, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.61304099999984
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/retry",
+      "method": "GET",
+      "status": 503,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "content-length": "0",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.11, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.579707999999982
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/retry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 70,
+      "sha256": "8ec46ad907f748446d0b6ab70b768864e88353237c1fef080be9b40814c20e12",
+      "headers": {
+        "content-length": "70",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=26.10, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.662874999999985
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 17,
+      "sha256": "52d84d58b8dc2c18ed516a81a29381d0441d5a59dac661775f0b06e7238a8f5e",
+      "headers": {
+        "content-length": "17",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT"
+      },
+      "ms": 0.15341699999999037
+    },
+    {
+      "scenario": "cache concurrency, expiry and failed retry",
+      "path": "/_fixture/cache/concurrent",
+      "method": "GET",
+      "status": 200,
+      "bytes": 70,
+      "sha256": "9e72fa6149a589e1ced4741fcc466fa1095f55af9c075782ae4deaf8b51f0027",
+      "headers": {
+        "content-length": "70",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:34 GMT",
+        "server-timing": "origin;dur=25.99, sql;dur=0.00, pool;dur=0.00"
+      },
+      "ms": 26.278542000000016
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/api/pitchapi/leagues",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "server-timing": "origin;dur=0.43, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 3.824915999999803
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/api/pitchapi/leagues",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.07, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.32037500000001273
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16,
+      "sha256": "63e5b637509190d5a1048d049167e0c07f2f79caa7ae23264b7e5c7d46ec651d",
+      "headers": {
+        "content-length": "16",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 0.15229199999998855
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/api/pitchapi/leagues",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.15529200000014498
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/api/pitchapi/leagues",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.17062499999997272
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16,
+      "sha256": "f576082a95e41eaa39bb26590c9555da63d2856988a12db7a054e8621b7cf541",
+      "headers": {
+        "content-length": "16",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 0.14791700000000674
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/api/pitchapi/leagues",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14058299999987867
+    },
+    {
+      "scenario": "league manifest fallback",
+      "path": "/api/pitchapi/leagues",
+      "method": "HEAD",
+      "status": 400,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "0",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.14529099999981554
+    },
+    {
+      "scenario": "repeated publication race is bounded",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "headers": {
+        "content-length": "2",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 1.8257920000000922
+    },
+    {
+      "scenario": "repeated publication race is bounded",
+      "path": "/data/raw/fixture-racing.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "server-timing": "origin;dur=0.47, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 1.1566250000000764
+    },
+    {
+      "scenario": "repeated publication race is bounded",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 212,
+      "sha256": "ac3b6f6ade9139419588861d8f9153cca65e1c06b726673f8f129e6cda0a1264",
+      "headers": {
+        "content-length": "212",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 0.11625000000003638
+    },
+    {
+      "scenario": "1/5/20 concurrent public reads",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "server-timing": "origin;dur=0.02, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.23849999999993088
+    },
+    {
+      "scenario": "1/5/20 concurrent public reads",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 212,
+      "sha256": "e7fb8edcc80f2b8a1882bd18aefcd18494b219f2b8b85997fead8870c134b5db",
+      "headers": {
+        "content-length": "212",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 0.14145899999994072
+    },
+    {
+      "scenario": "1/5/20 concurrent public reads",
+      "path": "/_fixture/clock?ms=31000",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16,
+      "sha256": "63e5b637509190d5a1048d049167e0c07f2f79caa7ae23264b7e5c7d46ec651d",
+      "headers": {
+        "content-length": "16",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 0.1742500000000291
+    },
+    {
+      "scenario": "1/5/20 concurrent public reads",
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "server-timing": "origin;dur=0.01, sql;dur=0.00, pool;dur=0.00",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 0.13316699999995762
+    },
+    {
+      "scenario": "metrics sampling and redaction",
+      "path": "/api/health",
+      "method": "GET",
+      "status": 400,
+      "bytes": 12,
+      "sha256": "610cf07590e16615345a3a6977caa886f656bb36bcf4f49380bf27f43a11d3c1",
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "text/plain;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      },
+      "ms": 3.2395839999999225
+    },
+    {
+      "scenario": "metrics sampling and redaction",
+      "path": "/_fixture/telemetry",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "headers": {
+        "content-length": "2",
+        "content-type": "application/json;charset=utf-8",
+        "date": "Tue, 03 Nov 2026 21:57:35 GMT"
+      },
+      "ms": 0.14216599999986101
+    }
+  ],
+  "observations": [
+    {
+      "rows": []
+    },
+    {
+      "scenario": "P1 precomputed summary bounded GET",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues/:id/matches",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 1.382,
+          "instance_age_ms": 73,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.02,
+          "instance_age_ms": 73,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.037,
+          "instance_age_ms": 78,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 79,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 79,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "P1 precomputed summary bounded GET",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.017,
+          "instance_age_ms": 81,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "P1 summary HEAD and validators",
+      "rows": []
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.349,
+          "instance_age_ms": 82,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.032,
+          "instance_age_ms": 84,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.055,
+          "instance_age_ms": 98,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.01,
+          "instance_age_ms": 98,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "304 after metadata expiry",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.009,
+          "instance_age_ms": 99,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 99,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 99,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "TTL by successful route family",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 99,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.018,
+          "instance_age_ms": 99,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.014,
+          "instance_age_ms": 100,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 100,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.019,
+          "instance_age_ms": 101,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.023,
+          "instance_age_ms": 101,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.021,
+          "instance_age_ms": 102,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.028,
+          "instance_age_ms": 103,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.017,
+          "instance_age_ms": 103,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.012,
+          "instance_age_ms": 103,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.024,
+          "instance_age_ms": 103,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.023,
+          "instance_age_ms": 104,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.027,
+          "instance_age_ms": 104,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/teams/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.009,
+          "instance_age_ms": 104,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/teams/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.02,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.012,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.015,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.034,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/stats",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/stats",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.063,
+          "instance_age_ms": 105,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/lineups",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.012,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/lineups",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.017,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/heatmaps",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.013,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/heatmaps",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues/:id/matches",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.015,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues/:id/matches",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.014,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/date/:date",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 106,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/date/:date",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.013,
+          "instance_age_ms": 107,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/api/health",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 107,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/health",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.012,
+          "instance_age_ms": 107,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/settings",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 107,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/settings",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/status",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/status",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/standings",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/standings",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.009,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/stadium",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/stadium",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/matches/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/matches/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 108,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/matches/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/matches/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/matches/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/matches/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/profiles/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/profiles/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.009,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/profiles/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/profiles/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/profiles/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/archive/profiles/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 109,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.013,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.013,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.01,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.014,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/stats",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/stats",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 110,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.009,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.014,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/players/:id",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/date/:date",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/date/:date",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.015,
+          "instance_age_ms": 111,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/date/:date",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/date/:date",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.008,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/leagues",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.01,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.005,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/pitchapi/matches/:id/stats",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.006,
+          "instance_age_ms": 112,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/standings",
+          "method": "HEAD",
+          "status": 400,
+          "duration_ms": 0.007,
+          "instance_age_ms": 113,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 0
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/api/assets",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.011,
+          "instance_age_ms": 113,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "oversized entry preserves small entries",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 26.543,
+          "instance_age_ms": 140,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_miss": 1,
+            "cache_size_ms": 0.044
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 26.114,
+          "instance_age_ms": 167,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_miss": 1,
+            "cache_size_ms": 0.009
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 26.132,
+          "instance_age_ms": 194,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_miss": 1,
+            "cache_size_ms": 0.01,
+            "cache_fixture_rejected": 1
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 0.021,
+          "instance_age_ms": 194,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_hit": 1
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 0.017,
+          "instance_age_ms": 195,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_hit": 1
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 26.143,
+          "instance_age_ms": 221,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_miss": 1,
+            "cache_size_ms": 0.006,
+            "cache_fixture_rejected": 1
+          }
+        },
+        {
+          "event": "statarena.request",
+          "route": "/other",
+          "method": "GET",
+          "status": 200,
+          "duration_ms": 0.019,
+          "instance_age_ms": 221,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "cache_fixture_hit": 1
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "repeated publication race is bounded",
+      "rows": []
+    },
+    {
+      "scenario": "repeated publication race is bounded",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.556,
+          "instance_age_ms": 6,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "1/5/20 concurrent public reads",
+      "rows": [
+        {
+          "event": "statarena.request",
+          "route": "/data/:file",
+          "method": "GET",
+          "status": 400,
+          "duration_ms": 0.032,
+          "instance_age_ms": 8,
+          "deployment": "local",
+          "region": "local",
+          "object_versions": [],
+          "metrics": {
+            "response_bytes": 12
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "metrics sampling and redaction",
+      "rows": []
+    }
+  ],
+  "status": "failed",
+  "inputs": {
+    "inline": {
+      "path": "computed/dashboard/index.json",
+      "bytes": 32,
+      "sha256": "9c4866e8bb3b689d668b8bffe8f5b614004e0bbd80d7a33bf1ef213e1fa9a7cb"
+    },
+    "object": {
+      "path": "raw/fixture-object.json",
+      "bytes": 32,
+      "sha256": "bf00ad4581a1a6f562ad878a5e52503e6592855eb271ebe6a065272f060d6132"
+    },
+    "profile": {
+      "bytes": 82,
+      "sha256": "ccc05ab20ffda137a191a40432f7d8c2bb4a00f94ffbc9893f3e8846ab4c6e95"
+    },
+    "virtualMetadataExpiryMs": 31000,
+    "concurrency": [
+      1,
+      5,
+      20
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-p1 run-code --filename=workflow.js
+### Result
+{"setup":"Built Next production on3155; real read-only Neon bootstrap; synthetic QA match summary and targeted detail HTTP responses intercepted only for m_QA0001. No production writes.","command":"playwright-cli -s=statarena-p1 run-code --filename=workflow.js","expected":"Overview without full archive/heavy detail, selected-tab-only requests and cache reuse; desktop/mobile light/dark without overflow or app exceptions.","checks":[{"name":"summary consumed","passed":true,"actual":["/api/matches/m_QA0001/summary"]},{"name":"no full archive or heavy request on overview","passed":true,"actual":["/api/matches/m_QA0001/summary"]},{"name":"shots only when selected","passed":true,"actual":["/api/matches/m_QA0001/summary","/api/pitchapi/matches/m_QA0001/shots"]},{"name":"shots reused","passed":true,"actual":["/api/matches/m_QA0001/summary","/api/pitchapi/matches/m_QA0001/shots"]},{"name":"heatmap on demand, no unrelated network","passed":true,"actual":["/api/matches/m_QA0001/summary","/api/pitchapi/matches/m_QA0001/shots","/api/pitchapi/matches/m_QA0001/events","/api/pitchapi/matches/m_QA0001/heatmaps"]},{"name":"desktop light no overflow","passed":true,"actual":{"viewport":1440,"document":1440}},{"name":"desktop dark no overflow","passed":true,"actual":{"viewport":1440,"document":1440}},{"name":"mobile light no overflow","passed":true,"actual":{"viewport":390,"document":390}},{"name":"mobile dark no overflow","passed":true,"actual":{"viewport":390,"document":390}},{"name":"no aggregate archive request","passed":true,"actual":["/api/matches/m_QA0001/summary","/api/pitchapi/matches/m_QA0001/shots","/api/pitchapi/matches/m_QA0001/events","/api/pitchapi/matches/m_QA0001/heatmaps"]},{"name":"no application exception","passed":true,"actual":[]}],"requests":["/api/matches/m_QA0001/summary","/api/pitchapi/matches/m_QA0001/shots","/api/pitchapi/matches/m_QA0001/events","/api/pitchapi/matches/m_QA0001/heatmaps"],"pageErrors":[],"status":"passed"}
+### Ran Playwright code
+```js
+await (async (page) => {
+  const root="/tmp/statarena-backend-p1-20261103/output/playwright/backend-p1-20261103";
+  const report={setup:"Built Next production on3155; real read-only Neon bootstrap; synthetic QA match summary and targeted detail HTTP responses intercepted only for m_QA0001. No production writes.",command:"playwright-cli -s=statarena-p1 run-code --filename=workflow.js",expected:"Overview without full archive/heavy detail, selected-tab-only requests and cache reuse; desktop/mobile light/dark without overflow or app exceptions.",checks:[],requests:[],pageErrors:[],status:"failed"};
+  const verify=(name,ok,actual)=>{report.checks.push({name,passed:!!ok,actual:JSON.parse(JSON.stringify(actual))});if(!ok)throw new Error(name);};
+  page.on("request",r=>{const u=new URL(r.url());if(u.pathname.includes("m_QA0001"))report.requests.push(u.pathname);});
+  page.on("pageerror",e=>report.pageErrors.push(e.message));
+  const match={id:"m_QA0001",leagueId:"l_QA0001",league:"QA Cup",season:"2026/2027",date:"2026-11-01",timeUtc:"2026-11-01T18:00:00Z",status:"finished",summaryVersion:1,home:{id:"t_QA0001",name:"QA Home",score:1,xg:.8,shots:4},away:{id:"t_QA0002",name:"QA Away",score:0,xg:.3,shots:3},stats:[{key:"expected_goals",name:"xG",home:.8,away:.3}],shots:[{id:"s_QA0001",teamId:"t_QA0001",playerId:"p_QA0001",playerName:"QA Player",minute:25,xg:.3,isGoal:true}],leadingPlayers:[{id:"m_QA0001:p_QA0001",playerId:"p_QA0001",teamId:"t_QA0001",name:"QA Player",minutes:90,rating:7.5,goals:1,assists:0}],coverage:{},warnings:[]};
+  await page.route("**/api/matches/m_QA0001/summary",r=>r.fulfill({json:{data:{version:1,state:"ready",match}}}));
+  await page.route("**/api/pitchapi/matches/m_QA0001**",r=>{
+    const path=new URL(r.request().url()).pathname;let data={};
+    if(path.endsWith("/shots"))data={periods:[{period:"All",shots:[{id:"s_QA0001",team_id:"t_QA0001",player:{id:"p_QA0001",name:"QA Player"},minute:25,x:95,y:32,expected_goals:.3,event_type:"Goal"}]}]};
+    if(path.endsWith("/events"))data={events:[{event_type:"goal",minute:25,team_id:"t_QA0001",player:{id:"p_QA0001",name:"QA Player"},score_home:1,score_away:0}]};
+    if(path.endsWith("/heatmaps"))data={grid:{length:16,width:12,frame:"home_ltr"},teams:[{team:{id:"t_QA0001",name:"QA Home"},cells:[[1,1,4]],actions:4}],players:[]};
+    return r.fulfill({json:{data}});
+  });
+  try {
+    await page.goto("http://127.0.0.1:3155/matchs?season=2026%2F2027&id=m_QA0001");
+    await page.getByRole("heading",{name:"QA Home — QA Away"}).waitFor({timeout:60000});
+    verify("summary consumed",report.requests.includes("/api/matches/m_QA0001/summary"),report.requests);
+    verify("no full archive or heavy request on overview",report.requests.every(p=>!p.includes("/archive/")&&!p.endsWith("/shots")&&!p.endsWith("/heatmaps")&&!p.includes("/advanced/")),report.requests);
+    await page.getByRole("tab",{name:"Tirs & xG"}).click();
+    await page.getByRole("heading",{name:"Analyse des tirs",exact:true}).waitFor();
+    verify("shots only when selected",report.requests.filter(p=>p.endsWith("/shots")).length===1,report.requests);
+    await page.getByRole("tab",{name:"Vue d’ensemble"}).click();
+    await page.getByRole("tab",{name:"Tirs & xG"}).click();
+    await page.getByRole("heading",{name:"Analyse des tirs",exact:true}).waitFor();
+    verify("shots reused",report.requests.filter(p=>p.endsWith("/shots")).length===1,report.requests);
+    await page.getByRole("tab",{name:"Analyses",exact:true}).click();
+    await page.getByRole("combobox",{name:"Analyse du match"}).selectOption("heatmaps");
+    await page.getByRole("img",{name:/Carte d’activité de QA Home/}).waitFor();
+    verify("heatmap on demand, no unrelated network",report.requests.filter(p=>p.endsWith("/heatmaps")).length===1&&!report.requests.some(p=>p.includes("/advanced/")),report.requests);
+    await page.getByRole("tab",{name:"Vue d’ensemble"}).click();
+    for(const [device,width,height] of [["desktop",1440,1100],["mobile",390,844]])for(const theme of ["light","dark"]){
+      await page.setViewportSize({width,height});
+      await page.evaluate(t=>{localStorage.setItem("statarena.theme",t);document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;},theme);
+      await page.evaluate(()=>window.scrollTo(0,0));
+      const size=await page.evaluate(()=>({viewport:innerWidth,document:document.documentElement.scrollWidth}));
+      verify(`${device} ${theme} no overflow`,size.document<=size.viewport,size);
+      await page.screenshot({path:`${root}/${device}-${theme}.png`,fullPage:true});
+    }
+    verify("no aggregate archive request",!report.requests.some(p=>p.includes("/api/archive/")),report.requests);
+    verify("no application exception",report.pageErrors.length===0,report.pageErrors);
+    report.status="passed";
+  }catch(e){report.error=e.message;await page.screenshot({path:root+"/failure.png",fullPage:true});}
+  return report;
+}
+)(page);
+```
+### Events
+- New console entries: .playwright-cli/console-2026-11-03T22-14-41-261Z.log#L9-L12

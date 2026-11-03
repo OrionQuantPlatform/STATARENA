@@ -495,6 +495,22 @@ async function run() {
       ]);
     }
     await start();
+    if (process.env.STATARENA_TEST_EXTENSION) {
+      const extension = await import(process.env.STATARENA_TEST_EXTENSION);
+      await extension.run({
+        check,
+        get,
+        telemetry,
+        admin,
+        start,
+        put,
+        hash,
+        root,
+        evidence,
+        dbUrl: dbUrl.href,
+        objects: objectBodies,
+      });
+    }
     await check(
       "cold inline bytes",
       "200 with original bytes; record cold query count and durations",
@@ -946,7 +962,7 @@ async function run() {
             `CREATE FUNCTION statarena.fixture_race(p text, incoming bytea) RETURNS bytea LANGUAGE plpgsql VOLATILE AS $$ BEGIN IF p='raw/fixture-racing.json' THEN UPDATE statarena.fixture_objects SET body=body||' '::bytea, size=size+1, sha256=sha256(body||' '::bytea) WHERE path=p; END IF; RETURN incoming; END $$`,
           );
           await admin.query(
-            "CREATE VIEW statarena.objects AS SELECT path,size,sha256,etag,statarena.fixture_race(path,body) AS body,content_type,updated_at FROM statarena.fixture_objects",
+            "CREATE VIEW statarena.objects AS SELECT path,size,sha256,etag,statarena.fixture_race(path,body) AS body,content_type,updated_at,storage_key FROM statarena.fixture_objects",
           );
           const r = await get("/data/raw/fixture-racing.json");
           const rows = await telemetry();
@@ -1132,6 +1148,16 @@ async function run() {
                   (await get("/api/health", { method: "HEAD" })).bytes.length,
                   0,
                 );
+                if (process.env.STATARENA_TEST_EXTENSION) {
+                  const page = await get(
+                    "/api/fixtures?league=l_100001&season=2026%2F2027",
+                  );
+                  assert.equal(page.status, 200);
+                  assert.equal(page.json().data.matches.length, 50);
+                  const summary = await get("/api/matches/m_100001/summary");
+                  assert.equal(summary.status, 200);
+                  assert.equal(summary.json().data.match.id, "m_100001");
+                }
               } finally {
                 origin = before;
               }

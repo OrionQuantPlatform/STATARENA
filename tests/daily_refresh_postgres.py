@@ -25,6 +25,11 @@ class MemoryStore(Store):
         self.db, self.objects, self.queue = db, objects, {}
         self.refresh_since = db.execute("select clock_timestamp()").fetchone()[0]
 
+    def put(self, path, body, content_type="application/json", hot=False):
+        value=json.loads(gzip.decompress(body) if path.endswith('.gz') else body)
+        self.put_json(path,value,hot=hot)
+        return True
+
     def json(self, path):
         if path not in self.objects:
             raise FileNotFoundError(path)
@@ -46,6 +51,8 @@ class MemoryStore(Store):
 def main():
     db = psycopg.connect(os.environ["TEST_DATABASE_URL"], autocommit=True)
     db.execute((ROOT / "dashboard/backend/migrations/001_neon.sql").read_text())
+    for migration in ["002_immutable_storage.sql", "003_match_reads.sql"]:
+        db.execute((ROOT / "dashboard/backend/migrations" / migration).read_text())
     today = dt.datetime.now(dt.timezone.utc).date()
     year, label = str(today.year), f"{today.year}/{today.year + 1}"
     raw, _ = synthetic()
@@ -84,7 +91,7 @@ def main():
     first = claim_job(store)[0]
     assert first == "/leagues" or first.startswith("/date/")
 
-    db.execute("insert into statarena.dirty_partitions(season,league_id) values(%s,'l_0eg6C9')", (label,))
+    db.execute("insert into statarena.dirty_partitions(season,league_id) values(%s,'l_0eg6C9') on conflict do nothing", (label,))
     materialize(store, max_partitions=1, league_id="l_0eg6C9")
 
     def published_goal():
@@ -135,7 +142,7 @@ def main():
     store.enqueue("/matches/m_TEST02/players", priority=DAILY_MATCH_PRIORITY, force=True)
     store.flush()
     assert db.execute("select priority from statarena.jobs where endpoint='/matches/m_TEST02/players'").fetchone()[0] == DAILY_MATCH_PRIORITY
-    db.execute("insert into statarena.dirty_partitions(season,league_id) values(%s,'l_0Lpz1f')", (label,))
+    db.execute("insert into statarena.dirty_partitions(season,league_id) values(%s,'l_0Lpz1f') on conflict do nothing", (label,))
     materialize(store, max_partitions=1, league_id="l_0Lpz1f")
 
     def published_saudi_goal():

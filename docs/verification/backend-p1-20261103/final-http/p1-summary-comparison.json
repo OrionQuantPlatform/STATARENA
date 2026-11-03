@@ -1,0 +1,16 @@
+{
+  "legacy": {
+    "status": 200,
+    "bytes": 108211,
+    "gzipBytes": 592,
+    "sql": 40,
+    "sourceBytes": 107696
+  },
+  "summary": {
+    "status": 200,
+    "bytes": 305,
+    "gzipBytes": 205,
+    "sql": 1,
+    "sourceBytes": 305
+  }
+}

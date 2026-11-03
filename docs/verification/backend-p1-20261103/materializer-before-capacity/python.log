@@ -1,0 +1,10 @@
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"fixtures":32,"materialized":"l_000001","season":"2021/2022","updatedMatches":32}
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"fixtures":1,"materialized":"l_000001","season":"2021/2022","updatedMatches":1}
+{"status": "failed", "cases": [{"name": "archive-only", "status": "passed", "error": null}, {"name": "fixture-without-summary", "status": "passed", "error": null}, {"name": "recent-precedence", "status": "passed", "error": null}, {"name": "partial-families", "status": "passed", "error": null}, {"name": "archive-shard-reuse", "status": "passed", "error": null}, {"name": "summary-rollback", "status": "passed", "error": null}, {"name": "summary-concurrent-source", "status": "passed", "error": null}, {"name": "summary-capacity", "status": "failed", "error": "Summary SQL capacity must refuse publication"}]}
+

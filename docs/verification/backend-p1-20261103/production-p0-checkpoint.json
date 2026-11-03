@@ -1,0 +1,24 @@
+{
+  "checkedAtUTC": "2026-11-03T22:40:56.819Z",
+  "id": "dpl_8dhTKkzqbN6fMsNJLp3zepwUP9Qv",
+  "url": "statarena-analytics-5diifpgw8-hlemonniers-projects.vercel.app",
+  "readyState": "READY",
+  "target": "production",
+  "regions": [
+    "cle1"
+  ],
+  "alias": [
+    "statarena-analytics.vercel.app",
+    "orion-football-ranking.vercel.app",
+    "statarena-analytics-hlemonniers-projects.vercel.app",
+    "statarena-analytics-git-main-hlemonniers-projects.vercel.app"
+  ],
+  "source": {
+    "githubCommitRef": "main",
+    "githubCommitSha": "33a5320847d954a1cbf1884788c30ffe36296025",
+    "githubCommitMessage": "feat: monitor PitchAPI match availability hourly\n\n- Record timestamped match data availability from GitHub Actions\n- Stop the monitor once all core match data are available",
+    "githubRepo": "STATARENA",
+    "githubOrg": "OrionQuantPlatform"
+  },
+  "containsP0": "git merge-base --is-ancestor 6bea1b950a origin/main exited 0; subsequent diff contains workflow/docs only."
+}

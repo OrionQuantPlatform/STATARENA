@@ -1,0 +1,1 @@
+{"status": "failed", "passed": 4, "cases": 13, "totals": {"PUT": 12, "GET": 2, "different_byte_overwrites": 6}, "failures": ["idempotent migration", "publication visibility", "callback rollback", "first legacy conversion", "immutable public URL", "idempotence and deduplication", "legacy writer compatibility", "retained version capacity", "required migration guard"]}

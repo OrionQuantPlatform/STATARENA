@@ -1,5 +1,7 @@
 # Backend/cache P0
 
+The P1 read/publication work is implemented locally in [BACKEND_P1.md](BACKEND_P1.md), with a numerical verification report. P0 production verification is recorded in `verification/backend-cache-20261103/deployment/ANALYSE.md`; P1 writer activation remains a separate gated operation.
+
 Implemented from the 3 November 2026 StatArena audit, on the existing Neon + Vercel runtime. Verification and rerun instructions: [RESULTS.md](verification/backend-cache-20261103/RESULTS.md). No schema migration, production deployment, data rewrite or ingestion change belongs to this delivery.
 
 ## Read contract

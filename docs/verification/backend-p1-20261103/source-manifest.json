@@ -1,0 +1,30 @@
+{
+  "base": "6bea1b950abf647c58cf9895761132191261e70f",
+  "branch": "codex/backend-p1-reads-publication",
+  "sha256": {
+    "dashboard/backend/app.js": "4080429ca3137161ca979ccd016809c37743eacb50d70ec357a26e00b8ec2a4f",
+    "dashboard/backend/migrations/001_neon.sql": "8531b7636a332c8ee362b0ccba2ba7d83745437d39db6e00c3ba21cc797bcddf",
+    "dashboard/backend/migrations/002_immutable_storage.sql": "c17ae5e2e75af070c5aedeb1ca292a3c2a36cc3326746c021182798ae06ca535",
+    "dashboard/backend/migrations/003_match_reads.sql": "fbad8f3c032581d0a27809b786461ee466565395d1b5e81063ccd603d46da34e",
+    "dashboard/backend/services/match-reads.js": "c52c8c495e05a20c63da3edf90bb7ae3be19ca62c78b64a87d9ba3055a6e8440",
+    "dashboard/backend/services/metrics.js": "ccb657f2651e08d4ef7605d17e569ea2e7adbe31bc7c5bd06ebe01fcdd506c09",
+    "dashboard/backend/services/neon.js": "ae0f97f1212efccd716d62f05490eb331e05252fe79f8338b4f54402805309e4",
+    "dashboard/frontend/src/components/MatchDetail.jsx": "2fba0ddf662310c9508e6e6b695e670e89c153f982db1eb341b64c9236e3758a",
+    "dashboard/frontend/src/components/MatchSections.jsx": "a1e16a93f508342a9afa0305963c57b9e21d63e7b48ce1a82c36faf41faced74",
+    "dashboard/frontend/src/components/PlayerData.jsx": "eed9cd3be79915897b7d8c7d8728f98124af680cdca7d37d60f3fb3943b39c24",
+    "dashboard/frontend/src/services/cup-worker-client.js": "992be0f70f55fc7fa88e062cdcc62d75992b9f79e67ecb0b9c8fa8ede6aafa2c",
+    "dashboard/frontend/src/services/fixture-pages.js": "10a679b860ac33fee0f0d2fccdda2204672f6f81a05863ffd23bc538759d3239",
+    "dashboard/frontend/src/services/football-client.js": "1efacbf5dbafb7446328e5c52f190260d7d704f3b6e2c8858c60d8d2ea1d735d",
+    "dashboard/frontend/src/services/remote-match.js": "6461c0c8906bc3ac57ee381df6ef0b00125d46b83308784679d46d49c2dacd52",
+    "dashboard/scripts/match_summaries.py": "91952dae29ba9fe05e5259683a9e59c50a453811bfabff8c1ad15c901b510979",
+    "dashboard/scripts/neon_ingest.py": "b377ffeadbe82b0c100f30620aa08b30f376429371b5270fe892f45d5659ef01",
+    "dashboard/scripts/neon_materialize.py": "17a36b8c2c49fc6bf908b92a922c1bd0344e8c7cd12a1442ac12b1f241eb436a",
+    "dashboard/scripts/neon_store.py": "f3be5d974a32589a9f4e0ce06580602f66138ffc9993d76d2c0154e2252a208d",
+    "dashboard/scripts/verify_backend_cache.mjs": "61b2038cc6ed6d3c011cd975cf592778b2743ac530d477bed79d7bc55572d189",
+    "dashboard/scripts/verify_backend_p1.mjs": "63415744ba9debc98aa797c3a3fcc31f41462e5d0eb84c7ef6c43bfbca26c093",
+    "dashboard/scripts/verify_backend_p1_cases.mjs": "8b157433f5fa7f7fe741c9bdbc9c01eb799618640adfc43a29d2d7e803d34ce0",
+    "dashboard/scripts/verify_match_summary_materializer.mjs": "177f75795a33722f44dd2a1ecaf6ed9486db186d098c7e7d7fb4dfbef02bab22",
+    "tests/daily_refresh_postgres.py": "feb7fec269757858d2907d780b5e7b0fcd0e6a3fbf235d185220d3d48b087312",
+    "tests/rematerialize_archive_postgres.py": "390a29395c6195daaf28134c2b322fa514a82e081f57729dd2c885713329175e"
+  }
+}
