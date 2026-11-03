@@ -7,6 +7,7 @@ from build_dashboard_data import build_snapshot, METRICS
 from build_dashboard_views import pack_table
 from neon_ingest import saved
 from mls_fixture_alias import publish_mls_fixture_alias
+from match_summaries import publish_summaries, put_content_json
 
 
 def competition_metadata(existing, profile, league, label, fixtures):
@@ -45,6 +46,10 @@ def _materialize(store, max_partitions=20, league_id=None, recent_first=False):
         params = (league_id, max_partitions)
     partitions_query += " order by changed_at " + ("desc" if recent_first else "asc") + " limit %s"
     for label, league, marked in store.db.execute(partitions_query, params).fetchall():
+        summary_marked = dict(store.db.execute(
+            "select d.match_id,d.changed_at from statarena.dirty_match_summaries d join statarena.fixtures f on f.id=d.match_id where f.league_id=%s and f.season=any(%s)",
+            (league,[label,label.split('/')[0]]),
+        ).fetchall())
         season = next((s for s in manifest["seasons"] if s["id"] == label), None)
         if not season:
             season = {"id": label, "chunks": []}
@@ -312,6 +317,7 @@ def _materialize(store, max_partitions=20, league_id=None, recent_first=False):
         stamp = hashlib.sha256(
             canonical({"tables": tables, "meta": meta, "metrics": metrics}).encode()
         ).hexdigest()
+        publish_summaries(store, tables, stamp, summary_marked)
         if old and old.get("neonDigest") == stamp:
             store.db.execute(
                 "delete from statarena.dirty_partitions where season=%s and league_id=%s and changed_at=%s",
@@ -326,8 +332,8 @@ def _materialize(store, max_partitions=20, league_id=None, recent_first=False):
                     refs[name] = previous_raw["tables"][name]
                     continue
                 digest = full_digest[:24]
-                refs[name] = store.put_json(
-                    f"raw/neon/seasons/{label.replace('/', '-')}/{league}/{name}-{digest}.json.gz",
+                refs[name] = put_content_json(store,
+                    f"raw/neon/seasons/{label.replace('/', '-')}/{league}/{name}-",
                     rows,
                 )
             packed = {
@@ -336,8 +342,8 @@ def _materialize(store, max_partitions=20, league_id=None, recent_first=False):
                 "metrics": metrics,
                 "tables": {k: pack_table(v) for k, v in tables.items()},
             }
-            path = f"computed/dashboard/{label.replace('/', '-')}/{league}-{stamp[:24]}.json.gz"
-            ref = store.put_json(path, packed, hot=True)
+            ref = put_content_json(store, f"computed/dashboard/{label.replace('/', '-')}/{league}-", packed, hot=True)
+            path = ref["path"]
             size = store.db.execute(
                 "select size from statarena.objects where path=%s", (path,)
             ).fetchone()[0]
@@ -397,8 +403,8 @@ def _materialize(store, max_partitions=20, league_id=None, recent_first=False):
         )
     if changed:
         digest = hashlib.sha256(canonical(routing).encode()).hexdigest()
-        ref = store.put_json(
-            "computed/scouting/player-routes-" + digest[:24] + ".json.gz",
+        ref = put_content_json(store,
+            "computed/scouting/player-routes-",
             routing,
             hot=True,
         )

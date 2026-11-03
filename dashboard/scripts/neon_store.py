@@ -1,6 +1,6 @@
 """Shared ingestion store. No repository data directory or Git publication."""
 
-import os, json, gzip, hashlib, base64
+import os, json, gzip, hashlib, base64, re
 import boto3, psycopg
 from botocore.config import Config
 from psycopg.types.json import Jsonb
@@ -20,6 +20,13 @@ class Store:
             application_name="statarena-ingestion",
             options="-c statement_timeout=120000",
         )
+        try:
+            self.db.execute("select storage_key from statarena.objects limit 0")
+            self.db.execute("select storage_key from statarena.object_storage limit 0")
+        except (psycopg.errors.UndefinedColumn, psycopg.errors.UndefinedTable) as exc:
+            self.db.close()
+            raise RuntimeError("Apply 002_immutable_storage.sql before starting this writer") from exc
+        self._storage_db = None
         # A forced refresh is performed at most once in each worker run.
         self.refresh_since = self.db.execute("select clock_timestamp()").fetchone()[0]
         self.s3 = boto3.client(
@@ -41,14 +48,14 @@ class Store:
 
     def bytes(self, path):
         row = self.db.execute(
-            "select body,sha256,size from statarena.objects where path=%s", (path,)
+            "select body,sha256,size,storage_key from statarena.objects where path=%s", (path,)
         ).fetchone()
         if not row:
             raise FileNotFoundError(path)
         body = (
             bytes(row[0])
             if row[0] is not None
-            else self.s3.get_object(Bucket=self.bucket, Key="data/" + path)[
+            else self.s3.get_object(Bucket=self.bucket, Key=row[3] or "data/" + path)[
                 "Body"
             ].read()
         )
@@ -60,37 +67,126 @@ class Store:
         b = self.bytes(path)
         return json.loads(gzip.decompress(b) if path.endswith(".gz") else b)
 
-    def put(self, path, body, content_type="application/json", hot=False):
+    def _storage_ledger(self):
+        # S3 writes survive a surrounding SQL rollback. Their reservations must too.
+        if self._storage_db is None:
+            self._storage_db = psycopg.connect(
+                os.environ["NEON_DATABASE_URL"],
+                autocommit=True,
+                application_name="statarena-storage-ledger",
+                options="-c statement_timeout=120000",
+            )
+        return self._storage_db
+
+    def _reserve_storage(self, key, digest, size, etag, verified=False):
+        ledger = self._storage_ledger()
+        with ledger.transaction():
+            # The main publication connection may hold 97813003. A distinct lock
+            # serializes admission without deadlocking that outer transaction.
+            ledger.execute("select pg_advisory_xact_lock(97813004)")
+            # Reusing physical bytes can still publish a new SQL alias or recovery
+            # record. Only the same-path/digest early return in put writes nothing.
+            sql_bytes = ledger.execute(
+                "select pg_database_size(current_database())"
+            ).fetchone()[0]
+            if sql_bytes > 900_000_000:
+                raise RuntimeError(f"Neon SQL capacity limit: SQL bytes {sql_bytes}")
+            if not key.startswith("data/versions/"):
+                # These bytes already exist: registering a legacy key is accounting,
+                # not a request to upload an additional physical copy.
+                ledger.execute(
+                    "insert into statarena.object_storage(storage_key,sha256,size,etag,state) values(%s,%s,%s,%s,%s) on conflict(storage_key) do update set sha256=excluded.sha256,size=greatest(statarena.object_storage.size,excluded.size),etag=excluded.etag,state=excluded.state,updated_at=now()",
+                    (key, digest, size, etag, "verified" if verified else "reserved"),
+                )
+                return verified
+            row = ledger.execute(
+                "select sha256,size,etag,state from statarena.object_storage where storage_key=%s",
+                (key,),
+            ).fetchone()
+            if row:
+                if bytes(row[0]) != digest or row[1] != size or row[2] != etag:
+                    raise ValueError("Immutable storage key collision")
+                # Verified deduplication and retries of an already budgeted upload
+                # consume no additional reservation, even at the object capacity limit.
+                return row[3] == "verified"
+            used = self._storage_bytes(ledger)
+            if used + size > 4_750_000_000:
+                raise RuntimeError(
+                    f"Neon capacity limit: object bytes {used}+{size}; SQL bytes {sql_bytes}"
+                )
+            ledger.execute(
+                "insert into statarena.object_storage(storage_key,sha256,size,etag,state) values(%s,%s,%s,%s,%s)",
+                (key, digest, size, etag, "verified" if verified else "reserved"),
+            )
+            return verified
+
+    @staticmethod
+    def _storage_bytes(connection):
+        return int(connection.execute(
+            "select coalesce((select sum(size) from statarena.object_storage),0) + coalesce((select sum(greatest(o.size-coalesce(s.size,0),0)) from statarena.objects o left join statarena.object_storage s on s.storage_key='data/'||o.path where o.storage_key is null),0)"
+        ).fetchone()[0])
+
+    def storage_bytes(self):
+        """Conservative physical usage, including rollback/failed-upload reservations."""
+        return self._storage_bytes(self.db)
+
+    def _upload_immutable(self, body, content_type):
         digest = hashlib.sha256(body).digest()
         etag = hashlib.md5(body).hexdigest()
-        old = self.db.execute(
-            "select sha256 from statarena.objects where path=%s", (path,)
-        ).fetchone()
-        if old and bytes(old[0]) == digest:
-            return False
-        if old and (
-            path in ["raw/index.json", "computed/dashboard/index.json"]
-            or path.startswith("computed/matchdays/")
-        ):
-            previous = self.bytes(path)
-            archive = (
-                "raw/neon/versions/"
-                + bytes(old[0]).hex()
-                + (".json.gz" if path.endswith(".gz") else ".json")
-            )
-            self.put(archive, previous, content_type)
+        key = "data/versions/" + digest.hex()
+        if self._reserve_storage(key, digest, len(body), etag):
+            return key
         result = self.s3.put_object(
             Bucket=self.bucket,
-            Key="data/" + path,
+            Key=key,
             Body=body,
             ContentMD5=base64.b64encode(bytes.fromhex(etag)).decode(),
             ContentType=content_type,
         )
         if result["ETag"].strip('"') != etag:
             raise ValueError("Neon server MD5 mismatch")
+        self._storage_ledger().execute(
+            "update statarena.object_storage set state='verified',updated_at=now() where storage_key=%s",
+            (key,),
+        )
+        return key
+
+    def put(self, path, body, content_type="application/json", hot=False):
+        digest = hashlib.sha256(body).digest()
+        etag = hashlib.md5(body).hexdigest()
+        old = self.db.execute(
+            "select sha256,size,etag,content_type,storage_key,body is not null from statarena.objects where path=%s", (path,)
+        ).fetchone()
+        if old and bytes(old[0]) == digest:
+            return False
+        if old and re.search(r"(?:-|/)[a-f0-9]{24,64}\.(?:json(?:\.gz)?|webp|png|jpe?g)$", path):
+            raise ValueError("Cannot replace a content-versioned public URL")
+        recovery = None
+        if old:
+            previous_key = old[4]
+            if previous_key is None:
+                previous = self.bytes(path)
+                # The old legacy physical key remains in the bucket; account for it
+                # separately. Inline reads do not prove its remote bytes exist.
+                self._reserve_storage("data/" + path, bytes(old[0]), old[1], old[2], verified=not old[5])
+                previous_key = self._upload_immutable(previous, old[3])
+            archive = (
+                "raw/neon/versions/"
+                + bytes(old[0]).hex()
+                + (".json.gz" if path.endswith(".json.gz") else os.path.splitext(path)[1])
+            )
+            recovery = (archive, old[1], old[0], old[2], old[3], previous_key)
+        key = self._upload_immutable(body, content_type)
+        if recovery:
+            # The upload admission (including SQL quota for verified-key reuse)
+            # must pass before inserting even the small recovery catalog row.
+            self.db.execute(
+                "insert into statarena.objects(path,size,sha256,etag,content_type,storage_key) values(%s,%s,%s,%s,%s,%s) on conflict(path) do nothing",
+                recovery,
+            )
         self.db.execute(
-            "insert into statarena.objects(path,size,sha256,etag,body,content_type) values(%s,%s,%s,%s,%s,%s) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,updated_at=now()",
-            (path, len(body), digest, etag, body if hot else None, content_type),
+            "insert into statarena.objects(path,size,sha256,etag,body,content_type,storage_key) values(%s,%s,%s,%s,%s,%s,%s) on conflict(path) do update set size=excluded.size,sha256=excluded.sha256,etag=excluded.etag,body=excluded.body,content_type=excluded.content_type,storage_key=excluded.storage_key,updated_at=now()",
+            (path, len(body), digest, etag, body if hot else None, content_type, key),
         )
         return True
 

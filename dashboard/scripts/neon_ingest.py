@@ -494,9 +494,7 @@ def claim_job(store, league_id=None, pulse_only=False):
 
 def capacity(store):
     size = store.db.execute("select pg_database_size(current_database())").fetchone()[0]
-    objects = store.db.execute(
-        "select coalesce(sum(size),0) from statarena.objects"
-    ).fetchone()[0]
+    objects = store.storage_bytes()
     return {
         "sqlBytes": size,
         "objectBytes": int(objects),
