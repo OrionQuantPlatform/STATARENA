@@ -15,7 +15,7 @@ The no-delay and injected-delay JSON receipts contain wall-clock measurements fo
 
 Both writers produced identical PostgreSQL JSON for all 49 seeded matches. The candidate preserved existing context and absent families, canonical variant precedence, opposite-order overlapping transactions, and transaction rollback on a failing seventeenth record. The private candidate also passed the existing 63 match and 65 catalog HTTP workflows that exercise the normalizers.
 
-The candidate patch is kept outside the shared product tree pending review. The caller must replace individual writes within its existing bounded chunk with one batch call, while retaining its existing source quality, headroom, receipt and publication checks. No production database or workflow was modified by this benchmark.
+The reviewed writer is integrated into the existing 16-fixture publication loop. Worker validation rejects unsupported saved endpoints before passing variants to the batch API. Source quality, headroom, receipts and dirty-marker checks still operate within the original partition transaction. The verification used disposable local databases.
 
 Suggested commit `perf: batch typed match publication across fixtures`.
 
@@ -28,7 +28,7 @@ Suggested commit `perf: batch typed match publication across fixtures`.
 
 The no-delay benchmark process peaked at 146,833,408 bytes with the original writer and 162,021,376 bytes with the candidate on macOS. Each process includes the caller-owned cloned source records and the verification reader. The full single-writer SQL contract checks are in match-http-after.json and catalog-http-after.json, with the candidate writer digest recorded explicitly.
 
-## Private candidate
+## Review artifact
 
 The baseline writer is from commit c0e44523be. The review patch at /tmp/statarena-match-batch-writer-20261104/candidate.patch applies cleanly to that commit and changes only dashboard/scripts/relational_match.py. Its SHA-256 is aefb6706b94601923fc1d0a5d0002b5ccd7cc4bcd59a9169ff4c4df6e53edfdc. The resulting writer SHA-256 is 306720599a0ff43d0c7130253549165a8916bca04bdced0962c814afc354475c.
 
@@ -42,3 +42,10 @@ PYTHONPATH=/tmp/statarena-archive-remat-pg/python STATARENA_MATCH_WRITER=/tmp/st
 ```
 
 The private E2E fixture replay used the same candidate import ahead of the frozen single-match seed imports. The harness checkout and launcher used for that run are in /tmp/statarena-match-batch-e2e-20261104. The candidate patch received a successful git apply --check, and the worker and benchmark Python passed Ruff.
+
+
+## Integrated worker verification
+
+All 16 actual publisher workflows passed. In the 64-match interleaved-shard case, the original worker started 64 event-sheet COPY sessions and the integrated worker started four. Both read each archived source file once. A seventeenth record with a valid events response and an unsupported additional resource raised after one earlier group COPY. PostgreSQL rolled back that group, preserved the generation and partition receipts, and retained the dirty marker. Removing the offending saved endpoint published 17 matches; an eighteenth fixture without data acquired no detail header.
+
+The integrated source hashes are 306720599a0ff43d0c7130253549165a8916bca04bdced0962c814afc354475c for the match writer and ca551ca4313bd56a2fb10ea5d60e41c7ba86432a0e5c9cba642cea597dae4e51 for the partition worker. Individual results are in worker-before/batch-integration.json, worker-after/batch-integration.json, worker-after/results.json, match-http-integrated.json and catalog-http-integrated.json.

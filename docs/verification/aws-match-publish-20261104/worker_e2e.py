@@ -39,7 +39,7 @@ ns = {"__file__": str(Path(__file__).resolve()), "__name__": "__main__"}
 psycopg.Cursor.copy = counted
 try:
     # Preserve the reference suite's root and redirect its output to this receipt.
-    exec(compile(source.read_text(), str(source), "exec"), ns)
+    exec(compile(source.read_text(), str(source), "exec"), ns)  # noqa: S102 (trusted, pinned local verification suite)
 except SystemExit as end:
     successful = not end.code
 finally:

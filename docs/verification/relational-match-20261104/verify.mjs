@@ -126,6 +126,7 @@ try {
       "utf8",
     ),
   );
+  await admin.query(await readFile(path.join(root,"dashboard/backend/migrations/007_match_source_fields.sql"),"utf8"));
   const conn = new URL(url);
   conn.searchParams.set("sslmode", "verify-full");
   conn.searchParams.set("sslrootcert", cert);
