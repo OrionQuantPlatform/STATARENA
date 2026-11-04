@@ -56,7 +56,11 @@ try {
   admin = new Client({ connectionString: url });
   await admin.connect();
   result.pg = (await admin.query("show server_version")).rows[0].server_version;
-  for (const file of ["004_match_details.sql", "006_catalog_models.sql"])
+  for (const file of [
+    "004_match_details.sql",
+    "006_catalog_models.sql",
+    "007_match_source_fields.sql",
+  ])
     await admin.query(
       await readFile(
         path.join(root, "dashboard/backend/migrations", file),

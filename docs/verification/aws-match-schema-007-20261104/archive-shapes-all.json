@@ -1,0 +1,12 @@
+{
+  "boundedArrays": "First entry of each nested array, every event, every dynamic player metric in visited group, every root response in each inspected source. Full shot rows separately audited.",
+  "families": {
+    "events": {
+      "available": 3053,
+      "scanned": 1524,
+      "seconds": 65.8,
+      "distinctPaths": 23,
+      "issues": {}
+    }
+  }
+}

@@ -6,12 +6,12 @@ const here=import.meta.dir,root=path.resolve(here,'../../..'),tools=process.env.
 const {default:PG}=await import(tools+'/node_modules/embedded-postgres/dist/index.js'),{Client}=createRequire(root+'/dashboard/package.json')('pg');
 const scratch=await mkdtemp(path.join(tmpdir(),'statarena-full-api-')),reserve=Bun.listen({hostname:'127.0.0.1',port:0,socket:{data(){}}}),port=reserve.port;reserve.stop(true);
 const pg=new PG({databaseDir:scratch+'/db',user:'fixture',password:'fixture',port,persistent:false,autoRehydrateSymlinks:true,postgresFlags:['-c','listen_addresses=127.0.0.1'],onLog(){},onError(){}});
-const report={command:'PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-relational-core-20261104/integrated-api.mjs',setup:'Fresh local PG18.6; actual 003–006 install, typed match and catalog source captures; runtime SELECT-only role. AWS FunctionURL v2 adapter + real HTTP Bun server, loopback only.',requests:[]};
+const report={command:'PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-relational-core-20261104/integrated-api.mjs',setup:'Fresh local PG18.6; actual 003–007 install, typed match and catalog source captures; runtime SELECT-only role. AWS FunctionURL v2 adapter + real HTTP Bun server, loopback only.',requests:[]};
 let admin,http,close;
 try{
  await pg.initialise();await pg.start();const url='postgresql://fixture:fixture@127.0.0.1:'+port+'/postgres';
  admin=new Client({connectionString:url});await admin.connect();
- for(const migration of ['003_relational_core.sql','004_match_details.sql','005_supporting_models.sql','006_catalog_models.sql']) await admin.query(await readFile(root+'/dashboard/backend/migrations/'+migration,'utf8'));
+ for(const migration of ['003_relational_core.sql','004_match_details.sql','005_supporting_models.sql','006_catalog_models.sql','007_match_source_fields.sql']) await admin.query(await readFile(root+'/dashboard/backend/migrations/'+migration,'utf8'));
  for(const [folder,args] of [['relational-match-20261104',[]],['aws-catalog-20261104',[]],['aws-catalog-20261104',['supplemental']]]){
   execFileSync('python3',[path.resolve(here,'../'+folder+'/seed.py'),...args],{env:{...process.env,LOCAL_FIXTURE_DB:url},stdio:'pipe'});
  }

@@ -101,6 +101,7 @@ def workflow(name):
 for f in sorted(wf.glob('*.yml')): case('workflow '+f.stem,lambda n=f.stem:workflow(n))
 with psycopg.connect(os.environ['TEST_DATABASE_URL'],autocommit=True) as db:
     db.execute((root/'dashboard/backend/migrations/004_match_details.sql').read_text())
+    db.execute((root/'dashboard/backend/migrations/007_match_source_fields.sql').read_text())
     def monitor(expect, offline=False):
         with tempfile.TemporaryDirectory() as d:
             output=pathlib.Path(d)/'output';output.touch()
