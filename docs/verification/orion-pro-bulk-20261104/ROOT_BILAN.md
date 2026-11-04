@@ -2,7 +2,7 @@
 
 L’outil importe des phases SQL typées et reprend uniquement un préfixe exact déjà scellé. Il préserve les identifiants métier, remappe séparément générations et snapshots, régénère des reçus honnêtes et conserve les contraintes existantes. Le mode par défaut ne modifie rien ; cette version refuse les connexions distantes et les historiques fermés.
 
-Le workflow PostgreSQL18.6 passe **21/21 scénarios**. ROOT a relu le code, les oracles et les529 hashes d’artefacts, puis ajouté le workflow à la CI Linux ; aucun second passage local identique n’est présenté comme une nouvelle preuve indépendante. Le résultat CI doit être lu après push. Les RED initiaux, erreurs de fixture et erreurs de mapping restent disponibles.
+Le workflow PostgreSQL18.6 passe **21/21 scénarios**. ROOT a relu le code, les oracles et les529 hashes d’artefacts, puis ajouté le workflow à la CI Linux ; aucun second passage local identique n’est présenté comme une nouvelle preuve indépendante. Le [run CI41930722566](https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41930722566) du commitf3b898c6ae passe ses trois jobs. Le log confirme les21 cas bulk et les onze suites Pro,159cas de premier niveau ; métadonnées/log conservés dans ci-main-f3b898c6ae.json/.log. Les RED initiaux, erreurs de fixture et erreurs de mapping restent disponibles.
 
 | Mesure locale, même jeu synthétique | Résultat vérifié |
 |---|---|
