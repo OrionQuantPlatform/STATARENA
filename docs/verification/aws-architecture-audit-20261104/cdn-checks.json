@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-11-04T12:03:01.501930+00:00",
+  "command": "python3 docs/verification/aws-architecture-audit-20261104/cdn_checks.py",
+  "setup": "Existing CDN function readback and one S3 key metadata lookup; unauthenticated HEAD only; no object contents downloaded or remote writes. Correct /data/ prefix follows cloudFrontObjectUrl. Previous missing-prefix403 remains in supplement.json.",
+  "function": {
+    "ETag": "ETVPDKIKX0DER",
+    "ContentType": "application/octet-stream"
+  },
+  "results": [
+    {
+      "kind": "image-with-correct-data-prefix",
+      "url": "https://d2clu0phovomb8.cloudfront.net/data/raw/neon/assets/0000d92ca86177520bac66aed1e8da57a09dfb4586117623c3a378e3e4367d7a.webp",
+      "status": 200,
+      "downloadedBodyBytes": 0,
+      "headers": {
+        "Content-Type": "image/webp",
+        "Content-Length": "7202",
+        "X-Cache": "Miss from cloudfront"
+      }
+    },
+    {
+      "kind": "backup",
+      "url": "https://d2clu0phovomb8.cloudfront.net/_migration/neon-full-initial.dump",
+      "status": 403,
+      "downloadedBodyBytes": 0,
+      "headers": {
+        "Content-Length": "0",
+        "Cache-Control": "no-store",
+        "X-Cache": "FunctionGeneratedResponse from cloudfront"
+      }
+    },
+    {
+      "kind": "mutable-structured-manifest",
+      "url": "https://d2clu0phovomb8.cloudfront.net/data/raw/index.json",
+      "status": 403,
+      "downloadedBodyBytes": 0,
+      "headers": {
+        "Content-Length": "0",
+        "Cache-Control": "no-store",
+        "X-Cache": "FunctionGeneratedResponse from cloudfront"
+      }
+    },
+    {
+      "kind": "immutable-structured-object",
+      "url": "https://d2clu0phovomb8.cloudfront.net/data/raw/pitchapi-world/blobs/000063ab5be801313b65dbe2eff5b187efe8cdca48047335dcd83142d13e4149.json.gz",
+      "status": 200,
+      "downloadedBodyBytes": 0,
+      "headers": {
+        "Content-Type": "application/gzip",
+        "Content-Length": "64",
+        "X-Cache": "Hit from cloudfront"
+      }
+    }
+  ]
+}

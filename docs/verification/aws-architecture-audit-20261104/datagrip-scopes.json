@@ -1,0 +1,48 @@
+[
+  {
+    "file": "dataSources.xml",
+    "name": "StatArena \u2014 AWS RDS (Ohio)",
+    "uuid": "d3c23a0c-1a0a-4874-9a60-486d07e4a986",
+    "scopes": []
+  },
+  {
+    "file": "dataSources.xml",
+    "name": "StatArena prod \u2014 AWS RDS (Ohio)",
+    "uuid": "0cd73bec-1aad-417f-919f-9bf185908a1e",
+    "scopes": []
+  },
+  {
+    "file": "dataSources.local.xml",
+    "name": "StatArena \u2014 AWS RDS (Ohio)",
+    "uuid": "d3c23a0c-1a0a-4874-9a60-486d07e4a986",
+    "scopes": [
+      {
+        "tag": "schema-mapping",
+        "attributes": {},
+        "text": ""
+      },
+      {
+        "tag": "introspection-scope",
+        "attributes": {},
+        "text": ""
+      }
+    ]
+  },
+  {
+    "file": "dataSources.local.xml",
+    "name": "StatArena prod \u2014 AWS RDS (Ohio)",
+    "uuid": "0cd73bec-1aad-417f-919f-9bf185908a1e",
+    "scopes": [
+      {
+        "tag": "schema-mapping",
+        "attributes": {},
+        "text": ""
+      },
+      {
+        "tag": "introspection-scope",
+        "attributes": {},
+        "text": ""
+      }
+    ]
+  }
+]

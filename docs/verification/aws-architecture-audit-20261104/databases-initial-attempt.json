@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-11-04T11:25:45.239125+00:00",
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python python3 docs/verification/aws-architecture-audit-20261104/db_inventory.py",
+  "setup": "Existing RDS host, ingestion identity held only in memory, read-only repeatable snapshots, verified TLS,20s statement deadline. Only catalogs/counts/keys; no row bodies, secrets, schema or data writes.",
+  "databases": {},
+  "errors": [],
+  "finishedUtc": "2026-11-04T11:25:46.284835+00:00"
+}

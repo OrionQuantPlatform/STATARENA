@@ -1,0 +1,113 @@
+{
+  "atUtc": "2026-11-04T12:10:22.179659+00:00",
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python python3 docs/verification/aws-architecture-audit-20261104/domain_integrity.py",
+  "setup": "Existing RDS ingestion SSM parameter, credentials held only in memory; TLS verify-full; repeatable READ ONLY transaction;20s statement timeout; no source/provider reads, SQL writes, schema changes or business row export.",
+  "expected": "An authoritative domain model would resolve populated entity IDs to canonical rows and keep published fixture statuses aligned. The current partial projection can fail those checks: report counts without deleting or repairing anything. Missing/null IDs are distinguished. No full source-equality claim.",
+  "queries": {
+    "matchReferences": "SELECT count(*) matches,\n        count(*) FILTER (WHERE m.home_id IS NOT NULL AND h.id IS NULL) missing_home_team,\n        count(*) FILTER (WHERE m.away_id IS NOT NULL AND a.id IS NULL) missing_away_team,\n        count(*) FILTER (WHERE c.id IS NULL) missing_competition,\n        count(*) FILTER (WHERE cs.competition_id IS NULL) missing_competition_season\n        FROM statarena_app.matches m\n        LEFT JOIN statarena_app.teams h ON h.id=m.home_id\n        LEFT JOIN statarena_app.teams a ON a.id=m.away_id\n        LEFT JOIN statarena_app.competitions c ON c.id=m.league_id\n        LEFT JOIN statarena_app.competition_seasons cs\n          ON cs.competition_id=m.league_id AND cs.season=m.season",
+    "appearanceReferences": "SELECT count(*) appearances,\n        count(*) FILTER (WHERE a.team_id IS NOT NULL AND t.id IS NULL) missing_team,\n        count(*) FILTER (WHERE a.match_id IS NULL) null_match,\n        count(*) FILTER (WHERE a.match_id IS NOT NULL AND m.id IS NULL) missing_match,\n        count(*) FILTER (WHERE p.id IS NULL) missing_player\n        FROM statarena_app.appearances a\n        LEFT JOIN statarena_app.teams t ON t.id=a.team_id\n        LEFT JOIN statarena_app.matches m ON m.id=a.match_id\n        LEFT JOIN statarena_app.players p ON p.id=a.player_ref",
+    "fixtureReferences": "SELECT count(*) fixtures,\n        count(*) FILTER (WHERE f.home_team_id IS NOT NULL AND h.id IS NULL) missing_home_team,\n        count(*) FILTER (WHERE f.away_team_id IS NOT NULL AND a.id IS NULL) missing_away_team,\n        count(*) FILTER (WHERE f.league_id IS NOT NULL AND c.id IS NULL) missing_competition\n        FROM statarena_app.fixtures f\n        LEFT JOIN statarena_app.teams h ON h.id=f.home_team_id\n        LEFT JOIN statarena_app.teams a ON a.id=f.away_team_id\n        LEFT JOIN statarena_app.competitions c ON c.id=f.league_id",
+    "rawVsServingFixtureStatus": "SELECT s.status source_status,a.status serving_status,count(*)\n        FROM statarena.fixtures s JOIN statarena_app.fixtures a ON a.id=s.id\n        WHERE s.status IS DISTINCT FROM a.status\n        GROUP BY 1,2 ORDER BY 1,2",
+    "matchStatuses": "SELECT status,count(*) FROM statarena_app.matches GROUP BY status ORDER BY status",
+    "foreignTables": "SELECT n.nspname,c.relname FROM pg_class c\n        JOIN pg_namespace n ON n.oid=c.relnamespace\n        WHERE c.relkind='f' AND n.nspname NOT LIKE 'pg_%' ORDER BY 1,2"
+  },
+  "results": {
+    "matchReferences": {
+      "columns": [
+        "matches",
+        "missing_home_team",
+        "missing_away_team",
+        "missing_competition",
+        "missing_competition_season"
+      ],
+      "rows": [
+        [
+          3273,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "appearanceReferences": {
+      "columns": [
+        "appearances",
+        "missing_team",
+        "null_match",
+        "missing_match",
+        "missing_player"
+      ],
+      "rows": [
+        [
+          125456,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "fixtureReferences": {
+      "columns": [
+        "fixtures",
+        "missing_home_team",
+        "missing_away_team",
+        "missing_competition"
+      ],
+      "rows": [
+        [
+          7813,
+          108,
+          108,
+          0
+        ]
+      ]
+    },
+    "rawVsServingFixtureStatus": {
+      "columns": [
+        "source_status",
+        "serving_status",
+        "count"
+      ],
+      "rows": [
+        [
+          "finished",
+          "not_started",
+          11
+        ],
+        [
+          "not_started",
+          "postponed",
+          4
+        ]
+      ]
+    },
+    "matchStatuses": {
+      "columns": [
+        "status",
+        "count"
+      ],
+      "rows": [
+        [
+          "finished",
+          3273
+        ]
+      ]
+    },
+    "foreignTables": {
+      "columns": [
+        "nspname",
+        "relname"
+      ],
+      "rows": []
+    }
+  },
+  "identity": [
+    "statarena_prod",
+    "statarena_ingest",
+    "on",
+    true
+  ],
+  "finishedUtc": "2026-11-04T12:10:27.371206+00:00"
+}

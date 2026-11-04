@@ -1,0 +1,19 @@
+dashboard/backend/app.js:6:    provider === "aws" || process.env.DATABASE_URL
+.github/actions/aws-database/bootstrap.py:52:        "DATABASE_URL": url, "DATABASE_CA_PEM": pem, "DATABASE_POOL_MAX": "1",
+.github/actions/aws-database/bootstrap.py:63:            "NEON_DATABASE_URL": url, "STATARENA_DATABASE_CA_PEM": pem,
+.github/actions/aws-database/bootstrap.py:64:            "NEON_STORAGE_ENDPOINT": "https://s3.us-east-2.amazonaws.com",
+.github/actions/aws-database/bootstrap.py:65:            "NEON_STORAGE_REGION": REGION, "NEON_STORAGE_BUCKET": BUCKET,
+.github/actions/aws-database/bootstrap.py:66:            "NEON_STORAGE_ACCESS_KEY_ID": key, "NEON_STORAGE_SECRET_ACCESS_KEY": secret,
+dashboard/scripts/neon_store.py:21:            os.environ["NEON_DATABASE_URL"],
+dashboard/scripts/neon_store.py:30:        self.s3 = boto3.client(
+dashboard/scripts/neon_store.py:32:            endpoint_url=os.environ["NEON_STORAGE_ENDPOINT"],
+dashboard/scripts/neon_store.py:33:            region_name=os.environ.get("NEON_STORAGE_REGION", "us-east-2"),
+dashboard/scripts/neon_store.py:34:            aws_access_key_id=os.environ["NEON_STORAGE_ACCESS_KEY_ID"],
+dashboard/scripts/neon_store.py:35:            aws_secret_access_key=os.environ["NEON_STORAGE_SECRET_ACCESS_KEY"],
+dashboard/scripts/neon_store.py:44:        self.bucket = os.environ.get("NEON_STORAGE_BUCKET", "statarena-data")
+dashboard/scripts/neon_store.py:55:            return self.s3.get_object(Bucket=self.bucket, Key="data/" + key)["Body"].read()
+dashboard/scripts/neon_store.py:89:                current = self.s3.get_object(Bucket=self.bucket, Key="data/" + path)["Body"].read()
+dashboard/scripts/neon_store.py:107:        result = self.s3.put_object(
+dashboard/scripts/relational_materialize.py:116:          LEFT JOIN statarena.current_file_documents d ON d.document_path=o.path AND d.source_path=o.path
+dashboard/scripts/relational_materialize.py:925:    url = os.environ["DATABASE_URL"]
+dashboard/scripts/relational_materialize.py:935:    os.environ["NEON_DATABASE_URL"] = url  # Existing ingestion-only Store interface.

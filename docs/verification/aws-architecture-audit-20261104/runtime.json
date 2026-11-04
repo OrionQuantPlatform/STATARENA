@@ -1,0 +1,118 @@
+{
+  "atUtc": "2026-11-04T11:32:19.789224+00:00",
+  "lambda": {
+    "name": "statarena-backend",
+    "codeSha256": "Im/z7r7PPFeNjjXWB7CtMufgNBZRpz6bJ+NA7l4s+4k=",
+    "runtime": "nodejs24.x",
+    "memoryMiB": 512,
+    "database": {
+      "host": "statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com",
+      "database": "statarena_prod",
+      "role": "statarena_runtime"
+    },
+    "provider": "aws",
+    "environmentKeys": [
+      "DATABASE_POOL_MAX",
+      "DATABASE_URL",
+      "STATARENA_CLOUDFRONT_URL",
+      "STATARENA_DATA_PROVIDER",
+      "STATARENA_RELEASE"
+    ],
+    "vpc": {
+      "SubnetIds": [
+        "subnet-0233a9567335f56ce",
+        "subnet-04c9af303f55d9718",
+        "subnet-0e72516f361932c15"
+      ],
+      "SecurityGroupIds": [
+        "sg-0c96277ace8667fe3"
+      ],
+      "VpcId": "vpc-08e400afa07fc1812",
+      "Ipv6AllowedForDualStack": false
+    }
+  },
+  "vercel": {
+    "project": "statarena-analytics",
+    "root": "dashboard/frontend",
+    "productionId": "dpl_5WKUEwBpNkr3hUEk9Fk8qF8EVFBe",
+    "productionUrl": "statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app",
+    "productionCommit": "0aaf316e0aa525c90b3787df623bb5bfcc2936c8",
+    "state": "READY",
+    "paused": false,
+    "envMetadata": [
+      {
+        "key": "NEXT_PUBLIC_API_ORIGIN",
+        "targets": [
+          "preview"
+        ],
+        "branch": "codex/aws-backend-20261104"
+      },
+      {
+        "key": "NEON_STORAGE_SECRET_ACCESS_KEY",
+        "targets": [
+          "production",
+          "preview"
+        ],
+        "branch": null
+      },
+      {
+        "key": "NEON_STORAGE_ACCESS_KEY_ID",
+        "targets": [
+          "production",
+          "preview"
+        ],
+        "branch": null
+      },
+      {
+        "key": "NEON_STORAGE_REGION",
+        "targets": [
+          "production",
+          "preview"
+        ],
+        "branch": null
+      },
+      {
+        "key": "NEON_STORAGE_BUCKET",
+        "targets": [
+          "production",
+          "preview"
+        ],
+        "branch": null
+      },
+      {
+        "key": "NEON_STORAGE_ENDPOINT",
+        "targets": [
+          "production",
+          "preview"
+        ],
+        "branch": null
+      },
+      {
+        "key": "NEON_DATABASE_URL",
+        "targets": [
+          "production",
+          "preview"
+        ],
+        "branch": null
+      }
+    ]
+  },
+  "canonicalHealth": {
+    "url": "https://statarena-analytics.vercel.app/api/health",
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "source": "Neon",
+      "revision": 18
+    }
+  },
+  "awsHealth": {
+    "url": "https://d317dq37z1tacb.cloudfront.net/api/health",
+    "status": 200,
+    "body": {
+      "source": "AWS",
+      "status": "ok",
+      "revision": "43"
+    }
+  }
+}

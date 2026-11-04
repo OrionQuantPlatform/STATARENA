@@ -1,0 +1,6 @@
+infra/aws-backend/bootstrap-db.py:33:    if runtime["database"] != "statarena_prod" or ingest["database"] != runtime["database"] or runtime["username"] != "statarena_runtime" or ingest["username"] != "statarena_ingest": raise ValueError("Unexpected runtime/ingest identity")
+.github/actions/aws-database/bootstrap.py:42:    if not re.fullmatch(r"[a-z0-9-]+\.[a-z0-9]+\.us-east-2\.rds\.amazonaws\.com", host) or database != "statarena_prod":
+infra/aws-backend/check-runtime.mjs:15:  if (c.host !== "statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com" || c.database !== "statarena_prod" || c.username !== "statarena_runtime") throw Error("Unexpected runtime database target");
+infra/aws-backend/release.py:104:    if c.get("host") != HOST or c.get("database") != "statarena_prod" or not c.get("username") or not c.get("password"):
+infra/aws-backend/release.py:106:    url = "postgresql://" + quote(c["username"], safe="") + ":" + quote(c["password"], safe="") + "@" + HOST + ":5432/statarena_prod"
+dashboard/scripts/relational_materialize.py:931:        or parsed.path != "/statarena_prod"

@@ -1,0 +1,28 @@
+{
+  "atUtc": "2026-11-04T11:40:20.646321+00:00",
+  "setup": "Two unauthenticated HEAD requests to known owned CloudFront paths. No database dump or source content downloaded.",
+  "results": [
+    {
+      "kind": "backup",
+      "method": "HEAD",
+      "status": 403,
+      "headers": {
+        "Content-Length": "0",
+        "Cache-Control": "no-store",
+        "X-Cache": "FunctionGeneratedResponse from cloudfront"
+      },
+      "downloadedBodyBytes": 0
+    },
+    {
+      "kind": "oldStructuredManifest",
+      "method": "HEAD",
+      "status": 403,
+      "headers": {
+        "Content-Length": "0",
+        "Cache-Control": "no-store",
+        "X-Cache": "FunctionGeneratedResponse from cloudfront"
+      },
+      "downloadedBodyBytes": 0
+    }
+  ]
+}
