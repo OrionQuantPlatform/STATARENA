@@ -1,0 +1,187 @@
+{
+  "kind": "local_reader_component_observations",
+  "atUtc": "2026-11-04T20:40:01.499617+00:00",
+  "command": [
+    "python3",
+    "docs/verification/orion-pro-readers-20261104/measurements.py",
+    "--result",
+    "docs/verification/orion-pro-readers-20261104/runs/20261104T203537303447Z-source-profile-native-metres-green/result.json"
+  ],
+  "input": {
+    "path": "docs/verification/orion-pro-readers-20261104/runs/20261104T203537303447Z-source-profile-native-metres-green/result.json",
+    "sha256": "db4c9b5f00010fd5c85c57059e205dfa24f9fa9bdb1e6300396e55811b7de139"
+  },
+  "analyzerSha256": "c5ddff183fefcbe0207bb4b03067a7e15a4017daa582c4958d44944ffddb0522",
+  "counts": {
+    "pass": 23,
+    "fail": 0,
+    "unverified": 0
+  },
+  "runtimeIdentity": [
+    {
+      "role": "statarena_runtime",
+      "readonly": "on"
+    }
+  ],
+  "requestCount": 56,
+  "components": [
+    {
+      "requestId": "r003",
+      "route": "manifest",
+      "method": "GET",
+      "status": 200,
+      "path": "/api/dashboard/manifest",
+      "logicalJsonBytes": 2361,
+      "sqlStatements": 1,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 4.894,
+      "clientSqlMs": 3.562
+    },
+    {
+      "requestId": "r005",
+      "route": "fixtures",
+      "method": "GET",
+      "status": 200,
+      "path": "/api/fixtures?league=l_000001&season=2024%2F2025&limit=2",
+      "logicalJsonBytes": 1250,
+      "sqlStatements": 2,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 8.477,
+      "clientSqlMs": 6.16
+    },
+    {
+      "requestId": "r009",
+      "route": "summary",
+      "method": "GET",
+      "status": 200,
+      "path": "/api/matches/m_000001/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 682,
+      "sqlStatements": 3,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 6.408,
+      "clientSqlMs": 4.896
+    },
+    {
+      "requestId": "r015",
+      "route": "shots",
+      "method": "GET",
+      "status": 200,
+      "path": "/api/pitchapi/matches/m_000001/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 665,
+      "sqlStatements": 3,
+      "heavyQueries": 1,
+      "httpRoundTripMs": 8.008,
+      "clientSqlMs": 6.304
+    },
+    {
+      "requestId": "r035",
+      "route": "manifest",
+      "method": "HEAD",
+      "status": 200,
+      "path": "/api/dashboard/manifest?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 1,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 3.309,
+      "clientSqlMs": 1.991
+    },
+    {
+      "requestId": "r036",
+      "route": "manifest",
+      "method": "GET",
+      "status": 304,
+      "path": "/api/dashboard/manifest?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 1,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 2.864,
+      "clientSqlMs": 2.097
+    },
+    {
+      "requestId": "r037",
+      "route": "fixtures",
+      "method": "HEAD",
+      "status": 200,
+      "path": "/api/fixtures?league=l_000001&season=2024%2F2025&limit=1&v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 1,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 2.598,
+      "clientSqlMs": 1.959
+    },
+    {
+      "requestId": "r038",
+      "route": "fixtures",
+      "method": "GET",
+      "status": 304,
+      "path": "/api/fixtures?league=l_000001&season=2024%2F2025&limit=1&v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 1,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 2.985,
+      "clientSqlMs": 2.275
+    },
+    {
+      "requestId": "r039",
+      "route": "summary",
+      "method": "HEAD",
+      "status": 200,
+      "path": "/api/matches/m_000002/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 2,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 3.417,
+      "clientSqlMs": 2.963
+    },
+    {
+      "requestId": "r040",
+      "route": "summary",
+      "method": "GET",
+      "status": 304,
+      "path": "/api/matches/m_000002/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 2,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 3.286,
+      "clientSqlMs": 2.556
+    },
+    {
+      "requestId": "r041",
+      "route": "shots",
+      "method": "HEAD",
+      "status": 200,
+      "path": "/api/pitchapi/matches/m_000001/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 2,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 3.347,
+      "clientSqlMs": 2.739
+    },
+    {
+      "requestId": "r042",
+      "route": "shots",
+      "method": "GET",
+      "status": 304,
+      "path": "/api/pitchapi/matches/m_000001/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "logicalJsonBytes": 0,
+      "sqlStatements": 2,
+      "heavyQueries": 0,
+      "httpRoundTripMs": 3.759,
+      "clientSqlMs": 2.789
+    }
+  ],
+  "comparison": {
+    "method": "First successful observation of each route/method/status in scripted order; different workflow components, not paired before/after representations",
+    "httpTiming": "Loopback request through complete response body; excludes subsequent diagnostic trace retrieval",
+    "bytes": "Logical UTF-8 JSON body bytes, excluding HTTP headers and transport framing",
+    "sqlTiming": "pg client query elapsed after a pool lease; no production/RDS comparison",
+    "baseline": "Original legacy HTTP RED lacked serving projections and returned errors. It is not a comparable successful baseline.",
+    "unverified": [
+      "real data/source fidelity",
+      "production publisher/collector",
+      "Vercel/browser/CDN behavior",
+      "remote latency/transfer/storage gains",
+      "p95 or causal speedup"
+    ]
+  }
+}

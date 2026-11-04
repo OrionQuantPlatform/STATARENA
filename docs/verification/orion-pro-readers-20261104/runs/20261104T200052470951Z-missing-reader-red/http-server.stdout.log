@@ -1,0 +1,2 @@
+{"event":"ready","port":52341,"identity":[{"role":"statarena_runtime","readonly":"on"}]}
+{"event":"statarena.request","route":"/api/dashboard/manifest","method":"GET","status":503,"duration_ms":5.379,"instance_age_ms":67,"deployment":"local","region":"local","object_versions":[],"metrics":{"sql_count":1,"pool_wait_ms":0.369,"sql_ms":2.681,"sql_errors":1,"serialize_ms":0.007,"response_bytes":102}}

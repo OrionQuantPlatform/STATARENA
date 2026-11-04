@@ -1,0 +1,4 @@
+{"event":"ready","port":52363,"identity":[{"role":"statarena_runtime","readonly":"on"}]}
+{"event":"statarena.request","route":"/api/dashboard/manifest","method":"GET","status":503,"duration_ms":4.878,"instance_age_ms":49,"deployment":"local","region":"local","object_versions":[],"metrics":{"sql_count":1,"pool_wait_ms":0.324,"sql_ms":2.404,"sql_errors":1,"serialize_ms":0.006,"response_bytes":102}}
+{"event":"statarena.request","route":"/api/fixtures","method":"GET","status":400,"duration_ms":1.117,"instance_age_ms":268,"deployment":"local","region":"local","object_versions":[],"metrics":{"serialize_ms":0.003,"response_bytes":102}}
+{"event":"statarena.request","route":"/api/dashboard/manifest","method":"GET","status":503,"duration_ms":0.605,"instance_age_ms":269,"deployment":"local","region":"local","object_versions":[],"metrics":{"sql_count":1,"pool_wait_ms":0.039,"sql_ms":0.352,"sql_errors":1,"serialize_ms":0.002,"response_bytes":102}}

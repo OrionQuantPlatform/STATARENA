@@ -1,0 +1,15 @@
+2026-11-04 21:31:52.599 CET [70245] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 21:31:52.600 CET [70245] LOG:  listening on IPv4 address "127.0.0.1", port 53622
+2026-11-04 21:31:52.601 CET [70245] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-m8az6zpm/socket/.s.PGSQL.53622"
+2026-11-04 21:31:52.607 CET [70252] LOG:  database system was shut down at 2026-11-04 21:31:52 CET
+2026-11-04 21:31:52.610 CET [70245] LOG:  database system is ready to accept connections
+2026-11-04 21:31:53.504 CET [70256] ERROR:  duplicate key value violates unique constraint "football_team_profile_versions_sv_natural_0_canonica_674cc75c60"
+2026-11-04 21:31:53.504 CET [70256] DETAIL:  Key (team_id, source_record_id)=(1, 1) already exists.
+2026-11-04 21:31:53.504 CET [70256] STATEMENT:  INSERT INTO football.team_profile_versions (contract_version,transform_version,transform_code_sha256,variant_key,is_canonical,provenance_kind,recorded_from_gen,team_id,observed_at,slug,team_type,gender,display_name,profile_context,source_id,source_record_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *
+2026-11-04 21:31:53.512 CET [70245] LOG:  received fast shutdown request
+2026-11-04 21:31:53.512 CET [70245] LOG:  aborting any active transactions
+2026-11-04 21:31:53.513 CET [70245] LOG:  background worker "logical replication launcher" (PID 70255) exited with exit code 1
+2026-11-04 21:31:53.513 CET [70250] LOG:  shutting down
+2026-11-04 21:31:53.514 CET [70250] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 21:31:53.555 CET [70250] LOG:  checkpoint complete: wrote 1106 buffers (6.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.012 s, sync=0.030 s, total=0.042 s; sync files=768, longest=0.001 s, average=0.001 s; distance=11186 kB, estimate=11186 kB; lsn=0/2275838, redo lsn=0/2275838
+2026-11-04 21:31:53.560 CET [70245] LOG:  database system is shut down
