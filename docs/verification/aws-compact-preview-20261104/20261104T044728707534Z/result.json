@@ -1,0 +1,716 @@
+{
+  "started": "20261104T044728707534Z",
+  "target": "localhost Next production build against deployed AWS",
+  "commit": "d5df4c5a9a31ee7954dc9403f2fdccb8736371e9",
+  "site": "http://127.0.0.1:51782",
+  "api": "https://d317dq37z1tacb.cloudfront.net",
+  "passed": true,
+  "checks": [
+    {
+      "name": "desktop match overview: local production build returned application",
+      "ok": true,
+      "actual": [
+        "http://127.0.0.1:51782",
+        "/matchs",
+        200
+      ]
+    },
+    {
+      "name": "desktop: RDS score and teams",
+      "ok": true,
+      "actual": {
+        "heading": [
+          "Boulogne — Red Star"
+        ],
+        "teams": [
+          "BoulogneDomicile · 5-3-2",
+          "Red StarExtérieur · 4-2-3-1"
+        ],
+        "scores": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "bounded match summary fetched by preview",
+      "ok": true,
+      "actual": [
+        {
+          "phase": "desktop match overview",
+          "path": "/api/matches/m_02vUAH/summary",
+          "status": 200,
+          "method": "GET",
+          "ttfbMs": 1030.512,
+          "edge": "RefreshHit from cloudfront"
+        }
+      ]
+    },
+    {
+      "name": "overview requested no heavy family or whole-match archive",
+      "ok": true,
+      "actual": [
+        "/api/dashboard/manifest",
+        "/api/seasons/partition",
+        "/api/seasons/partition",
+        "/api/seasons/partition",
+        "/api/seasons/partition",
+        "/api/status",
+        "/api/matches/m_02vUAH/summary",
+        "/api/pitchapi/leagues",
+        "/api/assets",
+        "/api/assets",
+        "/api/assets",
+        "/api/assets",
+        "/api/assets",
+        "/api/assets"
+      ]
+    },
+    {
+      "name": "Statistiques: on-demand CloudFront HTTP",
+      "ok": true,
+      "actual": 200
+    },
+    {
+      "name": "rendered interception values match RDS",
+      "ok": true,
+      "actual": {
+        "rendered": "Interceptions\n10\n8",
+        "expected": [
+          10,
+          8
+        ]
+      }
+    },
+    {
+      "name": "Tirs & xG: on-demand CloudFront HTTP",
+      "ok": true,
+      "actual": 200
+    },
+    {
+      "name": "all source shot rows rendered",
+      "ok": true,
+      "actual": {
+        "count": 23,
+        "expected": 23,
+        "sample": [
+          "3′\nDamien Durand\nBut\n0,55\nxG",
+          "13′\nBenjamin Bešić\nTir\n0,24\nxG",
+          "25′\nJoffrey Bultel\nTir\n0,17\nxG"
+        ]
+      }
+    },
+    {
+      "name": "source shot player and minute rendered",
+      "ok": true,
+      "actual": {
+        "player": "Damien Durand",
+        "minute": 3,
+        "xg": 0.55
+      }
+    },
+    {
+      "name": "no whole-match download after successful lazy detail",
+      "ok": true
+    },
+    {
+      "name": "mobile match overview: local production build returned application",
+      "ok": true,
+      "actual": [
+        "http://127.0.0.1:51782",
+        "/matchs",
+        200
+      ]
+    },
+    {
+      "name": "mobile: RDS score and teams",
+      "ok": true,
+      "actual": {
+        "heading": [
+          "Boulogne — Red Star"
+        ],
+        "teams": [
+          "BoulogneDomicile · 5-3-2",
+          "Red StarExtérieur · 4-2-3-1"
+        ],
+        "scores": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "mobile match fits viewport",
+      "ok": true
+    },
+    {
+      "name": "mobile player: local production build returned application",
+      "ok": true,
+      "actual": [
+        "http://127.0.0.1:51782",
+        "/joueurs",
+        200
+      ]
+    },
+    {
+      "name": "player name matches RDS identity",
+      "ok": true,
+      "actual": [
+        "Joueurs",
+        "Damien Durand\n\nMilieu offensif · Red Star"
+      ]
+    },
+    {
+      "name": "season appearance/minutes match RDS",
+      "ok": true,
+      "actual": {
+        "rendered": {
+          "Matchs": "10",
+          "Minutes": "804",
+          "Titularisations": "9",
+          "Note": "7,35"
+        },
+        "expected": {
+          "appearances": 10,
+          "played": 10,
+          "minutes": 804,
+          "goals": 5
+        }
+      }
+    },
+    {
+      "name": "mobile player fits viewport",
+      "ok": true
+    },
+    {
+      "name": "all structured football traffic went to the dedicated CloudFront API",
+      "ok": true,
+      "actual": {
+        "requests": 36,
+        "violations": 0
+      }
+    },
+    {
+      "name": "zero application JS exceptions",
+      "ok": true,
+      "actual": []
+    },
+    {
+      "name": "desktop match overview: complete compact traversal without retries",
+      "ok": true,
+      "actual": {
+        "requests": 4,
+        "expected": 4,
+        "fixtures": 380,
+        "appearances": 4788
+      }
+    },
+    {
+      "name": "mobile match overview: complete compact traversal without retries",
+      "ok": true,
+      "actual": {
+        "requests": 4,
+        "expected": 4,
+        "fixtures": 380,
+        "appearances": 4788
+      }
+    },
+    {
+      "name": "mobile player: complete compact traversal without retries",
+      "ok": true,
+      "actual": {
+        "requests": 3,
+        "expected": 3,
+        "fixtures": 297,
+        "appearances": 3516
+      }
+    }
+  ],
+  "football": [
+    {
+      "phase": "desktop match overview",
+      "path": "/api/dashboard/manifest",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 437.546,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 2474.635,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 1072.094,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 342.534,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 334.87,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/status",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 918.982,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/matches/m_02vUAH/summary",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 1030.512,
+      "edge": "RefreshHit from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/pitchapi/leagues",
+      "status": 404,
+      "method": "GET",
+      "ttfbMs": 314.245,
+      "edge": "Error from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 326.838,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 340.902,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 354.009,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 373.048,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 389.524,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 400.182,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "desktop match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 497.332,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "open stats",
+      "path": "/api/pitchapi/matches/m_02vUAH/stats",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 127.668,
+      "edge": "RefreshHit from cloudfront"
+    },
+    {
+      "phase": "open shots",
+      "path": "/api/pitchapi/matches/m_02vUAH/shots",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 381.736,
+      "edge": "RefreshHit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/dashboard/manifest",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 389.643,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 6006.991,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 383.813,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 322.122,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 135.5,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/matches/m_02vUAH/summary",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 11.464,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 9.432,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 9.437,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 8.957,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 9.114,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 8.956,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 9.328,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 8.957,
+      "edge": "Hit from cloudfront"
+    },
+    {
+      "phase": "mobile match overview",
+      "path": "/api/status",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 314.745,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile player",
+      "path": "/api/dashboard/manifest",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 312.919,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile player",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 4024.268,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile player",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 348.165,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile player",
+      "path": "/api/seasons/partition",
+      "status": 200,
+      "method": "GET",
+      "ttfbMs": 329.892,
+      "edge": "Miss from cloudfront"
+    },
+    {
+      "phase": "mobile player",
+      "path": "/api/assets",
+      "status": 307,
+      "method": "GET",
+      "ttfbMs": 7.984,
+      "edge": "Hit from cloudfront"
+    }
+  ],
+  "violations": [],
+  "exceptions": [],
+  "errors": [],
+  "views": [
+    {
+      "name": "desktop match overview",
+      "origin": "http://127.0.0.1:51782",
+      "path": "/matchs",
+      "http": 200
+    },
+    {
+      "name": "mobile match overview",
+      "origin": "http://127.0.0.1:51782",
+      "path": "/matchs",
+      "http": 200
+    },
+    {
+      "name": "mobile player",
+      "origin": "http://127.0.0.1:51782",
+      "path": "/joueurs",
+      "http": 200
+    }
+  ],
+  "unavailable": [
+    {
+      "path": "/api/pitchapi/leagues",
+      "status": 404,
+      "phase": "desktop match overview"
+    }
+  ],
+  "partitions": [
+    {
+      "phase": "desktop match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": false,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 100,
+      "matchCount": 100,
+      "appearanceCount": 4788,
+      "wireBytes": 432586,
+      "decodedBytes": 1973314,
+      "requestMs": 2756.578
+    },
+    {
+      "phase": "desktop match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 100,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 6006,
+      "decodedBytes": 58234,
+      "requestMs": 1072.979
+    },
+    {
+      "phase": "desktop match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 100,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 5417,
+      "decodedBytes": 56184,
+      "requestMs": 343.036
+    },
+    {
+      "phase": "desktop match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 80,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 4858,
+      "decodedBytes": 46085,
+      "requestMs": 335.409
+    },
+    {
+      "phase": "mobile match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": false,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 100,
+      "matchCount": 100,
+      "appearanceCount": 4788,
+      "wireBytes": 432048,
+      "decodedBytes": 1973314,
+      "requestMs": 6291.565
+    },
+    {
+      "phase": "mobile match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 100,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 6006,
+      "decodedBytes": 58234,
+      "requestMs": 384.584
+    },
+    {
+      "phase": "mobile match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 100,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 5416,
+      "decodedBytes": 56184,
+      "requestMs": 324.715
+    },
+    {
+      "phase": "mobile match overview",
+      "league": "l_0ALvwF",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216",
+      "fixtureCount": 80,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 4858,
+      "decodedBytes": 46085,
+      "requestMs": 136.46
+    },
+    {
+      "phase": "mobile player",
+      "league": "l_0275VP",
+      "format": "columns",
+      "limit": "100",
+      "cursor": false,
+      "status": 200,
+      "generation": "93becd2bd629939e02df4cb214f925642e9f83b63a27e7eb92f328b813f29309",
+      "fixtureCount": 100,
+      "matchCount": 89,
+      "appearanceCount": 3516,
+      "wireBytes": 342881,
+      "decodedBytes": 1491287,
+      "requestMs": 4288.343
+    },
+    {
+      "phase": "mobile player",
+      "league": "l_0275VP",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "93becd2bd629939e02df4cb214f925642e9f83b63a27e7eb92f328b813f29309",
+      "fixtureCount": 100,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 5476,
+      "decodedBytes": 56637,
+      "requestMs": 349.482
+    },
+    {
+      "phase": "mobile player",
+      "league": "l_0275VP",
+      "format": "columns",
+      "limit": "100",
+      "cursor": true,
+      "status": 200,
+      "generation": "93becd2bd629939e02df4cb214f925642e9f83b63a27e7eb92f328b813f29309",
+      "fixtureCount": 97,
+      "matchCount": 0,
+      "appearanceCount": 0,
+      "wireBytes": 5044,
+      "decodedBytes": 54468,
+      "requestMs": 331.589
+    }
+  ]
+}
