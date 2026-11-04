@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'playwright-cli' --session=orion-ui-20261104t212916 click e5277

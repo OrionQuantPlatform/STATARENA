@@ -1,0 +1,12 @@
+### Result
+- [Screenshot of full page](output/playwright/20261104T212611163860Z-mobile-selected-tab-red/final.png)
+### Ran Playwright code
+```js
+// Screenshot full page and save it as output/playwright/20261104T212611163860Z-mobile-selected-tab-red/final.png
+await page.screenshot({
+  fullPage: true,
+  path: 'output/playwright/20261104T212611163860Z-mobile-selected-tab-red/final.png',
+  scale: 'css',
+  type: 'png'
+});
+```

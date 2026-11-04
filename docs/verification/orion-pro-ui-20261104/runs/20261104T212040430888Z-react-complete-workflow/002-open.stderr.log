@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'playwright-cli' --session=orion-ui-20261104t212040 open about:blank --config /Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/runs/20261104T212040430888Z-react-complete-workflow/playwright.config.json

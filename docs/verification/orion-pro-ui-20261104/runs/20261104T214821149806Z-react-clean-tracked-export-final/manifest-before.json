@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 4,
+  "storage": "aws-orion-pro",
+  "capabilities": {
+    "frozenRepresentations": true,
+    "fixturesPagination": true,
+    "matchSummary": true,
+    "lazyShots": true
+  },
+  "editions": [
+    {
+      "leagueId": "l_000001",
+      "season": "2026/2027",
+      "representationToken": "pro1.6.0bdde43b1285d0aab923387825db89adea6e29d0af00fed6bbf2420e320482b0",
+      "sourceDigest": "d3064b6cba1a1cc92c630b92473c69416f2e6f5f173e692d131b77e5860e2a71",
+      "datasetGeneration": "4",
+      "catalogGeneration": "4"
+    },
+    {
+      "leagueId": "l_000001",
+      "season": "2025/2026",
+      "representationToken": "pro1.5.18ea3abbc45f0abd9265d27972938e51ffa6015a6336254721ebdc64784ac73b",
+      "sourceDigest": "51be3f6d05f9eaa747872c2564e98257f8c908112b92bf5bb8771a8bf8841852",
+      "datasetGeneration": "4",
+      "catalogGeneration": "4"
+    },
+    {
+      "leagueId": "l_000001",
+      "season": "2024/2025",
+      "representationToken": "pro1.4.04facbfdc19bc7aecb4f0c6a881d5933fa3a28f0a4164e1086b34f7295eedd5a",
+      "sourceDigest": "84b1e4f70165e75b922cc20f96c18d8c5e928bcceb9eccf1c0af1b76b5581b7e",
+      "datasetGeneration": "4",
+      "catalogGeneration": "4"
+    }
+  ],
+  "defaultSeason": "2026/2027",
+  "retrievedAt": "2026-11-04T21:48:24.489Z",
+  "seasons": [
+    {
+      "id": "2026/2027",
+      "chunks": [
+        {
+          "leagueId": "l_000001",
+          "sourceDigest": "d3064b6cba1a1cc92c630b92473c69416f2e6f5f173e692d131b77e5860e2a71",
+          "representationToken": "pro1.6.0bdde43b1285d0aab923387825db89adea6e29d0af00fed6bbf2420e320482b0",
+          "meta": {
+            "matchCount": 1
+          },
+          "competitions": [
+            {
+              "id": "l_000001",
+              "name": "Reader league",
+              "seasons": [
+                "2026/2027"
+              ],
+              "sampleMatches": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2025/2026",
+      "chunks": [
+        {
+          "leagueId": "l_000001",
+          "sourceDigest": "51be3f6d05f9eaa747872c2564e98257f8c908112b92bf5bb8771a8bf8841852",
+          "representationToken": "pro1.5.18ea3abbc45f0abd9265d27972938e51ffa6015a6336254721ebdc64784ac73b",
+          "meta": {
+            "matchCount": 1
+          },
+          "competitions": [
+            {
+              "id": "l_000001",
+              "name": "Reader league",
+              "seasons": [
+                "2025/2026"
+              ],
+              "sampleMatches": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2024/2025",
+      "chunks": [
+        {
+          "leagueId": "l_000001",
+          "sourceDigest": "84b1e4f70165e75b922cc20f96c18d8c5e928bcceb9eccf1c0af1b76b5581b7e",
+          "representationToken": "pro1.4.04facbfdc19bc7aecb4f0c6a881d5933fa3a28f0a4164e1086b34f7295eedd5a",
+          "meta": {
+            "matchCount": 61
+          },
+          "competitions": [
+            {
+              "id": "l_000001",
+              "name": "Reader league",
+              "seasons": [
+                "2024/2025"
+              ],
+              "sampleMatches": 61
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "competitions": [
+    {
+      "id": "l_000001",
+      "name": "Reader league",
+      "seasons": [
+        "2026/2027",
+        "2025/2026",
+        "2024/2025"
+      ]
+    }
+  ],
+  "clubCountries": {},
+  "scouting": {
+    "version": 2,
+    "sourceDigest": "54f1b1541e3c5185470b12caba0179dc10df9475efd73ab539896ed3ee0e166d"
+  }
+}

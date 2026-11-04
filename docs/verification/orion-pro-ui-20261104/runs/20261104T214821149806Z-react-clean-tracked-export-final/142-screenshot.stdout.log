@@ -1,0 +1,18 @@
+### Result
+- [Screenshot of full page](output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/15-A-old-history-cache.png)
+### Ran Playwright code
+```js
+// Screenshot full page and save it as output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/15-A-old-history-cache.png
+await page.screenshot({
+  fullPage: true,
+  path: 'output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/15-A-old-history-cache.png',
+  scale: 'css',
+  type: 'png'
+});
+```
+### Page
+- Page URL: http://127.0.0.1:58468/matchs?season=2024%2F2025&focus=all&v=pro1.4.04facbfdc19bc7aecb4f0c6a881d5933fa3a28f0a4164e1086b34f7295eedd5a&tab=results&id=m_000001&competition=l_000001&sourceSeason=2024%2F2025&view=shots
+- Page Title: Calendrier — STATARENA
+- Console: 0 errors, 22 warnings
+### Events
+- New console entries: output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/console-2026-11-04T21-48-29-790Z.log#L26

@@ -1,0 +1,12 @@
+### Result
+- [Screenshot of full page](output/playwright/20261104T211636636384Z-react-first-integration/14-A-latest-corrected.png)
+### Ran Playwright code
+```js
+// Screenshot full page and save it as output/playwright/20261104T211636636384Z-react-first-integration/14-A-latest-corrected.png
+await page.screenshot({
+  fullPage: true,
+  path: 'output/playwright/20261104T211636636384Z-react-first-integration/14-A-latest-corrected.png',
+  scale: 'css',
+  type: 'png'
+});
+```

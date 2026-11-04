@@ -1,0 +1,280 @@
+{
+  "url": "http://127.0.0.1:55642/matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all",
+  "rows": 0,
+  "links": [],
+  "body": "",
+  "proof": {
+    "requests": [
+      {
+        "url": "http://127.0.0.1:55642/matchs/?tab=results&season=2024%2F2025&league=l_000001&focus=all",
+        "method": "GET",
+        "resourceType": "document",
+        "at": 1793826368728
+      },
+      {
+        "url": "http://127.0.0.1:55642/matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all",
+        "method": "GET",
+        "resourceType": "document",
+        "at": 1793826368740
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/webpack.js",
+        "method": "GET",
+        "resourceType": "script",
+        "at": 1793826374067
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/main.js",
+        "method": "GET",
+        "resourceType": "script",
+        "at": 1793826374069
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/react-refresh.js",
+        "method": "GET",
+        "resourceType": "script",
+        "at": 1793826374069
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/pages/_app.js",
+        "method": "GET",
+        "resourceType": "script",
+        "at": 1793826374070
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/pages/_error.js",
+        "method": "GET",
+        "resourceType": "script",
+        "at": 1793826374071
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/development/_devMiddlewareManifest.json",
+        "method": "GET",
+        "resourceType": "fetch",
+        "at": 1793826374378
+      },
+      {
+        "url": "http://127.0.0.1:55642/__nextjs_font/geist-latin.woff2",
+        "method": "GET",
+        "resourceType": "font",
+        "at": 1793826374708
+      },
+      {
+        "url": "http://127.0.0.1:55642/__nextjs_font/geist-mono-latin.woff2",
+        "method": "GET",
+        "resourceType": "font",
+        "at": 1793826374709
+      }
+    ],
+    "responses": [
+      {
+        "url": "http://127.0.0.1:55642/matchs/?tab=results&season=2024%2F2025&league=l_000001&focus=all",
+        "method": "GET",
+        "status": 308,
+        "headers": {
+          "connection": "keep-alive",
+          "date": "Wed, 04 Nov 2026 21:06:08 GMT",
+          "keep-alive": "timeout=5",
+          "refresh": "0;url=/matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all",
+          "transfer-encoding": "chunked",
+          "location": "/matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all"
+        },
+        "at": 1793826368741
+      },
+      {
+        "url": "http://127.0.0.1:55642/matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all",
+        "method": "GET",
+        "status": 500,
+        "headers": {
+          "cache-control": "no-store",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "text/html; charset=utf-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "etag": "\"pptgsdywdo2hj\"",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374052
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/pages/_app.js",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "cache-control": "no-cache, must-revalidate",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "etag": "W/\"1105-1a1a8623c16\"",
+          "keep-alive": "timeout=5",
+          "last-modified": "Wed, 04 Nov 2026 21:06:12 GMT",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374087
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/pages/_error.js",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "cache-control": "no-cache, must-revalidate",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "etag": "W/\"108e-1a1a8623c16\"",
+          "keep-alive": "timeout=5",
+          "last-modified": "Wed, 04 Nov 2026 21:06:12 GMT",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374088
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/webpack.js",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "cache-control": "no-cache, must-revalidate",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "etag": "W/\"21f20-1a1a8623c15\"",
+          "keep-alive": "timeout=5",
+          "last-modified": "Wed, 04 Nov 2026 21:06:12 GMT",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374088
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/react-refresh.js",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "cache-control": "no-cache, must-revalidate",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "etag": "W/\"14262-1a1a8623c14\"",
+          "keep-alive": "timeout=5",
+          "last-modified": "Wed, 04 Nov 2026 21:06:12 GMT",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374088
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/chunks/fallback/main.js",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "cache-control": "no-cache, must-revalidate",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "etag": "W/\"791ae6-1a1a8623c17\"",
+          "keep-alive": "timeout=5",
+          "last-modified": "Wed, 04 Nov 2026 21:06:12 GMT",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374222
+      },
+      {
+        "url": "http://127.0.0.1:55642/_next/static/development/_devMiddlewareManifest.json",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "connection": "keep-alive",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "at": 1793826374690
+      },
+      {
+        "url": "http://127.0.0.1:55642/__nextjs_font/geist-latin.woff2",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "access-control-allow-methods": "OPTIONS, GET",
+          "access-control-allow-origin": "http://127.0.0.1:55642",
+          "cache-control": "public, max-age=31536000, immutable",
+          "connection": "keep-alive",
+          "content-type": "font/woff2",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "at": 1793826374724
+      },
+      {
+        "url": "http://127.0.0.1:55642/__nextjs_font/geist-mono-latin.woff2",
+        "method": "GET",
+        "status": 200,
+        "headers": {
+          "access-control-allow-methods": "OPTIONS, GET",
+          "access-control-allow-origin": "http://127.0.0.1:55642",
+          "cache-control": "public, max-age=31536000, immutable",
+          "connection": "keep-alive",
+          "content-type": "font/woff2",
+          "date": "Wed, 04 Nov 2026 21:06:14 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        },
+        "at": 1793826374724
+      }
+    ],
+    "failures": [],
+    "console": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "at": 1793826374058
+      },
+      {
+        "type": "info",
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+        "at": 1793826374313
+      },
+      {
+        "type": "log",
+        "text": "[HMR] connected",
+        "at": 1793826374688
+      },
+      {
+        "type": "error",
+        "text": "./src/components/NationalFlag.jsx:2:1\nModule not found: Can't resolve 'flag-icons/css/flag-icons.min.css'\n  1 | import React from \"react\";\n> 2 | import \"flag-icons/css/flag-icons.min.css\";\n    | ^\n  3 | import { nationalFlagCode } from \"../services/national-flags.js\";\n  4 |\n  5 | export default function NationalFlag({ name, season, className = \"\" }) {\n\nhttps://nextjs.org/docs/messages/module-not-found\n\nImport trace for requested module:\n./src/components/CompetitionStandings.jsx\n./src/components/MatchStandings.jsx\n./src/components/MatchDetail.jsx\n./src/views/MatchesPage.jsx",
+        "at": 1793826374688
+      },
+      {
+        "type": "error",
+        "text": "./src/services/national-flags.js:1:1\nModule not found: Can't resolve 'flag-icons/country.json'\n> 1 | import countries from \"flag-icons/country.json\" with { type: \"json\" };\n    | ^\n  2 | import { normalizeText } from \"../model.js\";\n  3 |\n  4 | const key = (value) =>\n\nhttps://nextjs.org/docs/messages/module-not-found\n\nImport trace for requested module:\n./src/components/CompetitionStandings.jsx\n./src/components/MatchStandings.jsx\n./src/components/MatchDetail.jsx\n./src/views/MatchesPage.jsx",
+        "at": 1793826374688
+      }
+    ],
+    "pageErrors": [
+      {
+        "message": "Error: Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'\n  1 | import React from \"react\";\n> 2 | import \"flag-icons/css/flag-icons.min.css\";\n    | ^\n  3 | import { nationalFlagCode } from \"../services/national-flags.js\";\n  4 |\n  5 | export default function NationalFlag({ name, season, className = \"\" }) {\n\nhttps://nextjs.org/docs/messages/module-not-found\n\nImport trace for requested module:\n./src/components/CompetitionStandings.jsx\n./src/components/MatchStandings.jsx\n./src/components/MatchDetail.jsx\n./src/views/MatchesPage.jsx",
+        "at": 1793826374687
+      }
+    ],
+    "external": [],
+    "initialWait": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
+  }
+}

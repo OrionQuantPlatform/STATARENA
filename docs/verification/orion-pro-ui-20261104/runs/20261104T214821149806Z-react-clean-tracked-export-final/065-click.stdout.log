@@ -1,0 +1,12 @@
+### Ran Playwright code
+```js
+await page.getByRole('button', { name: 'Actualiser' }).click();
+```
+### Page
+- Page URL: http://127.0.0.1:58468/matchs?season=2024%2F2025&focus=all&league=l_000001&tab=results
+- Page Title: Calendrier — STATARENA
+- Console: 0 errors, 8 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/page-2026-11-04T21-49-34-124Z.yml)
+### Events
+- New console entries: output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/console-2026-11-04T21-48-29-790Z.log#L12

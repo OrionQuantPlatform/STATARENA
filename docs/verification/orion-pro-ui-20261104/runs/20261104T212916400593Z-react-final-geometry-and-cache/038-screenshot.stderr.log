@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'playwright-cli' --session=orion-ui-20261104t212916 screenshot --filename /Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/05-A-summary.png --full-page

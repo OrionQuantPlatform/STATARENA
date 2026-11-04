@@ -1,0 +1,89 @@
+▲ Next.js 16.4.3 (webpack)
+- Local:         http://127.0.0.1:55642
+- Network:       http://127.0.0.1:55642
+✓ Ready in 386ms
+✓ Running next.config.mjs took 16ms
+
+⨯ ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx
+○ Compiling /matchs/page ...
+⨯ ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx
+ GET /matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all 500 in 2.9s (next.js: 2.8s, application-code: 70ms)
+[browser] Uncaught Error: Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[?25h

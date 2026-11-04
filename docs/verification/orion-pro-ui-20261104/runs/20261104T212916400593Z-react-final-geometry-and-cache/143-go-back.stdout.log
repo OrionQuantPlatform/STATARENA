@@ -1,0 +1,10 @@
+### Ran Playwright code
+```js
+await page.goBack();
+```
+### Page
+- Page URL: http://127.0.0.1:57320/matchs?season=2024%2F2025&focus=all&tab=results
+- Page Title: Calendrier — STATARENA
+- Console: 0 errors, 22 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/page-2026-11-04T21-31-58-572Z.yml)

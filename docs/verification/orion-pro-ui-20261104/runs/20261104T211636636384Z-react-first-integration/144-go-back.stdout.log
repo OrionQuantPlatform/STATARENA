@@ -1,0 +1,10 @@
+### Ran Playwright code
+```js
+await page.goBack();
+```
+### Page
+- Page URL: http://127.0.0.1:56223/matchs?season=2025%2F2026&focus=all&v=pro1.5.18ea3abbc45f0abd9265d27972938e51ffa6015a6336254721ebdc64784ac73b&tab=results&id=m_000004&competition=l_000001&sourceSeason=2025%2F2026
+- Page Title: Calendrier — STATARENA
+- Console: 3 errors, 23 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T211636636384Z-react-first-integration/page-2026-11-04T21-19-07-260Z.yml)

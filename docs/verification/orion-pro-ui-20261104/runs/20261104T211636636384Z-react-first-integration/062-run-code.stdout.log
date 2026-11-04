@@ -1,0 +1,12 @@
+### Result
+{"ready":true}
+### Ran Playwright code
+```js
+await (async (page) => { await page.waitForFunction(() => (document.querySelectorAll('.match-row').length === 30), null, { timeout: 15000 }); return { ready: true }; })(page);
+```
+### Page
+- Page URL: http://127.0.0.1:56223/matchs?season=2024%2F2025&focus=all&league=l_000001&tab=results
+- Page Title: Calendrier — STATARENA
+- Console: 2 errors, 9 warnings
+### Events
+- New console entries: output/playwright/20261104T211636636384Z-react-first-integration/console-2026-11-04T21-16-44-663Z.log#L17

@@ -1,0 +1,12 @@
+### Ran Playwright code
+```js
+await page.getByRole('tab', { name: 'Tirs & xG' }).click();
+```
+### Page
+- Page URL: http://127.0.0.1:56223/matchs?season=2024%2F2025&focus=all&v=pro1.7.908f8e246ce38c2d89adec96709dc78fddbf2f71e3893717f5471b8d54c2c28c&tab=results&id=m_000001&competition=l_000001&sourceSeason=2024%2F2025&view=shots
+- Page Title: Calendrier — STATARENA
+- Console: 3 errors, 21 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T211636636384Z-react-first-integration/page-2026-11-04T21-18-56-647Z.yml)
+### Events
+- New console entries: output/playwright/20261104T211636636384Z-react-first-integration/console-2026-11-04T21-16-44-663Z.log#L30

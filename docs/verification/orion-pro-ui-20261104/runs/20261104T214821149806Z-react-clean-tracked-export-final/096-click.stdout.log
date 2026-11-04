@@ -1,0 +1,10 @@
+### Ran Playwright code
+```js
+await page.getByRole('link', { name: '4 nov. 2026 Shared team v1 1' }).click();
+```
+### Page
+- Page URL: http://127.0.0.1:58468/matchs?season=2025%2F2026&focus=all&v=pro1.5.18ea3abbc45f0abd9265d27972938e51ffa6015a6336254721ebdc64784ac73b&tab=results&id=m_000004&competition=l_000001&sourceSeason=2025%2F2026
+- Page Title: Calendrier — STATARENA
+- Console: 0 errors, 12 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T214821149806Z-react-clean-tracked-export-final/page-2026-11-04T21-50-08-374Z.yml)

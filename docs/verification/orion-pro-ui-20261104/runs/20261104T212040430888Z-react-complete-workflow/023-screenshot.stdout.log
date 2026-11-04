@@ -1,0 +1,12 @@
+### Result
+- [Screenshot of full page](output/playwright/20261104T212040430888Z-react-complete-workflow/03-page-3.png)
+### Ran Playwright code
+```js
+// Screenshot full page and save it as output/playwright/20261104T212040430888Z-react-complete-workflow/03-page-3.png
+await page.screenshot({
+  fullPage: true,
+  path: 'output/playwright/20261104T212040430888Z-react-complete-workflow/03-page-3.png',
+  scale: 'css',
+  type: 'png'
+});
+```

@@ -1,0 +1,29 @@
+### Result
+{"selected":"Tirs & xG","ariaSelected":"true","list":{"left":14,"right":376,"top":549.09375,"bottom":592.09375,"width":362,"height":43},"active":{"left":293.0625,"right":367.96875,"top":549.09375,"bottom":591.09375,"width":74.90625,"height":42},"clip":{"left":14,"right":376,"top":549.09375,"bottom":591.09375},"scrollLeft":188,"clientWidth":362,"scrollWidth":843,"viewport":{"width":390,"height":844},"documentScroll":{"x":0,"y":0},"fullyWithinHorizontalScrollport":true,"fullyWithinVerticalScrollport":true}
+### Ran Playwright code
+```js
+await (async (page) => page.evaluate(() => {
+  const tablist = document.querySelector('[role="tablist"][aria-label="Analyse du match"]');
+  const selected = tablist?.querySelector('[role="tab"][aria-selected="true"]');
+  if (!tablist || !selected) throw Error("Selected analysis tab missing");
+  const rect = (element) => {
+    const r = element.getBoundingClientRect();
+    return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height };
+  };
+  const list = rect(tablist), active = rect(selected);
+  const clip = {
+    left: Math.max(0, list.left + tablist.clientLeft),
+    right: Math.min(innerWidth, list.left + tablist.clientLeft + tablist.clientWidth),
+    top: Math.max(0, list.top + tablist.clientTop),
+    bottom: Math.min(innerHeight, list.top + tablist.clientTop + tablist.clientHeight),
+  };
+  return {
+    selected: selected.textContent.trim(), ariaSelected: selected.getAttribute("aria-selected"),
+    list, active, clip, scrollLeft: tablist.scrollLeft, clientWidth: tablist.clientWidth, scrollWidth: tablist.scrollWidth,
+    viewport: { width: innerWidth, height: innerHeight }, documentScroll: { x: scrollX, y: scrollY },
+    fullyWithinHorizontalScrollport: active.left >= clip.left - 1 && active.right <= clip.right + 1,
+    fullyWithinVerticalScrollport: active.top >= clip.top - 1 && active.bottom <= clip.bottom + 1,
+  };
+})
+)(page);
+```

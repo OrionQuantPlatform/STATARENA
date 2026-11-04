@@ -1,0 +1,10 @@
+### Ran Playwright code
+```js
+await page.getByRole('button', { name: 'Suivants' }).click();
+```
+### Page
+- Page URL: http://127.0.0.1:56223/matchs?season=2024%2F2025&focus=all&league=l_000001&tab=results
+- Page Title: Calendrier — STATARENA
+- Console: 2 errors, 9 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T211636636384Z-react-first-integration/page-2026-11-04T21-17-47-420Z.yml)

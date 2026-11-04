@@ -1,0 +1,10 @@
+▲ Next.js 16.4.3 (webpack)
+- Local:         http://127.0.0.1:55727
+- Network:       http://127.0.0.1:55727
+✓ Ready in 290ms
+✓ Running next.config.mjs took 10ms
+
+ GET /matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all 200 in 400ms (next.js: 165ms, application-code: 235ms)
+ GET /api/dashboard/manifest 200 in 382ms (next.js: 344ms, application-code: 38ms)
+ GET /api/seasons/partition?season=2024%2F2025&league=l_000001&format=columns&limit=100 503 in 14ms (next.js: 3ms, application-code: 11ms)
+[?25h

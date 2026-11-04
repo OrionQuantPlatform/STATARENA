@@ -1,0 +1,10 @@
+### Ran Playwright code
+```js
+await page.getByLabel('Saison').selectOption('2026/2027');
+```
+### Page
+- Page URL: http://127.0.0.1:56612/matchs?season=2026%2F2027&focus=all&tab=results
+- Page Title: Calendrier — STATARENA
+- Console: 2 errors, 9 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T212040430888Z-react-complete-workflow/page-2026-11-04T21-22-06-746Z.yml)

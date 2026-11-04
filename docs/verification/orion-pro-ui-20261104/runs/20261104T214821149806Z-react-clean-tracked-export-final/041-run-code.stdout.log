@@ -1,0 +1,6 @@
+### Result
+{"ready":true}
+### Ran Playwright code
+```js
+await (async (page) => { await page.waitForFunction(() => (document.querySelectorAll('circle.shot-point').length === 1), null, { timeout: 15000 }); return { ready: true }; })(page);
+```

@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'playwright-cli' --session=orion-ui-20261104t212040 goto http://127.0.0.1:56612/matchs/?tab=results&season=2024%2F2025&league=l_000001&focus=all

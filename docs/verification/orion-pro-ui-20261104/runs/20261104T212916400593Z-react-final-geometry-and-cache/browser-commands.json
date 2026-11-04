@@ -1,0 +1,1953 @@
+[
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "--version"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "001---version.stdout.log",
+    "stderr": "001---version.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "open",
+      "about:blank",
+      "--config",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/runs/20261104T212916400593Z-react-final-geometry-and-cache/playwright.config.json"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "002-open.stdout.log",
+    "stderr": "002-open.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "tracing-start"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "003-tracing-start.stdout.log",
+    "stderr": "003-tracing-start.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_setup.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "004-run-code.stdout.log",
+    "stderr": "004-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "goto",
+      "http://127.0.0.1:57320/matchs/?tab=results&season=2024%2F2025&league=l_000001&focus=all"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "005-goto.stdout.log",
+    "stderr": "005-goto.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/initial.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "006-snapshot.stdout.log",
+    "stderr": "006-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_initial.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "007-run-code.stdout.log",
+    "stderr": "007-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/initial-settled.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "008-snapshot.stdout.log",
+    "stderr": "008-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/initial.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "009-screenshot.stdout.log",
+    "stderr": "009-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "010-run-code.stdout.log",
+    "stderr": "010-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/01-page-1.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "011-snapshot.stdout.log",
+    "stderr": "011-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/01-page-1.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "012-screenshot.stdout.log",
+    "stderr": "012-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-1-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "013-snapshot.stdout.log",
+    "stderr": "013-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e554"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "014-click.stdout.log",
+    "stderr": "014-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000034\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "015-run-code.stdout.log",
+    "stderr": "015-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "016-run-code.stdout.log",
+    "stderr": "016-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/02-page-2.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "017-snapshot.stdout.log",
+    "stderr": "017-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-2-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "018-snapshot.stdout.log",
+    "stderr": "018-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e1008"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "019-click.stdout.log",
+    "stderr": "019-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelectorAll('.match-row').length === 1 && !!document.querySelector('.match-row[href*=\"id=m_000003\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "020-run-code.stdout.log",
+    "stderr": "020-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "021-run-code.stdout.log",
+    "stderr": "021-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/03-page-3.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "022-snapshot.stdout.log",
+    "stderr": "022-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/03-page-3.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "023-screenshot.stdout.log",
+    "stderr": "023-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/third-disabled-next.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "024-snapshot.stdout.log",
+    "stderr": "024-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-3-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "025-snapshot.stdout.log",
+    "stderr": "025-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e1025"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "026-click.stdout.log",
+    "stderr": "026-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000034\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "027-run-code.stdout.log",
+    "stderr": "027-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-3-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "028-snapshot.stdout.log",
+    "stderr": "028-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e1479"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "029-click.stdout.log",
+    "stderr": "029-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000001\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "030-run-code.stdout.log",
+    "stderr": "030-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "031-run-code.stdout.log",
+    "stderr": "031-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/04-visited-page-1.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "032-snapshot.stdout.log",
+    "stderr": "032-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-row-m_000001.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "033-snapshot.stdout.log",
+    "stderr": "033-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e1482"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "034-click.stdout.log",
+    "stderr": "034-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-scoreboard')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "035-run-code.stdout.log",
+    "stderr": "035-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "036-run-code.stdout.log",
+    "stderr": "036-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/05-A-summary.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "037-snapshot.stdout.log",
+    "stderr": "037-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/05-A-summary.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "038-screenshot.stdout.log",
+    "stderr": "038-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-5-tab.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "039-snapshot.stdout.log",
+    "stderr": "039-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e2045"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "040-click.stdout.log",
+    "stderr": "040-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelectorAll('circle.shot-point').length === 1), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "041-run-code.stdout.log",
+    "stderr": "041-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "042-run-code.stdout.log",
+    "stderr": "042-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/06-A-shots-zero-metres.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "043-snapshot.stdout.log",
+    "stderr": "043-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/06-A-shots-zero-metres.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "044-screenshot.stdout.log",
+    "stderr": "044-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-6-tab.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "045-snapshot.stdout.log",
+    "stderr": "045-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e2030"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "046-click.stdout.log",
+    "stderr": "046-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!document.querySelector('circle.shot-point')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "047-run-code.stdout.log",
+    "stderr": "047-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-6-tab.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "048-snapshot.stdout.log",
+    "stderr": "048-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e2045"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "049-click.stdout.log",
+    "stderr": "049-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('circle.shot-point')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "050-run-code.stdout.log",
+    "stderr": "050-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "051-run-code.stdout.log",
+    "stderr": "051-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/07-A-shots-cache.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "052-snapshot.stdout.log",
+    "stderr": "052-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => page.evaluate(() => { window.scrollTo(0, 0); return { scrollX, scrollY }; })"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "053-run-code.stdout.log",
+    "stderr": "053-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "resize",
+      "390",
+      "844"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "054-resize.stdout.log",
+    "stderr": "054-resize.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/mobile-selected-tab-settled.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "055-snapshot.stdout.log",
+    "stderr": "055-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_tab_geometry.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "056-run-code.stdout.log",
+    "stderr": "056-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/mobile-selected-tab-geometry.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "057-screenshot.stdout.log",
+    "stderr": "057-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "058-run-code.stdout.log",
+    "stderr": "058-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/08-mobile-shots.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "059-snapshot.stdout.log",
+    "stderr": "059-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/08-mobile-shots.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "060-screenshot.stdout.log",
+    "stderr": "060-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-8-link.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "061-snapshot.stdout.log",
+    "stderr": "061-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e1963"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "062-click.stdout.log",
+    "stderr": "062-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "063-run-code.stdout.log",
+    "stderr": "063-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-8-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "064-snapshot.stdout.log",
+    "stderr": "064-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e2347"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "065-click.stdout.log",
+    "stderr": "065-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "066-run-code.stdout.log",
+    "stderr": "066-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelectorAll('.match-row').length === 30), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "067-run-code.stdout.log",
+    "stderr": "067-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "068-run-code.stdout.log",
+    "stderr": "068-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/09-mobile-list.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "069-snapshot.stdout.log",
+    "stderr": "069-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/09-mobile-list.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "070-screenshot.stdout.log",
+    "stderr": "070-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-9-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "071-snapshot.stdout.log",
+    "stderr": "071-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e3145"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "072-click.stdout.log",
+    "stderr": "072-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000034\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "073-run-code.stdout.log",
+    "stderr": "073-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-9-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "074-snapshot.stdout.log",
+    "stderr": "074-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e3507"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "075-click.stdout.log",
+    "stderr": "075-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000001\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "076-run-code.stdout.log",
+    "stderr": "076-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "resize",
+      "1440",
+      "1000"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "077-resize.stdout.log",
+    "stderr": "077-resize.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-season-2026-2027.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "078-snapshot.stdout.log",
+    "stderr": "078-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "select",
+      "e2757",
+      "2026/2027"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "079-select.stdout.log",
+    "stderr": "079-select.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000005\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "080-run-code.stdout.log",
+    "stderr": "080-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-row-m_000005.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "081-snapshot.stdout.log",
+    "stderr": "081-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4053"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "082-click.stdout.log",
+    "stderr": "082-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-scoreboard')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "083-run-code.stdout.log",
+    "stderr": "083-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "084-run-code.stdout.log",
+    "stderr": "084-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/10-C-before-publication.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "085-snapshot.stdout.log",
+    "stderr": "085-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-10-link.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "086-snapshot.stdout.log",
+    "stderr": "086-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4099"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "087-click.stdout.log",
+    "stderr": "087-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "088-run-code.stdout.log",
+    "stderr": "088-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-10-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "089-snapshot.stdout.log",
+    "stderr": "089-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4309"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "090-click.stdout.log",
+    "stderr": "090-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "091-run-code.stdout.log",
+    "stderr": "091-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-season-2025-2026.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "092-snapshot.stdout.log",
+    "stderr": "092-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "select",
+      "e4374",
+      "2025/2026"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "093-select.stdout.log",
+    "stderr": "093-select.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000004\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "094-run-code.stdout.log",
+    "stderr": "094-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-row-m_000004.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "095-snapshot.stdout.log",
+    "stderr": "095-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4466"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "096-click.stdout.log",
+    "stderr": "096-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-scoreboard')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "097-run-code.stdout.log",
+    "stderr": "097-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "098-run-code.stdout.log",
+    "stderr": "098-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/11-B-null-profile.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "099-snapshot.stdout.log",
+    "stderr": "099-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/11-B-null-profile.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "100-screenshot.stdout.log",
+    "stderr": "100-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-11-link.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "101-snapshot.stdout.log",
+    "stderr": "101-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4512"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "102-click.stdout.log",
+    "stderr": "102-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "103-run-code.stdout.log",
+    "stderr": "103-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-11-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "104-snapshot.stdout.log",
+    "stderr": "104-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4722"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "105-click.stdout.log",
+    "stderr": "105-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "106-run-code.stdout.log",
+    "stderr": "106-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-season-2024-2025.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "107-snapshot.stdout.log",
+    "stderr": "107-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "select",
+      "e4787",
+      "2024/2025"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "108-select.stdout.log",
+    "stderr": "108-select.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row[href*=\"id=m_000001\"]')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "109-run-code.stdout.log",
+    "stderr": "109-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-row-m_000001.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "110-snapshot.stdout.log",
+    "stderr": "110-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e4820"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "111-click.stdout.log",
+    "stderr": "111-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-scoreboard')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "112-run-code.stdout.log",
+    "stderr": "112-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-11-tab.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "113-snapshot.stdout.log",
+    "stderr": "113-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e5359"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "114-click.stdout.log",
+    "stderr": "114-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('circle.shot-point')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "115-run-code.stdout.log",
+    "stderr": "115-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "116-run-code.stdout.log",
+    "stderr": "116-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/12-A-open-during-publication.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "117-snapshot.stdout.log",
+    "stderr": "117-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "118-run-code.stdout.log",
+    "stderr": "118-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/13-A-stays-frozen-after-publication.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "119-snapshot.stdout.log",
+    "stderr": "119-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-13-link.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "120-snapshot.stdout.log",
+    "stderr": "120-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e5277"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "121-click.stdout.log",
+    "stderr": "121-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "122-run-code.stdout.log",
+    "stderr": "122-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-13-button.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "123-snapshot.stdout.log",
+    "stderr": "123-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e5528"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "124-click.stdout.log",
+    "stderr": "124-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "125-run-code.stdout.log",
+    "stderr": "125-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => ([...document.querySelectorAll('.match-row')].some(row => new URL(row.href).searchParams.get('v') === \"pro1.7.908f8e246ce38c2d89adec96709dc78fddbf2f71e3893717f5471b8d54c2c28c\")), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "126-run-code.stdout.log",
+    "stderr": "126-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-row-m_000001.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "127-snapshot.stdout.log",
+    "stderr": "127-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e6042"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "128-click.stdout.log",
+    "stderr": "128-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelector('.match-scoreboard')?.textContent.includes('Shared team corrected')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "129-run-code.stdout.log",
+    "stderr": "129-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/before-13-tab.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "130-snapshot.stdout.log",
+    "stderr": "130-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "click",
+      "e6605"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "131-click.stdout.log",
+    "stderr": "131-click.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelector('.shot-xg')?.textContent.includes('0,67') || document.querySelector('.shot-xg')?.textContent.includes('0.67')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "132-run-code.stdout.log",
+    "stderr": "132-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "133-run-code.stdout.log",
+    "stderr": "133-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/14-A-latest-corrected.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "134-snapshot.stdout.log",
+    "stderr": "134-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/14-A-latest-corrected.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "135-screenshot.stdout.log",
+    "stderr": "135-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "go-back"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "136-go-back.stdout.log",
+    "stderr": "136-go-back.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (!!document.querySelector('.match-row')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "137-run-code.stdout.log",
+    "stderr": "137-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "go-back"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "138-go-back.stdout.log",
+    "stderr": "138-go-back.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelector('.match-scoreboard')?.textContent.includes('Shared team v1') && !!document.querySelector('circle.shot-point')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "139-run-code.stdout.log",
+    "stderr": "139-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "140-run-code.stdout.log",
+    "stderr": "140-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/15-A-old-history-cache.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "141-snapshot.stdout.log",
+    "stderr": "141-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/15-A-old-history-cache.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "142-screenshot.stdout.log",
+    "stderr": "142-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "go-back"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "143-go-back.stdout.log",
+    "stderr": "143-go-back.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "go-back"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "144-go-back.stdout.log",
+    "stderr": "144-go-back.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "go-back"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "145-go-back.stdout.log",
+    "stderr": "145-go-back.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "go-back"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "146-go-back.stdout.log",
+    "stderr": "146-go-back.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "async (page) => { await page.waitForFunction(() => (document.querySelector('.match-scoreboard')?.textContent.includes('Team 3 v1')), null, { timeout: 15000 }); return { ready: true }; }"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "147-run-code.stdout.log",
+    "stderr": "147-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "148-run-code.stdout.log",
+    "stderr": "148-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/16-C-independent-history-cache.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "149-snapshot.stdout.log",
+    "stderr": "149-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/16-C-independent-history-cache.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "150-screenshot.stdout.log",
+    "stderr": "150-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "run-code",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/browser_state.js"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "151-run-code.stdout.log",
+    "stderr": "151-run-code.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "snapshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/final.snapshot.yml"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "152-snapshot.stdout.log",
+    "stderr": "152-snapshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "screenshot",
+      "--filename",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T212916400593Z-react-final-geometry-and-cache/final.png",
+      "--full-page"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "153-screenshot.stdout.log",
+    "stderr": "153-screenshot.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "tracing-stop"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "154-tracing-stop.stdout.log",
+    "stderr": "154-tracing-stop.stderr.log"
+  },
+  {
+    "argv": [
+      "/Users/lemonnierhugo/.codex/skills/playwright/scripts/playwright_cli.sh",
+      "--session=orion-ui-20261104t212916",
+      "close"
+    ],
+    "cwd": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104",
+    "exitCode": 0,
+    "stdout": "155-close.stdout.log",
+    "stderr": "155-close.stderr.log"
+  }
+]

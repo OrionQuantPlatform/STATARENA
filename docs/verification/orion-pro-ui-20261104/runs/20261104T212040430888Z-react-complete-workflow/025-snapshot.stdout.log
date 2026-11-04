@@ -1,0 +1,6 @@
+### Page
+- Page URL: http://127.0.0.1:56612/matchs?tab=results&season=2024%2F2025&league=l_000001&focus=all
+- Page Title: Calendrier — STATARENA
+- Console: 2 errors, 3 warnings
+### Snapshot
+- [Snapshot](output/playwright/20261104T212040430888Z-react-complete-workflow/before-3-button.snapshot.yml)

@@ -1,0 +1,6 @@
+### Result
+{"ready":true}
+### Ran Playwright code
+```js
+await (async (page) => { await page.waitForFunction(() => (document.querySelectorAll('.match-row').length === 1 && !!document.querySelector('.match-row[href*="id=m_000003"]')), null, { timeout: 15000 }); return { ready: true }; })(page);
+```

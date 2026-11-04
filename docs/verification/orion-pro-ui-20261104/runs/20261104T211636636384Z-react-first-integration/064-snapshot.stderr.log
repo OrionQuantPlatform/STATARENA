@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'playwright-cli' --session=orion-ui-20261104t211636 snapshot --filename /Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-ui-20261104/output/playwright/20261104T211636636384Z-react-first-integration/09-mobile-list.snapshot.yml
