@@ -60,6 +60,7 @@ try {
     "004_match_details.sql",
     "006_catalog_models.sql",
     "007_match_source_fields.sql",
+    "008_match_player_position.sql",
   ])
     await admin.query(
       await readFile(
