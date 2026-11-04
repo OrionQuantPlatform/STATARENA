@@ -17,3 +17,5 @@ The preregistered [local SQL/HTTP workflow](PROTOCOL.md) passed 5/11 on the unmo
 A metadata-only result may hand the calling route a request-local body loader. It captures the committed version, uses the same version-checked body query and never crosses requests. An unchanged HEAD, a matching successful conditional and unversioned supporting readers leave their existing paths intact. Default APIs do not expose the private loader. No schema, stored data, status freshness, CDN policy or deployment changed.
 
 Suggested commit: `perf: reuse verified publication metadata for conditional AWS reads`.
+
+The owner repeated the final suite after formatting the proxy: 11/11 passed (final-format.log). An initial invocation used unsupported label final-format and stopped at the harness argument check before starting PostgreSQL; final-format-setup.log preserves that setup failure. The accepted rerun used the documented after label.

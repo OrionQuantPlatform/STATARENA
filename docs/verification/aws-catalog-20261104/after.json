@@ -1,6 +1,6 @@
 {
   "phase": "after",
-  "source": "3d7f949dcef4341c0faa0a58ddebac23324dfc3b",
+  "source": "822246667a1bed1e4dec9bdc83d3d5e0c73e6bf2",
   "command": "PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-catalog-20261104/verify.mjs after",
   "setup": "PROTOCOL.md; PostgreSQL 18, verified local TLS, migration 006; seed.py, PROTOCOL.md and source archive captures",
   "requests": [
@@ -9,15 +9,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 1189413,
-      "ms": 296.14958299999944,
+      "ms": 286.83025,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 37.712,
-        "sql_ms": 247.64,
+        "pool_wait_ms": 35.488,
+        "sql_ms": 236.918,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 3.985
+        "cache_size_ms": 4.094
       },
       "sha256": "cdd89ffde5858f0e882c4d40a778f2c445fe34c671e64a33050cb8eba68b2567",
       "passed": true
@@ -27,15 +27,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 166130,
-      "ms": 13.350832999999511,
+      "ms": 13.366500000000087,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.079,
-        "sql_ms": 12.368,
+        "pool_wait_ms": 0.065,
+        "sql_ms": 12.445,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.14
+        "cache_size_ms": 0.145
       },
       "sha256": "4b89f05b1b873d2196871220f682477a3745a3ceb504fea363eeb4ac42001788",
       "passed": true
@@ -45,15 +45,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 809666,
-      "ms": 44.556792000000314,
+      "ms": 43.92370899999969,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.026,
-        "sql_ms": 40.015,
+        "pool_wait_ms": 0.031,
+        "sql_ms": 39.988,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 1.771
+        "cache_size_ms": 1.719
       },
       "sha256": "700e24193d016179ec03431a7c0801c6b54641638b6e59355c66e0f1ca1f3bd4",
       "passed": true
@@ -63,15 +63,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 8661,
-      "ms": 3.2623329999996713,
+      "ms": 2.86462500000016,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.061,
-        "sql_ms": 2.46,
+        "pool_wait_ms": 0.041,
+        "sql_ms": 1.996,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.033
+        "cache_size_ms": 0.059
       },
       "sha256": "3ae8ceb5cd95d1954cd787acdafd5f5f3bdae2604b8647aa06d9cc5a1e9ab4e5",
       "passed": true
@@ -81,15 +81,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 2718,
-      "ms": 1.8198750000001382,
+      "ms": 1.068250000000262,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.034,
-        "sql_ms": 1.428,
+        "pool_wait_ms": 0.022,
+        "sql_ms": 0.846,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.007
+        "cache_size_ms": 0.005
       },
       "sha256": "1ea9ef8eb7eee544e9ad558131c3b5ad6cd69432c18ada06bdeed3186c45ec40",
       "passed": true
@@ -99,15 +99,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 817576,
-      "ms": 49.415374999999585,
+      "ms": 48.00416700000005,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.034,
-        "sql_ms": 45.257,
+        "pool_wait_ms": 0.024,
+        "sql_ms": 43.337,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 1.798
+        "cache_size_ms": 1.884
       },
       "sha256": "1a8159dbd812ae4c7785b775046a48813c655f2b9678bf486af589739ef1f2a2",
       "passed": true
@@ -117,15 +117,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 19500,
-      "ms": 2.556792000000314,
+      "ms": 2.7047499999998763,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.04,
-        "sql_ms": 2.083,
+        "pool_wait_ms": 0.045,
+        "sql_ms": 2.131,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.025
+        "cache_size_ms": 0.023
       },
       "sha256": "b190557ea7e0f11892888556551a56ad984a1c67ea3e62afd73c3d4cc1f39b9d",
       "passed": true
@@ -135,15 +135,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 6750,
-      "ms": 1.5074169999998048,
+      "ms": 1.707166000000143,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.025,
-        "sql_ms": 1.258,
+        "pool_wait_ms": 0.037,
+        "sql_ms": 1.419,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.013
+        "cache_size_ms": 0.012
       },
       "sha256": "4e02fb2447ba318babd017763873a71a79f9d50c67c2c2739707c59facb0615d",
       "passed": true
@@ -153,15 +153,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 16615,
-      "ms": 2.085582999999133,
+      "ms": 2.170541999999841,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.025,
-        "sql_ms": 1.737,
+        "pool_wait_ms": 0.033,
+        "sql_ms": 1.835,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.047
+        "cache_size_ms": 0.038
       },
       "sha256": "47a050b0053574afd2a490f2ec5ac340c5f0ee26d8dd99d3e897ccf57d6178ad",
       "passed": true
@@ -171,15 +171,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 12118,
-      "ms": 2.165000000000873,
+      "ms": 1.9459999999999127,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.043,
-        "sql_ms": 1.839,
+        "pool_wait_ms": 0.041,
+        "sql_ms": 1.628,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.02
+        "cache_size_ms": 0.018
       },
       "sha256": "58fa85dc525b84a29d98169dcdda8f887c9ecf0b3d11b8cd2f3432053c8c649a",
       "passed": true
@@ -189,15 +189,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 10777,
-      "ms": 1.6318750000000364,
+      "ms": 1.511833000000479,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.025,
-        "sql_ms": 1.321,
+        "pool_wait_ms": 0.022,
+        "sql_ms": 1.243,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.02
+        "cache_size_ms": 0.021
       },
       "sha256": "ba915d3e0005a3539583b49805c29de620e628720d9743e31f67b56bb9a1114c",
       "passed": true
@@ -207,15 +207,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 2833323,
-      "ms": 170.57325000000037,
+      "ms": 164.86566700000003,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.036,
-        "sql_ms": 161.444,
+        "pool_wait_ms": 0.026,
+        "sql_ms": 155.663,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 3.637
+        "cache_size_ms": 3.843
       },
       "sha256": "facc0686ddd7dc2f7b1e59b57f5a651e21d053045d56569b6cb5612b02917747",
       "passed": true
@@ -225,15 +225,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 4198,
-      "ms": 2.0490420000005543,
+      "ms": 2.0537079999994603,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.088,
-        "sql_ms": 1.449,
+        "pool_wait_ms": 0.209,
+        "sql_ms": 1.417,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.018
+        "cache_size_ms": 0.006
       },
       "sha256": "626df5cffd163d18e23760b6b2765f2c6602eeb7206ea379678ebfcf41a075a6",
       "passed": true
@@ -243,11 +243,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 207,
-      "ms": 1.082459000000199,
+      "ms": 0.8652080000001661,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.033,
-        "sql_ms": 0.797,
+        "pool_wait_ms": 0.021,
+        "sql_ms": 0.641,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
@@ -261,15 +261,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 11610,
-      "ms": 3.343249999999898,
+      "ms": 2.8255830000007336,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.023,
-        "sql_ms": 2.936,
+        "pool_wait_ms": 0.015,
+        "sql_ms": 2.576,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.03
+        "cache_size_ms": 0.031
       },
       "sha256": "59ccf55b4141c0d13c1b155f62dbd2a4f08f67a4bfc624c45e5c370054459847",
       "passed": true
@@ -279,15 +279,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 199942,
-      "ms": 13.529916000000412,
+      "ms": 12.79241699999966,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.029,
-        "sql_ms": 11.74,
+        "pool_wait_ms": 0.016,
+        "sql_ms": 11.427,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.529
+        "cache_size_ms": 0.533
       },
       "sha256": "645948ebac413574028e6e3c19019df60a5ef981ebf3151bc844e400754e97c5",
       "passed": true
@@ -297,15 +297,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 12330,
-      "ms": 2.429707999999664,
+      "ms": 2.288292000000183,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.059,
-        "sql_ms": 1.939,
+        "pool_wait_ms": 0.04,
+        "sql_ms": 1.873,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.019
+        "cache_size_ms": 0.016
       },
       "sha256": "2c2630380b7c1aa77a90297f4c2f321ca6cb92967c49f31517d8ac41c54a6e62",
       "passed": true
@@ -315,11 +315,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 192,
-      "ms": 1.0799999999999272,
+      "ms": 0.826375000000553,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.053,
-        "sql_ms": 0.749,
+        "pool_wait_ms": 0.046,
+        "sql_ms": 0.594,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
@@ -333,15 +333,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 176206,
-      "ms": 12.0131250000004,
+      "ms": 11.031041999999616,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.018,
-        "sql_ms": 10.502,
+        "pool_wait_ms": 0.016,
+        "sql_ms": 9.651,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.53
+        "cache_size_ms": 0.492
       },
       "sha256": "59d116b97f147812ccee6529f958d244bb750983e1b5f73b4a52b42412b4d825",
       "passed": true
@@ -351,15 +351,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 7533,
-      "ms": 1.8764579999997295,
+      "ms": 1.4665420000001177,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.037,
-        "sql_ms": 1.535,
+        "pool_wait_ms": 0.027,
+        "sql_ms": 1.242,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.012
+        "cache_size_ms": 0.009
       },
       "sha256": "445df3394c8cf7375ce0f295124548e20053274f72eac3bad02bf0fc3b761e44",
       "passed": true
@@ -369,11 +369,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 281,
-      "ms": 0.8825830000005226,
+      "ms": 0.6580839999996897,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.018,
-        "sql_ms": 0.65,
+        "pool_wait_ms": 0.017,
+        "sql_ms": 0.496,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
@@ -387,15 +387,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 137888,
-      "ms": 7.338665999999648,
+      "ms": 6.52324999999928,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.014,
-        "sql_ms": 6.669,
+        "pool_wait_ms": 0.009,
+        "sql_ms": 6.017,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.122
+        "cache_size_ms": 0.12
       },
       "sha256": "96e4b204e8eb8011d113bf9af94b4974f5cfff5453bacea50ed42adbd1870567",
       "passed": true
@@ -405,15 +405,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 30122,
-      "ms": 3.6690830000006827,
+      "ms": 2.8290829999996276,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.034,
-        "sql_ms": 3.114,
+        "pool_wait_ms": 0.019,
+        "sql_ms": 2.52,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.046
+        "cache_size_ms": 0.037
       },
       "sha256": "03b452a3038970475062a22ab68287018a897c49927ada120d247423ae4c1f4b",
       "passed": true
@@ -423,15 +423,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 1489885,
-      "ms": 315.91408299999966,
+      "ms": 302.7399999999998,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.035,
-        "sql_ms": 304.427,
+        "pool_wait_ms": 0.011,
+        "sql_ms": 291.458,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 5.37
+        "cache_size_ms": 5.324
       },
       "sha256": "42a4a78c3c8a82e272335094ab6f5a2c378bae988cd9e520583d8cc914951f95",
       "passed": true
@@ -441,15 +441,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 140203,
-      "ms": 10.711915999999292,
+      "ms": 10.202374999999847,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.069,
-        "sql_ms": 9.782,
+        "pool_wait_ms": 0.05,
+        "sql_ms": 9.358,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.127
+        "cache_size_ms": 0.122
       },
       "sha256": "21cc000e2f5130428b19588df3c0e60130776374f8bd1ec70d669aecd297a0c8",
       "passed": true
@@ -459,15 +459,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 804363,
-      "ms": 44.70337500000005,
+      "ms": 43.76829199999975,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.048,
-        "sql_ms": 40.34,
+        "pool_wait_ms": 0.04,
+        "sql_ms": 39.376,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 1.824
+        "cache_size_ms": 1.854
       },
       "sha256": "9f2ec9866d3a73c37020fb1039c5bc361f616175d258075f635500f18b20f63d",
       "passed": true
@@ -477,15 +477,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 244,
-      "ms": 1.3467909999999392,
+      "ms": 1.391208000000006,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.049,
-        "sql_ms": 0.959,
+        "pool_wait_ms": 0.051,
+        "sql_ms": 0.965,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.004
+        "cache_size_ms": 0.003
       },
       "sha256": "8460c05aac14ac7cfba50856c20b2b9129615a665e46eb51b9661651a5bcdeed",
       "passed": true
@@ -495,15 +495,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 132214,
-      "ms": 9.599583000000166,
+      "ms": 9.830082999999831,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.019,
-        "sql_ms": 8.458,
+        "pool_wait_ms": 0.018,
+        "sql_ms": 8.796,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.393
+        "cache_size_ms": 0.326
       },
       "sha256": "04cc254236ebb7dd7c7f68c0899a175cee0ede061613f48f782b777232890d30",
       "passed": true
@@ -513,11 +513,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 132214,
-      "ms": 1.28583400000025,
+      "ms": 0.9902919999994992,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.032,
-        "sql_ms": 0.45,
+        "pool_wait_ms": 0.024,
+        "sql_ms": 0.353,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -529,15 +529,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 115718,
-      "ms": 8.479750000000422,
+      "ms": 6.907000000000153,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.045,
-        "sql_ms": 7.756,
+        "pool_wait_ms": 0.032,
+        "sql_ms": 6.295,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.127
+        "cache_size_ms": 0.1
       },
       "sha256": "1f4cde417de7de86f67186a7b1b1672fc5b537ee532530c7a12357afee464835",
       "passed": true
@@ -547,15 +547,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 223408,
-      "ms": 12.868625000000065,
+      "ms": 12.873083999999835,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.037,
-        "sql_ms": 11.304,
+        "pool_wait_ms": 0.035,
+        "sql_ms": 11.206,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.56
+        "cache_size_ms": 0.568
       },
       "sha256": "209c82c7810be0fff88abafca105adc1a034edbfc9fc997b50e5e0b534c07b33",
       "passed": true
@@ -565,15 +565,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 28443,
-      "ms": 3.80724999999984,
+      "ms": 3.5774579999997513,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.046,
-        "sql_ms": 3.122,
+        "pool_wait_ms": 0.037,
+        "sql_ms": 3.027,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.051
+        "cache_size_ms": 0.034
       },
       "sha256": "97e88d9c559610275f813982f4a9cb418a0dd51dafe136809e100dd992d1c71a",
       "passed": true
@@ -583,11 +583,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 238,
-      "ms": 1.4497500000006767,
+      "ms": 1.3221660000008342,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.048,
-        "sql_ms": 1.023,
+        "pool_wait_ms": 0.03,
+        "sql_ms": 0.964,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
@@ -601,11 +601,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 282,
-      "ms": 1.1943340000007083,
+      "ms": 1.017334000000119,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.023,
-        "sql_ms": 0.852,
+        "pool_wait_ms": 0.014,
+        "sql_ms": 0.71,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
@@ -619,15 +619,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 804828,
-      "ms": 44.368124999999964,
+      "ms": 42.41045899999972,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.052,
-        "sql_ms": 39.602,
+        "pool_wait_ms": 0.013,
+        "sql_ms": 38.517,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 1.843
+        "cache_size_ms": 1.667
       },
       "sha256": "14c4b0125bb8725d0686338897fbc1047e525f38a17f404b50cbf39d69e8ba08",
       "passed": true
@@ -637,15 +637,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 1344499,
-      "ms": 321.9189580000002,
+      "ms": 309.2624999999998,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.046,
-        "sql_ms": 309.871,
+        "pool_wait_ms": 0.034,
+        "sql_ms": 298.095,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 5.483
+        "cache_size_ms": 5.314
       },
       "sha256": "11438929ebc7b6fb17689613edc16703b4bc63137f219395d1630484ae628140",
       "passed": true
@@ -655,15 +655,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 1295544,
-      "ms": 270.3715830000001,
+      "ms": 258.2424579999997,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.045,
-        "sql_ms": 259.777,
+        "pool_wait_ms": 0.043,
+        "sql_ms": 248.483,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 5.503
+        "cache_size_ms": 4.248
       },
       "sha256": "a8e21d56176833b691c4d04670f5a59e419d014bc791655eb9265195dced5c38",
       "passed": true
@@ -673,15 +673,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 971837,
-      "ms": 59.58504200000061,
+      "ms": 59.86270799999966,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.052,
-        "sql_ms": 56.382,
+        "pool_wait_ms": 0.043,
+        "sql_ms": 56.651,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.798
+        "cache_size_ms": 1.495
       },
       "sha256": "dbfdee9710dfa80eb54dcf96d0340eaf3b1dce3bdb220c3d46a01537499a1a5d",
       "passed": true
@@ -691,15 +691,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 16428,
-      "ms": 3.5216249999994034,
+      "ms": 2.9612090000000535,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.042,
-        "sql_ms": 2.257,
+        "pool_wait_ms": 0.043,
+        "sql_ms": 2.134,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.052
+        "cache_size_ms": 0.035
       },
       "sha256": "cd648cebff51d98e95f1a7a499bee933346132cc65689be03bb739ffe452ec01",
       "passed": true
@@ -709,15 +709,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 8280,
-      "ms": 2.539249999999811,
+      "ms": 2.2742910000006304,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.034,
-        "sql_ms": 2.091,
+        "pool_wait_ms": 0.009,
+        "sql_ms": 1.533,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.024
+        "cache_size_ms": 0.013
       },
       "sha256": "51898b0d157094e84a4f0b6b3a90fcf9835bd9dc5b6b952064e4287902810bb6",
       "passed": true
@@ -727,11 +727,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 149,
-      "ms": 1.1499579999999696,
+      "ms": 0.9756250000000364,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.02,
-        "sql_ms": 0.7,
+        "pool_wait_ms": 0.016,
+        "sql_ms": 0.589,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -743,11 +743,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 10629,
-      "ms": 3.519666999999572,
+      "ms": 3.322917000000416,
       "metrics": {
         "sql_count": 1,
         "pool_wait_ms": 0.012,
-        "sql_ms": 3.108,
+        "sql_ms": 2.872,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -759,15 +759,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 7590,
-      "ms": 3.979374999999891,
+      "ms": 2.133958000000348,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.046,
-        "sql_ms": 3.189,
+        "pool_wait_ms": 0.017,
+        "sql_ms": 1.852,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.023
+        "cache_size_ms": 0.015
       },
       "sha256": "cbf8fd33d745887066e46db35668f092a2efd429eb3c042d9105472bf406c27e",
       "passed": true
@@ -777,11 +777,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 5629,
-      "ms": 2.763708000000406,
+      "ms": 1.9552499999999782,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.032,
-        "sql_ms": 2.206,
+        "pool_wait_ms": 0.008,
+        "sql_ms": 1.557,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -793,11 +793,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 270,
-      "ms": 2.0384579999999914,
+      "ms": 0.8676249999998618,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.05,
-        "sql_ms": 1.638,
+        "pool_wait_ms": 0.015,
+        "sql_ms": 0.697,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -809,15 +809,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 11640,
-      "ms": 3.4824999999991633,
+      "ms": 2.689542000000074,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.042,
-        "sql_ms": 2.932,
+        "pool_wait_ms": 0.01,
+        "sql_ms": 2.401,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 0.038
+        "cache_size_ms": 0.025
       },
       "sha256": "11e5e35fdb0acf2b141e8c7b1fd386f5d4ead4888c9dca0e11fcf979b0cda1d4",
       "passed": true
@@ -827,11 +827,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 29400,
-      "ms": 2.6975000000002183,
+      "ms": 2.1272909999997864,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.042,
-        "sql_ms": 2.297,
+        "pool_wait_ms": 0.006,
+        "sql_ms": 1.894,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -843,11 +843,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 5598,
-      "ms": 1.1391249999996944,
+      "ms": 0.8930000000000291,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.014,
-        "sql_ms": 0.921,
+        "pool_wait_ms": 0.005,
+        "sql_ms": 0.764,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -859,11 +859,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 2,
-      "ms": 0.9113749999996799,
+      "ms": 0.7810829999998532,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.006,
-        "sql_ms": 0.743,
+        "pool_wait_ms": 0.005,
+        "sql_ms": 0.657,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -875,11 +875,11 @@
       "status": 200,
       "method": "HEAD",
       "bytes": 0,
-      "ms": 0.4727499999999054,
+      "ms": 0.7074170000005324,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.006,
-        "sql_ms": 0.186,
+        "pool_wait_ms": 0.004,
+        "sql_ms": 0.147,
         "sql_rows": 1,
         "response_bytes": 0
       },
@@ -891,11 +891,11 @@
       "status": 404,
       "method": "GET",
       "bytes": 0,
-      "ms": 0.33412499999940337,
+      "ms": 0.3943749999998545,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.005,
-        "sql_ms": 0.158,
+        "pool_wait_ms": 0.004,
+        "sql_ms": 0.132,
         "sql_rows": 0
       },
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -906,11 +906,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 13,
-      "ms": 0.9871249999996508,
+      "ms": 0.9090420000002268,
       "metrics": {
         "sql_count": 1,
         "pool_wait_ms": 0.004,
-        "sql_ms": 0.834,
+        "sql_ms": 0.776,
         "sql_rows": 1,
         "sql_json_rows": 1
       },
@@ -922,11 +922,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 76,
-      "ms": 0.7582080000001952,
+      "ms": 0.6513750000003711,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.009,
-        "sql_ms": 0.597,
+        "pool_wait_ms": 0.008,
+        "sql_ms": 0.529,
         "sql_rows": 2,
         "sql_json_rows": 1
       },
@@ -938,11 +938,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 76,
-      "ms": 0.771125000000211,
+      "ms": 0.590582999999242,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.007,
-        "sql_ms": 0.605,
+        "pool_wait_ms": 0.008,
+        "sql_ms": 0.472,
         "sql_rows": 2,
         "sql_json_rows": 1
       },
@@ -954,15 +954,15 @@
       "status": 200,
       "method": "GET",
       "bytes": 3806859,
-      "ms": 311.732583,
+      "ms": 277.6030410000003,
       "metrics": {
         "sql_count": 2,
-        "pool_wait_ms": 0.059,
-        "sql_ms": 286.074,
+        "pool_wait_ms": 0.044,
+        "sql_ms": 255.906,
         "sql_rows": 2,
         "cache_catalog_representation_miss": 1,
         "sql_json_rows": 1,
-        "cache_size_ms": 13.225
+        "cache_size_ms": 10.008
       },
       "sha256": "d963bacb988f7f5c48b484a591a266c8b6b02d70203f7b44bf02d941b00c7421",
       "passed": true
@@ -972,43 +972,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 3806859,
-      "ms": 13.451457999999548,
-      "metrics": {
-        "sql_count": 1,
-        "pool_wait_ms": 0.035,
-        "sql_ms": 1.386,
-        "sql_rows": 1,
-        "cache_catalog_representation_hit": 1
-      },
-      "sha256": "d963bacb988f7f5c48b484a591a266c8b6b02d70203f7b44bf02d941b00c7421",
-      "passed": true
-    },
-    {
-      "route": "/supplemental",
-      "status": 200,
-      "method": "GET",
-      "bytes": 3806859,
-      "ms": 12.275958999998693,
-      "metrics": {
-        "sql_count": 1,
-        "pool_wait_ms": 0.026,
-        "sql_ms": 1.258,
-        "sql_rows": 1,
-        "cache_catalog_representation_hit": 1
-      },
-      "sha256": "d963bacb988f7f5c48b484a591a266c8b6b02d70203f7b44bf02d941b00c7421",
-      "passed": true
-    },
-    {
-      "route": "/supplemental",
-      "status": 200,
-      "method": "GET",
-      "bytes": 3806859,
-      "ms": 14.271999999999025,
+      "ms": 11.40020800000002,
       "metrics": {
         "sql_count": 1,
         "pool_wait_ms": 0.031,
-        "sql_ms": 1.486,
+        "sql_ms": 1.167,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1020,11 +988,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 3806859,
-      "ms": 13.137792000001355,
+      "ms": 11.491250000000036,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.034,
-        "sql_ms": 1.459,
+        "pool_wait_ms": 0.021,
+        "sql_ms": 1.145,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1036,11 +1004,43 @@
       "status": 200,
       "method": "GET",
       "bytes": 3806859,
-      "ms": 12.927208000000974,
+      "ms": 12.695166999999856,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.052,
-        "sql_ms": 1.393,
+        "pool_wait_ms": 0.025,
+        "sql_ms": 1.263,
+        "sql_rows": 1,
+        "cache_catalog_representation_hit": 1
+      },
+      "sha256": "d963bacb988f7f5c48b484a591a266c8b6b02d70203f7b44bf02d941b00c7421",
+      "passed": true
+    },
+    {
+      "route": "/supplemental",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3806859,
+      "ms": 12.42175000000043,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.026,
+        "sql_ms": 1.209,
+        "sql_rows": 1,
+        "cache_catalog_representation_hit": 1
+      },
+      "sha256": "d963bacb988f7f5c48b484a591a266c8b6b02d70203f7b44bf02d941b00c7421",
+      "passed": true
+    },
+    {
+      "route": "/supplemental",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3806859,
+      "ms": 12.666249999999309,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.022,
+        "sql_ms": 1.184,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1052,27 +1052,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 2833323,
-      "ms": 5.079583000000639,
-      "metrics": {
-        "sql_count": 1,
-        "pool_wait_ms": 0.032,
-        "sql_ms": 0.469,
-        "sql_rows": 1,
-        "cache_catalog_representation_hit": 1
-      },
-      "sha256": "facc0686ddd7dc2f7b1e59b57f5a651e21d053045d56569b6cb5612b02917747",
-      "passed": true
-    },
-    {
-      "route": "/archives/season?kind=goals&season=2023%2F2024",
-      "status": 200,
-      "method": "GET",
-      "bytes": 2833323,
-      "ms": 5.663458000000901,
+      "ms": 5.235375000000204,
       "metrics": {
         "sql_count": 1,
         "pool_wait_ms": 0.027,
-        "sql_ms": 0.533,
+        "sql_ms": 0.493,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1084,11 +1068,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 2833323,
-      "ms": 4.365374999999403,
+      "ms": 3.981249999999818,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.035,
-        "sql_ms": 0.42,
+        "pool_wait_ms": 0.032,
+        "sql_ms": 0.405,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1100,11 +1084,11 @@
       "status": 200,
       "method": "GET",
       "bytes": 2833323,
-      "ms": 4.090750000001208,
+      "ms": 4.0176659999997355,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.037,
-        "sql_ms": 0.441,
+        "pool_wait_ms": 0.022,
+        "sql_ms": 0.341,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1116,11 +1100,27 @@
       "status": 200,
       "method": "GET",
       "bytes": 2833323,
-      "ms": 4.426749999998719,
+      "ms": 4.912750000000415,
       "metrics": {
         "sql_count": 1,
-        "pool_wait_ms": 0.03,
-        "sql_ms": 0.411,
+        "pool_wait_ms": 0.02,
+        "sql_ms": 0.363,
+        "sql_rows": 1,
+        "cache_catalog_representation_hit": 1
+      },
+      "sha256": "facc0686ddd7dc2f7b1e59b57f5a651e21d053045d56569b6cb5612b02917747",
+      "passed": true
+    },
+    {
+      "route": "/archives/season?kind=goals&season=2023%2F2024",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2833323,
+      "ms": 4.141125000000102,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.021,
+        "sql_ms": 0.364,
         "sql_rows": 1,
         "cache_catalog_representation_hit": 1
       },
@@ -1134,12 +1134,12 @@
   },
   "inputHashes": {
     "dashboard/backend/migrations/006_catalog_models.sql": "b9feec5e66774c40f52aae8be67f3a5981155041c986f47ac36ea33438ef58dc",
-    "dashboard/backend/services/relational-catalog.js": "11bdb73a20a4fd8746e4d11f93c31a0ce4cf4d222cbc02fc17ba5423f99402e6",
+    "dashboard/backend/services/relational-catalog.js": "78febfd92fba64b8f2596670670d38596c44a4a46abd60cb4c3d9ebf88aa6913",
     "dashboard/backend/services/catalog-model.json": "2e7727263581ecd5d05e65745906e16596c70b41def6de9df36c7e728713b4e6",
     "dashboard/scripts/relational_catalog.py": "7f4e05f47296933384371bd1ede72991b3c7f932418a1a715d9adb31c3b39343",
     "dashboard/scripts/relational_catalog_keys.py": "9c69a7c4b578af123c8b3fe91cd8fedf3fb9723b47fae263bed65450047069c7",
-    "dashboard/scripts/relational_match.py": "eba08c28e93ce897298a314f5ae46689fe2c94dde0e1ea2210c00e177e81995f",
-    "dashboard/scripts/relational_match_ddl.py": "efb7644f48dcbd2a1ef49bddc307baa39c975526932e997f4c75530cd623d757",
+    "dashboard/scripts/relational_match.py": "ce3ffbaa8794c2540d2d786715fe8453ea3a9932addeebc765965bfa32bd8f17",
+    "dashboard/scripts/relational_match_ddl.py": "c5293ee4410231266257f5d408fe9d2a6a5177dce8b167d7929d2384b8c55fb8",
     "docs/verification/aws-catalog-20261104/supplemental-full.json.gz": "c42ff1203546ae7017197e8f3b5896724656d1482c97c2656b83bc30982011e5"
   },
   "jsonOrByteaColumns": [],
@@ -1147,7 +1147,7 @@
   "warmLarge": [
     {
       "route": "/supplemental",
-      "medianMs": 13.137792000001355,
+      "medianMs": 12.42175000000043,
       "jsonRows": [
         0,
         0,
@@ -1165,7 +1165,7 @@
     },
     {
       "route": "/archives/season?kind=goals&season=2023%2F2024",
-      "medianMs": 4.426749999998719,
+      "medianMs": 4.141125000000102,
       "jsonRows": [
         0,
         0,

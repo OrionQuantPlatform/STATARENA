@@ -1,0 +1,21 @@
+4 | import { tmpdir } from "node:os";
+5 | import path from "node:path";
+6 | const base = import.meta.dir,
+7 |   root = path.resolve(base, "../../.."),
+8 |   phase = process.argv[2];
+9 | assert.match(phase || "", /^(before|after|replay)$/);
+           ^
+AssertionError: The input did not match the regular expression /^(before|after|replay)$/. Input:
+
+'final-format'
+
+ generatedMessage: true,
+     actual: "final-format",
+   expected: /^(before|after|replay)$/,
+   operator: "match",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /private/tmp/statarena-aws-backend-20261104/docs/verification/aws-conditional-20261104/verify.mjs:9:8
+
+Bun v1.4.4 (macOS arm64)
