@@ -1,0 +1,25 @@
+{
+  "CodeSha256": "vsqhv0VlCTZVXNAaafseQUBuTmDI2kPPMLaOt2+jXpE=",
+  "MemorySize": 512,
+  "Runtime": "nodejs24.x",
+  "LastUpdateStatus": "Successful",
+  "LastModified": "2026-11-04T05:22:13.000+0000",
+  "State": "Active",
+  "zipSha256": "becaa1bf45650936555cd01a69fb1e41406e4e60c8da43cf30b68eb76fa35e91",
+  "at": "2026-11-04T05:27:44.309752+00:00",
+  "command": [
+    "aws",
+    "--profile",
+    "statarena",
+    "--region",
+    "us-east-2",
+    "lambda",
+    "get-function-configuration",
+    "--function-name",
+    "statarena-backend",
+    "--query",
+    "{CodeSha256:CodeSha256,MemorySize:MemorySize,Runtime:Runtime,LastUpdateStatus:LastUpdateStatus,LastModified:LastModified,State:State}",
+    "--output",
+    "json"
+  ]
+}
