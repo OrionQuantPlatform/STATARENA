@@ -1,0 +1,180 @@
+{
+  "command": "bun docs/verification/aws-legacy-retirement-20261104/verify.mjs after",
+  "phase": "after",
+  "tools": {
+    "pg": "embedded PostgreSQL 18.6",
+    "s3": "S3rver 3.7.1, real local HTTP, disk-backed; not AWS"
+  },
+  "checks": [
+    "source SHA-pinned mutable alias read after alias bytes changed",
+    "original object/ref/lineup contracts, gzip, integrity and traversal",
+    {
+      "entry": "neon_refresh_sources.mjs",
+      "last": "{\"sourceRefresh\":{\"success\":3,\"failed\":114,\"clubs\":0}}"
+    },
+    {
+      "entry": "neon_refresh_uefa_standings.mjs",
+      "last": "{\"uefaStandings\":{\"success\":15,\"failed\":0}}"
+    },
+    {
+      "entry": "neon_observed_coaches.mjs",
+      "last": "{\"observedCoachPortraits\":{\"candidates\":1,\"updated\":1,\"unavailable\":0,\"failed\":0}}"
+    },
+    {
+      "entry": "neon_coach_photos.mjs",
+      "last": "{\"coachPortraitRefresh\":{\"total\":1,\"updated\":1,\"unavailable\":0,\"failed\":0}}"
+    },
+    "actual staging cursor + normalized UEFA projection SQL writes verified",
+    {
+      "pythonStore": "wrote, SHA-verified, unchanged repeat",
+      "path": "raw/worker-proof.json"
+    },
+    {
+      "entry": "standalone default and both package aliases→typed SQL",
+      "targetedRemaining": 4,
+      "daily": [
+        [
+          "l_0eg6C9",
+          "2025/2026"
+        ],
+        [
+          "l_0Lpz1f",
+          "2025/2026"
+        ],
+        [
+          "l_000100",
+          "2025/2026"
+        ],
+        [
+          "l_000101",
+          "2025/2026"
+        ],
+        [
+          "l_000102",
+          "2025/2026"
+        ],
+        [
+          "l_000103",
+          "2025/2026"
+        ],
+        [
+          "l_000104",
+          "2025/2026"
+        ],
+        [
+          "l_000105",
+          "2025/2026"
+        ],
+        [
+          "l_000106",
+          "2025/2026"
+        ],
+        [
+          "l_000107",
+          "2025/2026"
+        ],
+        [
+          "l_000108",
+          "2025/2026"
+        ],
+        [
+          "l_000109",
+          "2025/2026"
+        ],
+        [
+          "l_000110",
+          "2025/2026"
+        ],
+        [
+          "l_000111",
+          "2025/2026"
+        ],
+        [
+          "l_000112",
+          "2025/2026"
+        ],
+        [
+          "l_000113",
+          "2025/2026"
+        ],
+        [
+          "l_000114",
+          "2025/2026"
+        ],
+        [
+          "l_000115",
+          "2025/2026"
+        ],
+        [
+          "l_000116",
+          "2025/2026"
+        ],
+        [
+          "l_000117",
+          "2025/2026"
+        ],
+        [
+          "l_000118",
+          "2025/2026"
+        ],
+        [
+          "l_000119",
+          "2025/2026"
+        ]
+      ],
+      "pulse": [
+        [
+          "l_0eg6C9",
+          "2025/2026"
+        ],
+        [
+          "l_0Lpz1f",
+          "2025/2026"
+        ],
+        [
+          "l_000120",
+          "2025/2026"
+        ],
+        [
+          "l_000121",
+          "2025/2026"
+        ],
+        [
+          "l_000122",
+          "2025/2026"
+        ],
+        [
+          "l_0Lpz1f",
+          "2024/2025"
+        ],
+        [
+          "l_0eg6C9",
+          "2024/2025"
+        ],
+        [
+          "@details-eb",
+          "@details"
+        ]
+      ],
+      "history": [
+        [
+          "l_000001",
+          "2024/2025"
+        ]
+      ],
+      "explicitStagingOnly": true
+    },
+    "writer fails closed without ingest DSN, invalid RDS/S3 hosts"
+  ],
+  "keys": [
+    "data/computed/dashboard/index.json",
+    "data/raw/neon/versions/878acc34a80e67b5016986a0c860944540f1154847655a1766de7a06c2cb386e.json",
+    "data/computed/test.json.gz",
+    "data/raw/rankings/club-links.json",
+    "data/raw/fixtures.json.gz",
+    "data/raw/lineups.json.gz",
+    "data/raw/nested.json",
+    "data/raw/bad.json"
+  ],
+  "passed": true
+}
