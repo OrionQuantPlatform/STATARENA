@@ -40,8 +40,8 @@ bounded actualHTTP/validators accepted. Its exact release, same-snapshot
 **4,008.62/3,575.56/3,034.98ms** and limits are in
 [DENSE_QUERY_RESULTS.md](DENSE_QUERY_RESULTS.md). Dense partitionGETs remain
 no-store; stablematch public-cache smoke passed10/10. No p95, storage or dollar
-saving is claimed. The dense code's GitHubCI passed; frontendCI was queued at
-last readback and is not reportedpassed.
+saving is claimed. Both source commits passed their complete GitHubCI runs;
+`github-ci-readback.json` records the final successful results.
 
 The following sections preserve investigation chronology and local evidence.
 Statements about no deployment describe the named agent's historical scope,

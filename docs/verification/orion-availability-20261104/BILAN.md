@@ -32,8 +32,8 @@ Les contrôles locaux ont rapproché six partitions de Ligue 1, 1 985 fixtures
 et les 195 tables de 65 compétitions complémentaires : 264 lectures externes
 bornées, 10 463 575 octets et une concurrence maximale de quatre. Ils ne prouvent
 pas chaque ligne des 230 partitions ni chaque joueur ou média. Les 404 déjà
-présents à la source sont conservés et listés dans RESULTS.md. Le CI du correctif
-SQL est passé ; celui du frontend restait en file au dernier relevé.
+présents à la source sont conservés et listés dans RESULTS.md. Les CI du correctif
+SQL et du frontend ont tous deux terminé avec succès.
 
 Preuves, commandes, échecs conservés et limites : [SQL](DENSE_QUERY_RESULTS.md),
 [interface](RESULTS.md), [navigateur réel](vercel-browser-20261104T173656163590Z.json),
