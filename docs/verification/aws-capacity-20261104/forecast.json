@@ -1,0 +1,302 @@
+{
+  "command": "python3 docs/verification/aws-capacity-20261104/forecast.py",
+  "setup": "Effective population and sample, real physical bytes incl indexes divided by first-ready row counts. 95% bounds reflect independent stratified response sampling only; excludes uncertainty in bytes/row, catalog growth, source additions and core proxy choice. Counts and default layout are forecasts.",
+  "currentDatabase": 11331606207,
+  "currentApp": 193167360,
+  "netRoomAtGuard": 4412393793,
+  "sourceAndOtherBaseline": 11138438847,
+  "eligibleHeaders": 950370,
+  "sampledKeys": 1300,
+  "detailTablesPhysicalProjection": {
+    "estimate": 32538557759,
+    "sample95Lower": 31307148185,
+    "sample95Upper": 33769967332
+  },
+  "twoMetricsProjection": {
+    "estimate": 20626670364,
+    "sample95Lower": 19714517519,
+    "sample95Upper": 21538823209
+  },
+  "otherDetailProjection": {
+    "estimate": 11911887395,
+    "sample95Lower": 11332029479,
+    "sample95Upper": 12491745310
+  },
+  "headerProjection": 241623655,
+  "coreRosterAndShotsProxy": {
+    "estimate": 1808796841,
+    "sample95Lower": 1765373868,
+    "sample95Upper": 1852219815
+  },
+  "earlierMeasuredCatalogBytes": 814645248,
+  "lowPopulationOrUntestedDensities": [
+    "individual_player_shots",
+    "player_shot_sheets"
+  ],
+  "metricsRows": {
+    "player_stat_metrics": {
+      "estimate": 48411796,
+      "sample95Lower": 47664105,
+      "sample95Upper": 49159486,
+      "bytesEstimate": 10746064786
+    },
+    "half_stat_metrics": {
+      "estimate": 45510488,
+      "sample95Lower": 41379204,
+      "sample95Upper": 49641771,
+      "bytesEstimate": 9880605743
+    }
+  },
+  "allTables": {
+    "advanced_player_sheets": {
+      "estimate": 65458,
+      "sample95Lower": 58229,
+      "sample95Upper": 72687,
+      "bytesEstimate": 25534854
+    },
+    "advanced_player_totals": {
+      "estimate": 1115882,
+      "sample95Lower": 901161,
+      "sample95Upper": 1330603,
+      "bytesEstimate": 1240331607
+    },
+    "advanced_team_sheets": {
+      "estimate": 39558,
+      "sample95Lower": 32992,
+      "sample95Upper": 46123,
+      "bytesEstimate": 13716789
+    },
+    "advanced_team_totals": {
+      "estimate": 79115,
+      "sample95Lower": 65983,
+      "sample95Upper": 92247,
+      "bytesEstimate": 85728847
+    },
+    "event_sheets": {
+      "estimate": 49931,
+      "sample95Lower": 49931,
+      "sample95Upper": 49931,
+      "bytesEstimate": 17313640
+    },
+    "h2h_matches": {
+      "estimate": 815505,
+      "sample95Lower": 585156,
+      "sample95Upper": 1045854,
+      "bytesEstimate": 203785398
+    },
+    "h2h_sheets": {
+      "estimate": 56354,
+      "sample95Lower": 56354,
+      "sample95Upper": 56354,
+      "bytesEstimate": 27276335
+    },
+    "half_players": {
+      "estimate": 1210665,
+      "sample95Lower": 1100854,
+      "sample95Upper": 1320476,
+      "bytesEstimate": 423238070
+    },
+    "half_sheets": {
+      "estimate": 67092,
+      "sample95Lower": 63526,
+      "sample95Upper": 70658,
+      "bytesEstimate": 23264240
+    },
+    "half_stat_groups": {
+      "estimate": 8177717,
+      "sample95Lower": 7435165,
+      "sample95Upper": 8920268,
+      "bytesEstimate": 1321676710
+    },
+    "half_stat_metrics": {
+      "estimate": 45510488,
+      "sample95Lower": 41379204,
+      "sample95Upper": 49641771,
+      "bytesEstimate": 9880605743
+    },
+    "heatmap_sheets": {
+      "estimate": 47203,
+      "sample95Lower": 41074,
+      "sample95Upper": 53332,
+      "bytesEstimate": 19431506
+    },
+    "individual_player_shots": {
+      "estimate": 32468,
+      "sample95Lower": 9222,
+      "sample95Upper": 55714
+    },
+    "lineup_away_starters": {
+      "estimate": 532196,
+      "sample95Lower": 460426,
+      "sample95Upper": 603966,
+      "bytesEstimate": 125160277
+    },
+    "lineup_away_substitutes": {
+      "estimate": 454028,
+      "sample95Lower": 387220,
+      "sample95Upper": 520836,
+      "bytesEstimate": 107600696
+    },
+    "lineup_home_starters": {
+      "estimate": 532196,
+      "sample95Lower": 460426,
+      "sample95Upper": 603966,
+      "bytesEstimate": 125160277
+    },
+    "lineup_home_substitutes": {
+      "estimate": 454058,
+      "sample95Lower": 388903,
+      "sample95Upper": 519214,
+      "bytesEstimate": 106988777
+    },
+    "lineup_sheets": {
+      "estimate": 56445,
+      "sample95Lower": 56445,
+      "sample95Upper": 56445,
+      "bytesEstimate": 34150476
+    },
+    "match_events": {
+      "estimate": 781414,
+      "sample95Lower": 731912,
+      "sample95Upper": 830916,
+      "bytesEstimate": 405948806
+    },
+    "match_players": {
+      "estimate": 2014497,
+      "sample95Lower": 1972197,
+      "sample95Upper": 2056797,
+      "bytesEstimate": 717424874
+    },
+    "match_shots": {
+      "estimate": 1236672,
+      "sample95Lower": 1142795,
+      "sample95Upper": 1330549,
+      "bytesEstimate": 759075738
+    },
+    "match_summaries": {
+      "estimate": 56750,
+      "sample95Lower": 56750,
+      "sample95Upper": 56750,
+      "bytesEstimate": 39141908
+    },
+    "momentum_points": {
+      "estimate": 2740165,
+      "sample95Lower": 2010374,
+      "sample95Upper": 3469955,
+      "bytesEstimate": 448721113
+    },
+    "momentum_sheets": {
+      "estimate": 49929,
+      "sample95Lower": 49929,
+      "sample95Upper": 49929,
+      "bytesEstimate": 17312947
+    },
+    "network_sheets": {
+      "estimate": 34995,
+      "sample95Lower": 27521,
+      "sample95Upper": 42468,
+      "bytesEstimate": 12134563
+    },
+    "pass_edges": {
+      "estimate": 4999258,
+      "sample95Lower": 3878674,
+      "sample95Upper": 6119841,
+      "bytesEstimate": 1529008245
+    },
+    "pass_networks": {
+      "estimate": 69989,
+      "sample95Lower": 55042,
+      "sample95Upper": 84936,
+      "bytesEstimate": 31852772
+    },
+    "pass_nodes": {
+      "estimate": 764192,
+      "sample95Lower": 600436,
+      "sample95Upper": 927948,
+      "bytesEstimate": 256506230
+    },
+    "player_heatmaps": {
+      "estimate": 1446868,
+      "sample95Lower": 1258349,
+      "sample95Upper": 1635387,
+      "bytesEstimate": 1006774795
+    },
+    "player_periods": {
+      "estimate": 2044429,
+      "sample95Lower": 1858791,
+      "sample95Upper": 2230067,
+      "bytesEstimate": 344712077
+    },
+    "player_sheets": {
+      "estimate": 110517,
+      "sample95Lower": 110517,
+      "sample95Upper": 110517,
+      "bytesEstimate": 38321916
+    },
+    "player_shot_sheets": {
+      "estimate": 60607,
+      "sample95Lower": 60607,
+      "sample95Upper": 60607
+    },
+    "player_stat_groups": {
+      "estimate": 6025900,
+      "sample95Lower": 5952099,
+      "sample95Upper": 6099700,
+      "bytesEstimate": 985676846
+    },
+    "player_stat_metrics": {
+      "estimate": 48411796,
+      "sample95Lower": 47664105,
+      "sample95Upper": 49159486,
+      "bytesEstimate": 10746064786
+    },
+    "shot_periods": {
+      "estimate": 130924,
+      "sample95Lower": 129864,
+      "sample95Upper": 131984,
+      "bytesEstimate": 48235450
+    },
+    "shot_sheets": {
+      "estimate": 81446,
+      "sample95Lower": 81446,
+      "sample95Upper": 81446,
+      "bytesEstimate": 28241508
+    },
+    "team_heatmaps": {
+      "estimate": 94406,
+      "sample95Lower": 82149,
+      "sample95Upper": 106663,
+      "bytesEstimate": 194315063
+    },
+    "team_stat_groups": {
+      "estimate": 784773,
+      "sample95Lower": 673254,
+      "sample95Upper": 896293,
+      "bytesEstimate": 147398916
+    },
+    "team_stat_items": {
+      "estimate": 4752706,
+      "sample95Lower": 4078908,
+      "sample95Upper": 5426503,
+      "bytesEstimate": 934190067
+    },
+    "team_stat_periods": {
+      "estimate": 112110,
+      "sample95Lower": 96179,
+      "sample95Upper": 128042,
+      "bytesEstimate": 34015004
+    },
+    "team_stat_sheets": {
+      "estimate": 50019,
+      "sample95Lower": 50019,
+      "sample95Upper": 50019,
+      "bytesEstimate": 32520290
+    }
+  },
+  "partialTotalBudgetScenarioBytes": 46542062350,
+  "partialTotalWithTrialRatios": {
+    "baseline": 46542062350,
+    "dictionaryLinks": 34099776169,
+    "sharedGroups": 31997039167
+  }
+}

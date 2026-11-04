@@ -1,0 +1,35 @@
+{
+  "status": "Awaiting explicit user approval; not executed",
+  "account": "361769570630",
+  "region": "us-east-2",
+  "profile": "statarena",
+  "request": {
+    "DBInstanceIdentifier": "statarena-postgres",
+    "AllocatedStorage": 64,
+    "ApplyImmediately": true
+  },
+  "preconditions": {
+    "expectedCurrentGiB": 20,
+    "storageType": "gp3",
+    "expectedInstanceClass": "db.t4g.micro",
+    "pendingModifiedValues": {},
+    "sourceAndServingRowsRemainIntact": true
+  },
+  "priceObservation": {
+    "date": "2026-11-04",
+    "source": "AWS Price List API AmazonRDS / us-east-2 / PostgreSQL / Single-AZ / USE2-RDS:GP3-Storage",
+    "rateUSDPerGiBMonth": 0.115,
+    "currentStorageUSDPerMonth": 2.30,
+    "proposedStorageUSDPerMonth": 7.36,
+    "additionalUSDPerFullMonth": 5.06,
+    "exclusions": "Compute, CPU credits, backup changes, tax, credits and account-specific allowances"
+  },
+  "executionAfterApproval": "aws --profile statarena --region us-east-2 rds modify-db-instance --cli-input-json file://<reviewed-request-only.json>",
+  "followUp": [
+    "Recheck identity, original class, actual storage and absence of unrelated pending modifications immediately before the authorized command",
+    "Read actual storage/status until complete, preserving all source data and the separate ongoing legacy workflow",
+    "Align all AWS workflow capacity guards with the verified volume and operational margin before restarting the bulk publisher",
+    "Keep typed metric compaction and validate complete source coverage, actual disk headroom, API and browser behavior"
+  ],
+  "limitation": "AWS does not support reducing the allocated volume on this instance. A future smaller volume would require a separate migration."
+}
