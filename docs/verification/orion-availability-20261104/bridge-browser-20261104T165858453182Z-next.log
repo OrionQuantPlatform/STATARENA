@@ -1,0 +1,304 @@
+▲ Next.js 16.4.3 (webpack)
+- Local:         http://127.0.0.1:57867
+- Network:       http://127.0.0.1:57867
+✓ Ready in 489ms
+✓ Running next.config.mjs took 24ms
+
+✓ Generated AGENTS.md for AI agents. Set `agentRules: false` in next.config to disable.
+○ Compiling /page ...
+ GET / 200 in 512ms (next.js: 249ms, application-code: 263ms)
+ GET /?season=2026%2F2027&focus=europe&league=l_3FJFUl 200 in 24ms (next.js: 1.3ms, application-code: 23ms)
+ GET /api/dashboard/manifest 200 in 866ms (next.js: 421ms, application-code: 445ms)
+ GET /data/computed/dashboard/2026-2027/l_3FJFUl-3403d71ab77e5287be09e9c2.json.gz 200 in 326ms (next.js: 265ms, application-code: 61ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2Fc310928ed40f0513c11bd6ad30e631df2bd6256cd828fa906288cde82806ad33.webp 200 in 309ms (next.js: 0.8ms, application-code: 308ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2F97e37649cadc979d8f16bc30ef4064d4144b44dad5392d4eb8585ff6947d367a.webp 200 in 327ms (next.js: 0.6ms, application-code: 327ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2F1f56f4e83b5165a9233d27bda3d67602e4517667cdc7c7584558bf9fedbfbfa3.webp 200 in 348ms (next.js: 6ms, application-code: 342ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2F10ec6fe14a73f5994c3b2570231e34cd8884232163027b8a423fe45957045ffd.webp 200 in 341ms (next.js: 0.6ms, application-code: 341ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2Fdd9ed059b3f4a132cfd8357431d608d7280fbd23b4014ea8552a7a411164d901.webp 200 in 393ms (next.js: 0.6ms, application-code: 392ms)
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2F1f5139af48bf869cbecf3c4444a0761f443e5feaf6ff3b8a559c6d0bc1631d8f.webp 200 in 652ms (next.js: 0.5ms, application-code: 651ms)
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+⨯ ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+○ Compiling /api/matchdays/route ...
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+⨯ ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2Fb9cad4d256831ccc0a700cc4a5c7f246a0937745dc14fe981517d735f3be7472.webp 500 in 11.0s (next.js: 10.9s, application-code: 75ms)
+ GET /api/matchdays?competition=l_0bfbkO&season=2026%2F2027 500 in 11.0s (next.js: 10.9s, application-code: 72ms)
+ GET /matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl&tab=results&id=m_18Uw0k&competition=l_3FJFUl&sourceSeason=2026%2F2027 500 in 11.0s (next.js: 10.9s, application-code: 72ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2Fe49b6b67d4f44ab2182c8f2384be346d13f717d85c447736c43e52ae587de406.webp 500 in 11.0s (next.js: 10.9s, application-code: 72ms)
+ GET /api/status 500 in 11.0s (next.js: 10.9s, application-code: 72ms)
+ GET /api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fteams%2Ffc7189194b0929cc3fd7f474f626fb8ce6abafecff23857e50b3feb6fcfb5470.webp 500 in 11.0s (next.js: 10.9s, application-code: 72ms)
+ GET /?season=2026%2F2027&focus=europe&league=l_3FJFUl 500 in 11ms (next.js: 6ms, application-code: 5ms)
+ GET /?season=2026%2F2027&focus=europe&league=l_3FJFUl 500 in 20ms (next.js: 8ms, application-code: 12ms)
+[browser] Uncaught Error: Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./src/components/NationalFlag.jsx:2:1
+Module not found: Can't resolve 'flag-icons/css/flag-icons.min.css'
+  1 | import React from "react";
+> 2 | import "flag-icons/css/flag-icons.min.css";
+    | ^
+  3 | import { nationalFlagCode } from "../services/national-flags.js";
+  4 |
+  5 | export default function NationalFlag({ name, season, className = "" }) {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+[browser] ./src/services/national-flags.js:1:1
+Module not found: Can't resolve 'flag-icons/country.json'
+> 1 | import countries from "flag-icons/country.json" with { type: "json" };
+    | ^
+  2 | import { normalizeText } from "../model.js";
+  3 |
+  4 | const key = (value) =>
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/CompetitionStandings.jsx
+./src/components/MatchStandings.jsx
+./src/components/MatchDetail.jsx
+./src/views/MatchesPage.jsx 
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz_' -> '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz_' -> '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz_' -> '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz_' -> '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz_' -> '/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev/cache/webpack/client-development-fallback/0.pack.gz'
+⨯ The directory at "/private/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-bridge-ui-16pp5bkd/dashboard/frontend/.next-dev/dev" was deleted.
+
+Deleting this directory removes caches and will cause slower performance.
+
+Deleting this directory while Next.js is running can lead to undefined behavior. Restarting the server to recover...
+[?25h

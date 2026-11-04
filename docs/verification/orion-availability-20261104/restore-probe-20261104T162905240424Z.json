@@ -1,0 +1,96 @@
+{
+  "atUtc": "2026-11-04T16:29:02.911376+00:00",
+  "command": "python3 docs/verification/orion-availability-20261104/restore_probe.py",
+  "setup": "Old immutable Vercel deployment 0aaf316; GETs of its own Neon-backed saved data only. No football-provider calls, mutations, or production alias changes.",
+  "expected": "Historical deployment serves its own manifest, selected current and historical packed chunks, and stored league compatibility endpoint.",
+  "requests": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "bytes": 45,
+      "sha256": "709244706dbaba89d20fabf22e2ed529a59c3d90f24b6db00b6d9f51272a0c5d",
+      "contentType": "application/json; charset=utf-8",
+      "source": null
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 161009,
+      "sha256": "b122429dc63106ff9e071f3db215adfecf4acd019a42370101ae4e97e2ef425c",
+      "contentType": "application/json",
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2026-2027/l_3FJFUl-3403d71ab77e5287be09e9c2.json.gz",
+      "status": 200,
+      "bytes": 293873,
+      "sha256": "b49ea464a213c008cbe9af600e37e90048d5936f5df6db9b7b0061ea4a754ec3",
+      "contentType": "application/gzip",
+      "source": "Neon"
+    },
+    {
+      "path": "/data/computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "status": 200,
+      "bytes": 840738,
+      "sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6",
+      "contentType": "application/gzip",
+      "source": "Neon"
+    },
+    {
+      "path": "/api/pitchapi/leagues",
+      "status": 200,
+      "bytes": 19476,
+      "sha256": "64bd3bd78a92884866f5e0b1ecbc4a44e6bb307e38f6154130ed3cf63250b49e",
+      "contentType": "application/json; charset=utf-8",
+      "source": "Neon"
+    }
+  ],
+  "samples": [
+    {
+      "season": "2026/2027",
+      "leagueId": "l_3FJFUl",
+      "path": "computed/dashboard/2026-2027/l_3FJFUl-3403d71ab77e5287be09e9c2.json.gz",
+      "tableCounts": {
+        "competitions": 1,
+        "fixtures": 306,
+        "matches": 81,
+        "performances": 3237,
+        "players": 486,
+        "shots": 2177,
+        "team_statistics": 81,
+        "teams": 18
+      }
+    },
+    {
+      "season": "2025/2026",
+      "leagueId": "l_3FJFUl",
+      "path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "tableCounts": {
+        "players": 665,
+        "performances": 12200,
+        "matches": 306,
+        "shots": 7618,
+        "team_statistics": 306,
+        "teams": 18,
+        "competitions": 1,
+        "fixtures": 306
+      }
+    }
+  ],
+  "status": "passed",
+  "manifest": {
+    "storage": "json-packed",
+    "seasons": [
+      "2026/2027",
+      "2025/2026",
+      "2024/2025",
+      "2023/2024",
+      "2022/2023",
+      "2021/2022"
+    ],
+    "seasonCount": 6,
+    "chunkCount": 230,
+    "competitionCount": 0
+  },
+  "leaguesCount": 77
+}

@@ -1,0 +1,90 @@
+[    2759ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[    2845ms] [LOG] [HMR] connected @ :44
+[    2938ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[    2938ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    2951ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[    2951ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[    2977ms] [LOG] [Fast Refresh] rebuilding @ :44
+[    3090ms] [LOG] [Fast Refresh] done in 113ms @ :44
+[    4731ms] [LOG] [Fast Refresh] rebuilding @ :44
+[    5717ms] [LOG] [Fast Refresh] rebuilding @ :44
+[    5841ms] [LOG] [Fast Refresh] done in 123ms @ :44
+[    6749ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[    6821ms] [LOG] [HMR] connected @ :44
+[    6942ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[    6942ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[    6946ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    6946ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[    9584ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   10415ms] [LOG] [Fast Refresh] done in 831ms @ :44
+[   10998ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:60215/api/player-honours?id=p_3chd12:0
+[   11404ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   11730ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   11884ms] [LOG] [Fast Refresh] done in 154ms @ :44
+[   11947ms] [LOG] [Fast Refresh] done in 217ms @ :44
+[   12893ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[   12960ms] [LOG] [HMR] connected @ :44
+[   13057ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   13057ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   13058ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[   13058ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[   18731ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   19138ms] [LOG] [Fast Refresh] done in 407ms @ :44
+[   19152ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   20058ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[   20118ms] [LOG] [HMR] connected @ :44
+[   20202ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   20202ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   20202ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[   20202ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[   20590ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   20807ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   20857ms] [LOG] [Fast Refresh] done in 50ms @ :44
+[   20957ms] [LOG] [Fast Refresh] done in 151ms @ :44
+[   22053ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[   22096ms] [LOG] [HMR] connected @ :44
+[   22188ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   22188ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   22189ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[   22189ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[   23094ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   23347ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   23536ms] [LOG] [Fast Refresh] done in 188ms @ :44
+[   24489ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[   24543ms] [LOG] [HMR] connected @ :44
+[   24642ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   24643ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[   24643ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   24643ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[   25846ms] [LOG] [Fast Refresh] rebuilding @ :44
+[   26913ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[   26962ms] [LOG] [HMR] connected @ :44
+[   27044ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   27044ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   27044ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[   27044ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[   30793ms] [WARNING] The resource http://127.0.0.1:60215/fonts/inter-latin.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://127.0.0.1:60215/archives?season=2026%2F2027&focus=europe&league=l_3FJFUl&as=2020-2021:0
+[   35686ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:60215/api/archives/season?kind=goals&season=2020%2F2021:0
+[   35686ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:60215/api/archives/season?kind=results&season=2020%2F2021:0
+[   87729ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[   87775ms] [LOG] [HMR] connected @ :44
+[   87859ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   87859ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   87859ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[   87860ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[   91327ms] [WARNING] The resource http://127.0.0.1:60215/fonts/inter-latin.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://127.0.0.1:60215/archives?season=2026%2F2027&focus=europe&league=l_3FJFUl&as=2024-2025:0
+[   94784ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:60215/api/archives/season?kind=goals&season=2024%2F2025:0
+[  148024ms] [LOG] [Fast Refresh] rebuilding @ :44
+[  149518ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[  149570ms] [LOG] [HMR] connected @ :44
+[  149680ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[  149680ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[  149850ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[  149851ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44
+[  149949ms] [LOG] [Fast Refresh] rebuilding @ :44
+[  150783ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ :44
+[  150833ms] [LOG] [HMR] connected @ :44
+[  150914ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[  150914ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[  150914ms] [LOG] [Vercel Speed Insights] Failed to load script from https://va.vercel-scripts.com/v1/speed-insights/script.debug.js. Please check if any content blockers are enabled and try again. @ :44
+[  150914ms] [LOG] [Vercel Web Analytics] Failed to load script from https://va.vercel-scripts.com/v1/script.debug.js. Please check if any ad blockers are enabled and try again. @ :44

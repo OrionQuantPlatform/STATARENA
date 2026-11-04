@@ -1,0 +1,4 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-old-availability close
+Browser 'orion-old-availability' closed
+

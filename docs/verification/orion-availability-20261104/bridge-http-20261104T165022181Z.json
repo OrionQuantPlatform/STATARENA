@@ -1,0 +1,74 @@
+{
+  "atUtc": "2026-11-04T16:50:22.182Z",
+  "command": "bun docs/verification/orion-availability-20261104/bridge_http_e2e.mjs",
+  "setup": "Local Bun HTTP adapter; its legacy request and saved-object readers use only the immutable old Vercel/Neon deployment. Supplemental expansion alone uses two synthetic saved objects to bound external reads. No provider requests or writes.",
+  "expected": "Current frontend data contracts traverse the local bridge with current and historical saved data; pagination, scouting, match fallback, catalogs, missing paths and malformed parameters stay correct.",
+  "checks": [
+    {
+      "name": "manifest exposes six saved seasons",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "load saved season 2026/2027",
+      "passed": false,
+      "error": "Données indisponibles (HTTP 404)."
+    },
+    {
+      "name": "load saved season 2025/2026",
+      "passed": false,
+      "error": "Données indisponibles (HTTP 404)."
+    },
+    {
+      "name": "fixture cursor traversal",
+      "passed": false,
+      "error": "Données indisponibles (HTTP 404)."
+    },
+    {
+      "name": "player and team scouting routes",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "match summary fallback through real client",
+      "passed": false,
+      "error": "unexpected fallback"
+    },
+    {
+      "name": "archive index and season",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "association ranking",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "club links and ranking",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "cup catalog and table",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "supplemental references expand",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    },
+    {
+      "name": "missing route and invalid parameter fail",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 400\n"
+    },
+    {
+      "name": "HEAD manifest has no response body",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n404 !== 200\n"
+    }
+  ],
+  "passed": false
+}

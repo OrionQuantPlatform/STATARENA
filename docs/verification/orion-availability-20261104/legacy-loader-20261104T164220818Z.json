@@ -1,0 +1,25 @@
+{
+  "atUtc": "2026-11-04T16:42:20.819Z",
+  "command": "bun docs/verification/orion-availability-20261104/legacy_loader_probe.mjs",
+  "setup": "Exact 0aaf316 season loader and URL helper copied to a temporary directory with the current packed_data.js; fetches only the old Vercel host's saved Neon manifest and chunks. No application edits or provider calls.",
+  "expected": "The historic loadSeason(manifest, season, fetcher, leagueIds) contract remains usable with the current decoder for current and historical Ligue 1 data.",
+  "checks": [
+    {
+      "season": "2026/2027",
+      "matchCount": 81,
+      "appearanceCount": 3237,
+      "fixtureCount": 306,
+      "competitionCount": 1,
+      "passed": true
+    },
+    {
+      "season": "2025/2026",
+      "matchCount": 306,
+      "appearanceCount": 12200,
+      "fixtureCount": 306,
+      "competitionCount": 1,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

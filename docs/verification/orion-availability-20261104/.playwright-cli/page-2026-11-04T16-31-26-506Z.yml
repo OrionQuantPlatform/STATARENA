@@ -1,0 +1,27 @@
+- generic [active] [ref=f1e1]:
+  - alert [ref=f1e2]
+  - generic [ref=f1e3]:
+    - banner [ref=f1e4]:
+      - link "STATARENA, vue d’ensemble" [ref=f1e5] [cursor=pointer]:
+        - /url: /?season=2025%2F2026&focus=europe&league=l_3FJFUl
+        - img "STATARENA" [ref=f1e7]
+      - navigation "Navigation principale" [ref=f1e8]:
+        - link "Vue d’ensemble" [ref=f1e9] [cursor=pointer]:
+          - /url: /?season=2025%2F2026&focus=europe&league=l_3FJFUl
+        - link "Compétitions" [ref=f1e10] [cursor=pointer]:
+          - /url: /competitions?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Clubs" [ref=f1e11] [cursor=pointer]:
+          - /url: /clubs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Joueurs" [ref=f1e12] [cursor=pointer]:
+          - /url: /joueurs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Calendrier" [ref=f1e13] [cursor=pointer]:
+          - /url: /matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+      - generic [ref=f1e14]:
+        - generic [ref=f1e16]:
+          - combobox "Rechercher un joueur, un club ou une compétition" [ref=f1e17]
+          - generic [aria-hidden]: /
+        - button "Activer le thème clair" [ref=f1e18] [cursor=pointer]
+    - main [ref=f1e25]:
+      - heading "Vue d’ensemble" [level=1] [ref=f1e27]
+      - status [ref=f1e28]:
+        - generic [ref=f1e29]: Chargement des données…

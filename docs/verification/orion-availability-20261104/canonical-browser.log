@@ -1,0 +1,42 @@
+### Result
+{"checks":[{"name":"canonical current desktop","passed":true,"url":"https://statarena-analytics.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl"},{"name":"canonical historical mobile","passed":true,"season":"2025/2026","width":390,"scrollWidth":390,"url":"https://statarena-analytics.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl"}],"passed":true}
+### Ran Playwright code
+```js
+await (async (page) => {
+const SCREEN="/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/canonical-browser";
+const checks=[];
+await page.setViewportSize({width:1600,height:1000});
+await page.locator('.home-motw').waitFor({timeout:60000});
+checks.push({name:'canonical current desktop',passed:await page.locator('.home-motw').count()>0,url:page.url()});
+await page.screenshot({path:SCREEN+'-desktop.png'});
+await page.setViewportSize({width:390,height:844});
+await page.goto('https://statarena-analytics.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl');
+await page.locator('.home-motw').waitFor({timeout:60000});
+const season=await page.getByRole('combobox',{name:'Saison',exact:true}).inputValue();
+const dims=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+checks.push({name:'canonical historical mobile',passed:season==='2025/2026'&&dims.scrollWidth===dims.width,season,...dims,url:page.url()});
+await page.screenshot({path:SCREEN+'-mobile.png'});
+return {checks,passed:checks.every(x=>x.passed)};
+}
+)(page);
+```
+### Page
+- Page URL: https://statarena-analytics.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl
+- Page Title: Vue d’ensemble — STATARENA
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-live-canonical run-code async (page) => {
+npm notice run const SCREEN="/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/canonical-browser";
+npm notice run const checks=[];
+npm notice run await page.setViewportSize({width:1600,height:1000});
+npm notice run await page.locator('.home-motw').waitFor({timeout:60000});
+npm notice run checks.push({name:'canonical current desktop',passed:await page.locator('.home-motw').count()>0,url:page.url()});
+npm notice run await page.screenshot({path:SCREEN+'-desktop.png'});
+npm notice run await page.setViewportSize({width:390,height:844});
+npm notice run await page.goto('https://statarena-analytics.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl');
+npm notice run await page.locator('.home-motw').waitFor({timeout:60000});
+npm notice run const season=await page.getByRole('combobox',{name:'Saison',exact:true}).inputValue();
+npm notice run const dims=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+npm notice run checks.push({name:'canonical historical mobile',passed:season==='2025/2026'&&dims.scrollWidth===dims.width,season,...dims,url:page.url()});
+npm notice run await page.screenshot({path:SCREEN+'-mobile.png'});
+npm notice run return {checks,passed:checks.every(x=>x.passed)};
+npm notice run }

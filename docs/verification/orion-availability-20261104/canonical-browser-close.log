@@ -1,0 +1,4 @@
+Browser 'orion-live-canonical' closed
+
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-live-canonical close

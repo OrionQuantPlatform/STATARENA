@@ -1,0 +1,11 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-old-availability goto https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl
+### Ran Playwright code
+```js
+await page.goto('https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl');
+```
+### Page
+- Page URL: https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl
+- Page Title: Vue d’ensemble — STATARENA
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-04T16-31-26-506Z.yml)

@@ -1,0 +1,269 @@
+{
+  "atUtc": "2026-11-04T16:41:36.050188+00:00",
+  "command": "python3 docs/verification/orion-availability-20261104/legacy_contract_probe.py",
+  "setup": "Read-only GETs against old 0aaf316 deployment. Its source reads saved Neon data and does not contact football providers. Only statuses, response sizes and top-level JSON keys are saved.",
+  "expected": "Determine which routes used by the current frontend exist on the old server and which historic data routes supply the same families; a 404 can also mean absent data and is interpreted with the source router.",
+  "routes": [
+    {
+      "name": "historical manifest",
+      "path": "/data/dashboard-manifest.json",
+      "status": 200,
+      "bytes": 161009,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "clubCountries",
+        "defaultSeason",
+        "schemaVersion",
+        "scouting",
+        "seasons",
+        "storage"
+      ],
+      "manifestShape": {
+        "storage": "json-packed",
+        "defaultSeason": "2026/2027",
+        "seasonCount": 6,
+        "chunkCount": 230,
+        "chunkKeys": [
+          "bytes",
+          "competitions",
+          "leagueId",
+          "path",
+          "sha256",
+          "sourceDigest"
+        ]
+      }
+    },
+    {
+      "name": "new manifest",
+      "path": "/api/dashboard/manifest",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "new partition pages",
+      "path": "/api/seasons/partition?season=2025%2F2026&league=l_3FJFUl&limit=100&format=columns",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "new fixture pages",
+      "path": "/api/fixtures?season=2025%2F2026&league=l_3FJFUl&limit=100",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "new scouting routes",
+      "path": "/api/scouting/routes?season=2025%2F2026",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "new match summary",
+      "path": "/api/matches/m_18Uw0k/summary",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "historical match observation",
+      "path": "/api/archive/matches/m_18Uw0k",
+      "status": 200,
+      "bytes": 329156,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "competition_id",
+        "competition_name",
+        "complete",
+        "country_code",
+        "endpoints",
+        "fixture",
+        "retrieved_at_utc",
+        "season"
+      ]
+    },
+    {
+      "name": "historical saved leagues",
+      "path": "/api/pitchapi/leagues",
+      "status": 200,
+      "bytes": 19476,
+      "contentType": "application/json; charset=utf-8",
+      "source": "Neon",
+      "topLevelKeys": [
+        "data"
+      ]
+    },
+    {
+      "name": "new archive index",
+      "path": "/api/archives/index?kind=results",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "historical archive index",
+      "path": "/data/raw/openfootball/index.json",
+      "status": 200,
+      "bytes": 46681,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "schemaVersion",
+        "seasons",
+        "source"
+      ]
+    },
+    {
+      "name": "new association rankings",
+      "path": "/api/rankings/associations?year=2025",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "historical association rankings",
+      "path": "/data/raw/rankings/uefa-associations/2025.uefa.json",
+      "status": 200,
+      "bytes": 194655,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "edition",
+        "kind",
+        "officialEdition",
+        "period",
+        "provider",
+        "quality",
+        "retrievedAt",
+        "rows",
+        "sourceUpdatedAt",
+        "sourceUrl"
+      ]
+    },
+    {
+      "name": "new supplemental catalog",
+      "path": "/api/supplemental",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "historical supplemental catalog",
+      "path": "/data/raw/supplemental-index.json",
+      "status": 200,
+      "bytes": 40382,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "competitions",
+        "meta"
+      ]
+    },
+    {
+      "name": "new club links",
+      "path": "/api/club-links?club=t_41iFW3",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "historical club links",
+      "path": "/data/raw/rankings/club-links.json",
+      "status": 200,
+      "bytes": 88529,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "ambiguous",
+        "links",
+        "unmatched"
+      ]
+    },
+    {
+      "name": "new cup index",
+      "path": "/api/cup-index?kind=worker",
+      "status": 404,
+      "bytes": 107,
+      "contentType": "application/json; charset=utf-8",
+      "source": null,
+      "topLevelKeys": [
+        "error",
+        "ok"
+      ],
+      "errorCode": "ROUTE_NOT_FOUND"
+    },
+    {
+      "name": "historical cup index",
+      "path": "/data/raw/cup-worker/index.json",
+      "status": 200,
+      "bytes": 11826,
+      "contentType": "application/json",
+      "source": "Neon",
+      "topLevelKeys": [
+        "competitions",
+        "meta",
+        "native",
+        "schemaVersion"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "atUtc": "2026-11-04T16:27:06.525702+00:00",
+  "atParis": "2026-11-04T17:27:06.525702+01:00",
+  "command": "python3 docs/verification/orion-availability-20261104/capture_readback.py --dense-aws",
+  "setup": "Existing authenticated Vercel CLI and AWS profile; read-only control-plane GETs and bounded public HTTP GETs. No football-provider calls or cloud/DB mutations. Environment variable values are never saved.",
+  "expected": "Identify the canonical alias and deployments, report environment names/targets and actual route status; health alone does not prove data coverage.",
+  "errors": {},
+  "project": {
+    "name": "statarena-analytics",
+    "rootDirectory": "dashboard/frontend",
+    "production": {
+      "id": "dpl_H1BPDyH7ppFrBA1KjwZMGT1U8kPv",
+      "url": "statarena-analytics-f36x89qo0-hlemonniers-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "createdAt": 1793803497383,
+      "commit": "b2ec973d2d4aa9b25f66b58c32c9806d13e23a51",
+      "branch": "main",
+      "source": null
+    }
+  },
+  "environment": [
+    {
+      "name": "NEXT_PUBLIC_API_ORIGIN",
+      "targets": [
+        "preview"
+      ],
+      "branch": "codex/aws-backend-20261104"
+    },
+    {
+      "name": "NEON_STORAGE_SECRET_ACCESS_KEY",
+      "targets": [
+        "production",
+        "preview"
+      ],
+      "branch": null
+    },
+    {
+      "name": "NEON_STORAGE_ACCESS_KEY_ID",
+      "targets": [
+        "production",
+        "preview"
+      ],
+      "branch": null
+    },
+    {
+      "name": "NEON_STORAGE_REGION",
+      "targets": [
+        "production",
+        "preview"
+      ],
+      "branch": null
+    },
+    {
+      "name": "NEON_STORAGE_BUCKET",
+      "targets": [
+        "production",
+        "preview"
+      ],
+      "branch": null
+    },
+    {
+      "name": "NEON_STORAGE_ENDPOINT",
+      "targets": [
+        "production",
+        "preview"
+      ],
+      "branch": null
+    },
+    {
+      "name": "NEON_DATABASE_URL",
+      "targets": [
+        "production",
+        "preview"
+      ],
+      "branch": null
+    }
+  ],
+  "alias": {
+    "alias": "statarena-analytics.vercel.app",
+    "deploymentId": "dpl_H1BPDyH7ppFrBA1KjwZMGT1U8kPv"
+  },
+  "deployments": [
+    {
+      "id": "dpl_5WKUEwBpNkr3hUEk9Fk8qF8EVFBe",
+      "url": "statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "createdAt": 1793748112864,
+      "commit": "0aaf316e0aa525c90b3787df623bb5bfcc2936c8",
+      "branch": "main",
+      "source": "git"
+    },
+    {
+      "id": "dpl_H1BPDyH7ppFrBA1KjwZMGT1U8kPv",
+      "url": "statarena-analytics-f36x89qo0-hlemonniers-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "createdAt": 1793803497383,
+      "commit": "b2ec973d2d4aa9b25f66b58c32c9806d13e23a51",
+      "branch": "main",
+      "source": "git"
+    }
+  ],
+  "lambda": {
+    "CodeSha256": "Im/z7r7PPFeNjjXWB7CtMufgNBZRpz6bJ+NA7l4s+4k=",
+    "MemorySize": 512,
+    "State": "Active",
+    "LastUpdateStatus": "Successful"
+  },
+  "probes": [
+    {
+      "url": "https://statarena-analytics.vercel.app/",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16042,
+      "sha256": "bc58083bf0754250baed98f7a7a121de4396cf64a302961c6ce8ecc1732c3e97",
+      "elapsedMs": 107.98,
+      "headers": {
+        "Age": "4232",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/html; charset=utf-8",
+        "Etag": "\"f1844a82b88fe5eae2c045f5565c9260\"",
+        "X-Vercel-Cache": "HIT"
+      }
+    },
+    {
+      "url": "https://statarena-analytics.vercel.app/api/health",
+      "method": "GET",
+      "status": 503,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsedMs": 197.13,
+      "headers": {
+        "Age": "0",
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      }
+    },
+    {
+      "url": "https://statarena-analytics.vercel.app/api/dashboard/manifest",
+      "method": "GET",
+      "status": 503,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsedMs": 202.33,
+      "headers": {
+        "Age": "0",
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      }
+    },
+    {
+      "url": "https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16066,
+      "sha256": "db096daec03a5af6fd3c4e5bbd66dfa69bbf3c8dca5e02444463d8f7fa7c3e92",
+      "elapsedMs": 352.2,
+      "headers": {
+        "Age": "61506",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/html; charset=utf-8",
+        "Etag": "\"b6ab25c7245314b0f64ddbc63b00eb5b\"",
+        "X-Vercel-Cache": "HIT"
+      }
+    },
+    {
+      "url": "https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/api/health",
+      "method": "GET",
+      "status": 200,
+      "bytes": 45,
+      "sha256": "709244706dbaba89d20fabf22e2ed529a59c3d90f24b6db00b6d9f51272a0c5d",
+      "elapsedMs": 1578.17,
+      "headers": {
+        "Age": "0",
+        "Cache-Control": "no-store",
+        "Content-Type": "application/json; charset=utf-8",
+        "X-Vercel-Cache": "MISS"
+      },
+      "health": {
+        "status": "ok",
+        "source": "Neon",
+        "revision": 18
+      }
+    },
+    {
+      "url": "https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/api/dashboard/manifest",
+      "method": "GET",
+      "status": 404,
+      "bytes": 107,
+      "sha256": "b7a3354a12d4921a2b3fc7f9ff17206fd83b8b6c99838fcbf7875556f44305c0",
+      "elapsedMs": 163.48,
+      "headers": {
+        "Age": "0",
+        "Cache-Control": "no-store",
+        "Content-Type": "application/json; charset=utf-8",
+        "X-Vercel-Cache": "MISS"
+      },
+      "manifest": {
+        "schemaVersion": null,
+        "storage": null,
+        "seasonCount": 0,
+        "chunkCount": 0,
+        "competitionCount": 0
+      }
+    },
+    {
+      "url": "https://d317dq37z1tacb.cloudfront.net/api/health",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46,
+      "sha256": "ab1b7c2481e4b80aa8a724d2b5db0a383b529baefd2b61f883b3185612341b13",
+      "elapsedMs": 542.04,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-data-source": "AWS",
+        "Cache-Control": "no-store",
+        "X-Cache": "Miss from cloudfront"
+      },
+      "health": {
+        "status": "ok",
+        "source": "AWS",
+        "revision": "43"
+      }
+    },
+    {
+      "url": "https://d317dq37z1tacb.cloudfront.net/api/dashboard/manifest",
+      "method": "GET",
+      "status": 200,
+      "bytes": 37095,
+      "sha256": "87d952b4042af7d061bb74edc876b7b8d371ffadcb8944d77885fcb22dbea07d",
+      "elapsedMs": 539.47,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-data-source": "AWS",
+        "Cache-Control": "no-store",
+        "ETag": "W/\"core-v1-a49fa29da078120c87b18ac8fa7a5f2e299f96d08f51d9d0ae81fa793e4d02f8\"",
+        "X-Cache": "Miss from cloudfront"
+      },
+      "manifest": {
+        "schemaVersion": 4,
+        "storage": "aws-relational",
+        "seasonCount": 1,
+        "chunkCount": 38,
+        "competitionCount": 38
+      }
+    },
+    {
+      "url": "https://d317dq37z1tacb.cloudfront.net/api/seasons/partition?season=2026%2F2027&league=l_0ALvwF&limit=1&format=columns",
+      "method": "GET",
+      "status": 200,
+      "bytes": 32861,
+      "sha256": "55dbc3b69da961f92758bba1543ede7fe64e6bda2d9ed0ca488e3ad51fa702d2",
+      "elapsedMs": 762.81,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-data-source": "AWS",
+        "Cache-Control": "no-store",
+        "ETag": "W/\"core-v1-730684a6d79b926de52b939c6f041e68f14d1ea30b76f1ca300cf7208345052d\"",
+        "X-Cache": "Miss from cloudfront"
+      },
+      "pagination": {
+        "limit": 1,
+        "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216"
+      },
+      "errorCode": null
+    },
+    {
+      "url": "https://d317dq37z1tacb.cloudfront.net/api/seasons/partition?season=2026%2F2027&league=l_0ALvwF&limit=100&format=columns",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1973314,
+      "sha256": "9d280e067bd6140a10def2e25d75b52cfdf219271c9067425bb2ae06d8be97fc",
+      "elapsedMs": 5938.97,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-data-source": "AWS",
+        "Cache-Control": "no-store",
+        "ETag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+        "X-Cache": "Miss from cloudfront"
+      },
+      "pagination": {
+        "limit": 100,
+        "generation": "69ef399dc44cf3fbfccff34c42f90dcbaed3c8221b884a4aa96dd01a31034216"
+      },
+      "errorCode": null
+    }
+  ],
+  "limits": [
+    "One HTTP observation per route; timings are observations, not latency percentiles.",
+    "Direct deployment access may be protected and differs from canonical alias access.",
+    "Manifest counts are not row-level completeness or semantic parity evidence."
+  ]
+}

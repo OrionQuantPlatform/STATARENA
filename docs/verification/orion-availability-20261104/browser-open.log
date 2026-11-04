@@ -1,0 +1,21 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-old-availability open about:blank
+/Users/lemonnierhugo/.npm/_npx/31e32ef8478fbf80/node_modules/playwright-core/lib/tools/cli-client/session.js:172
+    const rejectWithPid = (reject, message) => reject(Object.assign(new Error(`Daemon pid=${child.pid}: ${message}`), { daemonPid: child.pid }));
+                                                                    ^
+
+Error: Daemon pid=6054: Daemon process exited with code 1
+[PlaywrightError: Chromium distribution 'chrome' is not found at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+Run "npx playwright install chrome"] {
+  log: []
+}
+
+    at rejectWithPid (/Users/lemonnierhugo/.npm/_npx/31e32ef8478fbf80/node_modules/playwright-core/lib/tools/cli-client/session.js:172:69)
+    at ChildProcess.<anonymous> (/Users/lemonnierhugo/.npm/_npx/31e32ef8478fbf80/node_modules/playwright-core/lib/tools/cli-client/session.js:182:11)
+    at ChildProcess.emit (node:events:509:20)
+    at maybeClose (node:internal/child_process:1125:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5) {
+  daemonPid: 6054
+}
+
+Node.js v26.4.0

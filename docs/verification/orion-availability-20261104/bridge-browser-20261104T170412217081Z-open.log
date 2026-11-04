@@ -1,0 +1,11 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-bridge-ui open about:blank --config=/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/rematerialization-completion-20261103/cli-headless.config.json
+### Browser `orion-bridge-ui` opened with pid 19770.
+### Ran Playwright code
+```js
+await page.goto('about:blank');
+```
+### Page
+- Page URL: about:blank
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-04T17-04-20-363Z.yml)

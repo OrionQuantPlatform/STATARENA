@@ -1,5 +1,5 @@
 {
-  "atUtc": "2026-11-04T17:29:54.131387+00:00",
+  "atUtc": "2026-11-04T17:34:59.881191+00:00",
   "repository": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking",
   "branch": "main",
   "scope": "Seven frontend bridge product files; parent owns release, backend, configuration and WORKLOG. No frontend commit/deployment by this agent.",
@@ -21,8 +21,23 @@
     "archiveBrowserRed": "bridge-browser-20261104T172132481647Z.json",
     "archiveHttpRed": "archive-goals-20261104T172628385Z.json",
     "archiveHttpFinal": "archive-goals-20261104T172656403Z.json",
-    "finalBuild": "bridge-build-20261104T172723051561Z.json"
+    "finalBuild": "bridge-build-20261104T172723051561Z.json",
+    "archiveBrowserRelayFirstFailure": "bridge-browser-20261104T172721922119Z.json",
+    "archiveBrowserRelayStreamFailure": "bridge-browser-20261104T173010657951Z.json",
+    "finalBrowser": "bridge-browser-20261104T173306252606Z.json"
   },
-  "remaining": "Final expanded browser rerun after relay-header correction pending. Real credentialed Vercel preview and independent review remain parent-owned release gates.",
-  "suggestedCommit": "fix: bridge the current frontend to saved Neon data"
+  "remaining": "Parent-owned actual credentialed Vercel preview, independent acceptance and release. No further local tests or product edits planned.",
+  "suggestedCommit": "fix: bridge the current frontend to saved Neon data",
+  "localStatus": "Complete: build passed; real-data32 prior to isolated archive correction; fixture17; final archiveHTTP6; final browser12.",
+  "cleanup": {
+    "atUtc": "2026-11-04T17:34:59.881191+00:00",
+    "method": "Read-only ps process inventory and socket connect checks after runner cleanup.",
+    "ownedProcesses": [],
+    "lastAdapterAndFrontendPorts": [
+      60564,
+      60565
+    ],
+    "openPorts": [],
+    "playwrightSession": "orion-bridge-ui closed by runner"
+  }
 }

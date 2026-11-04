@@ -1,0 +1,12 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-old-availability click e1265
+### Ran Playwright code
+```js
+await page.getByRole('tab', { name: 'Statistiques' }).click();
+```
+### Page
+- Page URL: https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl&tab=results&id=m_18Uw0k&competition=l_3FJFUl&sourceSeason=2026%2F2027&view=stats
+- Page Title: Calendrier — STATARENA
+- Console: 0 errors, 1 warnings
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-04T16-30-54-245Z.yml)

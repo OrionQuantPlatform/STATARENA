@@ -1,0 +1,6 @@
+{
+  "command": "python3 docs/verification/orion-availability-20261104/run_bridge_browser.py",
+  "setup": "Temporary copy of the current Next frontend; local compatibility server relays only the old immutable Neon-backed deployment. No production alias/configuration changes or football-provider calls.",
+  "expected": "The current UI renders home, match, player, club, competition, ranking/scouting and historic mobile paths with saved data.",
+  "status": "failed"
+}

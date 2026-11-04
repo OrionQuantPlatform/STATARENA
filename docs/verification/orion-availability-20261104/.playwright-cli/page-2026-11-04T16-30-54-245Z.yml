@@ -1,0 +1,303 @@
+- generic [ref=e1]:
+  - alert [ref=e2]: Calendrier — STATARENA
+  - link "Aller au contenu" [ref=e1161] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e1162]:
+    - banner [ref=e1163]:
+      - link "STATARENA, vue d’ensemble" [ref=e1164] [cursor=pointer]:
+        - /url: /?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - img "STATARENA" [ref=e1166]
+      - navigation "Navigation principale" [ref=e1167]:
+        - link "Vue d’ensemble" [ref=e1168] [cursor=pointer]:
+          - /url: /?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Compétitions" [ref=e1169] [cursor=pointer]:
+          - /url: /competitions?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Clubs" [ref=e1170] [cursor=pointer]:
+          - /url: /clubs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Joueurs" [ref=e1171] [cursor=pointer]:
+          - /url: /joueurs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Calendrier" [ref=e1172] [cursor=pointer]:
+          - /url: /matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+      - generic [ref=e1173]:
+        - generic [ref=e1175]:
+          - combobox "Rechercher un joueur, un club ou une compétition" [ref=e1176]
+          - generic [aria-hidden]: /
+        - button "Activer le thème clair" [ref=e1177] [cursor=pointer]
+    - main [ref=e1184]:
+      - generic [ref=e1185]:
+        - generic [ref=e1186]:
+          - navigation "Fil d’Ariane du match" [ref=e1187]:
+            - link "Résultats" [ref=e1188] [cursor=pointer]:
+              - /url: /matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl&tab=results
+            - generic [ref=e1193]: Ligue 1
+            - generic [ref=e1196]: 2026/2027
+          - button "Enregistrer Paris FC – Monaco dans Ma sélection" [ref=e1198] [cursor=pointer]: Enregistrer
+        - region "Résumé du match" [ref=e1201]:
+          - generic [ref=e1202]:
+            - generic [ref=e1203]: Ligue 1
+            - generic [ref=e1206]: 1 nov. 2026 · 17:15
+          - heading "Paris FC — Monaco" [level=1] [ref=e1207]
+          - generic [ref=e1208]:
+            - link "Paris FC Domicile · 4-2-3-1" [ref=e1209] [cursor=pointer]:
+              - /url: /clubs?season=2026%2F2027&focus=europe&league=l_3FJFUl&id=t_0LMnwp
+              - generic [ref=e1211]:
+                - strong [ref=e1212]: Paris FC
+                - generic [ref=e1213]: Domicile · 4-2-3-1
+            - generic [ref=e1214]:
+              - generic [ref=e1215]: Terminé
+              - generic [ref=e1217]:
+                - strong [ref=e1218]: "3"
+                - generic [ref=e1219]: –
+                - strong [ref=e1220]: "1"
+            - link "Monaco Extérieur · 4-2-3-1" [ref=e1221] [cursor=pointer]:
+              - /url: /clubs?season=2026%2F2027&focus=europe&league=l_3FJFUl&id=t_13gLEF
+              - generic [ref=e1223]:
+                - strong [ref=e1224]: Monaco
+                - generic [ref=e1225]: Extérieur · 4-2-3-1
+          - generic [ref=e1226]:
+            - generic [ref=e1227]:
+              - generic [ref=e1228]: Buts attendus · xG
+              - strong [ref=e1229]:
+                - generic [ref=e1230]: 2,03
+                - generic [ref=e1231]: –
+                - generic [ref=e1232]: 0,74
+            - generic [ref=e1233]:
+              - generic [ref=e1234]: Tirs
+              - strong [ref=e1235]:
+                - generic [ref=e1236]: "19"
+                - generic [ref=e1237]: –
+                - generic [ref=e1238]: "9"
+            - generic [ref=e1239]:
+              - generic [ref=e1240]: Tirs cadrés
+              - strong [ref=e1241]:
+                - generic [ref=e1242]: "10"
+                - generic [ref=e1243]: –
+                - generic [ref=e1244]: "2"
+            - generic [ref=e1245]:
+              - generic [ref=e1246]: Possession
+              - strong [ref=e1247]:
+                - generic [ref=e1248]: 44 %
+                - generic [ref=e1249]: –
+                - generic [ref=e1250]: 56 %
+        - tablist "Analyse du match" [ref=e1251]:
+          - tab "Vue d’ensemble" [ref=e1252] [cursor=pointer]
+          - tab "Avant-match" [ref=e1255] [cursor=pointer]
+          - tab "Classement" [ref=e1258] [cursor=pointer]
+          - tab "Statistiques" [active] [selected] [ref=e1265] [cursor=pointer]
+          - tab "Tirs & xG" [ref=e1267] [cursor=pointer]
+          - tab "Compositions" [ref=e1270] [cursor=pointer]
+          - tab "Joueurs" [ref=e1273] [cursor=pointer]
+          - tab "Analyses" [ref=e1279] [cursor=pointer]
+        - tabpanel "Statistiques" [ref=e1526]:
+          - region "Statistiques des équipes" [ref=e1527]:
+            - generic [ref=e1528]:
+              - strong [ref=e1531]: Paris FC
+              - strong [ref=e1534]: Monaco
+              - generic "Période des statistiques" [ref=e1535]:
+                - button "Match" [pressed] [ref=e1536] [cursor=pointer]
+                - button "1re mi-temps" [ref=e1537] [cursor=pointer]
+                - button "2e mi-temps" [ref=e1538] [cursor=pointer]
+            - generic [ref=e1540]:
+              - term [ref=e1541]: Possession
+              - definition [ref=e1542]: 44 %
+              - definition [ref=e1543]: 56 %
+              - definition [aria-hidden] [ref=e1544]
+            - generic [ref=e1548]:
+              - generic [ref=e1549]:
+                - heading "Tirs" [level=3] [ref=e1550]
+                - generic [ref=e1551]:
+                  - generic [ref=e1552]:
+                    - term [ref=e1553]: Tirs
+                    - definition [ref=e1554]: "19"
+                    - definition [ref=e1555]: "9"
+                    - definition [aria-hidden] [ref=e1556]
+                  - generic [ref=e1561]:
+                    - term [ref=e1562]: Tirs cadrés
+                    - definition [ref=e1563]: "10"
+                    - definition [ref=e1564]: "2"
+                    - definition [aria-hidden] [ref=e1565]
+                  - generic [ref=e1570]:
+                    - term [ref=e1571]: Tirs non cadrés
+                    - definition [ref=e1572]: "7"
+                    - definition [ref=e1573]: "5"
+                    - definition [aria-hidden] [ref=e1574]
+                  - generic [ref=e1579]:
+                    - term [ref=e1580]: Tirs contrés
+                    - definition [ref=e1581]: "2"
+                    - definition [ref=e1582]: "2"
+                    - definition [aria-hidden] [ref=e1583]
+                  - generic [ref=e1588]:
+                    - term [ref=e1589]: Tirs dans la surface
+                    - definition [ref=e1590]: "12"
+                    - definition [ref=e1591]: "6"
+                    - definition [aria-hidden] [ref=e1592]
+                  - generic [ref=e1597]:
+                    - term [ref=e1598]: Tirs hors surface
+                    - definition [ref=e1599]: "7"
+                    - definition [ref=e1600]: "3"
+                    - definition [aria-hidden] [ref=e1601]
+                  - generic [ref=e1606]:
+                    - term [ref=e1607]: Grosses occasions
+                    - definition [ref=e1608]: "4"
+                    - definition [ref=e1609]: "0"
+                    - definition [aria-hidden] [ref=e1610]
+                  - generic [ref=e1614]:
+                    - term [ref=e1615]: Grosses occasions manquées
+                    - definition [ref=e1616]: "1"
+                    - definition [ref=e1617]: "0"
+                    - definition [aria-hidden] [ref=e1618]
+                  - generic [ref=e1622]:
+                    - term [ref=e1623]: Montants touchés
+                    - definition [ref=e1624]: "2"
+                    - definition [ref=e1625]: "0"
+                    - definition [aria-hidden] [ref=e1626]
+              - generic [ref=e1630]:
+                - heading "Buts attendus" [level=3] [ref=e1631]
+                - generic [ref=e1632]:
+                  - generic [ref=e1633]:
+                    - term [ref=e1634]: Buts attendus · xG
+                    - definition [ref=e1635]: 2,03
+                    - definition [ref=e1636]: 0,74
+                    - definition [aria-hidden] [ref=e1637]
+                  - generic [ref=e1642]:
+                    - term [ref=e1643]: xG hors penalty
+                    - definition [ref=e1644]: 2,03
+                    - definition [ref=e1645]: 0,74
+                    - definition [aria-hidden] [ref=e1646]
+                  - generic [ref=e1651]:
+                    - term [ref=e1652]: xG dans le jeu
+                    - definition [ref=e1653]: 1,98
+                    - definition [ref=e1654]: 0,62
+                    - definition [aria-hidden] [ref=e1655]
+                  - generic [ref=e1660]:
+                    - term [ref=e1661]: xG sur phase arrêtée
+                    - definition [ref=e1662]: 0,05
+                    - definition [ref=e1663]: 0,11
+                    - definition [aria-hidden] [ref=e1664]
+                  - generic [ref=e1669]:
+                    - term [ref=e1670]: xG cadrés · xGOT
+                    - definition [ref=e1671]: 2,62
+                    - definition [ref=e1672]: 0,99
+                    - definition [aria-hidden] [ref=e1673]
+              - generic [ref=e1678]:
+                - heading "Duels" [level=3] [ref=e1679]
+                - generic [ref=e1680]:
+                  - generic [ref=e1681]:
+                    - term [ref=e1682]: Duels gagnés
+                    - definition [ref=e1683]: "39"
+                    - definition [ref=e1684]: "31"
+                    - definition [aria-hidden] [ref=e1685]
+                  - generic [ref=e1690]:
+                    - term [ref=e1691]: Duels au sol gagnés
+                    - definition [ref=e1692]: 3257 %
+                    - definition [ref=e1693]: 43 %24
+                    - definition [aria-hidden] [ref=e1694]
+                  - generic [ref=e1699]:
+                    - term [ref=e1700]: Duels aériens gagnés
+                    - definition [ref=e1701]: 750 %
+                    - definition [ref=e1702]: 50 %7
+                    - definition [aria-hidden] [ref=e1703]
+                  - generic [ref=e1708]:
+                    - term [ref=e1709]: Dribbles réussis
+                    - definition [ref=e1710]: 240 %
+                    - definition [ref=e1711]: 27 %3
+                    - definition [aria-hidden] [ref=e1712]
+              - generic [ref=e1717]:
+                - heading "Passes" [level=3] [ref=e1718]
+                - generic [ref=e1719]:
+                  - generic [ref=e1720]:
+                    - term [ref=e1721]: Passes tentées
+                    - definition [ref=e1722]: "512"
+                    - definition [ref=e1723]: "653"
+                    - definition [aria-hidden] [ref=e1724]
+                  - generic [ref=e1729]:
+                    - term [ref=e1730]: Passes réussies
+                    - definition [ref=e1731]: 44286 %
+                    - definition [ref=e1732]: 88 %577
+                    - definition [aria-hidden] [ref=e1733]
+                  - generic [ref=e1738]:
+                    - term [ref=e1739]: Passes dans le camp adverse
+                    - definition [ref=e1740]: "176"
+                    - definition [ref=e1741]: "258"
+                    - definition [aria-hidden] [ref=e1742]
+                  - generic [ref=e1747]:
+                    - term [ref=e1748]: Passes dans son camp
+                    - definition [ref=e1749]: "266"
+                    - definition [ref=e1750]: "319"
+                    - definition [aria-hidden] [ref=e1751]
+                  - generic [ref=e1756]:
+                    - term [ref=e1757]: Passes longues réussies
+                    - definition [ref=e1758]: 2247 %
+                    - definition [ref=e1759]: 56 %23
+                    - definition [aria-hidden] [ref=e1760]
+                  - generic [ref=e1765]:
+                    - term [ref=e1766]: Centres réussis
+                    - definition [ref=e1767]: 741 %
+                    - definition [ref=e1768]: 22 %2
+                    - definition [aria-hidden] [ref=e1769]
+                  - generic [ref=e1774]:
+                    - term [ref=e1775]: Ballons dans la surface adverse
+                    - definition [ref=e1776]: "27"
+                    - definition [ref=e1777]: "15"
+                    - definition [aria-hidden] [ref=e1778]
+                  - generic [ref=e1783]:
+                    - term [ref=e1784]: Corners
+                    - definition [ref=e1785]: "3"
+                    - definition [ref=e1786]: "2"
+                    - definition [aria-hidden] [ref=e1787]
+                  - generic [ref=e1792]:
+                    - term [ref=e1793]: Touches
+                    - definition [ref=e1794]: "15"
+                    - definition [ref=e1795]: "13"
+                    - definition [aria-hidden] [ref=e1796]
+              - generic [ref=e1801]:
+                - heading "Défense" [level=3] [ref=e1802]
+                - generic [ref=e1803]:
+                  - generic [ref=e1804]:
+                    - term [ref=e1805]: Tacles
+                    - definition [ref=e1806]: "16"
+                    - definition [ref=e1807]: "8"
+                    - definition [aria-hidden] [ref=e1808]
+                  - generic [ref=e1813]:
+                    - term [ref=e1814]: Interceptions
+                    - definition [ref=e1815]: "22"
+                    - definition [ref=e1816]: "11"
+                    - definition [aria-hidden] [ref=e1817]
+                  - generic [ref=e1822]:
+                    - term [ref=e1823]: Dégagements
+                    - definition [ref=e1824]: "19"
+                    - definition [ref=e1825]: "13"
+                    - definition [aria-hidden] [ref=e1826]
+                  - generic [ref=e1831]:
+                    - term [ref=e1832]: Tirs bloqués
+                    - definition [ref=e1833]: "2"
+                    - definition [ref=e1834]: "2"
+                    - definition [aria-hidden] [ref=e1835]
+                  - generic [ref=e1840]:
+                    - term [ref=e1841]: Arrêts
+                    - definition [ref=e1842]: "2"
+                    - definition [ref=e1843]: "7"
+                    - definition [aria-hidden] [ref=e1844]
+              - generic [ref=e1849]:
+                - heading "Discipline" [level=3] [ref=e1850]
+                - generic [ref=e1851]:
+                  - generic [ref=e1852]:
+                    - term [ref=e1853]: Fautes commises
+                    - definition [ref=e1854]: "13"
+                    - definition [ref=e1855]: "15"
+                    - definition [aria-hidden] [ref=e1856]
+                  - generic [ref=e1861]:
+                    - term [ref=e1862]: Cartons jaunes
+                    - definition [ref=e1863]: "2"
+                    - definition [ref=e1864]: "2"
+                    - definition [aria-hidden] [ref=e1865]
+                  - generic [ref=e1870]:
+                    - term [ref=e1871]: Cartons rouges
+                    - definition [ref=e1872]: "0"
+                    - definition [ref=e1873]: "0"
+                    - definition [aria-hidden] [ref=e1874]
+                  - generic [ref=e1877]:
+                    - term [ref=e1878]: Hors-jeu
+                    - definition [ref=e1879]: "1"
+                    - definition [ref=e1880]: "1"
+                    - definition [aria-hidden] [ref=e1881]

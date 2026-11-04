@@ -1,0 +1,36 @@
+{
+  "atUtc": "2026-11-04T17:23:59.501Z",
+  "command": "bun saved archive-size probe (exact command recorded in archive-goals-size-20261104T1724.json)",
+  "setup": "One read from existing immutable deployment saved object, no provider or database requests or payload file.",
+  "expected": "Measure stored gzip and decoded JSON to explain observed archive 413.",
+  "path": "/data/raw/historical-goals/2020-2021.json.gz",
+  "status": 200,
+  "compressedBytes": 238411,
+  "decodedBytes": 2677442,
+  "compressedSha256": "01630521e2e0fa42677c27c9eed5d4be41d0ed460010d63615c811cf1e4a961c",
+  "decodedSha256": "883ef6809cd737777fc2fa202374f0af611dd56e35be39f289527061128b0bb8",
+  "headers": {
+    "age": "0",
+    "cache-control": "public, max-age=0, s-maxage=60, must-revalidate",
+    "cdn-cache-control": "public, s-maxage=60, stale-while-revalidate=30",
+    "content-length": "238411",
+    "content-type": "application/gzip",
+    "date": "Wed, 04 Nov 2026 17:23:59 GMT",
+    "etag": "\"01630521e2e0fa42677c27c9eed5d4be41d0ed460010d63615c811cf1e4a961c\"",
+    "server": "Vercel",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "x-content-type-options": "nosniff",
+    "x-data-source": "Neon",
+    "x-matched-path": "/data/[...path]",
+    "x-robots-tag": "noindex",
+    "x-vercel-cache": "MISS",
+    "x-vercel-id": "cdg1::cle1::vkf6s-1793813038939-67b9c61332c3"
+  },
+  "keys": [
+    "season",
+    "source",
+    "competitions"
+  ],
+  "reproductionCommand": "bun docs/verification/orion-availability-20261104/archive_goals_e2e.mjs",
+  "reproductionNote": "Focused runner measures the same saved gzip and decoded sizes and validates the actual current client; original ad hoc size-only probe preceded it."
+}

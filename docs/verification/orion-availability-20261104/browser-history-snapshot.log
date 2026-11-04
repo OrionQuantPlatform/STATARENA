@@ -1,0 +1,782 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-old-availability snapshot
+### Page
+- Page URL: https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl
+- Page Title: Vue d’ensemble — STATARENA
+- Console: 0 errors, 1 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f1e1]:
+  - alert [ref=f1e2]
+  - link "Aller au contenu" [ref=f1e32] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=f1e33]:
+    - banner [ref=f1e34]:
+      - link "STATARENA, vue d’ensemble" [ref=f1e35] [cursor=pointer]:
+        - /url: /?season=2025%2F2026&focus=europe&league=l_3FJFUl
+        - img "STATARENA" [ref=f1e37]
+      - navigation "Navigation principale" [ref=f1e38]:
+        - link "Vue d’ensemble" [ref=f1e39] [cursor=pointer]:
+          - /url: /?season=2025%2F2026&focus=europe&league=l_3FJFUl
+        - link "Compétitions" [ref=f1e40] [cursor=pointer]:
+          - /url: /competitions?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Clubs" [ref=f1e41] [cursor=pointer]:
+          - /url: /clubs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Joueurs" [ref=f1e42] [cursor=pointer]:
+          - /url: /joueurs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+        - link "Calendrier" [ref=f1e43] [cursor=pointer]:
+          - /url: /matchs?season=2026%2F2027&focus=europe&league=l_3FJFUl
+      - generic [ref=f1e44]:
+        - generic [ref=f1e46]:
+          - combobox "Rechercher un joueur, un club ou une compétition" [ref=f1e47]
+          - generic [aria-hidden]: /
+        - button "Activer le thème clair" [ref=f1e48] [cursor=pointer]
+    - main [ref=f1e55]:
+      - heading "Vue d’ensemble" [level=1] [ref=f1e56]
+      - generic [ref=f1e57]:
+        - generic [ref=f1e58]:
+          - generic [ref=f1e59]: Saison
+          - combobox "Saison" [ref=f1e61] [cursor=pointer]:
+            - option "2026/2027"
+            - option "2025/2026" [selected]
+            - option "2024/2025"
+            - option "2023/2024"
+            - option "2022/2023"
+            - option "2021/2022"
+        - 'button "Filtrer les compétitions : Ligue 1 · France" [ref=f1e62] [cursor=pointer]':
+          - generic [ref=f1e64]: Ligue 1 · France
+      - navigation "Résultats de la semaine" [ref=f1e65]:
+        - generic [ref=f1e66]: dim. 17 mai
+        - generic [ref=f1e67]:
+          - link "L1 Terminé" [ref=f1e68] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_0Y0KT0&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e69]: L1
+            - generic [ref=f1e70]: Terminé
+          - link "Lyon 0" [ref=f1e71] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0xMlRV
+            - generic [ref=f1e73]: Lyon
+            - generic [ref=f1e74]: "0"
+          - link "Lens 4" [ref=f1e75] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_38NVJO
+            - generic [ref=f1e77]: Lens
+            - generic [ref=f1e78]: "4"
+          - link "Voir Lyon – Lens" [ref=f1e79] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_0Y0KT0&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e83]:
+              - generic [ref=f1e84]: 1,91 xG
+              - generic [ref=f1e85]: 1,54
+        - generic [ref=f1e86]:
+          - link "L1 Terminé" [ref=f1e87] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_2RXOya&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e88]: L1
+            - generic [ref=f1e89]: Terminé
+          - link "Lille 0" [ref=f1e90] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0tnX1I
+            - generic [ref=f1e92]: Lille
+            - generic [ref=f1e93]: "0"
+          - link "Auxerre 2" [ref=f1e94] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_2Vc7mg
+            - generic [ref=f1e96]: Auxerre
+            - generic [ref=f1e97]: "2"
+          - link "Voir Lille – Auxerre" [ref=f1e98] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_2RXOya&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e102]:
+              - generic [ref=f1e103]: 1,72 xG
+              - generic [ref=f1e104]: 0,54
+        - generic [ref=f1e105]:
+          - link "L1 Terminé" [ref=f1e106] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_41Ecf8&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e107]: L1
+            - generic [ref=f1e108]: Terminé
+          - link "Paris FC 2" [ref=f1e109] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0LMnwp
+            - generic [ref=f1e111]: Paris FC
+            - generic [ref=f1e112]: "2"
+          - link "Paris Saint-Germain 1" [ref=f1e113] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_41iFW3
+            - generic [ref=f1e115]: Paris Saint-Germain
+            - generic [ref=f1e116]: "1"
+          - link "Voir Paris FC – Paris Saint-Germain" [ref=f1e117] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_41Ecf8&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e121]:
+              - generic [ref=f1e122]: 2,20 xG
+              - generic [ref=f1e123]: 0,61
+        - generic [ref=f1e124]:
+          - link "L1 Terminé" [ref=f1e125] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_0wEZfg&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e126]: L1
+            - generic [ref=f1e127]: Terminé
+          - link "Strasbourg 5" [ref=f1e128] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_1p1AQf
+            - generic [ref=f1e130]: Strasbourg
+            - generic [ref=f1e131]: "5"
+          - link "Monaco 4" [ref=f1e132] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_13gLEF
+            - generic [ref=f1e134]: Monaco
+            - generic [ref=f1e135]: "4"
+          - link "Voir Strasbourg – Monaco" [ref=f1e136] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_0wEZfg&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e140]:
+              - generic [ref=f1e141]: 1,50 xG
+              - generic [ref=f1e142]: 1,13
+        - generic [ref=f1e143]:
+          - link "L1 Terminé" [ref=f1e144] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3ASfhY&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e145]: L1
+            - generic [ref=f1e146]: Terminé
+          - link "Marseille 3" [ref=f1e147] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_2s2eyG
+            - generic [ref=f1e149]: Marseille
+            - generic [ref=f1e150]: "3"
+          - link "Rennes 1" [ref=f1e151] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_3Ng6PH
+            - generic [ref=f1e153]: Rennes
+            - generic [ref=f1e154]: "1"
+          - link "Voir Marseille – Rennes" [ref=f1e155] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3ASfhY&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e159]:
+              - generic [ref=f1e160]: 2,92 xG
+              - generic [ref=f1e161]: 2,49
+        - generic [ref=f1e162]:
+          - link "L1 Terminé" [ref=f1e163] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_14bJ5S&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e164]: L1
+            - generic [ref=f1e165]: Terminé
+          - link "Nantes 0" [ref=f1e166] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0JtwBe
+            - generic [ref=f1e168]: Nantes
+            - generic [ref=f1e169]: "0"
+          - link "Toulouse 0" [ref=f1e170] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_3t6spd
+            - generic [ref=f1e172]: Toulouse
+            - generic [ref=f1e173]: "0"
+          - link "Voir Nantes – Toulouse" [ref=f1e174] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_14bJ5S&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e178]:
+              - generic [ref=f1e179]: 0,09 xG
+              - generic [ref=f1e180]: 0,17
+        - generic [ref=f1e181]:
+          - link "L1 Terminé" [ref=f1e182] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_1qbUnX&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e183]: L1
+            - generic [ref=f1e184]: Terminé
+          - link "Nice 0" [ref=f1e185] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0QUJ2Y
+            - generic [ref=f1e187]: Nice
+            - generic [ref=f1e188]: "0"
+          - link "Metz 0" [ref=f1e189] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0YXPxP
+            - generic [ref=f1e191]: Metz
+            - generic [ref=f1e192]: "0"
+          - link "Voir Nice – Metz" [ref=f1e193] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_1qbUnX&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e197]:
+              - generic [ref=f1e198]: 1,64 xG
+              - generic [ref=f1e199]: 0,85
+        - generic [ref=f1e200]:
+          - link "L1 Terminé" [ref=f1e201] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3bBYZ4&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e202]: L1
+            - generic [ref=f1e203]: Terminé
+          - link "Brest 1" [ref=f1e204] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0EMLtg
+            - generic [ref=f1e206]: Brest
+            - generic [ref=f1e207]: "1"
+          - link "Angers 1" [ref=f1e208] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0ZkdUF
+            - generic [ref=f1e210]: Angers
+            - generic [ref=f1e211]: "1"
+          - link "Voir Brest – Angers" [ref=f1e212] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3bBYZ4&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e216]:
+              - generic [ref=f1e217]: 1,57 xG
+              - generic [ref=f1e218]: 0,68
+        - generic [ref=f1e219]: mer. 13 mai
+        - generic [ref=f1e220]:
+          - link "L1 Terminé" [ref=f1e221] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3cBOU7&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e222]: L1
+            - generic [ref=f1e223]: Terminé
+          - link "Lens 0" [ref=f1e224] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_38NVJO
+            - generic [ref=f1e226]: Lens
+            - generic [ref=f1e227]: "0"
+          - link "Paris Saint-Germain 2" [ref=f1e228] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_41iFW3
+            - generic [ref=f1e230]: Paris Saint-Germain
+            - generic [ref=f1e231]: "2"
+          - link "Voir Lens – Paris Saint-Germain" [ref=f1e232] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3cBOU7&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e236]:
+              - generic [ref=f1e237]: 2,87 xG
+              - generic [ref=f1e238]: 1,22
+        - generic [ref=f1e239]:
+          - link "L1 Terminé" [ref=f1e240] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_4dxUuk&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e241]: L1
+            - generic [ref=f1e242]: Terminé
+          - link "Brest 1" [ref=f1e243] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0EMLtg
+            - generic [ref=f1e245]: Brest
+            - generic [ref=f1e246]: "1"
+          - link "Strasbourg 2" [ref=f1e247] [cursor=pointer]:
+            - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_1p1AQf
+            - generic [ref=f1e249]: Strasbourg
+            - generic [ref=f1e250]: "2"
+          - link "Voir Brest – Strasbourg" [ref=f1e251] [cursor=pointer]:
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_4dxUuk&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e255]:
+              - generic [ref=f1e256]: 3,06 xG
+              - generic [ref=f1e257]: 2,02
+      - generic [ref=f1e258]:
+        - article [ref=f1e260]:
+          - generic [ref=f1e261]:
+            - generic [ref=f1e262]: Le choc de la semaine
+            - generic [ref=f1e263]: Ligue 1 · mer. 13 mai
+          - generic [ref=f1e265]:
+            - link [ref=f1e266] [cursor=pointer]:
+              - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_38NVJO
+              - generic [ref=f1e268]:
+                - strong [ref=f1e269]: Lens
+                - generic [ref=f1e270]:
+                  - text: 2e ·
+                  - 'generic "Forme : nul, nul, victoire, défaite, victoire" [ref=f1e271]'
+            - link "Score 0 à 2, voir le match" [ref=f1e277] [cursor=pointer]:
+              - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3cBOU7&competition=l_3FJFUl&sourceSeason=2025%2F2026
+              - text: "0"
+              - generic [ref=f1e278]: –
+              - text: "2"
+            - link [ref=f1e279] [cursor=pointer]:
+              - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_41iFW3
+              - generic [ref=f1e281]:
+                - strong [ref=f1e282]: Paris Saint-Germain
+                - generic [ref=f1e283]:
+                  - text: 1er ·
+                  - 'generic "Forme : victoire, nul, victoire, victoire, défaite" [ref=f1e284]'
+          - generic [ref=f1e290]:
+            - generic [ref=f1e292]: Terminé
+            - generic [ref=f1e293]:
+              - button "Kvaratskhelia 29′" [ref=f1e294] [cursor=pointer]
+              - text: ·
+              - button "Mbaye 90′" [ref=f1e295] [cursor=pointer]
+          - paragraph [ref=f1e296]: Lens a créé 2,9 xG contre 1,2, mais s’incline.
+          - generic [ref=f1e297]:
+            - generic [ref=f1e298]:
+              - figure "xG cumulés Lens Paris Saint-Germain" [ref=f1e299]:
+                - generic [ref=f1e300]:
+                  - generic [ref=f1e301]: xG cumulés
+                  - generic [ref=f1e302]:
+                    - generic [ref=f1e303]: Lens
+                    - generic [ref=f1e305]: Paris Saint-Germain
+                - 'img "xG cumulés : Lens 2,90, Paris Saint-Germain 1,23" [ref=f1e308]':
+                  - generic [ref=f1e310]: "0"
+                  - generic [ref=f1e312]: "1"
+                  - generic [ref=f1e314]: "2"
+                  - generic [ref=f1e316]: "3"
+                  - generic [ref=f1e318]: 0′
+                  - generic [ref=f1e319]: 15′
+                  - generic [ref=f1e320]: 30′
+                  - generic [ref=f1e321]: 45′
+                  - generic [ref=f1e322]: 60′
+                  - generic [ref=f1e323]: 75′
+                  - generic [ref=f1e324]: 90′
+                  - generic [ref=f1e329]: Kvaratskhelia 29′
+                  - generic [ref=f1e332]: Mbaye 90′
+              - generic [ref=f1e335]:
+                - generic [ref=f1e336]:
+                  - generic [ref=f1e337]: 38 %
+                  - generic [ref=f1e340]: Possession
+                  - generic [ref=f1e343]: 62 %
+                - generic [ref=f1e344]:
+                  - generic [ref=f1e345]: "25"
+                  - generic [ref=f1e348]: Tirs
+                  - generic [ref=f1e351]: "10"
+                - generic [ref=f1e352]:
+                  - generic [ref=f1e353]: "10"
+                  - generic [ref=f1e356]: Cadrés
+                  - generic [ref=f1e359]: "3"
+                - generic [ref=f1e360]:
+                  - generic [ref=f1e361]: 2,87
+                  - generic [ref=f1e364]: xG
+                  - generic [ref=f1e367]: 1,22
+                - generic [ref=f1e368]:
+                  - generic [ref=f1e369]: "6"
+                  - generic [ref=f1e372]: Grosses occasions
+                  - generic [ref=f1e375]: "2"
+                - generic [ref=f1e376]:
+                  - generic [ref=f1e377]: "41"
+                  - generic [ref=f1e380]: Duels gagnés
+                  - generic [ref=f1e383]: "49"
+                - generic [ref=f1e384]:
+                  - generic [ref=f1e385]: "6"
+                  - generic [ref=f1e388]: Corners
+                  - generic [ref=f1e391]: "3"
+                - generic [ref=f1e392]:
+                  - generic [ref=f1e393]: "1"
+                  - generic [ref=f1e396]: Arrêts
+                  - generic [ref=f1e399]: "8"
+            - generic [ref=f1e400]:
+              - figure "Carte des tirs ● but ○ tir · taille = xG" [ref=f1e401]:
+                - generic [ref=f1e402]:
+                  - generic [ref=f1e403]: Carte des tirs
+                  - generic [ref=f1e404]:
+                    - generic [ref=f1e405]: ● but
+                    - generic [ref=f1e406]: ○ tir · taille = xG
+                - img "Carte des 35 tirs du match" [ref=f1e408]:
+                  - generic [ref=f1e416] [cursor=pointer]
+                  - generic [ref=f1e419] [cursor=pointer]
+                  - generic [ref=f1e422] [cursor=pointer]
+                  - generic [ref=f1e425] [cursor=pointer]
+                  - generic [ref=f1e428] [cursor=pointer]
+                  - generic [ref=f1e431] [cursor=pointer]
+                  - generic [ref=f1e434] [cursor=pointer]
+                  - generic [ref=f1e437] [cursor=pointer]
+                  - generic [ref=f1e440] [cursor=pointer]
+                  - generic [ref=f1e443] [cursor=pointer]
+                  - generic [ref=f1e446] [cursor=pointer]
+                  - generic [ref=f1e449] [cursor=pointer]
+                  - generic [ref=f1e452] [cursor=pointer]
+                  - generic [ref=f1e455] [cursor=pointer]
+                  - generic [ref=f1e458] [cursor=pointer]
+                  - generic [ref=f1e461] [cursor=pointer]
+                  - generic [ref=f1e464] [cursor=pointer]
+                  - generic [ref=f1e467] [cursor=pointer]
+                  - generic [ref=f1e470] [cursor=pointer]
+                  - generic [ref=f1e473] [cursor=pointer]
+                  - generic [ref=f1e476] [cursor=pointer]
+                  - generic [ref=f1e479] [cursor=pointer]
+                  - generic [ref=f1e482] [cursor=pointer]
+                  - generic [ref=f1e485] [cursor=pointer]
+                  - generic [ref=f1e488] [cursor=pointer]
+                  - generic [ref=f1e491] [cursor=pointer]
+                  - generic [ref=f1e494] [cursor=pointer]
+                  - generic [ref=f1e497] [cursor=pointer]
+                  - generic [ref=f1e500] [cursor=pointer]
+                  - generic [ref=f1e503] [cursor=pointer]
+                  - generic [ref=f1e506] [cursor=pointer]
+                  - generic [ref=f1e509] [cursor=pointer]
+                  - generic [ref=f1e512] [cursor=pointer]
+                  - generic [ref=f1e515] [cursor=pointer]
+                  - generic [ref=f1e518] [cursor=pointer]
+              - generic [ref=f1e521]:
+                - button "Meilleure note du match Matvey Safonov Paris Saint-Germain 8,79" [ref=f1e522] [cursor=pointer]:
+                  - generic [ref=f1e524]:
+                    - generic [ref=f1e525]: Meilleure note du match
+                    - strong [ref=f1e526]: Matvey Safonov
+                    - generic [ref=f1e527]: Paris Saint-Germain
+                  - generic [ref=f1e528]: 8,79
+                - link "Analyse complète du match" [ref=f1e529] [cursor=pointer]:
+                  - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_3cBOU7&competition=l_3FJFUl&sourceSeason=2025%2F2026
+        - generic [ref=f1e532]:
+          - article [ref=f1e533]:
+            - generic [aria-hidden]: Enciso
+            - generic [ref=f1e534]:
+              - generic [ref=f1e535]: Joueur de la semaine
+              - generic [ref=f1e536]: dim. 17 mai
+            - button "Julio Enciso Strasbourg" [ref=f1e537] [cursor=pointer]:
+              - generic [ref=f1e539]:
+                - strong [ref=f1e540]: Julio Enciso
+                - generic [ref=f1e541]: Strasbourg
+            - generic [ref=f1e542]:
+              - generic [ref=f1e543]:
+                - generic [ref=f1e544]: 9,46
+                - text: Note du match
+              - generic [ref=f1e545]:
+                - generic [ref=f1e546]: "0"
+                - text: Buts
+              - generic [ref=f1e547]:
+                - generic [ref=f1e548]: "3"
+                - text: Passes déc.
+            - generic [ref=f1e549]:
+              - generic [ref=f1e550]:
+                - term [ref=f1e551]: xG
+                - definition [ref=f1e552]: 0,15
+              - generic [ref=f1e553]:
+                - term [ref=f1e554]: Tirs (cadrés)
+                - definition [ref=f1e555]: 2 (0)
+              - generic [ref=f1e556]:
+                - term [ref=f1e557]: Occasions créées
+                - definition [ref=f1e558]: "4"
+              - generic [ref=f1e559]:
+                - term [ref=f1e560]: Passes réussies
+                - definition [ref=f1e561]: 78 %
+              - generic [ref=f1e562]:
+                - term [ref=f1e563]: Duels gagnés
+                - definition [ref=f1e564]: 6/13
+              - generic [ref=f1e565]:
+                - term [ref=f1e566]: Touches
+                - definition [ref=f1e567]: "42"
+              - generic [ref=f1e568]:
+                - term [ref=f1e569]: Actions défensives
+                - definition [ref=f1e570]: "2"
+              - generic [ref=f1e571]:
+                - term [ref=f1e572]: Temps de jeu
+                - definition [ref=f1e573]: 90′
+            - generic [ref=f1e574]:
+              - text: Ses derniers matchs
+              - list [ref=f1e575]:
+                - listitem "dim. 19 avr. · 5,98" [ref=f1e576]:
+                  - generic [ref=f1e578]: 6,0
+                - listitem "dim. 26 avr. · 6,59" [ref=f1e579]:
+                  - generic [ref=f1e581]: 6,6
+                - listitem "dim. 3 mai · 5,75" [ref=f1e582]:
+                  - generic [ref=f1e584]: 5,8
+                - listitem "dim. 10 mai · 7,75" [ref=f1e585]:
+                  - generic [ref=f1e587]: 7,8
+                - listitem "mer. 13 mai · 7,68" [ref=f1e588]:
+                  - generic [ref=f1e590]: 7,7
+                - listitem "dim. 17 mai · 9,46" [ref=f1e591]:
+                  - generic [ref=f1e593]: 9,5
+            - paragraph [ref=f1e594]: "Sur la saison : 3 buts, 6 passes, note moyenne 7,13 en 27 matchs."
+            - generic [ref=f1e595]:
+              - generic [ref=f1e596]:
+                - text: Strasbourg
+                - generic [ref=f1e597]: 5–4
+                - text: Monaco
+              - link "Le match" [ref=f1e598] [cursor=pointer]:
+                - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_0wEZfg&competition=l_3FJFUl&sourceSeason=2025%2F2026
+          - 'link "4 Le chiffre de la semaine buts d’écart : Lyon 0–4 Lens en Ligue 1. Le plus large score de la semaine." [ref=f1e601] [cursor=pointer]':
+            - /url: /matchs?season=2025%2F2026&focus=europe&league=l_3FJFUl&tab=results&id=m_0Y0KT0&competition=l_3FJFUl&sourceSeason=2025%2F2026
+            - generic [ref=f1e602]: "4"
+            - generic [ref=f1e603]:
+              - generic [ref=f1e604]: Le chiffre de la semaine
+              - generic [ref=f1e605]:
+                - text: "buts d’écart :"
+                - generic [ref=f1e606]: Lyon 0–4 Lens
+                - text: en Ligue 1. Le plus large score de la semaine.
+        - article [ref=f1e608]:
+          - generic [ref=f1e609]:
+            - generic [ref=f1e610]:
+              - generic [ref=f1e611]: Course au titre
+              - heading "Qui décroche en tête ?" [level=2] [ref=f1e612]
+            - link "Classement complet" [ref=f1e613] [cursor=pointer]:
+              - /url: /competitions?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=l_3FJFUl
+          - generic [ref=f1e616]:
+            - img "Points cumulés du top 6 après 34 journées" [ref=f1e618]:
+              - generic [ref=f1e620]: "0"
+              - generic [ref=f1e622]: "20"
+              - generic [ref=f1e624]: "40"
+              - generic [ref=f1e626]: "60"
+              - generic [ref=f1e628]: J4
+              - generic [ref=f1e629]: J8
+              - generic [ref=f1e630]: J12
+              - generic [ref=f1e631]: J16
+              - generic [ref=f1e632]: J20
+              - generic [ref=f1e633]: J24
+              - generic [ref=f1e634]: J28
+              - generic [ref=f1e635]: J32
+            - generic [ref=f1e654]:
+              - 'link "Paris Saint-Germain +6 pts d’avance · Forme : victoire, nul, victoire, victoire, défaite 76" [ref=f1e655] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_41iFW3
+                - generic [ref=f1e658]:
+                  - strong [ref=f1e659]: Paris Saint-Germain
+                  - generic [ref=f1e660]:
+                    - text: +6 pts d’avance ·
+                    - 'generic "Forme : victoire, nul, victoire, victoire, défaite" [ref=f1e661]'
+                - generic [ref=f1e667]: "76"
+              - 'link "Lens −6 pts · Forme : nul, nul, victoire, défaite, victoire 70" [ref=f1e668] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_38NVJO
+                - generic [ref=f1e671]:
+                  - strong [ref=f1e672]: Lens
+                  - generic [ref=f1e673]:
+                    - text: −6 pts ·
+                    - 'generic "Forme : nul, nul, victoire, défaite, victoire" [ref=f1e674]'
+                - generic [ref=f1e680]: "70"
+              - 'link "Lille −15 pts · Forme : nul, victoire, nul, victoire, défaite 61" [ref=f1e681] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0tnX1I
+                - generic [ref=f1e684]:
+                  - strong [ref=f1e685]: Lille
+                  - generic [ref=f1e686]:
+                    - text: −15 pts ·
+                    - 'generic "Forme : nul, victoire, nul, victoire, défaite" [ref=f1e687]'
+                - generic [ref=f1e693]: "61"
+              - 'link "Lyon −16 pts · Forme : victoire, victoire, victoire, défaite, défaite 60" [ref=f1e694] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0xMlRV
+                - generic [ref=f1e697]:
+                  - strong [ref=f1e698]: Lyon
+                  - generic [ref=f1e699]:
+                    - text: −16 pts ·
+                    - 'generic "Forme : victoire, victoire, victoire, défaite, défaite" [ref=f1e700]'
+                - generic [ref=f1e706]: "60"
+              - 'link "Marseille −17 pts · Forme : défaite, nul, défaite, victoire, victoire 59" [ref=f1e707] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_2s2eyG
+                - generic [ref=f1e710]:
+                  - strong [ref=f1e711]: Marseille
+                  - generic [ref=f1e712]:
+                    - text: −17 pts ·
+                    - 'generic "Forme : défaite, nul, défaite, victoire, victoire" [ref=f1e713]'
+                - generic [ref=f1e719]: "59"
+              - 'link "Rennes −17 pts · Forme : victoire, victoire, défaite, victoire, défaite 59" [ref=f1e720] [cursor=pointer]':
+                - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_3Ng6PH
+                - generic [ref=f1e723]:
+                  - strong [ref=f1e724]: Rennes
+                  - generic [ref=f1e725]:
+                    - text: −17 pts ·
+                    - 'generic "Forme : victoire, victoire, défaite, victoire, défaite" [ref=f1e726]'
+                - generic [ref=f1e732]: "59"
+        - article "Devant le but" [ref=f1e734]:
+          - generic [ref=f1e735]:
+            - generic [ref=f1e736]: Devant le but
+            - generic "Efficacité" [ref=f1e737]:
+              - button "Efficaces" [pressed] [ref=f1e738] [cursor=pointer]
+              - button "Maladroits" [ref=f1e739] [cursor=pointer]
+          - heading "Ils marquent plus que prévu" [level=3] [ref=f1e740]
+          - paragraph [ref=f1e741]: Buts marqués (●) comparés aux buts attendus (○ xG) sur la saison.
+          - list [ref=f1e742]:
+            - listitem [ref=f1e743]:
+              - button "Estéban Lepaul Rennes · 21 buts, 15,7 xG +5,3" [ref=f1e744] [cursor=pointer]:
+                - generic [ref=f1e747]:
+                  - strong [ref=f1e748]: Estéban Lepaul
+                  - generic [ref=f1e749]: Rennes · 21 buts, 15,7 xG
+                - generic [ref=f1e754]: +5,3
+            - listitem [ref=f1e755]:
+              - button "Ousmane Dembélé Paris Saint-Germain · 10 buts, 6,6 xG +3,4" [ref=f1e756] [cursor=pointer]:
+                - generic [ref=f1e759]:
+                  - strong [ref=f1e760]: Ousmane Dembélé
+                  - generic [ref=f1e761]: Paris Saint-Germain · 10 buts, 6,6 xG
+                - generic [ref=f1e766]: +3,4
+            - listitem [ref=f1e767]:
+              - button "Sebastian Nanasi Strasbourg · 7 buts, 4,1 xG +2,9" [ref=f1e768] [cursor=pointer]:
+                - generic [ref=f1e771]:
+                  - strong [ref=f1e772]: Sebastian Nanasi
+                  - generic [ref=f1e773]: Strasbourg · 7 buts, 4,1 xG
+                - generic [ref=f1e778]: +2,9
+            - listitem [ref=f1e779]:
+              - button "Ilan Kebbal Paris FC · 9 buts, 6,6 xG +2,4" [ref=f1e780] [cursor=pointer]:
+                - generic [ref=f1e783]:
+                  - strong [ref=f1e784]: Ilan Kebbal
+                  - generic [ref=f1e785]: Paris FC · 9 buts, 6,6 xG
+                - generic [ref=f1e790]: +2,4
+            - listitem [ref=f1e791]:
+              - button "Pablo Pagis Lorient · 10 buts, 7,7 xG +2,3" [ref=f1e792] [cursor=pointer]:
+                - generic [ref=f1e795]:
+                  - strong [ref=f1e796]: Pablo Pagis
+                  - generic [ref=f1e797]: Lorient · 10 buts, 7,7 xG
+                - generic [ref=f1e802]: +2,3
+            - listitem [ref=f1e803]:
+              - button "João Neves Paris Saint-Germain · 5 buts, 2,8 xG +2,2" [ref=f1e804] [cursor=pointer]:
+                - generic [ref=f1e807]:
+                  - strong [ref=f1e808]: João Neves
+                  - generic [ref=f1e809]: Paris Saint-Germain · 5 buts, 2,8 xG
+                - generic [ref=f1e814]: +2,2
+            - listitem [ref=f1e815]:
+              - button "Wesley Saïd Lens · 12 buts, 9,9 xG +2,1" [ref=f1e816] [cursor=pointer]:
+                - generic [ref=f1e819]:
+                  - strong [ref=f1e820]: Wesley Saïd
+                  - generic [ref=f1e821]: Lens · 12 buts, 9,9 xG
+                - generic [ref=f1e826]: +2,1
+            - listitem [ref=f1e827]:
+              - button "Martial Godo Strasbourg · 10 buts, 7,9 xG +2,1" [ref=f1e828] [cursor=pointer]:
+                - generic [ref=f1e831]:
+                  - strong [ref=f1e832]: Martial Godo
+                  - generic [ref=f1e833]: Strasbourg · 10 buts, 7,9 xG
+                - generic [ref=f1e838]: +2,1
+          - link "Tous les joueurs" [ref=f1e839] [cursor=pointer]:
+            - /url: /joueurs?season=2025%2F2026&focus=europe&league=l_3FJFUl&ranking=clinical&playersView=table&basis=total&minutes=1
+        - article "Buteurs de la saison" [ref=f1e843]:
+          - generic [ref=f1e844]:
+            - generic [ref=f1e845]: Buteurs de la saison
+            - generic "Classement" [ref=f1e846]:
+              - button "Buteurs" [pressed] [ref=f1e847] [cursor=pointer]
+              - button "Passeurs" [ref=f1e848] [cursor=pointer]
+          - list [ref=f1e849]:
+            - listitem [ref=f1e850]:
+              - button "1 Estéban Lepaul Rennes · 15,7 xG · 34 matchs 21" [ref=f1e851] [cursor=pointer]:
+                - generic [ref=f1e852]: "1"
+                - generic [ref=f1e854]:
+                  - strong [ref=f1e855]: Estéban Lepaul
+                  - generic [ref=f1e856]: Rennes · 15,7 xG · 34 matchs
+                - generic [ref=f1e857]: "21"
+            - listitem [ref=f1e858]:
+              - button "2 Mason Greenwood Marseille · 14,4 xG · 32 matchs 16" [ref=f1e859] [cursor=pointer]:
+                - generic [ref=f1e860]: "2"
+                - generic [ref=f1e862]:
+                  - strong [ref=f1e863]: Mason Greenwood
+                  - generic [ref=f1e864]: Marseille · 14,4 xG · 32 matchs
+                - generic [ref=f1e865]: "16"
+            - listitem [ref=f1e866]:
+              - button "3 Joaquin Panichelli Strasbourg · 14,2 xG · 27 matchs 16" [ref=f1e867] [cursor=pointer]:
+                - generic [ref=f1e868]: "3"
+                - generic [ref=f1e870]:
+                  - strong [ref=f1e871]: Joaquin Panichelli
+                  - generic [ref=f1e872]: Strasbourg · 14,2 xG · 27 matchs
+                - generic [ref=f1e873]: "16"
+            - listitem [ref=f1e874]:
+              - button "4 Folarin Balogun Monaco · 13,4 xG · 30 matchs 13" [ref=f1e875] [cursor=pointer]:
+                - generic [ref=f1e876]: "4"
+                - generic [ref=f1e878]:
+                  - strong [ref=f1e879]: Folarin Balogun
+                  - generic [ref=f1e880]: Monaco · 13,4 xG · 30 matchs
+                - generic [ref=f1e881]: "13"
+            - listitem [ref=f1e882]:
+              - button "5 Lassine Sinayoko Auxerre · 11,9 xG · 32 matchs 12" [ref=f1e883] [cursor=pointer]:
+                - generic [ref=f1e884]: "5"
+                - generic [ref=f1e886]:
+                  - strong [ref=f1e887]: Lassine Sinayoko
+                  - generic [ref=f1e888]: Auxerre · 11,9 xG · 32 matchs
+                - generic [ref=f1e889]: "12"
+            - listitem [ref=f1e890]:
+              - button "6 Odsonne Édouard Lens · 11,5 xG · 29 matchs 12" [ref=f1e891] [cursor=pointer]:
+                - generic [ref=f1e892]: "6"
+                - generic [ref=f1e894]:
+                  - strong [ref=f1e895]: Odsonne Édouard
+                  - generic [ref=f1e896]: Lens · 11,5 xG · 29 matchs
+                - generic [ref=f1e897]: "12"
+            - listitem [ref=f1e898]:
+              - button "7 Wesley Saïd Lens · 9,9 xG · 29 matchs 12" [ref=f1e899] [cursor=pointer]:
+                - generic [ref=f1e900]: "7"
+                - generic [ref=f1e902]:
+                  - strong [ref=f1e903]: Wesley Saïd
+                  - generic [ref=f1e904]: Lens · 9,9 xG · 29 matchs
+                - generic [ref=f1e905]: "12"
+            - listitem [ref=f1e906]:
+              - button "8 Corentin Tolisso Lyon · 11,0 xG · 30 matchs 11" [ref=f1e907] [cursor=pointer]:
+                - generic [ref=f1e908]: "8"
+                - generic [ref=f1e910]:
+                  - strong [ref=f1e911]: Corentin Tolisso
+                  - generic [ref=f1e912]: Lyon · 11,0 xG · 30 matchs
+                - generic [ref=f1e913]: "11"
+            - listitem [ref=f1e914]:
+              - button "9 Florian Thauvin Lens · 10,9 xG · 33 matchs 11" [ref=f1e915] [cursor=pointer]:
+                - generic [ref=f1e916]: "9"
+                - generic [ref=f1e918]:
+                  - strong [ref=f1e919]: Florian Thauvin
+                  - generic [ref=f1e920]: Lens · 10,9 xG · 33 matchs
+                - generic [ref=f1e921]: "11"
+            - listitem [ref=f1e922]:
+              - button "10 Bradley Barcola Paris Saint-Germain · 10,8 xG · 29 matchs 11" [ref=f1e923] [cursor=pointer]:
+                - generic [ref=f1e924]: "10"
+                - generic [ref=f1e926]:
+                  - strong [ref=f1e927]: Bradley Barcola
+                  - generic [ref=f1e928]: Paris Saint-Germain · 10,8 xG · 29 matchs
+                - generic [ref=f1e929]: "11"
+          - link "Tous les joueurs" [ref=f1e930] [cursor=pointer]:
+            - /url: /joueurs?season=2025%2F2026&focus=europe&league=l_3FJFUl&ranking=goals&playersView=table&basis=total&minutes=1
+        - generic [ref=f1e933]:
+          - article [ref=f1e934]:
+            - generic [ref=f1e935]: En série
+            - generic [ref=f1e936]:
+              - generic [ref=f1e937]: "3"
+              - generic [ref=f1e938]:
+                - strong [ref=f1e939]: victoires d’affilée
+                - link "Auxerre" [ref=f1e940] [cursor=pointer]:
+                  - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_2Vc7mg
+            - paragraph [ref=f1e946]: 15e de Ligue 1 · 34 pts en 34 matchs
+          - article "Le mur" [ref=f1e947]:
+            - link "0,85 but encaissé par match Paris Saint-Germain" [ref=f1e949] [cursor=pointer]:
+              - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_41iFW3
+              - generic [ref=f1e950]:
+                - generic [ref=f1e951]: 0,85
+                - generic [ref=f1e952]:
+                  - strong [ref=f1e953]: but encaissé par match
+                  - generic [ref=f1e954]: Paris Saint-Germain
+            - generic [ref=f1e956]:
+              - generic [ref=f1e957]:
+                - term [ref=f1e958]: Matchs joués
+                - definition [ref=f1e959]: "34"
+              - generic [ref=f1e960]:
+                - term [ref=f1e961]: Buts encaissés
+                - definition [ref=f1e962]: "29"
+              - generic [ref=f1e963]:
+                - term [ref=f1e964]: Matchs sans encaisser
+                - definition [ref=f1e965]: "18"
+              - generic [ref=f1e966]:
+                - term [ref=f1e967]: Sans encaisser
+                - definition [ref=f1e968]: 53 %
+              - generic [ref=f1e969]:
+                - term [ref=f1e970]: Classement
+                - definition [ref=f1e971]: 1er · L1
+            - list [ref=f1e972]:
+              - listitem [ref=f1e973]:
+                - link "2 Lens 35 buts · 34 matchs 1,03 but/match" [ref=f1e974] [cursor=pointer]:
+                  - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_38NVJO
+                  - generic [ref=f1e975]: "2"
+                  - generic [ref=f1e977]:
+                    - strong [ref=f1e978]: Lens
+                    - generic [ref=f1e979]: 35 buts · 34 matchs
+                  - generic [ref=f1e980]:
+                    - text: 1,03
+                    - generic [ref=f1e981]: but/match
+              - listitem [ref=f1e982]:
+                - link "3 Lille 37 buts · 34 matchs 1,09 but/match" [ref=f1e983] [cursor=pointer]:
+                  - /url: /clubs?season=2025%2F2026&focus=europe&league=l_3FJFUl&id=t_0tnX1I
+                  - generic [ref=f1e984]: "3"
+                  - generic [ref=f1e986]:
+                    - strong [ref=f1e987]: Lille
+                    - generic [ref=f1e988]: 37 buts · 34 matchs
+                  - generic [ref=f1e989]:
+                    - text: 1,09
+                    - generic [ref=f1e990]: but/match
+        - link "100 % de la saison jouée Ballon d’Or STATARENA · après les quarts de finale Le classement n’est pas encore publié Chaque joueur est comparé à ce qu’on attend à son poste, match par match. La course s’affiche ici dès la fin des quarts de finale retour de la Ligue des champions. Podium à révéler" [ref=f1e992] [cursor=pointer]:
+          - /url: /classement-joueurs?season=2025%2F2026&focus=europe&league=l_3FJFUl
+          - generic [ref=f1e997]:
+            - generic [ref=f1e998]: 100 %
+            - text: de la saison jouée
+          - generic [ref=f1e999]:
+            - generic [ref=f1e1000]: Ballon d’Or STATARENA · après les quarts de finale
+            - generic [ref=f1e1008]: Le classement n’est pas encore publié
+            - generic [ref=f1e1009]: Chaque joueur est comparé à ce qu’on attend à son poste, match par match. La course s’affiche ici dès la fin des quarts de finale retour de la Ligue des champions.
+          - generic [ref=f1e1010]: Podium à révéler
+      - region [ref=f1e1017]:
+        - generic [ref=f1e1018]:
+          - heading "Ils ont aussi brillé Meilleures notes de la semaine, 60 min minimum" [level=2] [ref=f1e1019]
+          - link "Tous les joueurs" [ref=f1e1020] [cursor=pointer]:
+            - /url: /joueurs?season=2025%2F2026&focus=europe&league=l_3FJFUl
+        - generic [ref=f1e1023]:
+          - button "9,22 Diego Moreira Strasbourg 1 but · 2 passes · Strasbourg 5–4 Monaco" [ref=f1e1024] [cursor=pointer]:
+            - generic [ref=f1e1025]: 9,22
+            - generic [ref=f1e1028]:
+              - strong [ref=f1e1029]: Diego Moreira
+              - text: Strasbourg
+            - generic [ref=f1e1030]: 1 but · 2 passes · Strasbourg 5–4 Monaco
+          - button "9,01 Lamine Camara Monaco 2 buts · 0 passe · Strasbourg 5–4 Monaco" [ref=f1e1031] [cursor=pointer]:
+            - generic [ref=f1e1032]: 9,01
+            - generic [ref=f1e1035]:
+              - strong [ref=f1e1036]: Lamine Camara
+              - text: Monaco
+            - generic [ref=f1e1037]: 2 buts · 0 passe · Strasbourg 5–4 Monaco
+          - button "9,01 Lassine Sinayoko Auxerre 2 buts · 0 passe · Lille 0–2 Auxerre" [ref=f1e1038] [cursor=pointer]:
+            - generic [ref=f1e1039]: 9,01
+            - generic [ref=f1e1042]:
+              - strong [ref=f1e1043]: Lassine Sinayoko
+              - text: Auxerre
+            - generic [ref=f1e1044]: 2 buts · 0 passe · Lille 0–2 Auxerre
+          - button "8,98 Martial Godo Strasbourg 2 buts · 0 passe · Strasbourg 5–4 Monaco" [ref=f1e1045] [cursor=pointer]:
+            - generic [ref=f1e1046]: 8,98
+            - generic [ref=f1e1049]:
+              - strong [ref=f1e1050]: Martial Godo
+              - text: Strasbourg
+            - generic [ref=f1e1051]: 2 buts · 0 passe · Strasbourg 5–4 Monaco
+          - button "8,95 Wesley Saïd Lens 2 buts · 0 passe · Lyon 0–4 Lens" [ref=f1e1052] [cursor=pointer]:
+            - generic [ref=f1e1053]: 8,95
+            - generic [ref=f1e1056]:
+              - strong [ref=f1e1057]: Wesley Saïd
+              - text: Lens
+            - generic [ref=f1e1058]: 2 buts · 0 passe · Lyon 0–4 Lens
+          - button "8,94 Sebastian Nanasi Strasbourg 2 buts · 0 passe · Strasbourg 5–4 Monaco" [ref=f1e1059] [cursor=pointer]:
+            - generic [ref=f1e1060]: 8,94
+            - generic [ref=f1e1063]:
+              - strong [ref=f1e1064]: Sebastian Nanasi
+              - text: Strasbourg
+            - generic [ref=f1e1065]: 2 buts · 0 passe · Strasbourg 5–4 Monaco
+          - button "8,91 Pierre-Emile Højbjerg Marseille 1 but · 1 passe · Marseille 3–1 Rennes" [ref=f1e1066] [cursor=pointer]:
+            - generic [ref=f1e1067]: 8,91
+            - generic [ref=f1e1070]:
+              - strong [ref=f1e1071]: Pierre-Emile Højbjerg
+              - text: Marseille
+            - generic [ref=f1e1072]: 1 but · 1 passe · Marseille 3–1 Rennes
+          - button "8,79 Matvey Safonov Paris Saint-Germain 0 but · 0 passe · Lens 0–2 Paris Saint-Germain" [ref=f1e1073] [cursor=pointer]:
+            - generic [ref=f1e1074]: 8,79
+            - generic [ref=f1e1077]:
+              - strong [ref=f1e1078]: Matvey Safonov
+              - text: Paris Saint-Germain
+            - generic [ref=f1e1079]: 0 but · 0 passe · Lens 0–2 Paris Saint-Germain
+          - button "8,67 Sofiane Boufal Le Havre 0 but · 1 passe · Lorient 0–2 Le Havre" [ref=f1e1080] [cursor=pointer]:
+            - generic [ref=f1e1081]: 8,67
+            - generic [ref=f1e1084]:
+              - strong [ref=f1e1085]: Sofiane Boufal
+              - text: Le Havre
+            - generic [ref=f1e1086]: 0 but · 1 passe · Lorient 0–2 Le Havre
+```
+### Events
+- New console entries: .playwright-cli/console-2026-11-04T16-31-26-223Z.log#L1

@@ -1,0 +1,13 @@
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-old-availability screenshot --filename=old-match-statistics.png
+### Result
+- [Screenshot of viewport](./old-match-statistics.png)
+### Ran Playwright code
+```js
+// Screenshot viewport and save it as ./old-match-statistics.png
+await page.screenshot({
+  path: './old-match-statistics.png',
+  scale: 'css',
+  type: 'png'
+});
+```

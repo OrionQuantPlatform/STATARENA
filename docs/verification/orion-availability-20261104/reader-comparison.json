@@ -1,0 +1,67 @@
+{
+  "command": "STATARENA_TEST_TOOLS=/tmp/statarena-cache-test-tools STATARENA_TEST_PYTHONPATH=/tmp/statarena-publication-test-python bun docs/verification/orion-availability-20261104/compare_readers.mjs",
+  "atUtc": "2026-11-04T16:33:46.072Z",
+  "setup": "Real local disposable PostgreSQL18; synthetic publisher fixture; exact deployed b2ec973d reader and current uncommitted candidate loaded in separate copied backends against one database. Local fixture writes only; no cloud/provider calls.",
+  "expected": "The readers produce semantically equal JSON, pagination and validators for consistent partitions and both wire formats, including native scalars, zero/null/reserved metrics, schema fallback, and both pages. An intentionally inconsistent partition demonstrates whether the added predicate changes behavior.",
+  "checks": [
+    {
+      "name": "first page, native JSON",
+      "passed": true,
+      "appearanceCount": 1,
+      "etagEqual": true,
+      "nextCursorPresent": true
+    },
+    {
+      "name": "second page, native JSON",
+      "passed": true,
+      "appearanceCount": 1,
+      "etagEqual": true,
+      "nextCursorPresent": false
+    },
+    {
+      "name": "complete fixture page, native JSON",
+      "passed": true,
+      "appearanceCount": 2,
+      "etagEqual": true,
+      "nextCursorPresent": false
+    },
+    {
+      "name": "complete fixture page, decoded compact wire",
+      "passed": true,
+      "appearanceCount": 2,
+      "etagEqual": true,
+      "nextCursorPresent": false
+    },
+    {
+      "name": "other league remains isolated",
+      "passed": true,
+      "appearanceCount": 2,
+      "etagEqual": true,
+      "nextCursorPresent": false
+    },
+    {
+      "name": "conditional GET",
+      "passed": true,
+      "status": 304
+    },
+    {
+      "name": "future schema named-record fallback",
+      "passed": true,
+      "appearanceCount": 2,
+      "etagEqual": true,
+      "nextCursorPresent": false
+    }
+  ],
+  "passed": true,
+  "source": {
+    "baselineCommit": "b2ec973d2d4aa9b25f66b58c32c9806d13e23a51",
+    "baselineSha256": "91c59681f3187b2311991561661b67876b5c5d378dbb615714f4131ed03ff6e7",
+    "candidateSha256": "0152b2e3004074ff76217e249efb3a1ee89670c34f4615b3ee2a386bd8beb0b9"
+  },
+  "knownNonEquivalence": {
+    "scenario": "one local appearance has a season that disagrees with its match",
+    "baselineAppearances": 2,
+    "candidateAppearances": 1,
+    "implication": "The added predicate silently omits the inconsistent appearance; production snapshot checks are not a permanent constraint."
+  }
+}

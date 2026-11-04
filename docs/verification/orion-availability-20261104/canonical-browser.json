@@ -1,0 +1,26 @@
+{
+  "atUtc": "2026-11-04T17:41:47.120601+00:00",
+  "command": "python3 docs/verification/orion-availability-20261104/run_canonical_browser.py",
+  "setup": "Canonical alias after promotion, actual deployed build, desktop1600x1000 and historicmobile390x844. Existing production data; no shim.",
+  "inputs": {
+    "url": "https://statarena-analytics.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl",
+    "workflow": "canonical_browser_e2e.js"
+  },
+  "expected": "Current desktop and historicalmobile display saved data without horizontaloverflow.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "canonical current desktop",
+      "passed": true,
+      "url": "https://statarena-analytics.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl"
+    },
+    {
+      "name": "canonical historical mobile",
+      "passed": true,
+      "season": "2025/2026",
+      "width": 390,
+      "scrollWidth": 390,
+      "url": "https://statarena-analytics.vercel.app/?season=2025%2F2026&focus=europe&league=l_3FJFUl"
+    }
+  ]
+}
