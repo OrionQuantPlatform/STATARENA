@@ -1,10 +1,24 @@
-import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
 import assert from "node:assert/strict";
 const here = fileURLToPath(new URL("./", import.meta.url)),
   root = fileURLToPath(new URL("../../../", import.meta.url));
+const ci = process.argv.includes("--ci");
+if (
+  ci &&
+  (!process.env.STATARENA_CI_EVIDENCE ||
+    !process.env.STATARENA_TEST_TOOLS ||
+    !process.env.STATARENA_TEST_PYTHONPATH)
+)
+  throw Error("Missing isolated CI fixture paths");
+const evidence = ci
+  ? join(root, process.env.STATARENA_CI_EVIDENCE, "season-wire")
+  : here;
+await mkdir(evidence, { recursive: true });
+const command =
+  "bun docs/verification/aws-wire-pages/disposable.mjs" + (ci ? " --ci" : "");
 const tools =
   process.env.STATARENA_TEST_TOOLS || "/tmp/statarena-cache-test-tools";
 const { default: Postgres } = await import(
@@ -24,12 +38,13 @@ const pg = new Postgres({
   password: "local-only",
   port,
   persistent: false,
+  initdbFlags: ["--encoding=UTF8"],
   autoRehydrateSymlinks: true,
   onLog() {},
   onError() {},
 });
 const report = {
-  command: "bun docs/verification/aws-wire-pages/disposable.mjs",
+  command,
   checks: [],
 };
 let srv;
@@ -46,16 +61,16 @@ try {
       "python3",
       "docs/verification/aws-relational-core-20261104/workflow.py",
       "--report",
-      join(here, "disposable-seed.json"),
+      join(evidence, "disposable-seed.json"),
     ],
     {
       cwd: root,
       env: {
         ...process.env,
         TEST_DATABASE_URL: local,
-        STATARENA_E2E_COMMAND:
-          "bun docs/verification/aws-wire-pages/disposable.mjs",
-        PYTHONPATH: "/tmp/statarena-archive-remat-pg/python",
+        STATARENA_E2E_COMMAND: command,
+        PYTHONPATH:
+          process.env.STATARENA_TEST_PYTHONPATH ?? process.env.PYTHONPATH ?? "",
       },
     },
   );
@@ -75,9 +90,32 @@ try {
     "/api/seasons/partition?season=2026%2F2027&league=l_000001&limit=100",
     srv.url,
   ).href;
-  const raw = await (await fetch(base)).json(),
-    packed = await (await fetch(base + "&format=columns")).json(),
-    hydrated = decodePartition(packed.data);
+  const formats = [base, base + "&format=columns"];
+  const contents = [];
+  for (const target of formats) {
+    const get = await fetch(target);
+    assert.equal(get.status, 200);
+    const etag = get.headers.get("etag");
+    assert.ok(etag);
+    contents.push(await get.json());
+    for (const [method, headers, status] of [
+      ["HEAD", {}, 200],
+      ["GET", { "if-none-match": etag }, 304],
+      ["HEAD", { "if-none-match": etag }, 304],
+    ]) {
+      const response = await fetch(target, { method, headers });
+      assert.equal(response.status, status);
+      assert.equal(response.headers.get("etag"), etag);
+      assert.equal(await response.text(), "");
+    }
+  }
+  assert.equal((await fetch(base + "&format=unknown")).status, 400);
+  report.checks.push(
+    "Default and compact HEAD and conditional 304 preserve validators and empty bodies; unknown format returns 400",
+  );
+  const [raw, packed] = contents;
+  assert.equal(packed.data.format, "orion-packed-tables-v1");
+  const hydrated = decodePartition(packed.data);
   assert.deepEqual(hydrated, raw.data);
   report.checks.push(
     "All fixture, appearance, match membership, geometry, stats and missing fields identical",
@@ -91,7 +129,10 @@ try {
     "SQL integer 11 and SQL string 11 retain exact native types",
   );
   const absent = Object.keys(apps[0]).filter((k) => !Object.hasOwn(apps[1], k));
-  assert.ok(absent.length);
+  assert.ok(absent.includes("newObservedMetric"));
+  assert.equal(apps[0].newObservedMetric, 0);
+  assert.ok(Object.hasOwn(apps[1], "passesAccurate"));
+  assert.equal(apps[1].passesAccurate, null);
   report.checks.push({ sourceAbsentFields: absent });
   const { createRequire } = await import("node:module");
   const { Client } = createRequire(
@@ -168,7 +209,7 @@ try {
   await pg.stop();
   await rm(dir, { recursive: true, force: true });
   await writeFile(
-    join(here, "disposable.json"),
+    join(evidence, "disposable.json"),
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(JSON.stringify(report));

@@ -7,3 +7,7 @@ Before product changes, request format=columns, expect rejection on the baseline
 ## Own property names on typed appearance metrics
 
 Exercise actual disposable PG numeric extras named __proto__ and constructor. Compare both HTTP representations, ensure each decoded row has ordinary Object.prototype and distinguish missing from explicitly present values. Check constant, varying, and sparse layouts under generated row construction and the strict-CSP fallback. Record failures on 3ef23f6f2e before fixing the code.
+
+## Durable isolated CI
+
+The ingestion workflow must trigger for packed_data, season_data, backend and the wire harness. The relational job must check out the harness, run its compact/default HTTP comparison against temporary PostgreSQL 18 and always upload fresh seed and HTTP receipts. The exact job command must work from a fresh tree with explicitly installed dependencies and no private fixture paths or production credentials. Require native numeric and string positions, null versus missing metrics, constant/varying/sparse special property names, invalid format and empty HEAD/304 preserving the GET validator.
