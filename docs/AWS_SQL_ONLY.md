@@ -12,6 +12,8 @@ The requested destination is PostgreSQL on AWS. S3 is a temporary source during 
 - `dashboard/scripts/stage_neon_jobs.py` preserves Neon-only collector jobs separately from the live AWS queue. Reconcile staged jobs with the current resources and leases at cutover before scheduling them; staging does not trigger API requests.
 - `dashboard/scripts/stage_neon_assets.py` stages new or changed image URL mappings only after checking their bytes in SQL. Activate them after SQL image serving is deployed and check conflicts with any current AWS mappings.
 - `dashboard/scripts/stage_neon_projections.py` stages newer Neon projections while keeping AWS-newer projections untouched. Recheck captured target versions before publishing them.
+- `dashboard/scripts/stage_neon_asset_jobs.py` stages Neon-only image collection jobs without starting them; reconcile them with existing images and current source leases before scheduling.
+- `dashboard/scripts/stage_neon_state.py` captures later Neon workflow state separately. Reconcile each state key with AWS before use; cursors and revision counters cannot safely be merged by timestamp alone.
 - `dashboard/scripts/audit_s3_archives.py` compares supported members of each archive against the current SQL documents and records checks by source SHA-256. Archives with unknown, nested or special members require further review. A content audit does not preserve original archive bytes or establish that readers have stopped using S3.
 - SQL-only collectors read indexed JSON directly and write new JSON, image bytes and metadata transactionally. A malformed JSON file retains its original bytes instead of being silently discarded.
 

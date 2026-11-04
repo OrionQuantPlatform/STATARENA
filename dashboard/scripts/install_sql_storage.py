@@ -8,7 +8,7 @@ import psycopg
 
 
 SCHEMA = Path(__file__).resolve().parents[1] / "backend/migrations"
-PREFIXES = ("012_", "013_", "014_", "015_", "016_", "017_", "018_")
+PREFIXES = ("012_", "013_", "014_", "015_", "016_", "017_", "018_", "019_", "020_")
 
 
 def install(db):
