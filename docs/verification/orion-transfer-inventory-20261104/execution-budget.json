@@ -1,0 +1,10 @@
+{
+  "atUtc": "2026-11-04T20:22:42.640981+00:00",
+  "statementsMaximum": 16,
+  "resultBytes": 737168,
+  "limitStatements": 20,
+  "limitResultBytes": 16777216,
+  "neonConnectorTimeoutMaximumCharged": 10,
+  "passed": true,
+  "note": "Connector charge is conservative; failed submission has no usable partial result. New direct connections are sequential and each always rolls back."
+}

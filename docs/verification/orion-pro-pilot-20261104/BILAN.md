@@ -36,7 +36,7 @@ Preuves SQL : `runs/20261104T183222785812Z-recorded-metric-amendment-regression/
 
 ## Pilote sur les sources réelles
 
-Périmètre : Ligue 1 `l_3FJFUl`, saisons 2025/2026 et 2026/2027, uniquement à partir de sources déjà sur AWS. Le transfert physique Neon → AWS du second Codex n'a pas été relancé.
+Périmètre de ce pilote local initial : Ligue 1 `l_3FJFUl`, saisons 2025/2026 et 2026/2027, uniquement à partir de sources déjà sur AWS. Hugo a depuis repris la responsabilité de tous les manques Neon → AWS dans ce chat ; la réserve de propriété du second Codex est donc obsolète. Les sources manquantes/périmées doivent être rapprochées puis décodées vers le SQL typé, sans copies opaques nouvelles dans RDS/S3. Voir `TRANSFER_SCOPE_CORRECTION.md`.
 
 - 612 rencontres planifiées ou terminées, dont 387 terminées ; 839 joueurs et 20 clubs.
 - 15 437 participations/statistiques et 9 795 tirs normalisés ; identifiants publics conservés.
@@ -69,6 +69,8 @@ La production Vercel reste `dpl_2YjDXsva7FBr4yDnzRShmZ776MbA`, READY, code `f650
 ## Restant et limites
 
 Restent notamment : toutes les feuilles utiles des 512 sources ciblées, les autres métriques communes et leurs états natifs, coordonnées/unités des tirs, médias et biographies détaillées, les classements/enrichissements, la reprise sans cache de processus, l'import RDS réel, les agrégats de production, lecteurs et contrats API, invalidation A/B/C sur le site, workflows de collecte adaptés, parité desktop/mobile complète et réconciliation globale avec Neon.
+
+Le nouvel [inventaire de transfert](../orion-transfer-inventory-20261104/RESULTS.md) rapproche des clés précises, sans corps ni mutation : 612 tuples fixtures et 512 empreintes d'archives concordent ; 15 clés ressource et neuf objets sont absents d'AWS dans ce périmètre, trois pointeurs et le manifeste diffèrent. Les six réponses HTTP404 parmi les clés manquantes ne sont pas des faits sportifs manquants. Les versions fournisseur et contenus restent à vérifier avant tout remplacement. Budget : 19 instructions SQL et 1 161 222 octets de résultats. Cet inventaire partiel ne vaut ni transfert effectué ni acceptation globale.
 
 La suppression des anciens documents RDS/objets S3 et la bascule finale attendent l'acceptation conjointe données + backend. Aucun espace récupéré ni gain de coût/latence de ce futur modèle n'est revendiqué à ce stade. Le gain mesuré du lecteur existant du lot précédent (−22,49 % sur une seule paire SQL comparable) reste documenté séparément dans `../orion-availability-20261104/BILAN.md`.
 

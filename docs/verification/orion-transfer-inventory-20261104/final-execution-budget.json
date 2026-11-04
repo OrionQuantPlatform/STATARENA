@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-11-04T20:24:25.188059+00:00",
+  "statementsMaximum": 19,
+  "resultBytes": 1161222,
+  "limitStatements": 20,
+  "limitResultBytes": 16777216,
+  "neonConnectorTimeoutMaximumCharged": 10,
+  "passed": true,
+  "note": "Original Neon server-TLS guard fail and first AWS snapshot retained; TLS-client handshake adds zero SQL. Second AWS snapshot probes every exact Neon key; snapshots are sequential, not simultaneous.",
+  "clientTlsHandshakeSqlStatements": 0
+}

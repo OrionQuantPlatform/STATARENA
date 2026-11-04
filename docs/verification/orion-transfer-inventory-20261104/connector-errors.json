@@ -1,0 +1,24 @@
+{
+  "atUtc": "2026-11-04T20:29:17.317Z",
+  "scope": "Exact nonsecret connector discovery errors; no SQL",
+  "initialProjectListing": {
+    "structured": {
+      "error_code": "INVALID_ARGUMENT"
+    },
+    "text": [
+      "NotFoundError: Multiple organizations found. Please specify the org_id parameter with one of the following organization IDs:\n- Orion (ID: org-empty-dew-49079682) [managed by: console]\n- lemonnier (ID: org-late-credit-34206597) [managed by: console]\n- Vercel: Hugo (ID: org-patient-rain-06630625) [managed by: vercel]"
+    ]
+  },
+  "organizationErrors": [
+    {
+      "org_id": "org-late-credit-34206597",
+      "structured": {
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "text": [
+        "supplied credentials do not pass authentication",
+        "[HTTP 401] supplied credentials do not pass authentication"
+      ]
+    }
+  ]
+}

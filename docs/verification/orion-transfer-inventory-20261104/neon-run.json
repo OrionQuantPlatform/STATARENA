@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-04T20:18:05.251Z",
+  "finishedAt": "2026-11-04T20:18:17.763Z",
+  "tool": "neon_run_sql_transaction",
+  "source": {
+    "project_id": "sweet-queen-11955006",
+    "branch_id": "br-mute-bonus-be23014e",
+    "compute_id": "ep-steep-boat-bekuqo4w",
+    "database_name": "neondb"
+  },
+  "explicitStatementsSubmitted": 8,
+  "maximumIncludingImplicitControls": 10,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "NeonDbError: canceling statement due to statement timeout"
+      }
+    ],
+    "structuredContent": {
+      "error_code": "INVALID_ARGUMENT"
+    },
+    "isError": true
+  }
+}
