@@ -1,0 +1,13 @@
+{
+  "templateMatchesLocal": true,
+  "currentLambda": {
+    "FunctionName": "statarena-backend",
+    "Runtime": "nodejs24.x",
+    "MemorySize": 512,
+    "Timeout": 25,
+    "CodeSha256": "Im/z7r7PPFeNjjXWB7CtMufgNBZRpz6bJ+NA7l4s+4k=",
+    "RevisionId": "ab016256-950d-419d-a859-cdf7710f448b",
+    "State": "Active",
+    "LastUpdateStatus": "Successful"
+  }
+}
