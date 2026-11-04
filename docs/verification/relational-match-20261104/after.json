@@ -1,0 +1,1042 @@
+{
+  "phase": "after",
+  "source": "3d7f949dcef4341c0faa0a58ddebac23324dfc3b",
+  "command": "PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/relational-match-20261104/verify.mjs after",
+  "setup": "PROTOCOL.md; PostgreSQL 18, verified local TLS, migration 004; seed.py, PROTOCOL.md and source archive captures",
+  "requests": [
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 103.5289580000001,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 39.472,
+        "sql_ms": 59.113,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.435
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz",
+      "status": 200,
+      "bytes": 798,
+      "ms": 1.8644170000002305,
+      "sha256": "727108aa9b12a160ae4a9dab1c231a062997903781937030665cfb885c8e47a9",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.065,
+        "sql_ms": 1.13,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.005
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/events",
+      "status": 200,
+      "bytes": 6257,
+      "ms": 1.5969999999997526,
+      "sha256": "b90e8994926455f8c7b051da277dd0b11b7e42d291e02bbde3bdfd345dc15aee",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.041,
+        "sql_ms": 1.198,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.008
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/players",
+      "status": 200,
+      "bytes": 92807,
+      "ms": 10.985291999999845,
+      "sha256": "74269dfbe964288c0a3d3f6581b3b40db23b1fe72bd5716238250af8922ceedb",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.032,
+        "sql_ms": 10.054,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.183
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/shots",
+      "status": 200,
+      "bytes": 17340,
+      "ms": 2.8027909999996155,
+      "sha256": "111469e3bd2479ea55bdc71b8902f60a3a233b3ae646a7b4b9366735ef4fcfa1",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.042,
+        "sql_ms": 2.238,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.038
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/stats",
+      "status": 200,
+      "bytes": 14321,
+      "ms": 2.6832079999999223,
+      "sha256": "52797b975897afb1f059787815ccdd4541ddab08b693f7a778ad14b22184f93f",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.026,
+        "sql_ms": 2.168,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.027
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/lineups",
+      "status": 200,
+      "bytes": 5879,
+      "ms": 2.161167000000205,
+      "sha256": "77783abbb9fc816894d20bca9eec0048879172be14c715b8414af1b492516039",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.046,
+        "sql_ms": 1.707,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.015
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/momentum",
+      "status": 200,
+      "bytes": 2462,
+      "ms": 1.4010830000001988,
+      "sha256": "31acd194fb8e643283fb025363d8ee6cd38ae9af20f30ad6c7a4522a58c6aa0d",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.041,
+        "sql_ms": 1.019,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.007
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/h2h",
+      "status": 200,
+      "bytes": 2444,
+      "ms": 1.5291250000000218,
+      "sha256": "86cf87fa456a8b35cc09b30cfc95948f33e0f47d006521b2b3b769971fd52867",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.055,
+        "sql_ms": 1.124,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.005
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/players/halves",
+      "status": 200,
+      "bytes": 112137,
+      "ms": 16.07779199999959,
+      "sha256": "3f2a2d488ed0c60cce9565b6796ab8d7c583938f3226f3a524b597ce323a65cb",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.033,
+        "sql_ms": 15.104,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.11
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/advanced",
+      "status": 200,
+      "bytes": 2789,
+      "ms": 1.8588750000003529,
+      "sha256": "85bd5f113d7fb7cf5b206cea53824fdc87c43adc7ecc800231016a4cb92d9ebf",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.049,
+        "sql_ms": 1.413,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.011
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/advanced/players",
+      "status": 200,
+      "bytes": 29783,
+      "ms": 4.388833999999861,
+      "sha256": "9f316616df3efa16e5e7ee24c251e56ed8ebfbe3ceb43106bc13667925da071f",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.049,
+        "sql_ms": 3.709,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.063
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/advanced/network",
+      "status": 200,
+      "bytes": 28921,
+      "ms": 5.068500000000313,
+      "sha256": "758281a8337974d917dbcce751295af37db658e3dea589b9ec38a89633b35136",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.052,
+        "sql_ms": 4.23,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.045
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/heatmaps",
+      "status": 200,
+      "bytes": 16690,
+      "ms": 3.97649999999976,
+      "sha256": "68322eda07cafbf9eca1cbfe3d6a2c3cbc3b6303c1a5d3143a554faf1be1a0f6",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.046,
+        "sql_ms": 3.297,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.063
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_49qvGz/heatmaps?frame=acting_ltr",
+      "status": 200,
+      "bytes": 16690,
+      "ms": 4.047957999999653,
+      "sha256": "68322eda07cafbf9eca1cbfe3d6a2c3cbc3b6303c1a5d3143a554faf1be1a0f6",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.066,
+        "sql_ms": 3.356,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.063
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_01FdKs",
+      "status": 200,
+      "bytes": 132527,
+      "ms": 29.575874999999996,
+      "sha256": "4fcf713f7014eeec05b10da2838260c14c0d825337c0a61caea8f6720a73d7f9",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.039,
+        "sql_ms": 27.872,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.518
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/h2h",
+      "status": 200,
+      "bytes": 3770,
+      "ms": 1.963832999999795,
+      "sha256": "b280a48c5feb261afa851b52c8634c22b967d73a9f7a943a0027d55ef0b79a96",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.084,
+        "sql_ms": 1.418,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.008
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/heatmaps",
+      "status": 200,
+      "bytes": 116,
+      "ms": 1.4918750000001637,
+      "sha256": "0d743373c5fa1482f7c424f3584de27c6f97f652761e78b86fbec96394b42d00",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.096,
+        "sql_ms": 0.949,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/advanced/players",
+      "status": 200,
+      "bytes": 116,
+      "ms": 1.935457999999926,
+      "sha256": "0d743373c5fa1482f7c424f3584de27c6f97f652761e78b86fbec96394b42d00",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.051,
+        "sql_ms": 1.421,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/stats",
+      "status": 200,
+      "bytes": 14314,
+      "ms": 2.574916999999914,
+      "sha256": "f19e1e421c0e170db293a7f0b83876844dd9db2513be91bb3045654823c98b2e",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.051,
+        "sql_ms": 2.135,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.028
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs",
+      "status": 200,
+      "bytes": 812,
+      "ms": 1.1849170000000413,
+      "sha256": "be42790e57952a776b2924ce4de0919f1408fb5a6b013caf0f82a33162514666",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.056,
+        "sql_ms": 0.777,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.004
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/advanced",
+      "status": 200,
+      "bytes": 116,
+      "ms": 0.9775829999998678,
+      "sha256": "0d743373c5fa1482f7c424f3584de27c6f97f652761e78b86fbec96394b42d00",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.022,
+        "sql_ms": 0.75,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/advanced/network",
+      "status": 200,
+      "bytes": 116,
+      "ms": 0.828125,
+      "sha256": "0d743373c5fa1482f7c424f3584de27c6f97f652761e78b86fbec96394b42d00",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.013,
+        "sql_ms": 0.633,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/momentum",
+      "status": 200,
+      "bytes": 2457,
+      "ms": 0.9993330000002061,
+      "sha256": "627f99e11aec05c5bf51c2aa0072689f08cbb2a8444a6d01fc2c87f42e1858ff",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.02,
+        "sql_ms": 0.778,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.007
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/events",
+      "status": 200,
+      "bytes": 7952,
+      "ms": 1.4255829999997331,
+      "sha256": "eee8bbd91bb4364b90f65186cefd2fd0dec321e9009e76bd5cb255b2cb6a3899",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.023,
+        "sql_ms": 1.09,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.035
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/lineups",
+      "status": 200,
+      "bytes": 5727,
+      "ms": 1.4051669999998921,
+      "sha256": "5b12f95f7805011e19f958cb6895cf0c128ec50efed2f8139f0737f6fbbb7195",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.027,
+        "sql_ms": 1.139,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.012
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/players",
+      "status": 200,
+      "bytes": 87054,
+      "ms": 10.852542000000085,
+      "sha256": "a175862084cdfabb90fa205bc8300b223d271ee9312fa2afae2ef6cefeaddc8b",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.015,
+        "sql_ms": 9.63,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.364
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/shots",
+      "status": 200,
+      "bytes": 9031,
+      "ms": 1.7725000000000364,
+      "sha256": "b4b59077b0c4a605fe55dc132c2f714ebe08e68c592a7ac5ce958c5165101406",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.029,
+        "sql_ms": 1.442,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.025
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_01FdKs/players/halves",
+      "status": 200,
+      "bytes": 121,
+      "ms": 0.9592500000003383,
+      "sha256": "ad0db72ec818d24c0f999fd09fc7f8588951087e4134cc3dc5653d2059212ea1",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.028,
+        "sql_ms": 0.727,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_0k4IES",
+      "status": 200,
+      "bytes": 2527,
+      "ms": 1.6312090000001263,
+      "sha256": "cf19ef3470613b9e10b008dcfa9cfb40d222322745357b76181e3a059bf0fe85",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.025,
+        "sql_ms": 1.374,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.007
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_0k4IES/h2h",
+      "status": 200,
+      "bytes": 487,
+      "ms": 0.8776669999997466,
+      "sha256": "759523e58ce5eb292dc0a95c4d56e6d9571c32913348a8e81d8b3f05b3b1a70e",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.021,
+        "sql_ms": 0.663,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.002
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_0k4IES",
+      "status": 200,
+      "bytes": 783,
+      "ms": 2.094665999999961,
+      "sha256": "1c2041020dc79b4b42d64cad8d68b43df64c66b76130c809844c36d8b9c7bd71",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.012,
+        "sql_ms": 0.454,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.002
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_0k4IES/lineups",
+      "status": 200,
+      "bytes": 551,
+      "ms": 1.1445420000000013,
+      "sha256": "97a4193786b598cc418a6e6e887df63b874d4caa5f82b8d9f4fbfd27685f3d9a",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.047,
+        "sql_ms": 0.782,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.004
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_000001",
+      "status": 200,
+      "bytes": 169,
+      "ms": 1.272584000000279,
+      "sha256": "dda5438654cc2e4b0c8e0d63a2ca2aa3bb83e1bc59b00b6c79546e5e2f01f62a",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.052,
+        "sql_ms": 0.966,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.003
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_000004",
+      "status": 404,
+      "bytes": 0,
+      "ms": 1.0533330000002934,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.02,
+        "sql_ms": 0.342,
+        "sql_rows": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/shots/s_1llyMg",
+      "status": 200,
+      "bytes": 508,
+      "ms": 1.1047499999999673,
+      "sha256": "b5dd42da07e25ff3d2386ef86debf4e83237a1d4a0dded0126f3abff8aa68e5d",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.027,
+        "sql_ms": 0.769,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.005
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/players/p_0WGgTi",
+      "status": 200,
+      "bytes": 1972,
+      "ms": 1.2429999999999382,
+      "sha256": "127b341213ed22bc25c90baf5d4b1f14621ac100772bcc44c09463b303bef157",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.013,
+        "sql_ms": 0.915,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.008
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/players/p_076Ulj/halves",
+      "status": 200,
+      "bytes": 121,
+      "ms": 0.8569579999998496,
+      "sha256": "ad0db72ec818d24c0f999fd09fc7f8588951087e4134cc3dc5653d2059212ea1",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.032,
+        "sql_ms": 0.619,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/players/p_076Ulj/shots",
+      "status": 200,
+      "bytes": 245,
+      "ms": 1.239292000000205,
+      "sha256": "0d7f9b64533846e948e5bfccb307170674dac43531f390417a7e89cf0cb6bbf8",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.013,
+        "sql_ms": 1.027,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.003
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/advanced/players/p_076Ulj",
+      "status": 200,
+      "bytes": 116,
+      "ms": 0.8616250000000036,
+      "sha256": "0d743373c5fa1482f7c424f3584de27c6f97f652761e78b86fbec96394b42d00",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.012,
+        "sql_ms": 0.645,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_203GQ1/players/p_0zKhoP/halves",
+      "status": 200,
+      "bytes": 4289,
+      "ms": 1.492750000000342,
+      "sha256": "de6bfb118cc5adbc69d16f1f34b31fd911880c236c78faaf4a827c3f520f8bc8",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.012,
+        "sql_ms": 1.22,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.018
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_203GQ1/players/p_0MExly/halves",
+      "status": 200,
+      "bytes": 107,
+      "ms": 0.8101250000004256,
+      "sha256": "d4d429c5dc900e74ec817990720065ef77237e1fcd76e8271e6499f8fb602c37",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.023,
+        "sql_ms": 0.562,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_203GQ1/advanced/players/p_1NnBUf",
+      "status": 200,
+      "bytes": 1162,
+      "ms": 1.0215829999997368,
+      "sha256": "8b0ada360912166b426c11346ef41a638fd080eef88267a9a938ed1d3953195d",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.013,
+        "sql_ms": 0.797,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.011
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_203GQ1/advanced/players/p_0MExly",
+      "status": 200,
+      "bytes": 107,
+      "ms": 0.7400420000003578,
+      "sha256": "d4d429c5dc900e74ec817990720065ef77237e1fcd76e8271e6499f8fb602c37",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.014,
+        "sql_ms": 0.531,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_000Xjk",
+      "status": 404,
+      "bytes": 0,
+      "ms": 0.4060829999998532,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.006,
+        "sql_ms": 0.251,
+        "sql_rows": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/shots/s_ZZZZZZ",
+      "status": 404,
+      "bytes": 0,
+      "ms": 0.39354199999979755,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.005,
+        "sql_ms": 0.143,
+        "sql_rows": 0
+      },
+      "passed": true
+    },
+    {
+      "method": "HEAD",
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 0,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.004,
+        "sql_ms": 0.243,
+        "sql_rows": 1,
+        "response_bytes": 0
+      }
+    },
+    {
+      "method": "HEAD",
+      "route": "/archive/m_000004",
+      "status": 404,
+      "bytes": 0,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.005,
+        "sql_ms": 0.232,
+        "sql_rows": 0,
+        "response_bytes": 0
+      }
+    },
+    {
+      "method": "HEAD",
+      "route": "/resource/matches/m_000Xjk/players/p_076Ulj/halves",
+      "status": 200,
+      "bytes": 0,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.005,
+        "sql_ms": 0.165,
+        "sql_rows": 1,
+        "response_bytes": 0
+      }
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 1.8729159999998046,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.019,
+        "sql_ms": 0.378,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 1.8618329999999332,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.02,
+        "sql_ms": 0.388,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 2.7777500000001965,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.029,
+        "sql_ms": 0.457,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 2.0679159999999683,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.038,
+        "sql_ms": 0.563,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 1.8546249999999418,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.028,
+        "sql_ms": 0.437,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 2.1256670000002487,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.035,
+        "sql_ms": 0.452,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333449,
+      "ms": 2.2493329999997513,
+      "sha256": "66389f400f7003db745e7bf8e68253405251dfa1636f41665b6a6e183d7d0437",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.035,
+        "sql_ms": 0.531,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 333460,
+      "ms": 43.49499999999989,
+      "sha256": "2aec0a0ac6e49af298887ac353fe99f8e718dd5e63755010f0a35ccf01cdb1c1",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.063,
+        "sql_ms": 41.463,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.401
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 331068,
+      "ms": 42.082540999999765,
+      "sha256": "3d815e77a4e6493f3f02dd5138c400b61fa69d2c730e2751070a32051bc80fc7",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.024,
+        "sql_ms": 40.187,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.357
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/players/p_076Ulj/halves",
+      "status": 200,
+      "bytes": 121,
+      "ms": 1.2384999999999309,
+      "sha256": "ad0db72ec818d24c0f999fd09fc7f8588951087e4134cc3dc5653d2059212ea1",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.031,
+        "sql_ms": 0.826,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_000Xjk/players/p_076Ulj/halves",
+      "status": 200,
+      "bytes": 121,
+      "ms": 0.7196659999999611,
+      "sha256": "ad0db72ec818d24c0f999fd09fc7f8588951087e4134cc3dc5653d2059212ea1",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.012,
+        "sql_ms": 0.533,
+        "sql_rows": 2,
+        "sql_json_rows": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_ZZZZZZ",
+      "status": 200,
+      "bytes": 2097201,
+      "ms": 39.273625000000266,
+      "sha256": "96f09a302437d9bc532bdb28f9fc4a1b874430d5bbed01ac1fe89e3372f23ba9",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.014,
+        "sql_ms": 35.673,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 1.497,
+        "cache_match_representation_rejected": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/resource/matches/m_ZZZZZZ",
+      "status": 200,
+      "bytes": 2097201,
+      "ms": 37.57112499999994,
+      "sha256": "96f09a302437d9bc532bdb28f9fc4a1b874430d5bbed01ac1fe89e3372f23ba9",
+      "metrics": {
+        "sql_count": 2,
+        "pool_wait_ms": 0.04,
+        "sql_ms": 35.154,
+        "sql_rows": 2,
+        "cache_match_representation_miss": 1,
+        "sql_json_rows": 1,
+        "cache_size_ms": 0.381,
+        "cache_match_representation_rejected": 1
+      },
+      "passed": true
+    },
+    {
+      "route": "/archive/m_49qvGz",
+      "status": 200,
+      "bytes": 331068,
+      "ms": 2.1506250000002183,
+      "sha256": "3d815e77a4e6493f3f02dd5138c400b61fa69d2c730e2751070a32051bc80fc7",
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.035,
+        "sql_ms": 0.592,
+        "sql_rows": 1,
+        "cache_match_representation_hit": 1
+      },
+      "passed": true
+    }
+  ],
+  "database": {
+    "version": "18.6",
+    "tls": true
+  },
+  "inputHashes": {
+    "dashboard/backend/migrations/004_match_details.sql": "c4325a9cd94b3533c8a214cd18ed2b773eb365a4e36b729be33bb7eeffe7802d",
+    "dashboard/backend/services/relational-match.js": "e0b4a4ae2d8d2dbc4d41fb6d54c25d0d8c4a6054cb0364daea11a6b2d06d8546",
+    "dashboard/backend/services/postgres.js": "89e37fac508db973fe9a519cc903e54044590b9c574b4f60d43f6c1c6bfd7993",
+    "dashboard/backend/services/cache.js": "ffaacb7170316195b52e4473f6b158fc2387d8b37e73cf9cf939922155cfe627",
+    "dashboard/scripts/relational_match.py": "eba08c28e93ce897298a314f5ae46689fe2c94dde0e1ea2210c00e177e81995f",
+    "dashboard/scripts/relational_match_model.py": "e2ef2c4ce33c85009f29dfa2db1fa4b5b5293fb637102fd0fd0a02c6140f5ab3",
+    "dashboard/outputs/data-completeness/production-archive.json": "d4799855b2acbb6ff0cd1d028321fafb8644ffb1b96c72b7cd4655d23062a807",
+    "dashboard/outputs/data-completeness/browser-historical-archive.json": "0f3b25e5fdf90521d24e81a904bb25659ceef06c72b274b9a42f4cb4677b99e6",
+    "dashboard/outputs/data-completeness/browser-upcoming-archive.json": "05c287efedcadcb7b6128f16b373a206c1b7c95d3febf5f8f3c57671f16983ae",
+    "docs/verification/relational-match-20261104/nested-source.json": "291448b27730711dd54ad790434299adbce4c1bede04655d71374e149d836c58"
+  },
+  "jsonOrByteaColumns": [],
+  "tableCount": 43,
+  "warmMedianMs": 2.0679159999999683,
+  "passed": true
+}
