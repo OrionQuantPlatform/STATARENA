@@ -57,3 +57,5 @@ python3 output/playwright/rematerialization-completion-20261103/run_cli.py produ
 ```
 
 The final default-scope browser run and six-season HTTP assertions remain pending until the queue drains.
+
+At 00:07:29 UTC on 4 November (01:07 Paris), the single scheduled health probe changed from the application error to Vercel HTTP 503 / DEPLOYMENT_PAUSED. [Exact response, setup, inputs and rerun](deployment-paused-20261104.json) are preserved. The cause of the pause and the current Neon quota were not rechecked; this response does not establish either. No deployment/billing state was changed and no rematerialization retry was dispatched. The monitor continues one health probe per wakeup and awaits restored availability before rechecking Neon/workflow state. This is a new availability failure, not completion.
