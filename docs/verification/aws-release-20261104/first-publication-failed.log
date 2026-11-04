@@ -1,0 +1,252 @@
+rematerialize	Publish relational models in AWS RDS	﻿2026-11-04T02:45:46.3734075Z ##[group]Run set -euo pipefail
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3734274Z ^[[36;1mset -euo pipefail^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3734487Z ^[[36;1margs=(--minutes "$MATERIALIZE_MINUTES" --batch "$MATERIALIZE_BATCH")^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3734743Z ^[[36;1mif [ "$QUEUE_ALL" = "true" ]; then args+=(--all); fi^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3735154Z ^[[36;1mpython dashboard/scripts/relational_materialize.py "${args[@]}" | tee rematerialize.log^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3751256Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3751449Z env:
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3751611Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3751848Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3752089Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3752309Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3752529Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3752768Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3753157Z   AWS_ACCESS_KEY_ID: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3753362Z   AWS_SECRET_ACCESS_KEY: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3756054Z   AWS_SESSION_TOKEN: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3756205Z   AWS_REGION: us-east-2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3756349Z   AWS_DEFAULT_REGION: us-east-2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3756936Z   DATABASE_URL: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3766279Z   DATABASE_CA_PEM: -----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIID/zCCAuegAwIBAgIRAJYlnmkGRj4ju/2jBQsnXJYwDQYJKoZIhvcNAQELBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0EyMDQ4IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMDQ0NFoYDzIwNjEwNTIyMDAwNDQ0WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTIwNDggRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC74V3eigv+pCj5
+rematerialize	Publish relational models in AWS RDS	nqDBqplY0Jp16pTeNB06IKbzb4MOTvNde6QjsZxrE1xUmprT8LxQqN9tI3aDYEYk
+rematerialize	Publish relational models in AWS RDS	b9v4F99WtQVgCv3Y34tYKX9NwWQgwS1vQwnIR8zOFBYqsAsHEkeJuSqAB12AYUSd
+rematerialize	Publish relational models in AWS RDS	Zv2RVFjiFmYJho2X30IrSLQfS/IE3KV7fCyMMm154+/K1Z2IJlcissydEAwgsUHw
+rematerialize	Publish relational models in AWS RDS	edrE6CxJVkkJ3EvIgG4ugK/suxd8eEMztaQYJwSdN8TdfT59LFuSPl7zmF3fIBdJ
+rematerialize	Publish relational models in AWS RDS	//WexcQmGabaJ7Xnx+6o2HTfkP8Zzzzaq8fvjAcvA7gyFH5EP26G2ZqMG+0y4pTx
+rematerialize	Publish relational models in AWS RDS	SPVTrQEXAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFIWWuNEF
+rematerialize	Publish relational models in AWS RDS	sUMOC82XlfJeqazzrkPDMA4GA1UdDwEB/wQEAwIBhjANBgkqhkiG9w0BAQsFAAOC
+rematerialize	Publish relational models in AWS RDS	AQEAgClmxcJaQTGpEZmjElL8G2Zc8lGc+ylGjiNlSIw8X25/bcLRptbDA90nuP+q
+rematerialize	Publish relational models in AWS RDS	zXAMhEf0ccbdpwxG/P5a8JipmHgqQLHfpkvaXx+0CuP++3k+chAJ3Gk5XtY587jX
+rematerialize	Publish relational models in AWS RDS	+MJfrPgjFt7vmMaKmynndf+NaIJAYczjhJj6xjPWmGrjM3MlTa9XesmelMwP3jep
+rematerialize	Publish relational models in AWS RDS	bApIWAvCYVjGndbK9byyMq1nyj0TUzB8oJZQooaR3MMjHTmADuVBylWzkRMxbKPl
+rematerialize	Publish relational models in AWS RDS	4Nlsk4Ef1JvIWBCzsMt+X17nuKfEatRfp3c9tbpGlAE/DSP0W2/Lnayxr4RpE9ds
+rematerialize	Publish relational models in AWS RDS	ICF35uSis/7ZlsftODUe8wtpkQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIIF/zCCA+egAwIBAgIRAPvvd+MCcp8E36lHziv0xhMwDQYJKoZIhvcNAQEMBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0E0MDk2IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMTEwNloYDzIxMjEwNTIyMDAxMTA2WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTQwOTYgRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDbvwekKIKGcV/s
+rematerialize	Publish relational models in AWS RDS	lDU96a71ZdN2pTYkev1X2e2/ICb765fw/i1jP9MwCzs8/xHBEQBJSxdfO4hPeNx3
+rematerialize	Publish relational models in AWS RDS	ENi0zbM+TrMKliS1kFVe1trTTEaHYjF8BMK9yTY0VgSpWiGxGwg4tshezIA5lpu8
+rematerialize	Publish relational models in AWS RDS	sF6XMRxosCEVCxD/44CFqGZTzZaREIvvFPDTXKJ6yOYnuEkhH3OcoOajHN2GEMMQ
+rematerialize	Publish relational models in AWS RDS	ShuyRFDQvYkqOC/Q5icqFbKg7eGwfl4PmimdV7gOVsxSlw2s/0EeeIILXtHx22z3
+rematerialize	Publish relational models in AWS RDS	8QBhX25Lrq2rMuaGcD3IOMBeBo2d//YuEtd9J+LGXL9AeOXHAwpvInywJKAtXTMq
+rematerialize	Publish relational models in AWS RDS	Wsy3LjhuANFrzMlzjR2YdjkGVzeQVx3dKUzJ2//Qf7IXPSPaEGmcgbxuatxjnvfT
+rematerialize	Publish relational models in AWS RDS	H85oeKr3udKnXm0Kh7CLXeqJB5ITsvxI+Qq2iXtYCc+goHNR01QJwtGDSzuIMj3K
+rematerialize	Publish relational models in AWS RDS	f+YMrqBXZgYBwU2J/kCNTH31nfw96WTbOfNGwLwmVRDgguzFa+QzmQsJW4FTDMwc
+rematerialize	Publish relational models in AWS RDS	7cIjwdElQQVA+Gqa67uWmyDKAnoTkudmgAP+OTBkhnmc6NJuZDcy6f/iWUdl0X0u
+rematerialize	Publish relational models in AWS RDS	/tsfgXXR6ZovnHonM13ANiN7VmEVqFlEMa0VVmc09m+2FYjjlk8F9sC7Rc4wt214
+rematerialize	Publish relational models in AWS RDS	7u5YvCiCsFZwx44baP5viyRZgkJVpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/
+rematerialize	Publish relational models in AWS RDS	MB0GA1UdDgQWBBQgCZCsc34nVTRbWsniXBPjnUTQ2DAOBgNVHQ8BAf8EBAMCAYYw
+rematerialize	Publish relational models in AWS RDS	DQYJKoZIhvcNAQEMBQADggIBAAQas3x1G6OpsIvQeMS9BbiHG3+kU9P/ba6Rrg+E
+rematerialize	Publish relational models in AWS RDS	lUz8TmL04Bcd+I+R0IyMBww4NznT+K60cFdk+1iSmT8Q55bpqRekyhcdWda1Qu0r
+rematerialize	Publish relational models in AWS RDS	JiTi7zz+3w2v66akofOnGevDpo/ilXGvCUJiLOBnHIF0izUqzvfczaMZGJT6xzKq
+rematerialize	Publish relational models in AWS RDS	PcEVRyAN1IHHf5KnGzUlVFv9SGy47xJ9I1vTk24JU0LWkSLzMMoxiUudVmHSqJtN
+rematerialize	Publish relational models in AWS RDS	u0h+n/x3Q6XguZi1/C1KOntH56ewRh8n5AF7c+9LJJSRM9wunb0Dzl7BEy21Xe9q
+rematerialize	Publish relational models in AWS RDS	03xRYjf5wn8eDELB8FZPa1PrNKXIOLYM9egdctbKEcpSsse060+tkyBrl507+SJT
+rematerialize	Publish relational models in AWS RDS	04lvJ4tcKjZFqxn+bUkDQvXYj0D3WK+iJ7a8kZJPRvz8BDHfIqancY8Tgw+69SUn
+rematerialize	Publish relational models in AWS RDS	WqIb+HNZqFuRs16WFSzlMksqzXv6wcDSyI7aZOmCGGEcYW9NHk8EuOnOQ+1UMT9C
+rematerialize	Publish relational models in AWS RDS	Qb1GJcipjRzry3M4KN/t5vN3hIetB+/PhmgTO4gKhBETTEyPC3HC1QbdVfRndB6e
+rematerialize	Publish relational models in AWS RDS	U/NF2U/t8U2GvD26TTFLK4pScW7gyw4FQyXWs8g8FS8f+R2yWajhtS9++VDJQKom
+rematerialize	Publish relational models in AWS RDS	fAUISoCH+PlPRJpu/nHd1Zrddeiiis53rBaLbXu2J1Q3VqjWOmtj0HjxJJxWnYmz
+rematerialize	Publish relational models in AWS RDS	Pqj2
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIICrDCCAjOgAwIBAgIQGcztRyV40pyMKbNeSN+vXTAKBggqhkjOPQQDAzCBljEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMS8wLQYDVQQDDCZBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIEVDQzM4NCBHMTEQMA4GA1UEBwwHU2Vh
+rematerialize	Publish relational models in AWS RDS	dHRsZTAgFw0yMTA1MjEyMzE1NTZaGA8yMTIxMDUyMjAwMTU1NlowgZYxCzAJBgNV
+rematerialize	Publish relational models in AWS RDS	BAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJbmMuMRMwEQYD
+rematerialize	Publish relational models in AWS RDS	VQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEvMC0GA1UEAwwmQW1hem9uIFJE
+rematerialize	Publish relational models in AWS RDS	UyB1cy1lYXN0LTIgUm9vdCBDQSBFQ0MzODQgRzExEDAOBgNVBAcMB1NlYXR0bGUw
+rematerialize	Publish relational models in AWS RDS	djAQBgcqhkjOPQIBBgUrgQQAIgNiAAQfDcv+GGRESD9wT+I5YIPRsD3L+/jsiIis
+rematerialize	Publish relational models in AWS RDS	Tr7t9RSbFl+gYpO7ZbDXvNbV5UGOC5lMJo/SnqFRTC6vL06NF7qOHfig3XO8QnQz
+rematerialize	Publish relational models in AWS RDS	6T5uhhrhnX2RSY3/10d2kTyHq3ZZg3+jQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+rematerialize	Publish relational models in AWS RDS	VR0OBBYEFLDyD3PRyNXpvKHPYYxjHXWOgfPnMA4GA1UdDwEB/wQEAwIBhjAKBggq
+rematerialize	Publish relational models in AWS RDS	hkjOPQQDAwNnADBkAjB20HQp6YL7CqYD82KaLGzgw305aUKw2aMrdkBR29J183jY
+rematerialize	Publish relational models in AWS RDS	6Ocj9+Wcif9xnRMS+7oCMAvrt03rbh4SU9BohpRUcQ2Pjkh7RoY0jDR4Xq4qzjNr
+rematerialize	Publish relational models in AWS RDS	5UFr3BXpFvACxXF51BksGQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3775699Z   DATABASE_POOL_MAX: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3775844Z   STATARENA_DATA_PROVIDER: aws
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3776100Z   PGSSLROOTCERT: /home/runner/work/STATARENA/STATARENA/dashboard/backend/certs/rds-us-east-2.pem
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3776462Z   NODE_EXTRA_CA_CERTS: /home/runner/work/STATARENA/STATARENA/dashboard/backend/certs/rds-us-east-2.pem
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3776725Z   PGSSLMODE: verify-full
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3777231Z   NEON_DATABASE_URL: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3786552Z   STATARENA_DATABASE_CA_PEM: -----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIID/zCCAuegAwIBAgIRAJYlnmkGRj4ju/2jBQsnXJYwDQYJKoZIhvcNAQELBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0EyMDQ4IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMDQ0NFoYDzIwNjEwNTIyMDAwNDQ0WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTIwNDggRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC74V3eigv+pCj5
+rematerialize	Publish relational models in AWS RDS	nqDBqplY0Jp16pTeNB06IKbzb4MOTvNde6QjsZxrE1xUmprT8LxQqN9tI3aDYEYk
+rematerialize	Publish relational models in AWS RDS	b9v4F99WtQVgCv3Y34tYKX9NwWQgwS1vQwnIR8zOFBYqsAsHEkeJuSqAB12AYUSd
+rematerialize	Publish relational models in AWS RDS	Zv2RVFjiFmYJho2X30IrSLQfS/IE3KV7fCyMMm154+/K1Z2IJlcissydEAwgsUHw
+rematerialize	Publish relational models in AWS RDS	edrE6CxJVkkJ3EvIgG4ugK/suxd8eEMztaQYJwSdN8TdfT59LFuSPl7zmF3fIBdJ
+rematerialize	Publish relational models in AWS RDS	//WexcQmGabaJ7Xnx+6o2HTfkP8Zzzzaq8fvjAcvA7gyFH5EP26G2ZqMG+0y4pTx
+rematerialize	Publish relational models in AWS RDS	SPVTrQEXAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFIWWuNEF
+rematerialize	Publish relational models in AWS RDS	sUMOC82XlfJeqazzrkPDMA4GA1UdDwEB/wQEAwIBhjANBgkqhkiG9w0BAQsFAAOC
+rematerialize	Publish relational models in AWS RDS	AQEAgClmxcJaQTGpEZmjElL8G2Zc8lGc+ylGjiNlSIw8X25/bcLRptbDA90nuP+q
+rematerialize	Publish relational models in AWS RDS	zXAMhEf0ccbdpwxG/P5a8JipmHgqQLHfpkvaXx+0CuP++3k+chAJ3Gk5XtY587jX
+rematerialize	Publish relational models in AWS RDS	+MJfrPgjFt7vmMaKmynndf+NaIJAYczjhJj6xjPWmGrjM3MlTa9XesmelMwP3jep
+rematerialize	Publish relational models in AWS RDS	bApIWAvCYVjGndbK9byyMq1nyj0TUzB8oJZQooaR3MMjHTmADuVBylWzkRMxbKPl
+rematerialize	Publish relational models in AWS RDS	4Nlsk4Ef1JvIWBCzsMt+X17nuKfEatRfp3c9tbpGlAE/DSP0W2/Lnayxr4RpE9ds
+rematerialize	Publish relational models in AWS RDS	ICF35uSis/7ZlsftODUe8wtpkQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIIF/zCCA+egAwIBAgIRAPvvd+MCcp8E36lHziv0xhMwDQYJKoZIhvcNAQEMBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0E0MDk2IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMTEwNloYDzIxMjEwNTIyMDAxMTA2WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTQwOTYgRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDbvwekKIKGcV/s
+rematerialize	Publish relational models in AWS RDS	lDU96a71ZdN2pTYkev1X2e2/ICb765fw/i1jP9MwCzs8/xHBEQBJSxdfO4hPeNx3
+rematerialize	Publish relational models in AWS RDS	ENi0zbM+TrMKliS1kFVe1trTTEaHYjF8BMK9yTY0VgSpWiGxGwg4tshezIA5lpu8
+rematerialize	Publish relational models in AWS RDS	sF6XMRxosCEVCxD/44CFqGZTzZaREIvvFPDTXKJ6yOYnuEkhH3OcoOajHN2GEMMQ
+rematerialize	Publish relational models in AWS RDS	ShuyRFDQvYkqOC/Q5icqFbKg7eGwfl4PmimdV7gOVsxSlw2s/0EeeIILXtHx22z3
+rematerialize	Publish relational models in AWS RDS	8QBhX25Lrq2rMuaGcD3IOMBeBo2d//YuEtd9J+LGXL9AeOXHAwpvInywJKAtXTMq
+rematerialize	Publish relational models in AWS RDS	Wsy3LjhuANFrzMlzjR2YdjkGVzeQVx3dKUzJ2//Qf7IXPSPaEGmcgbxuatxjnvfT
+rematerialize	Publish relational models in AWS RDS	H85oeKr3udKnXm0Kh7CLXeqJB5ITsvxI+Qq2iXtYCc+goHNR01QJwtGDSzuIMj3K
+rematerialize	Publish relational models in AWS RDS	f+YMrqBXZgYBwU2J/kCNTH31nfw96WTbOfNGwLwmVRDgguzFa+QzmQsJW4FTDMwc
+rematerialize	Publish relational models in AWS RDS	7cIjwdElQQVA+Gqa67uWmyDKAnoTkudmgAP+OTBkhnmc6NJuZDcy6f/iWUdl0X0u
+rematerialize	Publish relational models in AWS RDS	/tsfgXXR6ZovnHonM13ANiN7VmEVqFlEMa0VVmc09m+2FYjjlk8F9sC7Rc4wt214
+rematerialize	Publish relational models in AWS RDS	7u5YvCiCsFZwx44baP5viyRZgkJVpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/
+rematerialize	Publish relational models in AWS RDS	MB0GA1UdDgQWBBQgCZCsc34nVTRbWsniXBPjnUTQ2DAOBgNVHQ8BAf8EBAMCAYYw
+rematerialize	Publish relational models in AWS RDS	DQYJKoZIhvcNAQEMBQADggIBAAQas3x1G6OpsIvQeMS9BbiHG3+kU9P/ba6Rrg+E
+rematerialize	Publish relational models in AWS RDS	lUz8TmL04Bcd+I+R0IyMBww4NznT+K60cFdk+1iSmT8Q55bpqRekyhcdWda1Qu0r
+rematerialize	Publish relational models in AWS RDS	JiTi7zz+3w2v66akofOnGevDpo/ilXGvCUJiLOBnHIF0izUqzvfczaMZGJT6xzKq
+rematerialize	Publish relational models in AWS RDS	PcEVRyAN1IHHf5KnGzUlVFv9SGy47xJ9I1vTk24JU0LWkSLzMMoxiUudVmHSqJtN
+rematerialize	Publish relational models in AWS RDS	u0h+n/x3Q6XguZi1/C1KOntH56ewRh8n5AF7c+9LJJSRM9wunb0Dzl7BEy21Xe9q
+rematerialize	Publish relational models in AWS RDS	03xRYjf5wn8eDELB8FZPa1PrNKXIOLYM9egdctbKEcpSsse060+tkyBrl507+SJT
+rematerialize	Publish relational models in AWS RDS	04lvJ4tcKjZFqxn+bUkDQvXYj0D3WK+iJ7a8kZJPRvz8BDHfIqancY8Tgw+69SUn
+rematerialize	Publish relational models in AWS RDS	WqIb+HNZqFuRs16WFSzlMksqzXv6wcDSyI7aZOmCGGEcYW9NHk8EuOnOQ+1UMT9C
+rematerialize	Publish relational models in AWS RDS	Qb1GJcipjRzry3M4KN/t5vN3hIetB+/PhmgTO4gKhBETTEyPC3HC1QbdVfRndB6e
+rematerialize	Publish relational models in AWS RDS	U/NF2U/t8U2GvD26TTFLK4pScW7gyw4FQyXWs8g8FS8f+R2yWajhtS9++VDJQKom
+rematerialize	Publish relational models in AWS RDS	fAUISoCH+PlPRJpu/nHd1Zrddeiiis53rBaLbXu2J1Q3VqjWOmtj0HjxJJxWnYmz
+rematerialize	Publish relational models in AWS RDS	Pqj2
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIICrDCCAjOgAwIBAgIQGcztRyV40pyMKbNeSN+vXTAKBggqhkjOPQQDAzCBljEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMS8wLQYDVQQDDCZBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIEVDQzM4NCBHMTEQMA4GA1UEBwwHU2Vh
+rematerialize	Publish relational models in AWS RDS	dHRsZTAgFw0yMTA1MjEyMzE1NTZaGA8yMTIxMDUyMjAwMTU1NlowgZYxCzAJBgNV
+rematerialize	Publish relational models in AWS RDS	BAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJbmMuMRMwEQYD
+rematerialize	Publish relational models in AWS RDS	VQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEvMC0GA1UEAwwmQW1hem9uIFJE
+rematerialize	Publish relational models in AWS RDS	UyB1cy1lYXN0LTIgUm9vdCBDQSBFQ0MzODQgRzExEDAOBgNVBAcMB1NlYXR0bGUw
+rematerialize	Publish relational models in AWS RDS	djAQBgcqhkjOPQIBBgUrgQQAIgNiAAQfDcv+GGRESD9wT+I5YIPRsD3L+/jsiIis
+rematerialize	Publish relational models in AWS RDS	Tr7t9RSbFl+gYpO7ZbDXvNbV5UGOC5lMJo/SnqFRTC6vL06NF7qOHfig3XO8QnQz
+rematerialize	Publish relational models in AWS RDS	6T5uhhrhnX2RSY3/10d2kTyHq3ZZg3+jQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+rematerialize	Publish relational models in AWS RDS	VR0OBBYEFLDyD3PRyNXpvKHPYYxjHXWOgfPnMA4GA1UdDwEB/wQEAwIBhjAKBggq
+rematerialize	Publish relational models in AWS RDS	hkjOPQQDAwNnADBkAjB20HQp6YL7CqYD82KaLGzgw305aUKw2aMrdkBR29J183jY
+rematerialize	Publish relational models in AWS RDS	6Ocj9+Wcif9xnRMS+7oCMAvrt03rbh4SU9BohpRUcQ2Pjkh7RoY0jDR4Xq4qzjNr
+rematerialize	Publish relational models in AWS RDS	5UFr3BXpFvACxXF51BksGQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3796032Z   NEON_STORAGE_ENDPOINT: https://s3.us-east-2.amazonaws.com
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3796241Z   NEON_STORAGE_REGION: us-east-2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3796430Z   NEON_STORAGE_BUCKET: statarena-football-333rosky-70db6e5f
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3796652Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3796869Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797031Z   STATARENA_EXTERNAL_STORAGE: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797204Z   STATARENA_SQL_DOCUMENTS: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797354Z   STATARENA_S3_PATH_STYLE: 0
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797497Z   QUEUE_ALL: false
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797628Z   MATERIALIZE_MINUTES: 2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797766Z   MATERIALIZE_BATCH: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:45:46.3797898Z ##[endgroup]
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:19.4554901Z {"catalog_jobs":36228,"partition_jobs":486,"phase":"source-discovery"}
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9466570Z Traceback (most recent call last):
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9483107Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_materialize.py", line 855, in <module>
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9483637Z     main()
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9483814Z     ~~~~^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9484620Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_materialize.py", line 847, in main
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9485134Z     compact(run(store, minutes=a.minutes, batch=a.batch, queue_all=a.all)),
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9485649Z             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9486111Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_materialize.py", line 761, in run
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9486566Z     normalized = publish_partition(
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9486824Z         inputs, manifest, label, league, marked
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9487071Z     )
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9487499Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_materialize.py", line 665, in publish_partition
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9487977Z     publish_match_batch(db, batch_details)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9488227Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9488693Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 394, in publish_match_batch
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9489182Z     _publish_bounded(db, records, "{}", "")
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9489433Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9489898Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 450, in _publish_bounded
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9490483Z     _copy_group(db, group)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9490686Z     ~~~~~~~~~~~^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9491089Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 362, in _copy_group
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9491550Z     header, batches = prepare(address[3], response)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9491834Z                       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9492276Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 153, in prepare
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9492779Z     [] if response.get("data") is None else ordered_rows(family, response["data"])
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9493142Z                                             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9493612Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 117, in ordered_rows
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9494047Z     append(root, data)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9494241Z     ~~~~~~^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9494625Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 97, in append
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9495104Z     row = unpack_record(spec.fields, obj, children, spec.table)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9495592Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 79, in unpack_record
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9496035Z     unpack(spec, value, ())
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9496242Z     ~~~~~~^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9496633Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 73, in unpack
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9497056Z     children(kind, item)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9497266Z     ~~~~~~~~^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9497665Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 95, in children
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9498152Z     append(child, item, ordinal, pos, key if child.keyed else None)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9498488Z     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9498947Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 97, in append
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9499408Z     row = unpack_record(spec.fields, obj, children, spec.table)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9499920Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 79, in unpack_record
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9500640Z     unpack(spec, value, ())
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9500841Z     ~~~~~~^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9501228Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 73, in unpack
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9501750Z     children(kind, item)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9501947Z     ~~~~~~~~^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9502323Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 95, in children
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9502883Z     append(child, item, ordinal, pos, key if child.keyed else None)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9503202Z     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9503640Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 97, in append
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9504103Z     row = unpack_record(spec.fields, obj, children, spec.table)
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9504615Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 79, in unpack_record
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9505065Z     unpack(spec, value, ())
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9505269Z     ~~~~~~^^^^^^^^^^^^^^^^^
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9505646Z   File "/home/runner/work/STATARENA/STATARENA/dashboard/scripts/relational_match.py", line 55, in unpack
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9506057Z     raise ValueError(
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9506339Z         f"Unmapped fields at {location}.{'.'.join(prefix)}: {sorted(extra)}"
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9506644Z     )
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:34.9506879Z ValueError: Unmapped fields at match_shots.: ['is_own_goal']
+rematerialize	Publish relational models in AWS RDS	2026-11-04T02:46:35.0886471Z ##[error]Process completed with exit code 1.

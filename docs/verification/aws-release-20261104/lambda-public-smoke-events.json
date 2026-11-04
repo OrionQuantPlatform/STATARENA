@@ -1,0 +1,42 @@
+[
+    {
+        "at": 1793763955666,
+        "message": "INIT_START Runtime Version: nodejs:24.mainline.v115\tRuntime Version ARN: arn:aws:lambda:us-east-2::runtime:f305b3a259f8bcf7f8730f9e324e16ed868f53b02f82487bf989585baabe4b58\n"
+    },
+    {
+        "at": 1793763955785,
+        "message": "START RequestId: e335f3cc-fa60-487d-a189-f50b21960000 Version: $LATEST\n"
+    },
+    {
+        "at": 1793763956167,
+        "message": "END RequestId: e335f3cc-fa60-487d-a189-f50b21960000\n"
+    },
+    {
+        "at": 1793763956167,
+        "message": "REPORT RequestId: e335f3cc-fa60-487d-a189-f50b21960000\tDuration: 381.49 ms\tBilled Duration: 498 ms\tMemory Size: 512 MB\tMax Memory Used: 90 MB\tInit Duration: 116.47 ms\t\n"
+    },
+    {
+        "at": 1793763956528,
+        "message": "START RequestId: 8d7b47d1-973a-4036-9083-b43fd41ea859 Version: $LATEST\n"
+    },
+    {
+        "at": 1793763957195,
+        "message": "END RequestId: 8d7b47d1-973a-4036-9083-b43fd41ea859\n"
+    },
+    {
+        "at": 1793763957195,
+        "message": "REPORT RequestId: 8d7b47d1-973a-4036-9083-b43fd41ea859\tDuration: 667.36 ms\tBilled Duration: 668 ms\tMemory Size: 512 MB\tMax Memory Used: 99 MB\t\n"
+    },
+    {
+        "at": 1793763958133,
+        "message": "START RequestId: cf102a34-bcfa-4997-b623-66580dff30ef Version: $LATEST\n"
+    },
+    {
+        "at": 1793763958135,
+        "message": "END RequestId: cf102a34-bcfa-4997-b623-66580dff30ef\n"
+    },
+    {
+        "at": 1793763958135,
+        "message": "REPORT RequestId: cf102a34-bcfa-4997-b623-66580dff30ef\tDuration: 1.44 ms\tBilled Duration: 2 ms\tMemory Size: 512 MB\tMax Memory Used: 99 MB\t\n"
+    }
+]
