@@ -1,0 +1,16 @@
+Bundled 53 modules in 17ms
+
+  index.mjs  244.30 KB  (entry point)
+
+{
+  "account": "361769570630",
+  "region": "us-east-2",
+  "concurrencyLimit": 10,
+  "rdsStatus": "available",
+  "validatedTemplates": [
+    "artifacts.yaml",
+    "backend.yaml"
+  ],
+  "release": "releases/04bf4001999db4f9b849e8ec6ce0acca86bec9b9b13c0cff5ea03c1cd1b7285b.zip",
+  "bytes": 58726
+}

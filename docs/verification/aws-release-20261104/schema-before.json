@@ -1,0 +1,10 @@
+{
+  "account": "361769570630",
+  "database": "statarena_prod",
+  "apply": false,
+  "sourceDataTouched": false,
+  "rolePasswordsChanged": false,
+  "schemaBefore": null,
+  "schemaAfter": null,
+  "runtimeOwnsSourceWritePrivileges": false
+}

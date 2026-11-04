@@ -1,0 +1,62 @@
+{
+  "setup": "Actual dedicated CloudFront\u2192signed Lambda\u2192verified typed RDS; one persistent HTTPS connection, gzip, five uncached dense pages; Lambda memory512MiB",
+  "expected": "All200, complete stable page, raw<2MiB, sameETag andbody; no-store",
+  "rows": [
+    {
+      "status": 200,
+      "elapsedMs": 5860.58,
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "pop": "CDG50-P5"
+    },
+    {
+      "status": 200,
+      "elapsedMs": 4513.23,
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "pop": "CDG50-P5"
+    },
+    {
+      "status": 200,
+      "elapsedMs": 3805.18,
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "pop": "CDG50-P5"
+    },
+    {
+      "status": 200,
+      "elapsedMs": 3681.31,
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "pop": "CDG50-P5"
+    },
+    {
+      "status": 200,
+      "elapsedMs": 4470.55,
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "pop": "CDG50-P5"
+    }
+  ],
+  "passed": true
+}

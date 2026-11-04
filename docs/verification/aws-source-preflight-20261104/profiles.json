@@ -1,0 +1,459 @@
+{
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python python3 docs/verification/aws-source-preflight-20261104/audit.py profiles",
+  "expected": "Every source resolved and valid, or exact violations and gaps enumerated",
+  "setup": "PROTOCOL.md",
+  "snapshot": "2026-11-04 02:50:12.282273+00:00",
+  "universe": 35691,
+  "profileCounts": {
+    "profile_catalog": 1,
+    "profile_leagues": 77,
+    "profile_players": 34728,
+    "profile_teams": 885
+  },
+  "resolvedRoots": 33792,
+  "sourcePaths": 2804,
+  "batchCount": 88,
+  "sourceRefFingerprint": "5cafb1a9e29f7ea3332a7949e01566da80911b1e1af75153f898f6b1692b78e1",
+  "shapeResponseJsonBytes": 34795,
+  "violations": [
+    {
+      "model": "profile_leagues",
+      "field": [
+        "@gap"
+      ],
+      "actual": "version_mismatch",
+      "count": 1,
+      "example": "/leagues/l_45VZuL"
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "@gap"
+      ],
+      "actual": "version_mismatch",
+      "count": 1864,
+      "example": "/players/p_000wqo"
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "@gap"
+      ],
+      "actual": "version_mismatch",
+      "count": 34,
+      "example": "/teams/t_02LuKO"
+    }
+  ],
+  "shapes": [
+    {
+      "model": "profile_catalog",
+      "field": [],
+      "type": "object",
+      "count": 1
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data"
+      ],
+      "type": "object",
+      "count": 1
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues"
+      ],
+      "type": "array",
+      "count": 1
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]"
+      ],
+      "type": "object",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "country_code"
+      ],
+      "type": "string",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "id"
+      ],
+      "type": "string",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "image_url"
+      ],
+      "type": "string",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "is_free"
+      ],
+      "type": "boolean",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "name"
+      ],
+      "type": "string",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "seasons"
+      ],
+      "type": "array",
+      "count": 77
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "data",
+        "leagues",
+        "[]",
+        "seasons",
+        "[]"
+      ],
+      "type": "string",
+      "count": 303
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "error"
+      ],
+      "type": "null",
+      "count": 1
+    },
+    {
+      "model": "profile_catalog",
+      "field": [
+        "status"
+      ],
+      "type": "int32",
+      "count": 1
+    },
+    {
+      "model": "profile_leagues",
+      "field": [],
+      "type": "object",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "@gap"
+      ],
+      "type": "version_mismatch",
+      "count": 1
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "data"
+      ],
+      "type": "object",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "data",
+        "country_code"
+      ],
+      "type": "string",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "data",
+        "id"
+      ],
+      "type": "string",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "data",
+        "image_url"
+      ],
+      "type": "string",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "data",
+        "name"
+      ],
+      "type": "string",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "data",
+        "season"
+      ],
+      "type": "string",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "error"
+      ],
+      "type": "null",
+      "count": 76
+    },
+    {
+      "model": "profile_leagues",
+      "field": [
+        "status"
+      ],
+      "type": "int32",
+      "count": 76
+    },
+    {
+      "model": "profile_players",
+      "field": [],
+      "type": "object",
+      "count": 32864
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "@gap"
+      ],
+      "type": "version_mismatch",
+      "count": 1864
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data"
+      ],
+      "type": "null",
+      "count": 1
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data"
+      ],
+      "type": "object",
+      "count": 32863
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "country_code"
+      ],
+      "type": "string",
+      "count": 30146
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "id"
+      ],
+      "type": "string",
+      "count": 32863
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "image_url"
+      ],
+      "type": "string",
+      "count": 29343
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "name"
+      ],
+      "type": "string",
+      "count": 32863
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "position_id"
+      ],
+      "type": "int32",
+      "count": 30818
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "shirt_number"
+      ],
+      "type": "string",
+      "count": 32749
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "data",
+        "short_name"
+      ],
+      "type": "string",
+      "count": 32141
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "error"
+      ],
+      "type": "null",
+      "count": 32863
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "error"
+      ],
+      "type": "object",
+      "count": 1
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "error",
+        "code"
+      ],
+      "type": "string",
+      "count": 1
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "error",
+        "message"
+      ],
+      "type": "string",
+      "count": 1
+    },
+    {
+      "model": "profile_players",
+      "field": [
+        "status"
+      ],
+      "type": "int32",
+      "count": 32864
+    },
+    {
+      "model": "profile_teams",
+      "field": [],
+      "type": "object",
+      "count": 851
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "@gap"
+      ],
+      "type": "version_mismatch",
+      "count": 34
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "data"
+      ],
+      "type": "object",
+      "count": 851
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "data",
+        "id"
+      ],
+      "type": "string",
+      "count": 851
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "data",
+        "image_url"
+      ],
+      "type": "string",
+      "count": 851
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "data",
+        "name"
+      ],
+      "type": "string",
+      "count": 851
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "error"
+      ],
+      "type": "null",
+      "count": 851
+    },
+    {
+      "model": "profile_teams",
+      "field": [
+        "status"
+      ],
+      "type": "int32",
+      "count": 851
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "changeSet": "release-20261104052034-becaa1bf4565",
+  "release": "releases/becaa1bf45650936555cd01a69fb1e41406e4e60c8da43cf30b68eb76fa35e91.zip",
+  "changes": [
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "Backend",
+      "ResourceType": "AWS::Lambda::Function",
+      "Replacement": "False"
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "Distribution",
+      "ResourceType": "AWS::CloudFront::Distribution",
+      "Replacement": "False"
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "Origin",
+      "ResourceType": "AWS::Lambda::Url",
+      "Replacement": "Conditional"
+    }
+  ]
+}

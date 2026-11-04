@@ -1,0 +1,17 @@
+{
+    "Status": "UPDATE_COMPLETE",
+    "Outputs": [
+        {
+            "OutputKey": "SignedOrigin",
+            "OutputValue": "https://wumdyflgmedn4oepitc7runbsy0wgcgu.lambda-url.us-east-2.on.aws/"
+        },
+        {
+            "OutputKey": "ApiOrigin",
+            "OutputValue": "https://d317dq37z1tacb.cloudfront.net"
+        },
+        {
+            "OutputKey": "DistributionId",
+            "OutputValue": "E26GD325YNN0LL"
+        }
+    ]
+}

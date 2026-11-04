@@ -1,0 +1,90 @@
+{
+  "atUtc": "2026-11-04T05:25:49.108Z",
+  "rerun": "/tmp/statarena-node24-20261104 docs/verification/aws-pg-transport-release-20261104/traverse.mjs",
+  "setup": "Current deployed CloudFront→signed Lambda→RDS; actual production frontend season loader; complete traversal of both published partitions; prior canonical content hashes.",
+  "leagues": [
+    {
+      "league": "l_0275VP",
+      "requests": [
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 1491287,
+          "etag": "W/\"core-v1-568c2648b23f8a7cd303f7692b2b542d47eb8cae4715d631b67edd38fbb1cdc2\"",
+          "cache": "no-store"
+        },
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 56637,
+          "etag": "W/\"core-v1-07ad890103e354b3889585ea9424b7c70c19537251ac2b241e9b22dc91807c9b\"",
+          "cache": "no-store"
+        },
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 54468,
+          "etag": "W/\"core-v1-4ea8d65849d0577fe45dd4a13266af3350b36daf863cf6e8882c3611609fb0b9\"",
+          "cache": "no-store"
+        }
+      ],
+      "rowCounts": {
+        "matches": 89,
+        "fixtures": 297,
+        "appearances": 3516,
+        "teams": 18
+      },
+      "digest": "7dfdfb5ba640e6dd738adf2fb4022e0c18133e1195b99b9c4894346841a5dbc7",
+      "expectedDigest": "7dfdfb5ba640e6dd738adf2fb4022e0c18133e1195b99b9c4894346841a5dbc7"
+    },
+    {
+      "league": "l_0ALvwF",
+      "requests": [
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 1973314,
+          "etag": "W/\"core-v1-902c573279937f4364ffa48274aa119703049bdc736d3f5037202a9ddceb8a70\"",
+          "cache": "no-store"
+        },
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 58234,
+          "etag": "W/\"core-v1-75f6bd122cf7c4d08df5e530b7b2ee7819ef2d780ab773f126661d0a87c1d25d\"",
+          "cache": "no-store"
+        },
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 56184,
+          "etag": "W/\"core-v1-0d0d3476af804415856e108e651506f9d164d04f0b31e01ed837157d22f76735\"",
+          "cache": "no-store"
+        },
+        {
+          "status": 200,
+          "format": "columns",
+          "limit": "100",
+          "decodedBytes": 46085,
+          "etag": "W/\"core-v1-2fb4abde5f6680d285bfd1677960e8bf4582ec1956f8e4302ea5d01c22ad654a\"",
+          "cache": "no-store"
+        }
+      ],
+      "rowCounts": {
+        "matches": 100,
+        "fixtures": 380,
+        "appearances": 4788,
+        "teams": 20
+      },
+      "digest": "66ed3fe7061f7e850cc5a8cd08ebb107e25d5ca7f4e2d5b8c7f0ac3dd59821b3",
+      "expectedDigest": "66ed3fe7061f7e850cc5a8cd08ebb107e25d5ca7f4e2d5b8c7f0ac3dd59821b3"
+    }
+  ],
+  "passed": true
+}

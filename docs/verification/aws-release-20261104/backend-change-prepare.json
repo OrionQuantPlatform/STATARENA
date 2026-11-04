@@ -1,0 +1,84 @@
+{
+  "changeSet": "release-20261104023130-5bafd678e684",
+  "release": "releases/5bafd678e684f1ac47ff1d268d6044e9e75aca6d2eadbf1b565f4a2a7f9e34ab.zip",
+  "changes": [
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Backend",
+      "ResourceType": "AWS::Lambda::Function",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Cache",
+      "ResourceType": "AWS::CloudFront::CachePolicy",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "DatabaseIngress",
+      "ResourceType": "AWS::EC2::SecurityGroupIngress",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Distribution",
+      "ResourceType": "AWS::CloudFront::Distribution",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "InvokeUrl",
+      "ResourceType": "AWS::Lambda::Permission",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Invoke",
+      "ResourceType": "AWS::Lambda::Permission",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Logs",
+      "ResourceType": "AWS::Logs::LogGroup",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "OAC",
+      "ResourceType": "AWS::CloudFront::OriginAccessControl",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Origin",
+      "ResourceType": "AWS::Lambda::Url",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "RuntimeRole",
+      "ResourceType": "AWS::IAM::Role",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "RuntimeSG",
+      "ResourceType": "AWS::EC2::SecurityGroup",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "Validators",
+      "ResourceType": "AWS::CloudFront::OriginRequestPolicy",
+      "Replacement": null
+    },
+    {
+      "Action": "Add",
+      "LogicalResourceId": "ViewerHeaders",
+      "ResourceType": "AWS::CloudFront::ResponseHeadersPolicy",
+      "Replacement": null
+    }
+  ]
+}

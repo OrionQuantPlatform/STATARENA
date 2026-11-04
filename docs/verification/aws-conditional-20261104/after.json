@@ -1,0 +1,267 @@
+{
+  "command": "bun docs/verification/aws-conditional-20261104/verify.mjs after",
+  "setup": "PROTOCOL.md; actual 004/006 DDL and local HTTP; isolated writer commits",
+  "cases": [
+    {
+      "name": "cold match stale conditional",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000001",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta",
+            "body"
+          ],
+          "status": 200,
+          "etag": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": "{\"data\":{\"id\":\"m_000001\",\"date\":null,\"league\":{\"id\":null,\"name\":null,\"image_url\":null},\"season\":null,\"status\":\"finished\",\"referee\":null,\"stadium\":null,\"time_utc\":null,\"away_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"home_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"round_name\":null,\"score_away\":null,\"score_home\":null,\"has_playoff\":null}}"
+        }
+      ]
+    },
+    {
+      "name": "cold catalog stale conditional",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/matchdays?competition=l_000001&season=2026",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta",
+            "body"
+          ],
+          "status": 200,
+          "etag": "W/\"catalog-v1-324555f4f842314b236fdeff1de191ac54de6facf09d9277e2112dcc3387d836\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": "{\"matches\":{}}"
+        }
+      ]
+    },
+    {
+      "name": "warm catalog and match stale conditionals",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/matchdays?competition=l_000001&season=2026",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta"
+          ],
+          "status": 200,
+          "etag": "W/\"catalog-v1-324555f4f842314b236fdeff1de191ac54de6facf09d9277e2112dcc3387d836\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": "{\"matches\":{}}"
+        },
+        {
+          "route": "/api/pitchapi/matches/m_000001",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta"
+          ],
+          "status": 200,
+          "etag": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": "{\"data\":{\"id\":\"m_000001\",\"date\":null,\"league\":{\"id\":null,\"name\":null,\"image_url\":null},\"season\":null,\"status\":\"finished\",\"referee\":null,\"stadium\":null,\"time_utc\":null,\"away_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"home_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"round_name\":null,\"score_away\":null,\"score_home\":null,\"has_playoff\":null}}"
+        }
+      ]
+    },
+    {
+      "name": "weak list and HEAD",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000001",
+          "method": "GET",
+          "sent": "\"old\", \"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "sql": [
+            "meta"
+          ],
+          "status": 304,
+          "etag": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": ""
+        },
+        {
+          "route": "/api/pitchapi/matches/m_000001",
+          "method": "HEAD",
+          "sent": null,
+          "sql": [
+            "meta"
+          ],
+          "status": 200,
+          "etag": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": ""
+        },
+        {
+          "route": "/api/matchdays?competition=l_000001&season=2026",
+          "method": "GET",
+          "sent": "\"old\", \"catalog-v1-324555f4f842314b236fdeff1de191ac54de6facf09d9277e2112dcc3387d836\"",
+          "sql": [
+            "meta"
+          ],
+          "status": 304,
+          "etag": "W/\"catalog-v1-324555f4f842314b236fdeff1de191ac54de6facf09d9277e2112dcc3387d836\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": ""
+        },
+        {
+          "route": "/api/matchdays?competition=l_000001&season=2026",
+          "method": "HEAD",
+          "sent": null,
+          "sql": [
+            "meta"
+          ],
+          "status": 200,
+          "etag": "W/\"catalog-v1-324555f4f842314b236fdeff1de191ac54de6facf09d9277e2112dcc3387d836\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "committed change between SELECTs",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000002",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta",
+            "body",
+            "meta",
+            "body"
+          ],
+          "status": 200,
+          "etag": "W/\"match-v1-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": "{\"data\":{\"id\":\"m_000002\",\"date\":null,\"league\":{\"id\":null,\"name\":null,\"image_url\":null},\"season\":null,\"status\":\"b\",\"referee\":null,\"stadium\":null,\"time_utc\":null,\"away_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"home_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"round_name\":null,\"score_away\":null,\"score_home\":null,\"has_playoff\":null}}"
+        }
+      ]
+    },
+    {
+      "name": "concurrent catalog delete",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/matchdays?competition=l_000001&season=2026",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta",
+            "body",
+            "meta"
+          ],
+          "status": 404,
+          "etag": null,
+          "cache": "no-store",
+          "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"RESOURCE_NOT_FOUND\",\"message\":\"Donnée indisponible.\"}}"
+        }
+      ]
+    },
+    {
+      "name": "persistent publication churn",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000003",
+          "method": "GET",
+          "sent": "\"old\"",
+          "sql": [
+            "meta",
+            "body",
+            "meta",
+            "body"
+          ],
+          "status": 503,
+          "etag": null,
+          "cache": "no-store",
+          "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Données indisponibles.\"}}"
+        }
+      ]
+    },
+    {
+      "name": "wildcard on saved error preserves source error",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000004",
+          "method": "GET",
+          "sent": "*",
+          "sql": [
+            "meta",
+            "body"
+          ],
+          "status": 404,
+          "etag": null,
+          "cache": "no-store",
+          "body": "{\"ok\":false,\"error\":{\"code\":\"NO_ACCESS\",\"message\":\"Saved error\"}}"
+        }
+      ]
+    },
+    {
+      "name": "missing match",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000009",
+          "method": "GET",
+          "sent": "*",
+          "sql": [
+            "meta"
+          ],
+          "status": 404,
+          "etag": null,
+          "cache": "no-store",
+          "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"RESOURCE_NOT_FOUND\",\"message\":\"Donnée indisponible.\"}}"
+        }
+      ]
+    },
+    {
+      "name": "proxy absent conditional stays absent",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000005",
+          "method": "GET",
+          "sent": null,
+          "sql": [
+            "meta",
+            "body"
+          ],
+          "status": 200,
+          "etag": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": "{\"data\":{\"id\":\"m_000005\",\"date\":null,\"league\":{\"id\":null,\"name\":null,\"image_url\":null},\"season\":null,\"status\":\"finished\",\"referee\":null,\"stadium\":null,\"time_utc\":null,\"away_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"home_team\":{\"id\":null,\"name\":null,\"image_url\":null},\"round_name\":null,\"score_away\":null,\"score_home\":null,\"has_playoff\":null}}"
+        }
+      ]
+    },
+    {
+      "name": "proxy forwards real validator",
+      "passed": true,
+      "requests": [
+        {
+          "route": "/api/pitchapi/matches/m_000005",
+          "method": "GET",
+          "sent": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "sql": [
+            "meta"
+          ],
+          "status": 304,
+          "etag": "W/\"match-v1-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+          "cache": "public, max-age=0, s-maxage=60, must-revalidate",
+          "body": ""
+        }
+      ]
+    }
+  ],
+  "pg": "18.6",
+  "passed": 11,
+  "total": 11
+}

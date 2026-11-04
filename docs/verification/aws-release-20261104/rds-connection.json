@@ -1,0 +1,20 @@
+{
+  "setup": "Actual RDS, SSM runtime identity, verified bundled regional CA and bounded read-only pool",
+  "command": "bun infra/aws-backend/check-runtime.mjs docs/verification/aws-release-20261104/rds-connection.json",
+  "expected": {
+    "read_only": "on",
+    "ssl": true,
+    "source_update_allowed": false
+  },
+  "actual": {
+    "current_user": "statarena_runtime",
+    "current_database": "statarena_prod",
+    "read_only": "on",
+    "ssl": true,
+    "version": "TLSv1.3",
+    "cipher": "TLS_AES_128_GCM_SHA256",
+    "bits": 128,
+    "source_update_allowed": false
+  },
+  "status": "passed"
+}

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/private/tmp/statarena-aws-backend-20261104/docs/verification/aws-source-preflight-20261104/local.py", line 38, in <module>
+    try: catalog_batch(Inputs(SimpleNamespace(db=d,json=unexpected)),1);error=None
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/statarena-aws-backend-20261104/dashboard/scripts/relational_materialize.py", line 369, in catalog_batch
+    result = publish_catalog(db, records())
+  File "/private/tmp/statarena-aws-backend-20261104/dashboard/scripts/relational_catalog.py", line 110, in publish_catalog
+    for path, value in records_in:
+                       ^^^^^^^^^^
+  File "/private/tmp/statarena-aws-backend-20261104/dashboard/scripts/relational_materialize.py", line 353, in records
+    else envelope(inputs.ref(ref) if ref else None, ref, status, error)
+                  ~~~~~~~~~~^^^^^
+  File "/private/tmp/statarena-aws-backend-20261104/dashboard/scripts/relational_materialize.py", line 139, in ref
+    return self.read(ref["path"], ref.get("sha256"))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/statarena-aws-backend-20261104/dashboard/scripts/relational_materialize.py", line 122, in read
+    re.fullmatch(r"[0-9a-f]{64}", expected)
+    ^^
+NameError: name 're' is not defined. Did you forget to import 're'?

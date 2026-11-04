@@ -1,0 +1,159 @@
+{
+  "setup": "comparison-protocol.md. Real Chromium, private Next app and captured actual AWS Serie A and Ligue 2 data. 500ms delayed Reims summary.",
+  "base": "Shared root d5df4c5a9a/4ee3c53995 plus applied/formatted original candidate; comparison-original directory snapshots.",
+  "command": "python3 browser.py pair-after",
+  "before": {
+    "mode": "pair-before",
+    "names": [
+      "Giovanni Daffara",
+      "Giovanni Fabbian"
+    ],
+    "oldPairBefore": "Comparer 2/3\nGiovanni Daffara\n×\nGiovanni Fabbian\n×\nComparer\nVider",
+    "player": null,
+    "error": "Cette performance est indisponible.",
+    "originalComparison": "Comparaison de performances\nIndicateur\tGiovanni Daffara\nParma\n2 nov. 2026\tGiovanni Fabbian\nParma\n2 nov. 2026\nMinutes\t90\t74\nNote\t9,17\t8,36\nButs\t—\t1\nPasses décisives\t—\t1\nxG\t—\t0,15\nxA\t—\t0,01\nTirs\t—\t1\nOccasions créées\t—\t1\nPasses réussies\t24\t12\nPasses tentées\t31\t14\nBallons touchés\t44\t22\nActions défensives\t1\t4\nInterceptions\t0\t0\nDuels gagnés\t—\t1\nArrêts\t6\t—\nButs évités\t2,11\t—",
+    "events": [
+      [
+        "serie-list",
+        "/api/dashboard/manifest",
+        null,
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/status",
+        null,
+        200
+      ],
+      [
+        "serie-list",
+        "/api/pitchapi/leagues",
+        null,
+        404
+      ],
+      [
+        "foreign",
+        "/api/status",
+        null,
+        200
+      ],
+      [
+        "foreign",
+        "/api/matches/m_1HCdf3/summary",
+        null,
+        200
+      ]
+    ],
+    "passed": false
+  },
+  "after": {
+    "mode": "pair-after",
+    "names": [
+      "Giovanni Daffara",
+      "Giovanni Fabbian"
+    ],
+    "oldPairBefore": "Comparer 2/3\nGiovanni Daffara\n×\nGiovanni Fabbian\n×\nComparer\nVider",
+    "player": "Yaya Fofana\n\nClub lors de ce match :\nReims\nAttaquant\nN° 8\n\n8,79\nNote\nMeilleure note du match\nLigue 2\n2 nov. 2026\nReims\n2\n–\n0\nSochaux\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n1\nPasses décisives\n1\nxG\n0,93\nx",
+    "error": "",
+    "originalComparison": "Comparaison de performances\nIndicateur\tGiovanni Daffara\nParma\n2 nov. 2026\tGiovanni Fabbian\nParma\n2 nov. 2026\nMinutes\t90\t74\nNote\t9,17\t8,36\nButs\t—\t1\nPasses décisives\t—\t1\nxG\t—\t0,15\nxA\t—\t0,01\nTirs\t—\t1\nOccasions créées\t—\t1\nPasses réussies\t24\t12\nPasses tentées\t31\t14\nBallons touchés\t44\t22\nActions défensives\t1\t4\nInterceptions\t0\t0\nDuels gagnés\t—\t1\nArrêts\t6\t—\nButs évités\t2,11\t—",
+    "events": [
+      [
+        "serie-list",
+        "/api/dashboard/manifest",
+        null,
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/seasons/partition",
+        "l_0ALvwF",
+        200
+      ],
+      [
+        "serie-list",
+        "/api/status",
+        null,
+        200
+      ],
+      [
+        "serie-list",
+        "/api/pitchapi/leagues",
+        null,
+        404
+      ],
+      [
+        "foreign",
+        "/api/status",
+        null,
+        200
+      ],
+      [
+        "foreign",
+        "/api/matches/m_1HCdf3/summary",
+        null,
+        200
+      ],
+      [
+        "foreign-player",
+        "/api/seasons/partition",
+        "l_0275VP",
+        200
+      ],
+      [
+        "foreign-player",
+        "/api/seasons/partition",
+        "l_0275VP",
+        200
+      ],
+      [
+        "foreign-player",
+        "/api/seasons/partition",
+        "l_0275VP",
+        200
+      ]
+    ],
+    "passed": true
+  }
+}

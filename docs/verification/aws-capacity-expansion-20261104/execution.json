@@ -1,0 +1,39 @@
+{
+  "atUtc": "2026-11-04T08:06:55.446200+00:00",
+  "ownerApproval": "Oui, passer \u00e0 64 Gio",
+  "approvedScope": "Only existing RDS20\u219264GiB allocated storage, quoted+$5.06USD/month before tax/credits; irreversible allocation restriction acknowledged.",
+  "request": {
+    "DBInstanceIdentifier": "statarena-postgres",
+    "AllocatedStorage": 64,
+    "ApplyImmediately": true
+  },
+  "executed": true,
+  "before": {
+    "Arn": "arn:aws:rds:us-east-2:361769570630:db:statarena-postgres",
+    "Class": "db.t4g.micro",
+    "AllocatedGiB": 20,
+    "StorageType": "gp3",
+    "IOPS": 3000,
+    "Throughput": 125,
+    "Status": "available",
+    "Pending": {},
+    "Endpoint": "statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com",
+    "Vpc": "vpc-08e400afa07fc1812"
+  },
+  "response": {
+    "Arn": "arn:aws:rds:us-east-2:361769570630:db:statarena-postgres",
+    "Class": "db.t4g.micro",
+    "AllocatedGiB": 20,
+    "StorageType": "gp3",
+    "IOPS": 3000,
+    "Throughput": 125,
+    "Status": "available",
+    "Pending": {
+      "AllocatedStorage": 64,
+      "Iops": 3000,
+      "StorageThroughput": 125
+    },
+    "Endpoint": "statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com",
+    "Vpc": "vpc-08e400afa07fc1812"
+  }
+}

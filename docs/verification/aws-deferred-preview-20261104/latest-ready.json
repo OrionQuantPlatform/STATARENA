@@ -1,0 +1,13 @@
+{
+  "observedUtc": "2026-11-04T05:35:13.563950+00:00",
+  "source": "Vercel MCP get_deployment and git diff",
+  "id": "dpl_9cFaJqRENka8Wb7k2tmar8Z4qHT6",
+  "url": "https://statarena-analytics-a775jzzml-hlemonniers-projects.vercel.app",
+  "commit": "d17473058fc116158df00fe4ee65600a5fb5f5b5",
+  "state": "READY",
+  "target": "preview",
+  "previousBrowserTestFrontend": "e1771cc4376d0cd700c9ef59a643fb3c0ada949c",
+  "frontendDiffBetweenCommits": "empty: git diff e1771cc437 d17473058f -- dashboard/frontend",
+  "backendArtifact": "becaa1bf45650936555cd01a69fb1e41406e4e60c8da43cf30b68eb76fa35e91",
+  "limits": "Actual32 browser checks used protected e177 frontend; subsequent26 check rerun used same e177 frontend against verified new API backend. This is latest deployment metadata, not another complete browser run."
+}

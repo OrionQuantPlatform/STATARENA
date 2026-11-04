@@ -1,0 +1,13 @@
+{
+    "Status": "CREATE_COMPLETE",
+    "Outputs": [
+        {
+            "OutputKey": "IngestionRoleArn",
+            "OutputValue": "arn:aws:iam::361769570630:role/StatArenaGitHubIngest"
+        },
+        {
+            "OutputKey": "MonitorRoleArn",
+            "OutputValue": "arn:aws:iam::361769570630:role/StatArenaGitHubMonitor"
+        }
+    ]
+}

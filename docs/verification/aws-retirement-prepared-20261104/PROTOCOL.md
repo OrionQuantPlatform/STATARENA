@@ -1,0 +1,7 @@
+# Private retirement patch rebase
+
+Prepare a detached working tree at 887b560bf767993c989ab0631018b16490a70cb1. Apply the original private patch by three-way merge while retaining all intervening producer, schema, API, CI and guard changes. Record conflict decisions. Verify worker-only AWS staging credentials and supported source/SQL/S3 contracts, default daily and historical collector publication scopes and priority ordering, publication queue limits, current migrations 007–009, typed API and frontend bootstrap with temporary local dependencies. Preserve the original private worktree and patch, all live resources, source data and the active product checkout. Activation remains deferred until full AWS acceptance.
+
+The original bootstrap exported the ingest DSN twice, also under the runtime name DATABASE_URL. The actual workflow monitor requires DATABASE_URL only in runtime mode. Require ingest bootstrap to export INGEST_DATABASE_URL exclusively, with no runtime DSN and no legacy aliases. Preserve existing TLS validation and reader-only runtime mode. Capture the original failure with the existing SSM/PG workflow before changing bootstrap.
+
+The merged retirement competition-render fixture predates deferred performance hydration. Its first actual bootstrap workflow failed when PlayerDetails required the current performanceData contract. Update only the fixture's empty performance and comparison state, then rerun the unchanged production route/component workflows. Run the standalone Next build after the browser suite's internal Next build exits.

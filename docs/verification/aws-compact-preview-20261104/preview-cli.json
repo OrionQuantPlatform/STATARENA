@@ -1,0 +1,23 @@
+{
+  "time": "2026-11-04T04:46:30.456871+00:00",
+  "command": [
+    "npx",
+    "--yes",
+    "vercel@latest",
+    "--scope",
+    "team_IYt7KqupdSTtMuQuMvNa9wiJ",
+    "api",
+    "/v13/deployments?teamId=team_IYt7KqupdSTtMuQuMvNa9wiJ",
+    "--method",
+    "POST",
+    "--input",
+    "docs/verification/aws-compact-preview-20261104/preview-request.json",
+    "--include",
+    "--raw"
+  ],
+  "exitCode": 1,
+  "quotaCode": "api-deployments-free-per-day",
+  "diagnostic": [
+    "Error: Resource is limited - try again in 24 hours (more than 100, code: \"api-deployments-free-per-day\"). (402)"
+  ]
+}

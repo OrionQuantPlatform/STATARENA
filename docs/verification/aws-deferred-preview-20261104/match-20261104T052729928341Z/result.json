@@ -1,0 +1,615 @@
+{
+  "mode": "match",
+  "site": "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+  "api": "https://d317dq37z1tacb.cloudfront.net",
+  "commit": "e1771cc4376d0cd700c9ef59a643fb3c0ada949c",
+  "time": "20261104T052729928341Z",
+  "passed": true,
+  "authStatus": 307,
+  "hostOnlyCookies": 1,
+  "actual": {
+    "checks": [
+      {
+        "name": "desktop match overview: protected preview returned application",
+        "ok": true,
+        "actual": [
+          "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+          "/matchs",
+          200
+        ]
+      },
+      {
+        "name": "desktop: RDS score and teams",
+        "ok": true,
+        "actual": {
+          "heading": [
+            "Boulogne — Red Star"
+          ],
+          "teams": [
+            "BoulogneDomicile · 5-3-2",
+            "Red StarExtérieur · 4-2-3-1"
+          ],
+          "scores": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "name": "desktop overview requests zero season partitions",
+        "ok": true,
+        "actual": []
+      },
+      {
+        "name": "bounded match summary fetched by preview",
+        "ok": true,
+        "actual": [
+          {
+            "phase": "desktop match overview",
+            "path": "/api/matches/m_02vUAH/summary",
+            "status": 200,
+            "method": "GET",
+            "ttfbMs": 315.309,
+            "edge": "RefreshHit from cloudfront"
+          }
+        ]
+      },
+      {
+        "name": "overview requested no heavy family or whole-match archive",
+        "ok": true,
+        "actual": [
+          "/api/dashboard/manifest",
+          "/api/matches/m_02vUAH/summary",
+          "/api/status"
+        ]
+      },
+      {
+        "name": "Statistiques: on-demand CloudFront HTTP",
+        "ok": true,
+        "actual": 200
+      },
+      {
+        "name": "rendered interception values match RDS",
+        "ok": true,
+        "actual": {
+          "rendered": "Interceptions\n10\n8",
+          "expected": [
+            10,
+            8
+          ]
+        }
+      },
+      {
+        "name": "Tirs & xG: on-demand CloudFront HTTP",
+        "ok": true,
+        "actual": 200
+      },
+      {
+        "name": "all source shot rows rendered",
+        "ok": true,
+        "actual": {
+          "count": 23,
+          "expected": 23,
+          "sample": [
+            "3′\nDamien Durand\nBut\n0,55\nxG",
+            "13′\nBenjamin Bešić\nTir\n0,24\nxG",
+            "25′\nJoffrey Bultel\nTir\n0,17\nxG"
+          ]
+        }
+      },
+      {
+        "name": "source shot player and minute rendered",
+        "ok": true,
+        "actual": {
+          "player": "Damien Durand",
+          "minute": 3,
+          "xg": 0.55
+        }
+      },
+      {
+        "name": "no whole-match download after successful lazy detail",
+        "ok": true
+      },
+      {
+        "name": "mobile match overview: protected preview returned application",
+        "ok": true,
+        "actual": [
+          "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+          "/matchs",
+          200
+        ]
+      },
+      {
+        "name": "mobile: RDS score and teams",
+        "ok": true,
+        "actual": {
+          "heading": [
+            "Boulogne — Red Star"
+          ],
+          "teams": [
+            "BoulogneDomicile · 5-3-2",
+            "Red StarExtérieur · 4-2-3-1"
+          ],
+          "scores": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "name": "mobile overview requests zero season partitions",
+        "ok": true,
+        "actual": []
+      },
+      {
+        "name": "mobile match fits viewport",
+        "ok": true
+      },
+      {
+        "name": "match stays visible while performance loads",
+        "ok": true
+      },
+      {
+        "name": "intent opens exact RDS appearance",
+        "ok": true,
+        "actual": {
+          "name": "Damien Durand",
+          "expectedMinutes": 90,
+          "rendered": "Damien Durand\n\nClub lors de ce match :\nRed Star\nMilieu offensif\nN° 7\n\n7,98\nNote\nMeilleure note du match\nLigue 2\n21 août 2026\nBoulogne\n1\n–\n1\nRed Star\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n1\nPasses décisives\n0\nxG\n0,67\nxA\n0,55\nProfil de la performance\n\nCentile parmi 682 performances de milieux offensifs et attaquants cette saison, 30 min ou plus.\n\nFinition\nButs attendus (xG)\n0,67\n91\nTirs\n3\n7"
+        }
+      },
+      {
+        "name": "intent loads owning cohort successfully",
+        "ok": true,
+        "actual": [
+          {
+            "phase": "player intent from match",
+            "path": "/api/seasons/partition",
+            "status": 200,
+            "method": "GET",
+            "ttfbMs": 2789.312,
+            "edge": "Miss from cloudfront"
+          },
+          {
+            "phase": "player intent from match",
+            "path": "/api/seasons/partition",
+            "status": 200,
+            "method": "GET",
+            "ttfbMs": 349.269,
+            "edge": "Miss from cloudfront"
+          },
+          {
+            "phase": "player intent from match",
+            "path": "/api/seasons/partition",
+            "status": 200,
+            "method": "GET",
+            "ttfbMs": 332.456,
+            "edge": "Miss from cloudfront"
+          }
+        ]
+      },
+      {
+        "name": "comparison retains both selected players",
+        "ok": true,
+        "actual": "Comparaison de performances\nIndicateur\tDamien Durand\nRed Star\n21 août 2026\tGaëtan Poussin\nRed Star\n21 août 2026\nMinutes\t90\t90\nNote\t7,98\t7,97\nButs\t1\t—\nPasses décisives\t0\t—\nxG\t0,67\t—\nxA\t0,55\t—\nTirs\t3\t—\nOccasions créées\t2\t—\nPasses réussies\t14\t19\nPasses tentées\t16\t29\nBallons touchés\t35\t50\nActions défensives\t4\t5\nInterceptions\t0\t0\nDuels gagnés\t5\t—\nArrêts\t—\t8\nButs évités\t—\t0,46"
+      },
+      {
+        "name": "match scoreboard remains mounted after hydration",
+        "ok": true
+      },
+      {
+        "name": "mobile player: protected preview returned application",
+        "ok": true,
+        "actual": [
+          "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+          "/joueurs",
+          200
+        ]
+      },
+      {
+        "name": "player name matches RDS identity",
+        "ok": true,
+        "actual": [
+          "Joueurs",
+          "Damien Durand\n\nMilieu offensif · Red Star"
+        ]
+      },
+      {
+        "name": "season appearance/minutes match RDS",
+        "ok": true,
+        "actual": {
+          "rendered": {
+            "Matchs": "10",
+            "Minutes": "804",
+            "Titularisations": "9",
+            "Note": "7,35"
+          },
+          "expected": {
+            "appearances": 10,
+            "played": 10,
+            "minutes": 804,
+            "goals": 5
+          }
+        }
+      },
+      {
+        "name": "mobile player fits viewport",
+        "ok": true
+      },
+      {
+        "name": "all structured football traffic went to the dedicated CloudFront API",
+        "ok": true,
+        "actual": {
+          "requests": 35,
+          "violations": 0
+        }
+      },
+      {
+        "name": "zero application JS exceptions",
+        "ok": true,
+        "actual": []
+      }
+    ],
+    "football": [
+      {
+        "phase": "desktop match overview",
+        "path": "/api/dashboard/manifest",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 507.128,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "desktop match overview",
+        "path": "/api/matches/m_02vUAH/summary",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 315.309,
+        "edge": "RefreshHit from cloudfront"
+      },
+      {
+        "phase": "desktop match overview",
+        "path": "/api/status",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 320.263,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 334.315,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 343.587,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 354.86,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 363.348,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 378.014,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 387.312,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 404.003,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "open stats",
+        "path": "/api/pitchapi/matches/m_02vUAH/stats",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 312.678,
+        "edge": "RefreshHit from cloudfront"
+      },
+      {
+        "phase": "open shots",
+        "path": "/api/pitchapi/matches/m_02vUAH/shots",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 137.206,
+        "edge": "RefreshHit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/dashboard/manifest",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 141.244,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/matches/m_02vUAH/summary",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 7.502,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 6.68,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 6.862,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.42,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.04,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.419,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.35,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.287,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.126,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile match overview",
+        "path": "/api/status",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 114.6,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "player intent from match",
+        "path": "/api/seasons/partition",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 2789.312,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "player intent from match",
+        "path": "/api/seasons/partition",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 349.269,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "player intent from match",
+        "path": "/api/seasons/partition",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 332.456,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/dashboard/manifest",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 132.094,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/seasons/partition",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 2269.209,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/seasons/partition",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 132.929,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/seasons/partition",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 140.482,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 7.752,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/status",
+        "status": 200,
+        "method": "GET",
+        "ttfbMs": 309.49,
+        "edge": "Miss from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/player-honours",
+        "status": 404,
+        "method": "GET",
+        "ttfbMs": 321.125,
+        "edge": "Error from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.077,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/assets",
+        "status": 307,
+        "method": "GET",
+        "ttfbMs": 9.187,
+        "edge": "Hit from cloudfront"
+      },
+      {
+        "phase": "mobile player",
+        "path": "/api/pitchapi/leagues",
+        "status": 404,
+        "method": "GET",
+        "ttfbMs": 349.312,
+        "edge": "Error from cloudfront"
+      }
+    ],
+    "violations": [],
+    "exceptions": [],
+    "errors": [],
+    "views": [
+      {
+        "name": "desktop match overview",
+        "origin": "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+        "path": "/matchs",
+        "http": 200
+      },
+      {
+        "name": "mobile match overview",
+        "origin": "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+        "path": "/matchs",
+        "http": 200
+      },
+      {
+        "name": "mobile player",
+        "origin": "https://statarena-analytics-7jfl1udrw-hlemonniers-projects.vercel.app",
+        "path": "/joueurs",
+        "http": 200
+      }
+    ],
+    "passed": true,
+    "unavailable": [
+      {
+        "path": "/api/player-honours",
+        "status": 404,
+        "phase": "mobile player"
+      }
+    ],
+    "originProof": {
+      "requestsToApi": 37,
+      "credentialBearingRequests": 0,
+      "observed": [
+        "https://d317dq37z1tacb.cloudfront.net"
+      ],
+      "scriptsWithEmbeddedApi": [
+        "/_next/static/immutable/chunks/12chxd3vr61-t.js"
+      ],
+      "offOrigin": []
+    }
+  },
+  "checks": {
+    "desktop match overview: protected preview returned application": true,
+    "desktop: RDS score and teams": true,
+    "desktop overview requests zero season partitions": true,
+    "bounded match summary fetched by preview": true,
+    "overview requested no heavy family or whole-match archive": true,
+    "Statistiques: on-demand CloudFront HTTP": true,
+    "rendered interception values match RDS": true,
+    "Tirs & xG: on-demand CloudFront HTTP": true,
+    "all source shot rows rendered": true,
+    "source shot player and minute rendered": true,
+    "no whole-match download after successful lazy detail": true,
+    "mobile match overview: protected preview returned application": true,
+    "mobile: RDS score and teams": true,
+    "mobile overview requests zero season partitions": true,
+    "mobile match fits viewport": true,
+    "match stays visible while performance loads": true,
+    "intent opens exact RDS appearance": true,
+    "intent loads owning cohort successfully": true,
+    "comparison retains both selected players": true,
+    "match scoreboard remains mounted after hydration": true,
+    "mobile player: protected preview returned application": true,
+    "player name matches RDS identity": true,
+    "season appearance/minutes match RDS": true,
+    "mobile player fits viewport": true,
+    "all structured football traffic went to the dedicated CloudFront API": true,
+    "zero application JS exceptions": true
+  },
+  "originPassed": true
+}

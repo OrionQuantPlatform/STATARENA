@@ -1,0 +1,1063 @@
+{
+  "setup": "Private real Next and Chromium sessions, actual immutable captured AWS responses replayed from disk; cache misses return 503, no additional API origin acquisition. Identical private/shared source hashes in sources.json. Each mode is a fresh browser session.",
+  "command": "python3 browser.py <mode>",
+  "checks": {
+    "after": {
+      "command": "python3 browser.py after",
+      "expected": "zero initial partitions; full player dialog and original two-person comparison after intentional hydration",
+      "seconds": 6.497,
+      "passed": true,
+      "actual": {
+        "mode": "after",
+        "keep": true,
+        "busy": 1,
+        "scoreboardMs": 1391,
+        "initial": [
+          {
+            "phase": "initial",
+            "path": "/api/dashboard/manifest",
+            "league": null,
+            "status": 200,
+            "ms": 352,
+            "bytes": 2355
+          },
+          {
+            "phase": "initial",
+            "path": "/api/matches/m_1HCdf3/summary",
+            "league": null,
+            "status": 200,
+            "ms": 971,
+            "bytes": 8330
+          },
+          {
+            "phase": "initial",
+            "path": "/api/status",
+            "league": null,
+            "status": 200,
+            "ms": 971,
+            "bytes": 61
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1016,
+            "bytes": 8234
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 5458
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 6538
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 2678
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 7844
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 8820
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 7010
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 7312
+          }
+        ],
+        "events": [
+          {
+            "phase": "initial",
+            "path": "/api/dashboard/manifest",
+            "league": null,
+            "status": 200,
+            "ms": 352,
+            "bytes": 2355
+          },
+          {
+            "phase": "initial",
+            "path": "/api/matches/m_1HCdf3/summary",
+            "league": null,
+            "status": 200,
+            "ms": 971,
+            "bytes": 8330
+          },
+          {
+            "phase": "initial",
+            "path": "/api/status",
+            "league": null,
+            "status": 200,
+            "ms": 971,
+            "bytes": 61
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1016,
+            "bytes": 8234
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 5458
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 6538
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 2678
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 7844
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 8820
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 7010
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 1017,
+            "bytes": 7312
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 200,
+            "ms": 2023,
+            "bytes": 1491287
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2034,
+            "bytes": 1973314
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 200,
+            "ms": 2271,
+            "bytes": 56637
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2275,
+            "bytes": 58234
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 200,
+            "ms": 2514,
+            "bytes": 54468
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2549,
+            "bytes": 56184
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2783,
+            "bytes": 46085
+          }
+        ],
+        "summary": "Ligue 2\n2 nov. 2026 · 20:45\nReims — Sochaux\nReims\nDomicile · 4-4-2\nTerminé\n2\n–\n0\nSochaux\nExtérieur · 4-2-3-1\nButs attendus · xG\n1,51\n–\n0,99\nTirs\n11\n–\n15\nTirs cadrés\n5\n–\n2\nPossession\n47 %\n–\n53 %",
+        "names": [
+          "01\nYaya Fofana\nReims · 1 but · 1 PD\n90′\n8,79",
+          "02\nThéo Leoni\nReims\n90′\n7,62",
+          "03\nElie N'Tamon\nReims\n90′\n7,59",
+          "04\nJean Mambuku\nReims\n88′\n7,47",
+          "05\nSambou Soumano\nReims · 1 but\n73′\n7,44"
+        ],
+        "buttons": [
+          "",
+          "Synthèse",
+          "Toutes les stats",
+          "Comparer ce joueur"
+        ],
+        "player": "Yaya Fofana\n\nClub lors de ce match :\nReims\nAttaquant\nN° 8\n\n8,79\nNote\nMeilleure note du match\nLigue 2\n2 nov. 2026\nReims\n2\n–\n0\nSochaux\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n1\nPasses décisives\n1\nxG\n0,93\nxA\n0,17\nProfil de la performance\n\nCentile",
+        "comparison": "Comparaison de performances\nIndicateur\tYaya Fofana\nReims\n2 nov. 2026\tThéo Leoni\nReims\n2 nov. 2026\nMinutes\t90\t90\nNote\t8,79\t7,62\nButs\t1\t0\nPasses décisives\t1\t0\nxG\t0,93\t0,03\nxA\t0,17\t0,05\nTirs\t2\t1\nOccasions créées\t3\t0\nPasses réussies\t35\t32\nPasses tentées\t42\t39\nBallons touchés\t52\t58\nActions défensives\t1\t9\nInterceptions\t0\t2\nDuels gagnés\t3\t5\nArrêts\t—\t—\nBut"
+      }
+    },
+    "fault": {
+      "command": "python3 browser.py fault",
+      "expected": "visible recoverable error, retry, scoreboard retained and successful comparison",
+      "seconds": 6.199,
+      "passed": true,
+      "actual": {
+        "mode": "fault",
+        "keep": true,
+        "busy": 0,
+        "retry": true,
+        "scoreboardMs": 1124,
+        "initial": [
+          {
+            "phase": "initial",
+            "path": "/api/dashboard/manifest",
+            "league": null,
+            "status": 200,
+            "ms": 70,
+            "bytes": 2355
+          },
+          {
+            "phase": "initial",
+            "path": "/api/matches/m_1HCdf3/summary",
+            "league": null,
+            "status": 200,
+            "ms": 699,
+            "bytes": 8330
+          },
+          {
+            "phase": "initial",
+            "path": "/api/status",
+            "league": null,
+            "status": 200,
+            "ms": 700,
+            "bytes": 61
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 740,
+            "bytes": 2678
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 740,
+            "bytes": 5458
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 742,
+            "bytes": 8234
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 744,
+            "bytes": 7010
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 745,
+            "bytes": 6538
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 746,
+            "bytes": 7844
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 746,
+            "bytes": 8820
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 746,
+            "bytes": 7312
+          }
+        ],
+        "events": [
+          {
+            "phase": "initial",
+            "path": "/api/dashboard/manifest",
+            "league": null,
+            "status": 200,
+            "ms": 70,
+            "bytes": 2355
+          },
+          {
+            "phase": "initial",
+            "path": "/api/matches/m_1HCdf3/summary",
+            "league": null,
+            "status": 200,
+            "ms": 699,
+            "bytes": 8330
+          },
+          {
+            "phase": "initial",
+            "path": "/api/status",
+            "league": null,
+            "status": 200,
+            "ms": 700,
+            "bytes": 61
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 740,
+            "bytes": 2678
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 740,
+            "bytes": 5458
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 742,
+            "bytes": 8234
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 744,
+            "bytes": 7010
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 745,
+            "bytes": 6538
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 746,
+            "bytes": 7844
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 746,
+            "bytes": 8820
+          },
+          {
+            "phase": "initial",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 746,
+            "bytes": 7312
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 503,
+            "ms": 1554,
+            "bytes": 2
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 1778,
+            "bytes": 1973314
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 200,
+            "ms": 1830,
+            "bytes": 1491287
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2035,
+            "bytes": 58234
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 200,
+            "ms": 2078,
+            "bytes": 56637
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2268,
+            "bytes": 56184
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0275VP",
+            "status": 200,
+            "ms": 2317,
+            "bytes": 54468
+          },
+          {
+            "phase": "player",
+            "path": "/api/seasons/partition",
+            "league": "l_0ALvwF",
+            "status": 200,
+            "ms": 2510,
+            "bytes": 46085
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 2605,
+            "bytes": 5458
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 2606,
+            "bytes": 2678
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 2606,
+            "bytes": 8234
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 2606,
+            "bytes": 6538
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 3086,
+            "bytes": 5458
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 3086,
+            "bytes": 2678
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 3087,
+            "bytes": 8234
+          },
+          {
+            "phase": "player",
+            "path": "/api/assets",
+            "league": null,
+            "status": 200,
+            "ms": 3087,
+            "bytes": 7844
+          }
+        ],
+        "summary": "Ligue 2\n2 nov. 2026 · 20:45\nReims — Sochaux\nReims\nDomicile · 4-4-2\nTerminé\n2\n–\n0\nSochaux\nExtérieur · 4-2-3-1\nButs attendus · xG\n1,51\n–\n0,99\nTirs\n11\n–\n15\nTirs cadrés\n5\n–\n2\nPossession\n47 %\n–\n53 %",
+        "names": [
+          "01\nYaya Fofana\nReims · 1 but · 1 PD\n90′\n8,79",
+          "02\nThéo Leoni\nReims\n90′\n7,62",
+          "03\nElie N'Tamon\nReims\n90′\n7,59",
+          "04\nJean Mambuku\nReims\n88′\n7,47",
+          "05\nSambou Soumano\nReims · 1 but\n73′\n7,44"
+        ],
+        "buttons": [
+          "",
+          "Synthèse",
+          "Toutes les stats",
+          "Comparer ce joueur"
+        ],
+        "player": "Yaya Fofana\n\nClub lors de ce match :\nReims\nAttaquant\nN° 8\n\n8,79\nNote\nMeilleure note du match\nLigue 2\n2 nov. 2026\nReims\n2\n–\n0\nSochaux\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n1\nPasses décisives\n1\nxG\n0,93\nxA\n0,17\nProfil de la performance\n\nCentile",
+        "comparison": "Comparaison de performances\nIndicateur\tYaya Fofana\nReims\n2 nov. 2026\tThéo Leoni\nReims\n2 nov. 2026\nMinutes\t90\t90\nNote\t8,79\t7,62\nButs\t1\t0\nPasses décisives\t1\t0\nxG\t0,93\t0,03\nxA\t0,17\t0,05\nTirs\t2\t1\nOccasions créées\t3\t0\nPasses réussies\t35\t32\nPasses tentées\t42\t39\nBallons touchés\t52\t58\nActions défensives\t1\t9\nInterceptions\t0\t2\nDuels gagnés\t3\t5\nArrêts\t—\t—\nBut"
+      }
+    },
+    "intent": {
+      "command": "python3 browser.py intent",
+      "expected": "bookmark succeeds without season data; search intent loads full corpus and finds correct player",
+      "seconds": 5.398,
+      "passed": true,
+      "actual": {
+        "mode": "intent",
+        "saved": "true",
+        "hit": "Yaya Fofana\nAttaquant · Reims",
+        "events": [
+          {
+            "phase": "cold",
+            "path": "/api/dashboard/manifest",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/matches/m_1HCdf3/summary",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/status",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/cup-index",
+            "status": 404
+          },
+          {
+            "phase": "search",
+            "path": "/api/cup-index",
+            "status": 404
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "search",
+            "path": "/api/seasons/partition",
+            "status": 200
+          }
+        ]
+      }
+    },
+    "warm": {
+      "command": "python3 browser.py warm",
+      "expected": "warm list navigates to a match, with zero additional season pages and zero summary calls",
+      "seconds": 5.708,
+      "passed": true,
+      "actual": {
+        "mode": "warm",
+        "match": "Ligue 2\n2 nov. 2026 · 20:45\nRed Star — Nancy\nRS\nRed Star\nDomicile · 4-2-3-1\nTerminé\n1\n–\n4\nN\nNancy\nExtérieur · 4-2-3-1\nButs attendus · xG\n1,75\n–\n1,65\nTirs\n11\n–\n12\nTirs cadrés\n2\n–\n6\nPossession\n61 %\n–\n39 %",
+        "events": [
+          {
+            "phase": "cold",
+            "path": "/api/dashboard/manifest",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/seasons/partition",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/assets",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/status",
+            "status": 200
+          },
+          {
+            "phase": "cold",
+            "path": "/api/pitchapi/leagues",
+            "status": 404
+          },
+          {
+            "phase": "match",
+            "path": "/api/assets",
+            "status": 200
+          }
+        ]
+      }
+    },
+    "foreign-after": {
+      "command": "python3 browser.py foreign-after",
+      "expected": "warm unrelated league: only actual owning Ligue 2 pages on player intent and real Fofana dialog",
+      "seconds": 6.551,
+      "passed": true,
+      "actual": {
+        "mode": "foreign-after",
+        "actualPlayer": 1,
+        "error": [],
+        "body": "Yaya Fofana\n\nClub lors de ce match :\nReims\nAttaquant\nN° 8\n\n8,79\nNote\nMeilleure note du match\nLigue 2\n2 nov. 2026\nReims\n2\n–\n0\nSochaux\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n",
+        "events": [
+          [
+            "start",
+            "/api/dashboard/manifest",
+            null,
+            null,
+            200
+          ],
+          [
+            "start",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "start",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "start",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "start",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "start",
+            "/api/status",
+            null,
+            null,
+            200
+          ],
+          [
+            "start",
+            "/api/pitchapi/leagues",
+            null,
+            null,
+            404
+          ],
+          [
+            "match",
+            "/api/matches/m_1HCdf3/summary",
+            null,
+            null,
+            200
+          ],
+          [
+            "match",
+            "/api/status",
+            null,
+            null,
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ]
+        ]
+      }
+    },
+    "native-after": {
+      "command": "python3 browser.py native-after",
+      "expected": "source year 2026 resolves against 2026/2027 manifest; real Fofana appearance opens",
+      "seconds": 5.583,
+      "passed": true,
+      "actual": {
+        "mode": "native-after",
+        "actualPlayer": 1,
+        "error": [],
+        "body": "Yaya Fofana\n\nClub lors de ce match :\nReims\nAttaquant\nN° 8\n\n8,79\nNote\nMeilleure note du match\nLigue 2\n2 nov. 2026\nReims\n2\n–\n0\nSochaux\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n",
+        "events": [
+          [
+            "match",
+            "/api/dashboard/manifest",
+            null,
+            null,
+            200
+          ],
+          [
+            "match",
+            "/api/status",
+            null,
+            null,
+            200
+          ],
+          [
+            "match",
+            "/api/matches/m_1HCdf3/summary",
+            null,
+            null,
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ]
+        ]
+      }
+    },
+    "cancel": {
+      "command": "python3 browser.py cancel",
+      "expected": "closing busy modal leaves zero dialogs after late response and keeps match visible",
+      "seconds": 5.819,
+      "passed": true,
+      "actual": {
+        "mode": "cancel",
+        "remainingDialogs": 0,
+        "board": true,
+        "events": [
+          [
+            "match",
+            "/api/dashboard/manifest",
+            null,
+            null,
+            200
+          ],
+          [
+            "match",
+            "/api/matches/m_1HCdf3/summary",
+            null,
+            null,
+            200
+          ],
+          [
+            "match",
+            "/api/status",
+            null,
+            null,
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0275VP",
+            200
+          ],
+          [
+            "player",
+            "/api/seasons/partition",
+            "2026/2027",
+            "l_0ALvwF",
+            200
+          ]
+        ]
+      }
+    }
+  },
+  "passed": true,
+  "passCount": 7,
+  "sourceSha256": {
+    "dashboard/frontend/src/hooks/FootballContext.jsx": [
+      "189ad94500db516af44dadcadd4ae36f265660aa78e9702af9dd26654efb25c7",
+      "189ad94500db516af44dadcadd4ae36f265660aa78e9702af9dd26654efb25c7"
+    ],
+    "dashboard/frontend/src/components/PlayerDetails.jsx": [
+      "55703bc7820fed7079547f92acb129da128a721af217128094782ec90ea45998",
+      "55703bc7820fed7079547f92acb129da128a721af217128094782ec90ea45998"
+    ],
+    "dashboard/frontend/src/components/MatchDetail.jsx": [
+      "90922816f85c8315ac340370f2fb72e5bfb9d3c4602a08299cf0eaaaeaae7694",
+      "90922816f85c8315ac340370f2fb72e5bfb9d3c4602a08299cf0eaaaeaae7694"
+    ],
+    "dashboard/frontend/src/services/resources.js": [
+      "05cc6481a60963a68ffbfffd6e9bdfdc3fe791349c6d4780f0f9f24da71a5b7b",
+      "05cc6481a60963a68ffbfffd6e9bdfdc3fe791349c6d4780f0f9f24da71a5b7b"
+    ]
+  },
+  "priorRaceFailureSha256": "198dc085c516598de1f1e8e9d8cd8349d10cfcd52792d38b208cd2df2575f3f2"
+}

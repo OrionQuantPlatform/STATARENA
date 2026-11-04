@@ -1,0 +1,11 @@
+### Browser `aws-deferred-050142` opened with pid 36293.
+### Ran Playwright code
+```js
+await page.goto('about:blank');
+```
+### Page
+- Page URL: about:blank
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-04T05-01-44-457Z.yml)
+npm notice run npx
+npm notice run 'playwright-cli' -s=aws-deferred-050142 open about:blank --config /private/tmp/statarena-aws-backend-20261104/docs/verification/rematerialization-completion-20261103/cli-headless.config.json

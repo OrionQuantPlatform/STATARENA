@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "checks": [
+    "failed publication kept generation and dirty marker"
+  ],
+  "sourceSha256": "c45b7feb9fbee0074eb1015fc5474b91497d79aaf9bdf55ed5cca3bab4613029",
+  "error": "Unmapped fields at match_players.: ['position_id']"
+}

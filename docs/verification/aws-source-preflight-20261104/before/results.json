@@ -1,0 +1,65 @@
+{
+  "command": "node docs/verification/aws-source-preflight-20261104/run.mjs before",
+  "setup": "PROTOCOL.md; migrations 001\u2013006 and local PostgreSQL 18; actual catalog batch writes typed SQL and acknowledges jobs transactionally",
+  "cases": [
+    {
+      "name": "legacy logical hash",
+      "passed": false,
+      "queue": 1,
+      "receipt": 0,
+      "error": "Staging reference version changed: raw/pitchapi-world/blobs/23f6e571004b86db124d05421cecfb107519e379157f65714fc736d2ea98bd8f.json.gz",
+      "typed": null
+    },
+    {
+      "name": "wrong logical hash",
+      "passed": true,
+      "queue": 1,
+      "receipt": 0,
+      "error": "Staging reference version changed: raw/pitchapi-world/blobs/23f6e571004b86db124d05421cecfb107519e379157f65714fc736d2ea98bd8f.json.gz",
+      "typed": null
+    },
+    {
+      "name": "wrong immutable basename",
+      "passed": true,
+      "queue": 1,
+      "receipt": 0,
+      "error": "Staging reference version changed: raw/pitchapi-world/blobs/0000000000000000000000000000000000000000000000000000000000000000.json.gz",
+      "typed": null
+    },
+    {
+      "name": "unrelated source namespace",
+      "passed": true,
+      "queue": 1,
+      "receipt": 0,
+      "error": "Staging reference version changed: raw/other/23f6e571004b86db124d05421cecfb107519e379157f65714fc736d2ea98bd8f.json.gz",
+      "typed": null
+    },
+    {
+      "name": "incorrect indexed JSON",
+      "passed": true,
+      "queue": 1,
+      "receipt": 0,
+      "error": "Staging reference version changed: raw/pitchapi-world/blobs/23f6e571004b86db124d05421cecfb107519e379157f65714fc736d2ea98bd8f.json.gz",
+      "typed": null
+    },
+    {
+      "name": "physical final byte hash",
+      "passed": true,
+      "queue": 0,
+      "receipt": 1,
+      "error": null,
+      "typed": [
+        {
+          "data": {
+            "id": "p_000001",
+            "name": "\u00c9liot",
+            "position_id": 8
+          },
+          "error": null,
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "passed": 5
+}

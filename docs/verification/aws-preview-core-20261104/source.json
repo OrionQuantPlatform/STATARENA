@@ -1,0 +1,571 @@
+{
+  "time": "2026-11-04T04:14:35.157814+00:00",
+  "session": {
+    "readonly": "on",
+    "tls": true
+  },
+  "match": {
+    "id": "m_02vUAH",
+    "season": "2026/2027",
+    "league_id": "l_0275VP",
+    "league": "Ligue 2",
+    "date": "2026-08-21",
+    "home_name": "Boulogne",
+    "away_name": "Red Star",
+    "home_score": 1.0,
+    "away_score": 1.0,
+    "home_id": "t_1D4Jo3",
+    "away_id": "t_3c2oAw"
+  },
+  "alternate": {
+    "league_id": "l_0ALvwF",
+    "season": "2026/2027"
+  },
+  "player": {
+    "id": "m_02vUAH:p_3CAnjy",
+    "player_id": "p_3CAnjy",
+    "name": "Damien Durand",
+    "minutes": 90.0,
+    "rating": 7.98,
+    "team_id": "t_3c2oAw",
+    "team": "Red Star"
+  },
+  "playerTotals": {
+    "appearances": 10,
+    "played": 10,
+    "minutes": 804.0,
+    "goals": 5.0
+  },
+  "stats": [
+    {
+      "metric_key": "clearances",
+      "label": "Clearances",
+      "home_value": 14.0,
+      "away_value": 29.0,
+      "home_raw": "14",
+      "away_raw": "29"
+    },
+    {
+      "metric_key": "interceptions",
+      "label": "Interceptions",
+      "home_value": 10.0,
+      "away_value": 8.0,
+      "home_raw": "10",
+      "away_raw": "8"
+    },
+    {
+      "metric_key": "keeper_saves",
+      "label": "Keeper saves",
+      "home_value": 2.0,
+      "away_value": 8.0,
+      "home_raw": "2",
+      "away_raw": "8"
+    },
+    {
+      "metric_key": "matchstats.headers.tackles",
+      "label": "Tackles",
+      "home_value": 17.0,
+      "away_value": 22.0,
+      "home_raw": "17",
+      "away_raw": "22"
+    },
+    {
+      "metric_key": "shot_blocks",
+      "label": "Blocks",
+      "home_value": 1.0,
+      "away_value": 3.0,
+      "home_raw": "1",
+      "away_raw": "3"
+    },
+    {
+      "metric_key": "fouls",
+      "label": "Fouls committed",
+      "home_value": 15.0,
+      "away_value": 18.0,
+      "home_raw": "15",
+      "away_raw": "18"
+    },
+    {
+      "metric_key": "red_cards",
+      "label": "Red cards",
+      "home_value": 0.0,
+      "away_value": 0.0,
+      "home_raw": "0",
+      "away_raw": "0"
+    },
+    {
+      "metric_key": "yellow_cards",
+      "label": "Yellow cards",
+      "home_value": 3.0,
+      "away_value": 4.0,
+      "home_raw": "3",
+      "away_raw": "4"
+    },
+    {
+      "metric_key": "aerials_won",
+      "label": "Aerial duels won",
+      "home_value": 13.0,
+      "away_value": 16.0,
+      "home_raw": "13 (45%)",
+      "away_raw": "16 (55%)"
+    },
+    {
+      "metric_key": "dribbles_succeeded",
+      "label": "Successful dribbles",
+      "home_value": 10.0,
+      "away_value": 10.0,
+      "home_raw": "10 (45%)",
+      "away_raw": "10 (48%)"
+    },
+    {
+      "metric_key": "duel_won",
+      "label": "Duels won",
+      "home_value": 58.0,
+      "away_value": 62.0,
+      "home_raw": "58",
+      "away_raw": "62"
+    },
+    {
+      "metric_key": "ground_duels_won",
+      "label": "Ground duels won",
+      "home_value": 45.0,
+      "away_value": 46.0,
+      "home_raw": "45 (49%)",
+      "away_raw": "46 (51%)"
+    },
+    {
+      "metric_key": "expected_goals",
+      "label": "Expected goals (xG)",
+      "home_value": 1.52,
+      "away_value": 1.29,
+      "home_raw": "1.52",
+      "away_raw": "1.29"
+    },
+    {
+      "metric_key": "expected_goals_non_penalty",
+      "label": "xG non-penalty",
+      "home_value": 1.52,
+      "away_value": 1.29,
+      "home_raw": "1.52",
+      "away_raw": "1.29"
+    },
+    {
+      "metric_key": "expected_goals_on_target",
+      "label": "xG on target (xGOT)",
+      "home_value": 1.46,
+      "away_value": 2.06,
+      "home_raw": "1.46",
+      "away_raw": "2.06"
+    },
+    {
+      "metric_key": "expected_goals_open_play",
+      "label": "xG open play",
+      "home_value": 1.21,
+      "away_value": 1.29,
+      "home_raw": "1.21",
+      "away_raw": "1.29"
+    },
+    {
+      "metric_key": "expected_goals_set_play",
+      "label": "xG set play",
+      "home_value": 0.32,
+      "away_value": 0.0,
+      "home_raw": "0.32",
+      "away_raw": "0.00"
+    },
+    {
+      "metric_key": "Offsides",
+      "label": "Offsides",
+      "home_value": 2.0,
+      "away_value": 8.0,
+      "home_raw": "2",
+      "away_raw": "8"
+    },
+    {
+      "metric_key": "accurate_crosses",
+      "label": "Accurate crosses",
+      "home_value": 2.0,
+      "away_value": 2.0,
+      "home_raw": "2 (12%)",
+      "away_raw": "2 (25%)"
+    },
+    {
+      "metric_key": "accurate_passes",
+      "label": "Accurate passes",
+      "home_value": 331.0,
+      "away_value": 269.0,
+      "home_raw": "331 (76%)",
+      "away_raw": "269 (72%)"
+    },
+    {
+      "metric_key": "long_balls_accurate",
+      "label": "Accurate long balls",
+      "home_value": 17.0,
+      "away_value": 36.0,
+      "home_raw": "17 (27%)",
+      "away_raw": "36 (43%)"
+    },
+    {
+      "metric_key": "opposition_half_passes",
+      "label": "Opposition half",
+      "home_value": 148.0,
+      "away_value": 92.0,
+      "home_raw": "148",
+      "away_raw": "92"
+    },
+    {
+      "metric_key": "own_half_passes",
+      "label": "Own half",
+      "home_value": 183.0,
+      "away_value": 177.0,
+      "home_raw": "183",
+      "away_raw": "177"
+    },
+    {
+      "metric_key": "passes",
+      "label": "Passes",
+      "home_value": 435.0,
+      "away_value": 375.0,
+      "home_raw": "435",
+      "away_raw": "375"
+    },
+    {
+      "metric_key": "player_throws",
+      "label": "Throws",
+      "home_value": 29.0,
+      "away_value": 31.0,
+      "home_raw": "29",
+      "away_raw": "31"
+    },
+    {
+      "metric_key": "touches_opp_box",
+      "label": "Touches in opposition box",
+      "home_value": 27.0,
+      "away_value": 17.0,
+      "home_raw": "27",
+      "away_raw": "17"
+    },
+    {
+      "metric_key": "ShotsOffTarget",
+      "label": "Shots off target",
+      "home_value": 5.0,
+      "away_value": 2.0,
+      "home_raw": "5",
+      "away_raw": "2"
+    },
+    {
+      "metric_key": "ShotsOnTarget",
+      "label": "Shots on target",
+      "home_value": 9.0,
+      "away_value": 3.0,
+      "home_raw": "9",
+      "away_raw": "3"
+    },
+    {
+      "metric_key": "blocked_shots",
+      "label": "Blocked shots",
+      "home_value": 3.0,
+      "away_value": 1.0,
+      "home_raw": "3",
+      "away_raw": "1"
+    },
+    {
+      "metric_key": "shots_inside_box",
+      "label": "Shots inside box",
+      "home_value": 12.0,
+      "away_value": 4.0,
+      "home_raw": "12",
+      "away_raw": "4"
+    },
+    {
+      "metric_key": "shots_outside_box",
+      "label": "Shots outside box",
+      "home_value": 5.0,
+      "away_value": 2.0,
+      "home_raw": "5",
+      "away_raw": "2"
+    },
+    {
+      "metric_key": "shots_woodwork",
+      "label": "Hit woodwork",
+      "home_value": 0.0,
+      "away_value": 0.0,
+      "home_raw": "0",
+      "away_raw": "0"
+    },
+    {
+      "metric_key": "total_shots",
+      "label": "Total shots",
+      "home_value": 17.0,
+      "away_value": 6.0,
+      "home_raw": "17",
+      "away_raw": "6"
+    },
+    {
+      "metric_key": "BallPossesion",
+      "label": "Ball possession",
+      "home_value": 54.0,
+      "away_value": 46.0,
+      "home_raw": "54",
+      "away_raw": "46"
+    },
+    {
+      "metric_key": "big_chance",
+      "label": "Big chances",
+      "home_value": 3.0,
+      "away_value": 2.0,
+      "home_raw": "3",
+      "away_raw": "2"
+    },
+    {
+      "metric_key": "big_chance_missed_title",
+      "label": "Big chances missed",
+      "home_value": 2.0,
+      "away_value": 1.0,
+      "home_raw": "2",
+      "away_raw": "1"
+    },
+    {
+      "metric_key": "corners",
+      "label": "Corners",
+      "home_value": 3.0,
+      "away_value": 3.0,
+      "home_raw": "3",
+      "away_raw": "3"
+    }
+  ],
+  "shots": [
+    {
+      "id": "s_1RYfMi",
+      "player_name": "Damien Durand",
+      "minute": 3.0,
+      "xg": 0.55,
+      "team_id": "t_3c2oAw"
+    },
+    {
+      "id": "s_1hIxrf",
+      "player_name": "Benjamin Bešić",
+      "minute": 13.0,
+      "xg": 0.24,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_0KmpKu",
+      "player_name": "Joffrey Bultel",
+      "minute": 25.0,
+      "xg": 0.17,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_4Rxg2S",
+      "player_name": "Julien Boyer",
+      "minute": 33.0,
+      "xg": 0.02,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_1BCs6R",
+      "player_name": "Aurélien Platret",
+      "minute": 40.0,
+      "xg": 0.04,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_1RCzIu",
+      "player_name": "Julien Boyer",
+      "minute": 41.0,
+      "xg": 0.01,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_3w0G2h",
+      "player_name": "Islamdine Halifa",
+      "minute": 45.0,
+      "xg": 0.03,
+      "team_id": "t_3c2oAw"
+    },
+    {
+      "id": "s_3ehXbR",
+      "player_name": "Théo Epailly",
+      "minute": 45.0,
+      "xg": 0.16,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_42f2PM",
+      "player_name": "Damien Durand",
+      "minute": 46.0,
+      "xg": 0.08,
+      "team_id": "t_3c2oAw"
+    },
+    {
+      "id": "s_3SEgum",
+      "player_name": "Abdel Hbouch",
+      "minute": 51.0,
+      "xg": 0.04,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_1M7uRo",
+      "player_name": "Théo Epailly",
+      "minute": 52.0,
+      "xg": 0.03,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_1tA4QA",
+      "player_name": "Benjamin Bešić",
+      "minute": 52.0,
+      "xg": 0.19,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_3BBap0",
+      "player_name": "Abdel Hbouch",
+      "minute": 52.0,
+      "xg": 0.34,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_2LIGKi",
+      "player_name": "Théo Magnin",
+      "minute": 56.0,
+      "xg": 0.48,
+      "team_id": "t_3c2oAw"
+    },
+    {
+      "id": "s_1Gb4Ik",
+      "player_name": "Benjamin Bešić",
+      "minute": 58.0,
+      "xg": 0.13,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_1uiGYm",
+      "player_name": "Julien Boyer",
+      "minute": 71.0,
+      "xg": 0.04,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_2Lzbff",
+      "player_name": "Aurélien Platret",
+      "minute": 71.0,
+      "xg": 0.04,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_4HTS1B",
+      "player_name": "Aurélien Platret",
+      "minute": 76.0,
+      "xg": 0.02,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_30K2wh",
+      "player_name": "Nolan Binet",
+      "minute": 79.0,
+      "xg": 0.02,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_2hM7Rd",
+      "player_name": "Kévin Cabral",
+      "minute": 86.0,
+      "xg": 0.11,
+      "team_id": "t_3c2oAw"
+    },
+    {
+      "id": "s_30Zeqk",
+      "player_name": "Antoine Kerriou",
+      "minute": 90.0,
+      "xg": 0.02,
+      "team_id": "t_1D4Jo3"
+    },
+    {
+      "id": "s_17Sh1N",
+      "player_name": "Damien Durand",
+      "minute": 90.0,
+      "xg": 0.03,
+      "team_id": "t_3c2oAw"
+    },
+    {
+      "id": "s_0Ln5tC",
+      "player_name": "Mohamed Soumah",
+      "minute": 90.0,
+      "xg": 0.08,
+      "team_id": "t_1D4Jo3"
+    }
+  ],
+  "families": [
+    {
+      "family": "advanced_players",
+      "status": 200,
+      "source_digest": "33681bedce7ba2a66427a3a1544d4f72bb213f2a2635ce7a6c3cd7195aed1d44"
+    },
+    {
+      "family": "advanced_teams",
+      "status": 200,
+      "source_digest": "ebba0f0e5f186e24eb1a330e092b0389f548f840d1465c4336ad1dae1d4ba5b2"
+    },
+    {
+      "family": "events",
+      "status": 200,
+      "source_digest": "989bf86e592f483909f9469d41440b0cec428e0eec902b0897334cd5cb8c7fb2"
+    },
+    {
+      "family": "h2h",
+      "status": 200,
+      "source_digest": "b398ff2aa2b68b43c1ad0d1bfca64f46145e1f1c464634419d31cc4ee7662952"
+    },
+    {
+      "family": "heatmaps",
+      "status": 200,
+      "source_digest": "fce629f0a5c9052e3732956a0584c99c3b91894709fe582dd421525d8e6bada6"
+    },
+    {
+      "family": "lineups",
+      "status": 200,
+      "source_digest": "3a5c948a7ed40c8c1fbcfce7a8a67d22e142a195f6b148e5c9fa0f46355953b3"
+    },
+    {
+      "family": "match",
+      "status": 200,
+      "source_digest": "3c0234f962af060ae40e1a3c8e7c54337b26cf0b42c8f3135806885b0701ca37"
+    },
+    {
+      "family": "momentum",
+      "status": 200,
+      "source_digest": "571d13790703c367bf30aa6f65768133e7ec0255ef82d951c7ccae233a4215eb"
+    },
+    {
+      "family": "pass_networks",
+      "status": 200,
+      "source_digest": "dbdaef8ed32b65be4409a8f4de7579883f982f63d26575889b52a75986983156"
+    },
+    {
+      "family": "player_halves",
+      "status": 200,
+      "source_digest": "8cc5dcbab9813215ba230821972a3a6878e2189ec33fe930d0911ec6d2124c29"
+    },
+    {
+      "family": "players",
+      "status": 200,
+      "source_digest": "099730f3857ee474c1b594e8d6e08d08778786208e9bfdc3a88fc4ba2cbecb32"
+    },
+    {
+      "family": "shots",
+      "status": 200,
+      "source_digest": "36f78765238d78e7e0a3151c11397197ba1bcd53a9c8ceb47dca04f5927f5487"
+    },
+    {
+      "family": "stats",
+      "status": 200,
+      "source_digest": "80c8888754a4c6774caebf71f326156c0e6e6308d77f49400c460040b3c8e884"
+    }
+  ],
+  "coverage": {
+    "parts": 2,
+    "matches": 189
+  }
+}

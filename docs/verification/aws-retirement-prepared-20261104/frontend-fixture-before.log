@@ -1,0 +1,42 @@
+bun test v1.4.4 (38afee6c8)
+
+tests/dashboard_bootstrap.test.mjs:
+(pass) the production Next application renders archive rows through the AWS API origin [10415.61ms]
+10 |  const result=spawnSync('python3',[path.join(root,'docs/verification/aws-frontend-20261104/next-smoke.py')],{cwd:root,encoding:'utf8',timeout:230000});
+11 |  assert.equal(result.status,0,result.stderr||result.stdout);
+12 | });
+13 | test('competitions render the relational manifest with native source season selectors',{timeout:30000},()=>{
+14 |  const result=spawnSync(process.env.BUN_BINARY||path.join(os.homedir(),'.bun/bin/bun'),['scripts/verify_competitions_render.jsx'],{cwd:path.join(root,'dashboard'),encoding:'utf8',timeout:25000});
+15 |  assert.equal(result.status,0,result.stdout+'\n'+result.stderr);
+             ^
+AssertionError: {
+  "setup": "Bun, real React/Next contexts and Compétitions component, recorded competition source IDs and a relational manifest fixture. No network or provider key.",
+  "command": "cd dashboard && bun scripts/verify_competitions_render.jsx",
+  "expected": "Directory and fixture-season selector render from the relational manifest, preserving native calendar-year season query values; World Cup exposes only its actual source season.",
+  "status": "failed",
+  "checks": [],
+  "error": "TypeError: undefined is not an object (evaluating 'f.performanceData.appearances')\n    at PlayerDialog (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/frontend/src/components/PlayerDetails.jsx:75:21)\n    at renderWithHooks (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:5361:19)\n    at renderElement (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:5796:23)\n    at retryNode (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:6783:21)\n    at renderNodeDestructive (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:6717:11)\n    at renderNode (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:7268:18)\n    at renderChildrenArray (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:7029:11)\n    at retryNode (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:6796:13)\n    at renderNodeDestructive (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:6717:11)\n    at renderElement (/private/tmp/statarena-aws-retirement-prepared-20261104/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js:5970:13)"
+}
+
+
+
+1 !== 0
+
+ generatedMessage: false,
+     actual: 1,
+   expected: 0,
+   operator: "strictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /private/tmp/statarena-aws-retirement-prepared-20261104/tests/dashboard_bootstrap.test.mjs:15:9
+      at run (node:async_hooks:144:29)
+      at node:test:1445:26
+      at executeTestNode (node:test:1448:86)
+      at node:test:1591:20
+(fail) competitions render the relational manifest with native source season selectors [111.59ms]
+(pass) competition schedules retain their API envelope identity for filtering and links [29.83ms]
+
+ 2 pass
+ 1 fail
+Ran 3 tests across 1 file. [10.59s]

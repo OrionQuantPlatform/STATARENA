@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "saved individual and full player array JSON equal input with independent positions",
+    "008 replay preserves explicit null, zero and absence",
+    "pre-008 row from sealed 007 writer retains absence after migration"
+  ],
+  "sourceSha256": "c45b7feb9fbee0074eb1015fc5474b91497d79aaf9bdf55ed5cca3bab4613029"
+}

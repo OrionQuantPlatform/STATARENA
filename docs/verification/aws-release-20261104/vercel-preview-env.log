@@ -1,0 +1,2 @@
+npm notice run npx
+npm notice run 'vc' --scope team_IYt7KqupdSTtMuQuMvNa9wiJ api /v10/projects/prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR/env?teamId=team_IYt7KqupdSTtMuQuMvNa9wiJ&upsert=true --method POST --input docs/verification/aws-release-20261104/vercel-preview-env-request.json

@@ -1,0 +1,795 @@
+rematerialize	Set up job	﻿2026-11-04T04:05:36.7209884Z Current runner version: '2.338.2'
+rematerialize	Set up job	2026-11-04T04:05:36.7235276Z ##[group]Runner Image Provisioner
+rematerialize	Set up job	2026-11-04T04:05:36.7236355Z Hosted Compute Agent
+rematerialize	Set up job	2026-11-04T04:05:36.7237019Z Version: 20261021.618
+rematerialize	Set up job	2026-11-04T04:05:36.7237733Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+rematerialize	Set up job	2026-11-04T04:05:36.7238494Z Build Date: 2026-10-21T00:45:21Z
+rematerialize	Set up job	2026-11-04T04:05:36.7239191Z Worker ID: {175a9626-ae90-47d4-a73b-701ee835093b}
+rematerialize	Set up job	2026-11-04T04:05:36.7240040Z Region: westus
+rematerialize	Set up job	2026-11-04T04:05:36.7240616Z Cloud: Azure
+rematerialize	Set up job	2026-11-04T04:05:36.7241202Z ##[endgroup]
+rematerialize	Set up job	2026-11-04T04:05:36.7242979Z ##[group]Operating System
+rematerialize	Set up job	2026-11-04T04:05:36.7243713Z Ubuntu
+rematerialize	Set up job	2026-11-04T04:05:36.7244343Z 24.04.5
+rematerialize	Set up job	2026-11-04T04:05:36.7245388Z LTS
+rematerialize	Set up job	2026-11-04T04:05:36.7246024Z ##[endgroup]
+rematerialize	Set up job	2026-11-04T04:05:36.7246628Z ##[group]Runner Image
+rematerialize	Set up job	2026-11-04T04:05:36.7247303Z Image: ubuntu-24.04
+rematerialize	Set up job	2026-11-04T04:05:36.7248268Z Version: 20261025.353.1
+rematerialize	Set up job	2026-11-04T04:05:36.7249376Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+rematerialize	Set up job	2026-11-04T04:05:36.7251310Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+rematerialize	Set up job	2026-11-04T04:05:36.7252422Z ##[endgroup]
+rematerialize	Set up job	2026-11-04T04:05:36.7253678Z ##[group]GITHUB_TOKEN Permissions
+rematerialize	Set up job	2026-11-04T04:05:36.7256120Z Contents: read
+rematerialize	Set up job	2026-11-04T04:05:36.7256875Z Metadata: read
+rematerialize	Set up job	2026-11-04T04:05:36.7257513Z ##[endgroup]
+rematerialize	Set up job	2026-11-04T04:05:36.7259600Z Secret source: Actions
+rematerialize	Set up job	2026-11-04T04:05:36.7260718Z Cache mode: write
+rematerialize	Set up job	2026-11-04T04:05:36.7261622Z Prepare workflow directory
+rematerialize	Set up job	2026-11-04T04:05:36.7622786Z Prepare all required actions
+rematerialize	Set up job	2026-11-04T04:05:36.7696398Z Getting action download info
+rematerialize	Set up job	2026-11-04T04:05:37.1256631Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+rematerialize	Set up job	2026-11-04T04:05:37.2278435Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+rematerialize	Set up job	2026-11-04T04:05:37.3019570Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+rematerialize	Set up job	2026-11-04T04:05:37.5172720Z Complete job name: rematerialize
+rematerialize	Run actions/checkout@v4	﻿2026-11-04T04:05:37.6059303Z ##[group]Run actions/checkout@v4
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6060323Z with:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6060908Z   sparse-checkout: dashboard
+rematerialize	Run actions/checkout@v4	.github/actions/aws-database
+rematerialize	Run actions/checkout@v4	
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6061603Z   filter: blob:none
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6062120Z   repository: OrionQuantPlatform/STATARENA
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6066348Z   token: ***
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6066818Z   ssh-strict: true
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6067286Z   ssh-user: git
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6067748Z   persist-credentials: true
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6068248Z   clean: true
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6068723Z   sparse-checkout-cone-mode: true
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6069263Z   fetch-depth: 1
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6069705Z   fetch-tags: false
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6070159Z   show-progress: true
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6070626Z   lfs: false
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6071051Z   submodules: false
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6071515Z   set-safe-directory: true
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6072037Z   allow-unsafe-pr-checkout: false
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.6072872Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8756802Z Syncing repository: OrionQuantPlatform/STATARENA
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8759647Z ##[group]Getting Git version info
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8760871Z Working directory is '/home/runner/work/STATARENA/STATARENA'
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8762643Z [command]/usr/bin/git version
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8845204Z git version 2.56.0
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8876954Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8883110Z Temporarily overriding HOME='/home/runner/work/_temp/40c104d3-ad63-4fea-a86c-a3b095f114b5' before making global git config changes
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8885696Z Adding repository directory to the temporary git global config as a safe directory
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8887599Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8941283Z Deleting the contents of '/home/runner/work/STATARENA/STATARENA'
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8946326Z ##[group]Initializing the repository
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.8951445Z [command]/usr/bin/git init /home/runner/work/STATARENA/STATARENA
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9083688Z hint: Using 'master' as the name for the initial branch. This default branch name
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9085777Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9086809Z hint: to use in all of your new repositories, which will suppress this warning,
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9087768Z hint: call:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9088348Z hint:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9088917Z hint: 	git config --global init.defaultBranch <name>
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9089554Z hint:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9090470Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9091474Z hint: 'development'. The just-created branch can be renamed via this command:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9092629Z hint:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9093381Z hint: 	git branch -m <name>
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9094792Z hint:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9096133Z hint: Disable this message with "git config set advice.defaultBranchName false"
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9098358Z Initialized empty Git repository in /home/runner/work/STATARENA/STATARENA/.git/
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9116604Z [command]/usr/bin/git remote add origin https://github.com/OrionQuantPlatform/STATARENA
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9167545Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9173046Z ##[group]Disabling automatic garbage collection
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9173845Z [command]/usr/bin/git config --local gc.auto 0
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9210521Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9211879Z ##[group]Setting up auth
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9218393Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9258716Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9653847Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9703214Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:37.9958946Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.0004255Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.0247700Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.0328849Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.0341933Z ##[group]Fetching the repository
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.0343973Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +822246667a1bed1e4dec9bdc83d3d5e0c73e6bf2:refs/remotes/origin/codex/aws-backend-20261104
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4285507Z From https://github.com/OrionQuantPlatform/STATARENA
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4286787Z  * [new ref]         822246667a1bed1e4dec9bdc83d3d5e0c73e6bf2 -> origin/codex/aws-backend-20261104
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4290163Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4291128Z ##[group]Determining the checkout info
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4293280Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4294212Z ##[group]Setting up sparse checkout
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4300652Z [command]/usr/bin/git sparse-checkout set dashboard .github/actions/aws-database
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4361017Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4362320Z ##[group]Checking out the ref
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:38.4364721Z [command]/usr/bin/git checkout --progress --force -B codex/aws-backend-20261104 refs/remotes/origin/codex/aws-backend-20261104
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.0960994Z Updating files:   0% (1/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.0980456Z Updating files:   1% (13/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.0990969Z Updating files:   2% (25/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1005717Z Updating files:   3% (37/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1019587Z Updating files:   4% (49/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1029951Z Updating files:   5% (61/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1049680Z Updating files:   6% (73/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1077209Z Updating files:   7% (85/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1103888Z Updating files:   8% (98/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1110388Z Updating files:   9% (110/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1122514Z Updating files:  10% (122/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1136858Z Updating files:  11% (134/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1169958Z Updating files:  12% (146/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1184375Z Updating files:  13% (158/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1189768Z Updating files:  14% (170/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1201436Z Updating files:  15% (182/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1206754Z Updating files:  16% (195/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1215185Z Updating files:  17% (207/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1223424Z Updating files:  18% (219/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1232715Z Updating files:  19% (231/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1240759Z Updating files:  20% (243/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1250041Z Updating files:  21% (255/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1257535Z Updating files:  22% (267/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1267263Z Updating files:  23% (279/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1276220Z Updating files:  24% (292/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1282391Z Updating files:  25% (304/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1290399Z Updating files:  26% (316/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1297143Z Updating files:  27% (328/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1304302Z Updating files:  28% (340/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1313961Z Updating files:  29% (352/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1340444Z Updating files:  30% (364/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1362255Z Updating files:  31% (377/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1388547Z Updating files:  32% (389/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1393325Z Updating files:  33% (401/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1398958Z Updating files:  34% (413/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1406453Z Updating files:  35% (425/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1453320Z Updating files:  36% (437/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1489513Z Updating files:  37% (449/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1512674Z Updating files:  38% (461/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1548020Z Updating files:  39% (474/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1566256Z Updating files:  40% (486/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1626561Z Updating files:  41% (498/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1674854Z Updating files:  42% (510/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1681477Z Updating files:  43% (522/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1720986Z Updating files:  44% (534/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1747754Z Updating files:  45% (546/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1764512Z Updating files:  46% (558/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1784413Z Updating files:  47% (571/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1803161Z Updating files:  48% (583/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1813936Z Updating files:  49% (595/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1830551Z Updating files:  50% (607/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1844308Z Updating files:  51% (619/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1849231Z Updating files:  52% (631/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1858707Z Updating files:  53% (643/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1878772Z Updating files:  54% (656/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1889156Z Updating files:  55% (668/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1900660Z Updating files:  56% (680/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1915713Z Updating files:  57% (692/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1935269Z Updating files:  58% (704/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1963884Z Updating files:  59% (716/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1970001Z Updating files:  60% (728/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.1984185Z Updating files:  61% (740/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2006126Z Updating files:  62% (753/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2017462Z Updating files:  63% (765/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2023392Z Updating files:  64% (777/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2030085Z Updating files:  65% (789/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2038172Z Updating files:  66% (801/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2047298Z Updating files:  67% (813/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2061189Z Updating files:  68% (825/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2078897Z Updating files:  69% (837/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2124341Z Updating files:  70% (850/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2241927Z Updating files:  71% (862/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2248044Z Updating files:  72% (874/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2272581Z Updating files:  73% (886/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2317361Z Updating files:  74% (898/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2331400Z Updating files:  75% (910/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2344920Z Updating files:  76% (922/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2357275Z Updating files:  77% (935/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2364885Z Updating files:  78% (947/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2394294Z Updating files:  79% (959/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2443716Z Updating files:  80% (971/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2511758Z Updating files:  81% (983/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2558135Z Updating files:  82% (995/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2568939Z Updating files:  83% (1007/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2582466Z Updating files:  84% (1019/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2589910Z Updating files:  85% (1032/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2598256Z Updating files:  86% (1044/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2608119Z Updating files:  87% (1056/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2627981Z Updating files:  88% (1068/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2639666Z Updating files:  89% (1080/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2643905Z Updating files:  90% (1092/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2653694Z Updating files:  91% (1104/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2662762Z Updating files:  92% (1116/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2671733Z Updating files:  93% (1129/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2678313Z Updating files:  94% (1141/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2687828Z Updating files:  95% (1153/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2697952Z Updating files:  96% (1165/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2706549Z Updating files:  97% (1177/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2713418Z Updating files:  98% (1189/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2719929Z Updating files:  99% (1201/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2720550Z Updating files: 100% (1213/1213)
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2720988Z Updating files: 100% (1213/1213), done.
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2849014Z Switched to a new branch 'codex/aws-backend-20261104'
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2850400Z branch 'codex/aws-backend-20261104' set up to track 'origin/codex/aws-backend-20261104'.
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2866432Z ##[endgroup]
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2867912Z [command]/usr/bin/git log -1 --format=%H
+rematerialize	Run actions/checkout@v4	2026-11-04T04:05:40.2882210Z 822246667a1bed1e4dec9bdc83d3d5e0c73e6bf2
+rematerialize	Run actions/setup-python@v5	﻿2026-11-04T04:05:40.3159985Z ##[group]Run actions/setup-python@v5
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3160387Z with:
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3160647Z   python-version: 3.13
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3160915Z   cache: pip
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3161272Z   cache-dependency-path: dashboard/scripts/neon-requirements.txt
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3161695Z   check-latest: false
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3164830Z   token: ***
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3165166Z   update-environment: true
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3165467Z   allow-prereleases: false
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3165763Z   freethreaded: false
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.3166037Z ##[endgroup]
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.4568646Z ##[group]Installed versions
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.4661291Z (node:2339) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.4662960Z (Use `node --trace-deprecation ...` to show where the warning was created)
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.4663990Z Successfully set up CPython (3.13.17)
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.4665350Z ##[endgroup]
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:40.5003642Z [command]/opt/hostedtoolcache/Python/3.13.17/x64/bin/pip cache dir
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:42.0342717Z /home/runner/.cache/pip
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:42.3156408Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:42.3288580Z (node:2339) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:43.6097837Z Received 19251762 of 23446066 (82.1%), 18.3 MBs/sec
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:43.6533411Z Received 23446066 of 23446066 (100.0%), 21.4 MBs/sec
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:43.6534455Z Cache Size: ~22 MB (23446066 B)
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:43.6562247Z [command]/usr/bin/tar -xf /home/runner/work/_temp/63d46038-3245-4768-90ec-dc97c04fe219/cache.tzst -P -C /home/runner/work/STATARENA/STATARENA --use-compress-program unzstd
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:43.7034305Z Cache restored successfully
+rematerialize	Run actions/setup-python@v5	2026-11-04T04:05:43.7049711Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	﻿2026-11-04T04:05:43.7271397Z ##[group]Run pip install -r dashboard/scripts/neon-requirements.txt
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7272035Z ^[[36;1mpip install -r dashboard/scripts/neon-requirements.txt^[[0m
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7299851Z shell: /usr/bin/bash -e {0}
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7300161Z env:
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7300446Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7300919Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7301546Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7301957Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7302376Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7302771Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:43.7303113Z ##[endgroup]
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.0896009Z Collecting boto3==1.43.123 (from -r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.0912269Z   Using cached boto3-1.43.123-py3-none-any.whl.metadata (6.6 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.1193104Z Collecting psycopg==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.1214234Z   Using cached psycopg-3.3.7-py3-none-any.whl.metadata (4.4 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.3448182Z Collecting botocore<1.44.0,>=1.43.123 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.3461955Z   Using cached botocore-1.43.123-py3-none-any.whl.metadata (5.6 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.3648664Z Collecting jmespath<2.0.0,>=0.7.1 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.3660984Z   Using cached jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.3879189Z Collecting s3transfer<0.20.0,>=0.19.0 (from boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.3893168Z   Using cached s3transfer-0.19.3-py3-none-any.whl.metadata (1.7 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.5402709Z Collecting psycopg-binary==3.3.7 (from psycopg[binary]==3.3.7->-r dashboard/scripts/neon-requirements.txt (line 2))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.5417600Z   Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.5637382Z Collecting python-dateutil<3.0.0,>=2.1 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.5649397Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.5910102Z Collecting urllib3!=2.2.0,<3,>=1.25.4 (from botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.5922026Z   Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6120601Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.1->botocore<1.44.0,>=1.43.123->boto3==1.43.123->-r dashboard/scripts/neon-requirements.txt (line 1))
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6132040Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6307777Z Using cached boto3-1.43.123-py3-none-any.whl (140 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6319522Z Using cached psycopg-3.3.7-py3-none-any.whl (216 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6332775Z Using cached psycopg_binary-3.3.7-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6364882Z Using cached botocore-1.43.123-py3-none-any.whl (16.2 MB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6437546Z Using cached jmespath-1.1.0-py3-none-any.whl (20 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6448878Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6460516Z Using cached s3transfer-0.19.3-py3-none-any.whl (90 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6472408Z Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.6484035Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:45.8348670Z Installing collected packages: urllib3, six, psycopg-binary, psycopg, jmespath, python-dateutil, botocore, s3transfer, boto3
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:47.0105910Z 
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:47.0135312Z 
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:47.0136215Z Successfully installed boto3-1.43.123 botocore-1.43.123 jmespath-1.1.0 psycopg-3.3.7 psycopg-binary-3.3.7 python-dateutil-2.9.0.post0 s3transfer-0.19.3 six-1.17.0 urllib3-2.8.0
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:47.0137106Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+rematerialize	Run pip install -r dashboard/scripts/neon-requirements.txt	2026-11-04T04:05:47.0137494Z [notice] To update, run: pip install --upgrade pip
+rematerialize	Load AWS staging credentials	﻿2026-11-04T04:05:47.1110269Z Prepare all required actions
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.1110848Z Getting action download info
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.2491330Z Download action repository 'aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708' (SHA:61815dcd50bd041e203e49132bacad1fd04d2708)
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6347774Z ##[group]Run ./.github/actions/aws-database
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6348100Z with:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6348295Z   mode: ingest
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6348587Z   role-arn: arn:aws:iam::361769570630:role/StatArenaGitHubIngest
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6348926Z env:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6349190Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6349635Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6350071Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6350466Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6350860Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6351306Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6351634Z ##[endgroup]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6409065Z ##[start-action display=Require an AWS role for this repository;id=__self.__run]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6433560Z ##[group]Run if [[ ! "$ROLE_ARN" =~ ^arn:aws:iam::361769570630:role/[A-Za-z0-9_+=,.@/-]+$ ]]; then
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6434150Z ^[[36;1mif [[ ! "$ROLE_ARN" =~ ^arn:aws:iam::361769570630:role/[A-Za-z0-9_+=,.@/-]+$ ]]; then^[[0m
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6434867Z ^[[36;1m  echo 'Set the scoped StatArena AWS role repository variable.' >&2^[[0m
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6435291Z ^[[36;1m  exit 1^[[0m
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6435497Z ^[[36;1mfi^[[0m
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6457384Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6457743Z env:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6458015Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6458467Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6458901Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6459301Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6459697Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6460097Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6460499Z   ROLE_ARN: arn:aws:iam::361769570630:role/StatArenaGitHubIngest
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6460834Z ##[endgroup]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6517698Z ##[end-action id=__self.__run;outcome=success;conclusion=success;duration_ms=10]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6520154Z ##[start-action display=Exchange GitHub OIDC token for a scoped AWS session;id=__self.__aws-actions_configure-aws-credentials]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6650103Z ##[group]Run aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6650564Z with:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6650855Z   role-to-assume: arn:aws:iam::361769570630:role/StatArenaGitHubIngest
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6651221Z   aws-region: us-east-2
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6651470Z   allowed-account-ids: 361769570630
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6651775Z   role-session-name: statarena-gh-41771065171-1
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6652097Z   unset-current-credentials: true
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6652538Z   role-duration-seconds: 21600
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6652798Z   audience: sts.amazonaws.com
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6653064Z   output-env-credentials: true
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6653303Z env:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6653557Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6653988Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6654427Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6655137Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6655555Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6655955Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:47.6656292Z ##[endgroup]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.0646773Z Assuming role with OIDC
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.2830263Z Authenticated as assumedRoleId AROAVIOZFSFDAI6A2XRTK:statarena-gh-41771065171-1
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3664823Z ##[end-action id=__self.__aws-actions_configure-aws-credentials;outcome=success;conclusion=success;duration_ms=714]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3668157Z ##[start-action display=Permit this hosted runner to reach RDS;id=__self.__self]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3698210Z ##[group]Run ./.github/actions/aws-database/runner-ingress
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3698576Z env:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3698855Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3699312Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3699761Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3700166Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3700575Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3700989Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3701535Z   AWS_ACCESS_KEY_ID: ***
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3701898Z   AWS_SECRET_ACCESS_KEY: ***
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3707538Z   AWS_SESSION_TOKEN: ***
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3707813Z   AWS_REGION: us-east-2
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3708057Z   AWS_DEFAULT_REGION: us-east-2
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:48.3708315Z ##[endgroup]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.0918921Z Temporary TCP/5432 runner rule installed: sgr-010f59af7bda9e5df
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1019001Z ##[end-action id=__self.__self;outcome=success;conclusion=success;duration_ms=5735]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1023371Z ##[start-action display=Set verified RDS connection;id=__self.__run_2]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1042346Z ##[group]Run python3 "$GITHUB_ACTION_PATH/bootstrap.py" "$ACCESS_MODE"
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1042860Z ^[[36;1mpython3 "$GITHUB_ACTION_PATH/bootstrap.py" "$ACCESS_MODE"^[[0m
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1064026Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1064379Z env:
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1065103Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1065578Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1066036Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1066446Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1066848Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1067264Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1067732Z   AWS_ACCESS_KEY_ID: ***
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1068080Z   AWS_SECRET_ACCESS_KEY: ***
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1073306Z   AWS_SESSION_TOKEN: ***
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1073555Z   AWS_REGION: us-east-2
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1073791Z   AWS_DEFAULT_REGION: us-east-2
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1074050Z   ACCESS_MODE: ingest
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:54.1074269Z ##[endgroup]
+rematerialize	Load AWS staging credentials	2026-11-04T04:05:55.8745179Z ##[end-action id=__self.__run_2;outcome=success;conclusion=success;duration_ms=1772]
+rematerialize	Publish relational models in AWS RDS	﻿2026-11-04T04:05:55.8784823Z ##[group]Run set -euo pipefail
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8785201Z ^[[36;1mset -euo pipefail^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8785613Z ^[[36;1margs=(--minutes "$MATERIALIZE_MINUTES" --batch "$MATERIALIZE_BATCH")^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8786290Z ^[[36;1mif [ "$QUEUE_ALL" = "true" ]; then args+=(--all); fi^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8786850Z ^[[36;1mpython dashboard/scripts/relational_materialize.py "${args[@]}" | tee rematerialize.log^[[0m
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8807946Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8808321Z env:
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8808621Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8809092Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8809560Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8809970Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8810395Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8810853Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8811325Z   AWS_ACCESS_KEY_ID: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8811688Z   AWS_SECRET_ACCESS_KEY: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8817247Z   AWS_SESSION_TOKEN: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8817508Z   AWS_REGION: us-east-2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8817762Z   AWS_DEFAULT_REGION: us-east-2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8818796Z   DATABASE_URL: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8838131Z   DATABASE_CA_PEM: -----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIID/zCCAuegAwIBAgIRAJYlnmkGRj4ju/2jBQsnXJYwDQYJKoZIhvcNAQELBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0EyMDQ4IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMDQ0NFoYDzIwNjEwNTIyMDAwNDQ0WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTIwNDggRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC74V3eigv+pCj5
+rematerialize	Publish relational models in AWS RDS	nqDBqplY0Jp16pTeNB06IKbzb4MOTvNde6QjsZxrE1xUmprT8LxQqN9tI3aDYEYk
+rematerialize	Publish relational models in AWS RDS	b9v4F99WtQVgCv3Y34tYKX9NwWQgwS1vQwnIR8zOFBYqsAsHEkeJuSqAB12AYUSd
+rematerialize	Publish relational models in AWS RDS	Zv2RVFjiFmYJho2X30IrSLQfS/IE3KV7fCyMMm154+/K1Z2IJlcissydEAwgsUHw
+rematerialize	Publish relational models in AWS RDS	edrE6CxJVkkJ3EvIgG4ugK/suxd8eEMztaQYJwSdN8TdfT59LFuSPl7zmF3fIBdJ
+rematerialize	Publish relational models in AWS RDS	//WexcQmGabaJ7Xnx+6o2HTfkP8Zzzzaq8fvjAcvA7gyFH5EP26G2ZqMG+0y4pTx
+rematerialize	Publish relational models in AWS RDS	SPVTrQEXAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFIWWuNEF
+rematerialize	Publish relational models in AWS RDS	sUMOC82XlfJeqazzrkPDMA4GA1UdDwEB/wQEAwIBhjANBgkqhkiG9w0BAQsFAAOC
+rematerialize	Publish relational models in AWS RDS	AQEAgClmxcJaQTGpEZmjElL8G2Zc8lGc+ylGjiNlSIw8X25/bcLRptbDA90nuP+q
+rematerialize	Publish relational models in AWS RDS	zXAMhEf0ccbdpwxG/P5a8JipmHgqQLHfpkvaXx+0CuP++3k+chAJ3Gk5XtY587jX
+rematerialize	Publish relational models in AWS RDS	+MJfrPgjFt7vmMaKmynndf+NaIJAYczjhJj6xjPWmGrjM3MlTa9XesmelMwP3jep
+rematerialize	Publish relational models in AWS RDS	bApIWAvCYVjGndbK9byyMq1nyj0TUzB8oJZQooaR3MMjHTmADuVBylWzkRMxbKPl
+rematerialize	Publish relational models in AWS RDS	4Nlsk4Ef1JvIWBCzsMt+X17nuKfEatRfp3c9tbpGlAE/DSP0W2/Lnayxr4RpE9ds
+rematerialize	Publish relational models in AWS RDS	ICF35uSis/7ZlsftODUe8wtpkQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIIF/zCCA+egAwIBAgIRAPvvd+MCcp8E36lHziv0xhMwDQYJKoZIhvcNAQEMBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0E0MDk2IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMTEwNloYDzIxMjEwNTIyMDAxMTA2WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTQwOTYgRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDbvwekKIKGcV/s
+rematerialize	Publish relational models in AWS RDS	lDU96a71ZdN2pTYkev1X2e2/ICb765fw/i1jP9MwCzs8/xHBEQBJSxdfO4hPeNx3
+rematerialize	Publish relational models in AWS RDS	ENi0zbM+TrMKliS1kFVe1trTTEaHYjF8BMK9yTY0VgSpWiGxGwg4tshezIA5lpu8
+rematerialize	Publish relational models in AWS RDS	sF6XMRxosCEVCxD/44CFqGZTzZaREIvvFPDTXKJ6yOYnuEkhH3OcoOajHN2GEMMQ
+rematerialize	Publish relational models in AWS RDS	ShuyRFDQvYkqOC/Q5icqFbKg7eGwfl4PmimdV7gOVsxSlw2s/0EeeIILXtHx22z3
+rematerialize	Publish relational models in AWS RDS	8QBhX25Lrq2rMuaGcD3IOMBeBo2d//YuEtd9J+LGXL9AeOXHAwpvInywJKAtXTMq
+rematerialize	Publish relational models in AWS RDS	Wsy3LjhuANFrzMlzjR2YdjkGVzeQVx3dKUzJ2//Qf7IXPSPaEGmcgbxuatxjnvfT
+rematerialize	Publish relational models in AWS RDS	H85oeKr3udKnXm0Kh7CLXeqJB5ITsvxI+Qq2iXtYCc+goHNR01QJwtGDSzuIMj3K
+rematerialize	Publish relational models in AWS RDS	f+YMrqBXZgYBwU2J/kCNTH31nfw96WTbOfNGwLwmVRDgguzFa+QzmQsJW4FTDMwc
+rematerialize	Publish relational models in AWS RDS	7cIjwdElQQVA+Gqa67uWmyDKAnoTkudmgAP+OTBkhnmc6NJuZDcy6f/iWUdl0X0u
+rematerialize	Publish relational models in AWS RDS	/tsfgXXR6ZovnHonM13ANiN7VmEVqFlEMa0VVmc09m+2FYjjlk8F9sC7Rc4wt214
+rematerialize	Publish relational models in AWS RDS	7u5YvCiCsFZwx44baP5viyRZgkJVpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/
+rematerialize	Publish relational models in AWS RDS	MB0GA1UdDgQWBBQgCZCsc34nVTRbWsniXBPjnUTQ2DAOBgNVHQ8BAf8EBAMCAYYw
+rematerialize	Publish relational models in AWS RDS	DQYJKoZIhvcNAQEMBQADggIBAAQas3x1G6OpsIvQeMS9BbiHG3+kU9P/ba6Rrg+E
+rematerialize	Publish relational models in AWS RDS	lUz8TmL04Bcd+I+R0IyMBww4NznT+K60cFdk+1iSmT8Q55bpqRekyhcdWda1Qu0r
+rematerialize	Publish relational models in AWS RDS	JiTi7zz+3w2v66akofOnGevDpo/ilXGvCUJiLOBnHIF0izUqzvfczaMZGJT6xzKq
+rematerialize	Publish relational models in AWS RDS	PcEVRyAN1IHHf5KnGzUlVFv9SGy47xJ9I1vTk24JU0LWkSLzMMoxiUudVmHSqJtN
+rematerialize	Publish relational models in AWS RDS	u0h+n/x3Q6XguZi1/C1KOntH56ewRh8n5AF7c+9LJJSRM9wunb0Dzl7BEy21Xe9q
+rematerialize	Publish relational models in AWS RDS	03xRYjf5wn8eDELB8FZPa1PrNKXIOLYM9egdctbKEcpSsse060+tkyBrl507+SJT
+rematerialize	Publish relational models in AWS RDS	04lvJ4tcKjZFqxn+bUkDQvXYj0D3WK+iJ7a8kZJPRvz8BDHfIqancY8Tgw+69SUn
+rematerialize	Publish relational models in AWS RDS	WqIb+HNZqFuRs16WFSzlMksqzXv6wcDSyI7aZOmCGGEcYW9NHk8EuOnOQ+1UMT9C
+rematerialize	Publish relational models in AWS RDS	Qb1GJcipjRzry3M4KN/t5vN3hIetB+/PhmgTO4gKhBETTEyPC3HC1QbdVfRndB6e
+rematerialize	Publish relational models in AWS RDS	U/NF2U/t8U2GvD26TTFLK4pScW7gyw4FQyXWs8g8FS8f+R2yWajhtS9++VDJQKom
+rematerialize	Publish relational models in AWS RDS	fAUISoCH+PlPRJpu/nHd1Zrddeiiis53rBaLbXu2J1Q3VqjWOmtj0HjxJJxWnYmz
+rematerialize	Publish relational models in AWS RDS	Pqj2
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIICrDCCAjOgAwIBAgIQGcztRyV40pyMKbNeSN+vXTAKBggqhkjOPQQDAzCBljEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMS8wLQYDVQQDDCZBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIEVDQzM4NCBHMTEQMA4GA1UEBwwHU2Vh
+rematerialize	Publish relational models in AWS RDS	dHRsZTAgFw0yMTA1MjEyMzE1NTZaGA8yMTIxMDUyMjAwMTU1NlowgZYxCzAJBgNV
+rematerialize	Publish relational models in AWS RDS	BAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJbmMuMRMwEQYD
+rematerialize	Publish relational models in AWS RDS	VQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEvMC0GA1UEAwwmQW1hem9uIFJE
+rematerialize	Publish relational models in AWS RDS	UyB1cy1lYXN0LTIgUm9vdCBDQSBFQ0MzODQgRzExEDAOBgNVBAcMB1NlYXR0bGUw
+rematerialize	Publish relational models in AWS RDS	djAQBgcqhkjOPQIBBgUrgQQAIgNiAAQfDcv+GGRESD9wT+I5YIPRsD3L+/jsiIis
+rematerialize	Publish relational models in AWS RDS	Tr7t9RSbFl+gYpO7ZbDXvNbV5UGOC5lMJo/SnqFRTC6vL06NF7qOHfig3XO8QnQz
+rematerialize	Publish relational models in AWS RDS	6T5uhhrhnX2RSY3/10d2kTyHq3ZZg3+jQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+rematerialize	Publish relational models in AWS RDS	VR0OBBYEFLDyD3PRyNXpvKHPYYxjHXWOgfPnMA4GA1UdDwEB/wQEAwIBhjAKBggq
+rematerialize	Publish relational models in AWS RDS	hkjOPQQDAwNnADBkAjB20HQp6YL7CqYD82KaLGzgw305aUKw2aMrdkBR29J183jY
+rematerialize	Publish relational models in AWS RDS	6Ocj9+Wcif9xnRMS+7oCMAvrt03rbh4SU9BohpRUcQ2Pjkh7RoY0jDR4Xq4qzjNr
+rematerialize	Publish relational models in AWS RDS	5UFr3BXpFvACxXF51BksGQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8858270Z   DATABASE_POOL_MAX: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8858536Z   STATARENA_DATA_PROVIDER: aws
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8859036Z   PGSSLROOTCERT: /home/runner/work/STATARENA/STATARENA/dashboard/backend/certs/rds-us-east-2.pem
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8859752Z   NODE_EXTRA_CA_CERTS: /home/runner/work/STATARENA/STATARENA/dashboard/backend/certs/rds-us-east-2.pem
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8860268Z   PGSSLMODE: verify-full
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8861276Z   NEON_DATABASE_URL: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8880518Z   STATARENA_DATABASE_CA_PEM: -----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIID/zCCAuegAwIBAgIRAJYlnmkGRj4ju/2jBQsnXJYwDQYJKoZIhvcNAQELBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0EyMDQ4IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMDQ0NFoYDzIwNjEwNTIyMDAwNDQ0WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTIwNDggRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC74V3eigv+pCj5
+rematerialize	Publish relational models in AWS RDS	nqDBqplY0Jp16pTeNB06IKbzb4MOTvNde6QjsZxrE1xUmprT8LxQqN9tI3aDYEYk
+rematerialize	Publish relational models in AWS RDS	b9v4F99WtQVgCv3Y34tYKX9NwWQgwS1vQwnIR8zOFBYqsAsHEkeJuSqAB12AYUSd
+rematerialize	Publish relational models in AWS RDS	Zv2RVFjiFmYJho2X30IrSLQfS/IE3KV7fCyMMm154+/K1Z2IJlcissydEAwgsUHw
+rematerialize	Publish relational models in AWS RDS	edrE6CxJVkkJ3EvIgG4ugK/suxd8eEMztaQYJwSdN8TdfT59LFuSPl7zmF3fIBdJ
+rematerialize	Publish relational models in AWS RDS	//WexcQmGabaJ7Xnx+6o2HTfkP8Zzzzaq8fvjAcvA7gyFH5EP26G2ZqMG+0y4pTx
+rematerialize	Publish relational models in AWS RDS	SPVTrQEXAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFIWWuNEF
+rematerialize	Publish relational models in AWS RDS	sUMOC82XlfJeqazzrkPDMA4GA1UdDwEB/wQEAwIBhjANBgkqhkiG9w0BAQsFAAOC
+rematerialize	Publish relational models in AWS RDS	AQEAgClmxcJaQTGpEZmjElL8G2Zc8lGc+ylGjiNlSIw8X25/bcLRptbDA90nuP+q
+rematerialize	Publish relational models in AWS RDS	zXAMhEf0ccbdpwxG/P5a8JipmHgqQLHfpkvaXx+0CuP++3k+chAJ3Gk5XtY587jX
+rematerialize	Publish relational models in AWS RDS	+MJfrPgjFt7vmMaKmynndf+NaIJAYczjhJj6xjPWmGrjM3MlTa9XesmelMwP3jep
+rematerialize	Publish relational models in AWS RDS	bApIWAvCYVjGndbK9byyMq1nyj0TUzB8oJZQooaR3MMjHTmADuVBylWzkRMxbKPl
+rematerialize	Publish relational models in AWS RDS	4Nlsk4Ef1JvIWBCzsMt+X17nuKfEatRfp3c9tbpGlAE/DSP0W2/Lnayxr4RpE9ds
+rematerialize	Publish relational models in AWS RDS	ICF35uSis/7ZlsftODUe8wtpkQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIIF/zCCA+egAwIBAgIRAPvvd+MCcp8E36lHziv0xhMwDQYJKoZIhvcNAQEMBQAw
+rematerialize	Publish relational models in AWS RDS	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Publish relational models in AWS RDS	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Publish relational models in AWS RDS	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0E0MDk2IEcxMRAwDgYDVQQH
+rematerialize	Publish relational models in AWS RDS	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMTEwNloYDzIxMjEwNTIyMDAxMTA2WjCBlzEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTQwOTYgRzExEDAOBgNVBAcMB1Nl
+rematerialize	Publish relational models in AWS RDS	YXR0bGUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDbvwekKIKGcV/s
+rematerialize	Publish relational models in AWS RDS	lDU96a71ZdN2pTYkev1X2e2/ICb765fw/i1jP9MwCzs8/xHBEQBJSxdfO4hPeNx3
+rematerialize	Publish relational models in AWS RDS	ENi0zbM+TrMKliS1kFVe1trTTEaHYjF8BMK9yTY0VgSpWiGxGwg4tshezIA5lpu8
+rematerialize	Publish relational models in AWS RDS	sF6XMRxosCEVCxD/44CFqGZTzZaREIvvFPDTXKJ6yOYnuEkhH3OcoOajHN2GEMMQ
+rematerialize	Publish relational models in AWS RDS	ShuyRFDQvYkqOC/Q5icqFbKg7eGwfl4PmimdV7gOVsxSlw2s/0EeeIILXtHx22z3
+rematerialize	Publish relational models in AWS RDS	8QBhX25Lrq2rMuaGcD3IOMBeBo2d//YuEtd9J+LGXL9AeOXHAwpvInywJKAtXTMq
+rematerialize	Publish relational models in AWS RDS	Wsy3LjhuANFrzMlzjR2YdjkGVzeQVx3dKUzJ2//Qf7IXPSPaEGmcgbxuatxjnvfT
+rematerialize	Publish relational models in AWS RDS	H85oeKr3udKnXm0Kh7CLXeqJB5ITsvxI+Qq2iXtYCc+goHNR01QJwtGDSzuIMj3K
+rematerialize	Publish relational models in AWS RDS	f+YMrqBXZgYBwU2J/kCNTH31nfw96WTbOfNGwLwmVRDgguzFa+QzmQsJW4FTDMwc
+rematerialize	Publish relational models in AWS RDS	7cIjwdElQQVA+Gqa67uWmyDKAnoTkudmgAP+OTBkhnmc6NJuZDcy6f/iWUdl0X0u
+rematerialize	Publish relational models in AWS RDS	/tsfgXXR6ZovnHonM13ANiN7VmEVqFlEMa0VVmc09m+2FYjjlk8F9sC7Rc4wt214
+rematerialize	Publish relational models in AWS RDS	7u5YvCiCsFZwx44baP5viyRZgkJVpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/
+rematerialize	Publish relational models in AWS RDS	MB0GA1UdDgQWBBQgCZCsc34nVTRbWsniXBPjnUTQ2DAOBgNVHQ8BAf8EBAMCAYYw
+rematerialize	Publish relational models in AWS RDS	DQYJKoZIhvcNAQEMBQADggIBAAQas3x1G6OpsIvQeMS9BbiHG3+kU9P/ba6Rrg+E
+rematerialize	Publish relational models in AWS RDS	lUz8TmL04Bcd+I+R0IyMBww4NznT+K60cFdk+1iSmT8Q55bpqRekyhcdWda1Qu0r
+rematerialize	Publish relational models in AWS RDS	JiTi7zz+3w2v66akofOnGevDpo/ilXGvCUJiLOBnHIF0izUqzvfczaMZGJT6xzKq
+rematerialize	Publish relational models in AWS RDS	PcEVRyAN1IHHf5KnGzUlVFv9SGy47xJ9I1vTk24JU0LWkSLzMMoxiUudVmHSqJtN
+rematerialize	Publish relational models in AWS RDS	u0h+n/x3Q6XguZi1/C1KOntH56ewRh8n5AF7c+9LJJSRM9wunb0Dzl7BEy21Xe9q
+rematerialize	Publish relational models in AWS RDS	03xRYjf5wn8eDELB8FZPa1PrNKXIOLYM9egdctbKEcpSsse060+tkyBrl507+SJT
+rematerialize	Publish relational models in AWS RDS	04lvJ4tcKjZFqxn+bUkDQvXYj0D3WK+iJ7a8kZJPRvz8BDHfIqancY8Tgw+69SUn
+rematerialize	Publish relational models in AWS RDS	WqIb+HNZqFuRs16WFSzlMksqzXv6wcDSyI7aZOmCGGEcYW9NHk8EuOnOQ+1UMT9C
+rematerialize	Publish relational models in AWS RDS	Qb1GJcipjRzry3M4KN/t5vN3hIetB+/PhmgTO4gKhBETTEyPC3HC1QbdVfRndB6e
+rematerialize	Publish relational models in AWS RDS	U/NF2U/t8U2GvD26TTFLK4pScW7gyw4FQyXWs8g8FS8f+R2yWajhtS9++VDJQKom
+rematerialize	Publish relational models in AWS RDS	fAUISoCH+PlPRJpu/nHd1Zrddeiiis53rBaLbXu2J1Q3VqjWOmtj0HjxJJxWnYmz
+rematerialize	Publish relational models in AWS RDS	Pqj2
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	-----BEGIN CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	MIICrDCCAjOgAwIBAgIQGcztRyV40pyMKbNeSN+vXTAKBggqhkjOPQQDAzCBljEL
+rematerialize	Publish relational models in AWS RDS	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Publish relational models in AWS RDS	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMS8wLQYDVQQDDCZBbWF6
+rematerialize	Publish relational models in AWS RDS	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIEVDQzM4NCBHMTEQMA4GA1UEBwwHU2Vh
+rematerialize	Publish relational models in AWS RDS	dHRsZTAgFw0yMTA1MjEyMzE1NTZaGA8yMTIxMDUyMjAwMTU1NlowgZYxCzAJBgNV
+rematerialize	Publish relational models in AWS RDS	BAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJbmMuMRMwEQYD
+rematerialize	Publish relational models in AWS RDS	VQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEvMC0GA1UEAwwmQW1hem9uIFJE
+rematerialize	Publish relational models in AWS RDS	UyB1cy1lYXN0LTIgUm9vdCBDQSBFQ0MzODQgRzExEDAOBgNVBAcMB1NlYXR0bGUw
+rematerialize	Publish relational models in AWS RDS	djAQBgcqhkjOPQIBBgUrgQQAIgNiAAQfDcv+GGRESD9wT+I5YIPRsD3L+/jsiIis
+rematerialize	Publish relational models in AWS RDS	Tr7t9RSbFl+gYpO7ZbDXvNbV5UGOC5lMJo/SnqFRTC6vL06NF7qOHfig3XO8QnQz
+rematerialize	Publish relational models in AWS RDS	6T5uhhrhnX2RSY3/10d2kTyHq3ZZg3+jQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+rematerialize	Publish relational models in AWS RDS	VR0OBBYEFLDyD3PRyNXpvKHPYYxjHXWOgfPnMA4GA1UdDwEB/wQEAwIBhjAKBggq
+rematerialize	Publish relational models in AWS RDS	hkjOPQQDAwNnADBkAjB20HQp6YL7CqYD82KaLGzgw305aUKw2aMrdkBR29J183jY
+rematerialize	Publish relational models in AWS RDS	6Ocj9+Wcif9xnRMS+7oCMAvrt03rbh4SU9BohpRUcQ2Pjkh7RoY0jDR4Xq4qzjNr
+rematerialize	Publish relational models in AWS RDS	5UFr3BXpFvACxXF51BksGQ==
+rematerialize	Publish relational models in AWS RDS	-----END CERTIFICATE-----
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8900716Z   NEON_STORAGE_ENDPOINT: https://s3.us-east-2.amazonaws.com
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8901129Z   NEON_STORAGE_REGION: us-east-2
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8901480Z   NEON_STORAGE_BUCKET: statarena-football-333rosky-70db6e5f
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8901948Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8902369Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8902681Z   STATARENA_EXTERNAL_STORAGE: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8902963Z   STATARENA_SQL_DOCUMENTS: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8903238Z   STATARENA_S3_PATH_STYLE: 0
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8903497Z   QUEUE_ALL: false
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8903744Z   MATERIALIZE_MINUTES: 0.000001
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8904012Z   MATERIALIZE_BATCH: 1
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:05:55.8904252Z ##[endgroup]
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:06:42.4879212Z {"catalog_jobs":36224,"partition_jobs":484,"phase":"source-discovery"}
+rematerialize	Publish relational models in AWS RDS	2026-11-04T04:06:42.8096506Z {"assets_changed":0,"catalog_inputs":0,"partitions":0,"remaining":36709,"support_changed":0}
+rematerialize	Save publication receipt	﻿2026-11-04T04:06:42.8808123Z ##[group]Run actions/upload-artifact@v4
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8808493Z with:
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8808740Z   name: rematerialize-41771065171-1
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8809060Z   path: rematerialize.log
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8809343Z   if-no-files-found: ignore
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8809623Z   compression-level: 6
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8810086Z   overwrite: false
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8810341Z   include-hidden-files: false
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8810605Z env:
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8810901Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8811392Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8811875Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8812470Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8813052Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8813708Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8815022Z   AWS_ACCESS_KEY_ID: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8815843Z   AWS_SECRET_ACCESS_KEY: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8821326Z   AWS_SESSION_TOKEN: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8821774Z   AWS_REGION: us-east-2
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8822249Z   AWS_DEFAULT_REGION: us-east-2
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8823419Z   DATABASE_URL: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8843268Z   DATABASE_CA_PEM: -----BEGIN CERTIFICATE-----
+rematerialize	Save publication receipt	MIID/zCCAuegAwIBAgIRAJYlnmkGRj4ju/2jBQsnXJYwDQYJKoZIhvcNAQELBQAw
+rematerialize	Save publication receipt	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Save publication receipt	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Save publication receipt	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0EyMDQ4IEcxMRAwDgYDVQQH
+rematerialize	Save publication receipt	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMDQ0NFoYDzIwNjEwNTIyMDAwNDQ0WjCBlzEL
+rematerialize	Save publication receipt	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Save publication receipt	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Save publication receipt	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTIwNDggRzExEDAOBgNVBAcMB1Nl
+rematerialize	Save publication receipt	YXR0bGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC74V3eigv+pCj5
+rematerialize	Save publication receipt	nqDBqplY0Jp16pTeNB06IKbzb4MOTvNde6QjsZxrE1xUmprT8LxQqN9tI3aDYEYk
+rematerialize	Save publication receipt	b9v4F99WtQVgCv3Y34tYKX9NwWQgwS1vQwnIR8zOFBYqsAsHEkeJuSqAB12AYUSd
+rematerialize	Save publication receipt	Zv2RVFjiFmYJho2X30IrSLQfS/IE3KV7fCyMMm154+/K1Z2IJlcissydEAwgsUHw
+rematerialize	Save publication receipt	edrE6CxJVkkJ3EvIgG4ugK/suxd8eEMztaQYJwSdN8TdfT59LFuSPl7zmF3fIBdJ
+rematerialize	Save publication receipt	//WexcQmGabaJ7Xnx+6o2HTfkP8Zzzzaq8fvjAcvA7gyFH5EP26G2ZqMG+0y4pTx
+rematerialize	Save publication receipt	SPVTrQEXAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFIWWuNEF
+rematerialize	Save publication receipt	sUMOC82XlfJeqazzrkPDMA4GA1UdDwEB/wQEAwIBhjANBgkqhkiG9w0BAQsFAAOC
+rematerialize	Save publication receipt	AQEAgClmxcJaQTGpEZmjElL8G2Zc8lGc+ylGjiNlSIw8X25/bcLRptbDA90nuP+q
+rematerialize	Save publication receipt	zXAMhEf0ccbdpwxG/P5a8JipmHgqQLHfpkvaXx+0CuP++3k+chAJ3Gk5XtY587jX
+rematerialize	Save publication receipt	+MJfrPgjFt7vmMaKmynndf+NaIJAYczjhJj6xjPWmGrjM3MlTa9XesmelMwP3jep
+rematerialize	Save publication receipt	bApIWAvCYVjGndbK9byyMq1nyj0TUzB8oJZQooaR3MMjHTmADuVBylWzkRMxbKPl
+rematerialize	Save publication receipt	4Nlsk4Ef1JvIWBCzsMt+X17nuKfEatRfp3c9tbpGlAE/DSP0W2/Lnayxr4RpE9ds
+rematerialize	Save publication receipt	ICF35uSis/7ZlsftODUe8wtpkQ==
+rematerialize	Save publication receipt	-----END CERTIFICATE-----
+rematerialize	Save publication receipt	-----BEGIN CERTIFICATE-----
+rematerialize	Save publication receipt	MIIF/zCCA+egAwIBAgIRAPvvd+MCcp8E36lHziv0xhMwDQYJKoZIhvcNAQEMBQAw
+rematerialize	Save publication receipt	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Save publication receipt	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Save publication receipt	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0E0MDk2IEcxMRAwDgYDVQQH
+rematerialize	Save publication receipt	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMTEwNloYDzIxMjEwNTIyMDAxMTA2WjCBlzEL
+rematerialize	Save publication receipt	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Save publication receipt	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Save publication receipt	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTQwOTYgRzExEDAOBgNVBAcMB1Nl
+rematerialize	Save publication receipt	YXR0bGUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDbvwekKIKGcV/s
+rematerialize	Save publication receipt	lDU96a71ZdN2pTYkev1X2e2/ICb765fw/i1jP9MwCzs8/xHBEQBJSxdfO4hPeNx3
+rematerialize	Save publication receipt	ENi0zbM+TrMKliS1kFVe1trTTEaHYjF8BMK9yTY0VgSpWiGxGwg4tshezIA5lpu8
+rematerialize	Save publication receipt	sF6XMRxosCEVCxD/44CFqGZTzZaREIvvFPDTXKJ6yOYnuEkhH3OcoOajHN2GEMMQ
+rematerialize	Save publication receipt	ShuyRFDQvYkqOC/Q5icqFbKg7eGwfl4PmimdV7gOVsxSlw2s/0EeeIILXtHx22z3
+rematerialize	Save publication receipt	8QBhX25Lrq2rMuaGcD3IOMBeBo2d//YuEtd9J+LGXL9AeOXHAwpvInywJKAtXTMq
+rematerialize	Save publication receipt	Wsy3LjhuANFrzMlzjR2YdjkGVzeQVx3dKUzJ2//Qf7IXPSPaEGmcgbxuatxjnvfT
+rematerialize	Save publication receipt	H85oeKr3udKnXm0Kh7CLXeqJB5ITsvxI+Qq2iXtYCc+goHNR01QJwtGDSzuIMj3K
+rematerialize	Save publication receipt	f+YMrqBXZgYBwU2J/kCNTH31nfw96WTbOfNGwLwmVRDgguzFa+QzmQsJW4FTDMwc
+rematerialize	Save publication receipt	7cIjwdElQQVA+Gqa67uWmyDKAnoTkudmgAP+OTBkhnmc6NJuZDcy6f/iWUdl0X0u
+rematerialize	Save publication receipt	/tsfgXXR6ZovnHonM13ANiN7VmEVqFlEMa0VVmc09m+2FYjjlk8F9sC7Rc4wt214
+rematerialize	Save publication receipt	7u5YvCiCsFZwx44baP5viyRZgkJVpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/
+rematerialize	Save publication receipt	MB0GA1UdDgQWBBQgCZCsc34nVTRbWsniXBPjnUTQ2DAOBgNVHQ8BAf8EBAMCAYYw
+rematerialize	Save publication receipt	DQYJKoZIhvcNAQEMBQADggIBAAQas3x1G6OpsIvQeMS9BbiHG3+kU9P/ba6Rrg+E
+rematerialize	Save publication receipt	lUz8TmL04Bcd+I+R0IyMBww4NznT+K60cFdk+1iSmT8Q55bpqRekyhcdWda1Qu0r
+rematerialize	Save publication receipt	JiTi7zz+3w2v66akofOnGevDpo/ilXGvCUJiLOBnHIF0izUqzvfczaMZGJT6xzKq
+rematerialize	Save publication receipt	PcEVRyAN1IHHf5KnGzUlVFv9SGy47xJ9I1vTk24JU0LWkSLzMMoxiUudVmHSqJtN
+rematerialize	Save publication receipt	u0h+n/x3Q6XguZi1/C1KOntH56ewRh8n5AF7c+9LJJSRM9wunb0Dzl7BEy21Xe9q
+rematerialize	Save publication receipt	03xRYjf5wn8eDELB8FZPa1PrNKXIOLYM9egdctbKEcpSsse060+tkyBrl507+SJT
+rematerialize	Save publication receipt	04lvJ4tcKjZFqxn+bUkDQvXYj0D3WK+iJ7a8kZJPRvz8BDHfIqancY8Tgw+69SUn
+rematerialize	Save publication receipt	WqIb+HNZqFuRs16WFSzlMksqzXv6wcDSyI7aZOmCGGEcYW9NHk8EuOnOQ+1UMT9C
+rematerialize	Save publication receipt	Qb1GJcipjRzry3M4KN/t5vN3hIetB+/PhmgTO4gKhBETTEyPC3HC1QbdVfRndB6e
+rematerialize	Save publication receipt	U/NF2U/t8U2GvD26TTFLK4pScW7gyw4FQyXWs8g8FS8f+R2yWajhtS9++VDJQKom
+rematerialize	Save publication receipt	fAUISoCH+PlPRJpu/nHd1Zrddeiiis53rBaLbXu2J1Q3VqjWOmtj0HjxJJxWnYmz
+rematerialize	Save publication receipt	Pqj2
+rematerialize	Save publication receipt	-----END CERTIFICATE-----
+rematerialize	Save publication receipt	-----BEGIN CERTIFICATE-----
+rematerialize	Save publication receipt	MIICrDCCAjOgAwIBAgIQGcztRyV40pyMKbNeSN+vXTAKBggqhkjOPQQDAzCBljEL
+rematerialize	Save publication receipt	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Save publication receipt	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMS8wLQYDVQQDDCZBbWF6
+rematerialize	Save publication receipt	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIEVDQzM4NCBHMTEQMA4GA1UEBwwHU2Vh
+rematerialize	Save publication receipt	dHRsZTAgFw0yMTA1MjEyMzE1NTZaGA8yMTIxMDUyMjAwMTU1NlowgZYxCzAJBgNV
+rematerialize	Save publication receipt	BAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJbmMuMRMwEQYD
+rematerialize	Save publication receipt	VQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEvMC0GA1UEAwwmQW1hem9uIFJE
+rematerialize	Save publication receipt	UyB1cy1lYXN0LTIgUm9vdCBDQSBFQ0MzODQgRzExEDAOBgNVBAcMB1NlYXR0bGUw
+rematerialize	Save publication receipt	djAQBgcqhkjOPQIBBgUrgQQAIgNiAAQfDcv+GGRESD9wT+I5YIPRsD3L+/jsiIis
+rematerialize	Save publication receipt	Tr7t9RSbFl+gYpO7ZbDXvNbV5UGOC5lMJo/SnqFRTC6vL06NF7qOHfig3XO8QnQz
+rematerialize	Save publication receipt	6T5uhhrhnX2RSY3/10d2kTyHq3ZZg3+jQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+rematerialize	Save publication receipt	VR0OBBYEFLDyD3PRyNXpvKHPYYxjHXWOgfPnMA4GA1UdDwEB/wQEAwIBhjAKBggq
+rematerialize	Save publication receipt	hkjOPQQDAwNnADBkAjB20HQp6YL7CqYD82KaLGzgw305aUKw2aMrdkBR29J183jY
+rematerialize	Save publication receipt	6Ocj9+Wcif9xnRMS+7oCMAvrt03rbh4SU9BohpRUcQ2Pjkh7RoY0jDR4Xq4qzjNr
+rematerialize	Save publication receipt	5UFr3BXpFvACxXF51BksGQ==
+rematerialize	Save publication receipt	-----END CERTIFICATE-----
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8877505Z   DATABASE_POOL_MAX: 1
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8877795Z   STATARENA_DATA_PROVIDER: aws
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8878300Z   PGSSLROOTCERT: /home/runner/work/STATARENA/STATARENA/dashboard/backend/certs/rds-us-east-2.pem
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8879048Z   NODE_EXTRA_CA_CERTS: /home/runner/work/STATARENA/STATARENA/dashboard/backend/certs/rds-us-east-2.pem
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8879564Z   PGSSLMODE: verify-full
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8880563Z   NEON_DATABASE_URL: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8900147Z   STATARENA_DATABASE_CA_PEM: -----BEGIN CERTIFICATE-----
+rematerialize	Save publication receipt	MIID/zCCAuegAwIBAgIRAJYlnmkGRj4ju/2jBQsnXJYwDQYJKoZIhvcNAQELBQAw
+rematerialize	Save publication receipt	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Save publication receipt	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Save publication receipt	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0EyMDQ4IEcxMRAwDgYDVQQH
+rematerialize	Save publication receipt	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMDQ0NFoYDzIwNjEwNTIyMDAwNDQ0WjCBlzEL
+rematerialize	Save publication receipt	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Save publication receipt	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Save publication receipt	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTIwNDggRzExEDAOBgNVBAcMB1Nl
+rematerialize	Save publication receipt	YXR0bGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC74V3eigv+pCj5
+rematerialize	Save publication receipt	nqDBqplY0Jp16pTeNB06IKbzb4MOTvNde6QjsZxrE1xUmprT8LxQqN9tI3aDYEYk
+rematerialize	Save publication receipt	b9v4F99WtQVgCv3Y34tYKX9NwWQgwS1vQwnIR8zOFBYqsAsHEkeJuSqAB12AYUSd
+rematerialize	Save publication receipt	Zv2RVFjiFmYJho2X30IrSLQfS/IE3KV7fCyMMm154+/K1Z2IJlcissydEAwgsUHw
+rematerialize	Save publication receipt	edrE6CxJVkkJ3EvIgG4ugK/suxd8eEMztaQYJwSdN8TdfT59LFuSPl7zmF3fIBdJ
+rematerialize	Save publication receipt	//WexcQmGabaJ7Xnx+6o2HTfkP8Zzzzaq8fvjAcvA7gyFH5EP26G2ZqMG+0y4pTx
+rematerialize	Save publication receipt	SPVTrQEXAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFIWWuNEF
+rematerialize	Save publication receipt	sUMOC82XlfJeqazzrkPDMA4GA1UdDwEB/wQEAwIBhjANBgkqhkiG9w0BAQsFAAOC
+rematerialize	Save publication receipt	AQEAgClmxcJaQTGpEZmjElL8G2Zc8lGc+ylGjiNlSIw8X25/bcLRptbDA90nuP+q
+rematerialize	Save publication receipt	zXAMhEf0ccbdpwxG/P5a8JipmHgqQLHfpkvaXx+0CuP++3k+chAJ3Gk5XtY587jX
+rematerialize	Save publication receipt	+MJfrPgjFt7vmMaKmynndf+NaIJAYczjhJj6xjPWmGrjM3MlTa9XesmelMwP3jep
+rematerialize	Save publication receipt	bApIWAvCYVjGndbK9byyMq1nyj0TUzB8oJZQooaR3MMjHTmADuVBylWzkRMxbKPl
+rematerialize	Save publication receipt	4Nlsk4Ef1JvIWBCzsMt+X17nuKfEatRfp3c9tbpGlAE/DSP0W2/Lnayxr4RpE9ds
+rematerialize	Save publication receipt	ICF35uSis/7ZlsftODUe8wtpkQ==
+rematerialize	Save publication receipt	-----END CERTIFICATE-----
+rematerialize	Save publication receipt	-----BEGIN CERTIFICATE-----
+rematerialize	Save publication receipt	MIIF/zCCA+egAwIBAgIRAPvvd+MCcp8E36lHziv0xhMwDQYJKoZIhvcNAQEMBQAw
+rematerialize	Save publication receipt	gZcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJ
+rematerialize	Save publication receipt	bmMuMRMwEQYDVQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEwMC4GA1UEAwwn
+rematerialize	Save publication receipt	QW1hem9uIFJEUyB1cy1lYXN0LTIgUm9vdCBDQSBSU0E0MDk2IEcxMRAwDgYDVQQH
+rematerialize	Save publication receipt	DAdTZWF0dGxlMCAXDTIxMDUyMTIzMTEwNloYDzIxMjEwNTIyMDAxMTA2WjCBlzEL
+rematerialize	Save publication receipt	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Save publication receipt	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMTAwLgYDVQQDDCdBbWF6
+rematerialize	Save publication receipt	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIFJTQTQwOTYgRzExEDAOBgNVBAcMB1Nl
+rematerialize	Save publication receipt	YXR0bGUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDbvwekKIKGcV/s
+rematerialize	Save publication receipt	lDU96a71ZdN2pTYkev1X2e2/ICb765fw/i1jP9MwCzs8/xHBEQBJSxdfO4hPeNx3
+rematerialize	Save publication receipt	ENi0zbM+TrMKliS1kFVe1trTTEaHYjF8BMK9yTY0VgSpWiGxGwg4tshezIA5lpu8
+rematerialize	Save publication receipt	sF6XMRxosCEVCxD/44CFqGZTzZaREIvvFPDTXKJ6yOYnuEkhH3OcoOajHN2GEMMQ
+rematerialize	Save publication receipt	ShuyRFDQvYkqOC/Q5icqFbKg7eGwfl4PmimdV7gOVsxSlw2s/0EeeIILXtHx22z3
+rematerialize	Save publication receipt	8QBhX25Lrq2rMuaGcD3IOMBeBo2d//YuEtd9J+LGXL9AeOXHAwpvInywJKAtXTMq
+rematerialize	Save publication receipt	Wsy3LjhuANFrzMlzjR2YdjkGVzeQVx3dKUzJ2//Qf7IXPSPaEGmcgbxuatxjnvfT
+rematerialize	Save publication receipt	H85oeKr3udKnXm0Kh7CLXeqJB5ITsvxI+Qq2iXtYCc+goHNR01QJwtGDSzuIMj3K
+rematerialize	Save publication receipt	f+YMrqBXZgYBwU2J/kCNTH31nfw96WTbOfNGwLwmVRDgguzFa+QzmQsJW4FTDMwc
+rematerialize	Save publication receipt	7cIjwdElQQVA+Gqa67uWmyDKAnoTkudmgAP+OTBkhnmc6NJuZDcy6f/iWUdl0X0u
+rematerialize	Save publication receipt	/tsfgXXR6ZovnHonM13ANiN7VmEVqFlEMa0VVmc09m+2FYjjlk8F9sC7Rc4wt214
+rematerialize	Save publication receipt	7u5YvCiCsFZwx44baP5viyRZgkJVpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/
+rematerialize	Save publication receipt	MB0GA1UdDgQWBBQgCZCsc34nVTRbWsniXBPjnUTQ2DAOBgNVHQ8BAf8EBAMCAYYw
+rematerialize	Save publication receipt	DQYJKoZIhvcNAQEMBQADggIBAAQas3x1G6OpsIvQeMS9BbiHG3+kU9P/ba6Rrg+E
+rematerialize	Save publication receipt	lUz8TmL04Bcd+I+R0IyMBww4NznT+K60cFdk+1iSmT8Q55bpqRekyhcdWda1Qu0r
+rematerialize	Save publication receipt	JiTi7zz+3w2v66akofOnGevDpo/ilXGvCUJiLOBnHIF0izUqzvfczaMZGJT6xzKq
+rematerialize	Save publication receipt	PcEVRyAN1IHHf5KnGzUlVFv9SGy47xJ9I1vTk24JU0LWkSLzMMoxiUudVmHSqJtN
+rematerialize	Save publication receipt	u0h+n/x3Q6XguZi1/C1KOntH56ewRh8n5AF7c+9LJJSRM9wunb0Dzl7BEy21Xe9q
+rematerialize	Save publication receipt	03xRYjf5wn8eDELB8FZPa1PrNKXIOLYM9egdctbKEcpSsse060+tkyBrl507+SJT
+rematerialize	Save publication receipt	04lvJ4tcKjZFqxn+bUkDQvXYj0D3WK+iJ7a8kZJPRvz8BDHfIqancY8Tgw+69SUn
+rematerialize	Save publication receipt	WqIb+HNZqFuRs16WFSzlMksqzXv6wcDSyI7aZOmCGGEcYW9NHk8EuOnOQ+1UMT9C
+rematerialize	Save publication receipt	Qb1GJcipjRzry3M4KN/t5vN3hIetB+/PhmgTO4gKhBETTEyPC3HC1QbdVfRndB6e
+rematerialize	Save publication receipt	U/NF2U/t8U2GvD26TTFLK4pScW7gyw4FQyXWs8g8FS8f+R2yWajhtS9++VDJQKom
+rematerialize	Save publication receipt	fAUISoCH+PlPRJpu/nHd1Zrddeiiis53rBaLbXu2J1Q3VqjWOmtj0HjxJJxWnYmz
+rematerialize	Save publication receipt	Pqj2
+rematerialize	Save publication receipt	-----END CERTIFICATE-----
+rematerialize	Save publication receipt	-----BEGIN CERTIFICATE-----
+rematerialize	Save publication receipt	MIICrDCCAjOgAwIBAgIQGcztRyV40pyMKbNeSN+vXTAKBggqhkjOPQQDAzCBljEL
+rematerialize	Save publication receipt	MAkGA1UEBhMCVVMxIjAgBgNVBAoMGUFtYXpvbiBXZWIgU2VydmljZXMsIEluYy4x
+rematerialize	Save publication receipt	EzARBgNVBAsMCkFtYXpvbiBSRFMxCzAJBgNVBAgMAldBMS8wLQYDVQQDDCZBbWF6
+rematerialize	Save publication receipt	b24gUkRTIHVzLWVhc3QtMiBSb290IENBIEVDQzM4NCBHMTEQMA4GA1UEBwwHU2Vh
+rematerialize	Save publication receipt	dHRsZTAgFw0yMTA1MjEyMzE1NTZaGA8yMTIxMDUyMjAwMTU1NlowgZYxCzAJBgNV
+rematerialize	Save publication receipt	BAYTAlVTMSIwIAYDVQQKDBlBbWF6b24gV2ViIFNlcnZpY2VzLCBJbmMuMRMwEQYD
+rematerialize	Save publication receipt	VQQLDApBbWF6b24gUkRTMQswCQYDVQQIDAJXQTEvMC0GA1UEAwwmQW1hem9uIFJE
+rematerialize	Save publication receipt	UyB1cy1lYXN0LTIgUm9vdCBDQSBFQ0MzODQgRzExEDAOBgNVBAcMB1NlYXR0bGUw
+rematerialize	Save publication receipt	djAQBgcqhkjOPQIBBgUrgQQAIgNiAAQfDcv+GGRESD9wT+I5YIPRsD3L+/jsiIis
+rematerialize	Save publication receipt	Tr7t9RSbFl+gYpO7ZbDXvNbV5UGOC5lMJo/SnqFRTC6vL06NF7qOHfig3XO8QnQz
+rematerialize	Save publication receipt	6T5uhhrhnX2RSY3/10d2kTyHq3ZZg3+jQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+rematerialize	Save publication receipt	VR0OBBYEFLDyD3PRyNXpvKHPYYxjHXWOgfPnMA4GA1UdDwEB/wQEAwIBhjAKBggq
+rematerialize	Save publication receipt	hkjOPQQDAwNnADBkAjB20HQp6YL7CqYD82KaLGzgw305aUKw2aMrdkBR29J183jY
+rematerialize	Save publication receipt	6Ocj9+Wcif9xnRMS+7oCMAvrt03rbh4SU9BohpRUcQ2Pjkh7RoY0jDR4Xq4qzjNr
+rematerialize	Save publication receipt	5UFr3BXpFvACxXF51BksGQ==
+rematerialize	Save publication receipt	-----END CERTIFICATE-----
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8921978Z   NEON_STORAGE_ENDPOINT: https://s3.us-east-2.amazonaws.com
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8922379Z   NEON_STORAGE_REGION: us-east-2
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8922736Z   NEON_STORAGE_BUCKET: statarena-football-333rosky-70db6e5f
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8923186Z   NEON_STORAGE_ACCESS_KEY_ID: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8923600Z   NEON_STORAGE_SECRET_ACCESS_KEY: ***
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8923905Z   STATARENA_EXTERNAL_STORAGE: 1
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8924188Z   STATARENA_SQL_DOCUMENTS: 1
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8924684Z   STATARENA_S3_PATH_STYLE: 0
+rematerialize	Save publication receipt	2026-11-04T04:06:42.8924976Z ##[endgroup]
+rematerialize	Save publication receipt	2026-11-04T04:06:43.0641573Z (node:2516) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+rematerialize	Save publication receipt	2026-11-04T04:06:43.0642507Z (Use `node --trace-deprecation ...` to show where the warning was created)
+rematerialize	Save publication receipt	2026-11-04T04:06:43.0695230Z With the provided path, there will be 1 file uploaded
+rematerialize	Save publication receipt	2026-11-04T04:06:43.0696329Z Artifact name is valid!
+rematerialize	Save publication receipt	2026-11-04T04:06:43.0696998Z Root directory input is valid!
+rematerialize	Save publication receipt	2026-11-04T04:06:43.4887222Z Beginning upload of artifact content to blob storage
+rematerialize	Save publication receipt	2026-11-04T04:06:43.5076757Z (node:2516) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+rematerialize	Save publication receipt	2026-11-04T04:06:43.7839419Z Uploaded bytes 267
+rematerialize	Save publication receipt	2026-11-04T04:06:43.8649781Z Finished uploading artifact content to blob storage!
+rematerialize	Save publication receipt	2026-11-04T04:06:43.8650891Z SHA256 digest of uploaded artifact zip is de3dc9f49c27a700be572f927ef297862472bfb83f5326d0587178f936173ac3
+rematerialize	Save publication receipt	2026-11-04T04:06:43.8652325Z Finalizing artifact upload
+rematerialize	Save publication receipt	2026-11-04T04:06:44.3779191Z Artifact rematerialize-41771065171-1.zip successfully finalized. Artifact ID 13295290209
+rematerialize	Save publication receipt	2026-11-04T04:06:44.3780989Z Artifact rematerialize-41771065171-1 has been successfully uploaded! Final size is 267 bytes. Artifact ID is 13295290209
+rematerialize	Save publication receipt	2026-11-04T04:06:44.3787564Z Artifact download URL: https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41771065171/artifacts/13295290209
+rematerialize	Post Load AWS staging credentials	﻿2026-11-04T04:06:44.3989812Z Post job cleanup.
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:44.3994052Z ##[start-action display=Permit this hosted runner to reach RDS;id=__2db210f7-bc6b-48e1-b906-9ebcbe166701.__self]
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:44.4015688Z Post job cleanup.
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:48.0015936Z Removed runner rule: sgr-010f59af7bda9e5df
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:48.0078225Z ##[end-action id=__2db210f7-bc6b-48e1-b906-9ebcbe166701.__self;outcome=success;conclusion=success;duration_ms=3608]
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:48.0081379Z ##[start-action display=Exchange GitHub OIDC token for a scoped AWS session;id=__2db210f7-bc6b-48e1-b906-9ebcbe166701.__aws-actions_configure-aws-credentials]
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:48.0140852Z Post job cleanup.
+rematerialize	Post Load AWS staging credentials	2026-11-04T04:06:48.1107021Z ##[end-action id=__2db210f7-bc6b-48e1-b906-9ebcbe166701.__aws-actions_configure-aws-credentials;outcome=success;conclusion=success;duration_ms=102]
+rematerialize	Post Run actions/setup-python@v5	﻿2026-11-04T04:06:48.1203063Z Post job cleanup.
+rematerialize	Post Run actions/setup-python@v5	2026-11-04T04:06:48.2519532Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.13.17-pip-54b1c89bf95e0ec91df4f26a708b94fed4ad4c15118a272cd6aa8727043a2fcc, not saving cache.
+rematerialize	Post Run actions/setup-python@v5	2026-11-04T04:06:48.2521906Z (node:2601) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+rematerialize	Post Run actions/setup-python@v5	2026-11-04T04:06:48.2522816Z (Use `node --trace-deprecation ...` to show where the warning was created)
+rematerialize	Post Run actions/checkout@v4	﻿2026-11-04T04:06:48.2668895Z Post job cleanup.
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3549350Z [command]/usr/bin/git version
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3600437Z git version 2.56.0
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3647979Z Temporarily overriding HOME='/home/runner/work/_temp/2fe16284-dd57-45d1-8ada-360b6cd521db' before making global git config changes
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3649676Z Adding repository directory to the temporary git global config as a safe directory
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3657886Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/STATARENA/STATARENA
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3705850Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.3756279Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.4072733Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.4084260Z http.https://github.com/.extraheader
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.4099052Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.4166699Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.4540710Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+rematerialize	Post Run actions/checkout@v4	2026-11-04T04:06:48.4596977Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+rematerialize	Complete job	﻿2026-11-04T04:06:48.5022723Z Cleaning up orphan processes
+rematerialize	Complete job	2026-11-04T04:06:48.5424830Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4, aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

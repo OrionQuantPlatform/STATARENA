@@ -1,0 +1,12 @@
+{
+  "deployment": "https://statarena-analytics-nebu2r505-hlemonniers-projects.vercel.app",
+  "api": "https://d317dq37z1tacb.cloudfront.net",
+  "commit": "2a419",
+  "started": "20261104T041519087206Z",
+  "scope": "(one published match and player, preview only)",
+  "passed": false,
+  "cliExit": 0,
+  "authStatus": 307,
+  "hostScopedCookieCount": 1,
+  "authPrepared": true
+}

@@ -1,0 +1,8 @@
+# Conditional origin requests: preregistered workflow
+
+Use real disposable PostgreSQL 18, actual migrations 004 and 006, the AWS WebRequest handler behind an HTTP socket and a second socket forwarding with the actual Next proxy. No cloud credentials or mutable production inputs. Count executed SQL statements on the real runtime connection. The hook only sequences a second physical writer after a metadata SELECT has returned; it does not replace any SQL or result. All commands from repository root. Install locked dashboard dependencies (`cd dashboard && bun install --frozen-lockfile`) and `npm install --prefix /tmp/statarena-cache-test-tools embedded-postgres@18.6.0-beta.19`. Run `bun docs/verification/aws-conditional-20261104/verify.mjs before` then after implementation `bun docs/verification/aws-conditional-20261104/verify.mjs after`.
+
+- Cold stale conditional match and catalog each use 2 reads, yield the current body/tag; warm conditional 1 read, current body; matching weak validator and HEAD 1 metadata read each, no body.
+- A writer committing between metadata and body must return the current body under its own current validator (bounded retry); deletion must yield 404; repeated version churn must fail closed in at most four statements. All use real writes only to the disposable fixture.
+- Saved 404 with wildcard returns its structured provider error/status and no-store, never conditional null/304; missing match remains 404 with a single read.
+- The local proxy must forward a supplied header unchanged and omit it when absent. A cold unconditional proxied read performs 2 SQL reads; regular and deferred responses never serialize the private continuation.

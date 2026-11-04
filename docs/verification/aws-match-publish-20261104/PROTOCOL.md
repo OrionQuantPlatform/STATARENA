@@ -1,0 +1,17 @@
+# Bounded publication round trips
+
+Measure actual psycopg calls in a disposable PostgreSQL 18 instance with verified TLS, the real 004 match DDL, and the real thirteen-family 333,449-byte published match capture. Clone the actual match under distinct local fixture IDs for 1, 16, and 32-match publication. Count SQL execute calls, COPY sessions, and psycopg transaction control commands. Preserve the measured elapsed time. Report an illustrative serial 5/30ms RTT budget separately from measurements. COPY needs a server response to enter COPY IN plus an acknowledgement to finish. Free-flowing COPY packet transfer is excluded from the RTT model.
+
+Expected before code changes:
+- Publishing 16 full matches should copy each typed relation once per bounded group instead of once per match, and the 32-match case should split into two groups. All 13 families, ordered values, nulls, sparse fields and match metadata must compare exactly through PostgreSQL readback for every ID.
+- Replaying identical inputs must emit no COPY or header DELETE/INSERT, and a partial update must preserve absent families, other matches, variant rows, and earlier context when omitted.
+- A later unmodeled family field must roll back earlier writes in the same publication call, including across chunk boundaries. Overlapping invocations must lock in a consistent order and retain coherent typed data.
+- Compare the original single writer and the new helper against identical setup and cloned inputs. Save per-scenario counters, timing and checksum evidence. Target at most one third of baseline command exchanges for 16/32 matches. Do not infer a production throughput figure from this loopback run.
+
+Reproduce with `PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-match-publish-20261104/run.mjs before` or `after`. Dependencies are Bun, openssl, the dashboard packages, psycopg 3.3.4 and embedded-postgres 18.6.0-beta.19 in STATARENA_TEST_TOOLS, default /tmp/statarena-cache-test-tools. Set STATARENA_MATCH_WRITER to the directory containing a candidate writer. The default uses dashboard/scripts. No production connection or writes. Suggested commit `perf: batch typed match publication across fixtures`.
+
+## Worker integration
+
+Exercise the production partition publisher through all 16 existing PostgreSQL workflows. In the workflow that adds 64 real source-indexed match IDs across 32 interleaved archive shards, count actual event-sheets COPY starts. The existing single-record loop should issue at least 64. The integrated loop should issue at most five, allowing existing fixtures in the same partition. Expect the source spool to read each of the 64 files exactly once in either case. Match precedence, unavailable statuses, retained core families, headroom rejection, failed-partition rollback, late dirty markers, checkpoint resume and limited-schema-role publication must still pass. Run the exact same workflow with `node docs/verification/aws-match-publish-20261104/worker.mjs worker-before` and then `worker-after`.
+
+The previous partition loop rejected any unrecognized saved endpoint, even alongside valid families. Include a second-chunk unsupported variant after successful first-chunk writes. Expect no committed family changes, no generation advance, and the dirty marker to remain. A context-only record remains valid. A fixture without any context, detail or variants must not acquire a match-details header.

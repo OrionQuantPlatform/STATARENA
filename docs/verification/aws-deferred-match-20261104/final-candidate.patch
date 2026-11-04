@@ -1,0 +1,403 @@
+diff --git a/dashboard/frontend/src/components/MatchDetail.jsx b/dashboard/frontend/src/components/MatchDetail.jsx
+index e85760fb2c..617200e689 100644
+--- a/dashboard/frontend/src/components/MatchDetail.jsx
++++ b/dashboard/frontend/src/components/MatchDetail.jsx
+@@ -173,7 +173,13 @@ function MatchViewTabs({ view, onChange, panelId, views }) {
+ function MatchPlayer({ row, rank }) {
+   const f = useFootball();
+   return (
+-    <button className="match-player-row" onClick={() => f.setPlayer(row.id)}>
++    <button
++      className="match-player-row"
++      aria-busy={
++        (f.player === row.id && f.deferredPerformance?.loading) || undefined
++      }
++      onClick={() => f.setPlayer(row.id)}
++    >
+       {rank && (
+         <span className="leader-rank">{String(rank).padStart(2, "0")}</span>
+       )}
+@@ -181,7 +187,9 @@ function MatchPlayer({ row, rank }) {
+       <span className="player-copy">
+         <strong className="player-name">{row.name}</strong>
+         <span className="player-meta">
+-          {row.team}
++          {f.player === row.id && f.deferredPerformance?.loading
++            ? "Chargement…"
++            : row.team}
+           {isNumber(row.goals) && row.goals > 0
+             ? ` · ${number(row.goals)} but${row.goals > 1 ? "s" : ""}`
+             : ""}
+@@ -362,7 +370,7 @@ export default function MatchDetail({ match }) {
+   const leading = (players.length ? players : match.leadingPlayers || [])
+     .filter((r) => r.minutes > 0 && isNumber(r.rating))
+     .slice(0, 5);
+-  const competition = f.data.competitions.find((c) => c.id === match.leagueId);
++  const competition = f.allCompetitions.find((c) => c.id === match.leagueId);
+   const status =
+     match.status === "finished"
+       ? "Terminé"
+diff --git a/dashboard/frontend/src/components/PlayerDetails.jsx b/dashboard/frontend/src/components/PlayerDetails.jsx
+index 85ea528253..690324ef56 100644
+--- a/dashboard/frontend/src/components/PlayerDetails.jsx
++++ b/dashboard/frontend/src/components/PlayerDetails.jsx
+@@ -72,7 +72,7 @@ export function PlayerDialog() {
+   const f = useFootball(),
+     [view, setView] = useState("overview"),
+     row = f.byAppearance.get(f.player),
+-    appearances = f.data.appearances;
++    appearances = f.performanceData.appearances;
+   const profile = useMemo(
+       () => (row ? performanceProfile(row, appearances) : null),
+       [row, appearances],
+@@ -81,9 +81,30 @@ export function PlayerDialog() {
+       () => (row ? matchRatingRank(row, appearances) : null),
+       [row, appearances],
+     );
++  if (!row && f.player && f.deferredPerformance) {
++    const state = f.deferredPerformance;
++    if (state.loading)
++      return (
++        <Modal title="Performance du joueur" onClose={() => f.setPlayer(null)}>
++          <p role="status" aria-busy="true">
++            Chargement de la performance…
++          </p>
++        </Modal>
++      );
++    return (
++      <Modal title="Performance du joueur" onClose={() => f.setPlayer(null)}>
++        <div role="alert">
++          {state.error || "Cette performance est indisponible."}
++          {state.error && <button onClick={state.retry}>Réessayer</button>}
++        </div>
++      </Modal>
++    );
++  }
+   if (!row) return null;
+-  const match = f.data.matches.find((m) => m.id === row.matchId);
+-  const competition = f.data.competitions.find((c) => c.id === row.leagueId);
++  const match = f.performanceData.matches.find((m) => m.id === row.matchId);
++  const competition = f.performanceData.competitions.find(
++    (c) => c.id === row.leagueId,
++  );
+   const line = positionOf(row);
+   const close = () => f.setPlayer(null);
+   const role =
+@@ -279,7 +300,7 @@ export function PlayerDialog() {
+ }
+ export function Comparison() {
+   const f = useFootball(),
+-    rows = f.comparison.map((id) => f.byAppearance.get(id)).filter(Boolean);
++    rows = f.comparisonRows;
+   return (
+     <>
+       {rows.length > 0 && (
+diff --git a/dashboard/frontend/src/hooks/FootballContext.jsx b/dashboard/frontend/src/hooks/FootballContext.jsx
+index 0c26d7b4e9..5d6204ed20 100644
+--- a/dashboard/frontend/src/hooks/FootballContext.jsx
++++ b/dashboard/frontend/src/hooks/FootballContext.jsx
+@@ -23,6 +23,7 @@ import {
+   useResource,
+   download,
+   primeResource,
++  cachedResource,
+ } from "../services/resources.js";
+ import { warmProfiles } from "../services/player-profile.js";
+ import { filterSeasonPlayerScope } from "../services/season-player.js";
+@@ -181,7 +182,7 @@ export function FootballProvider({ children, loadData = true }) {
+       ...advancedQuery(next.advanced || EMPTY_ADVANCED),
+     });
+   }
+-  const [comparison, setComparison] = useState([]),
++  const [selectedPerformances, setSelectedPerformances] = useState([]),
+     [player, setPlayer] = useState(null),
+     [comparing, setComparing] = useState(false),
+     [notice, setNotice] = useState("");
+@@ -222,42 +223,121 @@ export function FootballProvider({ children, loadData = true }) {
+       !initial.get("id") &&
+       !loadedScopes.has(scopeKey),
+     fullKey = `season:${chosen}:${dataFocus}:all:full`;
++  const seasonKey = progressive
++    ? `season:${chosen}:europe:all:full`
++    : `season:${chosen}:${loadData ? `${dataFocus}:${leagueOnly ? filters.league : "all"}:full` : "catalog"}`;
++  const detailId =
++    /^\/matchs\/?$/.test(pathname) &&
++    /^m_[A-Za-z0-9]{6}$/.test(initial.get("id") || "")
++      ? initial.get("id")
++      : null;
++  // Reuse the scope that exists on entering this match. Later intent loads must not
++  // replace the rendered match, recreate its client, or discard the active tab.
++  const warmSeason = useMemo(() => {
++    const cached = detailId && cachedResource(seasonKey);
++    if (
++      cached?.matches?.some((m) => m.id === detailId) ||
++      cached?.fixtures?.some(
++        (m) => m.id === detailId && m.status !== "finished",
++      )
++    )
++      return cached;
++    return null;
++  }, [detailId, seasonKey]);
++  const deferSeason = Boolean(detailId && !warmSeason);
++  const emptySeason = useMemo(
++    () =>
++      !manifest.value || !chosen
++        ? null
++        : {
++            meta: { retrievedAt: manifest.value.retrievedAt },
++            competitions: [],
++            matches: [],
++            appearances: [],
++            fixtures: [],
++          },
++    [manifest.value, chosen],
++  );
++  function loadScope() {
++    return loadSeason(
++      manifest.value,
++      chosen,
++      fetch,
++      leagueOnly
++        ? new Set(
++            dataFocus !== "europe" || EUROPE_FOCUS_IDS.has(filters.league)
++              ? [filters.league]
++              : [],
++          )
++        : dataFocus === "europe" || progressive
++          ? EUROPE_FOCUS_IDS
++          : null,
++    );
++  }
+   const dataset = useResource(
+-    progressive
+-      ? `season:${chosen}:europe:all:full`
+-      : `season:${chosen}:${loadData ? `${dataFocus}:${leagueOnly ? filters.league : "all"}:full` : "catalog"}`,
++    seasonKey,
+     () =>
+-      chosen
+-        ? loadData
+-          ? loadSeason(
+-              manifest.value,
+-              chosen,
+-              fetch,
+-              leagueOnly
+-                ? new Set(
+-                    dataFocus !== "europe" ||
+-                      EUROPE_FOCUS_IDS.has(filters.league)
+-                      ? [filters.league]
+-                      : [],
+-                  )
+-                : dataFocus === "europe" || progressive
+-                  ? EUROPE_FOCUS_IDS
+-                  : null,
+-            ).then((value) => {
++      !chosen
++        ? null
++        : loadData
++          ? loadScope().then((value) => {
+               if (!leagueOnly)
+                 loadedScopes.add(progressive ? `${chosen}:europe` : scopeKey);
+               return value;
+             })
+-          : Promise.resolve({
+-              meta: { retrievedAt: manifest.value.retrievedAt },
+-              competitions: [],
+-              matches: [],
+-              appearances: [],
+-              fixtures: [],
+-            })
+-        : Promise.resolve(null),
++          : emptySeason,
++    !deferSeason,
++  );
++  const data = deferSeason ? emptySeason : warmSeason || dataset.value;
++  useEffect(() => {
++    if (!detailId) return;
++    return () => setPlayer(null);
++  }, [detailId, chosen]);
++  // A retained comparison belongs to its original rows. Only a player action
++  // on the displayed match may request the new match's owning cohort.
++  const detailPlayer = Boolean(
++    detailId && typeof player === "string" && player.startsWith(detailId + ":"),
+   );
+-  const data = dataset.value;
++  const selectedMatch =
++    detailPlayer && deferSeason
++      ? cachedResource(`remote-match:${detailId}`)
++      : null;
++  const perfIntent = Boolean(selectedMatch);
++  const perf = useResource(
++    `detail-cohort:${detailId}:${seasonKey}`,
++    async () => {
++      const match = selectedMatch;
++      if (!match?.leagueId) return primeResource(seasonKey, loadScope);
++      const sourceSeason = match.season || initial.get("sourceSeason");
++      const ids = sourceSeason
++        ? [sourceSeason, seasonLabel(sourceSeason)]
++        : [chosen];
++      // Match seasons may be native calendar years. Resolve against published
++      // partitions, preserving a native-year partition when one really exists.
++      const target = ids.find((id) =>
++        manifest.value.seasons.some(
++          (s) =>
++            s.id === id && s.chunks.some((c) => c.leagueId === match.leagueId),
++        ),
++      );
++      if (!target)
++        throw new Error(
++          "Les performances de cette compétition ne sont pas disponibles pour cette saison.",
++        );
++      const localScopeExcludesMatch = leagueOnly
++        ? match.leagueId !== filters.league
++        : dataFocus === "europe" && !EUROPE_FOCUS_IDS.has(match.leagueId);
++      const targetScope = () =>
++        loadSeason(manifest.value, target, fetch, new Set([match.leagueId]));
++      if (target !== chosen || localScopeExcludesMatch) return targetScope();
++      const scope = await primeResource(seasonKey, loadScope);
++      if (!scope.competitions.some((c) => c.id === match.leagueId))
++        return targetScope();
++      return scope;
++    },
++    perfIntent,
++  );
++  const performanceData = perfIntent && perf.value ? perf.value : data;
+   const [, settle] = useState(0);
+   useEffect(() => {
+     if (!progressive || !data) return;
+@@ -280,22 +360,24 @@ export function FootballProvider({ children, loadData = true }) {
+   );
+   const status = useResource(`status:${client?.id}`, async () => {
+     if (!client) return false;
+-    await (loadData ? client.init() : client.checkStatus());
++    await (loadData && !deferSeason ? client.init() : client.checkStatus());
+     return client.configured;
+   });
+-  const seasonCompetitions = useMemo(
+-    () => {
+-      const season=manifest.value?.seasons.find(item=>item.id===chosen);
+-      if(!season)return data?.competitions || [];
+-      const ids=new Set(season.chunks.map(chunk=>chunk.leagueId));
+-      const byId=new Map((manifest.value.competitions||[]).filter(c=>ids.has(c.id)).map(c=>[c.id,c]));
+-      // A loaded competition has more precise, season-specific coverage counts.
+-      for(const item of data?.competitions||[])byId.set(item.id,item);
+-      return enrichSeasonCompetitions([...byId.values()], client?.catalog)
+-        .sort((a,b)=>(a.name||"").localeCompare(b.name||"","fr"));
+-    },
+-    [manifest.value, chosen, data, client, status.value, status.loading],
+-  );
++  const seasonCompetitions = useMemo(() => {
++    const season = manifest.value?.seasons.find((item) => item.id === chosen);
++    if (!season) return data?.competitions || [];
++    const ids = new Set(season.chunks.map((chunk) => chunk.leagueId));
++    const byId = new Map(
++      (manifest.value.competitions || [])
++        .filter((c) => ids.has(c.id))
++        .map((c) => [c.id, c]),
++    );
++    // A loaded competition has more precise, season-specific coverage counts.
++    for (const item of data?.competitions || []) byId.set(item.id, item);
++    return enrichSeasonCompetitions([...byId.values()], client?.catalog).sort(
++      (a, b) => (a.name || "").localeCompare(b.name || "", "fr"),
++    );
++  }, [manifest.value, chosen, data, client, status.value, status.loading]);
+   // The navbar search and the competition directory ignore the selected
+   // scope: they always see every competition of the season.
+   const allCatalog = useMemo(() => {
+@@ -308,7 +390,11 @@ export function FootballProvider({ children, loadData = true }) {
+     return [...byId.values()];
+   }, [client, data, seasonCompetitions, status.value, status.loading]);
+   const fullSeason =
+-    loadData && dataFocus === "all" && !leagueOnly && !progressive;
++    loadData &&
++    !deferSeason &&
++    dataFocus === "all" &&
++    !leagueOnly &&
++    !progressive;
+   function searchData() {
+     if (fullSeason && data) return Promise.resolve(data);
+     return primeResource(`season:${chosen}:all:all:full`, () =>
+@@ -402,7 +488,7 @@ export function FootballProvider({ children, loadData = true }) {
+   // Index of every performance by id, filled in idle time after a load and
+   // completed at once if a card opens before it is ready.
+   const appearanceIndex = useMemo(() => {
+-    const list = data?.appearances || [],
++    const list = performanceData?.appearances || [],
+       index = new Map();
+     let next = 0;
+     const fill = (budget = Infinity) => {
+@@ -417,9 +503,9 @@ export function FootballProvider({ children, loadData = true }) {
+     const get = () => (fill(), index);
+     get.fill = fill;
+     return get;
+-  }, [data]);
++  }, [performanceData]);
+   useEffect(() => {
+-    if (!loadData || !data) return;
++    if (!loadData || !data || deferSeason) return;
+     const cancelProfiles = warmProfiles(data.appearances),
+       idle =
+         window.requestIdleCallback ||
+@@ -508,6 +594,19 @@ export function FootballProvider({ children, loadData = true }) {
+     setPlayer(null);
+     setMatchFilter("all");
+   }
++  const comparison = selectedPerformances.map((row) => row.id);
++  function setComparison(next) {
++    setSelectedPerformances((previous) => {
++      const ids =
++        typeof next === "function" ? next(previous.map((row) => row.id)) : next;
++      return ids
++        .map(
++          (id) =>
++            previous.find((row) => row.id === id) || appearanceIndex().get(id),
++        )
++        .filter(Boolean);
++    });
++  }
+   function toggle(id) {
+     setComparison((list) =>
+       list.includes(id)
+@@ -615,8 +714,19 @@ export function FootballProvider({ children, loadData = true }) {
+     href,
+     navigationHref,
+     comparison,
++    get comparisonRows() {
++      return selectedPerformances.map(
++        (row) => appearanceIndex().get(row.id) || row,
++      );
++    },
+     setComparison,
+     toggle,
++    performanceData,
++    deferredPerformance: perfIntent
++      ? perf
++      : detailPlayer
++        ? { loading: false }
++        : null,
+     get byAppearance() {
+       return appearanceIndex();
+     },
+@@ -636,7 +746,7 @@ export function FootballProvider({ children, loadData = true }) {
+       >
+         {() => (
+           <AsyncState
+-            resource={dataset}
++            resource={deferSeason ? { value: data } : dataset}
+             loading={<LoadingPage href={navigationHref} />}
+           >
+             {(value) =>
+diff --git a/dashboard/frontend/src/services/resources.js b/dashboard/frontend/src/services/resources.js
+index d2f738e4fc..aefad4d22a 100644
+--- a/dashboard/frontend/src/services/resources.js
++++ b/dashboard/frontend/src/services/resources.js
+@@ -26,6 +26,10 @@ function start(key, loader) {
+   }
+   return cache.get(key);
+ }
++/** Returns an already-resolved resource without initiating a request. */
++export function cachedResource(key) {
++  return settled.get(key);
++}
+ /** Starts (or reuses) a resource outside a component, e.g. a background load. */
+ export function primeResource(key, loader) {
+   return start(key, loader).catch((error) => {

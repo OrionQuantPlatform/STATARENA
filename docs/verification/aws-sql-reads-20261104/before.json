@@ -1,0 +1,426 @@
+{
+  "phase": "before",
+  "source": "923bb0ff4a9ab4da8a528fdc7f138b31a5f6f68f",
+  "command": "bun docs/verification/aws-sql-reads-20261104/verify.mjs before",
+  "setup": "PROTOCOL.md; PostgreSQL 18, verified local TLS, migrations 001 and 002; fixtures and expected values in verify.mjs",
+  "requests": [
+    {
+      "route": "/api/archive/matches/m_000001",
+      "expectedStatus": 200,
+      "expected": {
+        "id": "m_000001",
+        "season": "2026/2027",
+        "absent": null,
+        "endpoints": {
+          "match": {
+            "status": 200,
+            "data": {
+              "score": 0
+            },
+            "error": null
+          },
+          "shots": {
+            "status": 200,
+            "data": {
+              "family": "shots",
+              "count": 0,
+              "missing": null,
+              "flag": false
+            },
+            "source": "archive"
+          },
+          "stats": {
+            "status": 429,
+            "error": {
+              "code": "ARCHIVED_REPLACED"
+            }
+          },
+          "misc": {
+            "status": 200,
+            "data": {
+              "family": "misc",
+              "count": 0,
+              "missing": null,
+              "flag": false
+            },
+            "source": "archive"
+          },
+          "events": {
+            "status": 200,
+            "data": {
+              "family": "events",
+              "count": 0,
+              "missing": null,
+              "flag": false
+            },
+            "source": "archive"
+          },
+          "momentum": {
+            "status": 200,
+            "data": false,
+            "error": null
+          },
+          "lineups": {
+            "status": 200,
+            "data": [],
+            "error": null
+          }
+        }
+      },
+      "actualStatus": 200,
+      "actual": {
+        "id": "m_000001",
+        "season": "2026/2027",
+        "absent": null,
+        "endpoints": {
+          "match": {
+            "status": 200,
+            "data": {
+              "score": 0
+            },
+            "error": null
+          },
+          "misc": {
+            "status": 200,
+            "data": {
+              "family": "misc",
+              "count": 0,
+              "missing": null,
+              "flag": false
+            },
+            "source": "archive"
+          },
+          "events": {
+            "status": 200,
+            "data": {
+              "family": "events",
+              "count": 0,
+              "missing": null,
+              "flag": false
+            },
+            "source": "archive"
+          },
+          "shots": {
+            "status": 200,
+            "data": {
+              "family": "shots",
+              "count": 0,
+              "missing": null,
+              "flag": false
+            },
+            "source": "archive"
+          },
+          "stats": {
+            "status": 429,
+            "error": {
+              "code": "ARCHIVED_REPLACED"
+            }
+          },
+          "momentum": {
+            "status": 200,
+            "data": false,
+            "error": null
+          },
+          "lineups": {
+            "status": 200,
+            "data": [],
+            "error": null
+          }
+        }
+      },
+      "bytes": 599,
+      "ms": 114.90029200000004,
+      "metrics": {
+        "sql_count": 23,
+        "pool_wait_ms": 133.575,
+        "sql_ms": 14.584,
+        "sql_rows": 14,
+        "sql_metadata_bytes_estimate": 2890,
+        "cache_metadata_miss": 9,
+        "cache_size_ms": 0.414,
+        "cache_parsed_miss": 9,
+        "cache_body_miss": 9,
+        "object_bytes": 10773,
+        "object_ms": 31.589,
+        "integrity_ms": 0.049,
+        "gzip_ms": 1.752,
+        "gzip_bytes": 1751405,
+        "parse_bytes": 1751405,
+        "parse_ms": 2.07,
+        "cache_resource_miss": 13,
+        "serialize_ms": 0.007,
+        "response_bytes": 599
+      },
+      "objectReads": [
+        {
+          "key": "raw/documents.json.gz",
+          "bytes": 163
+        },
+        {
+          "key": "raw/match.json.gz",
+          "bytes": 1532
+        },
+        {
+          "key": "raw/misc.json.gz",
+          "bytes": 1530
+        },
+        {
+          "key": "raw/events.json.gz",
+          "bytes": 1532
+        },
+        {
+          "key": "raw/shots.json.gz",
+          "bytes": 1531
+        },
+        {
+          "key": "raw/stats.json.gz",
+          "bytes": 1531
+        },
+        {
+          "key": "raw/direct.json.gz",
+          "bytes": 40
+        },
+        {
+          "key": "raw/ordinal.json.gz",
+          "bytes": 1447
+        },
+        {
+          "key": "raw/by-id.json.gz",
+          "bytes": 1467
+        }
+      ],
+      "failures": [
+        "object reads\n\n9 !== 0\n",
+        "application parsed file bytes\n\n1751405 !== 0\n",
+        "cold match SQL statements\n\n23 !== 1\n"
+      ]
+    },
+    {
+      "route": "/api/pitchapi/matches/m_000001/shots",
+      "expectedStatus": 200,
+      "expected": {
+        "data": {
+          "family": "shots",
+          "count": 0,
+          "missing": null,
+          "flag": false
+        }
+      },
+      "actualStatus": 200,
+      "actual": {
+        "data": {
+          "family": "shots",
+          "count": 0,
+          "missing": null,
+          "flag": false
+        }
+      },
+      "bytes": 65,
+      "ms": 1.7246249999998327,
+      "metrics": {
+        "cache_resource_hit": 1,
+        "sql_count": 1,
+        "pool_wait_ms": 0.022,
+        "sql_ms": 0.747,
+        "sql_rows": 1,
+        "sql_metadata_bytes_estimate": 261,
+        "cache_metadata_hit": 2,
+        "cache_parsed_hit": 2,
+        "serialize_ms": 0.001,
+        "response_bytes": 65
+      },
+      "objectReads": [],
+      "failures": []
+    },
+    {
+      "route": "/api/pitchapi/matches/m_000001/stats",
+      "expectedStatus": 429,
+      "expected": {
+        "ok": false,
+        "error": {
+          "code": "ARCHIVED_REPLACED"
+        }
+      },
+      "actualStatus": 429,
+      "actual": {
+        "ok": false,
+        "error": {
+          "code": "ARCHIVED_REPLACED"
+        }
+      },
+      "bytes": 49,
+      "ms": 2.695708000000195,
+      "metrics": {
+        "cache_resource_hit": 1,
+        "serialize_ms": 0.001,
+        "response_bytes": 49
+      },
+      "objectReads": [],
+      "failures": []
+    },
+    {
+      "route": "/api/archive/matches/m_000002",
+      "expectedStatus": 200,
+      "expected": {
+        "endpoints": {
+          "match": {
+            "status": 200,
+            "data": null,
+            "error": null
+          }
+        }
+      },
+      "actualStatus": 200,
+      "actual": {
+        "endpoints": {
+          "match": {
+            "status": 200,
+            "data": null,
+            "error": null
+          }
+        }
+      },
+      "bytes": 63,
+      "ms": 3.375291999999945,
+      "metrics": {
+        "sql_count": 15,
+        "pool_wait_ms": 10.173,
+        "sql_ms": 4.041,
+        "sql_rows": 2,
+        "cache_resource_miss": 13,
+        "sql_metadata_bytes_estimate": 339,
+        "cache_metadata_miss": 1,
+        "cache_size_ms": 0.014,
+        "cache_parsed_miss": 1,
+        "cache_body_miss": 1,
+        "object_bytes": 33,
+        "object_ms": 1.076,
+        "integrity_ms": 0.007,
+        "gzip_ms": 0.044,
+        "gzip_bytes": 13,
+        "parse_bytes": 13,
+        "parse_ms": 0.003,
+        "serialize_ms": 0.001,
+        "response_bytes": 63
+      },
+      "objectReads": [
+        {
+          "key": "raw/null.json.gz",
+          "bytes": 33
+        }
+      ],
+      "failures": [
+        "object reads\n\n1 !== 0\n",
+        "application parsed file bytes\n\n13 !== 0\n",
+        "cold match SQL statements\n\n15 !== 1\n"
+      ]
+    },
+    {
+      "route": "/api/archive/matches/m_000003",
+      "expectedStatus": 503,
+      "actualStatus": 503,
+      "actual": "AWS data unavailable",
+      "bytes": 20,
+      "ms": 5.114332999999988,
+      "metrics": {
+        "sql_count": 1,
+        "pool_wait_ms": 0.032,
+        "sql_ms": 0.315,
+        "sql_rows": 1,
+        "sql_metadata_bytes_estimate": 261,
+        "cache_metadata_hit": 2,
+        "cache_parsed_hit": 2,
+        "response_bytes": 20
+      },
+      "objectReads": [],
+      "failures": []
+    },
+    {
+      "route": "/api/archive/matches/m_000004",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "actual": "Not found",
+      "bytes": 9,
+      "ms": 1.7824590000000171,
+      "metrics": {
+        "sql_count": 14,
+        "pool_wait_ms": 5.248,
+        "sql_ms": 2.757,
+        "sql_rows": 0,
+        "cache_resource_miss": 13,
+        "cache_size_ms": 0.007,
+        "response_bytes": 9
+      },
+      "objectReads": [],
+      "failures": [
+        "cold match SQL statements\n\n14 !== 1\n"
+      ]
+    },
+    {
+      "route": "/api/archive/profiles/players/p_000001",
+      "expectedStatus": 503,
+      "actualStatus": 200,
+      "actual": {
+        "status": 200,
+        "data": true,
+        "error": null
+      },
+      "bytes": 39,
+      "ms": 1.8387500000001182,
+      "metrics": {
+        "cache_resource_miss": 1,
+        "sql_count": 2,
+        "pool_wait_ms": 0.013,
+        "sql_ms": 0.438,
+        "sql_rows": 2,
+        "sql_metadata_bytes_estimate": 341,
+        "cache_metadata_miss": 1,
+        "cache_size_ms": 0.004,
+        "cache_parsed_miss": 1,
+        "cache_body_miss": 1,
+        "object_bytes": 33,
+        "object_ms": 1.006,
+        "integrity_ms": 0.002,
+        "gzip_ms": 0.037,
+        "gzip_bytes": 13,
+        "parse_bytes": 13,
+        "parse_ms": 0.003,
+        "serialize_ms": 0,
+        "response_bytes": 39
+      },
+      "objectReads": [
+        {
+          "key": "raw/stale.json.gz",
+          "bytes": 33
+        }
+      ],
+      "failures": [
+        "Expected values to be strictly equal:\n\n200 !== 503\n",
+        "object reads\n\n1 !== 0\n",
+        "application parsed file bytes\n\n13 !== 0\n"
+      ]
+    },
+    {
+      "route": "/api/archive/profiles/players/p_000002",
+      "expectedStatus": 503,
+      "actualStatus": 503,
+      "actual": "AWS data unavailable",
+      "bytes": 20,
+      "ms": 0.579332999999906,
+      "metrics": {
+        "cache_resource_miss": 1,
+        "sql_count": 1,
+        "pool_wait_ms": 0.014,
+        "sql_ms": 0.32,
+        "sql_rows": 1,
+        "sql_metadata_bytes_estimate": 117,
+        "cache_metadata_hit": 1,
+        "cache_parsed_hit": 1,
+        "response_bytes": 20
+      },
+      "objectReads": [],
+      "failures": []
+    }
+  ],
+  "passed": false
+}

@@ -1,0 +1,2 @@
+{"status": "failed", "cases": 5, "failed": ["typed publication", "idempotent rerun", "atomic rollback", "changed source", "partition isolation"]}
+

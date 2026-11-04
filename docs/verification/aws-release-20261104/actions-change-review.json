@@ -1,0 +1,31 @@
+{
+    "Status": "CREATE_COMPLETE",
+    "ExecutionStatus": "AVAILABLE",
+    "Reason": null,
+    "Changes": [
+        {
+            "Action": "Add",
+            "LogicalId": "GitHubIdentity",
+            "Type": "AWS::IAM::OIDCProvider",
+            "Replacement": null
+        },
+        {
+            "Action": "Add",
+            "LogicalId": "Ingest",
+            "Type": "AWS::IAM::Role",
+            "Replacement": null
+        },
+        {
+            "Action": "Add",
+            "LogicalId": "Monitor",
+            "Type": "AWS::IAM::Role",
+            "Replacement": null
+        },
+        {
+            "Action": "Add",
+            "LogicalId": "RunnerIngress",
+            "Type": "AWS::IAM::ManagedPolicy",
+            "Replacement": null
+        }
+    ]
+}

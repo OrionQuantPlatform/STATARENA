@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-04T02:41:10.487057+00:00",
+  "origin": "https://statarena-analytics.vercel.app",
+  "method": "GET",
+  "path": "/",
+  "status": 200,
+  "vercelError": null,
+  "httpMs": 104.8,
+  "actual": "HTTP response received; rendering not tested"
+}

@@ -1,0 +1,49 @@
+{
+  "command": "node docs/verification/aws-capacity-20261104/run.mjs metric-layout",
+  "setup": "PG18, exact 411,416 published rows exported from RDS + original local heap and equivalent unique indexes. Types and values compared, including dynamic names, present-null and ordering.",
+  "symmetricDifference": 0,
+  "relations": {
+    "group_links": {
+      "rows": 62577,
+      "bytes": 4808704,
+      "indexBytes": 1998848
+    },
+    "h": {
+      "rows": 221906,
+      "bytes": 48242688,
+      "indexBytes": 14049280
+    },
+    "group_dictionary": {
+      "rows": 30519,
+      "bytes": 4661248,
+      "indexBytes": 2523136
+    },
+    "p": {
+      "rows": 189510,
+      "bytes": 42000384,
+      "indexBytes": 12009472
+    },
+    "group_members": {
+      "rows": 236611,
+      "bytes": 15859712,
+      "indexBytes": 5341184
+    },
+    "fact_links": {
+      "rows": 411416,
+      "bytes": 34529280,
+      "indexBytes": 13000704
+    },
+    "fact_dictionary": {
+      "rows": 3970,
+      "bytes": 1277952,
+      "indexBytes": 671744
+    }
+  },
+  "layouts": {
+    "baseline": 90243072,
+    "dictionaryLinks": 35807232,
+    "sharedGroups": 26607616
+  },
+  "rows": 411416,
+  "passed": true
+}

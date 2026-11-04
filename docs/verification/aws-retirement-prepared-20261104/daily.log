@@ -1,0 +1,12 @@
+test_daily_jobs_preempt_historical_backfill_and_force_recent_data (test_daily_refresh.DailyRefreshTest.test_daily_jobs_preempt_historical_backfill_and_force_recent_data) ... ok
+test_force_uses_run_start_not_the_six_hour_cache (test_daily_refresh.DailyRefreshTest.test_force_uses_run_start_not_the_six_hour_cache) ... ok
+test_morning_discovery_queues_only_games_in_the_refresh_window (test_daily_refresh.DailyRefreshTest.test_morning_discovery_queues_only_games_in_the_refresh_window) ... ok
+test_morning_refresh_selects_recent_games_across_leagues (test_daily_refresh.DailyRefreshTest.test_morning_refresh_selects_recent_games_across_leagues) ... ok
+test_morning_seed_does_not_replay_the_full_league_inventory (test_daily_refresh.DailyRefreshTest.test_morning_seed_does_not_replay_the_full_league_inventory) ... ok
+test_recently_discovered_matches_are_refreshed_without_replaying_old_seasons (test_daily_refresh.DailyRefreshTest.test_recently_discovered_matches_are_refreshed_without_replaying_old_seasons) ... ok
+test_updated_provider_goal_changes_the_normalized_player_stat (test_daily_refresh.DailyRefreshTest.test_updated_provider_goal_changes_the_normalized_player_stat) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+OK

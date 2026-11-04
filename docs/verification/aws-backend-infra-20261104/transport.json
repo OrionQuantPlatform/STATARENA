@@ -1,0 +1,17 @@
+{
+  "result": "pass",
+  "command": "node infra/aws-backend/transport-e2e.mjs",
+  "node": "v24.22.2",
+  "cases": [
+    "exact raw query",
+    "gzip bytes",
+    "HEAD length",
+    "conditional 304",
+    "307",
+    "preflight without DB",
+    "invalid requests rejected before application",
+    "7MiB negotiated JSON gzip",
+    "oversize denied, no truncation or forbidden compression"
+  ],
+  "gzipSha256": "5722ce338f5bfda7642249072eb9ab95c31097050ab05101a81e0aa9b32dcb41"
+}

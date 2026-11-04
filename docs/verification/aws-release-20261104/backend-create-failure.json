@@ -1,0 +1,32 @@
+[
+    [
+        "2026-11-04T02:32:19.724000+00:00",
+        "RuntimeSG",
+        "Resource creation cancelled"
+    ],
+    [
+        "2026-11-04T02:32:18.617000+00:00",
+        "Validators",
+        "Resource creation cancelled"
+    ],
+    [
+        "2026-11-04T02:32:18.529000+00:00",
+        "OAC",
+        "Resource creation cancelled"
+    ],
+    [
+        "2026-11-04T02:32:18.450000+00:00",
+        "Logs",
+        "Resource creation cancelled"
+    ],
+    [
+        "2026-11-04T02:32:18.413000+00:00",
+        "Cache",
+        "Resource creation cancelled"
+    ],
+    [
+        "2026-11-04T02:32:18.156000+00:00",
+        "ViewerHeaders",
+        "Resource handler returned message: \"Invalid request provided: AWS::CloudFront::ResponseHeadersPolicy: The parameter CustomHeaders contains Access-Control-Allow-Origin that is a CORS header and cannot be set as custom header. (Service: CloudFront, Status Code: 400, Request ID: 43419aef-94d1-4243-8df5-b01799f1c729) (SDK Attempt Count: 1)\" (RequestToken: 3158f3a1-4a85-3978-fe4b-97bf905b9f52, HandlerErrorCode: InvalidRequest)"
+    ]
+]

@@ -1,0 +1,40 @@
+{
+  "setup": "One verify-full read-only RDS snapshot, excludes all object/fixture/resource payloads. Physical object SHA and source timestamps synthesized at fixture load.",
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python python3 docs/verification/aws-prepare-20261104/capture.py",
+  "tables": {
+    "fixtures": {
+      "rows": 58922,
+      "rawBytes": 1608836,
+      "copySec": 0.78,
+      "sha256": "d8e68c0483012896016bc5288e6d70cd7cffae0388be6f449ca4907562430f8b"
+    },
+    "observations": {
+      "rows": 53842,
+      "rawBytes": 1960590,
+      "copySec": 0.25,
+      "sha256": "9a19ec2d73bce71c97f7924f71d6c813aaadc41518b123ae2f6997361ce18301"
+    },
+    "shards": {
+      "rows": 3719,
+      "rawBytes": 4801101,
+      "copySec": 0.24,
+      "sha256": "7111d05725f4ac479480f3d4134578678312ef6be28152a22dcd070179e2629d"
+    },
+    "objects": {
+      "rows": 306110,
+      "rawBytes": 28221057,
+      "copySec": 1.06,
+      "sha256": "27d05b98e5d4f8d384943fa16cc3b8e3c3b09593fef1cfb160c039a76b53f1f1"
+    },
+    "resources": {
+      "rows": 415426,
+      "rawBytes": 66817921,
+      "copySec": 1.77,
+      "sha256": "ae4fe4bb0fe39bfa44388f56af36be679fa87e7f3473a2a8271706443f1ec083"
+    }
+  },
+  "maxRawBytes": 140000000,
+  "snapshot": "2026-11-04 03:06:15.004918+00:00",
+  "workMem": "4MB",
+  "totalRawBytes": 103409505
+}
