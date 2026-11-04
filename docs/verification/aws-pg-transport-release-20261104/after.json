@@ -1,0 +1,154 @@
+{
+  "phase": "after",
+  "atUtc": "2026-11-04T05:23:20.392452+00:00",
+  "rerun": "python3 docs/verification/aws-pg-transport-release-20261104/public.py after",
+  "url": "https://d317dq37z1tacb.cloudfront.net/api/seasons/partition?season=2026%2F2027&league=l_0ALvwF&limit=100&format=columns",
+  "expected": {
+    "status": 200,
+    "cache": "no-store",
+    "encodedBytes": 431391,
+    "decodedBytes": 1973314,
+    "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403"
+  },
+  "rows": [
+    {
+      "index": 0,
+      "firstObservation": true,
+      "startMs": 1793769803923,
+      "endMs": 1793769808454,
+      "elapsedMs": 4523.47,
+      "status": 200,
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "requestId": "71eef216-dc79-4927-9288-6838f8d915c5",
+      "pop": "CDG50-P5"
+    },
+    {
+      "index": 1,
+      "firstObservation": false,
+      "startMs": 1793769808457,
+      "endMs": 1793769811199,
+      "elapsedMs": 2729.43,
+      "status": 200,
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "requestId": "82490a60-5d73-4771-a1d5-3d2134f711fb",
+      "pop": "CDG50-P5"
+    },
+    {
+      "index": 2,
+      "firstObservation": false,
+      "startMs": 1793769811202,
+      "endMs": 1793769814297,
+      "elapsedMs": 3092.98,
+      "status": 200,
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "requestId": "9843a13e-d65c-46dc-98be-622e6272d345",
+      "pop": "CDG50-P5"
+    },
+    {
+      "index": 3,
+      "firstObservation": false,
+      "startMs": 1793769814299,
+      "endMs": 1793769816631,
+      "elapsedMs": 2326.73,
+      "status": 200,
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "requestId": "509afd32-d83f-4d47-8886-9c08cac78c5f",
+      "pop": "CDG50-P5"
+    },
+    {
+      "index": 4,
+      "firstObservation": false,
+      "startMs": 1793769816634,
+      "endMs": 1793769819875,
+      "elapsedMs": 3235.59,
+      "status": 200,
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "requestId": "167ba02c-7c9f-44f8-9970-9e3b85f61fbe",
+      "pop": "CDG50-P5"
+    },
+    {
+      "index": 5,
+      "firstObservation": false,
+      "startMs": 1793769819878,
+      "endMs": 1793769822109,
+      "elapsedMs": 2224.89,
+      "status": 200,
+      "cache": "no-store",
+      "edgeCache": "Miss from cloudfront",
+      "encodedBytes": 431391,
+      "decodedBytes": 1973314,
+      "sha256": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "requestId": "2078a77e-5fed-44c1-b61b-b80092bfce4f",
+      "pop": "CDG50-P5"
+    }
+  ],
+  "passed": true,
+  "lambda": {
+    "MemorySize": 512,
+    "State": "Active",
+    "LastUpdateStatus": "Successful",
+    "CodeSha256": "vsqhv0VlCTZVXNAaafseQUBuTmDI2kPPMLaOt2+jXpE="
+  },
+  "rds": {
+    "InstanceClass": "db.t4g.micro",
+    "AllocatedGiB": 20,
+    "Status": "available",
+    "Pending": {}
+  },
+  "lambdaReports": [
+    {
+      "timestamp": 1793769808014,
+      "message": "REPORT RequestId: 71eef216-dc79-4927-9288-6838f8d915c5\tDuration: 3456.42 ms\tBilled Duration: 3602 ms\tMemory Size: 512 MB\tMax Memory Used: 197 MB\tInit Duration: 145.07 ms"
+    },
+    {
+      "timestamp": 1793769811034,
+      "message": "REPORT RequestId: 82490a60-5d73-4771-a1d5-3d2134f711fb\tDuration: 2518.10 ms\tBilled Duration: 2519 ms\tMemory Size: 512 MB\tMax Memory Used: 216 MB"
+    },
+    {
+      "timestamp": 1793769813858,
+      "message": "REPORT RequestId: 9843a13e-d65c-46dc-98be-622e6272d345\tDuration: 2393.34 ms\tBilled Duration: 2394 ms\tMemory Size: 512 MB\tMax Memory Used: 228 MB"
+    },
+    {
+      "timestamp": 1793769816557,
+      "message": "REPORT RequestId: 509afd32-d83f-4d47-8886-9c08cac78c5f\tDuration: 2199.47 ms\tBilled Duration: 2200 ms\tMemory Size: 512 MB\tMax Memory Used: 242 MB"
+    },
+    {
+      "timestamp": 1793769819437,
+      "message": "REPORT RequestId: 167ba02c-7c9f-44f8-9970-9e3b85f61fbe\tDuration: 2541.97 ms\tBilled Duration: 2542 ms\tMemory Size: 512 MB\tMax Memory Used: 244 MB"
+    },
+    {
+      "timestamp": 1793769822034,
+      "message": "REPORT RequestId: 2078a77e-5fed-44c1-b61b-b80092bfce4f\tDuration: 2092.44 ms\tBilled Duration: 2093 ms\tMemory Size: 512 MB\tMax Memory Used: 247 MB"
+    }
+  ],
+  "matchingReports": 6,
+  "finishedUtc": "2026-11-04T05:23:46.247148+00:00",
+  "initialMatchingReports": 4,
+  "logsRefreshedUtc": "2026-11-04T05:25:11.885421+00:00"
+}
