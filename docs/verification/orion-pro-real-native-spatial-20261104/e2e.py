@@ -194,6 +194,66 @@ def private_config_boundary():
         assert refused,key;outcomes.append({'configurationKey':key,'refused':True,'sourceCalls':0})
     return {'positivePublicIdentity':{'database':n['database'],'user':n['user'],'host':n['host'],'storageHost':n['storageHost'],'bucket':n['bucket']},'invalidConfigurations':outcomes,'realCredentialsLoaded':False}
 
+def resource_error_guard(run,pg_bin):
+    """Real capture branch + verbatim NEON_SQL on a separate metadata-only PG."""
+    import psycopg
+    from psycopg.types.json import Jsonb
+    from harness import LocalPostgres
+    evidence=run/'resource-error-guard';evidence.mkdir();pg=LocalPostgres(pg_bin,evidence);admin=None
+    cap=load('actual_capture_resource_error',DOC/'capture.py');normalizer_before=sha(NORMALIZER);source_budget_before=sha(DOC/'budget.json')
+    result={'scope':'separate owned LOCAL PostgreSQL metadata fixtures; no real source or sports candidate writes','sourceCalls':0,'httpRequests':0,'captureSha256':sha(DOC/'capture.py'),'neonSql':cap.NEON_SQL,'neonSqlSha256':hashlib.sha256(cap.NEON_SQL.encode()).hexdigest(),'cases':[]}
+    try:
+        pg.start();pg.migration(REPO);admin=psycopg.connect(pg.dsn,autocommit=True)
+        admin.execute('CREATE SCHEMA statarena')
+        admin.execute('CREATE TABLE statarena.objects(path text PRIMARY KEY,size bigint NOT NULL,sha256 bytea NOT NULL,updated_at timestamptz NOT NULL)')
+        admin.execute("CREATE TABLE statarena.resources(endpoint text NOT NULL,params text NOT NULL,status smallint NOT NULL,ref jsonb,error jsonb,updated_at timestamptz NOT NULL,PRIMARY KEY(endpoint,params))")
+        admin.execute('GRANT USAGE ON SCHEMA statarena TO orion_pro_ingest');admin.execute('GRANT SELECT ON ALL TABLES IN SCHEMA statarena TO orion_pro_ingest')
+        n=MANIFEST['neon'];updated=datetime(2020,1,1,tzinfo=timezone.utc)
+        admin.execute('INSERT INTO statarena.objects VALUES(%s,%s,%s,%s)',(n['path'],n['physicalBytes'],bytes.fromhex(n['physicalSha256']),updated))
+        fixtures=[('sql_null',None,200,True),('json_null','null',200,True),('object','{"synthetic_error":"present"}',200,False),('empty_object','{}',200,False),('string','"synthetic_error"',200,False),('empty_string','""',200,False),('false','false',200,False),('true','true',200,False),('empty_array','[]',200,False),('array','[1]',200,False),('zero','0',200,False),('number','1',200,False),('status404_sql_null',None,404,False),('status404_json_null','null',404,False)]
+        original_execute=cap.execute;observed={};reached=[];aws_calls=[]
+        m=json.loads(json.dumps(MANIFEST));m['neon'].update(database='postgres',user='orion_pro_ingest')
+        def local_connect(origin,manifest,private):
+            if origin=='aws':
+                class MetadataOnly:
+                    def rollback(self):pass
+                    def close(self):pass
+                return MetadataOnly()
+            connection=psycopg.connect(pg.dsn,options=cap.OPTIONS,autocommit=False);connection.execute('SET ROLE orion_pro_ingest');return connection
+        def local_verify(connection,origin,manifest,row):
+            if origin=='neon':assert row[:6]==('postgres','orion_pro_ingest','on','repeatable read','8s','1s')
+        def execute_adapter(connection,budget,origin,name,sql,params=(),body_column=None):
+            if origin=='neon':
+                assert sql==cap.NEON_SQL,'Must execute actual NEON_SQL, not a substitute'
+                rows=original_execute(connection,budget,origin,name,sql,params,body_column);observed.update(flag=rows[0][14],localIdentity=rows[0][:6]);return rows
+            aws_calls.append(name)
+            if name=='identity':return [('statarena_prod','statarena_ingest','on','repeatable read','8s','1s','synthetic_control_plane_snapshot',updated,True)]
+            if name=='three_exact_current_indexed_documents':
+                pointers=m['aws']['partitions'];docs=[(m['aws']['manifest']['path'],m['aws']['manifest']['physicalSha256'],{'pointers':pointers})]+[(p['path'],p['sha256'],{'tables':{'players':{'keys':['playerId'],'rows':[]},'teams':{'keys':['id'],'rows':[]}}}) for p in pointers]
+                return [(path,h,'ready',0,0,updated,json.dumps(body)) for path,h,body in docs]
+            if name=='exact_scoped_profile_resource_metadata':return [('[]',0,2)]
+            raise AssertionError('Unexpected synthetic AWS control-plane request')
+        def no_http(manifest,budget,private):
+            reached.append(True);return {'data':{'match_id':n['matchId'],'grid':{'frame':n['frame']}}},{'head':{'VersionId':None},'sourceUrl':'https://synthetic-control-plane.invalid/no-request'}
+        cap.connect=local_connect;cap.verify_connection=local_verify;cap.execute=execute_adapter;cap.neon_object=no_http
+        for label,literal,status,expected in fixtures:
+            admin.execute('DELETE FROM statarena.resources')
+            error=None if literal is None else Jsonb(json.loads(literal))
+            admin.execute('INSERT INTO statarena.resources VALUES(%s,%s,%s,%s,%s,%s)',(n['endpoint'],n['params'],status,Jsonb({'path':n['path']}),error,updated))
+            ledger=evidence/('local-'+label+'-budget.json');ledger.write_text(json.dumps(initial_budget())+'\n');budget=cap.Budget(ledger,expected_selects=0,expected_decoded_bytes=0);budget.claim();reached.clear();observed.clear();aws_calls.clear();reason=None
+            try:
+                snapshot=cap.capture(m,budget,{});snapshot.clear();accepted=True
+            except cap.CaptureError as error:accepted=False;reason=str(error)
+            assert accepted==bool(reached),'HTTP reach sentinel must reflect actual capture branch'
+            budget.finish('local_fixture_complete')
+            result['cases'].append({'case':label,'jsonErrorLiteral':literal,'status':status,'expectedAccepted':expected,'actualAccepted':accepted,'passed':accepted==expected,'projectedErrorFlag':observed['flag'],'actualLocalIdentity':observed['localIdentity'],'httpSentinelReached':bool(reached),'actualHttpRequests':0,'reason':reason,'actualNeonSqlExecuted':True,'awsFixtureCalls':list(aws_calls)})
+        result['mismatches']=[c['case'] for c in result['cases'] if not c['passed']];result['status']='pass' if not result['mismatches'] else 'fail'
+        return result
+    finally:
+        if admin:admin.close()
+        result['cleanup']=pg.cleanup();result['normalizerUnchanged']=sha(NORMALIZER)==normalizer_before;result['failedSourceBudgetUnchanged']=sha(DOC/'budget.json')==source_budget_before
+        (evidence/'result.json').write_text(json.dumps(result,indent=2,default=str)+'\n')
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--label',default='prepare');p.add_argument('--prepare-only',action='store_true');p.add_argument('--source-socket',type=Path);p.add_argument('--worker',action='store_true');p.add_argument('--evidence',type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));args=p.parse_args()
     if args.worker:
@@ -204,14 +264,14 @@ def main():
         print(json.dumps({'status':'pass','coreReused':result['core']['reused'],'spatialReused':result['spatial'].get('reused',False),'sourceCalls':0}));return 0
     if not args.prepare_only and args.source_socket is None:p.error('Explicit --prepare-only or --source-socket required; no source fallback')
     run=DOC/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')+'-'+args.label);run.mkdir(parents=True);(run/'inputs').mkdir()
-    for q in [Path(__file__),DOC/'PLAN.md',DOC/'PROTOCOL.md',DOC/'MANIFEST.json',DOC/'FIELDS.json',DOC/'capture.py',DOC/'candidate.py',NORMALIZER,PILOT/'harness.py']:
+    for q in [Path(__file__),DOC/'PLAN.md',DOC/'PROTOCOL.md',DOC/'ERROR_GUARD_PROTOCOL.md',DOC/'MANIFEST.json',DOC/'FIELDS.json',DOC/'capture.py',DOC/'candidate.py',NORMALIZER,PILOT/'harness.py']:
         if q.exists():shutil.copy2(q,run/'inputs'/q.name)
-    old_ledger=REPO/MANIFEST['oldLedger']['path'];before_old=sha(old_ledger);assert before_old==MANIFEST['oldLedger']['sha256']
+    old_ledger=REPO/MANIFEST['oldLedger']['path'];before_old=sha(old_ledger);assert before_old==MANIFEST['oldLedger']['sha256'];failed_budget_before=sha(DOC/'budget.json');root_metadata=DOC/'neon-error-metadata/result.json';root_metadata_before=sha(root_metadata)
     sys.path.insert(0,str(PILOT));from harness import LocalPostgres
     import psycopg
     pg=LocalPostgres(args.pg_bin,run);conn=None;blocked=None;snapshot=None;parts=None
     report={'command':'PYTHONPATH=/tmp/statarena-publication-test-python '+shlex.join([sys.executable,*sys.argv]),'environment':'owned LOCAL PG18.6; real candidate has source-derived facts only','normalizerSha256':sha(NORMALIZER),'testSha256':sha(Path(__file__)),'manifestSha256':sha(DOC/'MANIFEST.json'),'fullAcceptance':False,'sourceCallsByTest':0,'realNativeStatesCompared':0,'realTripletsCompared':0,'cases':[]}
-    cases=['empty_local_bootstrap','source_startup_contract','future_captured_ledger_guard','capture_checkpoint_cli','global_budget_guards','profile_metadata_admission','private_origin_configuration','real_core_import','independent_native31','real_spatial_import_and_oracle','fresh_process_noop']
+    cases=['empty_local_bootstrap','source_startup_contract','future_captured_ledger_guard','capture_checkpoint_cli','global_budget_guards','profile_metadata_admission','private_origin_configuration','resource_error_null_contract','real_core_import','independent_native31','real_spatial_import_and_oracle','fresh_process_noop']
     try:
         pg.start();pg.migration(REPO);conn=psycopg.connect(pg.dsn,autocommit=True);conn.execute('SET ROLE orion_pro_ingest')
         for case in cases:
@@ -247,6 +307,8 @@ def main():
                         outcomes.append({'case':label,'admitted':accepted,'serverRowCount':row[1],'serverEncodedBytes':row[2],'sql':sql,'sourceCalls':0})
                     actual={'outcomes':outcomes,'fixtures':'SELECT-only synthetic resource metadata; no sports facts or rows inserted'}
                 elif case=='private_origin_configuration':actual=private_config_boundary()
+                elif case=='resource_error_null_contract':
+                    actual=resource_error_guard(run,args.pg_bin);assert actual['status']=='pass',{'realCaptureGuardMismatches':actual.get('mismatches')}
                 elif case=='real_core_import':
                     cap=load('approved_real_capture',DOC/'capture.py');candidate=load('approved_real_candidate',DOC/'candidate.py');snapshot=cap.fetch_snapshot(args.source_socket);parts=unpack_independent(snapshot);actual=candidate.import_candidate(conn,run,snapshot,core_only=True);assert not actual['core']['reused'];report['sourceCaptureBudget']=snapshot['captureBudget'];report['sourceMemberCounts']={t:sum(len(x['tables'].get(t,[])) for x in parts) for t in ['fixtures','matches','performances','shots']}
                 elif case=='independent_native31':
@@ -261,6 +323,6 @@ def main():
                 report['cases'].append({'case':case,'status':'fail','error':str(error) if isinstance(error,AssertionError) else type(error).__name__,'sqlstate':getattr(error,'sqlstate',None)});print('FAIL '+case+': '+type(error).__name__,flush=True);blocked='Prerequisite '+case+' failed'
     finally:
         if conn:conn.close()
-        report['cleanup']=pg.cleanup();report['oldLedgerByteIdentical']=sha(old_ledger)==before_old;assert report['oldLedgerByteIdentical'];report['counts']={s:sum(c['status']==s for c in report['cases']) for s in ['pass','fail','unverified']};report['status']='fail' if report['counts']['fail'] else 'prepared_real_unverified' if args.prepare_only else 'pass';(run/'result.json').write_text(json.dumps(report,indent=2,default=str)+'\n');print(json.dumps({'status':report['status'],'counts':report['counts'],'evidence':str(run)}),flush=True)
+        report['cleanup']=pg.cleanup();report['oldLedgerByteIdentical']=sha(old_ledger)==before_old;report['failedSourceBudgetByteIdentical']=sha(DOC/'budget.json')==failed_budget_before;report['rootMetadataReceiptByteIdentical']=sha(root_metadata)==root_metadata_before;assert report['oldLedgerByteIdentical'] and report['failedSourceBudgetByteIdentical'] and report['rootMetadataReceiptByteIdentical'];report['counts']={s:sum(c['status']==s for c in report['cases']) for s in ['pass','fail','unverified']};report['status']='fail' if report['counts']['fail'] else 'prepared_real_unverified' if args.prepare_only else 'pass';(run/'result.json').write_text(json.dumps(report,indent=2,default=str)+'\n');print(json.dumps({'status':report['status'],'counts':report['counts'],'evidence':str(run)}),flush=True)
     return 1 if report['status']=='fail' else 0
 if __name__=='__main__':raise SystemExit(main())

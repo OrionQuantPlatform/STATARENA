@@ -78,7 +78,7 @@ def profile_envelope_query(inner):
  SELECT CASE WHEN octet_length(payload)<=%s THEN payload END,row_count,octet_length(payload) FROM encoded"""
 NEON_SQL="""SELECT current_database(),current_user,current_setting('transaction_read_only'),current_setting('transaction_isolation'),current_setting('statement_timeout'),current_setting('lock_timeout'),pg_current_snapshot()::text,clock_timestamp(),
 r.status,CASE WHEN octet_length(coalesce(r.ref->>'path',r.ref->>'shard'))<=2048 THEN coalesce(r.ref->>'path',r.ref->>'shard') END,
-CASE WHEN octet_length(r.ref->>'ordinal')<=32 THEN r.ref->>'ordinal' END,encode(o.sha256,'hex'),o.size,o.updated_at,r.error IS NOT NULL
+CASE WHEN octet_length(r.ref->>'ordinal')<=32 THEN r.ref->>'ordinal' END,encode(o.sha256,'hex'),o.size,o.updated_at,(r.error IS NOT NULL AND r.error <> 'null'::jsonb)
 FROM (SELECT 1) one LEFT JOIN statarena.resources r ON r.endpoint=%s AND r.params=%s
 LEFT JOIN statarena.objects o ON o.path=coalesce(r.ref->>'path',r.ref->>'shard')"""
 
