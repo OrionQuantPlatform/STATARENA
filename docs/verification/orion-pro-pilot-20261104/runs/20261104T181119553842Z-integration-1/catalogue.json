@@ -1,0 +1,21 @@
+{
+  "totals": {
+    "tables": 94,
+    "columns": 1709,
+    "primary_keys": 94,
+    "foreign_keys": 431
+  },
+  "active_dependency_closure": [],
+  "deferred": [
+    "analytics.feature_versions",
+    "analytics.model_versions",
+    "analytics.player_match_scores",
+    "analytics.player_window_scores",
+    "analytics.published_score_runs",
+    "analytics.scoring_run_ranking_inputs",
+    "analytics.scoring_runs",
+    "analytics.scouting_features",
+    "analytics.team_match_scores"
+  ],
+  "errors": []
+}

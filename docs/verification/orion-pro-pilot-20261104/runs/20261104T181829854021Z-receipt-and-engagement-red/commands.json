@@ -1,0 +1,134 @@
+[
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/data",
+      "--auth=trust",
+      "--no-locale",
+      "--encoding=UTF8"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 759.429,
+    "stdout": "001-initdb.stdout.log",
+    "stderr": "001-initdb.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/runs/20261104T181829854021Z-receipt-and-engagement-red/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 62819 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/socket -c fsync=on",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 133.444,
+    "stdout": "002-postgres-start.stdout.log",
+    "stderr": "002-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_migrate.py",
+      "--local",
+      "--target",
+      "013"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 850.508,
+    "stdout": "003-migration.stdout.log",
+    "stderr": "003-migration.stderr.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_migrate.py",
+      "--local",
+      "--target",
+      "013"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 244.218,
+    "stdout": "004-migration.stdout.log",
+    "stderr": "004-migration.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 108.344,
+    "stdout": "005-postgres-stop.stdout.log",
+    "stderr": "005-postgres-stop.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/runs/20261104T181829854021Z-receipt-and-engagement-red/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 62819 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/socket -c fsync=on",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 134.518,
+    "stdout": "006-postgres-start.stdout.log",
+    "stderr": "006-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_migrate.py",
+      "--local",
+      "--target",
+      "013",
+      "--rollback-to",
+      "012"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 848.36,
+    "stdout": "007-rollback-012.stdout.log",
+    "stderr": "007-rollback-012.stderr.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_migrate.py",
+      "--local",
+      "--target",
+      "013"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 387.197,
+    "stdout": "008-migration.stdout.log",
+    "stderr": "008-migration.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-1ef8cqyo/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 111.2,
+    "stdout": "009-postgres-stop.stdout.log",
+    "stderr": "009-postgres-stop.stderr.log"
+  }
+]
