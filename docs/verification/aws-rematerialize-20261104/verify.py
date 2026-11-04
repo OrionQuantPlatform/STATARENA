@@ -198,6 +198,7 @@ with psycopg.connect(url, autocommit=True) as db:
         "computed/matchdays/" + season.replace("/", "-") + ".json.gz",
         {league: {mid: {"name": "9", "playoff": False}}},
     )
+    initial_bootstrap_sha = sql1("select encode(sha256,'hex') from statarena.objects where path='old-packed'")
     db.execute(
         "INSERT INTO statarena.objects(path,size,sha256,etag,content_type) VALUES('raw/avatar.webp',11,%s,'abc','image/webp')",
         (b"a" * 32,),
@@ -248,6 +249,49 @@ with psycopg.connect(url, autocommit=True) as db:
         }
 
     case("all from archived source", bootstrap)
+
+    def bootstrap_receipt():
+        row = db.execute("select source_path,sha256 from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s", (season, league)).fetchone()
+        check(row == ('old-packed', initial_bootstrap_sha), 'Initial physical source SHA was not captured with the content')
+        return {'source_path': row[0], 'physical_sha256': row[1]}
+
+    case("first construction records actual bootstrap source", bootstrap_receipt)
+
+    def manifest_only(bad_pin=False):
+        new_league = 'l_ZZ8811' if bad_pin else 'l_ZZ8812'
+        new_season = '1888/1889'
+        path = 'manifest-only-' + new_league
+        original = copy.deepcopy(store.inputs[index])
+        input_(path, {'tables': {k: {'keys': [], 'rows': []} for k in bare_tables}, 'meta': {}, 'metrics': []})
+        physical = sql1("select encode(sha256,'hex') from statarena.objects where path=%s", (path,))
+        new = copy.deepcopy(original)
+        new['seasons'].append({'id': new_season, 'chunks': [{'leagueId': new_league, 'path': path, 'sha256': '0' * 64 if bad_pin else physical}]})
+        input_(index, new)
+        try:
+            try:
+                r = worker()
+            except ValueError:
+                check(bad_pin, 'Valid bootstrap failed')
+                check(sql1('select count(*) from statarena_app.partitions where season=%s and league_id=%s', (new_season, new_league)) == 0, 'Bad pin published a partition')
+                check(sql1('select count(*) from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (new_season, new_league)) == 0, 'Bad pin committed a receipt')
+                check(sql1('select count(*) from statarena_app.publication_jobs where season=%s and league_id=%s', (new_season, new_league)) == 1, 'Bad pin lost queued work')
+                return {'bad_pin_rejected': True, 'partition_and_receipt_rolled_back': True, 'queue_retained': True}
+            check(not bad_pin, 'Bad pinned source was ignored or accepted')
+            check(r['partitions'] == 1, 'New manifest-only scope missed without --all')
+            row = db.execute('select source_path,sha256,recorded_at from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (new_season, new_league)).fetchone()
+            check(row and row[:2] == (path, physical), 'Manifest-only bootstrap receipt missing/wrong')
+            again = worker()
+            check(again['partitions'] == 0 and row == db.execute('select source_path,sha256,recorded_at from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (new_season, new_league)).fetchone(), 'Unchanged scope was rebuilt or receipt rewritten')
+            return {'first_partitions': r['partitions'], 'repeat_partitions': again['partitions'], 'source_sha256': physical}
+        finally:
+            input_(index, original)
+            if sql1("select to_regclass('statarena_app.partition_bootstrap_sources') is not null"):
+                db.execute('delete from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (new_season, new_league))
+            db.execute('delete from statarena_app.partitions where season=%s and league_id=%s', (new_season, new_league))
+            db.execute('delete from statarena_app.publication_jobs where season=%s and league_id=%s', (new_season, new_league))
+
+    case("new manifest-only scope builds without forced requeue", manifest_only)
+    case("bad bootstrap pin leaves queue and no committed receipt", lambda: manifest_only(True))
 
     def precedence():
         newer = copy.deepcopy(endpoints["match"])
@@ -325,6 +369,7 @@ with psycopg.connect(url, autocommit=True) as db:
     case("upcoming nested/parameter variants and provider errors", nested)
 
     def partial():
+        bootstrap_before = db.execute('select source_path,sha256,recorded_at from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (season, league)).fetchone()
         old = db.execute(
             "select id,goals from statarena_app.appearances order by id"
         ).fetchall()
@@ -361,6 +406,7 @@ with psycopg.connect(url, autocommit=True) as db:
             "partial family downgraded typed coverage/context: "
             + repr((before, after)),
         )
+        check(bootstrap_before == db.execute('select source_path,sha256,recorded_at from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (season, league)).fetchone(), 'Partial typed refresh fabricated/replaced its bootstrap source receipt')
         return {"preserved": len(old), "context": after}
 
     case("partial refresh reuses typed prior rows", partial)
