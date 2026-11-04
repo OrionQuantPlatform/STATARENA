@@ -89,6 +89,11 @@ def workflow(name):
             if name in ('daily-sync','historical-backfill'): check('--skip-materialize' in text,'inline legacy publication not disabled')
         for job in obj['jobs'].values():
             if not any(s.get('uses')=='./.github/actions/aws-database' for s in job.get('steps',[])): continue
+            bootstrap=next(s for s in job['steps'] if s.get('uses')=='./.github/actions/aws-database')
+            if bootstrap.get('with',{}).get('mode')=='ingest':
+                group=job.get('concurrency',obj.get('concurrency'))
+                check(group=={'group':'statarena-aws-ingestion','cancel-in-progress':False,'queue':'max'},
+                      'AWS writers must share the dedicated non-cancelling AWS queue: '+str(group))
             co=next(s for s in job['steps'] if s.get('uses','').startswith('actions/checkout'))
             sparse=co.get('with',{}).get('sparse-checkout','')
             check(not sparse or '.github/actions/aws-database' in sparse,'action missing in sparse checkout')
