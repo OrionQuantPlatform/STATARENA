@@ -24,3 +24,5 @@ PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_reader
 Restent ouverts : import complet et fidèle, publisher réel, autres familles et routes métier, intégration React, parcours desktop/mobile, déploiement et comparaison représentative sur RDS. La représentation v1 projette uniquement les coordonnées `acting_ltr` démontrées en mètres ; les autres repères restent explicitement non projetés avec leurs coordonnées sources typées.
 
 Commit proposé : `feat: serve frozen Pro match summaries and lazy details`.
+
+CI du commit `523fbcb35c` : [run41911385349](https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41911385349), trois jobs réussis ; huit suites Pro totalisant121 cas, en82 secondes pour ce job. [Reçu et limites](../orion-pro-readers-20261104/CI_BILAN.json). Cette preuve source-free ne vaut pas déploiement ou benchmark production.

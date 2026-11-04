@@ -22,3 +22,5 @@ PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_fronte
 Les processus HTTP/client/PostgreSQL détenus ont été arrêtés et le répertoire PostgreSQL supprimé. Le RED initial sans module reste conservé. [Protocole et limites](PROTOCOL.md). L'intégration React et son E2E navigateur constituent le lot suivant ; le frontend de production conserve son comportement actuel.
 
 Commit proposé : `feat: pin frontend match pages and lazy details to published representations`.
+
+CI du commit `523fbcb35c` : [run41911385349](https://github.com/OrionQuantPlatform/STATARENA/actions/runs/41911385349), trois jobs réussis ; huit suites Pro totalisant121 cas, en82 secondes pour ce job. [Reçu et limites](../orion-pro-readers-20261104/CI_BILAN.json). Cette preuve source-free ne vaut pas déploiement ou benchmark production.
