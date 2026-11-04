@@ -1,0 +1,176 @@
+{
+  "setup": "Actual owned-local Pro API and SQL publication fixture; no mocked football responses",
+  "cases": [
+    {
+      "case": "manifest_edition_validation",
+      "status": "pass",
+      "actual": {
+        "token": "pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044"
+      }
+    },
+    {
+      "case": "one_page_then_explicit_next",
+      "status": "pass",
+      "actual": {
+        "ids": [
+          "m_000001",
+          "m_000002",
+          "m_000003"
+        ],
+        "listRequests": 2
+      }
+    },
+    {
+      "case": "summary_coalescing_and_cache_isolation",
+      "status": "pass",
+      "actual": {
+        "httpRequests": 1,
+        "shotsBeforeIntent": 0
+      }
+    },
+    {
+      "case": "lazy_shots_and_native_empty_unknown",
+      "status": "pass",
+      "actual": {
+        "present": true,
+        "empty": true,
+        "unavailableStatus": 404
+      }
+    },
+    {
+      "case": "oversized_response_preserves_small_entry",
+      "status": "pass",
+      "actual": {
+        "smallBytes": 145,
+        "largeBytes": 682,
+        "budget": 512
+      }
+    },
+    {
+      "case": "wrong_response_token_rejects_and_retries",
+      "status": "pass",
+      "actual": {
+        "faultInjection": "One deliberately altered token over an actual local API response",
+        "rejected": true,
+        "retrySucceeded": true
+      }
+    },
+    {
+      "case": "correction_keeps_frozen_and_independent_caches",
+      "status": "pass",
+      "actual": {
+        "affectedChanged": true,
+        "oldAndCExtraRequests": 0
+      }
+    },
+    {
+      "case": "resource_keys_include_version",
+      "status": "pass",
+      "actual": {
+        "distinctAffected": true,
+        "stableIndependent": true
+      }
+    }
+  ],
+  "requests": [
+    {
+      "id": "frontend-1",
+      "url": "http://127.0.0.1:54295/api/dashboard/manifest",
+      "status": 200,
+      "bytes": 2361,
+      "bodySha256": "3d1a574f95cefd75993b357ea32720f1ab37a6794faaa052d8dfc94a76935b10"
+    },
+    {
+      "id": "frontend-2",
+      "url": "http://127.0.0.1:54295/api/fixtures?league=l_000001&limit=2&season=2024%2F2025&v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 1250,
+      "bodySha256": "d8cb675f404a8621dba0ebb616706420a9302ad7de907f6818c6c1628f323ca0"
+    },
+    {
+      "id": "frontend-3",
+      "url": "http://127.0.0.1:54295/api/fixtures?cursor=eyJzY29wZSI6IjNiOTExMTBmNDJkMzYzNjIzM2RlNTY4YTY4NWJmMmMwYmZjOTdlODg5YTA5YjgyMWEwZmMxMmFhMjcyYzViODMiLCJnZW5lcmF0aW9uIjoicHJvMS4xLjg2NTJhYzYxYmI3ZjgzYTg1MDhkMzUyZjExNTZmNDA5NDlmMGQ5M2QxYTQyZGJhOWNlNTUxNjdjZjNhNTUwNDQiLCJkYXkiOiIyMDI2LTExLTA0IiwiaWQiOiJtXzAwMDAwMiJ9&league=l_000001&limit=2&season=2024%2F2025&v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 571,
+      "bodySha256": "7f5b765d8e747c1d10789c300bee767f03a43cb673482b1d7348c67817615301"
+    },
+    {
+      "id": "frontend-4",
+      "url": "http://127.0.0.1:54295/api/matches/m_000001/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 682,
+      "bodySha256": "983f593bc891aee839c075e35f05ab0d479339aad4d6e6d38bf71f9f97f339c5"
+    },
+    {
+      "id": "frontend-5",
+      "url": "http://127.0.0.1:54295/api/matches/m_000005/summary?v=pro1.3.3e7968f85c5cb562308a610dd09831bb7e157c04b4abd285d4f83072ad45eb8b",
+      "status": 200,
+      "bytes": 677,
+      "bodySha256": "6f23b81adafad5af0ab0f40f81ec34f108c0e08319c0a5b0a3bfa91fb411992f"
+    },
+    {
+      "id": "frontend-6",
+      "url": "http://127.0.0.1:54295/api/pitchapi/matches/m_000001/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 665,
+      "bodySha256": "80dd5cbf335907bcd44ffa527fad1f744e4ca1878c35825505217a0ecae2332d"
+    },
+    {
+      "id": "frontend-7",
+      "url": "http://127.0.0.1:54295/api/pitchapi/matches/m_000002/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 145,
+      "bodySha256": "73453bd7d95eec1e6bb4973aa8e7b02e3bedd30953cd7eae303c7052e9dbbec5"
+    },
+    {
+      "id": "frontend-8",
+      "url": "http://127.0.0.1:54295/api/pitchapi/matches/m_000003/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 404,
+      "bytes": 121,
+      "bodySha256": "88c09f1a22bbc2bef12841b05368def4ee6776a6783a717ad6532211c9e1f0a5"
+    },
+    {
+      "id": "frontend-9",
+      "url": "http://127.0.0.1:54295/api/pitchapi/matches/m_000002/shots?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 145,
+      "bodySha256": "73453bd7d95eec1e6bb4973aa8e7b02e3bedd30953cd7eae303c7052e9dbbec5"
+    },
+    {
+      "id": "frontend-10",
+      "url": "http://127.0.0.1:54295/api/matches/m_000001/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 682,
+      "bodySha256": "983f593bc891aee839c075e35f05ab0d479339aad4d6e6d38bf71f9f97f339c5"
+    },
+    {
+      "id": "frontend-11",
+      "url": "http://127.0.0.1:54295/api/matches/m_000001/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 682,
+      "bodySha256": "983f593bc891aee839c075e35f05ab0d479339aad4d6e6d38bf71f9f97f339c5"
+    },
+    {
+      "id": "frontend-12",
+      "url": "http://127.0.0.1:54295/api/matches/m_000001/summary?v=pro1.1.8652ac61bb7f83a8508d352f1156f40949f0d93d1a42dba9ce55167cf3a55044",
+      "status": 200,
+      "bytes": 682,
+      "bodySha256": "983f593bc891aee839c075e35f05ab0d479339aad4d6e6d38bf71f9f97f339c5"
+    },
+    {
+      "id": "frontend-13",
+      "url": "http://127.0.0.1:54295/api/dashboard/manifest",
+      "status": 200,
+      "bytes": 2361,
+      "bodySha256": "7b5b46da1d5f9e9f15c4b45772a119f92f03ef6266872d12766729cce1e14a8e"
+    },
+    {
+      "id": "frontend-14",
+      "url": "http://127.0.0.1:54295/api/matches/m_000001/summary?v=pro1.4.7702b7f692882931c34a9a928daad6cca451ad158304bbf8ee66c95b7af2c68d",
+      "status": 200,
+      "bytes": 689,
+      "bodySha256": "b8957e22e97c5d85b434f031e65a7c357530c2f2c72a7ca49f65e8abd75367f8"
+    }
+  ],
+  "status": "pass"
+}
