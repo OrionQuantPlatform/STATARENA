@@ -37,3 +37,17 @@ unzip -o /tmp/statarena-wire-zip/b5131a8329297deab127fc901a5e11c645a971b3e5ab208
 The baseline command deliberately exits nonzero on the old version because compact format is rejected. The initial disposable fixture setup was corrected to use the seed workflow’s explicitly required local database name. [Original fixture guard failure](disposable-setup-before.json)
 
 Deploy the backend before a frontend that requests the new format. Verify on the new preview that the network responses use format=columns, that both complete partition counts match RDS, and that the match tabs and mobile player totals remain correct.
+
+## Dynamic metric names, 4 November 2026
+
+The record endpoint returned both numeric own properties for the SQL metric names `__proto__` and `constructor`. The original compact response lost `__proto__` in six of six checks on commit 3ef23f6f2e. The corrected codec passed all six, covering constant, varying and missing values with code generation enabled and blocked. The output rows retain ordinary Object.prototype. The rerun of both published Ohio partitions also passed all 16 checks. [Before](own-keys-before.json) · [After](own-keys-after.json) · [Live partitions](own-keys-live.json)
+
+Replacement ZIP `17c9cd0f5a01bb8054efe0ae07a9f9f9252243927bd3acd6faa6591bcf27a757` passed five dense GETs, HEAD 200 and conditional GET/HEAD 304 using the packaged Node 24 adapter. Peak local RSS was 295.8 MiB. The frontend production build passed. [Zip receipt](own-keys-zip-node24.json) · [Build](own-keys-next-build.log)
+
+```sh
+bun docs/verification/aws-wire-pages/disposable.mjs
+bun docs/verification/aws-wire-pages/verify.mjs after
+BUILD_NODE=/tmp/statarena-node24-20261104 python3 infra/aws-backend/package.py /tmp/statarena-wire-safe-zip
+unzip -o /tmp/statarena-wire-safe-zip/17c9cd0f5a01bb8054efe0ae07a9f9f9252243927bd3acd6faa6591bcf27a757.zip -d /tmp/statarena-wire-safe-zip
+WIRE_ZIP_DIR=/tmp/statarena-wire-safe-zip /tmp/statarena-node24-20261104 --max-old-space-size=256 docs/verification/aws-wire-pages/zip.mjs
+```

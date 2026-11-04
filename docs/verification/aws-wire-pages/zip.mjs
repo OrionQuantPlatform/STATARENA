@@ -14,7 +14,7 @@ Object.assign(process.env, {
   DATABASE_URL: url.href,
   STATARENA_DATA_PROVIDER: "aws",
   DATABASE_POOL_MAX: "1",
-  LAMBDA_TASK_ROOT: "/tmp/statarena-wire-zip",
+  LAMBDA_TASK_ROOT: process.env.WIRE_ZIP_DIR || "/tmp/statarena-wire-zip",
   STATARENA_METRICS_SAMPLE_RATE: "0",
 });
 const { handler } = await import(
@@ -75,7 +75,7 @@ for (const [method, headers, status] of [
 }
 report.passed = true;
 writeFileSync(
-  new URL("zip-node24.json", import.meta.url),
+  new URL(process.env.WIRE_ZIP_DIR ? "own-keys-zip-node24.json" : "zip-node24.json", import.meta.url),
   JSON.stringify(report, null, 2) + "\n",
 );
 console.log(JSON.stringify(report));

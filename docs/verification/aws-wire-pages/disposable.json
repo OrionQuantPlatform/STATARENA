@@ -7,6 +7,232 @@
       "sourceAbsentFields": [
         "newObservedMetric"
       ]
+    },
+    {
+      "propertyChecks": [
+        {
+          "kind": "constant",
+          "csp": false,
+          "expected": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            }
+          ],
+          "actual": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            }
+          ],
+          "ok": true
+        },
+        {
+          "kind": "constant",
+          "csp": true,
+          "expected": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            }
+          ],
+          "actual": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            }
+          ],
+          "ok": true
+        },
+        {
+          "kind": "varying",
+          "csp": false,
+          "expected": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 22,
+                "constructor": 22
+              }
+            }
+          ],
+          "actual": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 22,
+                "constructor": 22
+              }
+            }
+          ],
+          "ok": true
+        },
+        {
+          "kind": "varying",
+          "csp": true,
+          "expected": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 22,
+                "constructor": 22
+              }
+            }
+          ],
+          "actual": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 22,
+                "constructor": 22
+              }
+            }
+          ],
+          "ok": true
+        },
+        {
+          "kind": "missing",
+          "csp": false,
+          "expected": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": "absent",
+                "constructor": "absent"
+              }
+            }
+          ],
+          "actual": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": "absent",
+                "constructor": "absent"
+              }
+            }
+          ],
+          "ok": true
+        },
+        {
+          "kind": "missing",
+          "csp": true,
+          "expected": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": "absent",
+                "constructor": "absent"
+              }
+            }
+          ],
+          "actual": [
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": 11,
+                "constructor": 11
+              }
+            },
+            {
+              "plain": true,
+              "fields": {
+                "__proto__": "absent",
+                "constructor": "absent"
+              }
+            }
+          ],
+          "ok": true
+        }
+      ]
     }
   ],
   "passed": true

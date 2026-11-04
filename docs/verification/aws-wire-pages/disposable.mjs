@@ -93,6 +93,69 @@ try {
   const absent = Object.keys(apps[0]).filter((k) => !Object.hasOwn(apps[1], k));
   assert.ok(absent.length);
   report.checks.push({ sourceAbsentFields: absent });
+  const { createRequire } = await import("node:module");
+  const { Client } = createRequire(
+    new URL("../../../dashboard/package.json", import.meta.url),
+  )("pg");
+  const writer = new Client({ connectionString: local });
+  await writer.connect();
+  try {
+    const propertyChecks = [];
+    for (const kind of ["constant", "varying", "missing"]) {
+      await writer.query(
+        "DELETE FROM statarena_app.appearance_metrics WHERE metric_key IN ('__proto__','constructor')",
+      );
+      await writer.query(
+        `INSERT INTO statarena_app.appearance_metrics (appearance_id,metric_key,value)
+        SELECT a.id,k.key,CASE WHEN $1::text='varying' AND a.match_id='m_000002' THEN 22 ELSE 11 END
+        FROM statarena_app.appearances a CROSS JOIN (VALUES ('__proto__'),('constructor')) k(key)
+        WHERE a.league_id='l_000001' AND ($1<>'missing' OR a.match_id='m_000001')`,
+        [kind],
+      );
+      const record = await (await fetch(base)).json(),
+        compact = await (await fetch(base + "&format=columns")).json();
+      for (const csp of [false, true]) {
+        const original = globalThis.Function;
+        let output;
+        try {
+          if (csp)
+            globalThis.Function = () => {
+              throw Error("Eval blocked");
+            };
+          output = decodePartition(compact.data);
+        } finally {
+          globalThis.Function = original;
+        }
+        const props = (rows) =>
+          rows.map((r) => ({
+            plain: Object.getPrototypeOf(r) === Object.prototype,
+            fields: Object.fromEntries(
+              ["__proto__", "constructor"].map((k) => [
+                k,
+                Object.hasOwn(r, k) ? r[k] : "absent",
+              ]),
+            ),
+          }));
+        const expected = props(record.data.appearances),
+          actual = props(output.appearances);
+        assert.equal(expected[0].fields["__proto__"], 11);
+        propertyChecks.push({
+          kind,
+          csp,
+          expected,
+          actual,
+          ok: JSON.stringify(expected) === JSON.stringify(actual),
+        });
+      }
+    }
+    report.checks.push({ propertyChecks });
+    assert.ok(
+      propertyChecks.every((c) => c.ok),
+      "Dynamic SQL metric own-property parity failed",
+    );
+  } finally {
+    await writer.end();
+  }
   report.passed = true;
 } catch (e) {
   report.passed = false;
