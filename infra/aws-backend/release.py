@@ -75,7 +75,16 @@ def release_key(path):
     return "releases/" + path.name
 
 
-def prepare(path):
+def sql_only_parameter(existing, requested):
+    """Keep the current storage mode unless a release explicitly changes it."""
+    if requested is not None:
+        return {"ParameterKey": "SqlOnly", "ParameterValue": requested}
+    if existing and any(p.get("ParameterKey") == "SqlOnly" for p in existing.get("Parameters", [])):
+        return {"ParameterKey": "SqlOnly", "UsePreviousValue": True}
+    return {"ParameterKey": "SqlOnly", "ParameterValue": "0"}
+
+
+def prepare(path, sql_only=None):
     history = subprocess.run(["aws", "--profile", "statarena", "configure", "get", "cli_history"],
                              capture_output=True, text=True)
     if history.returncode not in (0, 1) or history.stdout.strip().lower() not in ("", "disabled"):
@@ -112,7 +121,8 @@ def prepare(path):
         params = Path(d) / "parameters.json"
         with open(params, "x", opener=lambda name,flags: os.open(name,flags,0o600)) as f:
             json.dump([{"ParameterKey":"ReleaseKey","ParameterValue":key},
-                       {"ParameterKey":"DatabaseUrl","ParameterValue":url}], f)
+                       {"ParameterKey":"DatabaseUrl","ParameterValue":url},
+                       sql_only_parameter(existing, sql_only)], f)
         aws("cloudformation", "create-change-set", "--stack-name", STACK, "--change-set-name", name,
             "--change-set-type", "UPDATE" if existing and existing["StackStatus"] != "REVIEW_IN_PROGRESS" else "CREATE",
             "--template-body", "file://" + str(HERE / "backend.yaml"), "--capabilities", "CAPABILITY_IAM",
@@ -127,6 +137,8 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("action", choices=["dry-run","bootstrap","prepare","execute","status"])
     p.add_argument("target", nargs="?")
+    p.add_argument("--sql-only", choices=["0", "1"],
+                   help="set the backend storage mode on the prepared release; otherwise preserve it")
     args = p.parse_args()
     preflight = check()
     if args.action == "dry-run":
@@ -140,7 +152,7 @@ def main():
             "--tags","Application="+STACK,"--no-fail-on-empty-changeset")
         print("Private release bucket ready")
     elif args.action == "prepare" and args.target:
-        print(json.dumps(prepare(Path(args.target).resolve()), indent=2))
+        print(json.dumps(prepare(Path(args.target).resolve(), args.sql_only), indent=2))
     elif args.action == "execute" and args.target:
         if not re.fullmatch(r"release-[0-9]{14}-[a-f0-9]{12}", args.target):
             raise SystemExit("expected a prepared release change set name")
