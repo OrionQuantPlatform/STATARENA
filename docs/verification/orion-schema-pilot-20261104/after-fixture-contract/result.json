@@ -1,0 +1,38 @@
+{
+  "startedUtc": "2026-11-04T15:58:41.403935+00:00",
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_schema_postgres.py",
+  "setup": "PROTOCOL.md; fresh owned loopback PostgreSQL18.6; synthetic two-season graph declared in this script, no provider call or remote DB.",
+  "expected": "Approved schema, transactional histories, integrity failures, snapshot immutability, idempotent migrations and restricted runtime role.",
+  "checks": [
+    {
+      "name": "migration command succeeds",
+      "passed": true,
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "name": "all active approved tables exist",
+      "passed": true,
+      "details": 152
+    },
+    {
+      "name": "all 1897 column names and nullability match",
+      "passed": true,
+      "details": 1897
+    },
+    {
+      "name": "350 real foreign keys",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": false,
+  "engine": "postgres (PostgreSQL) 18.6",
+  "error": {
+    "type": "NotNullViolation",
+    "message": "null value in column \"squad_status\" of relation \"match_players\" violates not-null constraint\nDETAIL:  Failing row contains (1, 9007199254740993, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, e2e-v1, 1, {}, 2026-11-04 16:58:43.301982+01, 24)."
+  },
+  "ownedPostgresStopped": true,
+  "finishedUtc": "2026-11-04T15:58:43.416148+00:00"
+}

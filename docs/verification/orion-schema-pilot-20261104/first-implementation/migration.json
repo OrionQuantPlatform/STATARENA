@@ -1,0 +1,16 @@
+{
+  "atUtc": "2026-11-04T15:54:14.451036+00:00",
+  "mode": "local",
+  "migrations": [],
+  "passed": false,
+  "identity": [
+    "postgres",
+    "orion_owner",
+    "18.6"
+  ],
+  "error": {
+    "type": "NotNullViolation",
+    "sqlstate": "23502",
+    "message": "null value in column \"row_version_id\" of relation \"periods\" violates not-null constraint\nDETAIL:  Failing row contains (full_match, Match complet, 0, t, Total r\u00e9glementaire et prolongation si le fournisseur les inclu..., null)."
+  }
+}

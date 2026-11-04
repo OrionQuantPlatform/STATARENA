@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_schema_postgres.py", line 144, in main
+    workflow(db)
+    ~~~~~~~~^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_schema_postgres.py", line 87, in workflow
+    state = seed(db)
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_schema_postgres.py", line 72, in seed
+    insert(db, "football.match_players", match_id=match["id"], player_id=player["id"], team_id=teams[0]["id"], **evidence)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_schema_postgres.py", line 37, in insert
+    result = db.execute(sql.SQL("INSERT INTO {} ({}) {} VALUES ({}) RETURNING *").format(
+        sql.Identifier(*relation.split(".")), sql.SQL(",").join(map(sql.Identifier, values)),
+        override, sql.SQL(",").join(sql.Placeholder() for _ in values)), list(values.values()))
+  File "/tmp/statarena-publication-test-python/psycopg/connection.py", line 304, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "squad_status" of relation "match_players" violates not-null constraint
+DETAIL:  Failing row contains (1, 9007199254740993, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, e2e-v1, 1, {}, 2026-11-04 16:58:43.301982+01, 24).

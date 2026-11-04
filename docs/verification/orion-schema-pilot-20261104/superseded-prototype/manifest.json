@@ -1,0 +1,31 @@
+{
+  "atUtc": "2026-11-04T16:05:04.032486+00:00",
+  "status": "Superseded local-only prototype, not an approved migration to execute. User rejected all54added history tables. No RDS migration applied.",
+  "baseCommit": "780a113da3e78860ae9b3a075bceb48e0c05d3fd",
+  "files": [
+    {
+      "originalPath": "dashboard/scripts/orion_schema.py",
+      "sha256": "02ec3062d5bcaf145d54c9be54b450f7f8fded6523e245559d4c037241e0bb3d"
+    },
+    {
+      "originalPath": "dashboard/scripts/orion_integrity.py",
+      "sha256": "7b5fc0015f85979b9f73ea56dcf46e5831ca3d16dd65f498df03d9c90b3f041a"
+    },
+    {
+      "originalPath": "dashboard/scripts/orion_migrate.py",
+      "sha256": "4d046b93a1e4db06b3f96cbaa9c9cfacca1a306094094862f548dc0bd80ddd62"
+    },
+    {
+      "originalPath": "dashboard/backend/migrations/012_orion_domain.sql",
+      "sha256": "240d57a3cd61ab85c85dd2f094d55909e3d47beb209b50e4d8dfb9aae6456cad"
+    },
+    {
+      "originalPath": "dashboard/backend/migrations/013_orion_integrity.sql",
+      "sha256": "3c8dcca79cd5b31617570592fb072e808b09e3750c8ae82843428ab77beaeec0"
+    },
+    {
+      "originalPath": "tests/orion_schema_postgres.py",
+      "sha256": "73a317bb1110f80354b4074a6eb18b15c8e495d616b9512e785cd9b988c91f23"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_schema_postgres.py", line 142, in main
+    check("migration command succeeds", result.returncode == 0, {"exitCode": result.returncode})
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_schema_postgres.py", line 32, in check
+    raise AssertionError(name)
+AssertionError: migration command succeeds

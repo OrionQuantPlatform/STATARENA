@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-11-04T15:27:33.099990+00:00",
+  "userAnswer": "Valider le plan et commencer le pilote",
+  "approvedPlanCommit": "780a113da3e78860ae9b3a075bceb48e0c05d3fd",
+  "planSha256": "beba9cfe39261887130448231df7c3d2b3038bd335d4e039a07a88fbe92eac63",
+  "schemaSha256": "dda1fba794e6711ea4f25ea016e39e7b54e1a65711b58c4a58a61eeaef8c5659",
+  "scope": "Approved plan P1: new versioned schema, constraints and representative pilot; preserve legacy readers/sources. Future stages remain in the approved plan; final cutover and cleanup retain their acceptance gates.",
+  "directIngestion": "New PitchAPI -> memory -> typed RDS; S3 essential media only. No duplicate Neon-to-AWS transfer.",
+  "status": "superseded_design_pro_review_prioritized",
+  "latestInstruction": "non ce que dis gpt pro est prioritaire",
+  "implementationStopped": true,
+  "remoteSchemaApplied": false,
+  "policy": "selective inline retained values per Pro; current-only preference superseded"
+}

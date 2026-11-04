@@ -1,0 +1,15 @@
+2026-11-04 16:58:42.469 CET [666] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 16:58:42.470 CET [666] LOG:  listening on IPv4 address "127.0.0.1", port 54362
+2026-11-04 16:58:42.470 CET [666] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/statarena-orion-pg-0s3uz3j9/.s.PGSQL.54362"
+2026-11-04 16:58:42.477 CET [675] LOG:  database system was shut down at 2026-11-04 16:58:42 CET
+2026-11-04 16:58:42.480 CET [666] LOG:  database system is ready to accept connections
+2026-11-04 16:58:43.302 CET [685] ERROR:  null value in column "squad_status" of relation "match_players" violates not-null constraint
+2026-11-04 16:58:43.302 CET [685] DETAIL:  Failing row contains (1, 9007199254740993, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, e2e-v1, 1, {}, 2026-11-04 16:58:43.301982+01, 24).
+2026-11-04 16:58:43.302 CET [685] STATEMENT:  INSERT INTO "football"."match_players" ("match_id","player_id","team_id","source_id","source_record_id","canonical_policy_version")  VALUES ($1,$2,$3,$4,$5,$6) RETURNING *
+2026-11-04 16:58:43.314 CET [666] LOG:  received fast shutdown request
+2026-11-04 16:58:43.319 CET [666] LOG:  aborting any active transactions
+2026-11-04 16:58:43.320 CET [666] LOG:  background worker "logical replication launcher" (PID 678) exited with exit code 1
+2026-11-04 16:58:43.321 CET [671] LOG:  shutting down
+2026-11-04 16:58:43.321 CET [671] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 16:58:43.359 CET [671] LOG:  checkpoint complete: wrote 986 buffers (6.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.010 s, sync=0.027 s, total=0.038 s; sync files=843, longest=0.001 s, average=0.001 s; distance=9662 kB, estimate=9662 kB; lsn=0/20F8908, redo lsn=0/20F8908
+2026-11-04 16:58:43.364 CET [666] LOG:  database system is shut down
