@@ -70,6 +70,8 @@ class ManagedStorageTest(unittest.TestCase):
             self.assertTrue(capacity(store)["paused"])
         with patch.dict(os.environ, {"STATARENA_EXTERNAL_STORAGE": "1"}, clear=True):
             self.assertFalse(capacity(store)["paused"])
+        with patch.dict(os.environ, {"STATARENA_SQL_ONLY": "1"}, clear=True):
+            self.assertFalse(capacity(store)["paused"])
         with patch.dict(os.environ, {"STATARENA_EXTERNAL_STORAGE": "1", "STATARENA_SQL_LIMIT_BYTES": "999999999"}, clear=True):
             self.assertTrue(capacity(store)["paused"])
         with patch.dict(os.environ, {"STATARENA_EXTERNAL_STORAGE": "1", "STATARENA_OBJECT_LIMIT_BYTES": "4999999999"}, clear=True):

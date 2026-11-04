@@ -7,6 +7,10 @@ inputs:
   role-arn:
     description: AWS IAM role trusted for this workflow and ref
     required: true
+  sql-only:
+    description: Read and write original file payloads exclusively in PostgreSQL
+    required: false
+    default: '0'
 runs:
   using: composite
   steps:
@@ -35,4 +39,5 @@ runs:
       shell: bash
       env:
         ACCESS_MODE: ${{ inputs.mode }}
+        STATARENA_SQL_ONLY: ${{ inputs.sql-only }}
       run: python3 "$GITHUB_ACTION_PATH/bootstrap.py" "$ACCESS_MODE"

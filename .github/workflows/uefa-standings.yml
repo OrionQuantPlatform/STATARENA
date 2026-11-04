@@ -70,6 +70,7 @@ jobs:
         with:
           mode: ingest
           role-arn: ${{ vars.STATARENA_AWS_INGEST_ROLE_ARN }}
+          sql-only: ${{ vars.STATARENA_SQL_ONLY || '0' }}
       - run: node dashboard/scripts/neon_refresh_uefa_standings.mjs
       - name: Publish normalized RDS tables from staged data
         run: python dashboard/scripts/relational_materialize.py --minutes 15 --batch 10

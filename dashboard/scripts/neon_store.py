@@ -7,6 +7,7 @@ from botocore.exceptions import ClientError
 from psycopg.types.json import Jsonb
 from sql_document_parser import supports_documents
 from sql_document_store import publish_documents
+from sql_payload_store import lock_payload, read_payload, write_bytes
 
 
 def canonical(params=None):
@@ -27,24 +28,36 @@ class Store:
         self.refresh_since = self.db.execute("select clock_timestamp()").fetchone()[0]
         self.external = os.environ.get("STATARENA_EXTERNAL_STORAGE") == "1"
         self.sql_documents = os.environ.get("STATARENA_SQL_DOCUMENTS") == "1"
-        self.s3 = boto3.client(
-            "s3",
-            endpoint_url=os.environ["NEON_STORAGE_ENDPOINT"],
-            region_name=os.environ.get("NEON_STORAGE_REGION", "us-east-2"),
-            aws_access_key_id=os.environ["NEON_STORAGE_ACCESS_KEY_ID"],
-            aws_secret_access_key=os.environ["NEON_STORAGE_SECRET_ACCESS_KEY"],
-            config=Config(
-                signature_version="s3v4",
-                s3={"addressing_style": "path" if os.environ.get("STATARENA_S3_PATH_STYLE", "1") != "0" else "virtual"},
-                request_checksum_calculation="when_required",
-                response_checksum_validation="when_required",
-                retries={"max_attempts": 4},
-            ),
-        )
-        self.bucket = os.environ.get("NEON_STORAGE_BUCKET", "statarena-data")
+        self.sql_only = os.environ.get("STATARENA_SQL_ONLY") == "1"
+        self.s3 = None
+        self.bucket = None
+        if not self.sql_only:
+            self.s3 = boto3.client(
+                "s3",
+                endpoint_url=os.environ["NEON_STORAGE_ENDPOINT"],
+                region_name=os.environ.get("NEON_STORAGE_REGION", "us-east-2"),
+                aws_access_key_id=os.environ["NEON_STORAGE_ACCESS_KEY_ID"],
+                aws_secret_access_key=os.environ["NEON_STORAGE_SECRET_ACCESS_KEY"],
+                config=Config(
+                    signature_version="s3v4",
+                    s3={"addressing_style": "path" if os.environ.get("STATARENA_S3_PATH_STYLE", "1") != "0" else "virtual"},
+                    request_checksum_calculation="when_required",
+                    response_checksum_validation="when_required",
+                    retries={"max_attempts": 4},
+                ),
+            )
+            self.bucket = os.environ.get("NEON_STORAGE_BUCKET", "statarena-data")
         self.queue = {}
 
     def bytes(self, path):
+        if getattr(self, "sql_only", False):
+            row = self.db.execute("select sha256,size from statarena.objects where path=%s", (path,)).fetchone()
+            if not row:
+                raise FileNotFoundError(path)
+            body = read_payload(self.db, "data", path, row[0])
+            if len(body) != row[1]:
+                raise ValueError("SQL object size mismatch: " + path)
+            return body
         row = self.db.execute(
             "select " + ("NULL" if self.external else "body")
             + ",sha256,size from statarena.objects where path=%s", (path,)
@@ -72,10 +85,17 @@ class Store:
         return body
 
     def json(self, path):
+        if getattr(self, "sql_only", False) and path.lower().endswith((".json", ".json.gz")):
+            row = self.db.execute("""select document from statarena.current_file_documents
+                where source_path=%s and document_path=%s and format='json'""", (path, path)).fetchone()
+            if row is not None:
+                return row[0]
         b = self.bytes(path)
         return json.loads(gzip.decompress(b) if path.endswith(".gz") else b)
 
     def put(self, path, body, content_type="application/json", hot=False):
+        if getattr(self, "sql_only", False):
+            return self._put_sql(path, body, content_type)
         digest = hashlib.sha256(body).digest()
         etag = hashlib.md5(body).hexdigest()
         old = self.db.execute(
@@ -121,6 +141,47 @@ class Store:
                 publish_documents(self.db, path, digest, body)
         else:
             self.db.execute(statement, values)
+        return True
+
+    def _put_sql(self, path, body, content_type):
+        """Publish SQL documents and retain exact bytes where they are needed."""
+        digest = hashlib.sha256(body).digest()
+        etag = hashlib.md5(body).hexdigest()
+        json_file = path.lower().endswith((".json", ".json.gz"))
+        mutable = path in ["raw/index.json", "computed/dashboard/index.json"] or path.startswith("computed/matchdays/")
+        preserve_bytes = not json_file or mutable or path.startswith("raw/neon/versions/")
+        with self.db.transaction():
+            lock_payload(self.db, "data", path)
+            old = self.db.execute("select sha256 from statarena.objects where path=%s for update", (path,)).fetchone()
+            if old and bytes(old[0]) == digest:
+                if preserve_bytes:
+                    try:
+                        if read_payload(self.db, "data", path, digest) == body:
+                            return False
+                    except (FileNotFoundError, ValueError):
+                        pass
+                else:
+                    current = self.db.execute("""select 1 from statarena.file_document_sources s
+                        join statarena.file_documents d on d.source_path=s.source_path
+                          and d.document_path=s.source_path and d.source_sha256=s.source_sha256
+                        where s.source_path=%s and s.source_sha256=%s and s.status='ready'
+                          and s.document_count=1 and s.error_count=0 and d.error is null
+                          and d.format='json' and d.document is not null""", (path, digest)).fetchone()
+                    if current:
+                        return False
+            if old and bytes(old[0]) != digest and mutable:
+                previous = self.bytes(path)
+                archive = "raw/neon/versions/" + bytes(old[0]).hex() + (".json.gz" if path.endswith(".gz") else ".json")
+                self._put_sql(archive, previous, content_type)
+            self.db.execute("""insert into statarena.objects(path,size,sha256,etag,body,content_type)
+                values(%s,%s,%s,%s,null,%s) on conflict(path) do update set size=excluded.size,
+                sha256=excluded.sha256,etag=excluded.etag,body=null,content_type=excluded.content_type,updated_at=now()""",
+                (path, len(body), digest, etag, content_type))
+            count = errors = 0
+            if supports_documents(path):
+                count, errors = publish_documents(self.db, path, digest, body)
+            if preserve_bytes or errors or not count:
+                write_bytes(self.db, "data", path, body, content_type)
         return True
 
     def put_json(self, path, value, hot=False):

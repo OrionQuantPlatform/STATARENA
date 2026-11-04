@@ -55,18 +55,23 @@ def bootstrap(mode):
     }
     sensitive = [password, quote(password, safe=""), url]
     if mode == "ingest":
-        storage = parameter("s3-ingest")
-        key, secret = (field(storage, k) for k in ("access_key_id", "secret_access_key"))
-        sensitive.extend((key, secret))
-        # Existing staging writers still use these historical environment names.
         values.update({
             "NEON_DATABASE_URL": url, "STATARENA_DATABASE_CA_PEM": pem,
-            "NEON_STORAGE_ENDPOINT": "https://s3.us-east-2.amazonaws.com",
-            "NEON_STORAGE_REGION": REGION, "NEON_STORAGE_BUCKET": BUCKET,
-            "NEON_STORAGE_ACCESS_KEY_ID": key, "NEON_STORAGE_SECRET_ACCESS_KEY": secret,
-            "STATARENA_EXTERNAL_STORAGE": "1", "STATARENA_SQL_DOCUMENTS": "1",
-            "STATARENA_S3_PATH_STYLE": "0",
+            "STATARENA_SQL_DOCUMENTS": "1",
         })
+        if os.environ.get("STATARENA_SQL_ONLY") == "1":
+            values["STATARENA_SQL_ONLY"] = "1"
+        else:
+            storage = parameter("s3-ingest")
+            key, secret = (field(storage, k) for k in ("access_key_id", "secret_access_key"))
+            sensitive.extend((key, secret))
+            # Existing staging writers still use these historical environment names.
+            values.update({
+                "NEON_STORAGE_ENDPOINT": "https://s3.us-east-2.amazonaws.com",
+                "NEON_STORAGE_REGION": REGION, "NEON_STORAGE_BUCKET": BUCKET,
+                "NEON_STORAGE_ACCESS_KEY_ID": key, "NEON_STORAGE_SECRET_ACCESS_KEY": secret,
+                "STATARENA_EXTERNAL_STORAGE": "1", "STATARENA_S3_PATH_STYLE": "0",
+            })
     for value in sensitive:
         print("::add-mask::" + value.replace("%", "%25"), flush=True)
     delimiter = "EOF_" + secrets.token_hex(24)

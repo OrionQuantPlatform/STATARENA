@@ -7,6 +7,7 @@ from contextlib import nullcontext
 from pathlib import Path
 from threading import Lock
 from neon_store import Store
+from sql_payload_store import lock_payload, write_bytes
 
 commons_requests = Lock()
 last_commons_request = 0.0
@@ -33,6 +34,48 @@ def urls(value):
 
     walk(value)
     return found
+
+
+def save_asset_batch(store, batch):
+    """Atomically publish image metadata and, in SQL-only mode, exact bytes."""
+    success = failed = total = 0
+    errors = Counter()
+    with store.db.transaction():
+        store.db.execute(
+            "create temporary table if not exists asset_import(url text,path text,size bigint,sha bytea,etag text,ctype text,body bytea,error text) on commit delete rows"
+        )
+        with store.db.cursor().copy("copy asset_import from stdin") as copy:
+            for row in batch:
+                copy.write_row(row)
+        if store.sql_only:
+            for path in sorted({row[1] for row in batch if row[-1] is None}):
+                lock_payload(store.db, "data", path)
+        store.db.execute(
+            "insert into statarena.objects(path,size,sha256,etag,content_type) select distinct on(path) path,size,sha,etag,ctype from asset_import where error is null on conflict do nothing"
+        )
+        if store.sql_only:
+            seen = set()
+            for url, path, size, sha, etag, ctype, body, error in batch:
+                if error or path in seen:
+                    continue
+                seen.add(path)
+                current = store.db.execute("select size,sha256 from statarena.objects where path=%s for update", (path,)).fetchone()
+                if not current or current[0] != size or bytes(current[1]) != sha:
+                    raise ValueError("Image catalog differs from its content-addressed bytes")
+                write_bytes(store.db, "data", path, body, ctype)
+        store.db.execute(
+            "insert into statarena.assets(url,path,content_type) select url,path,ctype from asset_import where error is null on conflict(url) do update set path=excluded.path,content_type=excluded.content_type"
+        )
+        store.db.execute("delete from statarena.asset_jobs j using asset_import i where j.url=i.url and i.error is null")
+        store.db.execute("update statarena.asset_jobs j set attempts=attempts+1,next_attempt=now()+interval '1 day',error=i.error from asset_import i where j.url=i.url and i.error is not null")
+        for url, path, size, sha, etag, ctype, body, error in batch:
+            if error:
+                failed += 1
+                errors[error] += 1
+            else:
+                success += 1
+                total += size
+    return success, failed, total, errors
 
 
 def main():
@@ -107,21 +150,22 @@ def main():
                 "image/svg+xml": "svg",
             }.get(content_type, "img")
             path = "raw/neon/assets/" + sha + "." + ext
-            result = store.s3.put_object(
-                Bucket=store.bucket,
-                Key="data/" + path,
-                Body=body,
-                ContentType=content_type,
-                ContentMD5=base64.b64encode(bytes.fromhex(md5)).decode(),
-            )
-            if result["ETag"].strip('"') != md5:
-                raise ValueError("Image server checksum mismatch")
-            return url, path, len(body), bytes.fromhex(sha), md5, content_type, None
+            if not store.sql_only:
+                result = store.s3.put_object(
+                    Bucket=store.bucket,
+                    Key="data/" + path,
+                    Body=body,
+                    ContentType=content_type,
+                    ContentMD5=base64.b64encode(bytes.fromhex(md5)).decode(),
+                )
+                if result["ETag"].strip('"') != md5:
+                    raise ValueError("Image server checksum mismatch")
+            return url, path, len(body), bytes.fromhex(sha), md5, content_type, body if store.sql_only else None, None
         except Exception as e:
             error = type(e).__name__
             if isinstance(e, urllib.error.HTTPError):
                 error += ":" + str(e.code)
-            return url, None, 0, None, None, None, error
+            return url, None, 0, None, None, None, None, error
 
     success = failed = total = 0
     errors = Counter()
@@ -129,32 +173,11 @@ def main():
 
     def flush():
         nonlocal success, failed, total
-        with store.db.transaction():
-            store.db.execute(
-                "create temporary table if not exists asset_import(url text,path text,size bigint,sha bytea,etag text,ctype text,error text) on commit delete rows"
-            )
-            with store.db.cursor().copy("copy asset_import from stdin") as copy:
-                for row in batch:
-                    copy.write_row(row)
-            store.db.execute(
-                "insert into statarena.objects(path,size,sha256,etag,content_type) select distinct on(path) path,size,sha,etag,ctype from asset_import where error is null on conflict do nothing"
-            )
-            store.db.execute(
-                "insert into statarena.assets(url,path,content_type) select url,path,ctype from asset_import where error is null on conflict(url) do update set path=excluded.path,content_type=excluded.content_type"
-            )
-            store.db.execute(
-                "delete from statarena.asset_jobs j using asset_import i where j.url=i.url and i.error is null"
-            )
-            store.db.execute(
-                "update statarena.asset_jobs j set attempts=attempts+1,next_attempt=now()+interval '1 day',error=i.error from asset_import i where j.url=i.url and i.error is not null"
-            )
-            for url, path, size, sha, etag, ctype, error in batch:
-                if error:
-                    failed += 1
-                    errors[error] += 1
-                else:
-                    success += 1
-                    total += size
+        added, rejected, byte_count, batch_errors = save_asset_batch(store, batch)
+        success += added
+        failed += rejected
+        total += byte_count
+        errors.update(batch_errors)
         batch.clear()
         print(
             json.dumps({"images": success, "failed": failed, "bytes": total, "errors": dict(errors)}),
@@ -162,10 +185,25 @@ def main():
         )
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=24) as pool:
-        for result in pool.map(transfer, rows):
-            batch.append(result)
-            if len(batch) >= 100:
-                flush()
+        pending = set()
+        iterator = iter(rows)
+        batch_bytes = 0
+        while True:
+            while len(pending) < 48:
+                try:
+                    pending.add(pool.submit(transfer, next(iterator)))
+                except StopIteration:
+                    break
+            if not pending:
+                break
+            done, pending = concurrent.futures.wait(pending, return_when=concurrent.futures.FIRST_COMPLETED)
+            for future in done:
+                result = future.result()
+                batch.append(result)
+                batch_bytes += len(result[-2] or b"")
+                if len(batch) >= 100 or batch_bytes >= 8 * 1024 * 1024:
+                    flush()
+                    batch_bytes = 0
     if batch:
         flush()
     store.db.close()

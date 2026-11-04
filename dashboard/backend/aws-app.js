@@ -9,6 +9,7 @@ import {
 import { getSupporting } from "./services/relational-support.js";
 import { getCatalog, getProfile } from "./services/relational-catalog.js";
 import { cloudFrontObjectUrl, immutableFile } from "./services/cdn.js";
+import { createSqlImageReader } from "./services/sql-images.js";
 import {
   manifest,
   partitionPage,
@@ -74,6 +75,7 @@ const assetAliases = cache(2 * 1024 * 1024, {
   name: "asset_alias",
   maxEntryBytes: 4096,
 });
+const sqlImage = createSqlImageReader(query);
 const shareFor = (record) =>
   (record.status ?? 200) === 200 &&
   record.ready !== false &&
@@ -187,8 +189,13 @@ async function route(req) {
   if (path.split("/").some((v) => v.startsWith(".")))
     reject(403, "Chemin interdit.");
   const p = url.searchParams;
-  if (path.startsWith("/data/"))
+  if (path.startsWith("/data/")) {
+    if (process.env.STATARENA_SQL_ONLY === "1") {
+      validate(p, {});
+      return sqlImage(req, path.slice(6));
+    }
     reject(410, "Cette route de données a été retirée.");
+  }
   if (!path.startsWith("/api/")) missing();
   const name = path.slice(5);
   if (name === "health") {

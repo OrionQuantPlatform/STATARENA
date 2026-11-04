@@ -52,6 +52,7 @@ jobs:
         with:
           mode: ingest
           role-arn: ${{ vars.STATARENA_AWS_INGEST_ROLE_ARN }}
+          sql-only: ${{ vars.STATARENA_SQL_ONLY || '0' }}
       - name: Publish relational models in AWS RDS
         env:
           QUEUE_ALL: ${{ inputs.queue_all }}

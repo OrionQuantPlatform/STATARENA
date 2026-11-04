@@ -6,9 +6,14 @@ import { databaseConnectionOptions } from "./database-connection.js";
 let pool, storage;
 export const externalStorage = () =>
   process.env.STATARENA_EXTERNAL_STORAGE === "1";
-export const dataProvider = () => (externalStorage() ? "AWS" : "Neon");
+export const sqlOnly = () => process.env.STATARENA_SQL_ONLY === "1";
+export const dataProvider = () =>
+  externalStorage() || sqlOnly() ? "AWS" : "Neon";
 export const configured = () =>
-  Boolean(process.env.NEON_DATABASE_URL && process.env.NEON_STORAGE_ENDPOINT);
+  Boolean(
+    process.env.NEON_DATABASE_URL &&
+    (sqlOnly() || process.env.NEON_STORAGE_ENDPOINT),
+  );
 export function database() {
   if (!process.env.NEON_DATABASE_URL) throw new Error("Neon is not configured");
   if (pool) return pool;
@@ -160,7 +165,41 @@ export async function objectBody(meta) {
     meta.sha256,
     async () => {
       let body;
-      if (meta.inline && !externalStorage()) {
+      if (sqlOnly()) {
+        const row = (
+          await query(
+            "SELECT body,chunk_count FROM statarena.file_payloads WHERE namespace='data' AND path=$1 AND sha256=decode($2,'hex')",
+            [meta.path, meta.sha256],
+          )
+        )[0];
+        if (!row) {
+          const error = new Error("SQL object version is unavailable");
+          error.code = "ESTALE";
+          throw error;
+        }
+        if (row.body !== null) body = row.body;
+        else {
+          const chunks = await query(
+            "SELECT chunk_index,body,sha256 FROM statarena.file_payload_chunks WHERE namespace='data' AND path=$1 ORDER BY chunk_index",
+            [meta.path],
+          );
+          if (
+            chunks.length !== Number(row.chunk_count) ||
+            chunks.some(
+              (chunk, i) =>
+                chunk.chunk_index !== i ||
+                !Buffer.isBuffer(chunk.body) ||
+                !Buffer.isBuffer(chunk.sha256) ||
+                !createHash("sha256")
+                  .update(chunk.body)
+                  .digest()
+                  .equals(chunk.sha256),
+            )
+          )
+            throw new Error("SQL object chunks are incomplete or corrupt");
+          body = Buffer.concat(chunks.map((chunk) => chunk.body));
+        }
+      } else if (meta.inline && !externalStorage()) {
         const row = (
           await query(
             "SELECT body FROM statarena.objects WHERE path=$1 AND sha256=decode($2,'hex') AND body IS NOT NULL",

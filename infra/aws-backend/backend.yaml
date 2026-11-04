@@ -3,6 +3,11 @@ Description: StatArena read-only API. Existing database, subnets and public asse
 Parameters:
   ReleaseKey: {Type: String, AllowedPattern: 'releases/[a-f0-9]{64}\.zip'}
   DatabaseUrl: {Type: String, NoEcho: true, MaxLength: 2000}
+  SqlOnly:
+    Type: String
+    Default: '0'
+    AllowedValues: ['0', '1']
+    Description: Serve original image bytes from PostgreSQL when the data migration is verified.
   ReservedConcurrency:
     Type: Number
     Default: 0
@@ -75,6 +80,7 @@ Resources:
           DATABASE_URL: !Ref DatabaseUrl
           DATABASE_POOL_MAX: '1'
           STATARENA_DATA_PROVIDER: aws
+          STATARENA_SQL_ONLY: !Ref SqlOnly
           STATARENA_CLOUDFRONT_URL: 'https://d2clu0phovomb8.cloudfront.net'
       VpcConfig:
         SecurityGroupIds: [!Ref RuntimeSG]
@@ -175,6 +181,22 @@ Resources:
       InvokedViaFunctionUrl: true
       Principal: cloudfront.amazonaws.com
       SourceArn: !Sub 'arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Distribution}'
+  AssetInvokeUrl:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref Backend
+      Action: lambda:InvokeFunctionUrl
+      FunctionUrlAuthType: AWS_IAM
+      Principal: cloudfront.amazonaws.com
+      SourceArn: !Sub 'arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/E3IHCBKMHSDYC6'
+  AssetInvoke:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref Backend
+      Action: lambda:InvokeFunction
+      InvokedViaFunctionUrl: true
+      Principal: cloudfront.amazonaws.com
+      SourceArn: !Sub 'arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/E3IHCBKMHSDYC6'
 Outputs:
   ApiOrigin: {Value: !Sub 'https://${Distribution.DomainName}'}
   DistributionId: {Value: !Ref Distribution}

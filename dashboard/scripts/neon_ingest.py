@@ -499,7 +499,7 @@ def capacity(store):
     ).fetchone()[0]
     # The old defaults protect Neon quotas, but do not describe AWS capacity.
     # External deployments may opt into limits appropriate to their provisioned storage.
-    external = os.environ.get("STATARENA_EXTERNAL_STORAGE") == "1"
+    external = os.environ.get("STATARENA_EXTERNAL_STORAGE") == "1" or os.environ.get("STATARENA_SQL_ONLY") == "1"
     sql_limit = os.environ.get("STATARENA_SQL_LIMIT_BYTES") or (None if external else "900000000")
     object_limit = os.environ.get("STATARENA_OBJECT_LIMIT_BYTES") or (None if external else "4750000000")
     return {

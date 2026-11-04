@@ -1,5 +1,5 @@
 import { gunzipSync } from "node:zlib";
-import { objectMeta, objectBody, cache } from "./neon.js";
+import { objectMeta, objectBody, cache, query, sqlOnly } from "./neon.js";
 import { record, timeSync } from "./metrics.js";
 const parsed = cache(64 * 1024 * 1024, { name: "parsed" });
 export async function dataJson(path) {
@@ -14,6 +14,15 @@ export async function dataJson(path) {
       return await parsed(
         meta.sha256,
         async () => {
+          if (sqlOnly() && /\.json(?:\.gz)?$/i.test(path)) {
+            const [row] = await query(
+              `SELECT d.document FROM statarena.current_file_documents d
+                 JOIN statarena.objects o ON o.path=d.source_path AND o.sha256=decode($2,'hex')
+                WHERE d.source_path=$1 AND d.document_path=$1 AND d.format='json'`,
+              [path, meta.sha256],
+            );
+            if (row) return row.document;
+          }
           const body = await objectBody(meta);
           let decoded = body;
           if (path.endsWith(".gz")) {

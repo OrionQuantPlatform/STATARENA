@@ -121,6 +121,7 @@ jobs:
         with:
           mode: ingest
           role-arn: ${{ vars.STATARENA_AWS_INGEST_ROLE_ARN }}
+          sql-only: ${{ vars.STATARENA_SQL_ONLY || '0' }}
       - name: Collect provider records into AWS staging
         env:
           PITCHAPI_API_KEY: ${{ secrets.PITCHAPI_API_KEY }}

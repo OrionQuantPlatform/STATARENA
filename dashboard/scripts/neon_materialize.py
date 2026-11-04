@@ -355,7 +355,7 @@ def _materialize(store, max_partitions=20, league_id=None, recent_first=False):
                 "neonDigest": stamp,
                 "competitions": tables["competitions"],
             }
-            if old and old["path"] != path:
+            if old and old["path"] != path and not getattr(store, "sql_only", False):
                 store.db.execute(
                     "update statarena.objects set body=null where path=%s",
                     (old["path"],),
