@@ -1,0 +1,44 @@
+{
+  "fullTypedDigestsEqual": false,
+  "scopePointers": {
+    "neon": {
+      "2026/2027": {
+        "bytes": 293873,
+        "leagueId": "l_3FJFUl",
+        "neonDigest": "3403d71ab77e5287be09e9c2755b9d1b342491e9440f1cf6bacd6c6c7d2bc2de",
+        "path": "computed/dashboard/2026-2027/l_3FJFUl-3403d71ab77e5287be09e9c2.json.gz",
+        "sha256": "b49ea464a213c008cbe9af600e37e90048d5936f5df6db9b7b0061ea4a754ec3",
+        "sourceDigest": "3403d71ab77e5287be09e9c2755b9d1b342491e9440f1cf6bacd6c6c7d2bc2de"
+      },
+      "2025/2026": {
+        "bytes": 840738,
+        "leagueId": "l_3FJFUl",
+        "path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+        "sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6",
+        "sourceDigest": "1f2cbed49d570024ea3a0ee736c57f09302a0734898cd18098866f0e5c60e794"
+      }
+    },
+    "aws": {
+      "2026/2027": {
+        "bytes": 293873,
+        "leagueId": "l_3FJFUl",
+        "neonDigest": "3403d71ab77e5287be09e9c2755b9d1b342491e9440f1cf6bacd6c6c7d2bc2de",
+        "path": "computed/dashboard/2026-2027/l_3FJFUl-3403d71ab77e5287be09e9c2.json.gz",
+        "sha256": "b49ea464a213c008cbe9af600e37e90048d5936f5df6db9b7b0061ea4a754ec3",
+        "sourceDigest": "3403d71ab77e5287be09e9c2755b9d1b342491e9440f1cf6bacd6c6c7d2bc2de"
+      },
+      "2025/2026": {
+        "bytes": 840738,
+        "leagueId": "l_3FJFUl",
+        "path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+        "sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6",
+        "sourceDigest": "1f2cbed49d570024ea3a0ee736c57f09302a0734898cd18098866f0e5c60e794"
+      }
+    }
+  },
+  "scopePointersEqual": true,
+  "partitionBodiesFetched": 0,
+  "positionalDifferenceCount": 791,
+  "positionalDifferenceMeaning": "Array order is retained in the raw comparison; positional differences are not an entity-level update count",
+  "supplierOrderingProved": false
+}

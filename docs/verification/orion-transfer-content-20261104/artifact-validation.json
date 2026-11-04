@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-11-04T21:26:09.421655+00:00",
+  "scope": "Offline syntax, exact executed-source bytes, local links, frozen prior inventory, cleanup and credentials; no unit test, remote query or payload replay",
+  "counts": {
+    "json": 20,
+    "python": 6,
+    "localLinks": 15
+  },
+  "priorInventoryProtectedFiles": 25,
+  "priorInventoryChangedPaths": [],
+  "failures": [],
+  "credentialScanPassed": true,
+  "passed": true
+}

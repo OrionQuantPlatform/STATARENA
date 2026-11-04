@@ -1,0 +1,298 @@
+[
+  {
+    "kind": "resource",
+    "key": {
+      "endpoint": "/leagues/l_3FJFUl/matches",
+      "params": "{\"season\":\"2026/2027\",\"status\":\"all\"}"
+    },
+    "neonPath": "raw/neon/blobs/37f9b06f3c6b395b343749412470f062f14e35e86c1a5d7a5c1621dec89304e8.json.gz",
+    "awsPath": "raw/pitchapi-world/blobs/9c207f8df81b41a60136a6e56a707efeff2e1550d1a17b0a3c82e2c072dfe3a0.json.gz",
+    "status": "compared_exact_selected_digest_and_metadata",
+    "neonTypedSha256": "f1abcc2249da4dc31b36157cf9021a88ecbb513284c95a8097e54785799308ab",
+    "awsTypedSha256": "b5341afa5f535ce4359d5abc76ad9ed97af1c0ff0fd1f29a90c58f8185812fbb",
+    "equalSelectedTypedContent": false,
+    "fieldStateDifferences": [
+      {
+        "path": "$.matches[].score_away",
+        "neonStates": {
+          "number": 81,
+          "null": 225
+        },
+        "awsStates": {
+          "number": 80,
+          "null": 226
+        }
+      },
+      {
+        "path": "$.matches[].score_home",
+        "neonStates": {
+          "number": 81,
+          "null": 225
+        },
+        "awsStates": {
+          "number": 80,
+          "null": 226
+        }
+      }
+    ],
+    "qualifyingIdDifferences": [],
+    "scalarValueDifferenceLimit": "Whole exact typed digest proves equality when equal. If unequal, field/state/ID differences are qualified here; exhaustive scalar leaf pairing remains unverified.",
+    "supplierFreshnessOrdering": "unverified"
+  },
+  {
+    "kind": "resource",
+    "key": {
+      "endpoint": "/matches/m_0xOQtL/h2h",
+      "params": "{}"
+    },
+    "neonPath": "raw/neon/blobs/5e3eed04f3a955a26fd2d4477315549d057f65612558fbb2820ddf7061cadbf2.json.gz",
+    "awsPath": "raw/seasons/2026-2027/observations/h2h/5d38e74a477b667b00375b1a.json.gz",
+    "status": "compared_exact_selected_digest_and_metadata",
+    "neonTypedSha256": "6f7e6ecf9da4b8fa9d3874a288a93151f2d28f09affb7f3b3da3ae39d061b992",
+    "awsTypedSha256": "922e4fdca3f7b3b041b51305069c1be2a53ae980cb01affdf5fc9b5a0a030d72",
+    "equalSelectedTypedContent": false,
+    "fieldStateDifferences": [
+      {
+        "path": "$.recent_matches",
+        "neonStates": {
+          "array": 1
+        },
+        "awsStates": {
+          "empty_list": 1
+        }
+      },
+      {
+        "path": "$.recent_matches[]",
+        "neonStates": {
+          "object": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].away",
+        "neonStates": {
+          "object": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].away.id",
+        "neonStates": {
+          "string": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].away.image_url",
+        "neonStates": {
+          "null": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].away.name",
+        "neonStates": {
+          "string": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].finished",
+        "neonStates": {
+          "boolean": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].home",
+        "neonStates": {
+          "object": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].home.id",
+        "neonStates": {
+          "string": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].home.image_url",
+        "neonStates": {
+          "null": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].home.name",
+        "neonStates": {
+          "string": 33
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].score_away",
+        "neonStates": {
+          "null": 1,
+          "number": 32
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].score_home",
+        "neonStates": {
+          "null": 1,
+          "number": 32
+        },
+        "awsStates": {}
+      },
+      {
+        "path": "$.recent_matches[].time_utc",
+        "neonStates": {
+          "string": 33
+        },
+        "awsStates": {}
+      }
+    ],
+    "qualifyingIdDifferences": [
+      {
+        "path": "$.recent_matches[].away.id",
+        "neonOnly": [
+          "t_0EMLtg",
+          "t_2lHmy6"
+        ],
+        "awsOnly": []
+      },
+      {
+        "path": "$.recent_matches[].home.id",
+        "neonOnly": [
+          "t_0EMLtg",
+          "t_2lHmy6"
+        ],
+        "awsOnly": []
+      }
+    ],
+    "scalarValueDifferenceLimit": "Whole exact typed digest proves equality when equal. If unequal, field/state/ID differences are qualified here; exhaustive scalar leaf pairing remains unverified.",
+    "supplierFreshnessOrdering": "unverified"
+  },
+  {
+    "kind": "resource",
+    "key": {
+      "endpoint": "/matches/m_0xOQtL/lineups",
+      "params": "{}"
+    },
+    "neonPath": "raw/neon/blobs/e737173680e1fdbee4a83653326fca5e4277033622403ced4998e87bac1e0e41.json.gz",
+    "awsPath": "raw/seasons/2026-2027/observations/lineups/5d38e74a477b667b00375b1a.json.gz",
+    "status": "compared_exact_selected_digest_and_metadata",
+    "neonTypedSha256": "e7ce3f9819352c1c1314ca4a2fd6b8bc1b4c8848b7f2974074d71dd2b0cb6f99",
+    "awsTypedSha256": "64067b384c187f9dd2189a76291b05633b10ad4cb5c8613cc946f44ed520ea39",
+    "equalSelectedTypedContent": false,
+    "fieldStateDifferences": [
+      {
+        "path": "$.home.subs[]",
+        "neonStates": {
+          "object": 9
+        },
+        "awsStates": {
+          "object": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].is_captain",
+        "neonStates": {
+          "boolean": 9
+        },
+        "awsStates": {
+          "boolean": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].name",
+        "neonStates": {
+          "string": 9
+        },
+        "awsStates": {
+          "string": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].pitch_x",
+        "neonStates": {
+          "number": 9
+        },
+        "awsStates": {
+          "number": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].pitch_y",
+        "neonStates": {
+          "number": 9
+        },
+        "awsStates": {
+          "number": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].player_id",
+        "neonStates": {
+          "string": 9
+        },
+        "awsStates": {
+          "string": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].position_id",
+        "neonStates": {
+          "number": 9
+        },
+        "awsStates": {
+          "number": 8
+        }
+      },
+      {
+        "path": "$.home.subs[].shirt_number",
+        "neonStates": {
+          "string": 9
+        },
+        "awsStates": {
+          "string": 8
+        }
+      }
+    ],
+    "qualifyingIdDifferences": [
+      {
+        "path": "$.away.subs[].player_id",
+        "neonOnly": [
+          "p_0Rtil2"
+        ],
+        "awsOnly": [
+          "p_1xOSBK"
+        ]
+      },
+      {
+        "path": "$.home.starters[].player_id",
+        "neonOnly": [
+          "p_3JNLfM"
+        ],
+        "awsOnly": [
+          "p_0oBqIG"
+        ]
+      },
+      {
+        "path": "$.home.subs[].player_id",
+        "neonOnly": [
+          "p_0oBqIG",
+          "p_1GVseZ"
+        ],
+        "awsOnly": [
+          "p_3h0f7v"
+        ]
+      }
+    ],
+    "scalarValueDifferenceLimit": "Whole exact typed digest proves equality when equal. If unequal, field/state/ID differences are qualified here; exhaustive scalar leaf pairing remains unverified.",
+    "supplierFreshnessOrdering": "unverified"
+  }
+]

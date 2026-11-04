@@ -1,0 +1,237 @@
+{
+  "startedAt": "2026-11-04T21:09:09.478910+00:00",
+  "finishedAt": "2026-11-04T21:09:14.298001+00:00",
+  "budget": {
+    "sqlInstructions": 8,
+    "decodedBytes": 495606,
+    "objectHttpRequests": 27,
+    "physicalBytesFetched": 13610,
+    "initialManifestDecodedBytes": 321993
+  },
+  "decodedExternalVersions": 9,
+  "expectedExternalVersions": 12,
+  "httpRequestLog": [
+    {
+      "number": 1,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/05b424b15d219852dca4b4b7d03a6c486e288ceeacbff16ea7a13059c3c36188.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:09.687948+00:00"
+    },
+    {
+      "number": 2,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/05b424b15d219852dca4b4b7d03a6c486e288ceeacbff16ea7a13059c3c36188.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:10.398898+00:00"
+    },
+    {
+      "number": 3,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/05b424b15d219852dca4b4b7d03a6c486e288ceeacbff16ea7a13059c3c36188.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:10.577002+00:00"
+    },
+    {
+      "number": 4,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/37f9b06f3c6b395b343749412470f062f14e35e86c1a5d7a5c1621dec89304e8.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:10.711135+00:00"
+    },
+    {
+      "number": 5,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/37f9b06f3c6b395b343749412470f062f14e35e86c1a5d7a5c1621dec89304e8.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:10.822584+00:00"
+    },
+    {
+      "number": 6,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/37f9b06f3c6b395b343749412470f062f14e35e86c1a5d7a5c1621dec89304e8.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:10.972626+00:00"
+    },
+    {
+      "number": 7,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/4316a9829da1e7c191f81bf35ad616cef913a369fc8664475d1edff9bd05f914.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:11.148849+00:00"
+    },
+    {
+      "number": 8,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/4316a9829da1e7c191f81bf35ad616cef913a369fc8664475d1edff9bd05f914.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:11.330725+00:00"
+    },
+    {
+      "number": 9,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/4316a9829da1e7c191f81bf35ad616cef913a369fc8664475d1edff9bd05f914.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:11.481192+00:00"
+    },
+    {
+      "number": 10,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/5e3eed04f3a955a26fd2d4477315549d057f65612558fbb2820ddf7061cadbf2.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:11.619395+00:00"
+    },
+    {
+      "number": 11,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/5e3eed04f3a955a26fd2d4477315549d057f65612558fbb2820ddf7061cadbf2.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:11.721952+00:00"
+    },
+    {
+      "number": 12,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/5e3eed04f3a955a26fd2d4477315549d057f65612558fbb2820ddf7061cadbf2.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:11.888755+00:00"
+    },
+    {
+      "number": 13,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/82cf539a8b2c62bf503df7620e1d21f6f9da832aaec7fe54c61e61f1b71eebaf.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:12.029632+00:00"
+    },
+    {
+      "number": 14,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/82cf539a8b2c62bf503df7620e1d21f6f9da832aaec7fe54c61e61f1b71eebaf.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:12.154866+00:00"
+    },
+    {
+      "number": 15,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/82cf539a8b2c62bf503df7620e1d21f6f9da832aaec7fe54c61e61f1b71eebaf.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:12.282204+00:00"
+    },
+    {
+      "number": 16,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/97a15002858ca5248cb9d194bd0e002db04d93a338f3721e746022b293cb6013.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:12.422329+00:00"
+    },
+    {
+      "number": 17,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/97a15002858ca5248cb9d194bd0e002db04d93a338f3721e746022b293cb6013.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:12.525831+00:00"
+    },
+    {
+      "number": 18,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/97a15002858ca5248cb9d194bd0e002db04d93a338f3721e746022b293cb6013.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:12.721760+00:00"
+    },
+    {
+      "number": 19,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/bb7ccdbc1f3bdb504453afb9f65d9debcc46b091017f2634fa84df003b983bbc.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:12.884220+00:00"
+    },
+    {
+      "number": 20,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/bb7ccdbc1f3bdb504453afb9f65d9debcc46b091017f2634fa84df003b983bbc.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:13.001210+00:00"
+    },
+    {
+      "number": 21,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/bb7ccdbc1f3bdb504453afb9f65d9debcc46b091017f2634fa84df003b983bbc.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:13.125192+00:00"
+    },
+    {
+      "number": 22,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/e737173680e1fdbee4a83653326fca5e4277033622403ced4998e87bac1e0e41.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:13.270184+00:00"
+    },
+    {
+      "number": 23,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/e737173680e1fdbee4a83653326fca5e4277033622403ced4998e87bac1e0e41.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:13.410571+00:00"
+    },
+    {
+      "number": 24,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/e737173680e1fdbee4a83653326fca5e4277033622403ced4998e87bac1e0e41.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:13.723561+00:00"
+    },
+    {
+      "number": 25,
+      "source": "neon",
+      "method": "HEAD",
+      "objectPath": "raw/neon/blobs/f93f0623355cb46b21556defb5904320e2df749d4979eec98e7dcd8b97c8a3c5.json.gz",
+      "operation": "HEAD",
+      "atUtc": "2026-11-04T21:09:13.879876+00:00"
+    },
+    {
+      "number": 26,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/f93f0623355cb46b21556defb5904320e2df749d4979eec98e7dcd8b97c8a3c5.json.gz",
+      "operation": "GET_range_last4",
+      "atUtc": "2026-11-04T21:09:13.988246+00:00"
+    },
+    {
+      "number": 27,
+      "source": "neon",
+      "method": "GET",
+      "objectPath": "raw/neon/blobs/f93f0623355cb46b21556defb5904320e2df749d4979eec98e7dcd8b97c8a3c5.json.gz",
+      "operation": "GET_bounded_body",
+      "atUtc": "2026-11-04T21:09:14.116110+00:00"
+    }
+  ],
+  "sourceCodeSha256": "b16fbc111fd9d590450868e6ba43a5c7a8d83b62f189f12dddc4dc4ef2ceff47",
+  "coreCodeSha256": "b6fc9977117b0655730d13ffdfc7950c15bda7bbf6bffda0438a77cb90ecf4ca",
+  "bodyPersistence": false,
+  "providerRequests": 0,
+  "remoteWrites": [],
+  "limitsRespected": true
+}
