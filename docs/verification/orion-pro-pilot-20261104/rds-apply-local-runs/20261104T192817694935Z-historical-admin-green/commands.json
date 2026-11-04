@@ -1,0 +1,105 @@
+[
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data",
+      "--auth=trust",
+      "--no-locale",
+      "--encoding=UTF8"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 742.042,
+    "stdout": "001-initdb.stdout.log",
+    "stderr": "001-initdb.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192817694935Z-historical-admin-green/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 51364 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/socket -c fsync=on",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 242.302,
+    "stdout": "002-postgres-start.stdout.log",
+    "stderr": "002-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 106.063,
+    "stdout": "003-postgres-stop.stdout.log",
+    "stderr": "003-postgres-stop.stderr.log"
+  },
+  {
+    "argv": [
+      "openssl",
+      "req",
+      "-x509",
+      "-newkey",
+      "rsa:2048",
+      "-sha256",
+      "-nodes",
+      "-days",
+      "2",
+      "-keyout",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data/server.key",
+      "-out",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data/server.crt",
+      "-subj",
+      "/CN=statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com",
+      "-addext",
+      "subjectAltName=DNS:statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 72.32,
+    "stdout": "004-owned-local-tls.stdout.log",
+    "stderr": "004-owned-local-tls.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192817694935Z-historical-admin-green/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 51364 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/socket -c fsync=on",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 138.884,
+    "stdout": "005-postgres-start.stdout.log",
+    "stderr": "005-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-tmettppp/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 112.68,
+    "stdout": "006-postgres-stop.stdout.log",
+    "stderr": "006-postgres-stop.stderr.log"
+  }
+]

@@ -1,0 +1,24 @@
+2026-11-04 20:26:12.743 CET [52684] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 20:26:12.744 CET [52684] LOG:  listening on IPv4 address "127.0.0.1", port 51170
+2026-11-04 20:26:12.744 CET [52684] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-95nuhkxr/socket/.s.PGSQL.51170"
+2026-11-04 20:26:12.750 CET [52690] LOG:  database system was shut down at 2026-11-04 20:26:12 CET
+2026-11-04 20:26:12.752 CET [52684] LOG:  database system is ready to accept connections
+2026-11-04 20:26:12.831 CET [52684] LOG:  received fast shutdown request
+2026-11-04 20:26:12.832 CET [52684] LOG:  aborting any active transactions
+2026-11-04 20:26:12.833 CET [52684] LOG:  background worker "logical replication launcher" (PID 52693) exited with exit code 1
+2026-11-04 20:26:12.833 CET [52688] LOG:  shutting down
+2026-11-04 20:26:12.833 CET [52688] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 20:26:12.834 CET [52688] LOG:  checkpoint complete: wrote 0 buffers (0.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.002 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/1788EF8, redo lsn=0/1788EF8
+2026-11-04 20:26:12.837 CET [52684] LOG:  database system is shut down
+2026-11-04 20:26:13.186 CET [52700] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 20:26:13.186 CET [52700] LOG:  listening on IPv4 address "127.0.0.1", port 51170
+2026-11-04 20:26:13.187 CET [52700] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-95nuhkxr/socket/.s.PGSQL.51170"
+2026-11-04 20:26:13.193 CET [52706] LOG:  database system was shut down at 2026-11-04 20:26:12 CET
+2026-11-04 20:26:13.195 CET [52700] LOG:  database system is ready to accept connections
+2026-11-04 20:26:13.576 CET [52700] LOG:  received fast shutdown request
+2026-11-04 20:26:13.576 CET [52700] LOG:  aborting any active transactions
+2026-11-04 20:26:13.578 CET [52700] LOG:  background worker "logical replication launcher" (PID 52709) exited with exit code 1
+2026-11-04 20:26:13.578 CET [52704] LOG:  shutting down
+2026-11-04 20:26:13.578 CET [52704] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 20:26:13.616 CET [52704] LOG:  checkpoint complete: wrote 963 buffers (5.9%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.029 s, sync=0.010 s, total=0.039 s; sync files=312, longest=0.001 s, average=0.001 s; distance=4455 kB, estimate=4455 kB; lsn=0/1BE2E00, redo lsn=0/1BE2E00
+2026-11-04 20:26:13.622 CET [52700] LOG:  database system is shut down

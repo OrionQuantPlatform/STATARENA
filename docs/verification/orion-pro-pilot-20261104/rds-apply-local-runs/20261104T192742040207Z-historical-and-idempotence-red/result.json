@@ -1,0 +1,716 @@
+{
+  "kind": "owned_pg18_wrapper_apply_e2e",
+  "startedAt": "2026-11-04T19:27:42.040633+00:00",
+  "command": [
+    "python3",
+    "tests/orion_pro_rds_apply_local.py",
+    "--label",
+    "historical-and-idempotence-red"
+  ],
+  "setup": "Owned PG18.6 statarena_prod; actual local TLS; fake SSM entirely in memory; fixed wrapper targets mapped only to owned loopback",
+  "expected": "RDS_PROTOCOL.md admin-parameter failure matrix",
+  "sourceSha256": {
+    "tests/orion_pro_rds_apply_local.py": "7344ea4beeb3f63fb533cc04e2c86cf2774884658d698d3c027ee33e4352b41d",
+    "dashboard/scripts/orion_pro_rds.py": "1914551c4ba83b8a9224a2b77e3519f3453cf1da6fdd46c88f824c947c715cb5",
+    "docs/verification/orion-pro-pilot-20261104/RDS_PROTOCOL.md": "912be8b2a96255445ccef8e2e59cb2918d385b1231baa2b317688ca88b3e74d1",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-pilot-20261104/approval.json": "f9889e67bd2856ba9c64925a002c376c8fce4928c503a2a6229a066ec4f73db4",
+    "docs/verification/orion-pro-pilot-20261104/model-amendments.json": "26cd089172da08687f055497e37fbfa9fb5bf06a151d8affafc4b7290d956c66",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "docs/verification/orion-pro-pilot-20261104/rds_readback.py": "009046fc4094c2ae4f019fc5fb584288f06ff71f1409b22f6a5c47e7177c6cc2",
+    "docs/verification/orion-pro-pilot-20261104/rds_catalogue.py": "1674586345885ae0036f5a9d0d1f908218b4745e96d0c08c086a098d5046093d",
+    "docs/verification/orion-pro-pilot-20261104/expected-catalogues/20261104T190938014223Z-catalogue-guards-green-oracle/expected-catalogue.json": "b6adf85ed582866c435b6e64f01c59cc271488a2df1ba21958131961f8546610",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968"
+  },
+  "cases": [
+    {
+      "case": "not-secure",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "String",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter is not SecureString"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/not-secure-apply.json"
+    },
+    {
+      "case": "not-object",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "list",
+        "keys": [],
+        "fieldTypes": {}
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "AttributeError",
+          "sqlstate": null
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/not-object-apply.json"
+    },
+    {
+      "case": "unknown-database",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/unknown-database-apply.json"
+    },
+    {
+      "case": "missing-database",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/missing-database-apply.json"
+    },
+    {
+      "case": "other-username",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "AssertionError",
+          "sqlstate": null
+        },
+        "operationCounts": {
+          "attempts": 1,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/other-username-apply.json"
+    },
+    {
+      "case": "missing-username",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/missing-username-apply.json"
+    },
+    {
+      "case": "conflicting-host",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/conflicting-host-apply.json"
+    },
+    {
+      "case": "null-host",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "NoneType"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/null-host-apply.json"
+    },
+    {
+      "case": "empty-password",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/empty-password-apply.json"
+    },
+    {
+      "case": "nonstr-password",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "int",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "AssertionError",
+          "sqlstate": null
+        },
+        "operationCounts": {
+          "attempts": 1,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/nonstr-password-apply.json"
+    },
+    {
+      "case": "unknown-key",
+      "expected": "reject before connection/DDL",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "port",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str",
+          "port": "int"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "AssertionError",
+          "sqlstate": null
+        },
+        "operationCounts": {
+          "attempts": 1,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/unknown-key-apply.json"
+    },
+    {
+      "case": "historical-absent-host",
+      "expected": "atomic schema/bootstrap on fixed target",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/historical-absent-host-apply.json"
+    },
+    {
+      "case": "first-readback",
+      "status": "unverified",
+      "reason": "Its local apply failed"
+    },
+    {
+      "case": "target-exact-host",
+      "expected": "atomic schema/bootstrap on fixed target",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "pass",
+      "actual": {
+        "error": null,
+        "operationCounts": {
+          "attempts": 1,
+          "connections": 1,
+          "ssmCalls": 1,
+          "ddlCalls": 16
+        },
+        "appliedVersions": [
+          "012",
+          "013"
+        ],
+        "bootstrapReused": false
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/target-exact-host-apply.json"
+    },
+    {
+      "case": "current-readback",
+      "status": "pass",
+      "expected": "11 cases pass / 14 SELECTs",
+      "actual": {
+        "status": "pass",
+        "queries": 14,
+        "error": null,
+        "failedCases": [],
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T192744523040Z-historical-and-idempotence-red-current-readback/result.json"
+      }
+    },
+    {
+      "case": "target-exact-reapply",
+      "expected": "atomic schema/bootstrap on fixed target",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "TypeError",
+          "sqlstate": null
+        },
+        "operationCounts": {
+          "attempts": 1,
+          "connections": 1,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/target-exact-reapply-apply.json"
+    },
+    {
+      "case": "historical-exact-host",
+      "expected": "atomic schema/bootstrap on fixed target",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "host",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str",
+          "host": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/historical-exact-host-apply.json"
+    },
+    {
+      "case": "target-absent-host",
+      "expected": "atomic schema/bootstrap on fixed target",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/target-absent-host-apply.json"
+    },
+    {
+      "case": "historical-reapply",
+      "expected": "atomic schema/bootstrap on fixed target",
+      "parameterShape": {
+        "parameterType": "SecureString",
+        "jsonType": "dict",
+        "keys": [
+          "database",
+          "password",
+          "security_group",
+          "username"
+        ],
+        "fieldTypes": {
+          "database": "str",
+          "username": "str",
+          "password": "str",
+          "security_group": "str"
+        }
+      },
+      "status": "fail",
+      "actual": {
+        "error": {
+          "type": "GateError",
+          "sqlstate": null,
+          "reason": "Existing admin parameter target mismatch"
+        },
+        "operationCounts": {
+          "attempts": 0,
+          "connections": 0,
+          "ssmCalls": 1,
+          "ddlCalls": 0
+        },
+        "appliedVersions": null,
+        "bootstrapReused": null
+      },
+      "receipt": "docs/verification/orion-pro-pilot-20261104/rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/historical-reapply-apply.json"
+    },
+    {
+      "case": "idempotent-readback",
+      "status": "unverified",
+      "reason": "Its local apply failed"
+    }
+  ],
+  "realAwsCalls": [],
+  "realRemoteWrites": [],
+  "rawSourceCopies": [],
+  "keyFilesCopiedToEvidence": [],
+  "limits": [
+    "Functional apply path and readback only; no real account/instance/SSM or network acceptance"
+  ],
+  "tls": {
+    "certificateSha256": "124fbd6450f417f450733eaded7e9fd553e3bb48f2691a4558769c72b4aa26be",
+    "loopbackPort": 51289,
+    "hostname": "statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com"
+  },
+  "localFinalCatalogue": 94,
+  "cleanup": {
+    "owned_root": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-6q9bhzxt",
+    "server_stopped": true,
+    "owned_directory_removed": true
+  },
+  "finishedAt": "2026-11-04T19:27:45.265351+00:00",
+  "counts": {
+    "pass": 10,
+    "fail": 8,
+    "unverified": 2
+  },
+  "status": "fail",
+  "expectedCaseCount": 20
+}

@@ -54,3 +54,36 @@ Capacity samples and catalogue checks describe one instant. The wrapper cannot e
 - `rds-runs/20261104T184647860612Z-readonly-reviewed-default/result.json`: actual default-mode preflight, eight SELECTs, zero remote writes. The additional write-lock check passed; targets remain absent. It was **blocked** by uncommitted source, missing parent acceptance, an older-than-five-minutes credit sample and an active `statarena_ingest` source-pilot transaction (32s, `idle in transaction`). No advisory or write lock was present. The source pilot itself reads remotely, but preflight conservatively treats any transaction held by a write-capable role as a blocker. It cancels nothing. Refresh after the source E2E ends and a fresh credit sample arrives.
 
 This subtask used **15 remote read-only SQL statements total** and stopped within its 20-query budget. It executed no remote apply, SSM secret retrieval, resource mutation, source import, publication or cutover. The parent must review the wrapper and create the explicit current-source acceptance before any apply.
+
+## Admin parameter adaptation — test first
+
+The parent's first apply stopped before opening its admin connection or attempting any write because the existing admin parameter has historical instance metadata: keys `database`, `password`, `security_group`, `username`, with no `host`. Its database label is `statarena`; the approved connection target remains the separately verified constants HOST and `statarena_prod`. The parameter is not changed and grants/network/resources are not widened.
+
+This matrix and `tests/orion_pro_rds_apply_local.py` precede the adaptation. The E2E invokes the actual `apply_schema_bootstrap` function with a fully fake in-memory SSM response, an owned PG18.6 database, real local TLS and a checked loopback transport. It never invokes the remote `--apply` CLI or a real AWS/SSM/RDS service. Fake password values stay in memory. TLS key material exists only in the owned temporary cluster and is removed at cleanup; no key or parameter value is copied to evidence.
+
+| Case / action | Required outcome |
+|---|---|
+| Historical SecureString: exact admin username, known historical database, absent host | Full 94-table 012/013 transaction, journal/bootstrap/grants; connection still uses fixed HOST + statarena_prod |
+| Current target database, absent/exact host; historical database with exact host | Accept the same instance credential; preserve fixed connection target |
+| Non-SecureString, non-object JSON, unknown/missing database, different/missing username, contradictory/null host, empty/non-string password or unknown key | Reject before any admin connection or DDL |
+| First successful local apply followed by independent readback | Eleven readback cases pass, exactly 14 read-only SELECTs; exact catalogue and bootstrap binding |
+| Repeat application on the exact journal/bootstrap | No new migration or generation, ten seeds preserved, bootstrap reused; independent readback still passes |
+| Existing target table inventory uses the dict returned by active_tables | RED captures the invalid string indexing first; compare its key set after the bounded fix |
+
+```sh
+PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_rds_apply_local.py --label historical-admin-red
+PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_rds_apply_local.py --label historical-admin-green
+python3 tests/orion_pro_rds_gate.py --label historical-admin-offline-gates
+```
+
+Receipts retain only parameter key/type shape, expected/actual outcomes, input code/model/SQL hashes, actual local journal/bootstrap/readback, safe operation counts, exact rerun, PostgreSQL logs and owned cleanup. Local receipt fields named `remoteWrites` originate from the wrapper API but are explicitly marked as owned-local execution; the E2E envelope records zero real remote writes. The account/instance preflight remains a separate parent gate and is not claimed from this local test. Suggested commit: `fix: validate existing instance admin credentials without changing RDS targets`.
+
+### Recorded adaptation outcomes
+
+- `rds-apply-local-runs/20261104T192611873486Z-historical-admin-red/result.json`: original RED retained. Historical metadata failed before any connection. A transport-harness error supplied an empty parameter tuple to multi-statement DDL, causing a local `ProgrammingError`; this run does not establish successful DDL or idempotence. The first connector counter also missed attempts with an unexpected username. Both harness issues were corrected before acceptance, preserving this artifact.
+- `rds-apply-local-runs/20261104T192716109054Z-historical-admin-confirmed-red/result.json`: the corrected local transport actually applied the current-form credential control, created **94 tables**, and passed the independent **11-case/14-SELECT** readback. Historical metadata was still rejected. Wrong username, non-string password and unknown key reached the connector and were blocked by the E2E boundary; those are failures of the old parameter gate, not claimed application rejections.
+- `rds-apply-local-runs/20261104T192742040207Z-historical-and-idempotence-red/result.json`: **10 passed / eight failed / two unverified** before implementation changes. The current-form control and its readback passed. A repeated current-form apply reached the exact-journal branch and raised `TypeError`, confirming the dict-key iteration defect before the authorized one-line correction.
+- `rds-apply-local-runs/20261104T192817694935Z-historical-admin-green/result.json`: **20/20 local E2E cases pass** after the bounded correction. Eleven invalid shapes raise `GateError` before any connection or DDL. Historical metadata without host performs the real local 012/013/bootstrap/grants transaction; all four allowed database/host combinations preserve the fixed HOST and DATABASE constants (the actual DB is `statarena_prod`). Five subsequent applies reuse the same sealed bootstrap without new migration/generation/seed. All three independent readbacks pass **11/11 with exactly 14 SELECTs each**. Final table count is 94 and the owned PG process/directory were stopped/removed.
+- `rds-gate-runs/20261104T192907889103Z-historical-admin-offline-gates/result.json`: **7/7 CLI gates pass** against the new wrapper bytes and committed-source manifest requirements; no AWS/SQL call or `--apply` invocation.
+
+Only parameter validation, the authorized `set(active_tables(model))` correction and the new E2E name in `EXECUTION_PATHS` changed in the wrapper. The parameter's `security_group` is ignored metadata; no endpoint, database, port, TLS policy or network/grant configuration comes from it. The new E2E used no real AWS/SSM/RDS operation, source body, secret value or copied key file. This outcomes subsection is appended after the green run; its original pre-code matrix and exact code inputs remain in that run's `inputs/`.
