@@ -1,0 +1,59 @@
+{
+  "start": "2026-11-04T02:39:37.263240+00:00",
+  "mode": "preflight",
+  "command": [
+    "docs/verification/aws-production-20261104/verify_api.py"
+  ],
+  "state": "preflight",
+  "checks": [
+    {
+      "label": "RDS verify-full TLS and enforced read-only session",
+      "pass": true
+    }
+  ],
+  "requests": [],
+  "missing": [
+    "typed rows:partitions",
+    "typed rows:matches",
+    "typed rows:appearances",
+    "typed rows:fixtures",
+    "typed rows:support_projection",
+    "typed rows:catalog_editions",
+    "typed rows:match_families",
+    "typed rows:assets",
+    "deployed API origin"
+  ],
+  "failures": [],
+  "account": "361769570630",
+  "stack": {
+    "status": "CREATE_IN_PROGRESS"
+  },
+  "sqlTransport": {
+    "db": "statarena_prod",
+    "read_only": "on",
+    "tls": true
+  },
+  "relations": {
+    "publications": true,
+    "partitions": true,
+    "matches": true,
+    "appearances": true,
+    "fixtures": true,
+    "support_projection": true,
+    "catalog_editions": true,
+    "match_families": true,
+    "assets": true
+  },
+  "publishedRowsAvailable": {
+    "publications": true,
+    "partitions": false,
+    "matches": false,
+    "appearances": false,
+    "fixtures": false,
+    "support_projection": false,
+    "catalog_editions": false,
+    "match_families": false,
+    "assets": false
+  },
+  "finished": "2026-11-04T02:39:41.387077+00:00"
+}
