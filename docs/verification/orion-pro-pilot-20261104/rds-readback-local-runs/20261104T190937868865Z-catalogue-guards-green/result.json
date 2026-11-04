@@ -1,0 +1,170 @@
+{
+  "kind": "owned_local_rds_readback_e2e",
+  "startedAt": "2026-11-04T19:09:37.869411+00:00",
+  "command": [
+    "python3",
+    "tests/orion_pro_rds_readback_local.py",
+    "--label",
+    "catalogue-guards-green"
+  ],
+  "baseline": false,
+  "setup": "Owned disposable PG18.6; actual TLS and statarena_prod/roles; pinned reader transport mapped only to owned loopback cluster",
+  "expected": "RDS_READBACK_PROTOCOL.md correction matrix",
+  "sourceSha256": {
+    "tests/orion_pro_rds_readback_local.py": "d12840f78a4cb061748f19dd40675028c4fe4fc425a628eef10c62274cbb588e",
+    "docs/verification/orion-pro-pilot-20261104/rds_readback.py": "009046fc4094c2ae4f019fc5fb584288f06ff71f1409b22f6a5c47e7177c6cc2",
+    "docs/verification/orion-pro-pilot-20261104/RDS_READBACK_PROTOCOL.md": "2a8350bfedf7e12e06092243365a3f93239c0766cae3ae5036e9a9a29eb83d33",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-pilot-20261104/approval.json": "f9889e67bd2856ba9c64925a002c376c8fce4928c503a2a6229a066ec4f73db4",
+    "docs/verification/orion-pro-pilot-20261104/model-amendments.json": "26cd089172da08687f055497e37fbfa9fb5bf06a151d8affafc4b7290d956c66",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "docs/verification/orion-pro-pilot-20261104/rds_catalogue.py": "1674586345885ae0036f5a9d0d1f908218b4745e96d0c08c086a098d5046093d"
+  },
+  "cases": [
+    {
+      "case": "golden",
+      "status": "pass",
+      "expected": "all11 pass",
+      "actual": {
+        "exitCode": 0,
+        "readbackStatus": "pass",
+        "targetCase": "pass",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190942194163Z-catalogue-guards-green-golden/result.json"
+      }
+    },
+    {
+      "case": "column-update",
+      "status": "pass",
+      "expected": "runtime_readonly_effective_grants fails",
+      "actual": {
+        "exitCode": 1,
+        "readbackStatus": "fail",
+        "targetCase": "fail",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190942455775Z-catalogue-guards-green-column-update/result.json"
+      }
+    },
+    {
+      "case": "check-true",
+      "status": "pass",
+      "expected": "exact_primary_foreign_unique_checks fails",
+      "actual": {
+        "exitCode": 1,
+        "readbackStatus": "fail",
+        "targetCase": "fail",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190942705840Z-catalogue-guards-green-check-true/result.json"
+      }
+    },
+    {
+      "case": "index-changed",
+      "status": "pass",
+      "expected": "declared_indexes_valid fails",
+      "actual": {
+        "exitCode": 1,
+        "readbackStatus": "fail",
+        "targetCase": "fail",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190942957085Z-catalogue-guards-green-index-changed/result.json"
+      }
+    },
+    {
+      "case": "view-missing",
+      "status": "pass",
+      "expected": "exact_tables_columns_types_nullability fails",
+      "actual": {
+        "exitCode": 1,
+        "readbackStatus": "fail",
+        "targetCase": "fail",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190943224440Z-catalogue-guards-green-view-missing/result.json"
+      }
+    },
+    {
+      "case": "fk-action",
+      "status": "pass",
+      "expected": "exact_primary_foreign_unique_checks fails",
+      "actual": {
+        "exitCode": 1,
+        "readbackStatus": "fail",
+        "targetCase": "fail",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190943502840Z-catalogue-guards-green-fk-action/result.json"
+      }
+    },
+    {
+      "case": "uq-null-semantics",
+      "status": "pass",
+      "expected": "exact_primary_foreign_unique_checks fails",
+      "actual": {
+        "exitCode": 1,
+        "readbackStatus": "fail",
+        "targetCase": "fail",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190943764758Z-catalogue-guards-green-uq-null-semantics/result.json"
+      }
+    },
+    {
+      "case": "restored-golden",
+      "status": "pass",
+      "expected": "all11 pass",
+      "actual": {
+        "exitCode": 0,
+        "readbackStatus": "pass",
+        "targetCase": "pass",
+        "error": null,
+        "queries": 14,
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-readbacks/20261104T190944038108Z-catalogue-guards-green-restored-golden/result.json"
+      }
+    }
+  ],
+  "remoteWrites": [],
+  "limits": [
+    "No remote TLS/network/CA or AWS behavior is established; all SQL is local"
+  ],
+  "oracleCommand": {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/rds_catalogue.py",
+      "--prepare-local",
+      "--label",
+      "catalogue-guards-green-oracle",
+      "--pg-bin",
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin"
+    ],
+    "exitCode": 0
+  },
+  "expectedCatalogue": {
+    "path": "docs/verification/orion-pro-pilot-20261104/expected-catalogues/20261104T190938014223Z-catalogue-guards-green-oracle/expected-catalogue.json",
+    "sha256": "b6adf85ed582866c435b6e64f01c59cc271488a2df1ba21958131961f8546610"
+  },
+  "localTls": {
+    "certificateSha256": "fe6b4b99fb5b7d1b8291988077d5f17ac135af9712d4ed06b258214adc09771d",
+    "verifyFullHostname": "statarena-postgres.clcy2iqyajbl.us-east-2.rds.amazonaws.com",
+    "loopbackPort": 50210
+  },
+  "cleanup": {
+    "owned_root": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-66xzw0qo",
+    "server_stopped": true,
+    "owned_directory_removed": true
+  },
+  "finishedAt": "2026-11-04T19:09:44.540445+00:00",
+  "counts": {
+    "pass": 8,
+    "fail": 0
+  },
+  "status": "pass"
+}

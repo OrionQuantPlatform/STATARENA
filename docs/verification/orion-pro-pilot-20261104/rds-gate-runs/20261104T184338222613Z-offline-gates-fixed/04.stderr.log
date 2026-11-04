@@ -1,0 +1,10 @@
+usage: orion_pro_rds.py [-h] [--plan | --preflight | --check-apply | --apply]
+                        [--label LABEL] [--acceptance ACCEPTANCE]
+                        [--acceptance-sha256 ACCEPTANCE_SHA256]
+                        [--preflight-receipt PREFLIGHT_RECEIPT]
+                        [--preflight-sha256 PREFLIGHT_SHA256]
+                        [--expect-commit EXPECT_COMMIT]
+                        [--expect-model-sha256 EXPECT_MODEL_SHA256]
+                        [--expect-012-sha256 EXPECT_012_SHA256]
+                        [--expect-013-sha256 EXPECT_013_SHA256]
+orion_pro_rds.py: error: argument --expect-model-sha256: Expected a lowercase SHA-256 digest

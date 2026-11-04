@@ -1,0 +1,163 @@
+{
+  "kind": "read_only_rds_gate_cli_e2e",
+  "startedAt": "2026-11-04T18:43:38.223150+00:00",
+  "command": "python3 tests/orion_pro_rds_gate.py --label offline-gates-fixed",
+  "setup": "CLI subprocesses; temporary AWS sentinel; no database connection; --apply is never invoked",
+  "expected": "RDS_PROTOCOL.md failure matrix",
+  "cases": [
+    {
+      "case": "wrapper_available",
+      "status": "pass",
+      "actual": {
+        "wrapperSha256": "888b09dae3d6375491c11006cbfddb263b341cdb5a6ee5810a3aa29a36cc23c9"
+      }
+    },
+    {
+      "case": "help_modes",
+      "status": "pass",
+      "actual": {
+        "helpAvailable": true
+      }
+    },
+    {
+      "case": "offline_plan",
+      "status": "pass",
+      "actual": {
+        "status": "blocked",
+        "receipt": "docs/verification/orion-pro-pilot-20261104/rds-runs/20261104T184338347069Z-cli-e2e-offline/result.json",
+        "awsCalls": 0
+      }
+    },
+    {
+      "case": "conflicting_modes",
+      "status": "pass",
+      "actual": {
+        "exitCode": 2
+      }
+    },
+    {
+      "case": "malformed_digest",
+      "status": "pass",
+      "actual": {
+        "exitCode": 2
+      }
+    },
+    {
+      "case": "offline_apply_prerequisites",
+      "status": "pass",
+      "actual": {
+        "blockers": [
+          "relevant_source_is_committed_main",
+          "parent_acceptance_required",
+          "explicit_expected_commit_model_migrations",
+          "fresh_preflight_receipt_required"
+        ],
+        "awsCalls": 0
+      }
+    },
+    {
+      "case": "tampered_preflight",
+      "status": "pass",
+      "actual": {
+        "blockers": [
+          "relevant_source_is_committed_main",
+          "parent_acceptance_required",
+          "explicit_expected_commit_model_migrations",
+          "fresh_preflight_digest_mismatch"
+        ],
+        "awsCalls": 0
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "dashboard/scripts/orion_pro_rds.py",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "01.stdout.log",
+      "stderr": "01.stderr.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "dashboard/scripts/orion_pro_rds.py",
+        "--plan",
+        "--label",
+        "cli-e2e-offline"
+      ],
+      "exitCode": 2,
+      "stdout": "02.stdout.log",
+      "stderr": "02.stderr.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "dashboard/scripts/orion_pro_rds.py",
+        "--plan",
+        "--preflight"
+      ],
+      "exitCode": 2,
+      "stdout": "03.stdout.log",
+      "stderr": "03.stderr.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "dashboard/scripts/orion_pro_rds.py",
+        "--check-apply",
+        "--expect-model-sha256",
+        "not-a-hash"
+      ],
+      "exitCode": 2,
+      "stdout": "04.stdout.log",
+      "stderr": "04.stderr.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "dashboard/scripts/orion_pro_rds.py",
+        "--check-apply",
+        "--label",
+        "cli-e2e-missing-acceptance"
+      ],
+      "exitCode": 2,
+      "stdout": "05.stdout.log",
+      "stderr": "05.stderr.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "dashboard/scripts/orion_pro_rds.py",
+        "--check-apply",
+        "--preflight-receipt",
+        "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-rds-gate-d6f8z7te/tampered.json",
+        "--preflight-sha256",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "--label",
+        "cli-e2e-tampered"
+      ],
+      "exitCode": 2,
+      "stdout": "06.stdout.log",
+      "stderr": "06.stderr.log"
+    }
+  ],
+  "remoteWrites": [],
+  "sourceSha256": {
+    "tests/orion_pro_rds_gate.py": "c30703b9a271cf22d614c892ac4cc5265071631bec4ec2b9153a9c2d75b39356",
+    "docs/verification/orion-pro-pilot-20261104/RDS_PROTOCOL.md": "8cb6802217a8826374a18c35ecd3b5bb5bd40ce41b91036eb0d0fced05650201",
+    "dashboard/scripts/orion_pro_rds.py": "888b09dae3d6375491c11006cbfddb263b341cdb5a6ee5810a3aa29a36cc23c9"
+  },
+  "limits": [
+    "Actual remote apply and rollback behavior remain unexecuted"
+  ],
+  "finishedAt": "2026-11-04T18:43:40.104124+00:00",
+  "counts": {
+    "pass": 7,
+    "fail": 0,
+    "unverified": 0
+  },
+  "status": "pass"
+}

@@ -1,0 +1,1 @@
+{"status": "blocked", "mode": "plan", "blockers": ["relevant_source_is_committed_main", "parent_acceptance_required"], "receipt": "docs/verification/orion-pro-pilot-20261104/rds-runs/20261104T184607452230Z-cli-e2e-offline/result.json", "receiptSha256": "20423a0539101a0424a9e818bc441513189c90b28584a1437f1cbb4d6d5f6fbd", "remoteWrites": []}

@@ -1,0 +1,61 @@
+{
+  "kind": "read_only_rds_gate_cli_e2e",
+  "startedAt": "2026-11-04T18:38:47.547277+00:00",
+  "command": "python3 tests/orion_pro_rds_gate.py --label missing-wrapper-red",
+  "setup": "CLI subprocesses; temporary AWS sentinel; no database connection; --apply is never invoked",
+  "expected": "RDS_PROTOCOL.md failure matrix",
+  "cases": [
+    {
+      "case": "wrapper_available",
+      "status": "fail",
+      "errorType": "AssertionError",
+      "reason": "RDS wrapper is missing (expected initial RED)"
+    },
+    {
+      "case": "help_modes",
+      "status": "unverified",
+      "reason": "Prerequisite failed: wrapper_available"
+    },
+    {
+      "case": "offline_plan",
+      "status": "unverified",
+      "reason": "Prerequisite failed: wrapper_available"
+    },
+    {
+      "case": "conflicting_modes",
+      "status": "unverified",
+      "reason": "Prerequisite failed: wrapper_available"
+    },
+    {
+      "case": "malformed_digest",
+      "status": "unverified",
+      "reason": "Prerequisite failed: wrapper_available"
+    },
+    {
+      "case": "offline_apply_prerequisites",
+      "status": "unverified",
+      "reason": "Prerequisite failed: wrapper_available"
+    },
+    {
+      "case": "tampered_preflight",
+      "status": "unverified",
+      "reason": "Prerequisite failed: wrapper_available"
+    }
+  ],
+  "commands": [],
+  "remoteWrites": [],
+  "sourceSha256": {
+    "tests/orion_pro_rds_gate.py": "c30703b9a271cf22d614c892ac4cc5265071631bec4ec2b9153a9c2d75b39356",
+    "docs/verification/orion-pro-pilot-20261104/RDS_PROTOCOL.md": "3f2fa07845a0107bd9fdf0ef36a4c15b77f4749aecd436fe7b39c4a6428c2321"
+  },
+  "limits": [
+    "Actual remote apply and rollback behavior remain unexecuted"
+  ],
+  "finishedAt": "2026-11-04T18:38:47.548875+00:00",
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 6
+  },
+  "status": "fail"
+}
