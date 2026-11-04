@@ -1,0 +1,55 @@
+# Pilote Orion Pro — 4 novembre 2026
+
+Le nouveau modèle est implémenté et validé sur PostgreSQL 18.6 local. L'importeur réel reste un prototype partiel : **aucune acceptation de migration complète, publication publique ou suppression de sources** n'en découle. La prochaine opération RDS autorisée ici est limitée au schéma et aux références initiales.
+
+Commits associés : `docs: record the approved Orion pilot and native metric amendment` et `feat: add the approved Orion Pro schema and integrity pilot`. Commits suivants proposés : `feat: import the bounded Orion Pro pilot from existing AWS sources`, `feat: add guarded Orion Pro RDS pilot gate`, `ci: exercise the approved Orion Pro pilot without cloud access`.
+
+## Ce qui est acquis
+
+L'accord explicite « Valider et lancer le pilote » est conservé dans `approval.json`, avec le modèle original `028c221d…` et le commit de plan `411207645f…`. `model-amendments.json` enregistre séparément la correction ciblée `18da43f9…` : quatre expressions CHECK et quatre descriptions pour distinguer les états natifs des métriques. Aucune table, colonne ou clé n'a été ajoutée par cette correction ; elle n'est pas présentée comme un second accord utilisateur.
+
+| Mesure comparable | Avant ce pilote | Après vérification locale | Portée |
+|---|---:|---:|---|
+| Tables actives du nouveau modèle créées par les migrations | 0 | 94 | 1 709 colonnes, 431 FK ; les anciennes tables AWS existent toujours |
+| États admis dans les observations de métriques enregistrées | nombre, texte, booléen | mêmes états + `null` explicite + propriété absente prouvée | Une ligne SQL manquante reste inconnue |
+| Scénarios de schéma/intégrité | premier lancement impossible sans migrateur | 23/23 passent | 57 écritures invalides rejetées dans les workflows |
+| Scénarios d'états natifs | 19 réussites, 4 échecs, 2 non vérifiés sur le modèle approuvé original | 25/25 passent sur le modèle corrigé | RED original conservé |
+| Valeur xG et total de la cohorte témoin | 0,82 ; somme 1,00 | correction 0,67 ; somme 0,85 | Ancienne lecture figée conservée ; éditions partagées A/B affectées, C préservée |
+| Sources brutes nouvelles dans S3 ou RDS | 0 | 0 | Décodage des sources AWS existantes en mémoire, puis SQL typé local |
+| Ressources AWS supplémentaires créées pour ce pilote | 0 | 0 | Même RDS 64 Gio ; aucun redimensionnement |
+
+Les neuf tables réservées aux futurs modèles ne sont pas installées : les 94 tables actives n'ont aucune FK qui en dépende. Les dix lignes de référence sont six périodes et quatre positions ; leur génération est réelle et scellée, leur empreinte lie le modèle, le migrateur et les migrations réellement appliquées. Les versions nécessaires restent dans les tables métier ; aucune table sœur `_history` ou registre universel de lignes n'est créée.
+
+Preuves SQL : `runs/20261104T183222785812Z-recorded-metric-amendment-regression/result.json`, `metric-state-runs/20261104T183139777229Z-targeted-native-metric-candidate/result.json` et `bootstrap-artifact-review.json`. Chaque répertoire conserve la commande, les entrées, le SQL appliqué, les journaux et la fermeture du PostgreSQL possédé. Les échecs initiaux et intermédiaires restent présents.
+
+## Pilote sur les sources réelles
+
+Périmètre : Ligue 1 `l_3FJFUl`, saisons 2025/2026 et 2026/2027, uniquement à partir de sources déjà sur AWS. Le transfert physique Neon → AWS du second Codex n'a pas été relancé.
+
+- 612 rencontres planifiées ou terminées, dont 387 terminées ; 839 joueurs et 20 clubs.
+- 15 437 participations/statistiques et 9 795 tirs normalisés ; identifiants publics conservés.
+- 61 748 observations d'état pour xG, xA, xGOT et minutes, rattachées au même record source, participant, période, variante et cohorte sélectionnée que la projection commune.
+- 13 familles détaillées exercées pour un match réel de chacune des deux saisons : **projections typées partielles**, pas reprise complète des feuilles de chaque observation.
+- 776 profils de joueurs et 20 observations de clubs sélectionnés par identifiant exact. Une référence de joueur pointait vers un autre joueur : sa biographie a été rejetée. 62 clés de ressources de profils restent introuvables dans la recherche ciblée ; cela ne prouve pas leur absence globale sur AWS.
+
+Le run `real-source-runs/20261104T185546803265Z-final-native-states-and-real-families/result.json` passe 14 contrôles, avec `fullAcceptance=false`. Les 61 748 états ont le même SHA source/SQL `e08b11c0…`, zéro ligne inconnue dans ces quatre slots attendus et zéro divergence de rattachement/cohorte. Une correction explicitement simulée d'un vrai record passe par le même normaliseur, conserve la lecture précédente et distingue xA `null` de xGOT absent. Le réimport sans changement n'ajoute aucune ligne **dans la même instance et son cache** ; la reprise dans un processus neuf reste à implémenter/vérifier.
+
+La revue indépendante a ensuite identifié deux défauts du prototype : valeur vide inventée depuis une collection manquante et arrondi possible dans les empreintes au-delà de 28 chiffres. Le RED pré-code `real-source-runs/20261104T190633468265Z-review-red-decimal-and-collection-shapes/result.json` les reproduit sans lecture AWS. Après correction, `real-source-runs/20261104T190755631159Z-final-reviewed-exact-numbers-and-collections/result.json` passe **15/15**, y compris ces contre-exemples, avec les mêmes 61 748 états source/SQL et `fullAcceptance=false`. Le budget cumulé des passes réelles est 67 requêtes / 190 950 214 octets décodés, inférieur aux limites 100 / 256 Mio. Le schéma additif et ses 23/25 scénarios ne dépendent pas de cette logique d'import.
+
+Les requêtes locales suivantes ont été exécutées une fois sur les données du pilote : liste de 100 matchs 1,617 ms ; agrégat joueurs 10,129 ms ; clubs 3,813 ms ; agrégat matchs 0,731 ms. **Ce sont des lectures locales, sans baseline équivalente : aucun pourcentage de gain RDS/API n'est déduit.** Les latences, octets HTTP et invalidations du futur lecteur public restent à mesurer.
+
+## RDS et production
+
+Le wrapper `dashboard/scripts/orion_pro_rds.py` sépare le plan hors ligne, le précontrôle en lecture seule et l'application explicite. Sept scénarios CLI passent sans appeler AWS. Les premiers précontrôles RDS confirment l'instance existante PostgreSQL 18.6, 64 Gio, TLS et les rôles distincts ; les trois nouveaux schémas sont absents. Environ 47,03 Gio libres, CPU 4,45–5,525 % et 59,455 crédits ont été observés à ces instants. Ces mesures de capacité ne constituent pas un benchmark causal.
+
+Les précontrôles ont correctement bloqué tant que le code n'était pas publié, l'acceptation parent absente, une métrique trop ancienne ou le pilote source encore en transaction. Aucun travail concurrent n'a été annulé pour forcer un passage. L'application éventuelle doit rester atomique : 012/013, dix références, journal et droits sur les seuls trois nouveaux schémas. Le readback indépendant passe désormais **8/8 E2E locaux sous TLS** : golden 11/11 et six dérives réelles rejetées (droit UPDATE sur colonne, CHECK affaibli, index, vue, action FK, sémantique UQ). Son oracle lie les définitions normalisées PostgreSQL aux octets exacts du modèle et des migrations. Preuve : `rds-readback-local-runs/20261104T190937868865Z-catalogue-guards-green/result.json`. Son exécution distante reste à faire ; elle sera conservée sous `rds-readbacks/`.
+
+La production Vercel reste `dpl_2YjDXsva7FBr4yDnzRShmZ776MbA`, READY, code `f65036cdb9…` déjà accepté lors du lot disponibilité. `vercel-production-readback.json` conserve la réponse de contrôle. Avant application du schéma, le probe public `public-probes/20261104T190448902600Z-before-schema-apply/result.json` vérifie HTTP 200 sur santé Vercel, manifeste Vercel et santé CloudFront/AWS. Le frontend utilise toujours le pont temporaire vers les données sauvegardées ; **aucune bascule vers le nouveau modèle n'est déclarée**.
+
+## Restant et limites
+
+Restent notamment : toutes les feuilles utiles des 512 sources ciblées, les autres métriques communes et leurs états natifs, coordonnées/unités des tirs, médias et biographies détaillées, les classements/enrichissements, la reprise sans cache de processus, l'import RDS réel, les agrégats de production, lecteurs et contrats API, invalidation A/B/C sur le site, workflows de collecte adaptés, parité desktop/mobile complète et réconciliation globale avec Neon.
+
+La suppression des anciens documents RDS/objets S3 et la bascule finale attendent l'acceptation conjointe données + backend. Aucun espace récupéré ni gain de coût/latence de ce futur modèle n'est revendiqué à ce stade. Le gain mesuré du lecteur existant du lot précédent (−22,49 % sur une seule paire SQL comparable) reste documenté séparément dans `../orion-availability-20261104/BILAN.md`.
+
+Le contrôle d'espaces Git a signalé des espaces terminaux dans le SQL généré 013 et ses copies de preuve. Les octets appliqués et empreintes ont été conservés ; ce contrôle n'est pas présenté comme réussi pour ces fichiers immuables. Les journaux bruts sont également conservés sans nettoyage éditorial.
