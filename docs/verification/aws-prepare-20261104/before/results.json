@@ -1,0 +1,145 @@
+{
+  "command": "node docs/verification/aws-prepare-20261104/run.mjs before",
+  "setup": "Full live staging shape from source-metadata.json; synthetic no-payload objects; 4 MB work_mem; temporary PG18",
+  "baselineRevision": "eaa8681c8663266ada46add5e145d70187ac420c",
+  "runs": [
+    {
+      "implementation": "old",
+      "seconds": 8.028,
+      "fixtureJoinMs": 2988.798,
+      "hotRelations": [
+        "work_shards",
+        "observations",
+        "fixtures",
+        "work_known",
+        "work_resources"
+      ],
+      "maxJoinFilterDiscards": 0,
+      "fingerprints": {
+        "matches": [
+          60764,
+          "1da8b9f84b52e5de5acff00d15055e82"
+        ],
+        "scopes": [
+          486,
+          "7204fc2d04f980903de032f52dbfdc30"
+        ],
+        "jobs": [
+          486,
+          "c379a67e28e2805583c80cc9ef4491e9"
+        ],
+        "catalog": [
+          36228,
+          "3d5e2a72bf80a40f79e4679efc22513c"
+        ]
+      },
+      "steps": [
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_known",
+          0.0002
+        ],
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_matches",
+          0.0001
+        ],
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_resources",
+          0.0001
+        ],
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_scopes",
+          0.0001
+        ],
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_catalog",
+          0.0001
+        ],
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_shards",
+          0.0001
+        ],
+        [
+          "DROP TABLE IF EXISTS pg_temp.work_dirty",
+          0.0001
+        ],
+        [
+          "SELECT sum(pg_table_size(rel))::bigint FROM unnest(ARRAY[ 'statarena.resources'::regclass,'statarena.fixtures'::regclass,'statarena.shards'::regclass, 'statarena.observations'::regclass])",
+          0.0012
+        ],
+        [
+          "SELECT pg_database_size(current_database())",
+          0.0026
+        ],
+        [
+          "CREATE TEMP TABLE work_dirty",
+          0.0017
+        ],
+        [
+          "CREATE TEMP TABLE work_known(season text,league_id text,PRIMARY",
+          0.0012
+        ],
+        [
+          "CREATE TEMP TABLE work_resources",
+          0.6943
+        ],
+        [
+          "CREATE INDEX ON work_resources(mid)",
+          0.2892
+        ],
+        [
+          "CREATE TEMP TABLE work_shards",
+          0.2789
+        ],
+        [
+          "CREATE TEMP TABLE work_matches",
+          2.9902
+        ],
+        [
+          "CREATE UNIQUE INDEX ON work_matches(id)",
+          0.0379
+        ],
+        [
+          "CREATE INDEX ON work_matches(season,league_id)",
+          0.0524
+        ],
+        [
+          "INSERT INTO work_matches SELECT 17",
+          2.7545
+        ],
+        [
+          "INSERT INTO work_matches SELECT 18",
+          0.0127
+        ],
+        [
+          "CREATE TEMP TABLE work_scopes",
+          0.5251
+        ],
+        [
+          "CREATE UNIQUE INDEX ON work_scopes(season,league_id)",
+          0.0008
+        ],
+        [
+          "INSERT INTO statarena_app.publication_jobs(season,league_id) SELECT w.season,w.league_id FROM",
+          0.0019
+        ],
+        [
+          "INSERT INTO statarena_app.publication_jobs(season,league_id,changed_at) SELECT season,league_id,changed_at FROM",
+          0.0003
+        ],
+        [
+          "INSERT INTO statarena_app.publication_jobs(season,league_id) SELECT season,league_id FROM",
+          0.0009
+        ],
+        [
+          "CREATE TEMP TABLE work_catalog",
+          0.3306
+        ],
+        [
+          "CREATE UNIQUE INDEX ON work_catalog(kind,key)",
+          0.0468
+        ]
+      ]
+    }
+  ],
+  "passed": false
+}
