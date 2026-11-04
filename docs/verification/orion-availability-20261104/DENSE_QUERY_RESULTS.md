@@ -43,7 +43,39 @@ from baseline/current handlers in `reader-sql-20261104T163921235Z.json`.
 
 Release preflight passed account/network/template checks; candidate code ZIP
 `6827c8a889c2622b84ef05f5eb088cdae8255a3d00321f553d0cb77b3cb00ddb.zip`
-is61,558bytes. Deployment/post-deploy acceptance is still pending and governed
-by RELEASE_PROTOCOL.md; those results must be added after actual execution.
+is61,558bytes. This exact ZIP is now deployed from main commit `eda0ce3e50`.
+
+CloudFormation reached UPDATE_COMPLETE. Review showed only function code and
+release stamp changes; the URL/distribution entries were dynamic references.
+Function ARN, signed origin URL, CloudFront origin, Node24,512MiB and25s Lambda
+timeout remained unchanged. No database migration or data write was performed.
+`aws-change-set.json`, `aws-before-resource-identities.json` and the timestamped
+post-release receipt make this review inspectable.
+
+Post-release `verify_dense_release.py` passed all16 checks: three sequential
+100-match/4,788-appearance GETs returned200 in **4,008.62 / 3,575.56 / 3,034.98ms**,
+with equal bytes/hash/generation/ETag. Encoded431,386bytes, decoded1,973,314bytes;
+HEAD200 in379.54ms and conditional304 in362.14ms returned empty bodies. All dense
+GETs were CloudFront misses with no-store. These are bounded actual observations,
+not a new paired HTTP baseline or a timeout-elimination claim.
+
+Public cacheable-match smoke passed10/10 (unsigned origin403, health200,
+GET/repeat bytes, edgeHIT, CORS, ETag,304,HEAD,OPTIONS and writes refused). An
+initial smoke incorrectly expected an edgeHIT for a no-store partition and
+failed that assertion; `aws-public-smoke.json` is preserved. No cache policy was
+changed to make the test pass. A separate archive-index probe404 is preserved
+as missing AWS data, reinforcing that this lot is not full migration acceptance.
+
+Rerun the bounded HTTP check only when needed:
+
+```sh
+python3 docs/verification/orion-availability-20261104/verify_dense_release.py
+python3 infra/aws-backend/public-smoke.py '/api/archive/matches/m_02vUAH' /tmp/statarena-public-smoke.json
+```
+
+Evidence: `aws-dense-release-20261104T172730943519Z.json` and
+`aws-public-cacheable-smoke.json`. Existing RAM/deadlines, query count and
+semantic volume are unchanged. No measured storage or monetary cost saving is
+claimed. Schema redesign and full data coverage remain separate gates.
 
 Suggested commit: `perf: batch appearance metrics while preserving match membership`.

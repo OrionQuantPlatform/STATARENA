@@ -12,9 +12,13 @@ repeatable-read snapshot: equal semantic hashes/counts, exact SQL and8s deadline
 
 Package committed source with `python3 infra/aws-backend/package.py
 /tmp/statarena-backend-releases`. Run `release.py dry-run` identity/network checks.
-Prepare the SHA-named ZIP; inspect unexecuted CloudFormation changes. Execute
-only a code modification to existing backend function, no replacement/new
-resource. Preserve previous ZIP for code rollback. Investigate any other change.
+Prepare the SHA-named ZIP; inspect unexecuted CloudFormation changes. Accept
+only the existing function's Code and STATARENA_RELEASE stamp changes. A dynamic
+reference from Backend.Arn to Origin.TargetFunctionArn, then Origin.FunctionUrl
+to DistributionConfig is acceptable only after checking the unchanged template,
+function name/ARN, origin and distribution identities. It must not produce an
+actual replacement, new resource or credential/configuration change. Preserve
+previous ZIP for code rollback; investigate any other change.
 
 After UPDATE_COMPLETE verify Lambda CodeSha256 against ZIP and existing
 Node24/512MiB/25s configuration; CloudFront must remain deployed. Run existing

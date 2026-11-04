@@ -1,0 +1,100 @@
+{
+  "changeSet": "release-20261104172035-6827c8a889c2",
+  "status": "CREATE_COMPLETE",
+  "executionStatus": "AVAILABLE",
+  "changes": [
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "Backend",
+      "ResourceType": "AWS::Lambda::Function",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Code",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "ParameterReference",
+          "CausingEntity": "ReleaseKey"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Code",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "DirectModification",
+          "CausingEntity": null
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Environment",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "DirectModification",
+          "CausingEntity": null
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Environment",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "ParameterReference",
+          "CausingEntity": "ReleaseKey"
+        }
+      ]
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "Distribution",
+      "ResourceType": "AWS::CloudFront::Distribution",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "DistributionConfig",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "ResourceAttribute",
+          "CausingEntity": "Origin.FunctionUrl"
+        }
+      ]
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "Origin",
+      "ResourceType": "AWS::Lambda::Url",
+      "Replacement": "Conditional",
+      "Scope": [
+        "Properties"
+      ],
+      "details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "TargetFunctionArn",
+            "RequiresRecreation": "Always"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "ResourceAttribute",
+          "CausingEntity": "Backend.Arn"
+        }
+      ]
+    }
+  ]
+}
