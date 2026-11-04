@@ -69,7 +69,9 @@ def install(db):
         db.execute(
             "CREATE TABLE IF NOT EXISTS statarena_app.worker_schema(version text PRIMARY KEY,digest text NOT NULL)"
         )
-        for prefix in ("003_", "004_", "005_", "006_", "007_", "008_", "009_", "010_", "011_", "012_", "013_", "014_", "015_", "016_", "017_"):
+        # The publisher owns statarena_app only. Staging/storage tables in the
+        # separate statarena schema are provisioned by the privileged installer.
+        for prefix in ("003_", "004_", "005_", "006_", "007_", "008_", "009_", "010_", "011_"):
             (path,) = SCHEMA.glob(prefix + "*.sql")
             source = path.read_bytes()
             digest = hashlib.sha256(source).hexdigest()

@@ -16,6 +16,8 @@ The requested destination is PostgreSQL on AWS. S3 is a temporary source during 
 
 `STATARENA_SQL_ONLY=1` enables the SQL-only paths for the AWS backend and GitHub ingestion workflows. Keep it disabled until the required payloads, current JSON versions, database privileges and end-to-end flows have been verified. The SQL image route retains checksum validation and immutable cache headers.
 
+Before enabling SQL-only mode, run `dashboard/scripts/install_sql_storage.py` with a schema-owner connection in `STATARENA_MIGRATION_DATABASE_URL`; apply the existing runtime and ingestion grants separately. This installer tracks migrations 012 onward in `statarena.sql_storage_schema`. The relational publisher continues to install only `statarena_app` migrations and does not need CREATE privileges in `statarena`.
+
 CloudFront can cache images returned by the AWS Lambda/PostgreSQL backend instead of an S3 origin. Configure and test the existing flat-rate distribution and its Lambda origin access control before switching image traffic. Database-to-Lambda traffic, requests and any Vercel traffic remain subject to their respective pricing.
 
 ## Removal conditions
