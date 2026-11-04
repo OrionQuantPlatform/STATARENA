@@ -1,0 +1,109 @@
+{
+  "startedAt": "2026-11-04T18:39:45.787006+00:00",
+  "environment": "owned disposable LOCAL PostgreSQL18.6",
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_real_pilot.py --label initial-red-missing-exact-profile-transformer --phase families",
+  "modelSha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+  "sourceScopeSha256": "0ec6a7694326c20734dbbe2c9afe15e2a65fae9b7d42050b322ad065716c9daf",
+  "expected": {
+    "fixtures": 612,
+    "matches": 387,
+    "performances": 15437,
+    "shots": 9795,
+    "players": 839,
+    "teams": 20,
+    "player_profile_lookup_gaps": 62
+  },
+  "limits": {
+    "awsIndexedQueries": 100,
+    "awsDecodedBytes": 268435456,
+    "awsStatementMs": 8000,
+    "awsLockMs": 1000
+  },
+  "cases": [
+    {
+      "case": "importer_available",
+      "status": "pass",
+      "actual": {
+        "normalizerSha256": "a2e37b72b2844875161d84be8f95d423ef898a782331fe547f17d64d22aad953"
+      }
+    },
+    {
+      "case": "family_normalizer_available",
+      "status": "fail",
+      "error": "exact full-profile normalizer does not exist (expected profile-phase RED)",
+      "sqlstate": null
+    },
+    {
+      "case": "real_source_import",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "exact_typed_key_counts",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "source_oracle_metrics_aliases",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "native_shapes_quality",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "noop_reimport",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "source_correction_retains_snapshot",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "local_sql_reads",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "mapping_acceptance_boundary",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "original_family_typed_dispositions",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    },
+    {
+      "case": "full_profile_members_exact",
+      "status": "unverified",
+      "reason": "prerequisite family_normalizer_available failed"
+    }
+  ],
+  "remoteWrites": [],
+  "rawSourceCopies": [],
+  "phase": "families",
+  "modelGate": {
+    "kind": "recorded_in_scope_amendment",
+    "baseline_sha256": "028c221d4cd45ad809a2340e62f34ab9df191c593b23c0c45d5f44587eb35a8c",
+    "candidate_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "receipt_sha256": "26cd089172da08687f055497e37fbfa9fb5bf06a151d8affafc4b7290d956c66",
+    "changed_paths": 8
+  },
+  "cleanup": {
+    "owned_root": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-zqdw1oym",
+    "server_stopped": true,
+    "owned_directory_removed": true
+  },
+  "finishedAt": "2026-11-04T18:39:47.581689+00:00",
+  "counts": {
+    "pass": 1,
+    "fail": 1,
+    "unverified": 10
+  },
+  "status": "fail"
+}

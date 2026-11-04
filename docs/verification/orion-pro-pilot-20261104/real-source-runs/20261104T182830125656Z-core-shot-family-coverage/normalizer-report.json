@@ -1,0 +1,1217 @@
+{
+  "role": "orion_pro_ingest",
+  "phase": "core",
+  "transformSha256": "c8f24316b03c29b16399f5f580758259a87ce1f64b4882a69b9f213ea621fa5d",
+  "fullAcceptance": false,
+  "import": {
+    "generation": 2,
+    "reused": false,
+    "facts": {
+      "fixtures": 612,
+      "performances": 15437
+    },
+    "manifestSha256": "e21bd6cea3a2000470d49493ac652628958a941a2dc44e470e6cdb1e1d0f777a"
+  },
+  "oracleComparisons": [
+    {
+      "kind": "fixtures",
+      "sourceRows": 612,
+      "typedRows": 612,
+      "sourceSha256": "aef214743351df6ef40bf713fc728542f6ba9c5a7c175f4916f6b4afee3280ea",
+      "typedSha256": "aef214743351df6ef40bf713fc728542f6ba9c5a7c175f4916f6b4afee3280ea",
+      "sql": "SELECT a.public_key,m.status,m.match_date::text FROM ingest.public_aliases_current a JOIN football.matches_current m ON m.id=a.match_id WHERE a.route_kind='match' ORDER BY a.public_key"
+    },
+    {
+      "kind": "performances",
+      "sourceRows": 15437,
+      "typedRows": 15437,
+      "sourceSha256": "60b2269fb7e309ee9967a473ef1adc940a9a7498dd7c9d6035a766e4fe138dc6",
+      "typedSha256": "60b2269fb7e309ee9967a473ef1adc940a9a7498dd7c9d6035a766e4fe138dc6",
+      "sql": "SELECT r.external_key,s.xg,s.minutes_played,s.goals,s.assists FROM football.player_match_stats_current s JOIN ingest.source_records r ON r.id=s.source_record_id ORDER BY r.external_key"
+    },
+    {
+      "kind": "shots",
+      "sourceRows": 9795,
+      "typedRows": 9795,
+      "sourceSha256": "5d489a84f7953116ee969bd3201382b4955d3ed92fb5c08d678cea0020e702a0",
+      "typedSha256": "5d489a84f7953116ee969bd3201382b4955d3ed92fb5c08d678cea0020e702a0",
+      "sql": "SELECT s.external_shot_id,a.public_key,s.xg,s.xgot,s.minute FROM football.shots_current s JOIN ingest.public_aliases_current a ON a.match_id=s.match_id AND a.route_kind='match' ORDER BY a.public_key,s.external_shot_id"
+    },
+    {
+      "kind": "public_aliases",
+      "sourceRows": 2312,
+      "typedRows": 2312,
+      "sourceSha256": "7fbb837b2f714ef29f6d475482df6ea895c625950942b424f68f8fc1862cc589",
+      "typedSha256": "7fbb837b2f714ef29f6d475482df6ea895c625950942b424f68f8fc1862cc589"
+    }
+  ],
+  "noop": {
+    "generation": 2,
+    "reused": true,
+    "newFactRevisions": 0,
+    "duplicateRows": 0
+  },
+  "nativeShapes": {
+    "missingProfileResourceCount": 62,
+    "missingToZeroCoercions": 0,
+    "opaqueSourceBodiesStored": 0,
+    "numericRoundingCoercions": 0,
+    "numericPolicy": "Decimal parse; unconstrained numeric exact; double precision only if Decimal(str(float(v)))==v; fixed scale rejects rounding",
+    "stateCounts": [
+      {
+        "path": "performances.aerialDuels",
+        "state": "absent",
+        "count": 15197
+      },
+      {
+        "path": "performances.aerialDuels",
+        "state": "null",
+        "count": 63
+      },
+      {
+        "path": "performances.aerialDuels",
+        "state": "present",
+        "count": 177
+      },
+      {
+        "path": "performances.aerialsWon",
+        "state": "absent",
+        "count": 15197
+      },
+      {
+        "path": "performances.aerialsWon",
+        "state": "null",
+        "count": 63
+      },
+      {
+        "path": "performances.aerialsWon",
+        "state": "present",
+        "count": 177
+      },
+      {
+        "path": "performances.assists",
+        "state": "null",
+        "count": 4281
+      },
+      {
+        "path": "performances.assists",
+        "state": "present",
+        "count": 11156
+      },
+      {
+        "path": "performances.bigChancesCreated",
+        "state": "null",
+        "count": 14228
+      },
+      {
+        "path": "performances.bigChancesCreated",
+        "state": "present",
+        "count": 1209
+      },
+      {
+        "path": "performances.blocks",
+        "state": "null",
+        "count": 4286
+      },
+      {
+        "path": "performances.blocks",
+        "state": "present",
+        "count": 11151
+      },
+      {
+        "path": "performances.chancesCreated",
+        "state": "null",
+        "count": 4263
+      },
+      {
+        "path": "performances.chancesCreated",
+        "state": "present",
+        "count": 11174
+      },
+      {
+        "path": "performances.clearances",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.clearances",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.defensiveActions",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.defensiveActions",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.dribbles",
+        "state": "null",
+        "count": 9622
+      },
+      {
+        "path": "performances.dribbles",
+        "state": "present",
+        "count": 5815
+      },
+      {
+        "path": "performances.dribblesAttempted",
+        "state": "absent",
+        "count": 15197
+      },
+      {
+        "path": "performances.dribblesAttempted",
+        "state": "null",
+        "count": 150
+      },
+      {
+        "path": "performances.dribblesAttempted",
+        "state": "present",
+        "count": 90
+      },
+      {
+        "path": "performances.duelsLost",
+        "state": "null",
+        "count": 5553
+      },
+      {
+        "path": "performances.duelsLost",
+        "state": "present",
+        "count": 9884
+      },
+      {
+        "path": "performances.duelsWon",
+        "state": "null",
+        "count": 5576
+      },
+      {
+        "path": "performances.duelsWon",
+        "state": "present",
+        "count": 9861
+      },
+      {
+        "path": "performances.goals",
+        "state": "null",
+        "count": 4286
+      },
+      {
+        "path": "performances.goals",
+        "state": "present",
+        "count": 11151
+      },
+      {
+        "path": "performances.goalsPrevented",
+        "state": "null",
+        "count": 14673
+      },
+      {
+        "path": "performances.goalsPrevented",
+        "state": "present",
+        "count": 764
+      },
+      {
+        "path": "performances.interceptions",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.interceptions",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.minutes",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.minutes",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.npxg",
+        "state": "null",
+        "count": 10037
+      },
+      {
+        "path": "performances.npxg",
+        "state": "present",
+        "count": 5400
+      },
+      {
+        "path": "performances.passesAccurate",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.passesAccurate",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.passesAttempted",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.passesAttempted",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.passesFinalThird",
+        "state": "null",
+        "count": 6098
+      },
+      {
+        "path": "performances.passesFinalThird",
+        "state": "present",
+        "count": 9339
+      },
+      {
+        "path": "performances.rating",
+        "state": "null",
+        "count": 4443
+      },
+      {
+        "path": "performances.rating",
+        "state": "present",
+        "count": 10994
+      },
+      {
+        "path": "performances.recoveries",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.recoveries",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.saves",
+        "state": "null",
+        "count": 14648
+      },
+      {
+        "path": "performances.saves",
+        "state": "present",
+        "count": 789
+      },
+      {
+        "path": "performances.shots",
+        "state": "null",
+        "count": 9997
+      },
+      {
+        "path": "performances.shots",
+        "state": "present",
+        "count": 5440
+      },
+      {
+        "path": "performances.shotsOnTarget",
+        "state": "null",
+        "count": 9997
+      },
+      {
+        "path": "performances.shotsOnTarget",
+        "state": "present",
+        "count": 5440
+      },
+      {
+        "path": "performances.tackles",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.tackles",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.touches",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "path": "performances.touches",
+        "state": "present",
+        "count": 11940
+      },
+      {
+        "path": "performances.touchesBox",
+        "state": "null",
+        "count": 4286
+      },
+      {
+        "path": "performances.touchesBox",
+        "state": "present",
+        "count": 11151
+      },
+      {
+        "path": "performances.xa",
+        "state": "null",
+        "count": 7177
+      },
+      {
+        "path": "performances.xa",
+        "state": "present",
+        "count": 8260
+      },
+      {
+        "path": "performances.xg",
+        "state": "null",
+        "count": 10005
+      },
+      {
+        "path": "performances.xg",
+        "state": "present",
+        "count": 5432
+      },
+      {
+        "path": "performances.xgot",
+        "state": "null",
+        "count": 12827
+      },
+      {
+        "path": "performances.xgot",
+        "state": "present",
+        "count": 2610
+      },
+      {
+        "path": "raw_position_code",
+        "state": "null",
+        "count": 10
+      },
+      {
+        "path": "raw_position_code",
+        "state": "number",
+        "count": 15427
+      },
+      {
+        "path": "shirt_number",
+        "state": "null",
+        "count": 10
+      },
+      {
+        "path": "shirt_number",
+        "state": "string",
+        "count": 15427
+      }
+    ]
+  },
+  "correction": {
+    "throughActualNormalizer": true,
+    "syntheticChangeToRealSourceRecord": true,
+    "sourceRecordKey": "m_00MrEl:p_05kOw9",
+    "field": "xg",
+    "oldValue": "0.03",
+    "newValue": "0.04",
+    "oldSnapshotValue": "0.03",
+    "newSnapshotValue": "0.04",
+    "newGeneration": 3
+  },
+  "reads": [
+    {
+      "kind": "list",
+      "environment": "local",
+      "sql": "SELECT a.public_key,m.match_date,m.status FROM football.matches_current m JOIN ingest.public_aliases_current a ON a.match_id=m.id AND a.route_kind='match' ORDER BY m.match_date,a.public_key LIMIT 100",
+      "rows": 100,
+      "resultSha256": "8d162234a1e89ffb29825724f89fecf8ed07b40df185b728e97010856e1e0828",
+      "elapsedMs": 56.601
+    },
+    {
+      "kind": "player",
+      "environment": "local",
+      "sql": "SELECT p.player_id,count(*),sum(s.xg),sum(s.minutes_played) FROM football.match_players_current p JOIN football.player_match_stats_current s ON s.match_player_revision_id=p.revision_id GROUP BY p.player_id ORDER BY p.player_id LIMIT 20",
+      "rows": 20,
+      "resultSha256": "a899d0601be7b9fbf107f284394e16d915f0a674ea640082c92b69869a167197",
+      "elapsedMs": 10.71
+    },
+    {
+      "kind": "club",
+      "environment": "local",
+      "sql": "SELECT team_id,count(*),sum(xg) FROM football.player_match_stats_current GROUP BY team_id ORDER BY team_id",
+      "rows": 20,
+      "resultSha256": "1f6ba9e761a666c203169d9bc709db00cb29b7928067fc45153b256c9668b282",
+      "elapsedMs": 4.943
+    },
+    {
+      "kind": "match",
+      "environment": "local",
+      "sql": "SELECT match_id,count(*),sum(xg),sum(minutes_played) FROM football.player_match_stats_current GROUP BY match_id ORDER BY match_id LIMIT 20",
+      "rows": 20,
+      "resultSha256": "1cae835d22d3a9e8f19ca945dcd817443a0c52cd6b0807384592a2a0d8b7da21",
+      "elapsedMs": 4.043
+    }
+  ],
+  "mapping": {
+    "unknownUsefulFieldsSilentlyDropped": 0,
+    "dispositions": [
+      {
+        "field": "fixtures.has_playoff",
+        "status": "unverified",
+        "observations": 6
+      },
+      {
+        "field": "fixtures.league",
+        "status": "unverified",
+        "observations": 612
+      },
+      {
+        "field": "fixtures.referee",
+        "status": "unverified",
+        "observations": 6
+      },
+      {
+        "field": "fixtures.season",
+        "status": "unverified",
+        "observations": 612
+      },
+      {
+        "field": "fixtures.stadium",
+        "status": "unverified",
+        "observations": 6
+      },
+      {
+        "field": "fixtures.time_utc",
+        "status": "unverified",
+        "observations": 612
+      },
+      {
+        "field": "performances.accurateCrosses",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.bigChancesMissed",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.blockedShots",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.clearanceOffTheLine",
+        "status": "unverified",
+        "observations": 2
+      },
+      {
+        "field": "performances.concededPenalties",
+        "status": "unverified",
+        "observations": 2
+      },
+      {
+        "field": "performances.corners",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.crossesAttempted",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.dispossessed",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.distanceCovered",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.diveSaves",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.dribbledPast",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.errorsLedToGoal",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.fantasyPoints",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.fouls",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.goalsConceded",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.groundDuels",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.groundDuelsWon",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.headedClearances",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.highClaims",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.lineBreakingPasses",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.longBallsAccurate",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.longBallsAttempted",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.missedPenalty",
+        "status": "unverified",
+        "observations": 1
+      },
+      {
+        "field": "performances.offsides",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.penaltiesWon",
+        "status": "unverified",
+        "observations": 1
+      },
+      {
+        "field": "performances.punches",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.runningDistance",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.savesInsideBox",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.shotAccuracy",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.shotsOffTarget",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.shotsWoodwork",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.sprintingDistance",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.sprints",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.sweeperActions",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.throws",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.topSpeed",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.wasFouled",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.xgPlusXa",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "performances.xgotFaced",
+        "status": "unverified",
+        "observations": 240
+      },
+      {
+        "field": "players.imageUrl.media_reference",
+        "status": "unverified",
+        "observations": 840
+      },
+      {
+        "field": "shots.blockedX",
+        "status": "unverified",
+        "observations": 153
+      },
+      {
+        "field": "shots.blockedY",
+        "status": "unverified",
+        "observations": 153
+      },
+      {
+        "field": "shots.goalCrossedY",
+        "status": "unverified",
+        "observations": 153
+      },
+      {
+        "field": "shots.goalCrossedZ",
+        "status": "unverified",
+        "observations": 153
+      },
+      {
+        "field": "shots.keeperName",
+        "status": "unverified",
+        "observations": 153
+      },
+      {
+        "field": "shots.period.FirstHalf",
+        "status": "unverified",
+        "observations": 66
+      },
+      {
+        "field": "shots.period.SecondHalf",
+        "status": "unverified",
+        "observations": 87
+      },
+      {
+        "field": "shots.playerName",
+        "status": "unverified",
+        "observations": 9795
+      },
+      {
+        "field": "shots.x",
+        "status": "unverified",
+        "observations": 9795
+      },
+      {
+        "field": "shots.y",
+        "status": "unverified",
+        "observations": 9795
+      }
+    ],
+    "rejected": [],
+    "unverified": [
+      "Common metric absent/null state fidelity is not represented by approved target columns",
+      "Raw13-family normalization and full native-field inventory are pending",
+      "Shot coordinate units/frame and source-profile/media fields require approved mapping"
+    ]
+  },
+  "sourceBudget": {
+    "queries": 9,
+    "decodedBytes": 28056231,
+    "runQueries": 3,
+    "runDecodedBytes": 9352077,
+    "limits": {
+      "queries": 100,
+      "decodedBytes": 268435456
+    },
+    "sourceConnection": "one verified-TLS repeatable-read READ ONLY connection"
+  },
+  "precisionInventory": {
+    "football.competition_seasons.competition_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competition_seasons.competition_revision_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competition_seasons.recorded_from_gen": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competition_seasons.source_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competition_seasons.source_record_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competitions.recorded_from_gen": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competitions.source_id": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "football.competitions.source_record_id": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.match_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.match_team_revision_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.player_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.profile_version_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.raw_position_code_source_number": {
+      "observations": 15427,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.recorded_from_gen": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.source_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.source_record_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_players.team_id": {
+      "observations": 15437,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_scores.goals": {
+      "observations": 774,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_scores.match_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_scores.match_team_revision_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_scores.recorded_from_gen": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_scores.source_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_scores.source_record_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_teams.match_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_teams.match_revision_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_teams.recorded_from_gen": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_teams.source_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_teams.source_record_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.match_teams.team_id": {
+      "observations": 1224,
+      "maximumDecimalPlaces": 0
+    },
+    "football.matches.competition_season_id": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "football.matches.competition_season_revision_id": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "football.matches.recorded_from_gen": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "football.matches.source_id": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "football.matches.source_record_id": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.aerial_duels_attempted": {
+      "observations": 177,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.aerial_duels_won": {
+      "observations": 177,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.assists": {
+      "observations": 11157,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.big_chances_created": {
+      "observations": 1209,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.blocks": {
+      "observations": 11152,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.chances_created": {
+      "observations": 11175,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.clearances": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.data_revision": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.defensive_actions": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.dribbles_attempted": {
+      "observations": 90,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.dribbles_completed": {
+      "observations": 5816,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.duels_lost": {
+      "observations": 9885,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.duels_won": {
+      "observations": 9862,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.goals": {
+      "observations": 11152,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.goals_prevented": {
+      "observations": 764,
+      "maximumDecimalPlaces": 2
+    },
+    "football.player_match_stats.interceptions": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.match_id": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.match_player_revision_id": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.minutes_played": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.non_penalty_xg": {
+      "observations": 5401,
+      "maximumDecimalPlaces": 2
+    },
+    "football.player_match_stats.passes_attempted": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.passes_completed": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.passes_final_third": {
+      "observations": 9340,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.player_id": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.provider_rating": {
+      "observations": 10995,
+      "maximumDecimalPlaces": 2
+    },
+    "football.player_match_stats.recorded_from_gen": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.recoveries": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.saves": {
+      "observations": 789,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.shots": {
+      "observations": 5441,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.shots_on_target": {
+      "observations": 5441,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.source_id": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.source_record_id": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.tackles": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.team_id": {
+      "observations": 15438,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.touches": {
+      "observations": 11941,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.touches_box": {
+      "observations": 11152,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_match_stats.xa": {
+      "observations": 8261,
+      "maximumDecimalPlaces": 2
+    },
+    "football.player_match_stats.xg": {
+      "observations": 5433,
+      "maximumDecimalPlaces": 2
+    },
+    "football.player_match_stats.xgot": {
+      "observations": 2610,
+      "maximumDecimalPlaces": 2
+    },
+    "football.player_profile_versions.player_id": {
+      "observations": 840,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_profile_versions.recorded_from_gen": {
+      "observations": 840,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_profile_versions.source_id": {
+      "observations": 840,
+      "maximumDecimalPlaces": 0
+    },
+    "football.player_profile_versions.source_record_id": {
+      "observations": 840,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.keeper_id": {
+      "observations": 49,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.match_id": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.match_team_revision_id": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.minute": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.minute_added": {
+      "observations": 13,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.player_id": {
+      "observations": 9791,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.recorded_from_gen": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.source_id": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.source_ordinal": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.source_record_id": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.team_id": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 0
+    },
+    "football.shots.xg": {
+      "observations": 9795,
+      "maximumDecimalPlaces": 2
+    },
+    "football.shots.xgot": {
+      "observations": 9758,
+      "maximumDecimalPlaces": 2
+    },
+    "ingest.match_coverage.match_id": {
+      "observations": 387,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.match_coverage.match_revision_id": {
+      "observations": 387,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.match_coverage.observed_row_count": {
+      "observations": 387,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.match_coverage.recorded_from_gen": {
+      "observations": 387,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.match_coverage.source_id": {
+      "observations": 387,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.match_coverage.source_record_id": {
+      "observations": 387,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.competition_id": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.competition_revision_id": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.match_id": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.match_revision_id": {
+      "observations": 612,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.player_id": {
+      "observations": 1679,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.profile_version_id": {
+      "observations": 840,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.recorded_from_gen": {
+      "observations": 2312,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.source_id": {
+      "observations": 1453,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.source_record_id": {
+      "observations": 1453,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.public_aliases.team_id": {
+      "observations": 20,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.quality_issues.run_id": {
+      "observations": 62,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_datasets.source_id": {
+      "observations": 1,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_documents.byte_length": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_documents.dataset_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_documents.import_run_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_documents.source_id": {
+      "observations": 2,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_records.document_id": {
+      "observations": 26689,
+      "maximumDecimalPlaces": 0
+    },
+    "ingest.source_records.source_id": {
+      "observations": 26689,
+      "maximumDecimalPlaces": 0
+    },
+    "raw_position_code": {
+      "observations": 15427,
+      "maximumDecimalPlaces": 0
+    }
+  }
+}

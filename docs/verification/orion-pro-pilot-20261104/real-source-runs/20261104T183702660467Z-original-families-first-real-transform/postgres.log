@@ -1,0 +1,18 @@
+2026-11-04 19:37:03.672 CET [41429] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 19:37:03.673 CET [41429] LOG:  listening on IPv4 address "127.0.0.1", port 64248
+2026-11-04 19:37:03.673 CET [41429] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-jqlsvans/socket/.s.PGSQL.64248"
+2026-11-04 19:37:03.679 CET [41435] LOG:  database system was shut down at 2026-11-04 19:37:03 CET
+2026-11-04 19:37:03.680 CET [41429] LOG:  database system is ready to accept connections
+2026-11-04 19:37:41.804 CET [41450] ERROR:  new row for relation "source_metric_mappings" violates check constraint "football_source_metric_mappings_parse_rule_kind_ck"
+2026-11-04 19:37:41.804 CET [41450] DETAIL:  Failing row contains (1, players, goals, real_source_core_v1, pitchapi_player_goals, "native_scalar_exact; registered value member required; no missi..., "explicit source period", null, 3, null, football.source_metric_mappings, real_source_core_v1, real_source_core_v1, a2e37b72b2844875161d84be8f95d423ef898a782331fe547f17d64d22aad953, 26696, derived, real_source_core_v1).
+2026-11-04 19:37:41.804 CET [41450] STATEMENT:  INSERT INTO football.source_metric_mappings (recorded_from_gen,contract_version,transform_version,transform_code_sha256,provenance_kind,source_id,family_code,raw_key,mapping_version,metric_code,metric_definition_version,source_record_id,parse_rule,period_rule) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *
+2026-11-04 19:37:42.272 CET [41450] ERROR:  new row for relation "source_metric_mappings" violates check constraint "football_source_metric_mappings_parse_rule_kind_ck"
+2026-11-04 19:37:42.272 CET [41450] DETAIL:  Failing row contains (1, players, goals, real_source_core_v1, pitchapi_player_goals, "native_scalar_exact; registered value member required; no missi..., "explicit source period", null, 3, null, football.source_metric_mappings, real_source_core_v1, real_source_core_v1, a2e37b72b2844875161d84be8f95d423ef898a782331fe547f17d64d22aad953, 26709, derived, real_source_core_v1).
+2026-11-04 19:37:42.272 CET [41450] STATEMENT:  INSERT INTO football.source_metric_mappings (recorded_from_gen,contract_version,transform_version,transform_code_sha256,provenance_kind,source_id,family_code,raw_key,mapping_version,metric_code,metric_definition_version,source_record_id,parse_rule,period_rule) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *
+2026-11-04 19:38:02.534 CET [41429] LOG:  received fast shutdown request
+2026-11-04 19:38:02.534 CET [41429] LOG:  aborting any active transactions
+2026-11-04 19:38:02.535 CET [41429] LOG:  background worker "logical replication launcher" (PID 41438) exited with exit code 1
+2026-11-04 19:38:02.535 CET [41433] LOG:  shutting down
+2026-11-04 19:38:02.535 CET [41433] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 19:38:02.642 CET [41433] LOG:  checkpoint complete: wrote 7547 buffers (46.1%), wrote 4 SLRU buffers; 0 WAL file(s) added, 0 removed, 5 recycled; write=0.070 s, sync=0.036 s, total=0.107 s; sync files=788, longest=0.002 s, average=0.001 s; distance=87550 kB, estimate=87550 kB; lsn=0/6D086D0, redo lsn=0/6D086D0
+2026-11-04 19:38:02.647 CET [41429] LOG:  database system is shut down

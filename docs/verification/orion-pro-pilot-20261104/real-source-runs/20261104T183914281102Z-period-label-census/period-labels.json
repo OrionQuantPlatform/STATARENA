@@ -1,0 +1,73 @@
+{
+  "kind": "metadata-only source period enum census",
+  "periodLabels": [
+    {
+      "family": "shots",
+      "matchId": "m_0anhgc",
+      "labels": [
+        "FirstHalf",
+        "SecondHalf"
+      ],
+      "path": "raw/seasons/2025-2026/observations/shots/332b3641b9bd381a057f0f00.json.gz"
+    },
+    {
+      "family": "stats",
+      "matchId": "m_0anhgc",
+      "labels": [
+        "All",
+        "FirstHalf",
+        "SecondHalf"
+      ],
+      "path": "raw/seasons/2025-2026/observations/stats/332b3641b9bd381a057f0f00.json.gz"
+    },
+    {
+      "family": "player_halves",
+      "matchId": "m_0anhgc",
+      "labels": [
+        "FirstHalf",
+        "SecondHalf"
+      ],
+      "path": "raw/seasons/2025-2026/observations/player_halves/332b3641b9bd381a057f0f00.json.gz"
+    },
+    {
+      "family": "shots",
+      "matchId": "m_2SY7ro",
+      "labels": [
+        "FirstHalf",
+        "SecondHalf"
+      ],
+      "path": "raw/seasons/2026-2027/observations/shots/79293d567cfb4878c3f2547a.json.gz"
+    },
+    {
+      "family": "stats",
+      "matchId": "m_2SY7ro",
+      "labels": [
+        "All",
+        "FirstHalf",
+        "SecondHalf"
+      ],
+      "path": "raw/seasons/2026-2027/observations/stats/79293d567cfb4878c3f2547a.json.gz"
+    },
+    {
+      "family": "player_halves",
+      "matchId": "m_2SY7ro",
+      "labels": [
+        "FirstHalf",
+        "SecondHalf"
+      ],
+      "path": "raw/seasons/2026-2027/observations/player_halves/79293d567cfb4878c3f2547a.json.gz"
+    }
+  ],
+  "sourceBudget": {
+    "queries": 16,
+    "decodedBytes": 48416051,
+    "runQueries": 2,
+    "runDecodedBytes": 3278638,
+    "limits": {
+      "queries": 100,
+      "decodedBytes": 268435456
+    },
+    "sourceConnection": "one verified-TLS repeatable-read READ ONLY connection"
+  },
+  "rawSourceBodiesPersisted": false
+}

@@ -1,0 +1,15 @@
+2026-11-04 19:26:29.642 CET [39474] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 19:26:29.642 CET [39474] LOG:  listening on IPv4 address "127.0.0.1", port 63560
+2026-11-04 19:26:29.643 CET [39474] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-6n37pvlt/socket/.s.PGSQL.63560"
+2026-11-04 19:26:29.648 CET [39480] LOG:  database system was shut down at 2026-11-04 19:26:29 CET
+2026-11-04 19:26:29.649 CET [39474] LOG:  database system is ready to accept connections
+2026-11-04 19:26:33.638 CET [39492] ERROR:  new row for relation "public_aliases" violates check constraint "ingest_public_aliases_sv_provenance_pair_ck"
+2026-11-04 19:26:33.638 CET [39492] DETAIL:  Failing row contains (player, p_00XO9k, 1, null, null, null, null, null, null, null, 2, null, f, ingest.public_aliases, real_source_core_v1, real_source_core_v1, 1ea61e79b662821ee1b83a37da27a05eb1f4197d22c8f0128d432b407a226e75, 1, null, derived, null, null, null, null).
+2026-11-04 19:26:33.638 CET [39492] STATEMENT:  INSERT INTO ingest.public_aliases (recorded_from_gen,contract_version,transform_version,transform_code_sha256,provenance_kind,route_kind,public_key,player_id,source_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *
+2026-11-04 19:26:33.784 CET [39474] LOG:  received fast shutdown request
+2026-11-04 19:26:33.784 CET [39474] LOG:  aborting any active transactions
+2026-11-04 19:26:33.785 CET [39474] LOG:  background worker "logical replication launcher" (PID 39483) exited with exit code 1
+2026-11-04 19:26:33.785 CET [39478] LOG:  shutting down
+2026-11-04 19:26:33.785 CET [39478] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 19:26:33.824 CET [39478] LOG:  checkpoint complete: wrote 1105 buffers (6.7%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.012 s, sync=0.027 s, total=0.040 s; sync files=768, longest=0.001 s, average=0.001 s; distance=11176 kB, estimate=11176 kB; lsn=0/22730C0, redo lsn=0/22730C0
+2026-11-04 19:26:33.829 CET [39474] LOG:  database system is shut down

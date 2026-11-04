@@ -1,0 +1,19 @@
+2026-11-04 19:27:00.424 CET [39533] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-04 19:27:00.425 CET [39533] LOG:  listening on IPv4 address "127.0.0.1", port 63572
+2026-11-04 19:27:00.425 CET [39533] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-0ajcf9hf/socket/.s.PGSQL.63572"
+2026-11-04 19:27:00.430 CET [39539] LOG:  database system was shut down at 2026-11-04 19:27:00 CET
+2026-11-04 19:27:00.431 CET [39533] LOG:  database system is ready to accept connections
+2026-11-04 19:27:25.885 CET [39548] ERROR:  Canonical shots require the selected complete source/variant family
+2026-11-04 19:27:25.885 CET [39548] CONTEXT:  PL/pgSQL function ingest.validate_generation(bigint) line 274 at RAISE
+	SQL statement "SELECT ingest.validate_generation(OLD.generation)"
+	PL/pgSQL function ingest.pro_guard_dataset_snapshots() line 17 at PERFORM
+	SQL statement "UPDATE ingest.dataset_snapshots SET status='sealed', manifest_sha256=manifest, sealed_at=CURRENT_TIMESTAMP WHERE generation=g"
+	PL/pgSQL function ingest.seal_generation(bigint,text) line 7 at SQL statement
+2026-11-04 19:27:25.885 CET [39548] STATEMENT:  SELECT ingest.seal_generation($1,$2)
+2026-11-04 19:27:26.068 CET [39533] LOG:  received fast shutdown request
+2026-11-04 19:27:26.068 CET [39533] LOG:  aborting any active transactions
+2026-11-04 19:27:26.069 CET [39533] LOG:  background worker "logical replication launcher" (PID 39542) exited with exit code 1
+2026-11-04 19:27:26.070 CET [39537] LOG:  shutting down
+2026-11-04 19:27:26.070 CET [39537] LOG:  checkpoint starting: shutdown immediate
+2026-11-04 19:27:26.175 CET [39537] LOG:  checkpoint complete: wrote 7266 buffers (44.3%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 5 recycled; write=0.071 s, sync=0.034 s, total=0.106 s; sync files=779, longest=0.002 s, average=0.001 s; distance=84995 kB, estimate=84995 kB; lsn=0/6A89E28, redo lsn=0/6A89E28
+2026-11-04 19:27:26.180 CET [39533] LOG:  database system is shut down
