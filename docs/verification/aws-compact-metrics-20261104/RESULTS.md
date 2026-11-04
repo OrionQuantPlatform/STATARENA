@@ -20,8 +20,8 @@ The compatibility views support existing reads. Writers must use the updated typ
 ## Measurements and limits
 
 - Clean migration took **4.73 s** on the local fixture. Computing all 378 complete player/half response-layer digests took **3.62 s before and 4.54 s after**. These timings do not measure RDS latency.
-- A 16-match local publication took **1.025 s before and 1.154 s after**. Both performed 39 COPY streams. The compact path used nine SQL commands instead of five. For 32 matches it took 2.090–2.092 s before and approximately 2.29 s after, with the original 78 COPY streams. An unchanged 32-match retry performed no COPY.
-- The full 63-request match HTTP workflow and all 16 existing partition workflows passed. The interleaved 64-match case kept its four event-sheet COPYs. Real late-source failure, dirty marker and retry checks passed. The new receipts include source/spool, normalization/matching, typed-detail publication and core publication/checkpoint times, plus total time including commit.
+- A 16-match local publication took **1.025 s before and 1.154 s after**. Both performed 39 COPY streams. The compact path used nine SQL commands instead of five. For 32 matches it took 2.092 s before and approximately 2.29 s after, with the original 78 COPY streams. An unchanged 32-match retry performed no COPY.
+- The 63-request match HTTP workflow, the 65-request catalog workflow, and all 16 existing partition workflows passed. The interleaved 64-match case kept its four event-sheet COPYs. Real late-source failure, dirty marker and retry checks passed. The new receipts include source/spool, normalization/matching, typed-detail publication and core publication/checkpoint times, plus total time including commit.
 - At the sampled estimates of 45.51 million half and 48.41 million full-player metrics, these measured production-layout densities imply **about 1.92 GB** for the two metric families. Other detail domains, core and catalog storage remain additional. This migration alone does not establish complete coverage within the current 20 GiB volume or 16 GB SQL guard.
 - The capacity experiment and the new SQL operated on local PostgreSQL. Production cutover, live performance and subsequent total database growth require separate receipts.
 
@@ -29,7 +29,7 @@ The long-key regression rejected valid source text with the preliminary B-tree d
 
 ## Replay
 
-Run from the repository root with node/Bun, the installed dashboard dependencies, psycopg 3, embedded-postgres from STATARENA_TEST_TOOLS, and the authorized immutable COPY inputs in /tmp/statarena-metric-values-20261104 or METRIC_COPY_INPUT. The required inputs are half_stat_metrics.tsv.gz, player_stat_metrics.tsv.gz, half_stat_groups.tsv.gz and player_stat_groups.tsv.gz. Their checksums are in after/results.json. The tests below write only to disposable local PostgreSQL instances.
+Run from the repository root with node/Bun, the installed dashboard dependencies, psycopg 3, embedded-postgres from STATARENA_TEST_TOOLS, and the checked-in immutable COPY inputs in ./inputs (or set METRIC_COPY_INPUT to an alternate corpus directory). The required inputs are half_stat_metrics.tsv.gz, player_stat_metrics.tsv.gz, half_stat_groups.tsv.gz and player_stat_groups.tsv.gz. Their checksums are in after/results.json. The tests below write only to disposable local PostgreSQL instances.
 
 ```sh
 node docs/verification/aws-compact-metrics-20261104/run.mjs after

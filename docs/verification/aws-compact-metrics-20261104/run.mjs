@@ -54,6 +54,9 @@ try {
       cwd: resolve(folder, "../../.."),
       stdio: ["ignore", "pipe", "pipe"],
       env: {
+        ...(process.env.METRIC_COPY_INPUT && {
+          METRIC_COPY_INPUT: resolve(process.env.METRIC_COPY_INPUT),
+        }),
         PATH: process.env.PATH,
         HOME: scratch,
         PYTHONDONTWRITEBYTECODE: "1",

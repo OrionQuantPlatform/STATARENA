@@ -15,13 +15,14 @@ out = folder / phase
 sys.path.insert(0, str(root / "dashboard/scripts"))
 from relational_match import publish_match_batch, publish_match_details
 
-source = Path(
-    os.environ.get("METRIC_COPY_INPUT", "/tmp/statarena-metric-values-20261104")
-)
+source = Path(os.environ.get("METRIC_COPY_INPUT", folder / "inputs"))
 report = {
     "status": "failed",
     "setup": "actual PostgreSQL fixture with copied published metrics; original source hashes in published-metrics.json",
     "command": "node docs/verification/aws-compact-metrics-20261104/run.mjs " + phase,
+    "inputSource": "METRIC_COPY_INPUT"
+    if os.environ.get("METRIC_COPY_INPUT")
+    else "repository inputs",
     "families": {},
     "checks": [],
 }
@@ -140,7 +141,6 @@ try:
         if phase != "before":
             import threading
             from concurrent.futures import ThreadPoolExecutor
-
 
             prefix = migration.split("-- Backfill existing derived metrics")[0].split(
                 "DO $cutover$"
