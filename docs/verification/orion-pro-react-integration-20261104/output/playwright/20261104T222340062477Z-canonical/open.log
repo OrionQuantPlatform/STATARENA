@@ -1,0 +1,12 @@
+### Browser `orion-react-canonical-74ea` opened with pid 21963.
+### Ran Playwright code
+```js
+await page.goto('https://statarena-analytics.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl');
+```
+### Page
+- Page URL: https://statarena-analytics.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl
+- Page Title: Vue d’ensemble — STATARENA
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-04T22-23-43-521Z.yml)
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-react-canonical-74ea open https://statarena-analytics.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl --config=/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/rematerialization-completion-20261103/cli-headless.config.json

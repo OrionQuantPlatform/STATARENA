@@ -35,7 +35,9 @@ try:
             raw=json.loads(run.stdout)
             def deployment(value):
                 if isinstance(value,dict):
-                    if isinstance(value.get('url'),str) and re.fullmatch(r'(?:https://)?statarena-analytics-[a-z0-9-]+\.vercel\.app',value['url']):return value
+                    if isinstance(value.get('url'),str) and re.fullmatch(r'(?:https://)?statarena(?:-analytics)?-[a-z0-9-]+\.vercel\.app',value['url']):
+                        if value.get('projectId') not in (None,r['project']):return None
+                        return value
                     for item in value.values():
                         found=deployment(item)
                         if found is not None:return found
@@ -48,10 +50,11 @@ try:
             if selected is None:raise RuntimeError('Missing deployment metadata; inspect control-plane readback, do not retry upload')
             r['deployment']={k:selected.get(k) for k in ['id','uid','url','readyState','target']}
         except ValueError:
-            match=re.search(r'https://statarena-analytics-[a-z0-9-]+\.vercel\.app',run.stdout)
+            match=re.search(r'https://statarena(?:-analytics)?-[a-z0-9-]+\.vercel\.app',run.stdout)
             if not match:raise RuntimeError('Missing deployment URL')
             r['deployment']={'url':match.group(0)}
         r['status']='uploaded'
+        r['nextRequired']='Read the deployment control plane and verify project/team/commit/environment before testing or promoting; URL discovery is not release acceptance.'
 except Exception as error:r['error']=type(error).__name__+': '+str(error)
 finally:
     out=Path(str(prefix)+'.json');out.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({'artifact':str(out),'status':r['status'],'deployment':r.get('deployment'),'error':r.get('error'),'sourceBytes':r.get('sourceBytes')}))

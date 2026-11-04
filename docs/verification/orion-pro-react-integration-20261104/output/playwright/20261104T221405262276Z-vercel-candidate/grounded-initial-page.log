@@ -1,0 +1,11 @@
+### Result
+{"url":"https://statarena-1jpo0ogsk-hlemonniers-projects.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl"}
+### Ran Playwright code
+```js
+await (async (page) => { const BASE="https://statarena-1jpo0ogsk-hlemonniers-projects.vercel.app"; await page.route('**/*',r=>new URL(r.request().url()).origin===BASE?r.continue():r.abort()); await page.goto(BASE+'/?season=2026%2F2027&focus=europe&league=l_3FJFUl'); await page.locator('.home-motw').waitFor({timeout:60000}); return {url:page.url()}; })(page);
+```
+### Page
+- Page URL: https://statarena-1jpo0ogsk-hlemonniers-projects.vercel.app/?season=2026%2F2027&focus=europe&league=l_3FJFUl
+- Page Title: Vue d’ensemble — STATARENA
+npm notice run npx
+npm notice run 'playwright-cli' -s=orion-react-candidate-74ea run-code async (page) => { const BASE="https://statarena-1jpo0ogsk-hlemonniers-projects.vercel.app"; await page.route('**/*',r=>new URL(r.request().url()).origin===BASE?r.continue():r.abort()); await page.goto(BASE+'/?season=2026%2F2027&focus=europe&league=l_3FJFUl'); await page.locator('.home-motw').waitFor({timeout:60000}); return {url:page.url()}; }

@@ -1,0 +1,337 @@
+{
+  "atUtc": "2026-11-04T22:43:42.748Z",
+  "expected": {
+    "project": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+    "team": "team_IYt7KqupdSTtMuQuMvNa9wiJ",
+    "commit": "74ea3f76de622315cb3df787c3c748bc73357e60",
+    "deployment": "dpl_VZuf4rdjRcoX21SknjbgFXKn8GDB",
+    "environment": "production"
+  },
+  "promotion": {
+    "result": null
+  },
+  "primaryAlias": {
+    "result": {
+      "deployment": {
+        "id": "dpl_VZuf4rdjRcoX21SknjbgFXKn8GDB",
+        "name": "statarena",
+        "url": "statarena-1jpo0ogsk-hlemonniers-projects.vercel.app",
+        "type": "LAMBDAS",
+        "state": "READY",
+        "createdAt": 1793829953169,
+        "creator": {
+          "uid": "Z5dKMvfPeiT8uPxmDsqLHdzu",
+          "username": "hlemonnier"
+        },
+        "project": {
+          "id": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+          "name": "statarena",
+          "framework": "nextjs"
+        },
+        "meta": {
+          "githubCommitRef": "main",
+          "githubCommitSha": "74ea3f76de622315cb3df787c3c748bc73357e60",
+          "githubRepo": "STATARENA",
+          "githubOrg": "OrionQuantPlatform"
+        },
+        "alias": [],
+        "target": "production",
+        "regions": [
+          "cle1"
+        ],
+        "buildingAt": 1793829954183,
+        "ready": 1793829966912,
+        "readyState": "READY",
+        "source": "cli",
+        "aliasError": null
+      }
+    }
+  },
+  "secondaryAliasAfterRestore": {
+    "result": {
+      "deployment": {
+        "id": "dpl_VZuf4rdjRcoX21SknjbgFXKn8GDB",
+        "name": "statarena",
+        "url": "statarena-1jpo0ogsk-hlemonniers-projects.vercel.app",
+        "type": "LAMBDAS",
+        "state": "READY",
+        "createdAt": 1793829953169,
+        "creator": {
+          "uid": "Z5dKMvfPeiT8uPxmDsqLHdzu",
+          "username": "hlemonnier"
+        },
+        "project": {
+          "id": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+          "name": "statarena",
+          "framework": "nextjs"
+        },
+        "meta": {
+          "githubCommitRef": "main",
+          "githubCommitSha": "74ea3f76de622315cb3df787c3c748bc73357e60",
+          "githubRepo": "STATARENA",
+          "githubOrg": "OrionQuantPlatform"
+        },
+        "alias": [],
+        "target": "production",
+        "regions": [
+          "cle1"
+        ],
+        "buildingAt": 1793829954183,
+        "ready": 1793829966912,
+        "readyState": "READY",
+        "source": "cli",
+        "aliasError": null
+      }
+    }
+  },
+  "secondaryAliasBeforeRestore": {
+    "error": {
+      "message": "Vercel API request failed (404).",
+      "recovery": "Check the API message, arguments, target team and resource state. Correct the request before retrying.",
+      "remediation": {
+        "actor": "agent",
+        "action": "correct_request"
+      },
+      "status": 404,
+      "operation": "GET /v4/aliases/{idOrAlias}",
+      "requestId": "iad1:cdg1:iad1:sfo1::cd4fg-1793830807434-a15540798901"
+    },
+    "cliFallback": {
+      "commandTemplate": "vercel api /v4/aliases/{idOrAlias} --method GET",
+      "guidance": "Check the API message, arguments, target team and resource state. Correct the request before retrying.",
+      "kind": "api",
+      "argv": [
+        "vercel",
+        "api",
+        "/v4/aliases/{idOrAlias}",
+        "--method",
+        "GET"
+      ],
+      "help": "vercel api --help",
+      "limitations": "Same endpoint and method only after translating inputs. --input preserves JSON object bodies, not top-level arrays or primitives; use MCP for those forms. CLI authentication and default team can differ. JSONL stays text instead of MCP aggregation; response field selection, bounds and error handling differ.",
+      "contextBindings": {
+        "teamId": "teamId",
+        "projectId": "projectId"
+      },
+      "instructions": "Replace path placeholders with URL-encoded values. Add query inputs to the URL (repeat the key for arrays; omit null/undefined), headers with --header, and a JSON object body file with --input. Preserve schema defaults and coercions; an omitted optional JSON body on POST/PUT/PATCH is {} in MCP. Set teamId explicitly when supported; a slug alone does not override the CLI default team. Preserve required inputs and scoped context. Do not use -F for query parameters or --paginate unless all pages are intended. Native alternatives have limited input/output parity.",
+      "inputs": [
+        {
+          "key": "from",
+          "name": "from",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "idOrAlias",
+          "name": "idOrAlias",
+          "location": "path",
+          "required": true
+        },
+        {
+          "key": "projectId",
+          "name": "projectId",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "since",
+          "name": "since",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "until",
+          "name": "until",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "teamId",
+          "name": "teamId",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "name": "slug",
+          "location": "query",
+          "required": false
+        }
+      ],
+      "targetInstructions": "Fill team/project placeholders from tool inputs or route context and apply explicit scope selectors. Reuse known IDs without identity/team probes; discover only missing scope or diagnose a CLI access/not-found error. Never use a different CLI default.",
+      "context": {
+        "teamId": "team_IYt7KqupdSTtMuQuMvNa9wiJ"
+      }
+    }
+  },
+  "secondaryAliasRestore": {
+    "result": {
+      "uid": "118a8fcce567cff41b76ab6efd53f37aa8d80269a6a80532dcfc73bf21d45eb70f94b79c300810aabf94ce7592b2ac7f30b40e46ffda9daa794736b36e21ae8b",
+      "alias": "orion-football-ranking.vercel.app",
+      "created": "2026-11-04T22:20:47.618Z"
+    }
+  },
+  "domainFilterError": {
+    "error": {
+      "message": "Vercel API request failed (400).",
+      "recovery": "Check the API message, arguments, target team and resource state. Correct the request before retrying.",
+      "remediation": {
+        "actor": "agent",
+        "action": "correct_request"
+      },
+      "status": 400,
+      "operation": "GET /v9/projects/{idOrName}/domains",
+      "requestId": "iad1:cdg1:iad1:sfo1::564kn-1793830623525-930981ffc069"
+    },
+    "cliFallback": {
+      "commandTemplate": "vercel api /v9/projects/{idOrName}/domains --method GET",
+      "guidance": "Check the API message, arguments, target team and resource state. Correct the request before retrying.",
+      "kind": "api",
+      "argv": [
+        "vercel",
+        "api",
+        "/v9/projects/{idOrName}/domains",
+        "--method",
+        "GET"
+      ],
+      "help": "vercel api --help",
+      "limitations": "Same endpoint and method only after translating inputs. --input preserves JSON object bodies, not top-level arrays or primitives; use MCP for those forms. CLI authentication and default team can differ. JSONL stays text instead of MCP aggregation; response field selection, bounds and error handling differ.",
+      "contextBindings": {
+        "teamId": "teamId",
+        "projectId": "idOrName"
+      },
+      "instructions": "Replace path placeholders with URL-encoded values. Add query inputs to the URL (repeat the key for arrays; omit null/undefined), headers with --header, and a JSON object body file with --input. Preserve schema defaults and coercions; an omitted optional JSON body on POST/PUT/PATCH is {} in MCP. Set teamId explicitly when supported; a slug alone does not override the CLI default team. Preserve required inputs and scoped context. Do not use -F for query parameters or --paginate unless all pages are intended. Native alternatives have limited input/output parity.",
+      "inputs": [
+        {
+          "key": "idOrName",
+          "name": "idOrName",
+          "location": "path",
+          "required": true
+        },
+        {
+          "key": "production",
+          "name": "production",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "target",
+          "name": "target",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "customEnvironmentId",
+          "name": "customEnvironmentId",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "gitBranch",
+          "name": "gitBranch",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "redirects",
+          "name": "redirects",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "redirect",
+          "name": "redirect",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "verified",
+          "name": "verified",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "limit",
+          "name": "limit",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "since",
+          "name": "since",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "until",
+          "name": "until",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "order",
+          "name": "order",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "teamId",
+          "name": "teamId",
+          "location": "query",
+          "required": false
+        },
+        {
+          "key": "slug",
+          "name": "slug",
+          "location": "query",
+          "required": false
+        }
+      ],
+      "targetInstructions": "Fill team/project placeholders from tool inputs or route context and apply explicit scope selectors. Reuse known IDs without identity/team probes; discover only missing scope or diagnose a CLI access/not-found error. Never use a different CLI default.",
+      "context": {
+        "teamId": "team_IYt7KqupdSTtMuQuMvNa9wiJ"
+      }
+    }
+  },
+  "domainMinimalReadback": {
+    "result": {
+      "domains": [
+        {
+          "name": "statarena-analytics.vercel.app",
+          "apexName": "vercel.app",
+          "projectId": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+          "redirect": null,
+          "redirectStatusCode": null,
+          "gitBranch": null,
+          "customEnvironmentId": null,
+          "updatedAt": 1793574546335,
+          "createdAt": 1793574546335,
+          "verified": true
+        }
+      ],
+      "pagination": {
+        "count": 1,
+        "next": null,
+        "prev": 1793574546335
+      }
+    }
+  },
+  "runtimeErrorFatalCounts": {
+    "text": "## Runtime Log Counts\n\n**Project:** prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR\n**Grouped by:** level\n**Showing:** Top 25 groups by log count; this may omit other groups.\n\n| level | count |\n|---|---|",
+    "isError": false
+  },
+  "runtimeQuery": {
+    "deployment": "dpl_VZuf4rdjRcoX21SknjbgFXKn8GDB",
+    "project": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+    "levels": [
+      "error",
+      "fatal"
+    ],
+    "since": "30m",
+    "groupBy": "level"
+  },
+  "interpretation": "Exact tested build promoted. Both prior aliases now identify the same READY production deployment. Original upload succeeded but legacy URL parser failed; original failed receipt retained. Secondary alias had DEPLOYMENT_NOT_FOUND before restoration; cause unknown. Empty error/fatal groups returned by the bounded query do not prove absence of all errors.",
+  "sourceAcceptance": false,
+  "proActivated": false,
+  "suggestedCommit": "docs: verify the promoted frontend and restored compatibility alias"
+}

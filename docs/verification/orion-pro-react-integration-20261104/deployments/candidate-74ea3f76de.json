@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-04T22:12:14.818Z",
+  "tool": "vercel.get_deployment",
+  "input": {
+    "idOrUrl": "statarena-1jpo0ogsk-hlemonniers-projects.vercel.app",
+    "teamId": "team_IYt7KqupdSTtMuQuMvNa9wiJ",
+    "withGitRepoInfo": "true"
+  },
+  "expected": {
+    "projectId": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+    "commit": "74ea3f76de622315cb3df787c3c748bc73357e60",
+    "target": "production",
+    "state": "READY"
+  },
+  "deployment": {
+    "id": "dpl_VZuf4rdjRcoX21SknjbgFXKn8GDB",
+    "url": "statarena-1jpo0ogsk-hlemonniers-projects.vercel.app",
+    "state": "READY",
+    "target": "production",
+    "project": {
+      "id": "prj_DhaqrVkH3Gi4uysT7IRsm9fB2bjR",
+      "name": "statarena",
+      "framework": "nextjs"
+    },
+    "meta": {
+      "githubCommitRef": "main",
+      "githubCommitSha": "74ea3f76de622315cb3df787c3c748bc73357e60",
+      "githubRepo": "STATARENA",
+      "githubOrg": "OrionQuantPlatform"
+    },
+    "buildingAt": 1793829954183,
+    "ready": 1793829966912,
+    "source": "cli",
+    "regions": [
+      "cle1"
+    ]
+  },
+  "originalUploadReceipt": "docs/verification/orion-availability-20261104/vercel-stage-20261104T220542289264Z.json",
+  "reconciliation": "The upload returned0 and created this exact deployment. The old helper rejected its new statarena- URL prefix; no second upload was made.",
+  "canonicalPromotionPerformed": false,
+  "suggestedCommit": "docs: verify the staged React build on the existing Vercel project"
+}
