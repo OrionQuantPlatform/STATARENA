@@ -1,0 +1,2947 @@
+{
+  "atUtc": "2026-11-04T17:19:26.084Z",
+  "command": "bun docs/verification/orion-availability-20261104/bridge_acceptance_e2e.mjs",
+  "setup": "Actual compatibility handler on ephemeral localhost Bun HTTP server. Only immutable previous Vercel saved routes/objects may be read; duplicate external GETs are cached in memory for a stable bounded comparison. No payload files, provider APIs, database credentials or writes. This does not exercise the real Next/Neon SDK path or Vercel runtime.",
+  "expected": "All 65 real supplemental competitions expand through the current bounded-object client with exact saved-table values; six scoped seasons, fixture/history filters and every current data route family preserve saved-source identities, dates, statuses and errors.",
+  "externalSource": "https://statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app",
+  "limits": {
+    "maxUniqueRequests": 300,
+    "maxResponseBytes": 67108864,
+    "maxConcurrent": 4,
+    "requestTimeoutMs": 30000
+  },
+  "sourceSha256": {
+    "dashboard/frontend/src/server/legacy-compat.js": "33c627ce5f8b387638a02aaed409dfeb1c30299ecc0dac1663b458ced3aea01b",
+    "dashboard/frontend/src/services/football-client.js": "17234cd4db775e469a74c550a4df3c674ef05da0b43f3de97965788aa3e14384",
+    "dashboard/frontend/src/season_data.js": "928b8d38f1d4842ed3e8eae5ea0203a15f6f0daaa8e6b7cc6bd908f3287e62ea"
+  },
+  "checks": [
+    {
+      "name": "manifest preserves all six saved seasons and 230 references",
+      "inputs": {},
+      "passed": true,
+      "elapsedMs": 471,
+      "actual": {
+        "seasons": [
+          {
+            "id": "2026/2027",
+            "chunks": 73
+          },
+          {
+            "id": "2025/2026",
+            "chunks": 47
+          },
+          {
+            "id": "2024/2025",
+            "chunks": 41
+          },
+          {
+            "id": "2023/2024",
+            "chunks": 24
+          },
+          {
+            "id": "2022/2023",
+            "chunks": 25
+          },
+          {
+            "id": "2021/2022",
+            "chunks": 20
+          }
+        ]
+      }
+    },
+    {
+      "name": "scoped season load 2026/2027",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "season": "2026/2027"
+      },
+      "passed": true,
+      "elapsedMs": 232,
+      "actual": {
+        "matches": 81,
+        "fixtures": 306,
+        "appearances": 3237,
+        "matchHash": "9459378be06f3ce7d0990ef44bfe7d3618366dc530723b24a61fbddeb722f301",
+        "appearanceHash": "637d55bd934bc94d8cb6665ec2df22c082c1159eb873472d4f68fc61a9773d8c"
+      }
+    },
+    {
+      "name": "scoped season load 2025/2026",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "season": "2025/2026"
+      },
+      "passed": true,
+      "elapsedMs": 394,
+      "actual": {
+        "matches": 306,
+        "fixtures": 306,
+        "appearances": 12200,
+        "matchHash": "66374103f86552cd1f70f8f0f37b1ffa6713f18e414e404d1b6d5d6c863c034f",
+        "appearanceHash": "b731e3d11a688add76461d93dc992c39c8978e39cf88b24fe05ef6c0d264ad53"
+      }
+    },
+    {
+      "name": "scoped season load 2024/2025",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "season": "2024/2025"
+      },
+      "passed": true,
+      "elapsedMs": 539,
+      "actual": {
+        "matches": 306,
+        "fixtures": 306,
+        "appearances": 12215,
+        "matchHash": "dde78495cd90db51ff80790814e14ded9656671e9ba99e7cb9b624eed0bba35d",
+        "appearanceHash": "7361ef9cfb2fb161d0b5f8d2a367eee75fe1e3f6c82e824a1ab5c9943237eb8a"
+      }
+    },
+    {
+      "name": "scoped season load 2023/2024",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "season": "2023/2024"
+      },
+      "passed": true,
+      "elapsedMs": 1014,
+      "actual": {
+        "matches": 306,
+        "fixtures": 307,
+        "appearances": 12225,
+        "matchHash": "c5cd86b384f71d9b7ce3e57c5c52d98ee3f04edeffb034a3143fe78b49c720a2",
+        "appearanceHash": "dd2a890d253e7401cc9a844d36dfed3c1bb0365eab7b7d3ecb2cf62572c74681"
+      }
+    },
+    {
+      "name": "scoped season load 2022/2023",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "season": "2022/2023"
+      },
+      "passed": true,
+      "elapsedMs": 665,
+      "actual": {
+        "matches": 380,
+        "fixtures": 380,
+        "appearances": 15057,
+        "matchHash": "1a588a078cfacd1178885e4415428530cccbdf3b2fdcd63b1624377e161ce440",
+        "appearanceHash": "2107681403e91ee03cf210213807247e830892d4a0da83440faafe318e7ea795"
+      }
+    },
+    {
+      "name": "scoped season load 2021/2022",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "season": "2021/2022"
+      },
+      "passed": true,
+      "elapsedMs": 769,
+      "actual": {
+        "matches": 380,
+        "fixtures": 380,
+        "appearances": 15092,
+        "matchHash": "a93f0e4f58fa0e510f5f8f164f849b5d2e469c9e9c4b4d065a521a5ac612ee34",
+        "appearanceHash": "ca590b55d59317fd3062f9a10258941a823e1f9a4dddcfe04a3bf95f2fece113"
+      }
+    },
+    {
+      "name": "all-season fixture traversal all",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "status": "all"
+      },
+      "passed": true,
+      "elapsedMs": 155,
+      "actual": {
+        "pages": 20,
+        "matches": 1985,
+        "semanticHash": "9daf822cd5c32532ce54a1ac2efe2b442b75df527ff22e9d9032b7e3a11623f5"
+      }
+    },
+    {
+      "name": "all-season fixture traversal played",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "status": "played"
+      },
+      "passed": true,
+      "elapsedMs": 114,
+      "actual": {
+        "pages": 18,
+        "matches": 1759,
+        "semanticHash": "4eee82b9c06818211b956fba8745fd6e7746a7fca1cffef1e797f01deedbac9d"
+      }
+    },
+    {
+      "name": "all-season fixture traversal upcoming",
+      "inputs": {
+        "league": "l_3FJFUl",
+        "status": "upcoming"
+      },
+      "passed": true,
+      "elapsedMs": 14,
+      "actual": {
+        "pages": 3,
+        "matches": 225,
+        "semanticHash": "35828d45920f5c4fc60c82d0440ecee9c81650a246bad03085edfef377ed5eb3"
+      }
+    },
+    {
+      "name": "actual historicalFixtures client enumerates every saved league season",
+      "inputs": {
+        "league": "l_3FJFUl"
+      },
+      "passed": true,
+      "elapsedMs": 126,
+      "actual": {
+        "matches": 1985,
+        "seasons": [
+          "2021/2022",
+          "2022/2023",
+          "2023/2024",
+          "2024/2025",
+          "2025/2026",
+          "2026/2027"
+        ],
+        "semanticHash": "9daf822cd5c32532ce54a1ac2efe2b442b75df527ff22e9d9032b7e3a11623f5"
+      }
+    },
+    {
+      "name": "calendar day and status filters",
+      "inputs": {
+        "day": "2026-08-21"
+      },
+      "passed": true,
+      "elapsedMs": 146,
+      "actual": [
+        {
+          "status": "all",
+          "matches": 65
+        },
+        {
+          "status": "played",
+          "matches": 65
+        },
+        {
+          "status": "upcoming",
+          "matches": 0
+        }
+      ]
+    },
+    {
+      "name": "player/team multi-season scouting route values",
+      "inputs": {
+        "player": "p_3chd12",
+        "team": "t_0LMnwp"
+      },
+      "passed": true,
+      "elapsedMs": 21,
+      "actual": {
+        "playerSeasons": [
+          "2022/2023",
+          "2024/2025",
+          "2025/2026",
+          "2026/2027"
+        ],
+        "teamSeasons": [
+          "2025/2026",
+          "2026/2027"
+        ]
+      }
+    },
+    {
+      "name": "real player history loads every indexed season",
+      "inputs": {
+        "player": "p_3chd12"
+      },
+      "passed": true,
+      "elapsedMs": 284,
+      "actual": [
+        {
+          "season": "2026/2027",
+          "competitions": [
+            "l_3FJFUl"
+          ],
+          "appearances": 9
+        },
+        {
+          "season": "2025/2026",
+          "competitions": [
+            "l_3FJFUl"
+          ],
+          "appearances": 32
+        },
+        {
+          "season": "2024/2025",
+          "competitions": [
+            "l_3FJFUl"
+          ],
+          "appearances": 34
+        },
+        {
+          "season": "2022/2023",
+          "competitions": [
+            "l_3FJFUl"
+          ],
+          "appearances": 37
+        }
+      ]
+    },
+    {
+      "name": "browser honours 404 classification preserves exact source and client semantics",
+      "inputs": {
+        "player": "p_3chd12"
+      },
+      "passed": true,
+      "elapsedMs": 186,
+      "actual": {
+        "path": "/api/player-honours?id=p_3chd12",
+        "status": 404,
+        "bytes": 54,
+        "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+        "cacheControl": "no-store",
+        "classification": "Saved projection absent at source; bridge parity; existing UI contract treats 404 as partial honours.",
+        "client": {
+          "groups": [],
+          "partial": true
+        }
+      }
+    },
+    {
+      "name": "full real supplemental client expansion with concurrency at most four",
+      "inputs": {
+        "competitions": 65
+      },
+      "passed": true,
+      "elapsedMs": 9822,
+      "actual": {
+        "competitions": 65,
+        "tableReferences": 195,
+        "localRequests": 196,
+        "rowCounts": {
+          "results": 5575,
+          "fixtures": 8618,
+          "goals": 2036
+        },
+        "expandedBytes": 3806859,
+        "semanticHash": "30b2a3d49e49906a29c294f3a9b5dfa907c3555080e6e453647ca0445b69716e"
+      }
+    },
+    {
+      "name": "whole supplemental endpoint respects compatibility response cap",
+      "inputs": {},
+      "passed": true,
+      "elapsedMs": 24,
+      "actual": {
+        "status": 413,
+        "expandedBytes": 3806859,
+        "capBytes": 2097152
+      }
+    },
+    {
+      "name": "historical archive results index and boundary seasons",
+      "inputs": {
+        "kind": "results"
+      },
+      "passed": true,
+      "elapsedMs": 1104,
+      "actual": {
+        "seasons": 150,
+        "samples": [
+          {
+            "season": "2020/2021",
+            "status": 200,
+            "bytes": 1344499,
+            "keys": [
+              "season",
+              "source",
+              "competitions"
+            ],
+            "semanticHash": "5ea062d772f99c20bf81afa6d33e682cc4cb739662e657c938d2f1918f4449f2"
+          },
+          {
+            "season": "1871/1872",
+            "status": 200,
+            "bytes": 11610,
+            "keys": [
+              "season",
+              "source",
+              "competitions"
+            ],
+            "semanticHash": "e35b1f7b4a541cba4200731b1b050ff2ddaac1d12c2621dbcb0a3a7e52e2bfb2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "historical archive goals index and boundary seasons",
+      "inputs": {
+        "kind": "goals"
+      },
+      "passed": true,
+      "elapsedMs": 1172,
+      "actual": {
+        "seasons": 62,
+        "samples": [
+          {
+            "season": "2024/2025",
+            "status": 200,
+            "bytes": 971837,
+            "keys": [
+              "season",
+              "source",
+              "competitions"
+            ],
+            "semanticHash": "32f9057c3b3494ccefbb55a780e282efd5ce1a2797b1f19afe8d76fb0dcb813e"
+          },
+          {
+            "season": "1963/1964",
+            "status": 200,
+            "bytes": 176206,
+            "keys": [
+              "season",
+              "source",
+              "competitions"
+            ],
+            "semanticHash": "c89bcaad5ea828549c490009c66000e20e749d317b80a60d2580f4c459759cac"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cup catalog worker",
+      "inputs": {
+        "kind": "worker"
+      },
+      "passed": true,
+      "elapsedMs": 1,
+      "actual": {
+        "competitions": 11,
+        "bytes": 7590
+      }
+    },
+    {
+      "name": "cup catalog supplemental",
+      "inputs": {
+        "kind": "supplemental"
+      },
+      "passed": true,
+      "elapsedMs": 1,
+      "actual": {
+        "competitions": 65,
+        "bytes": 10275
+      }
+    },
+    {
+      "name": "worker and supplemental cup tables preserve real saved rows",
+      "inputs": {},
+      "passed": true,
+      "elapsedMs": 368,
+      "actual": [
+        {
+          "competition": "AUT_CUP_ofb-cup",
+          "season": "2026/2027",
+          "kind": "results",
+          "rows": 56,
+          "semanticHash": "c951383cb12dce66b89c828136d78fbf077ebd5fa4eab80aa9f40f8c0ab0c294"
+        },
+        {
+          "competition": "AUT_CUP_ofb-cup",
+          "season": "2026/2027",
+          "kind": "fixtures",
+          "rows": 4,
+          "semanticHash": "3dbec57a043c8de5a122b73c15f3985761df1329e72b2f3a0694b6ad1361a604"
+        },
+        {
+          "competition": "AUT_1_bundesliga",
+          "season": "2026/2027",
+          "kind": "results",
+          "rows": 61,
+          "semanticHash": "c08657abde9d7b601bdbc49fd95c250d1362ed2ec16ac2a30742477d3483de86"
+        },
+        {
+          "competition": "AUT_1_bundesliga",
+          "season": "2026/2027",
+          "kind": "fixtures",
+          "rows": 71,
+          "semanticHash": "a7278080a1c5fd9e24f7bd0d222f0a31fadbe8a31e55fed4344d1a5ce29a5b1e"
+        }
+      ]
+    },
+    {
+      "name": "cup snapshot open-cups/world-cup-history",
+      "inputs": {
+        "kind": "open-cups",
+        "competition": "world-cup-history",
+        "season": "2022"
+      },
+      "passed": true,
+      "elapsedMs": 216,
+      "actual": {
+        "status": 200,
+        "matches": 64,
+        "tables": null,
+        "bytes": 8267
+      }
+    },
+    {
+      "name": "cup snapshot openligadb/germany-cup",
+      "inputs": {
+        "kind": "openligadb",
+        "competition": "germany-cup",
+        "season": "2025/2026"
+      },
+      "passed": true,
+      "elapsedMs": 179,
+      "actual": {
+        "status": 200,
+        "matches": 63,
+        "tables": null,
+        "bytes": 16616
+      }
+    },
+    {
+      "name": "cup snapshot openligadb/nations-league",
+      "inputs": {
+        "kind": "openligadb",
+        "competition": "nations-league",
+        "season": "2026/2027"
+      },
+      "passed": true,
+      "elapsedMs": 190,
+      "actual": {
+        "status": 200,
+        "matches": 48,
+        "tables": null,
+        "bytes": 10778
+      }
+    },
+    {
+      "name": "cup snapshot nations-results/nations-league",
+      "inputs": {
+        "kind": "nations-results",
+        "competition": "nations-league",
+        "season": "2026/2027"
+      },
+      "passed": true,
+      "elapsedMs": 230,
+      "actual": {
+        "status": 200,
+        "matches": 72,
+        "tables": null,
+        "bytes": 16429
+      }
+    },
+    {
+      "name": "cup snapshot native/l_0bfbkO",
+      "inputs": {
+        "kind": "native",
+        "competition": "l_0bfbkO",
+        "season": "2026/2027"
+      },
+      "passed": true,
+      "elapsedMs": 256,
+      "actual": {
+        "status": 200,
+        "matches": 144,
+        "tables": null,
+        "bytes": 109108
+      }
+    },
+    {
+      "name": "cup snapshot standings/l_3FJFUl",
+      "inputs": {
+        "kind": "standings",
+        "competition": "l_3FJFUl",
+        "season": "2025/2026"
+      },
+      "passed": true,
+      "elapsedMs": 137,
+      "actual": {
+        "status": 404,
+        "classification": "Saved snapshot absent; existing fresh-source client fallback remains necessary."
+      }
+    },
+    {
+      "name": "match summary includes five saved leaders and legacy match subresources",
+      "inputs": {
+        "match": "m_18Uw0k"
+      },
+      "passed": true,
+      "elapsedMs": 2641,
+      "actual": {
+        "leaders": 5,
+        "subresources": [
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k",
+            "status": 200,
+            "bytes": 749,
+            "sha256": "41b1083a7bb5c5033423cd2d68a1d605fa5e5f153b61b0820b5f4697317299f3",
+            "cacheControl": "public, max-age=0, s-maxage=120, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/stats",
+            "status": 200,
+            "bytes": 14281,
+            "sha256": "599d589937fbb5956e5364af4caa2f59b6b899e612a6b79ef88137e493536086",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/players",
+            "status": 200,
+            "bytes": 92142,
+            "sha256": "2e27c20cff0e8efcddc17c2156539ffc69b9d8d55d9bba862c2796d0edc1f242",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/players/halves",
+            "status": 200,
+            "bytes": 110353,
+            "sha256": "a87521a4953fca737f6415d5f2b1edc12ea362408f8387b50dba9a90cc3065ee",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/lineups",
+            "status": 200,
+            "bytes": 5846,
+            "sha256": "b7fbd0eb79d5e2b3ce566a2ea9b36ae235c056f65c70cb8c1032309b1689b3db",
+            "cacheControl": "public, max-age=0, s-maxage=60, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/shots",
+            "status": 200,
+            "bytes": 16381,
+            "sha256": "0a44420262ff9c67422fb387f2405a9412e16a711667e2b06525c9505e217701",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/events",
+            "status": 200,
+            "bytes": 9255,
+            "sha256": "b1748c1ec9963d3efd087b948d5ad90d0dcdac78b9bcf42d9532bbf19f3308f1",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/momentum",
+            "status": 200,
+            "bytes": 2419,
+            "sha256": "c3e56efda54fbfeb153d6bea0a702b70e3b62544fcc0c7e59b0fdcee6f364196",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/h2h",
+            "status": 200,
+            "bytes": 1268,
+            "sha256": "6a479d18d17c9904defd998017cdb5de71efd80f29430c67ac7731a012d5f279",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/advanced",
+            "status": 200,
+            "bytes": 2746,
+            "sha256": "25c9aa66b73bc591af43e00235f80c036a6cceea52898f30fbff4e4b044b605a",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/advanced/players",
+            "status": 200,
+            "bytes": 31674,
+            "sha256": "f333d9ea37a31055ea9246b915f1a7e3ea03d2051cb0add3f819039952e3dc44",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/advanced/network",
+            "status": 200,
+            "bytes": 24849,
+            "sha256": "62bc9127c8475305fddc3bab6ccc0b12cfdc9f8c96c70ece5bff8c91c5a82f53",
+            "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+          },
+          {
+            "path": "/api/pitchapi/matches/m_18Uw0k/heatmaps?frame=acting_ltr",
+            "status": 404,
+            "bytes": 95,
+            "sha256": "643b27eaf7b7999a26feb5b2ae227933cbea0002b1de9c7cb14fce1cc187db4c",
+            "cacheControl": "no-store"
+          }
+        ]
+      }
+    },
+    {
+      "name": "legacy profiles, stored projections, assets and status retain source/cache/error semantics",
+      "inputs": {},
+      "passed": true,
+      "elapsedMs": 2517,
+      "actual": [
+        {
+          "path": "/api/status",
+          "status": 200,
+          "bytes": 62,
+          "sha256": "b8c98e08270dc6ebbc2cc24da45d57c36b81608eac0266638e3d0363fa47aaf7",
+          "cacheControl": "no-store"
+        },
+        {
+          "path": "/api/pitchapi/leagues",
+          "status": 200,
+          "bytes": 19476,
+          "sha256": "64bd3bd78a92884866f5e0b1ecbc4a44e6bb307e38f6154130ed3cf63250b49e",
+          "cacheControl": "public, max-age=0, s-maxage=900, must-revalidate"
+        },
+        {
+          "path": "/api/pitchapi/leagues/l_3FJFUl",
+          "status": 200,
+          "bytes": 209,
+          "sha256": "3c12d4dc412bba13ea154aa629b06e0d69e9c6a80de620cbb86ea287f24a5708",
+          "cacheControl": "public, max-age=0, s-maxage=900, must-revalidate"
+        },
+        {
+          "path": "/api/pitchapi/players/p_3chd12",
+          "status": 200,
+          "bytes": 261,
+          "sha256": "c9c4a7b95be096822f2831949ac51c681eca5a7da28008f6c55cbaa7409b1db9",
+          "cacheControl": "public, max-age=0, s-maxage=3600, must-revalidate"
+        },
+        {
+          "path": "/api/pitchapi/teams/t_0LMnwp",
+          "status": 200,
+          "bytes": 166,
+          "sha256": "d0765f48ec3b94dd3f0dc3eedd04a40503de23634f3cab3e3d0ab059d197640e",
+          "cacheControl": "public, max-age=0, s-maxage=3600, must-revalidate"
+        },
+        {
+          "path": "/api/archive/matches/m_18Uw0k",
+          "status": 200,
+          "bytes": 329156,
+          "sha256": "76e145a4743e8c7c81b1677f87aafd337ee631ff86058c46d70f5f14714ed1d9",
+          "cacheControl": "public, max-age=0, s-maxage=60, must-revalidate"
+        },
+        {
+          "path": "/api/archive/profiles/players/p_3chd12",
+          "status": 200,
+          "bytes": 287,
+          "sha256": "f46699de55b6add2063fcce33d209c8fb33b922b4ba123cdbaca42a054e153d2",
+          "cacheControl": "public, max-age=0, s-maxage=60, must-revalidate"
+        },
+        {
+          "path": "/api/archive/profiles/teams/t_0LMnwp",
+          "status": 200,
+          "bytes": 192,
+          "sha256": "3d6d4808c6b68040051eead3e71cd1756e83b43aef272528a805b9dae7e6bb79",
+          "cacheControl": "public, max-age=0, s-maxage=60, must-revalidate"
+        },
+        {
+          "path": "/api/standings?competition=l_3FJFUl&season=2025%2F2026",
+          "status": 404,
+          "bytes": 54,
+          "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+          "cacheControl": "no-store"
+        },
+        {
+          "path": "/api/open-cups?competition=world-cup-history&season=2022",
+          "status": 200,
+          "bytes": 8177,
+          "sha256": "2c9945a47570dc6fde29fc32e780dcef552be89bc6ad2b1edd4163b3ac22b160",
+          "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+        },
+        {
+          "path": "/api/openligadb?competition=germany-cup&season=2025%2F2026",
+          "status": 200,
+          "bytes": 16526,
+          "sha256": "909b404bf5a596d4c0703d4a1e8c2940a1ae5b04c55a3751c32a621f144e55b3",
+          "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+        },
+        {
+          "path": "/api/nations-results?season=2026%2F2027",
+          "status": 200,
+          "bytes": 16339,
+          "sha256": "a338f62f9ab1412ec874a5e4c748bf8ba75292bd9785eadb9caba11258ea59cd",
+          "cacheControl": "public, max-age=0, s-maxage=300, must-revalidate"
+        },
+        {
+          "path": "/api/stadium?id=Q1",
+          "status": 404,
+          "bytes": 54,
+          "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+          "cacheControl": "no-store"
+        },
+        {
+          "path": "/api/club-wikidata?name=Paris&country=FRA",
+          "status": 404,
+          "bytes": 54,
+          "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+          "cacheControl": "no-store"
+        },
+        {
+          "path": "/api/coach-portrait?name=Test",
+          "status": 404,
+          "bytes": 54,
+          "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+          "cacheControl": "no-store"
+        },
+        {
+          "path": "/api/definitely-not-a-route",
+          "status": 404,
+          "bytes": 107,
+          "sha256": "b7a3354a12d4921a2b3fc7f9ff17206fd83b8b6c99838fcbf7875556f44305c0",
+          "cacheControl": "no-store"
+        },
+        {
+          "path": "/api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fplayers%2F150094ed4c062cf9b387590caa1949ff17294519cceb33c62fe0d8a3c5129ffd.webp",
+          "status": 200,
+          "bytes": 8764,
+          "sha256": "150094ed4c062cf9b387590caa1949ff17294519cceb33c62fe0d8a3c5129ffd",
+          "cacheControl": "public, max-age=0, s-maxage=60, must-revalidate"
+        }
+      ]
+    },
+    {
+      "name": "rankings and matchday contracts",
+      "inputs": {},
+      "passed": true,
+      "elapsedMs": 1123,
+      "actual": {
+        "associationRows": 55,
+        "clubLinks": 0,
+        "clubEditions": null,
+        "matchdayEntries": 144
+      }
+    },
+    {
+      "name": "manifest validators and HEAD preserve legacy responses",
+      "inputs": {},
+      "passed": true,
+      "elapsedMs": 147,
+      "actual": {
+        "conditionalStatus": 304,
+        "headStatus": 200,
+        "etag": "\"b122429dc63106ff9e071f3db215adfecf4acd019a42370101ae4e97e2ef425c\""
+      }
+    }
+  ],
+  "network": [
+    {
+      "path": "/data/computed/dashboard/index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 161009,
+      "sha256": "b122429dc63106ff9e071f3db215adfecf4acd019a42370101ae4e97e2ef425c",
+      "elapsedMs": 436.46
+    },
+    {
+      "path": "/data/raw/index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 875966,
+      "sha256": "adf0e997b24c370a8fe99f678b203f8e700e157388fa93fdadf633bef9ecb8b9",
+      "elapsedMs": 525.563
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 161009,
+      "sha256": "b122429dc63106ff9e071f3db215adfecf4acd019a42370101ae4e97e2ef425c",
+      "elapsedMs": 453.778
+    },
+    {
+      "path": "/data/computed/dashboard/2026-2027/l_3FJFUl-3403d71ab77e5287be09e9c2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 293873,
+      "sha256": "b49ea464a213c008cbe9af600e37e90048d5936f5df6db9b7b0061ea4a754ec3",
+      "elapsedMs": 136.424
+    },
+    {
+      "path": "/data/computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 840738,
+      "sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6",
+      "elapsedMs": 203.239
+    },
+    {
+      "path": "/data/computed/dashboard/2024-2025/l_3FJFUl-46faac7400713350c483910d.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1081461,
+      "sha256": "481937a83a224ed18e9f99d7e1e0748263498acd9d4a8b2e25dd4b216b594a53",
+      "elapsedMs": 172.15
+    },
+    {
+      "path": "/data/computed/dashboard/2023-2024/l_3FJFUl-70bd2e4313f94cd973e28209.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1081680,
+      "sha256": "910e320f7f75dd1171b1ce9f6a373cb8d64c423210cae7470774a89014c34267",
+      "elapsedMs": 668.826
+    },
+    {
+      "path": "/data/computed/dashboard/2022-2023/l_3FJFUl-5818a1859d0d3cf99f14c22a.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1313286,
+      "sha256": "0adc65ebd3921fa9db9d0a559adcd02ec8d0ea318e31db26bc638160e1193763",
+      "elapsedMs": 209.58
+    },
+    {
+      "path": "/data/computed/dashboard/2021-2022/l_3FJFUl-dda66503747ff2f51ca51205.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1299803,
+      "sha256": "6aa4166ed10b85f5525f344f40eb7b6bbbab13d1e9d8edb63ec004f411cc735e",
+      "elapsedMs": 330.876
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl/matches?season=2026%2F2027&status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 207824,
+      "sha256": "b1de95df1cdd8233aebe49154efea8a143e7b1fe57956a179c77841f48b6581c",
+      "elapsedMs": 218.591
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 160672,
+      "sha256": "02973b5cb953f12adfcc64a9cecd03675c237a097c62a58c9004ebbf6f9d4b0e",
+      "elapsedMs": 283.034
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl/matches?season=2024%2F2025&status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 161046,
+      "sha256": "22119df28c31d4458fb8dc561bc21e59fa7b6d498cc317c0b7ab181d81926666",
+      "elapsedMs": 254.452
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl/matches?season=2023%2F2024&status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 161479,
+      "sha256": "e1b0c9025e30e42238725349fa58107400bbf6cf30cd44687ca6ab1dba757b0c",
+      "elapsedMs": 238.565
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl/matches?season=2022%2F2023&status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 199940,
+      "sha256": "2b916dbb38c112914bd100b88d71d6bb005767e1b064b0efd07f5fd03377dfa2",
+      "elapsedMs": 390.748
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl/matches?season=2021%2F2022&status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 199978,
+      "sha256": "a11e7a84ce5c78dcf252aa2512f6cd509b1d87f4115b71198aed2b8cee972f79",
+      "elapsedMs": 250.72
+    },
+    {
+      "path": "/api/pitchapi/date/2026-08-21?status=all",
+      "method": "GET",
+      "status": 200,
+      "bytes": 44655,
+      "sha256": "291f10f6ba93fd4b6bb369a5700497e6225ef04981dc53a8a0fbf14cf7c06da4",
+      "elapsedMs": 141.081
+    },
+    {
+      "path": "/data/computed/scouting/player-routes-3d60075c637330111bae00bf.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 416865,
+      "sha256": "9dd0d388af97064811cce6b3bc3b4720c48475426c15121f5a901e04aeaeea87",
+      "elapsedMs": 45.755
+    },
+    {
+      "path": "/api/player-honours?id=p_3chd12",
+      "method": "GET",
+      "status": 404,
+      "bytes": 54,
+      "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+      "elapsedMs": 182.601
+    },
+    {
+      "path": "/data/raw/supplemental-index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 40382,
+      "sha256": "0f4c46476f9eef9f0a7ec445d854fc5f8577a17567ee67c94446275a476021d1",
+      "elapsedMs": 136.343
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/AUT_1_bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1035,
+      "sha256": "5d42d8a711ab5dd84f145b58e9144e36b25fe165eefae42ca4d26c23ce8e063c",
+      "elapsedMs": 242.045
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/AUT_1_bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 664,
+      "sha256": "b0c2a14ec1a6ecf4fc7b9c9fdbe77957b284372537ef89fd3a4b5d8ee623dff1",
+      "elapsedMs": 165.901
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/BEL_1_pro-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3300,
+      "sha256": "d02e3f2dcd961bababf0e2e2379d4c0ee41e43a6972d427a4d88bef58b3691f8",
+      "elapsedMs": 409.758
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/AUT_CUP_ofb-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1212,
+      "sha256": "124f9382c9dd71d825f329331374aeee5d440456e281db3122b124d3c0ef3b13",
+      "elapsedMs": 493.912
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/BEL_1_pro-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1930,
+      "sha256": "770dfd1b77d246c484256b34ea2696db849243239c11c8e3a7166d8bde21c648",
+      "elapsedMs": 200.516
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/AUT_CUP_ofb-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 157.723
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/BEL_1_pro-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 135.089
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/AUT_CUP_ofb-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 129.88
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/CYP_1_first-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 917,
+      "sha256": "5b089492efb93addc8d385a3ae3bfd5aa0f2beb20c01e3a2b7a8e932ee7f9fad",
+      "elapsedMs": 199.877
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/CRO_1_hnl.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 973,
+      "sha256": "cc988c5b56617cdac5b427e534915516ac2f614d56bcc49231a29c3dcdaadb04",
+      "elapsedMs": 236.907
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/BEL_U21_pro-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 749,
+      "sha256": "7680119175d8246edbeeec60833651d3c3c0fe6655f734d6f57f9e2b8eec55b6",
+      "elapsedMs": 1159.955
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/CRO_1_hnl.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 867,
+      "sha256": "8cafeb467ec29e0eff035d7bc61e5e7c5b8f203253de04a5bb48c7a41d199d48",
+      "elapsedMs": 242.546
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/CYP_1_first-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 925,
+      "sha256": "869b8940e942f332411a38ff7640723c56275c33965971222daf3213ad595a0e",
+      "elapsedMs": 366.494
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/BEL_U21_pro-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 700,
+      "sha256": "bd6d2fc22c1a5c7d4ece60efc08788f919f8d5a460da3e15780163b6257013af",
+      "elapsedMs": 196.864
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/CRO_1_hnl.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 151.034
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/AUT_1_bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 1007.444
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/BEL_U21_pro-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 126.815
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/CYP_1_first-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 132.182
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/CZE_1_chance-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1392,
+      "sha256": "4515a0085321f99b25f7b9527381d19efc418f3d749c9ac31c10db50e18fcef9",
+      "elapsedMs": 225.369
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/DEN_1_superliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1155,
+      "sha256": "03f477d02d88196940fc48a7bba48b39de581fa489d183c38a55f4059a8d99a3",
+      "elapsedMs": 221.117
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3437,
+      "sha256": "9f32c39ff99f1f23366336d42dfdec0f76bacb687a99dab54799015aa32ce3ee",
+      "elapsedMs": 187.287
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_2_championship.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 5203,
+      "sha256": "98b85084e37b543012c7d44cbc6bebc8200d1c4f0be09c8cb51d7463cdf7fe62",
+      "elapsedMs": 240.304
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/CZE_1_chance-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 949,
+      "sha256": "c88598b407baf102c37ae33435a75af285b94e44e85225000e7f6a0957e563fb",
+      "elapsedMs": 186.539
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/DEN_1_superliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 581,
+      "sha256": "e6648094ead91016b5b666a97a0c7231210d7340d0ac234ff335d52a926c6097",
+      "elapsedMs": 165.378
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2325,
+      "sha256": "b3c117f9accb139aa82f53634b36fdcf214f59e3b2eb3af0ff8e53c6a5d17471",
+      "elapsedMs": 172.182
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_2_championship.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3192,
+      "sha256": "c42395fd5ce33662b24a437bca192b3f3aa21442eab1733c989e7909820f1537",
+      "elapsedMs": 174.515
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/CZE_1_chance-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 157.547
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/DEN_1_superliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 146.39
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_2_championship.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 145.601
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1314,
+      "sha256": "575feaf39603e7be1a7ee36dfca8a94f550f30464ae31a4b178ddeddcca87021",
+      "elapsedMs": 227.535
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_3_league-one.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 4960,
+      "sha256": "4e90d3fe5decb077fb4f2dfd971898db878f5b1378ba8178154a20297975cb7f",
+      "elapsedMs": 173.856
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_4_league-two.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 5281,
+      "sha256": "6b5f0176e05128d00d7ba749299c292fdcf8c6518d079e3ffae272df7f4adcb2",
+      "elapsedMs": 196.177
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_5_national-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 5166,
+      "sha256": "14122100111a0af1b6511b27743dafd7ce56a4af2caa18c975eff125f1be5a84",
+      "elapsedMs": 207.427
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_6_national-league-north.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1569,
+      "sha256": "aaa316edc183f6118a07bb100bda027c95e6dd779110f79356ff25773c09c821",
+      "elapsedMs": 193.12
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_4_league-two.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3005,
+      "sha256": "75abdf27691c325d50acf85bb5560a5b13333007d1891da8d0feb816a449dc63",
+      "elapsedMs": 179.422
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_3_league-one.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3146,
+      "sha256": "a74a7007ded704b402736253c165f8fb35ab3ce8c65035078cabf52941e4c3ef",
+      "elapsedMs": 231.429
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_5_national-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2902,
+      "sha256": "e1b2232f632525a8ccc2563d6a1330282136d58fa500aa03b317722d5c477282",
+      "elapsedMs": 187.395
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_4_league-two.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 138.342
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_6_national-league-north.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1040,
+      "sha256": "30dc886628aae103d8b5b28445d737f0b2d59d21af9819b610def20f401810f9",
+      "elapsedMs": 201.384
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_3_league-one.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 122.965
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_5_national-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 124.383
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_6_national-league-north.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 151.951
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_6_national-league-south.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1708,
+      "sha256": "ab6c424a8bfd1231f2558e4347129fddfb60a476ae892aeb55b30056954daf69",
+      "elapsedMs": 179.733
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_7_northern-premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1653,
+      "sha256": "605796ad8102c79a49a2d57e4aa53c199be5eab31d368ee88e3409f99e083e9c",
+      "elapsedMs": 171.493
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_CUP_efl-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1828,
+      "sha256": "2cdcce135488e997c4900167ca17d3241e976f28616ce6c45ce235fd29253be0",
+      "elapsedMs": 222.479
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ENG_CUP_fa-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3213,
+      "sha256": "391b4817de5396aabe83c55b29a2bbc0e333806f6b3d1a2b21353d60a42ad26f",
+      "elapsedMs": 221.248
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_6_national-league-south.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1041,
+      "sha256": "a7ee5fdafae9b3d5900dfa6f628967de32c83fc18b8083555a6c6d9c0b029ae7",
+      "elapsedMs": 195.743
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_7_northern-premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 988,
+      "sha256": "9f6b5b802dba245472135803386ecbfea179bb37f975571c71a37de0d854b3c3",
+      "elapsedMs": 195.687
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_6_national-league-south.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 112.704
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_7_northern-premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 150.763
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_CUP_fa-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 688,
+      "sha256": "15e433d1c2facbe3ab5050c92e01cc3d3e4d124916609d3662b7bdbfc945fcd4",
+      "elapsedMs": 172.406
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ESP_1_la-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 4473,
+      "sha256": "2143d1e69a13b28a9a2dccbf06464bab4860e1f4bd96671bce1a9215eeff4f84",
+      "elapsedMs": 173.974
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_CUP_fa-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 115.414
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ENG_CUP_efl-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 173,
+      "sha256": "16e50ef0e06a98d3fdefa689889ef982bd984d26ff78433511ce7c8f49831d70",
+      "elapsedMs": 390.592
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ESP_2_segunda-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1930,
+      "sha256": "50579b7fb2bf62ef88677793deb4d0fdeb616a80ed711382717298665baf2ba3",
+      "elapsedMs": 182.482
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ESP_1_la-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2202,
+      "sha256": "f439c52ff37461bd2a8b7b5dc4e0bba163524678a0669a58a5207cacbb69f118",
+      "elapsedMs": 171.348
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ENG_CUP_efl-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 141.666
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ESP_CUP_copa-del-rey.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1652,
+      "sha256": "a4c5eb00286b82dd894642bc1bbb6170c878cbded0f623bb19daf49f07a50465",
+      "elapsedMs": 204.34
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ESP_2_segunda-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2511,
+      "sha256": "6100f75bf1df3921cbeb0bedf0ae26e4d74c67e6af6331f0971bfeda19662379",
+      "elapsedMs": 273.125
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/FIN_1_veikkausliiga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1460,
+      "sha256": "db76ba55281c3ffd4f5f110ee48a0b15bb133eaffad4ecc27293fac10ac6f3c5",
+      "elapsedMs": 163.657
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ESP_CUP_copa-del-rey.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 463,
+      "sha256": "a1346fb8eae7b6477129856745f9671c2c8a3f361ac85f5a12a9125870417a5b",
+      "elapsedMs": 204.75
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ESP_1_la-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1765,
+      "sha256": "adbdf7282e1ca19896e7b83211c001e9d9eeae764ae6851290475f004909453c",
+      "elapsedMs": 237.912
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ESP_2_segunda-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 144.303
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/FIN_1_veikkausliiga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 155,
+      "sha256": "bcb9e48ac0e18ceb24c267d1d2f5a0a224eef94b12a1a048afc2d11abe2c11d2",
+      "elapsedMs": 171.496
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ESP_CUP_copa-del-rey.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 118.088
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/FRA_1_ligue-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3387,
+      "sha256": "ac55e9dc59b735c4dbc1250f684ad070fee6c1b96a2022466693d400659dd08f",
+      "elapsedMs": 173.435
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/FIN_1_veikkausliiga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 114.844
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/FRA_2_ligue-2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1542,
+      "sha256": "1f299b212bfab66651108cb0f73ce0186885024845c9b9079b5fdc3f73dc7043",
+      "elapsedMs": 173.373
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/GER_1_bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3160,
+      "sha256": "090907d786010b105f5ce9cf0056daa10e4719475e4ab8716088a3928769321e",
+      "elapsedMs": 173.378
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/FRA_1_ligue-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1945,
+      "sha256": "f4891d12b785315db4afb1cf3e2a6f64431d08cfb2f64c0a51b126485d25584d",
+      "elapsedMs": 216.543
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/GER_2_2-bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3436,
+      "sha256": "6f5bf0582cc62413796d9162f43b2df7e170e4b9aeaed3e33e39a6936f21c061",
+      "elapsedMs": 172.498
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/GER_1_bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2012,
+      "sha256": "a4ce59efc73f64c5c59fc43e947e4cfacd1974b4a98dfe50e6ad7e211f4c1ecf",
+      "elapsedMs": 169.183
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/FRA_2_ligue-2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1785,
+      "sha256": "ee18cd0393bc17f986cdfc6a6c6246c88c7a2d722fc13ef615375e003db28ef5",
+      "elapsedMs": 227.781
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/FRA_1_ligue-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1352,
+      "sha256": "da9bb933b2be14d54455926bbfcd05620a61aab02dd3bc7001038d5b68590636",
+      "elapsedMs": 200.433
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/GER_2_2-bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1899,
+      "sha256": "a297e81c97cf5ccae6472b512cdfe2301e3008c16b78ffa7bc17f6fdbc691a84",
+      "elapsedMs": 198.809
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/FRA_2_ligue-2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 180.647
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/GER_1_bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3341,
+      "sha256": "f1b4f7dcc79e9e5c858468fc8cf018fdddf2d0125cda1e00e0c650b0d9816786",
+      "elapsedMs": 210.258
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/GER_3_3-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2827,
+      "sha256": "0f6a7c8ad409afea37c1c727082f0b79e58efd52054a5034c66ecd85011651a2",
+      "elapsedMs": 197.798
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/GER_2_2-bundesliga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3786,
+      "sha256": "fed224e1f0fe5391cbb168e49b791bb4e944deb24d06beaef8cc6db36ed31943",
+      "elapsedMs": 202.861
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/GRE_1_super-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2282,
+      "sha256": "04ee248858a5bf7f1282f94dfea20a6f17e1f752fbdb3254109921c8886ef4f2",
+      "elapsedMs": 166.321
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/GER_CUP_dfb-pokal.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1447,
+      "sha256": "84ca43b3796799c94471d19e182d6816d0613cc5ca7b22411211de162f94e4b7",
+      "elapsedMs": 229.822
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/GER_3_3-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2241,
+      "sha256": "e5c7c553e9bfe9361bd79304ad6ea7af399656376938b871cc580b7508c76a5e",
+      "elapsedMs": 191.028
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/IRE_2_first-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1491,
+      "sha256": "bf39f5f2ecfdaefe03f646e5b766cb40db90a578cd93261869f83d053eb6b78c",
+      "elapsedMs": 189.437
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/GRE_1_super-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1127,
+      "sha256": "b08db2fd754497cf38f8919a84535419b3e019dc6971816c2b715671de95af69",
+      "elapsedMs": 157.329
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/GER_CUP_dfb-pokal.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 166.365
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/GRE_1_super-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 125.639
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/GER_CUP_dfb-pokal.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 127.689
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/GER_3_3-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 4366,
+      "sha256": "7c6d5c71d9c1041e8bb25b7a3a7942002fb7e9ab19e37a2a18944eded2dc4626",
+      "elapsedMs": 216.048
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/IRE_2_first-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 83,
+      "sha256": "1f8fe75a051568573de904523d79d4b0eedd7a773766ca525012eb012c100299",
+      "elapsedMs": 263.468
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/IRE_3_national-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 942,
+      "sha256": "de1fd13f4a6eca702801e799506edc61923b21dda68c5c1c7e5b5fd9a1cefa03",
+      "elapsedMs": 174.896
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ITA_2_serie-b.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1440,
+      "sha256": "8af4ad3b2d74db2faf254d0a60849c5293a5081e44933745cd57cc50d88f34b9",
+      "elapsedMs": 168.881
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/IRE_2_first-division.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 113.778
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ITA_1_serie-a.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3878,
+      "sha256": "fcad6b9f09282b4acaa7464c39d39f33a09ad8bdbf3b8cef1017beca4859fa81",
+      "elapsedMs": 222.99
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/IRE_3_national-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 249,
+      "sha256": "09e921a277b780a94f38f37f4b733ee120e41c71b54abcb4a9b5c0cca7298a86",
+      "elapsedMs": 172.217
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ITA_2_serie-b.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2217,
+      "sha256": "1e09a934efa35888aa746c3d57425343f945ec2238778d2c9b91fdd69a6b0638",
+      "elapsedMs": 187.828
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/IRE_3_national-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 113.207
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ITA_1_serie-a.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2179,
+      "sha256": "e4f140eff597b57917d6c0dd3cf64344944a387f7eae001b529eb8ebd0d1a9f3",
+      "elapsedMs": 271.995
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ITA_CUP_coppa-italia.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 768,
+      "sha256": "a01951a4542b5c4ec8134071cabc321515fba75d3398a743b49a13fc6bd0e7ba",
+      "elapsedMs": 290.24
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ITA_2_serie-b.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 126.436
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/KAZ_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1532,
+      "sha256": "805f0e2c5d3f49ba3ee93bda70b1d8b0da094715e9c9f21542a12785f0e50741",
+      "elapsedMs": 251.026
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/NED_1_eredivisie.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3586,
+      "sha256": "af32b042fdefe24f819e9512a2f2359ffdec5891f251a951c55d1dd2c8f0e89f",
+      "elapsedMs": 185.812
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ITA_CUP_coppa-italia.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 232,
+      "sha256": "d359460c3b42cf159558f8d50c06f3fab58f077b469bcfa3e5ba679adbd4eafd",
+      "elapsedMs": 221.975
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ITA_1_serie-a.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1488,
+      "sha256": "1d206f6c8b664e663b9189ed5991eeb0711a8ce939a3ea8572be892890df16a9",
+      "elapsedMs": 224.358
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ITA_CUP_coppa-italia.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 119.293
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/NED_1_eredivisie.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1851,
+      "sha256": "848cf64f3cd20cb7127db3d2c314a494207d81b3c837855b0751a045e8392d8f",
+      "elapsedMs": 151.356
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/KAZ_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 228,
+      "sha256": "f6e6eb2bb0f77cc76adbe26c596b29dde92138ad9c28b995466ec2d8864841d7",
+      "elapsedMs": 224.503
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/NED_2_eerste-divisie.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1856,
+      "sha256": "04b2efa1527e47478ed667070efa5e31faa84044663381b0a9310c53187ff4ce",
+      "elapsedMs": 171.18
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/NED_1_eredivisie.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 136.011
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/KAZ_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 112.998
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/NED_CUP_knvb-beker.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2063,
+      "sha256": "c21e4503550d315511fb9933bfe86d42f05867d302dba575df98b84290df3420",
+      "elapsedMs": 184.168
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/NED_2_eerste-divisie.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2093,
+      "sha256": "f07dfb8ac3af4c131802817c5f5c6c08d030b85b2a7b5afd1e9d00581f30d9ee",
+      "elapsedMs": 227.464
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/NOR_1_eliteserien.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1529,
+      "sha256": "861ea176b599c4491821fb7fa86cf7fd17fc500481da2806cc77177fa9cdcc66",
+      "elapsedMs": 165.414
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/POL_1_ekstraklasa.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1578,
+      "sha256": "05235b9c137a782c11f6aef65aac88801024fcebcb5bf4c9539c6893ec6e8b53",
+      "elapsedMs": 158.387
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/NED_CUP_knvb-beker.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 459,
+      "sha256": "9b6de59bf715b4be23b80dd310384addc803aeae9758df8fa65c6db9d39b524f",
+      "elapsedMs": 183.257
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/NED_2_eerste-divisie.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 128.605
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/NED_CUP_knvb-beker.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 125.196
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/POL_1_ekstraklasa.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1029,
+      "sha256": "a6890c28dde39cdbae133dc57571099aaae4adcac9498af9b70902aa82333d63",
+      "elapsedMs": 175.091
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/NOR_1_eliteserien.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 515,
+      "sha256": "a2ef448e50f8a2214e5116997471e69caebed899dfdaa5b8a35391b904989b72",
+      "elapsedMs": 187.131
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/POL_2_division-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1562,
+      "sha256": "796d87e7942b84b6da96fe96560f99078a1989c9bf8ba99584b053757164bbb3",
+      "elapsedMs": 199.378
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/NOR_1_eliteserien.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 124.451
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/POL_1_ekstraklasa.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 137.362
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/POL_3_division-2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1571,
+      "sha256": "9cb5e7d465893fa15f7941305c0e730912c2c946b63dc84634718316cfff1f9d",
+      "elapsedMs": 215.474
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/POL_2_division-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1030,
+      "sha256": "1e40e339c8affbfd37b47436d1118d7ee3a66fe0b47cd7d413312b6792dceedd",
+      "elapsedMs": 193.338
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/POR_1_primeira-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3232,
+      "sha256": "f119967a8d7db3ce3afcf32f3940241e1815819f19176b98dc9dea9f36c1fd64",
+      "elapsedMs": 202.953
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/POR_CUP_taca-de-portugal.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2128,
+      "sha256": "4332fa8866a8d547fa6cab6e42d9fd7d742596b862db131414afa848689d8750",
+      "elapsedMs": 235.584
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/POL_3_division-2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1027,
+      "sha256": "c6d883f7602ed1220c3f131d9b2509a1486393a76bad76b7ff9768a0fad9a342",
+      "elapsedMs": 184.234
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/POL_2_division-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 126.102
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/POR_1_primeira-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1785,
+      "sha256": "1ef782cea58170f233b9fcced4772cfa609ffcbb5599c2b7d7153b195fc32223",
+      "elapsedMs": 170.545
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/POL_3_division-2.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 122.83
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/POR_CUP_taca-de-portugal.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 326,
+      "sha256": "5fb3cb430d60861c25f4dec834005e419d5bdacc2ab2a61bb49714a073028fd6",
+      "elapsedMs": 196.008
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/ROU_1_liga-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1535,
+      "sha256": "71d424d052743b336765e9a2f04265b0f63bc55b8c577ffe37323249db61e743",
+      "elapsedMs": 163.326
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/POR_1_primeira-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 128.589
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/POR_CUP_taca-de-portugal.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 130.881
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/RUS_1_premier-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1411,
+      "sha256": "23c80b18416c0d99d192e84b75fe525164284d9af3dda51ee9d1618db28d843e",
+      "elapsedMs": 208.833
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/ROU_1_liga-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 995,
+      "sha256": "1b75cf835d76c1cf3fa443eb8976b55d5b89b4021ab6aadf2215393a964d57ec",
+      "elapsedMs": 158.968
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SCO_1_premiership.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2348,
+      "sha256": "b8bbdeecf8551714eade6071ce1a29757ab543ef19aa9132033e0e841f0dc1e0",
+      "elapsedMs": 195.377
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/ROU_1_liga-1.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 116.462
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SCO_2_championship.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2087,
+      "sha256": "e23abee99cbd7025bd450676d7bd5bd2b99d20d9d30d698127f87590f41a32c9",
+      "elapsedMs": 193.684
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/RUS_1_premier-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 966,
+      "sha256": "84988c032c43d74712dc116cad241c4c6cd159c02c48ff38edc3afb02e8bf6a4",
+      "elapsedMs": 183.296
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SCO_1_premiership.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1124,
+      "sha256": "7ab41a7acd75c644193347598274a00ed8f621fefcd801fa9898fd5d631916c6",
+      "elapsedMs": 201.625
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/RUS_1_premier-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 119.777
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SCO_3_league-one.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2054,
+      "sha256": "6fa1fa41a335d0fab3a1e089c670a2e71e9ba6666e41757f1335cb79d9eadae0",
+      "elapsedMs": 234.51
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SCO_2_championship.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1021,
+      "sha256": "4fb58b39acc4f068cbe355e2301d32bc3b733506fe1a82792982c9cdbd748e07",
+      "elapsedMs": 206.494
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SCO_1_premiership.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 122.441
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SCO_4_league-two.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1909,
+      "sha256": "5aec23f35d7584c6b7410dca19773ccc8cd8f4c8e43beabb498ca725922d18da",
+      "elapsedMs": 173.498
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SCO_2_championship.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 130.055
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SCO_3_league-one.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 872,
+      "sha256": "490d4223be44151b62a768b6b0ffad32a1ba8c96b730b4ab64bb49a584b54b2f",
+      "elapsedMs": 179.688
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SCO_CUP_league-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 469,
+      "sha256": "d13423ded7b30e56f617046fda29ccc70d402e731eb2419b9b240df0f5a52a1e",
+      "elapsedMs": 178.367
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SCO_3_league-one.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 118.581
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SCO_4_league-two.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 868,
+      "sha256": "8e6ecc4cf500cb679c33ab772e2a063b28dcc674f3c611934251a33c93fdda2b",
+      "elapsedMs": 200.374
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SCO_CUP_scottish-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1197,
+      "sha256": "c1096e913a8588fcba91d2cf6507d57a583c7b1b734e1d88ca99a4b1d3672d64",
+      "elapsedMs": 187.159
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SCO_CUP_league-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 111,
+      "sha256": "38d30683de24aa282c235d0e85426725e066b89d7b88fab411733ab3ad1292c9",
+      "elapsedMs": 152.943
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SCO_4_league-two.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 150.517
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SCO_CUP_scottish-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 439,
+      "sha256": "4f285b57c62b87144936802b35006f0c94cb4dde98bcb6798a6fc6296241d728",
+      "elapsedMs": 187.611
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SCO_CUP_league-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 129.472
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SUI_1_super-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1061,
+      "sha256": "810c71ad79a66f9161fb4562455328de41c4558bbc682cc282eb1d881545be21",
+      "elapsedMs": 251.936
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SCO_CUP_scottish-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 112.855
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SUI_CUP_swiss-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1105,
+      "sha256": "b9cd1bec784e02df2da829b57995818c3e86bf4c814e87138c506a5e6ee926a8",
+      "elapsedMs": 213.45
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SVK_1_nike-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1131,
+      "sha256": "f8c311423850dfa630139c31bd52c54adaa810e4fde6c0beea3ca093a3e10a0f",
+      "elapsedMs": 164.755
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SUI_1_super-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 600,
+      "sha256": "fb9c95e428d64b31abe4f9376f3877cf82be6fa2d9d6c4902d5d20ba42f246ef",
+      "elapsedMs": 192.21
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SVN_1_prva-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1010,
+      "sha256": "549df4d2969c48ccdf99c22e54387fda6b21e51fe5cf9d3fdaaf7d0550c0cd4b",
+      "elapsedMs": 179.381
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SUI_CUP_swiss-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 200,
+      "sha256": "c89f3cd4a9b4c0f275b714cec9f821cc0cfb766ddf51b23330a4cdd5b629d1d4",
+      "elapsedMs": 196.71
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SVK_1_nike-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 582,
+      "sha256": "5bf065f5c326a53c34c7af72256a6825bcfff6df888cc83a834cade1a1083a75",
+      "elapsedMs": 188.867
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SUI_1_super-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 155.528
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SVK_1_nike-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 121.729
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SVN_1_prva-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 818,
+      "sha256": "c4399ff993a29e4487bf82ae7aeffa5175a9f0b10565d0593204bb39d7e8459e",
+      "elapsedMs": 190.721
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SUI_CUP_swiss-cup.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 136.532
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/SWE_1_allsvenskan.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1487,
+      "sha256": "8cec57c635c8f4d50ce975e0b112ed888af6cf0726fbf5ba69a93e4d43b52e35",
+      "elapsedMs": 195.688
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SVN_1_prva-liga.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 121.7
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/UEFA_1_champions-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1553,
+      "sha256": "34d47d4853cdefc191c86c4d598206096c695500e53719ee5260684ad0e8b13d",
+      "elapsedMs": 181.134
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/TUR_1_super-lig.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3259,
+      "sha256": "5f2685ac09fa672589beb42a17dc11a845a651acb07bb06b9122268fcb8a039f",
+      "elapsedMs": 218.903
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/SWE_1_allsvenskan.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 416,
+      "sha256": "f0e6a75452411b1d75190d7c2caba6ee1c41149cffcc8f8ada6f16e7ce744988",
+      "elapsedMs": 187.277
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/UEFA_1_conference-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1131,
+      "sha256": "a3a719aedb2572c54fa6f27ecc60cd5290ecf63401fa9dfd3ba96b1016747e14",
+      "elapsedMs": 178.873
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/TUR_1_super-lig.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1804,
+      "sha256": "2765ec90f96c2307acd560fbd2d3451a7fe814576194dbb49aeac9f957bbaf77",
+      "elapsedMs": 171.829
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/SWE_1_allsvenskan.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 119.691
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/UEFA_1_conference-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 845,
+      "sha256": "52cea7ed9b0c21701fec868f63d2e02cda4fcb9c4a1b9cb10dfa22cef99106dd",
+      "elapsedMs": 174.171
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/TUR_1_super-lig.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 113.912
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/UEFA_1_champions-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 933,
+      "sha256": "6f1b225283ab0d01054f8dcacd5615ef612f3cf0c15268d79b011bc53da69453",
+      "elapsedMs": 325.986
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/UEFA_1_europa-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1478,
+      "sha256": "f65a76540b63160b958739164d712ba55ca104a23b9706a0cb428cf8269aead9",
+      "elapsedMs": 199.343
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/UEFA_1_conference-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 857,
+      "sha256": "fb5f8c9ed2ddb085d72b06012b43749f1ad2107f691cd68239dfcc90a683c842",
+      "elapsedMs": 163.325
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/UKR_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1231,
+      "sha256": "ebdb77bf488363d37b0d357738eb998b41acfb5a5aca9402e0b8da7a4a163304",
+      "elapsedMs": 161.434
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/UEFA_1_champions-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1303,
+      "sha256": "e7ceb71ebf6953a3943b17351339d1029c2c7e9f37e09d14971b9492268b87f1",
+      "elapsedMs": 206.661
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/UEFA_1_europa-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 968,
+      "sha256": "fd439e9bcf72260d2a422262e1da3ab71a13cd2642b5276200f002b856b46456",
+      "elapsedMs": 151.331
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/WAL_1_cymru-premier.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1527,
+      "sha256": "ca8f4887135e23cebe34ef9efcca5e8ee0ad0f77cec6e54468f1a9af3543c3d6",
+      "elapsedMs": 150.881
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/UKR_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 993,
+      "sha256": "754927c54f014728ce6cd3b98e4d4ec8d0c77ffa9885ec34144707f7bf750632",
+      "elapsedMs": 169.249
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/WAL_2_cymru-north.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1352,
+      "sha256": "0973c13a8571b1fbde7a943b0389bba38f105d74c44d2316b3f2b39c0dea2ae1",
+      "elapsedMs": 181.429
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/UEFA_1_europa-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1156,
+      "sha256": "df7f0fdd061014750b0da2dbc2c00a894d6f209b19eb1773e2d4ec1f8043b89a",
+      "elapsedMs": 167.326
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/UKR_1_premier-league.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 113.84
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/WAL_1_cymru-premier.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 978,
+      "sha256": "f5b7534d8dad05b41cc3b9a66ab02f351372d42a931f1184f251d90eed9789dc",
+      "elapsedMs": 213.481
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/WAL_2_cymru-north.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 914,
+      "sha256": "dfbc0c87734b7e4e2d65b960abd9328b74c799427dfe528937a12a7a437b786d",
+      "elapsedMs": 180.868
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_results/WAL_3_cymru-south.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1354,
+      "sha256": "720f0cdf95adca471a93707d564b1882f049717d0add08d6d6793cd70281e9f7",
+      "elapsedMs": 180.79
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/WAL_1_cymru-premier.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 131.85
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/WAL_2_cymru-north.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 132.684
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_fixtures/WAL_3_cymru-south.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 989,
+      "sha256": "9d815a2acbd848ea8634b51a81897b17223a8e487a43540a7a0cbefae2612ab9",
+      "elapsedMs": 209.186
+    },
+    {
+      "path": "/data/raw/seasons/2026-2027/supplemental_goals/WAL_3_cymru-south.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f",
+      "elapsedMs": 133.559
+    },
+    {
+      "path": "/data/raw/openfootball/index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 46681,
+      "sha256": "a466dfdef9a97214d46457c72d96fd9966f4afbcf9afbc39361b87d2027f200c",
+      "elapsedMs": 285.945
+    },
+    {
+      "path": "/data/raw/openfootball/2020-2021.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 109039,
+      "sha256": "7b80d02ad58221a6212a5f8feaccd43a3d5dddd5707557a525ed54b8e25447f2",
+      "elapsedMs": 544.927
+    },
+    {
+      "path": "/data/raw/openfootball/1871-1872.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2013,
+      "sha256": "446f872b98fbb4f620da2c76fe3ddc2de2f1edb76ae494a0254d12be50be6d51",
+      "elapsedMs": 180.978
+    },
+    {
+      "path": "/data/raw/historical-goals/index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 19958,
+      "sha256": "1cd17bcbf8665be22ff7862e1e51e8193368cc2557616eb3afa78012f653a3b3",
+      "elapsedMs": 304.051
+    },
+    {
+      "path": "/data/raw/historical-goals/2024-2025.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 98455,
+      "sha256": "cf075fc9fbc1a02b8ca5a24590fcb1e0d62af49b7c44f08d5ec2e55c4af252ca",
+      "elapsedMs": 502.655
+    },
+    {
+      "path": "/data/raw/historical-goals/1963-1964.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 13371,
+      "sha256": "0e4305456f9b6f34b375cd01cefaea7d32552cebb4020ee681a40b4298d417ad",
+      "elapsedMs": 313.594
+    },
+    {
+      "path": "/data/raw/cup-worker/index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 11826,
+      "sha256": "edefb9972591537a9347e6239a3762b4c671ffd614ea1a428716dfee5dd948f3",
+      "elapsedMs": 233.614
+    },
+    {
+      "path": "/data/raw/cup-worker/supplemental/2026-2027/AUT_CUP_ofb-cup/results-8eefd5ee9d4c70637ec7.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 5630,
+      "sha256": "8eefd5ee9d4c70637ec7fcc55e5a1ba2fe5f727c84ef29e237429c39d4d4cb1d",
+      "elapsedMs": 182.228
+    },
+    {
+      "path": "/data/raw/cup-worker/supplemental/2026-2027/AUT_CUP_ofb-cup/fixtures-b7ff88f86d55dfaeb431.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 271,
+      "sha256": "b7ff88f86d55dfaeb431e9953cfbe035e68af6ea2592216dca9780f8bebc6a58",
+      "elapsedMs": 175.627
+    },
+    {
+      "path": "/data/raw/cup-worker/open-cups/world-cup-history/2022.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 8267,
+      "sha256": "802766dd9e13c3f091c91c0b0f32df4b87bf4453a2e900896047105c6a2df135",
+      "elapsedMs": 215.154
+    },
+    {
+      "path": "/data/raw/cup-worker/openligadb/germany-cup/2025-2026.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16616,
+      "sha256": "ec8c592d9b7569e199b9c2fc488d20eed0b5569aaf89b7c83b3f4c1367e41154",
+      "elapsedMs": 177.575
+    },
+    {
+      "path": "/data/raw/cup-worker/openligadb/nations-league/2026-2027.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 10778,
+      "sha256": "505006ec7a2e2128eddae11f06b631de7f13dcfbb04045f640b6bf210ffafb8d",
+      "elapsedMs": 188.951
+    },
+    {
+      "path": "/data/raw/cup-worker/nations-results/nations-league/2026-2027.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16429,
+      "sha256": "6e7a7b34d689681a5f0e2c4801208e803143ed07a9283385adc164d8eeb18908",
+      "elapsedMs": 228.658
+    },
+    {
+      "path": "/data/raw/cup-worker/native/l_0bfbkO/2026-2027.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 109108,
+      "sha256": "d522972592deb2661d0587b5ce42b14a69aa2513617e444ede845e75fa722004",
+      "elapsedMs": 253.417
+    },
+    {
+      "path": "/data/raw/cup-worker/standings/l_3FJFUl/2025-2026.json",
+      "method": "GET",
+      "status": 404,
+      "bytes": 9,
+      "sha256": "e3ebaa16dd9d9b9fc107c42183fb6cf9d22927e1af03dbbdfa0ccc38e4e4ac31",
+      "elapsedMs": 136.142
+    },
+    {
+      "path": "/api/archive/matches/m_18Uw0k",
+      "method": "GET",
+      "status": 200,
+      "bytes": 329156,
+      "sha256": "76e145a4743e8c7c81b1677f87aafd337ee631ff86058c46d70f5f14714ed1d9",
+      "elapsedMs": 836.83
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k",
+      "method": "GET",
+      "status": 200,
+      "bytes": 749,
+      "sha256": "41b1083a7bb5c5033423cd2d68a1d605fa5e5f153b61b0820b5f4697317299f3",
+      "elapsedMs": 133.748
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/stats",
+      "method": "GET",
+      "status": 200,
+      "bytes": 14281,
+      "sha256": "599d589937fbb5956e5364af4caa2f59b6b899e612a6b79ef88137e493536086",
+      "elapsedMs": 127.823
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/players",
+      "method": "GET",
+      "status": 200,
+      "bytes": 92142,
+      "sha256": "2e27c20cff0e8efcddc17c2156539ffc69b9d8d55d9bba862c2796d0edc1f242",
+      "elapsedMs": 130.846
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/players/halves",
+      "method": "GET",
+      "status": 200,
+      "bytes": 110353,
+      "sha256": "a87521a4953fca737f6415d5f2b1edc12ea362408f8387b50dba9a90cc3065ee",
+      "elapsedMs": 165.956
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/lineups",
+      "method": "GET",
+      "status": 200,
+      "bytes": 5846,
+      "sha256": "b7fbd0eb79d5e2b3ce566a2ea9b36ae235c056f65c70cb8c1032309b1689b3db",
+      "elapsedMs": 131.277
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/shots",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16381,
+      "sha256": "0a44420262ff9c67422fb387f2405a9412e16a711667e2b06525c9505e217701",
+      "elapsedMs": 122.978
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/events",
+      "method": "GET",
+      "status": 200,
+      "bytes": 9255,
+      "sha256": "b1748c1ec9963d3efd087b948d5ad90d0dcdac78b9bcf42d9532bbf19f3308f1",
+      "elapsedMs": 118.613
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/momentum",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2419,
+      "sha256": "c3e56efda54fbfeb153d6bea0a702b70e3b62544fcc0c7e59b0fdcee6f364196",
+      "elapsedMs": 137.272
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/h2h",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1268,
+      "sha256": "6a479d18d17c9904defd998017cdb5de71efd80f29430c67ac7731a012d5f279",
+      "elapsedMs": 127.301
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/advanced",
+      "method": "GET",
+      "status": 200,
+      "bytes": 2746,
+      "sha256": "25c9aa66b73bc591af43e00235f80c036a6cceea52898f30fbff4e4b044b605a",
+      "elapsedMs": 138.393
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/advanced/players",
+      "method": "GET",
+      "status": 200,
+      "bytes": 31674,
+      "sha256": "f333d9ea37a31055ea9246b915f1a7e3ea03d2051cb0add3f819039952e3dc44",
+      "elapsedMs": 137.09
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/advanced/network",
+      "method": "GET",
+      "status": 200,
+      "bytes": 24849,
+      "sha256": "62bc9127c8475305fddc3bab6ccc0b12cfdc9f8c96c70ece5bff8c91c5a82f53",
+      "elapsedMs": 153.085
+    },
+    {
+      "path": "/api/pitchapi/matches/m_18Uw0k/heatmaps?frame=acting_ltr",
+      "method": "GET",
+      "status": 404,
+      "bytes": 95,
+      "sha256": "643b27eaf7b7999a26feb5b2ae227933cbea0002b1de9c7cb14fce1cc187db4c",
+      "elapsedMs": 142.232
+    },
+    {
+      "path": "/api/status",
+      "method": "GET",
+      "status": 200,
+      "bytes": 62,
+      "sha256": "b8c98e08270dc6ebbc2cc24da45d57c36b81608eac0266638e3d0363fa47aaf7",
+      "elapsedMs": 131.447
+    },
+    {
+      "path": "/api/pitchapi/leagues",
+      "method": "GET",
+      "status": 200,
+      "bytes": 19476,
+      "sha256": "64bd3bd78a92884866f5e0b1ecbc4a44e6bb307e38f6154130ed3cf63250b49e",
+      "elapsedMs": 206.141
+    },
+    {
+      "path": "/api/pitchapi/leagues/l_3FJFUl",
+      "method": "GET",
+      "status": 200,
+      "bytes": 209,
+      "sha256": "3c12d4dc412bba13ea154aa629b06e0d69e9c6a80de620cbb86ea287f24a5708",
+      "elapsedMs": 239.294
+    },
+    {
+      "path": "/api/pitchapi/players/p_3chd12",
+      "method": "GET",
+      "status": 200,
+      "bytes": 261,
+      "sha256": "c9c4a7b95be096822f2831949ac51c681eca5a7da28008f6c55cbaa7409b1db9",
+      "elapsedMs": 219.715
+    },
+    {
+      "path": "/api/pitchapi/teams/t_0LMnwp",
+      "method": "GET",
+      "status": 200,
+      "bytes": 166,
+      "sha256": "d0765f48ec3b94dd3f0dc3eedd04a40503de23634f3cab3e3d0ab059d197640e",
+      "elapsedMs": 174.958
+    },
+    {
+      "path": "/api/archive/profiles/players/p_3chd12",
+      "method": "GET",
+      "status": 200,
+      "bytes": 287,
+      "sha256": "f46699de55b6add2063fcce33d209c8fb33b922b4ba123cdbaca42a054e153d2",
+      "elapsedMs": 119.035
+    },
+    {
+      "path": "/api/archive/profiles/teams/t_0LMnwp",
+      "method": "GET",
+      "status": 200,
+      "bytes": 192,
+      "sha256": "3d6d4808c6b68040051eead3e71cd1756e83b43aef272528a805b9dae7e6bb79",
+      "elapsedMs": 121.615
+    },
+    {
+      "path": "/api/standings?competition=l_3FJFUl&season=2025%2F2026",
+      "method": "GET",
+      "status": 404,
+      "bytes": 54,
+      "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+      "elapsedMs": 149.915
+    },
+    {
+      "path": "/api/open-cups?competition=world-cup-history&season=2022",
+      "method": "GET",
+      "status": 200,
+      "bytes": 8177,
+      "sha256": "2c9945a47570dc6fde29fc32e780dcef552be89bc6ad2b1edd4163b3ac22b160",
+      "elapsedMs": 141.783
+    },
+    {
+      "path": "/api/openligadb?competition=germany-cup&season=2025%2F2026",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16526,
+      "sha256": "909b404bf5a596d4c0703d4a1e8c2940a1ae5b04c55a3751c32a621f144e55b3",
+      "elapsedMs": 135.59
+    },
+    {
+      "path": "/api/nations-results?season=2026%2F2027",
+      "method": "GET",
+      "status": 200,
+      "bytes": 16339,
+      "sha256": "a338f62f9ab1412ec874a5e4c748bf8ba75292bd9785eadb9caba11258ea59cd",
+      "elapsedMs": 141.586
+    },
+    {
+      "path": "/api/stadium?id=Q1",
+      "method": "GET",
+      "status": 404,
+      "bytes": 54,
+      "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+      "elapsedMs": 143.305
+    },
+    {
+      "path": "/api/club-wikidata?name=Paris&country=FRA",
+      "method": "GET",
+      "status": 404,
+      "bytes": 54,
+      "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+      "elapsedMs": 136.164
+    },
+    {
+      "path": "/api/coach-portrait?name=Test",
+      "method": "GET",
+      "status": 404,
+      "bytes": 54,
+      "sha256": "355c74c6e9516430d1447c97d6174688ca9b35de57e49fbadb02e6ed89f86887",
+      "elapsedMs": 125.108
+    },
+    {
+      "path": "/api/definitely-not-a-route",
+      "method": "GET",
+      "status": 404,
+      "bytes": 107,
+      "sha256": "b7a3354a12d4921a2b3fc7f9ff17206fd83b8b6c99838fcbf7875556f44305c0",
+      "elapsedMs": 119.624
+    },
+    {
+      "path": "/api/assets?url=https%3A%2F%2Fcdn.pitchapi.dev%2Fimages%2Fplayers%2F150094ed4c062cf9b387590caa1949ff17294519cceb33c62fe0d8a3c5129ffd.webp",
+      "method": "GET",
+      "status": 200,
+      "bytes": 8764,
+      "sha256": "150094ed4c062cf9b387590caa1949ff17294519cceb33c62fe0d8a3c5129ffd",
+      "elapsedMs": 191.107
+    },
+    {
+      "path": "/data/raw/rankings/uefa-associations/2025.uefa.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 194655,
+      "sha256": "43301905090cf07f855fa364a432bf1ca5b4e05b2dda267f15dc5fddb3aee7c9",
+      "elapsedMs": 251.078
+    },
+    {
+      "path": "/data/raw/rankings/club-links.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 88529,
+      "sha256": "c1c6c56ea648069e939ea8daa94ed0b63c19da5335da9f9f6209ae86b0d351fb",
+      "elapsedMs": 615.63
+    },
+    {
+      "path": "/data/computed/matchdays/2026-2027.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 68855,
+      "sha256": "dbb7a4d5ace1396cf24e5201befbd31b8072c244c2ceff524b728f0bd6f0e81b",
+      "elapsedMs": 243.513
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "method": "GET",
+      "status": 304,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsedMs": 18.609
+    },
+    {
+      "path": "/data/dashboard-manifest.json",
+      "method": "HEAD",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsedMs": 126.873
+    }
+  ],
+  "passed": true,
+  "supplementalExpandedBytes": 3806859,
+  "supplementalSemanticHash": "30b2a3d49e49906a29c294f3a9b5dfa907c3555080e6e453647ca0445b69716e",
+  "totals": {
+    "externalRequests": 264,
+    "responseBytes": 10463575,
+    "maximumConcurrentExternalReads": 4,
+    "localRequests": 332,
+    "checks": 32,
+    "passed": 32
+  }
+}

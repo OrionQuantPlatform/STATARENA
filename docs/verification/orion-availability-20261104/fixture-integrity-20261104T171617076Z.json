@@ -1,0 +1,265 @@
+{
+  "atUtc": "2026-11-04T17:16:17.076Z",
+  "command": "bun docs/verification/orion-availability-20261104/fixture_integrity_e2e.mjs",
+  "setup": "Actual compatibility handler on ephemeral localhost Bun HTTP server; synthetic saved legacy fixtures only. No remote requests, credentials or writes.",
+  "expected": "Malformed or truncated saved fixture lists fail closed; complete valid HTTP pagination, filters, cursor generation and historical enumeration preserve values.",
+  "sourceSha256": "33c627ce5f8b387638a02aaed409dfeb1c30299ecc0dac1663b458ced3aea01b",
+  "checks": [
+    {
+      "name": "malformed fixture fails closed",
+      "input": [
+        {
+          "id": "m_first1",
+          "status": "finished",
+          "date": "2025-08-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        null
+      ],
+      "passed": true,
+      "actual": {
+        "status": 503,
+        "code": "DATA_UNAVAILABLE"
+      }
+    },
+    {
+      "name": "malformed fixture fails closed",
+      "input": [
+        {
+          "id": "m_first1",
+          "status": "finished",
+          "date": "2025-08-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        {
+          "date": "2025-08-01"
+        }
+      ],
+      "passed": true,
+      "actual": {
+        "status": 503,
+        "code": "DATA_UNAVAILABLE"
+      }
+    },
+    {
+      "name": "malformed fixture fails closed",
+      "input": [
+        {
+          "id": "m_first1",
+          "status": "finished",
+          "date": "2025-08-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        {
+          "id": 123
+        }
+      ],
+      "passed": true,
+      "actual": {
+        "status": 503,
+        "code": "DATA_UNAVAILABLE"
+      }
+    },
+    {
+      "name": "malformed fixture fails closed",
+      "input": [
+        {
+          "id": "m_first1",
+          "status": "finished",
+          "date": "2025-08-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        {
+          "id": ""
+        }
+      ],
+      "passed": true,
+      "actual": {
+        "status": 503,
+        "code": "DATA_UNAVAILABLE"
+      }
+    },
+    {
+      "name": "complete cursor traversal preserves full rows and deduplicates identities",
+      "input": [
+        {
+          "id": "m_first1",
+          "status": "finished",
+          "date": "2025-08-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        {
+          "id": "m_first1",
+          "status": "finished",
+          "date": "2025-08-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        {
+          "id": "m_next22",
+          "status": "not_started",
+          "date": "2026-05-01",
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        },
+        {
+          "id": "m_last33",
+          "status": "finished",
+          "date": null,
+          "season": "2025/2026",
+          "league": {
+            "id": "l_3FJFUl"
+          }
+        }
+      ],
+      "passed": true,
+      "actual": {
+        "pages": 1,
+        "ids": [
+          "m_first1",
+          "m_next22",
+          "m_last33"
+        ]
+      }
+    },
+    {
+      "name": "fixture status played",
+      "input": {
+        "status": "played"
+      },
+      "passed": true,
+      "actual": {
+        "count": 2
+      }
+    },
+    {
+      "name": "fixture status upcoming",
+      "input": {
+        "status": "upcoming"
+      },
+      "passed": true,
+      "actual": {
+        "count": 1
+      }
+    },
+    {
+      "name": "calendar scope and historical enumeration use stored queries",
+      "input": {},
+      "passed": true,
+      "actual": {
+        "savedQueries": [
+          "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+          "/api/pitchapi/leagues/l_3FJFUl/matches?season=2026%2F2027&status=all"
+        ]
+      }
+    },
+    {
+      "name": "changed saved publication rejects the cursor",
+      "input": {},
+      "passed": true,
+      "actual": {
+        "status": 409
+      }
+    },
+    {
+      "name": "legacy row limit cannot silently truncate",
+      "input": {
+        "rows": 20000
+      },
+      "passed": true,
+      "actual": {
+        "status": 503
+      }
+    },
+    {
+      "name": "saved source error remains visible",
+      "input": {
+        "status": 404
+      },
+      "passed": true,
+      "actual": {
+        "status": 404
+      }
+    },
+    {
+      "name": "saved source error remains visible",
+      "input": {
+        "status": 500
+      },
+      "passed": true,
+      "actual": {
+        "status": 503
+      }
+    },
+    {
+      "name": "invalid or duplicate query rejected",
+      "input": "&season=2026%2F2027",
+      "passed": true,
+      "actual": {
+        "status": 400
+      }
+    },
+    {
+      "name": "invalid or duplicate query rejected",
+      "input": "&status=unknown",
+      "passed": true,
+      "actual": {
+        "status": 400
+      }
+    },
+    {
+      "name": "invalid or duplicate query rejected",
+      "input": "&limit=101",
+      "passed": true,
+      "actual": {
+        "status": 400
+      }
+    },
+    {
+      "name": "invalid or duplicate query rejected",
+      "input": "&other=value",
+      "passed": true,
+      "actual": {
+        "status": 400
+      }
+    },
+    {
+      "name": "HEAD retains status and omits body",
+      "input": {},
+      "passed": true,
+      "actual": {
+        "status": 200
+      }
+    }
+  ],
+  "requests": [
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2026%2F2027&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all",
+    "/api/pitchapi/leagues/l_3FJFUl/matches?season=2025%2F2026&status=all"
+  ],
+  "passed": true
+}

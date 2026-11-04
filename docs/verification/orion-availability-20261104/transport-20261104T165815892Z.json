@@ -1,0 +1,21 @@
+{
+  "atUtc": "2026-11-04T16:58:15.892Z",
+  "command": "bun docs/verification/orion-availability-20261104/transport_e2e.mjs",
+  "setup": "Actual Next transport functions, a local HTTP fixture and an AWS-origin redirect checked without contacting AWS or any provider.",
+  "expected": "Local proxy works; configured AWS preview wins; its retired /data route remains 410; legacy without credentials fails closed.",
+  "checks": [
+    {
+      "name": "local upstream API and data proxy",
+      "passed": true
+    },
+    {
+      "name": "AWS preview wins and data stays retired",
+      "passed": true
+    },
+    {
+      "name": "legacy mode without Neon configuration fails closed",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

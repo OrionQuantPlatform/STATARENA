@@ -1,0 +1,89 @@
+{
+  "atUtc": "2026-11-04T17:26:28.386Z",
+  "command": "bun docs/verification/orion-availability-20261104/archive_goals_e2e.mjs",
+  "setup": "Actual compatibility endpoint and current archiveSeason catalog client on localhost. Only the old immutable Vercel saved archive index/gzip are read (maximum 12 reads/8 MiB; no payload persisted). Synthetic metadata/error cases labelled separately. No Neon SDK credentials or provider calls.",
+  "expected": "2020/21 goals load with exact saved JSON and original validators/HEAD/cache metadata despite decoded size over 2 MiB; invalid/missing/error and encoded-size limits stay explicit.",
+  "sourceSha256": "33c627ce5f8b387638a02aaed409dfeb1c30299ecc0dac1663b458ced3aea01b",
+  "checks": [
+    {
+      "name": "real catalog client loads exact oversized decoded archive",
+      "passed": false,
+      "error": "Error: Données indisponibles (HTTP 413)\n    at json (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/frontend/src/services/resources.js:10:15)\n    at async <anonymous> (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:44:110)\n    at async check (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:42:94)"
+    },
+    {
+      "name": "encoded response metadata, HEAD and conditional GET",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n413 !== 200\n\n    at <anonymous> (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:46:46)\n    at async check (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:42:94)"
+    },
+    {
+      "name": "archive query and missing season errors remain explicit",
+      "passed": true,
+      "actual": [
+        [
+          "/api/archives/season?kind=goals&season=2020%2F2021&kind=results",
+          400
+        ],
+        [
+          "/api/archives/season?kind=other&season=2020%2F2021",
+          400
+        ],
+        [
+          "/api/archives/season?kind=goals&season=wrong",
+          400
+        ],
+        [
+          "/api/archives/season?kind=goals&season=2098%2F2099",
+          404
+        ]
+      ]
+    },
+    {
+      "name": "Accept-Encoding negotiation respects explicit coding exclusions",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: gzip, identity;q=0\n\n413 !== 200\n\n    at <anonymous> (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:61:98)\n    at async check (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:42:94)"
+    },
+    {
+      "name": "synthetic oversized encoded object fails closed",
+      "passed": true,
+      "actual": {
+        "status": 413,
+        "encodedBytes": 2097153
+      }
+    },
+    {
+      "name": "synthetic source error remains visible",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n413 !== 503\n\n    at <anonymous> (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:68:128)\n    at async check (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/archive_goals_e2e.mjs:42:94)"
+    }
+  ],
+  "network": [
+    {
+      "path": "/data/raw/historical-goals/index.json",
+      "method": "GET",
+      "status": 200,
+      "bytes": 19958,
+      "sha256": "1cd17bcbf8665be22ff7862e1e51e8193368cc2557616eb3afa78012f653a3b3",
+      "elapsedMs": 102
+    },
+    {
+      "path": "/data/raw/historical-goals/2020-2021.json.gz",
+      "method": "GET",
+      "status": 200,
+      "bytes": 238411,
+      "sha256": "01630521e2e0fa42677c27c9eed5d4be41d0ed460010d63615c811cf1e4a961c",
+      "elapsedMs": 125
+    }
+  ],
+  "passed": false,
+  "source": {
+    "path": "/data/raw/historical-goals/2020-2021.json.gz",
+    "compressedBytes": 238411,
+    "decodedBytes": 2677442,
+    "compressedSha256": "01630521e2e0fa42677c27c9eed5d4be41d0ed460010d63615c811cf1e4a961c",
+    "decodedSha256": "883ef6809cd737777fc2fa202374f0af611dd56e35be39f289527061128b0bb8"
+  },
+  "totals": {
+    "externalReads": 2,
+    "responseBytes": 258369
+  }
+}
