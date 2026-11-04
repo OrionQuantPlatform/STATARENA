@@ -1,6 +1,6 @@
 {
   "phase": "after",
-  "source": "c0e44523bee8406efb30482c91b1cd7ed34091f7",
+  "source": "8b6dd3e387c670a384c8979d5fe6550527af694f",
   "command": "PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-match-publish-20261104/run.mjs after",
   "setup": "PROTOCOL.md; PostgreSQL 18, verified local TLS, migration 004; measure.py clones production-archive.json",
   "database": {
@@ -12,8 +12,8 @@
     "setup": "identical captured 13-family structure; different local match IDs",
     "psycopg": "3.3.4",
     "injectedMsPerExchange": 5,
-    "writerSha256": "37b09fd0ca47edb4acb57b5c2983fc9d3e4b5f6d5df40645300bd8332c0ff3fd",
-    "peakProcessRSSPlatformBytes": 161316864,
+    "writerSha256": "306720599a0ff43d0c7130253549165a8916bca04bdced0962c814afc354475c",
+    "peakProcessRSSPlatformBytes": 160120832,
     "cases": [
       {
         "name": "publish-1",
@@ -22,7 +22,7 @@
         "copy": 39,
         "transactionCommands": 4,
         "exchangesModel": 87,
-        "localSeconds": 0.758,
+        "localSeconds": 0.7328,
         "addedSerialSecondsAt5ms": 0.435,
         "addedSerialSecondsAt30ms": 2.61,
         "counts": {
@@ -84,7 +84,7 @@
         "copy": 0,
         "transactionCommands": 4,
         "exchangesModel": 7,
-        "localSeconds": 0.0554,
+        "localSeconds": 0.055,
         "addedSerialSecondsAt5ms": 0.035,
         "addedSerialSecondsAt30ms": 0.21,
         "counts": {
@@ -103,7 +103,7 @@
         "copy": 39,
         "transactionCommands": 4,
         "exchangesModel": 87,
-        "localSeconds": 1.6314,
+        "localSeconds": 1.5953,
         "addedSerialSecondsAt5ms": 0.435,
         "addedSerialSecondsAt30ms": 2.61,
         "counts": {
@@ -180,7 +180,7 @@
         "copy": 0,
         "transactionCommands": 4,
         "exchangesModel": 7,
-        "localSeconds": 0.1131,
+        "localSeconds": 0.1114,
         "addedSerialSecondsAt5ms": 0.035,
         "addedSerialSecondsAt30ms": 0.21,
         "counts": {
@@ -199,7 +199,7 @@
         "copy": 78,
         "transactionCommands": 4,
         "exchangesModel": 167,
-        "localSeconds": 3.2477,
+        "localSeconds": 3.2887,
         "addedSerialSecondsAt5ms": 0.835,
         "addedSerialSecondsAt30ms": 5.01,
         "counts": {
@@ -292,7 +292,7 @@
         "copy": 0,
         "transactionCommands": 4,
         "exchangesModel": 8,
-        "localSeconds": 0.18,
+        "localSeconds": 0.1838,
         "addedSerialSecondsAt5ms": 0.04,
         "addedSerialSecondsAt30ms": 0.24,
         "counts": {
@@ -311,7 +311,7 @@
         "copy": 4,
         "transactionCommands": 4,
         "exchangesModel": 17,
-        "localSeconds": 0.134,
+        "localSeconds": 0.1278,
         "addedSerialSecondsAt5ms": 0.085,
         "addedSerialSecondsAt30ms": 0.51,
         "counts": {
@@ -341,6 +341,10 @@
       [
         true,
         "unchanged inputs skip COPY 32"
+      ],
+      [
+        true,
+        "repeated variant retains last supplied response"
       ],
       [
         true,

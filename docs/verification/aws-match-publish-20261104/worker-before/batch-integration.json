@@ -1,0 +1,10 @@
+{
+  "suiteSha256": "7845219ae31a90d90346afd5c20bfaca9bcccb2cbed083621cca1ab596dbf7ed",
+  "setup": "PROTOCOL.md, production partition entry point, PostgreSQL 18, retained source bodies",
+  "command": "node docs/verification/aws-match-publish-20261104/worker.mjs worker-before",
+  "workerCasesPassed": 16,
+  "workerCases": 16,
+  "interleavedEventSheetCopies": 64,
+  "expectedMax": 5,
+  "passed": false
+}

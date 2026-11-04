@@ -32,7 +32,6 @@ const report = {
     phase,
   setup:
     "PROTOCOL.md; PostgreSQL 18, verified local TLS, migration 004; measure.py clones production-archive.json",
-
 };
 const telemetry = [];
 let postgres, admin, closeRuntime, http;
@@ -112,9 +111,17 @@ try {
   const conn = new URL(url);
   conn.searchParams.set("sslmode", "verify-full");
   conn.searchParams.set("sslrootcert", cert);
-  const output=execFileSync(process.env.PYTHON||"python3",[path.join(import.meta.dir,"measure.py"),phase],{env:{...process.env,LOCAL_FIXTURE_DB:conn.href},stdio:"pipe",maxBuffer:2000000});
-  report.benchmark=JSON.parse(output.toString());
-  report.passed=report.benchmark.passed;
+  const output = execFileSync(
+    process.env.PYTHON || "python3",
+    [path.join(import.meta.dir, "measure.py"), phase],
+    {
+      env: { ...process.env, LOCAL_FIXTURE_DB: conn.href },
+      stdio: "pipe",
+      maxBuffer: 2000000,
+    },
+  );
+  report.benchmark = JSON.parse(output.toString());
+  report.passed = report.benchmark.passed;
 } catch (error) {
   report.error = String(error.stack || error).slice(0, 2400);
   report.passed = false;
@@ -125,7 +132,15 @@ try {
   await postgres?.stop();
   await rm(scratch, { recursive: true, force: true });
   await writeFile(
-    path.join(import.meta.dir, phase + (process.env.STATARENA_SIMULATED_RTT_MS?"-simulated-"+process.env.STATARENA_SIMULATED_RTT_MS+"ms":"") + ".json"),
+    path.join(
+      import.meta.dir,
+      phase +
+        (process.env.STATARENA_BENCH_SUFFIX || "") +
+        (process.env.STATARENA_SIMULATED_RTT_MS
+          ? "-simulated-" + process.env.STATARENA_SIMULATED_RTT_MS + "ms"
+          : "") +
+        ".json",
+    ),
     JSON.stringify(report, null, 2) + "\n",
   );
 }

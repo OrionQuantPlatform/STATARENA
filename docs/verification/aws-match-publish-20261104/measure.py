@@ -28,11 +28,12 @@ canonical = lambda x: json.dumps(
 cases = []
 checks = []
 trace = collections.Counter()
-simulated_rtt=float(os.environ.get("STATARENA_SIMULATED_RTT_MS","0"))/1000
+simulated_rtt = float(os.environ.get("STATARENA_SIMULATED_RTT_MS", "0")) / 1000
+
 
 def latency(exchanges):
-    if simulated_rtt:time.sleep(simulated_rtt*exchanges)
-
+    if simulated_rtt:
+        time.sleep(simulated_rtt * exchanges)
 
 
 class CountingConnection(psycopg.Connection):
@@ -163,6 +164,16 @@ with CountingConnection.connect(
         ).fetchone()[0]
         == 0
     )
+    # Two saved variants can come from different textual encodings of the same
+    # canonical parameter set. The later one has the same precedence as separate calls.
+    later = {"status": 429, "error": {"code": "RETRY"}}
+    publish(db, [(mid, {}, None, [variant, (variant[0], dict(variant[1]), later)])])
+    alias = default.execute(
+        "select statarena_app.detail_response(f) from statarena_app.match_families f where match_id=%s and family='heatmaps' and params=%s",
+        (mid, writer.canonical(variant[1])),
+    ).fetchone()[0]
+    assert alias == later
+    checks.append([True, "repeated variant retains last supplied response"])
     # Opposite source ordering with overlapping SQL keys. Metadata and family
     # writes may interleave across callers but each transaction publishes fully.
     if phase == "after":
@@ -249,7 +260,7 @@ print(
             "passed": all(x[0] for x in checks),
             "setup": "identical captured 13-family structure; different local match IDs",
             "psycopg": psycopg.__version__,
-            "injectedMsPerExchange":simulated_rtt*1000,
+            "injectedMsPerExchange": simulated_rtt * 1000,
             "writerSha256": hashlib.sha256(
                 Path(inspect.getfile(writer)).read_bytes()
             ).hexdigest(),
