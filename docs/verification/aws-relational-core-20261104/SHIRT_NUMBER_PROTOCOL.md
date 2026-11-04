@@ -1,0 +1,13 @@
+# Preserve native shirt numbers before resuming the full build
+
+Real hosted run41803444093 failed with PostgreSQL InvalidTextRepresentation: appearance parameter18 was an empty string. The normalizer intentionally preserves `shirt_number`; the appearance model currently coerces it into a double. Do not drop the row or turn the empty value into null. Failure and earlier committed checkpoints remain in the workflow-consolidation receipts.
+
+Before implementation extend the actual PostgreSQL publisher/reader and HTTP workflow. Verify empty string, leading-zero string, zero, integer, decimal, false, true and null. Require full native values after a typed read/republication and no internal scalar metadata in the public payload. Verify structural input is rejected atomically, existing numeric rows remain readable without a scalar receipt, repeated publication is idempotent and other partitions/positions/statistics remain correct.
+
+Upgrade failure registered before its fix: an old partition digest already hashes the raw string even though its numeric SQL column lost the type. Matching that digest must not suppress the new scalar projection. Migration011 must queue existing partitions for reconstruction and the revised representation must have a new validator. Exercise an actual old digest/numeric-coerced row, apply011, rebuild and inspect typed read plus changed digest before accepting the upgrade.
+
+Migration011 must add a separate typed shirt-number relation, retaining the existing appearance numeric column/layout for the current deployed reader. The new API reads the scalar relation with a fallback to old numeric rows. This avoids changing the meaning of a live column or causing the previous reader to expose new internal columns. Install011 first through a schema-only mode of rematerialize, deploy/verify the new reader, then run the new publisher. The schema-only E2E must not read staged content, construct business rows or fabricate worker completion. Do not replay the known failing expensive partition before its fix is ready. Applied003–010 stay unchanged.
+
+Exact rerun: `STATARENA_CORE_API=1 STATARENA_CORE_EVIDENCE=docs/verification/aws-relational-core-20261104/shirt-after bun dashboard/scripts/verify_relational_core.mjs`. First run the registered assertions as shirt-before and retain failure evidence. Each run saves inputs/setup/command, results.json, python.log, PostgreSQL log and HTTP results where the publisher succeeds. Also run the complete existing rematerializer and compact HTTP page workflow after implementation.
+
+Suggested commit: `fix: preserve native shirt numbers in relational publication`.

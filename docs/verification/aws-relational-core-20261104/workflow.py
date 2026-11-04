@@ -1,5 +1,5 @@
 """Actual SQL publication workflows; fixtures never leave a temporary database."""
-import argparse, copy, json, os, sys
+import argparse, copy, hashlib, json, os, sys
 from pathlib import Path
 from urllib.parse import urlparse
 import psycopg
@@ -89,6 +89,69 @@ with psycopg.connect(os.environ['TEST_DATABASE_URL'], autocommit=True) as db:
         missing = db.execute('select count(*) from statarena_app.appearances p left join statarena_app.matches m on m.id=p.match_id where m.id is null').fetchone()[0]
         check('appearance references remain intact', missing == 0, missing)
     run('partition isolation',isolation)
+
+    def old_publication_upgrade(check):
+        from relational_core import publish_snapshot
+        from relational_snapshot import read_partition
+        legacy = copy.deepcopy(snapshot)
+        legacy['appearances'][0]['shirtNumber'] = '07'
+        encoded = json.dumps(legacy,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False)
+        old_digest = hashlib.sha256(encoded.encode()).hexdigest()
+        db.execute('drop table statarena_app.appearance_shirt_numbers')
+        db.execute('update statarena_app.partitions set source_digest=%s where season=%s and league_id=%s', (old_digest,'2026/2027','l_000001'))
+        db.execute('update statarena_app.appearances set shirt_number=7 where id=%s', (legacy['appearances'][0]['id'],))
+        db.execute((ROOT/'dashboard/backend/migrations/011_appearance_shirt_numbers.sql').read_text())
+        queued = db.execute('select count(*) from statarena_app.publication_jobs where season=%s and league_id=%s', ('2026/2027','l_000001')).fetchone()[0]
+        try:
+            check('existing publication is queued for lossless upgrade', queued == 1, queued)
+            with db.transaction(): changed = publish_snapshot(db,'2026/2027','l_000001',legacy)
+            new_digest = db.execute('select source_digest from statarena_app.partitions where season=%s and league_id=%s', ('2026/2027','l_000001')).fetchone()[0]
+            value = read_partition(db,'2026/2027','l_000001')['tables']['performances'][0]['shirtNumber']
+            check('legacy digest cannot suppress scalar upgrade', changed == 1 and value == '07' and isinstance(value,str), {'changed':changed,'value':value})
+            check('changed public representation has a new validator', old_digest != new_digest, {'old':old_digest,'new':new_digest})
+        finally:
+            with db.transaction(): publish_snapshot(db,'2026/2027','l_000001',snapshot)
+    run('upgrade already published numeric coercions', old_publication_upgrade)
+
+    def legacy_shirts(check):
+        from relational_snapshot import read_partition
+        key = snapshot['appearances'][0]['id']
+        db.execute('delete from statarena_app.appearance_shirt_numbers where appearance_id=%s', (key,))
+        rows = read_partition(db, '2026/2027', 'l_000001')['tables']['performances']
+        actual = next(p['shirtNumber'] for p in rows if p['id'] == key)
+        check('legacy numeric shirt fallback', actual == snapshot['appearances'][0]['shirtNumber'], actual)
+    run('existing numeric appearance without scalar receipt', legacy_shirts)
+
+    def native_shirts(check):
+        from relational_core import publish_snapshot
+        from relational_snapshot import read_partition
+        observed = []
+        for values in [('', '07'), (0, 12), (None, False), (True, 1.5)]:
+            updated = copy.deepcopy(snapshot)
+            for row, value in zip(updated['appearances'], values, strict=True): row['shirtNumber'] = value
+            with db.transaction(): publish_snapshot(db, '2026/2027', 'l_000001', updated)
+            actual = [p['shirtNumber'] for p in read_partition(db, '2026/2027', 'l_000001')['tables']['performances']]
+            check('native shirt values and types '+repr(values), actual == list(values) and [type(x) for x in actual] == [type(x) for x in values], actual)
+            before = db.execute('select generation from statarena_app.publications').fetchone()[0]
+            with db.transaction(): changed = publish_snapshot(db, '2026/2027', 'l_000001', updated)
+            check('unchanged scalar publication '+repr(values), changed == 0 and before == db.execute('select generation from statarena_app.publications').fetchone()[0], changed)
+            observed.extend(actual)
+        # The HTTP phase inspects both an empty and a leading-zero number.
+        for row, value in zip(updated['appearances'], ('', '07'), strict=True): row['shirtNumber'] = value
+        with db.transaction(): publish_snapshot(db, '2026/2027', 'l_000001', updated)
+        check('all scalar forms covered', len(observed) == 8, observed)
+    run('native shirt numbers survive SQL and repeat publication', native_shirts)
+
+    def invalid_shirt(check):
+        from relational_core import publish_snapshot
+        before = db.execute('select generation from statarena_app.publications').fetchone()[0]
+        bad = copy.deepcopy(snapshot);bad['appearances'][0]['shirtNumber'] = {'unexpected': 'structure'}
+        try:
+            with db.transaction(): publish_snapshot(db, '2026/2027', 'l_000001', bad)
+        except (ValueError, TypeError): pass
+        else: raise AssertionError('structural shirt number was accepted')
+        check('bad scalar transaction preserves generation', before == db.execute('select generation from statarena_app.publications').fetchone()[0], before)
+    run('structural shirt number fails atomically', invalid_shirt)
 
 report['status'] = 'passed' if all(c['status']=='passed' for c in report['cases']) else 'failed'
 Path(args.report).write_text(json.dumps(report,indent=2)+'\n')

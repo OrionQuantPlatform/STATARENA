@@ -216,6 +216,20 @@ with psycopg.connect(url, autocommit=True) as db:
         status=404,
     )
 
+    def schema_only():
+        original = store.json
+        def forbidden(path):
+            raise AssertionError('Schema-only build read staged content: ' + path)
+        store.json = forbidden
+        try:
+            r = worker(install_only=True)
+            check(r.get('schema_installed') is True and sql1('select count(*) from statarena_app.partitions') == 0, 'Schema-only install constructed business data')
+            check(not db.execute("select 1 from statarena_app.workflow_state").fetchall(), 'Schema-only install fabricated worker completion')
+            return r
+        finally:
+            store.json = original
+    case('schema-only installation leaves data and workflow state untouched', schema_only)
+
     def bootstrap():
         r = worker(queue_all=True)
         a = sql1("select count(*) from statarena_app.appearances")

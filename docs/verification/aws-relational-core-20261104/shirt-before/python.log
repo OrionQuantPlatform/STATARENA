@@ -1,0 +1,2 @@
+{"status": "failed", "cases": 7, "failed": ["native shirt numbers survive SQL and repeat publication", "structural shirt number fails atomically"]}
+
