@@ -1,0 +1,133 @@
+{
+  "atUtc": "2026-11-04T05:53:54.039158+00:00",
+  "objectiveAchieved": false,
+  "requirements": [
+    {
+      "id": "R1",
+      "requirement": "Use the sole existing RDS without interfering with the migration owner",
+      "state": "verified_target_and_preserved",
+      "evidence": [
+        "metadata.json",
+        "../aws-release-20261104/inventory-compact-009.json"
+      ],
+      "scope": "Same instance/database and source namespace retained; no instance-class/storage/source deletion by this task."
+    },
+    {
+      "id": "R2",
+      "requirement": "Serve structured website data from typed relational tables",
+      "state": "verified_on_deployed_AWS_backend",
+      "evidence": [
+        "metadata.json",
+        "../aws-pg-transport-release-20261104/traversal.json"
+      ],
+      "scope": "159 base tables/5views; zero json/jsonb/bytea serving columns; current published dataset. Main website cutover still open."
+    },
+    {
+      "id": "R3",
+      "requirement": "Adapt the entire backend and preserve existing features",
+      "state": "incomplete_full_publication_and_production_acceptance",
+      "evidence": [
+        "metadata.json",
+        "../aws-production-20261104/api-20261104T041011941368Z.json",
+        "../aws-deferred-preview-20261104/RESULTS.md"
+      ],
+      "scope": "Ready families and selected desktop/mobile flows tested. Full API/cup/archive/ranking/profile coverage and full dataset behavior remain unproved."
+    },
+    {
+      "id": "R4",
+      "requirement": "Carry model changes through rematerialization",
+      "state": "implemented_and_partially_published",
+      "evidence": [
+        "../../../dashboard/scripts/relational_materialize.py",
+        "../aws-release-20261104/runs/41771065171/run.json"
+      ],
+      "scope": "003\u2013009 applied/sealed. Two partitions committed;484 queued;workflow remaining36709. No mass resume while capacity gate remains."
+    },
+    {
+      "id": "R5",
+      "requirement": "Optimize requests, queries, caching, pooling and latency",
+      "state": "delivered_for_measured_scope_full_scale_pending",
+      "evidence": [
+        "../aws-pg-transport-release-20261104/RESULTS.md",
+        "../aws-live-performance-20261104/RESULTS.md",
+        "../aws-compact-metrics-20261104/RESULTS.md"
+      ],
+      "scope": "Measured volume/compute/read changes, explicit regressions and small-sample limits retained. Reassess real plans at full coverage."
+    },
+    {
+      "id": "R6",
+      "requirement": "PitchAPI only in ingestion, never website serving",
+      "state": "verified_AWS_runtime_and_observed_browser_scope",
+      "evidence": [
+        "../../../infra/aws-backend/backend.yaml",
+        "../../../dashboard/backend/aws-app.js",
+        "../aws-deferred-preview-20261104/RESULTS.md"
+      ],
+      "scope": "Runtime no provider/S3 client; browser business requests use dedicated API. Production main not cut over."
+    },
+    {
+      "id": "R7",
+      "requirement": "Move all current GitHub workflows to AWS",
+      "state": "code_complete_activation_and_remaining_live_writer_proofs_pending",
+      "evidence": [
+        "actions-inventory.json",
+        "../aws-release-20261104/runs/41765703333/run.json",
+        "../aws-actions-20261104/after/results.json"
+      ],
+      "scope": "All6 current definitions accounted for. Real rematerializer/OIDC proof; daily/history/UEFA production writer flows await capacity/cutover. Disabled availability monitor intentionally preserved."
+    },
+    {
+      "id": "R8",
+      "requirement": "Update connections, environment and dependencies",
+      "state": "AWS_runtime_verified_legacy_retirement_prepared_not_activated",
+      "evidence": [
+        "../aws-retirement-prepared-20261104/RESULTS.md",
+        "../aws-retirement-prepared-20261104/retirement.patch"
+      ],
+      "scope": "Prepared63-path patch isolates INGEST_*; runtime only DATABASE_URL; preserves latest175 sensitive paths. Must activate after full AWS acceptance."
+    },
+    {
+      "id": "R9",
+      "requirement": "Benchmark before and after with numerical analysis",
+      "state": "delivered_with_scope_limits",
+      "evidence": [
+        "../../AWS_BACKEND_BILAN_2026-11-04.md",
+        "../aws-pg-transport-release-20261104/summary.json"
+      ],
+      "scope": "Actual public calls matched Lambda REPORTs, all bytes/ETags equal. Not production percentile or monthly invoice."
+    },
+    {
+      "id": "R10",
+      "requirement": "Verify full data integrity and no regressions",
+      "state": "incomplete_full_source_population",
+      "evidence": [
+        "metadata.json",
+        "../aws-source-preflight-20261104",
+        "../aws-catalog-20261104",
+        "../aws-pg-transport-release-20261104/traversal.json"
+      ],
+      "scope": "Published189matches/8304appearances exact; extensive source preflight and local corpus tests. Full source-to-serving population not yet normalized or compared."
+    },
+    {
+      "id": "R11",
+      "requirement": "Retire obsolete Neon dependencies only after AWS fully operational",
+      "state": "correctly_gated_pending_full_acceptance",
+      "evidence": [
+        "../aws-retirement-prepared-20261104/retirement.patch",
+        "../aws-retirement-prepared-20261104/parent-core/http.json"
+      ],
+      "scope": "Candidate only in detached worktree; active branch/production still retain rollback-compatible old files. No source data deletion or credential rotation."
+    },
+    {
+      "id": "R12",
+      "requirement": "Deliver a fully migrated production-ready backend",
+      "state": "not_achieved",
+      "evidence": [
+        "metadata.json",
+        "../aws-capacity-20261104/storage-change-plan.json"
+      ],
+      "scope": "20GiB volume,16GB SQL ceiling,~27.8GB estimated full footprint before reserve. Explicit20\u219264GiB approval remains unanswered; full publication, acceptance, cutover and retirement still required."
+    }
+  ],
+  "nextAction": "Await explicit RDS capacity decision; do not resize, purge sources, dispatch mass backfill, activate retirement or cut over main without the applicable completed gates."
+}
