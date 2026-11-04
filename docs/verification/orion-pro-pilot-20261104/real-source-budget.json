@@ -1,6 +1,6 @@
 {
-  "queries": 67,
-  "decodedBytes": 190950214,
+  "queries": 89,
+  "decodedBytes": 254796352,
   "runs": [
     {
       "evidence": "20261104T182628748995Z-core-first-real-import",
@@ -49,6 +49,16 @@
     },
     {
       "evidence": "20261104T190755631159Z-final-reviewed-exact-numbers-and-collections",
+      "queries": 11,
+      "decodedBytes": 31923069
+    },
+    {
+      "evidence": "20261104T201252441807Z-restart-source-memory-capture",
+      "queries": 11,
+      "decodedBytes": 31923069
+    },
+    {
+      "evidence": "20261104T203343341015Z-explicit-checkpoint-memory-capture",
       "queries": 11,
       "decodedBytes": 31923069
     }

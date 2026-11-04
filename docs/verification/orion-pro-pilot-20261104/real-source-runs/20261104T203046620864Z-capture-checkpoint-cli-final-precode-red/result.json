@@ -1,0 +1,136 @@
+{
+  "status": "fail",
+  "environment": "offline actual CLI subprocesses; all psycopg connections denied",
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 tests/orion_pro_real_pilot.py --capture-cli-only --label capture-checkpoint-cli-final-precode-red --phase families",
+  "actual": {
+    "awsReads": 0,
+    "outcomes": [
+      {
+        "case": "current_78",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/current_78/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/current_78/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-_pgs1gey/source.sock --expected-source-queries 78 --expected-source-bytes 222873283",
+        "expectedAccepted": true,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "missing_both",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_both/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_both/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-z4s87t_5/source.sock",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "missing_queries",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_queries/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_queries/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-yh5gfceu/source.sock --expected-source-bytes 222873283",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "missing_bytes",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_bytes/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_bytes/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-il_61dms/source.sock --expected-source-queries 78",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "mismatch",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/mismatch/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/mismatch/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-ofcjx3dv/source.sock --expected-source-queries 67 --expected-source-bytes 190950214",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "negative",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/negative/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/negative/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-o8fjrm2t/source.sock --expected-source-queries -1 --expected-source-bytes 222873283",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "missing_ledger",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_ledger/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/missing_ledger/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-iizk8vqp/source.sock --expected-source-queries 0 --expected-source-bytes 0",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "query_budget",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/query_budget/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/query_budget/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-9t4zj947/source.sock --expected-source-queries 100 --expected-source-bytes 222873283",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "byte_budget",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/byte_budget/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/byte_budget/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-9havudg6/source.sock --expected-source-queries 78 --expected-source-bytes 268435456",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "remaining_after_capture",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/remaining_after_capture/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/remaining_after_capture/real-source-runs/check' --memory-source-server --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-vvgz_h__/source.sock --expected-source-queries 89 --expected-source-bytes 254796352",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      },
+      {
+        "case": "normal_mode_flags",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/network-denied-cli.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py' '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/normal_mode_flags/connection-attempt.txt' --local --source-scope '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/source_scope.json' --phase families --evidence '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203046620864Z-capture-checkpoint-cli-final-precode-red/capture-cli/normal_mode_flags/real-source-runs/check' --capture-check-only --source-socket /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-capture-cli-72vkaxog/source.sock --expected-source-queries 78 --expected-source-bytes 222873283",
+        "expectedAccepted": false,
+        "exitCode": 2,
+        "actual": {},
+        "ledgerUnchanged": true,
+        "sourceConnectionAttempted": false,
+        "socketCreated": false,
+        "expectedOutcomeMet": false
+      }
+    ]
+  },
+  "expected": "Exact explicit checkpoint accepted offline; omitted/mismatched/absent/over-budget inputs rejected before source connection",
+  "normalizerSha256": "33aa00448ada3852ed246fbc7e7ba699b5e2153be882456596f4834d2e85d2d7",
+  "testSha256": "f62ef9135d5350a173bca738b84afe6c60f79fe3a0d420a3946a56797fc8f6ce",
+  "rawSourceCopies": [],
+  "remoteWrites": []
+}

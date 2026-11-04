@@ -1,0 +1,437 @@
+{
+  "role": "orion_pro_ingest",
+  "phase": "families",
+  "transformSha256": "33aa00448ada3852ed246fbc7e7ba699b5e2153be882456596f4834d2e85d2d7",
+  "fullAcceptance": false,
+  "mode": "import_only",
+  "demoCorrectionExecuted": false,
+  "processId": 66781,
+  "import": {
+    "facts": {
+      "fixtures": 612,
+      "performances": 15437
+    },
+    "reused": true,
+    "generation": 2,
+    "manifestSha256": "ef6b9928277e13e24be48dd63652a3d04615ade9a390d6bbcfc9fc3a3c3748b6",
+    "newFactRevisions": 0,
+    "duplicateRows": 0,
+    "phaseReceipt": {
+      "snapshotKey": "real-source-v2:core:ef6b9928277e13e24be48dd63652a3d04615ade9a390d6bbcfc9fc3a3c3748b6",
+      "snapshotId": 2,
+      "generation": 2,
+      "runId": 1,
+      "binding": {
+        "kind": "orion_pro_phase_receipt_v2",
+        "phase": "core",
+        "transform_sha256": "33aa00448ada3852ed246fbc7e7ba699b5e2153be882456596f4834d2e85d2d7",
+        "transform_version": "real_source_core_v1",
+        "model_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+        "source_document_count": 2,
+        "source_document_manifest_sha256": "a23c66a3c64e23bdf9f77303fa8055a54cce12f6d034ec639f3b79b5f7bfb1b1",
+        "selector_manifest_sha256": "d3470eaff3b62da909deec2b44bbb18b04ad38a968f743cf50f5f05b59db6d9e",
+        "input_manifest_sha256": "ef6b9928277e13e24be48dd63652a3d04615ade9a390d6bbcfc9fc3a3c3748b6"
+      },
+      "sealedManifestSha256": "a6f48933c846ea32050f01d5685408af768d009938797a2e0b9850e670198beb",
+      "reused": true,
+      "newFactRevisions": 0,
+      "duplicateRows": 0
+    }
+  },
+  "rehydration": {
+    "fromSql": true,
+    "sourceId": 1,
+    "coreRunId": 1,
+    "players": 839,
+    "teams": 20,
+    "matches": 612,
+    "performances": 15437,
+    "normalizedProfiles": 840,
+    "identitySha256": "1bce607aae0a6b1668d4e532734f2e350a4ee9cb913d3ec2e41f9bacbab67af1"
+  },
+  "families": {
+    "scope": "two real archived matches, thirteen original families each; canonical normalized comparison remains separate",
+    "typedRows": 12852,
+    "generation": 3,
+    "dispositions": [
+      {
+        "family": "advanced_players",
+        "status": "partial",
+        "typedRows": 63,
+        "mappedMembers": 2
+      },
+      {
+        "family": "advanced_teams",
+        "status": "partial",
+        "typedRows": 4,
+        "mappedMembers": 2
+      },
+      {
+        "family": "events",
+        "status": "partial",
+        "typedRows": 37,
+        "mappedMembers": 2
+      },
+      {
+        "family": "h2h",
+        "status": "partial",
+        "typedRows": 52,
+        "mappedMembers": 2
+      },
+      {
+        "family": "heatmaps",
+        "status": "partial",
+        "typedRows": 7339,
+        "mappedMembers": 2
+      },
+      {
+        "family": "lineups",
+        "status": "partial",
+        "typedRows": 84,
+        "mappedMembers": 2
+      },
+      {
+        "family": "match",
+        "status": "partial",
+        "typedRows": 2,
+        "mappedMembers": 2
+      },
+      {
+        "family": "momentum",
+        "status": "partial",
+        "typedRows": 188,
+        "mappedMembers": 2
+      },
+      {
+        "family": "pass_networks",
+        "status": "partial",
+        "typedRows": 321,
+        "mappedMembers": 2
+      },
+      {
+        "family": "player_halves",
+        "status": "partial",
+        "typedRows": 2350,
+        "mappedMembers": 2
+      },
+      {
+        "family": "players",
+        "status": "partial",
+        "typedRows": 1975,
+        "mappedMembers": 2
+      },
+      {
+        "family": "shots",
+        "status": "partial",
+        "typedRows": 89,
+        "mappedMembers": 2
+      },
+      {
+        "family": "stats",
+        "status": "partial",
+        "typedRows": 348,
+        "mappedMembers": 2
+      }
+    ],
+    "sourceMembers": 26,
+    "leafDispositionCount": 1176,
+    "repeatedMetricPolicy": "retain_each_group_item_as_explicit_noncanonical_source_record_variant",
+    "uniqueMemberFailures": 0,
+    "leafDispositionSha256": "af8f9ea48b11c2a1b618af5790f60e29d724c48a597b6b2719b3c41e9ca97708",
+    "opaqueSourceBodiesStored": 0,
+    "reused": true,
+    "newFactRevisions": 0,
+    "phaseReceipt": {
+      "snapshotKey": "real-source-v2:families:eb4590900922701a052ae4d4a46b3ed575d826e101f8cb8381663f5d648a56e6",
+      "snapshotId": 3,
+      "generation": 3,
+      "runId": 2,
+      "binding": {
+        "kind": "orion_pro_phase_receipt_v2",
+        "phase": "families",
+        "transform_sha256": "33aa00448ada3852ed246fbc7e7ba699b5e2153be882456596f4834d2e85d2d7",
+        "transform_version": "real_source_core_v1",
+        "model_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+        "source_document_count": 26,
+        "source_document_manifest_sha256": "52f4299738e069fe7f438a412b99761ae931a6887fb33a439ae590bde9e52d05",
+        "selector_manifest_sha256": "29cd8c362c4a11ee3d7c716827eaf7066ffad6ddbe5d57e11ed76927b04e7abc",
+        "input_manifest_sha256": "eb4590900922701a052ae4d4a46b3ed575d826e101f8cb8381663f5d648a56e6"
+      },
+      "sealedManifestSha256": "010aba68763a4e178899bb8355dcb47e6d92834c8f5917bf4a4e8acae91e483c",
+      "reused": true,
+      "newFactRevisions": 0,
+      "duplicateRows": 0
+    }
+  },
+  "fullProfiles": {
+    "conflicts": [
+      {
+        "path": "raw/profiles/profiles_players/1df490b9590737d7e9b09b2e.json.gz",
+        "ordinal": 25,
+        "physicalSha256": "6812c305aa0cbc7659a87c159ba77ca627ed65cb77f506c215d70e9f655fe481",
+        "selectedStatus": 200,
+        "actualProviderId": "p_1Gu9XI",
+        "expectedProviderId": "p_1JuxKR"
+      }
+    ],
+    "generation": 4,
+    "mismatchedIds": 1,
+    "selectorCount": 796,
+    "selectorSha256": "241ac1266de2576804bd3fc3984c1da8d93b1fe26c787ddad10aa17ed4d9441b",
+    "rejectedProviderIds": [
+      "p_1JuxKR"
+    ],
+    "unverifiedUsefulFields": {
+      "image_url": 766
+    },
+    "opaqueSourceBodiesStored": 0,
+    "selectedTeamObservations": 20,
+    "missingPlayerResourceKeys": 62,
+    "selectedPlayerObservations": 776,
+    "candidatePlayerResourceRows": 777,
+    "reused": true,
+    "newFactRevisions": 0,
+    "phaseReceipt": {
+      "snapshotKey": "real-source-v2:profiles:bd73d6999c09ab0dec386995ccf58f20a35bf4d7e8567ef43cb2c4ed5f0d573c",
+      "snapshotId": 4,
+      "generation": 4,
+      "runId": 3,
+      "binding": {
+        "kind": "orion_pro_phase_receipt_v2",
+        "phase": "profiles",
+        "transform_sha256": "33aa00448ada3852ed246fbc7e7ba699b5e2153be882456596f4834d2e85d2d7",
+        "transform_version": "real_source_core_v1",
+        "model_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+        "source_document_count": 350,
+        "source_document_manifest_sha256": "9e2dae7293a07fbd4d96cab8063f041efa35a19de187ff4c0ae1969f75cacffd",
+        "selector_manifest_sha256": "32e1228bda7f79b13569b5047c3ab01c9fb958ba39ceaaaa5a4d69ff1c015ba1",
+        "input_manifest_sha256": "bd73d6999c09ab0dec386995ccf58f20a35bf4d7e8567ef43cb2c4ed5f0d573c"
+      },
+      "sealedManifestSha256": "d02ebcbd256eb2e9c43fb4dc0ef3ae7907b135dbe5140df8a5f9a1cda51cff04",
+      "reused": true,
+      "newFactRevisions": 0,
+      "duplicateRows": 0
+    }
+  },
+  "oracleComparisons": [
+    {
+      "kind": "fixtures",
+      "sourceRows": 612,
+      "typedRows": 612,
+      "sourceSha256": "aef214743351df6ef40bf713fc728542f6ba9c5a7c175f4916f6b4afee3280ea",
+      "typedSha256": "aef214743351df6ef40bf713fc728542f6ba9c5a7c175f4916f6b4afee3280ea",
+      "sql": "SELECT a.public_key,m.status,m.match_date::text FROM ingest.public_aliases_current a JOIN football.matches_current m ON m.id=a.match_id WHERE a.route_kind='match' ORDER BY a.public_key"
+    },
+    {
+      "kind": "performances",
+      "sourceRows": 15437,
+      "typedRows": 15437,
+      "sourceSha256": "60b2269fb7e309ee9967a473ef1adc940a9a7498dd7c9d6035a766e4fe138dc6",
+      "typedSha256": "5e11d5f881a774fd0588d2a6444df5eca516514f73d55ab613e4f2ee743c76e4",
+      "sql": "SELECT r.external_key,s.xg,s.minutes_played,s.goals,s.assists FROM football.player_match_stats_current s JOIN ingest.source_records r ON r.id=s.source_record_id ORDER BY r.external_key"
+    },
+    {
+      "kind": "shots",
+      "sourceRows": 9795,
+      "typedRows": 9795,
+      "sourceSha256": "5d489a84f7953116ee969bd3201382b4955d3ed92fb5c08d678cea0020e702a0",
+      "typedSha256": "5d489a84f7953116ee969bd3201382b4955d3ed92fb5c08d678cea0020e702a0",
+      "sql": "SELECT s.external_shot_id,a.public_key,s.xg,s.xgot,s.minute FROM football.shots_current s JOIN ingest.public_aliases_current a ON a.match_id=s.match_id AND a.route_kind='match' ORDER BY a.public_key,s.external_shot_id"
+    },
+    {
+      "kind": "public_aliases",
+      "sourceRows": 2312,
+      "typedRows": 2312,
+      "sourceSha256": "7fbb837b2f714ef29f6d475482df6ea895c625950942b424f68f8fc1862cc589",
+      "typedSha256": "7fbb837b2f714ef29f6d475482df6ea895c625950942b424f68f8fc1862cc589"
+    }
+  ],
+  "commonNativeProjection": {
+    "sourceRows": 61748,
+    "typedRows": 61748,
+    "sourceSha256": "e08b11c0921f92580d77394619f3752108615404086e419c3da2f4c900716cf6",
+    "typedSha256": "6117b913b02db55a7f4873b7c07bd90bfcbf15ca3163a7f7c831f1793a236cb6",
+    "unknownMissingRows": 0,
+    "bindingOrCohortMismatchRows": 0,
+    "sourceStateCounts": [
+      {
+        "field": "minutes",
+        "state": "null",
+        "count": 3497
+      },
+      {
+        "field": "minutes",
+        "state": "number",
+        "count": 11940
+      },
+      {
+        "field": "xa",
+        "state": "null",
+        "count": 7177
+      },
+      {
+        "field": "xa",
+        "state": "number",
+        "count": 8260
+      },
+      {
+        "field": "xg",
+        "state": "null",
+        "count": 10005
+      },
+      {
+        "field": "xg",
+        "state": "number",
+        "count": 5432
+      },
+      {
+        "field": "xgot",
+        "state": "null",
+        "count": 12827
+      },
+      {
+        "field": "xgot",
+        "state": "number",
+        "count": 2610
+      }
+    ],
+    "sql": "SELECT r.external_key,k.field,v.value_kind,v.numeric_value,\n        CASE k.field WHEN 'xg' THEN s.xg WHEN 'xa' THEN s.xa::numeric WHEN 'xgot' THEN s.xgot::numeric WHEN 'minutes' THEN s.minutes_played::numeric END common_value,\n        coalesce(v.source_record_id=s.source_record_id AND v.source_id=s.source_id AND v.team_id=s.team_id\n          AND v.match_player_revision_id=s.match_player_revision_id AND v.period_definition_version=s.period_definition_version\n          AND ingest.selected_at(s.recorded_from_gen,v.recorded_from_gen,v.recorded_to_gen)\n          AND v.text_value IS NULL AND v.boolean_value IS NULL AND v.numerator IS NULL AND v.denominator IS NULL AND v.source_display IS NULL,false) binding_and_cohort_match\n        FROM football.player_match_stats_current s JOIN ingest.source_records r ON r.id=s.source_record_id\n        CROSS JOIN (VALUES ('xg','legacy_normalized_xg'),('xa','legacy_normalized_xa'),('xgot','legacy_normalized_xgot'),('minutes','legacy_normalized_minutes')) k(field,metric)\n        LEFT JOIN football.player_match_metric_values_current v ON v.match_id=s.match_id AND v.player_id=s.player_id AND v.period_code=s.period_code\n          AND v.family_code='standard' AND v.metric_code=k.metric AND v.variant_key=s.variant_key\n        ORDER BY r.external_key,k.field",
+    "sourceContract": "Exact property state of accepted complete packed normalized row; not an inference from missing metric SQL rows or provider failure"
+  },
+  "noop": {
+    "facts": {
+      "fixtures": 612,
+      "performances": 15437
+    },
+    "reused": true,
+    "generation": 2,
+    "manifestSha256": "ef6b9928277e13e24be48dd63652a3d04615ade9a390d6bbcfc9fc3a3c3748b6",
+    "newFactRevisions": 0,
+    "duplicateRows": 0,
+    "phaseReceipt": {
+      "snapshotKey": "real-source-v2:core:ef6b9928277e13e24be48dd63652a3d04615ade9a390d6bbcfc9fc3a3c3748b6",
+      "snapshotId": 2,
+      "generation": 2,
+      "runId": 1,
+      "binding": {
+        "kind": "orion_pro_phase_receipt_v2",
+        "phase": "core",
+        "transform_sha256": "33aa00448ada3852ed246fbc7e7ba699b5e2153be882456596f4834d2e85d2d7",
+        "transform_version": "real_source_core_v1",
+        "model_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+        "source_document_count": 2,
+        "source_document_manifest_sha256": "a23c66a3c64e23bdf9f77303fa8055a54cce12f6d034ec639f3b79b5f7bfb1b1",
+        "selector_manifest_sha256": "d3470eaff3b62da909deec2b44bbb18b04ad38a968f743cf50f5f05b59db6d9e",
+        "input_manifest_sha256": "ef6b9928277e13e24be48dd63652a3d04615ade9a390d6bbcfc9fc3a3c3748b6"
+      },
+      "sealedManifestSha256": "a6f48933c846ea32050f01d5685408af768d009938797a2e0b9850e670198beb",
+      "reused": true,
+      "newFactRevisions": 0,
+      "duplicateRows": 0
+    },
+    "families": true,
+    "profiles": true,
+    "countsBefore": {
+      "football.matches": 612,
+      "football.match_players": 15517,
+      "football.player_match_stats": 15438,
+      "football.shots": 9884,
+      "football.player_match_metric_values": 66076,
+      "football.team_match_metric_values": 348,
+      "football.player_profile_versions": 1616,
+      "football.team_profile_versions": 20,
+      "football.match_heatmap_cells": 7272,
+      "football.pass_network_nodes": 44,
+      "football.pass_network_edges": 273,
+      "ingest.dataset_snapshots": 5,
+      "ingest.source_records": 32186,
+      "ingest.source_documents": 378
+    },
+    "countsAfter": {
+      "football.matches": 612,
+      "football.match_players": 15517,
+      "football.player_match_stats": 15438,
+      "football.shots": 9884,
+      "football.player_match_metric_values": 66076,
+      "football.team_match_metric_values": 348,
+      "football.player_profile_versions": 1616,
+      "football.team_profile_versions": 20,
+      "football.match_heatmap_cells": 7272,
+      "football.pass_network_nodes": 44,
+      "football.pass_network_edges": 273,
+      "ingest.dataset_snapshots": 5,
+      "ingest.source_records": 32186,
+      "ingest.source_documents": 378
+    },
+    "scope": "SQL phase receipts and source/transform bindings; importer maps are rehydrated from SQL"
+  },
+  "nativeShapes": {
+    "missingProfileResourceCount": 62,
+    "missingToZeroCoercions": 0,
+    "opaqueSourceBodiesStored": 0,
+    "numericRoundingCoercions": 0,
+    "numericPolicy": "Decimal parse; unconstrained numeric exact; double precision only if Decimal(str(float(v)))==v; fixed scale rejects rounding",
+    "stateCounts": []
+  },
+  "reads": [
+    {
+      "kind": "list",
+      "environment": "local",
+      "sql": "SELECT a.public_key,m.match_date,m.status FROM football.matches_current m JOIN ingest.public_aliases_current a ON a.match_id=m.id AND a.route_kind='match' ORDER BY m.match_date,a.public_key LIMIT 100",
+      "rows": 100,
+      "resultSha256": "8d162234a1e89ffb29825724f89fecf8ed07b40df185b728e97010856e1e0828",
+      "elapsedMs": 1.063
+    },
+    {
+      "kind": "player",
+      "environment": "local",
+      "sql": "SELECT p.player_id,count(*),sum(s.xg),sum(s.minutes_played) FROM football.match_players_current p JOIN football.player_match_stats_current s ON s.match_player_revision_id=p.revision_id GROUP BY p.player_id ORDER BY p.player_id LIMIT 20",
+      "rows": 20,
+      "resultSha256": "d347edd2993814162fc68cfefaa279df30a84a25b3cdc7d92b9812635c4d70e0",
+      "elapsedMs": 10.835
+    },
+    {
+      "kind": "club",
+      "environment": "local",
+      "sql": "SELECT team_id,count(*),sum(xg) FROM football.player_match_stats_current GROUP BY team_id ORDER BY team_id",
+      "rows": 20,
+      "resultSha256": "1f6ba9e761a666c203169d9bc709db00cb29b7928067fc45153b256c9668b282",
+      "elapsedMs": 4.598
+    },
+    {
+      "kind": "match",
+      "environment": "local",
+      "sql": "SELECT match_id,count(*),sum(xg),sum(minutes_played) FROM football.player_match_stats_current GROUP BY match_id ORDER BY match_id LIMIT 20",
+      "rows": 20,
+      "resultSha256": "1cae835d22d3a9e8f19ca945dcd817443a0c52cd6b0807384592a2a0d8b7da21",
+      "elapsedMs": 0.653
+    }
+  ],
+  "mapping": {
+    "unknownUsefulFieldsSilentlyDropped": 0,
+    "dispositions": [],
+    "rejected": [],
+    "unverified": [
+      "Common metrics outside registered xg/xa/xgot/minutes still need explicit native-state contracts",
+      "Original13-family observations are representative two-match typed projections; full leaf fidelity/all512source files remain unaccepted",
+      "Shot coordinate units/frame and source-profile/media fields require approved mapping",
+      "Changed source/transform receipts require explicit reconciliation rather than an automatic bulk repair"
+    ]
+  },
+  "oracleScope": {
+    "retainedSourceGeneration": 2,
+    "currentSelectionMayContainLaterIndependentCorrections": true
+  },
+  "sourceBudget": {
+    "queries": 78,
+    "decodedBytes": 222873283,
+    "runQueries": 0,
+    "runDecodedBytes": 0,
+    "limits": {
+      "queries": 100,
+      "decodedBytes": 268435456
+    },
+    "sourceConnection": "memory-only Unix IPC snapshot; no AWS connection"
+  },
+  "precisionInventory": {}
+}

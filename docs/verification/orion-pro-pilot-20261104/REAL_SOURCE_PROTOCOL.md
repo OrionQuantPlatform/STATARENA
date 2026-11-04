@@ -167,3 +167,186 @@ generation. It performs no AWS read.
 Capture both initial RED counterexamples, then implement the corrections and
 execute one new representative real-source pass within the unchanged cumulative
 100-query / 256-MiB source budget. No schema, remote migration or scope expansion.
+
+## Fresh-process retry lot — frozen before implementation
+
+The installed RDS 012/013 files are sealed and are not changed by this lot.
+All writes remain in owned disposable local PostgreSQL. The source budget is
+already 67 queries / 190,950,214 decoded bytes, capped at 100 / 268,435,456.
+At most one further real-source capture (~11 queries / 32 MB) is allowed.
+Subsequent iterations and exec-created fresh processes reuse that capture via
+local memory-only IPC; no raw body, dump or serialized source file is written.
+
+| Failure/transition | Expected result |
+|---|---|
+| Core sealed receipt exists, fresh interpreter has empty maps | Rehydrate exact IDs, aliases, documents, records, participants/stats and selected states from SQL |
+| Identical core/family/profile inputs + transform + model | Reuse exact sealed receipts; zero new generation, metadata/fact rows, IDs or variants |
+| Family/profile phase has same code but a different source hash/selector | It cannot be classified as the old no-op; reject or explicitly reconcile before writes |
+| Phase receipt is draft, missing, inconsistent or not bound to transform/model | Reject; no reuse based only on a code SHA or an in-memory attribute |
+| Normal CLI or fresh-process reimport | Import-only; never execute the demonstration correction automatically |
+| Explicit E2E correction, then fresh import-only process | Preserve the later selected correction exactly; no repeated correction/new generation |
+| IPC source cache unavailable | Fail; never silently re-read AWS or persist a raw fallback |
+| Existing gaps | Keep fullAcceptance=false, 62 resource gaps and the wrong-profile conflict; no fabricated source success |
+
+First capture a true exec-process RED with a small explicitly synthetic local
+core/family/profile workflow and memory socket payload (AWS reads zero). Then
+implement SQL rehydration and persistent metadata-only receipts in existing
+operational tables. The final real run compares SQL row/identity/receipt
+fingerprints before and after at least two fresh interpreter reimports, including
+after the separately labelled demonstration correction. The child receives
+source inputs only, never parent importer objects/maps or a persisted raw file.
+
+Direction update explicitly relayed from Hugo: root now also owns missing/stale
+Neon→AWS transfer and ID/version/content reconciliation. The earlier friend's
+ownership limitation is superseded. This local retry lot performs no transfer,
+provider collection, Neon/S3 action or remote DML.
+
+### Restart implementation and reproducibility
+
+`run_real_pilot(..., source_provider=..., exercise_demo=False)` is import-only
+by default. The CLI also requires the explicit `--exercise-demo-correction`
+flag to execute the labelled E2E mutation, and refuses that flag once a core
+receipt already exists. A later selected correction is preserved on reimport.
+This is retry/resume of identical inputs; changed source/selector/transform
+bindings are rejected for explicit reconciliation rather than silently repaired.
+
+Each core, family and profile phase stores one metadata-only
+`orion_pro_phase_receipt_v2` in `ingest.import_runs.checkpoint`. The binding
+includes the actual transform SHA/version, model SHA, sorted physical source
+hash manifest, exact selector digest and dependency on the core input manifest.
+The sealed dataset manifest also binds the compact report digest, while
+`dataset_snapshot_documents` records exact document membership. Reuse verifies
+all these bindings, the sealed status, generation and unique import run. It does
+not update receipt counters/timestamps or call `begin_generation`.
+
+A fresh interpreter reconstructs identity/alias maps, source documents and
+records, participants, current common stats and registered native-state rows
+from SQL. Source payloads cross same-user private Unix IPC only; importer maps
+and connections never cross the process boundary. The source server closes its
+one read-only RDS connection before serving the captured inputs. Missing IPC
+fails without a live-read or persisted-body fallback. `pickle` is confined to
+this owned same-user socket; it is not an external input protocol.
+
+The preserved initial RED is
+`real-source-runs/20261104T195411591350Z-fresh-process-precode-red/result.json`:
+the fresh process found the old sealed core but could not reconstruct its maps.
+The local boundary workflow now resumes from core-only, creates the two missing
+phase receipts once, then retries all three in a second exec-created process.
+The real workflow imports the pinned source input, runs a separately labelled
+correction, and uses two further new interpreters to retry import-only. An
+independent SQL fingerprint covers every row in all 94 typed/operational tables
+and every sequence before and after each child. Two negative children change
+one physical family hash and one profile selector; both must reject with the
+same complete SQL fingerprint.
+
+The source capture receipt and query metadata are in
+`real-source-runs/20261104T201252441807Z-restart-source-memory-capture/`.
+Its single capture consumed 11 indexed queries / 31,923,069 decoded bytes,
+making the cumulative budget 78 / 222,873,283. Further local/IPC runs consume
+zero source queries/bytes. The exact full test command, argv, code/spec inputs
+and all worker PIDs/outcomes are captured by each `result.json`. An always
+available source-free rerun is:
+
+```sh
+PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_real_pilot.py --label fresh-process-local --phase families --preflight-only
+```
+
+The real E2E additionally needs `--source-socket PATH` while the owned RAM server
+is alive. Once stopped, its raw inputs are intentionally unrecoverable from
+evidence. Repeating a real capture requires a separately authorized source
+budget; the capture command requires explicit matching counters and enough
+remaining headroom for its fixed capture ceiling.
+All acceptance limitations above remain, including fullAcceptance=false,
+62 absent exact resource lookups and the one rejected wrong-profile member.
+
+Suggested commit: `fix: resume the local typed pilot with exact persisted phase receipts`.
+
+## Capture checkpoint CLI correction — specified before code
+
+Parent review found that the operational RAM-capture command hardcoded the old
+67-query checkpoint. The source ledger is now 78 / 222,873,283. One additional
+read-only capture is authorized, at most 11 queries / 32 MiB, with unchanged
+global hard caps of 100 queries / 256 MiB. No ledger reset or live fallback is
+allowed. This is an operational capture mode, not default typed ingestion.
+
+| CLI/setup failure | Required outcome before any source connection |
+|---|---|
+| Explicit expected checkpoint equals the current ledger | `--capture-check-only` validates offline; the capture mode may continue under its fixed limits |
+| Either expected counter omitted, invalid, or mismatched | Refuse with a precise metadata-only error |
+| Ledger absent | Refuse; never invent/reset a zero checkpoint |
+| Capture's 11-query / 32-MiB ceiling cannot fit remaining hard budget | Refuse; never increase the global caps |
+| Check-only or rejected setup | No source connection, ledger mutation, socket or source body |
+| Capture-only flags supplied to normal typed ingestion | Refuse as a CLI mode error before opening a database connection |
+
+The before-code CLI E2E executes the actual parser/main in a fresh interpreter
+with `psycopg.connect` replaced by a network-denial sentinel. Metadata-only
+fixture ledgers include the real 78-query checkpoint. The old code must fail
+the positive check-only case. After that RED is saved, implement the explicit
+`--expected-source-queries`, `--expected-source-bytes` and
+`--capture-check-only` options, enforce both fixed per-capture and global caps,
+perform one authorized real capture, and rerun the 17 local/IPC workflows on the
+final code. All prior receipts remain intact.
+
+### Operational rerun preconditions
+
+Use the existing Python/psycopg runtime, owned local PostgreSQL18.6 harness and
+the pinned source scope. Capture requires the existing `.pgpass` indirectly and
+the repository RDS CA certificate; never print credentials. Its socket must be
+new, owned by the current user and inside an owned private 0700 directory. The
+ledger at `docs/verification/orion-pro-pilot-20261104/real-source-budget.json`
+must already exist; read its metadata counters and pass both explicitly. Never
+reset/delete it to reuse a past checkpoint. No source connection occurs until
+the expected counters match and the remaining global budget can fit the full
+11-query/33,554,432-byte ceiling.
+
+The authorized capture in this adjustment starts at 78/222,873,283. With a fresh
+private directory and new evidence directory, the operational command is:
+
+```sh
+PYTHONPATH=/tmp/statarena-publication-test-python python3 dashboard/scripts/orion_pro_normalize.py --local --source-scope docs/verification/orion-pro-pilot-20261104/source_scope.json --phase families --evidence <NEW_EVIDENCE_DIRECTORY> --memory-source-server --source-socket <PRIVATE_DIRECTORY>/source.sock --expected-source-queries 78 --expected-source-bytes 222873283 --capture-check-only
+```
+
+The check-only flag validates offline and creates no source socket or ledger
+entry. Remove only `--capture-check-only` to perform the separately authorized
+capture. Keep that foreground server alive while running:
+
+```sh
+PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_real_pilot.py --label explicit-capture-checkpoint-final --phase families --source-socket <PRIVATE_DIRECTORY>/source.sock
+```
+
+Each receipt saves the exact executed argv and actual socket path. Stop the RAM
+server via its owned Unix socket `STOP\n`, then remove its empty private directory.
+After the expected final 89/254,796,352 checkpoint, only 13,639,104 decoded bytes
+remain: another full 32-MiB capture must refuse before connecting. That is a hard
+budget limit rather than a stale hardcoded checkpoint. Offline CLI and synthetic
+local-process reruns remain available without AWS:
+
+```sh
+PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_real_pilot.py --capture-cli-only --label capture-checkpoint-cli --phase families
+PYTHONPATH=/tmp/statarena-publication-test-python python3 tests/orion_pro_real_pilot.py --preflight-only --label restart-local --phase families
+```
+
+Suggested commit: `fix: require explicit checkpoints for bounded source capture`.
+
+## Unrelated identity in an existing database — specified before the fix
+
+Parent review found that fresh-process hydration queried global identities and
+then compared them with only the pilot keys. Before changing that SQL, seed an
+explicit synthetic unrelated player and public alias after the core phase is
+sealed and before the exec-created replay. The synthetic boundary must fail on
+the old global hydration. The corrected SQL must load only the exact scoped
+keys, source records and source documents established by parts/core binding.
+Foreign identities remain present and unchanged. The final real-source replay
+also seeds that labelled foreign identity after all canonical source oracles,
+before its full94-table/sequence baseline, so the unchanged database fingerprint
+includes it. The public-alias source oracle must stay scoped to its source keys.
+No further AWS reads are authorized: reuse the current 89/254,796,352 RAM capture.
+
+The concrete RED is
+`real-source-runs/20261104T203929881838Z-unrelated-identity-final-precode-red/result.json`:
+both new interpreters reject with `SQL rehydration identity membership differs:
+people`. The fix filters stable identity aliases by exact expected keys and
+binds profiles, match sides, stats/native states, records and documents to the
+source and sealed core-document membership. The alias source oracle uses exact
+route-kind/key pairs. This test proves the explicit unrelated player+alias
+counterexample; a complete foreign competition graph is not claimed as tested.

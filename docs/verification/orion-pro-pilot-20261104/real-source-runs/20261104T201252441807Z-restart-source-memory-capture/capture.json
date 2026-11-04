@@ -1,0 +1,23 @@
+{
+  "kind": "memory_only_source_capture",
+  "pid": 64390,
+  "socket": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-source-cache-o5p_2yh2/source.sock",
+  "sourceBudget": {
+    "queries": 78,
+    "decodedBytes": 222873283,
+    "runQueries": 11,
+    "runDecodedBytes": 31923069,
+    "limits": {
+      "queries": 100,
+      "decodedBytes": 268435456
+    },
+    "sourceConnection": "one verified-TLS repeatable-read READ ONLY connection"
+  },
+  "documentCount": 378,
+  "cacheManifestSha256": "5dd4756587f90af19f7b551eaa44c99fba14267af7313d27cda18b69752a06e0",
+  "rawBodiesPersisted": false,
+  "ready": false,
+  "stoppedAt": "2026-11-04T20:24:34.093436+00:00",
+  "socketRemoved": true,
+  "ownedSocketDirectoryRemoved": true
+}

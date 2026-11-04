@@ -1,0 +1,6 @@
+usage: orion_pro_normalize.py [-h] --local --source-scope SOURCE_SCOPE
+                              [--phase {core,families}] --evidence EVIDENCE
+                              [--source-socket SOURCE_SOCKET]
+                              [--memory-source-server]
+                              [--exercise-demo-correction]
+orion_pro_normalize.py: error: unrecognized arguments: --capture-check-only --expected-source-queries 78 --expected-source-bytes 268435456

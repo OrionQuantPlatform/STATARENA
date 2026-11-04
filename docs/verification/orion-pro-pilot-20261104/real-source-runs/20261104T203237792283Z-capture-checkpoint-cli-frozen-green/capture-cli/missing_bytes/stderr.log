@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203237792283Z-capture-checkpoint-cli-frozen-green/capture-cli/network-denied-cli.py", line 10, in <module>
+    runpy.run_path(module,run_name='__main__')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py", line 1293, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_normalize.py", line 1273, in main
+    from orion_pro_migrate import local_connection
+ModuleNotFoundError: No module named 'orion_pro_migrate'

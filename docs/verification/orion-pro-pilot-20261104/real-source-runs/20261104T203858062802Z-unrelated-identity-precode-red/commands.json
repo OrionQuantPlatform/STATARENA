@@ -1,0 +1,61 @@
+[
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-wn9n7rx0/data",
+      "--auth=trust",
+      "--no-locale",
+      "--encoding=UTF8"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 995.356,
+    "stdout": "001-initdb.stdout.log",
+    "stderr": "001-initdb.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-wn9n7rx0/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/real-source-runs/20261104T203858062802Z-unrelated-identity-precode-red/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 54134 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-wn9n7rx0/socket -c fsync=on",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 138.285,
+    "stdout": "002-postgres-start.stdout.log",
+    "stderr": "002-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_migrate.py",
+      "--local",
+      "--target",
+      "013"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 847.772,
+    "stdout": "003-migration.stdout.log",
+    "stderr": "003-migration.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-wn9n7rx0/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 115.737,
+    "stdout": "004-postgres-stop.stdout.log",
+    "stderr": "004-postgres-stop.stderr.log"
+  }
+]
