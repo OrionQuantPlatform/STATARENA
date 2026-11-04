@@ -1,0 +1,33 @@
+### Result
+{"mode":"upcoming","board":"Ligue 2\n6 nov. 2026 · 20:00\nMontpellier — Metz\nM\nMontpellier\nDomicile\nÀ venir\n20:00\nM\nMetz\nExtérieur","panel":"Avant le 6 nov. 2026\nSaison 2026/2027 · compétitions collectées · seuls les matchs antérieurs au coup d’envoi\nForme avant le match\nM\nMontpellier\n10 matchs · 7V 2N 1D · 6 j de repos\n31 oct. 2026\nExt.\nAF\nAnnecy FC\n3–0\n26 oct. 2026\nDom.\nRS\nRed Star\n2–1\n19 oct. 2026\nExt.\nR\nRodez\n3–0\n9 oct. 2026\nDom.\nG\nGrenoble\n2–0\n18 sept. 2026\nExt.\nReims\n1–1\nM\nMetz\n10 matchs · 2V 5N 3D · 7 j de repos\n30 oct. 2026\nDom.\nP\nPau\n1–3\n23 oct. 2026\nExt.\nD\nDunkerque\n1–1\n17 oct. 2026\nDom.\nSochaux\n3–2\n12 oct. 2026\nExt.\nD\nDijon\n2–4\n19 sept. 2026\nDom.\nS\nSaint-Étienne\n2–2\nRepères de la saison\nMontpellier\nMetz\nPoints / match\n2,30\n1,10\nButs marqués / match\n1,50\n1,50\nButs encaissés / match\n0,50\n1,60\nxG pour / match\n1,18\n1,37\nxG contre / match\n1,30\n1,64\nTirs / match\n11,20\n14,20\nPossession moyenne (%)\n59\n54\nConfrontations précé","events":[{"path":"/api/dashboard/manifest","league":null,"status":200},{"path":"/api/status","league":null,"status":200},{"path":"/api/matches/m_0SdhsF/summary","league":null,"status":200},{"path":"/api/assets","league":null,"status":200},{"path":"/api/scouting/routes","league":null,"status":200},{"path":"/api/seasons/partition","league":"l_0275VP","status":200},{"path":"/api/seasons/partition","league":"l_0275VP","status":200},{"path":"/api/fixtures","league":"l_0275VP","status":200},{"path":"/api/seasons/partition","league":"l_0275VP","status":200},{"path":"/api/fixtures","league":"l_0275VP","status":200},{"path":"/api/fixtures","league":"l_0275VP","status":200},{"path":"/api/assets","league":null,"status":200},{"path":"/api/assets","league":null,"status":200}]}
+### Ran Playwright code
+```js
+await (async page=>{ const mode="upcoming";const events=[];page.on('response',r=>{const u=new URL(r.url());if(u.origin==='http://127.0.0.1:18947')events.push({path:u.pathname,league:u.searchParams.get('league'),status:r.status()});});
+const root='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=';
+await page.goto(root+(mode==='shots'?'m_1HCdf3&view=shots':'m_0SdhsF'),{waitUntil:'domcontentloaded'});await page.locator('.match-scoreboard').waitFor({timeout:20000});
+try{
+ const wanted=mode==='shots'?'/shots':'/scouting/routes';
+ await page.waitForFunction(()=>!document.querySelector('.match-view-panel .loading-state'),{},{timeout:10000});
+ for(let n=0;n<30&&!events.find(e=>e.path.endsWith(wanted));n++)await page.waitForTimeout(150);
+ await page.waitForTimeout(1000);
+ return {mode,board:await page.locator('.match-scoreboard').innerText(),panel:(await page.locator('.match-view-panel').innerText()).slice(0,800),events};
+}catch(e){return {error:String(e),events};}
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:18948/matchs?focus=all&season=2026%2F2027&id=m_0SdhsF
+- Page Title: Calendrier — STATARENA
+### Events
+- New console entries: .playwright-cli/console-2026-11-04T04-49-04-533Z.log#L1-L8
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-private-detail-upcoming run-code async page=>{ const mode="upcoming";const events=[];page.on('response',r=>{const u=new URL(r.url());if(u.origin==='http://127.0.0.1:18947')events.push({path:u.pathname,league:u.searchParams.get('league'),status:r.status()});});
+npm notice run const root='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=';
+npm notice run await page.goto(root+(mode==='shots'?'m_1HCdf3&view=shots':'m_0SdhsF'),{waitUntil:'domcontentloaded'});await page.locator('.match-scoreboard').waitFor({timeout:20000});
+npm notice run try{
+npm notice run  const wanted=mode==='shots'?'/shots':'/scouting/routes';
+npm notice run  await page.waitForFunction(()=>!document.querySelector('.match-view-panel .loading-state'),{},{timeout:10000});
+npm notice run  for(let n=0;n<30&&!events.find(e=>e.path.endsWith(wanted));n++)await page.waitForTimeout(150);
+npm notice run  await page.waitForTimeout(1000);
+npm notice run  return {mode,board:await page.locator('.match-scoreboard').innerText(),panel:(await page.locator('.match-view-panel').innerText()).slice(0,800),events};
+npm notice run }catch(e){return {error:String(e),events};}
+npm notice run }

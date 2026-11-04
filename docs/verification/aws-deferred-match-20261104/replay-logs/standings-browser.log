@@ -1,0 +1,33 @@
+### Result
+{"mode":"standings","board":"Ligue 2\n2 nov. 2026 · 20:45\nReims — Sochaux\nReims\nDomicile · 4-4-2\nTerminé\n2\n–\n0\nSochaux\nExtérieur · 4-2-3-1\nButs attendus · xG\n1,51\n–\n0,99\nTirs\n11\n–\n15\nTirs cadrés\n5\n–\n2\nPossession\n47 %\n–\n53 %","panel":"Ligue 2 · France\n2026/2027\nClassement\n#\tÉquipe\tPts\tJ\tG\tN\tD\tBP\tBC\tDiff.\n1\t\nAS\nAS Saint-Étienne\n\t25\t11\t8\t1\t2\t23\t11\t+12\n2\t\nMH\nMontpellier Hérault SC\n\t24\t11\t7\t3\t1\t16\t6\t+10\n3\t\nN\nNancy\n\t22\t11\t7\t1\t3\t16\t9\t+7\n4\t\nSD\nStade DE Reims\n\t21\t11\t5\t6\t0\t22\t12\t+10\n5\t\nPF\nPau FC\n\t20\t11\t6\t2\t3\t16\t11\t+5\n6\t\nRS\nRed Star FC 93\n\t17\t11\t5\t2\t4\t14\t16\t-2\n7\t\nFA\nFC Annecy\n\t16\t11\t5\t1\t5\t14\t15\t-1\n8\t\nD\nDijon\n\t15\t11\t4\t3\t4\t20\t19\t+1\n9\t\nG\nGuingamp\n\t14\t11\t4\t2\t5\t16\t15\t+1\n10\t\nM\nMetz\n\t14\t11\t3\t5\t3\t17\t17\t0\n11\t\nRA\nRodez Aveyron\n\t13\t11\t4\t1\t6\t17\t22\t-5\n12\t\nUD\nUSL Dunkerque\n\t12\t11\t3\t3\t5\t14\t17\t-3\n13\t\nS\nSochaux\n\t11\t11\t2\t5\t4\t8\t14\t-6\n14\t\nB\nBoulogne\n\t10\t11\t1\t7\t3\t7\t8\t-1\n15\t\nFN\nFC Nantes\n\t9\t11\t2\t3\t6\t12\t18\t-6\n16\t\nSL\nStade Lavallois MFC\n\t9\t11\t2\t3\t6\t14\t21\t-7\n17\t\nC\nClermont\n\t8\t11\t0\t8\t3\t10\t15\t-5\n18\t\nG\nGrenoble\n\t8\t11\t2\t2\t7\t10\t20\t-10\nMontée\nBarrage de montée","events":[{"path":"/api/dashboard/manifest","league":null,"status":200},{"path":"/api/matches/m_1HCdf3/summary","league":null,"status":200},{"path":"/api/status","league":null,"status":200},{"path":"/api/assets","league":null,"status":200},{"path":"/api/assets","league":null,"status":200},{"path":"/api/assets","league":null,"status":200},{"path":"/api/standings","league":null,"status":200},{"path":"/api/fixtures","league":"l_0275VP","status":200},{"path":"/api/fixtures","league":"l_0275VP","status":200}]}
+### Ran Playwright code
+```js
+await (async page=>{ const mode="standings";const events=[];page.on('response',r=>{const u=new URL(r.url());if(u.origin==='http://127.0.0.1:18947')events.push({path:u.pathname,league:u.searchParams.get('league'),status:r.status()});});
+const root='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=';
+await page.goto(root+(mode==='shots'?'m_1HCdf3&view=shots':mode==='standings'?'m_1HCdf3&view=standings':'m_0SdhsF'),{waitUntil:'domcontentloaded'});await page.locator('.match-scoreboard').waitFor({timeout:20000});
+try{
+ const wanted=mode==='shots'?'/shots':mode==='standings'?'/fixtures':'/scouting/routes';
+ await page.waitForFunction(()=>!document.querySelector('.match-view-panel .loading-state'),{},{timeout:10000});
+ for(let n=0;n<30&&!events.find(e=>e.path.endsWith(wanted));n++)await page.waitForTimeout(150);
+ await page.waitForTimeout(1000);
+ return {mode,board:await page.locator('.match-scoreboard').innerText(),panel:(await page.locator('.match-view-panel').innerText()).slice(0,800),events};
+}catch(e){return {error:String(e),events};}
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:18948/matchs?focus=all&season=2026%2F2027&id=m_1HCdf3&view=standings
+- Page Title: Calendrier — STATARENA
+### Events
+- New console entries: .playwright-cli/console-2026-11-04T04-51-24-309Z.log#L1-L8
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-private-detail-standings run-code async page=>{ const mode="standings";const events=[];page.on('response',r=>{const u=new URL(r.url());if(u.origin==='http://127.0.0.1:18947')events.push({path:u.pathname,league:u.searchParams.get('league'),status:r.status()});});
+npm notice run const root='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=';
+npm notice run await page.goto(root+(mode==='shots'?'m_1HCdf3&view=shots':mode==='standings'?'m_1HCdf3&view=standings':'m_0SdhsF'),{waitUntil:'domcontentloaded'});await page.locator('.match-scoreboard').waitFor({timeout:20000});
+npm notice run try{
+npm notice run  const wanted=mode==='shots'?'/shots':mode==='standings'?'/fixtures':'/scouting/routes';
+npm notice run  await page.waitForFunction(()=>!document.querySelector('.match-view-panel .loading-state'),{},{timeout:10000});
+npm notice run  for(let n=0;n<30&&!events.find(e=>e.path.endsWith(wanted));n++)await page.waitForTimeout(150);
+npm notice run  await page.waitForTimeout(1000);
+npm notice run  return {mode,board:await page.locator('.match-scoreboard').innerText(),panel:(await page.locator('.match-view-panel').innerText()).slice(0,800),events};
+npm notice run }catch(e){return {error:String(e),events};}
+npm notice run }

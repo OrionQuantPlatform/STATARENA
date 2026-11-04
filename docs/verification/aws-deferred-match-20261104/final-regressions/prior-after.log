@@ -1,0 +1,64 @@
+### Result
+{"mode":"after","keep":true,"busy":1,"scoreboardMs":1827,"initial":[{"phase":"initial","path":"/api/dashboard/manifest","league":null,"status":200,"ms":97,"bytes":2355},{"phase":"initial","path":"/api/matches/m_1HCdf3/summary","league":null,"status":200,"ms":1324,"bytes":8330},{"phase":"initial","path":"/api/status","league":null,"status":200,"ms":1325,"bytes":61},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1401,"bytes":2678},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1411,"bytes":5458},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1411,"bytes":8234},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1412,"bytes":6538},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1414,"bytes":7844},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1420,"bytes":7010},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1420,"bytes":8820}],"events":[{"phase":"initial","path":"/api/dashboard/manifest","league":null,"status":200,"ms":97,"bytes":2355},{"phase":"initial","path":"/api/matches/m_1HCdf3/summary","league":null,"status":200,"ms":1324,"bytes":8330},{"phase":"initial","path":"/api/status","league":null,"status":200,"ms":1325,"bytes":61},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1401,"bytes":2678},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1411,"bytes":5458},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1411,"bytes":8234},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1412,"bytes":6538},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1414,"bytes":7844},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1420,"bytes":7010},{"phase":"initial","path":"/api/assets","league":null,"status":200,"ms":1420,"bytes":8820},{"phase":"player","path":"/api/seasons/partition","league":"l_0275VP","status":200,"ms":2471,"bytes":1491287},{"phase":"player","path":"/api/seasons/partition","league":"l_0ALvwF","status":200,"ms":2471,"bytes":1973314},{"phase":"player","path":"/api/seasons/partition","league":"l_0275VP","status":200,"ms":2718,"bytes":56637},{"phase":"player","path":"/api/seasons/partition","league":"l_0ALvwF","status":200,"ms":2718,"bytes":58234},{"phase":"player","path":"/api/seasons/partition","league":"l_0275VP","status":200,"ms":2950,"bytes":54468},{"phase":"player","path":"/api/seasons/partition","league":"l_0ALvwF","status":200,"ms":2950,"bytes":56184},{"phase":"player","path":"/api/seasons/partition","league":"l_0ALvwF","status":200,"ms":3201,"bytes":46085}],"summary":"Ligue 2\n2 nov. 2026 · 20:45\nReims — Sochaux\nReims\nDomicile · 4-4-2\nTerminé\n2\n–\n0\nSochaux\nExtérieur · 4-2-3-1\nButs attendus · xG\n1,51\n–\n0,99\nTirs\n11\n–\n15\nTirs cadrés\n5\n–\n2\nPossession\n47 %\n–\n53 %","names":["01\nYaya Fofana\nReims · 1 but · 1 PD\n90′\n8,79","02\nThéo Leoni\nReims\n90′\n7,62","03\nElie N'Tamon\nReims\n90′\n7,59","04\nJean Mambuku\nReims\n88′\n7,47","05\nSS\nSambou Soumano\nReims · 1 but\n73′\n7,44"],"buttons":["","Synthèse","Toutes les stats","Comparer ce joueur"],"player":"Yaya Fofana\n\nClub lors de ce match :\nReims\nAttaquant\nN° 8\n\n8,79\nNote\nMeilleure note du match\nLigue 2\n2 nov. 2026\nReims\n2\n–\n0\nSochaux\nTitulaire90 min\nSynthèse\nToutes les stats\nButs\n1\nPasses décisives\n1\nxG\n0,93\nxA\n0,17\nProfil de la performance\n\nCentile","comparison":"Comparaison de performances\nIndicateur\tYaya Fofana\nReims\n2 nov. 2026\tThéo Leoni\nReims\n2 nov. 2026\nMinutes\t90\t90\nNote\t8,79\t7,62\nButs\t1\t0\nPasses décisives\t1\t0\nxG\t0,93\t0,03\nxA\t0,17\t0,05\nTirs\t2\t1\nOccasions créées\t3\t0\nPasses réussies\t35\t32\nPasses tentées\t42\t39\nBallons touchés\t52\t58\nActions défensives\t1\t9\nInterceptions\t0\t2\nDuels gagnés\t3\t5\nArrêts\t—\t—\nBut"}
+### Ran Playwright code
+```js
+await (async page=>{ const mode="after";const EVENTS=[],origin='http://127.0.0.1:18947',dest='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=m_1HCdf3';
+let phase='initial',responseStart=Date.now();
+page.on('response',r=>{const u=new URL(r.url());if(u.origin===origin)EVENTS.push({phase,path:u.pathname,league:u.searchParams.get('league'),status:r.status(),ms:Date.now()-responseStart,bytes:Number(r.headers()['content-length']||0)});});
+await page.goto(dest,{waitUntil:'domcontentloaded',timeout:70000});
+const board=page.locator('.match-scoreboard'),leader=page.locator('.match-leaders-card .match-player-row');
+await board.waitFor({timeout:60000});const scoreboardMs=Date.now()-responseStart;
+await leader.first().waitFor({timeout:15000});await page.waitForTimeout(350);
+const initial=EVENTS.filter(r=>r.phase==='initial'),summary=await board.innerText(),names=await leader.allInnerTexts();
+phase='player';
+let keep, busy, retry, failed=false;
+if(mode==='fault'){
+  await page.route('**/api/seasons/partition?**',async route=>{if(!failed){failed=true;await route.fulfill({status:503,contentType:'application/json',body:'{}'});}else await route.continue();});
+}
+await leader.first().click();
+if(mode!=='before'){
+ busy=await page.getByRole('status').filter({hasText:'Chargement de la performance'}).count();
+ keep=await board.isVisible();
+ if(mode==='fault'){await page.getByRole('alert').filter({hasText:'HTTP 503'}).waitFor();retry=await page.getByRole('button',{name:'Réessayer'}).isVisible();await page.getByRole('button',{name:'Réessayer'}).click();}
+}
+await page.getByRole('dialog').getByRole('button',{name:'Comparer ce joueur'}).waitFor({timeout:40000});const dialog=page.getByRole('dialog');
+const buttons=await dialog.getByRole('button').allTextContents();const player=await dialog.innerText();
+await dialog.getByRole('button',{name:/Comparer ce joueur/i}).click();await page.keyboard.press('Escape');await leader.nth(1).click();await page.getByRole('dialog').getByRole('button',{name:/Comparer ce joueur/i}).click();await page.keyboard.press('Escape');
+await page.getByRole('button',{name:/^Comparer/}).last().click();const comp=await page.getByRole('dialog').innerText();await page.keyboard.press('Escape');
+const record={mode,keep,busy,retry,scoreboardMs,initial,events:EVENTS,summary:summary.slice(0,230),names,buttons,player:player.slice(0,250),comparison:comp.slice(0,350)};
+return record;
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:18948/matchs?focus=all&season=2026%2F2027&id=m_1HCdf3
+- Page Title: Calendrier — STATARENA
+- Console: 1 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli/console-2026-11-04T04-59-11-714Z.log#L1-L9
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-private-detail-after run-code async page=>{ const mode="after";const EVENTS=[],origin='http://127.0.0.1:18947',dest='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=m_1HCdf3';
+npm notice run let phase='initial',responseStart=Date.now();
+npm notice run page.on('response',r=>{const u=new URL(r.url());if(u.origin===origin)EVENTS.push({phase,path:u.pathname,league:u.searchParams.get('league'),status:r.status(),ms:Date.now()-responseStart,bytes:Number(r.headers()['content-length']||0)});});
+npm notice run await page.goto(dest,{waitUntil:'domcontentloaded',timeout:70000});
+npm notice run const board=page.locator('.match-scoreboard'),leader=page.locator('.match-leaders-card .match-player-row');
+npm notice run await board.waitFor({timeout:60000});const scoreboardMs=Date.now()-responseStart;
+npm notice run await leader.first().waitFor({timeout:15000});await page.waitForTimeout(350);
+npm notice run const initial=EVENTS.filter(r=>r.phase==='initial'),summary=await board.innerText(),names=await leader.allInnerTexts();
+npm notice run phase='player';
+npm notice run let keep, busy, retry, failed=false;
+npm notice run if(mode==='fault'){
+npm notice run   await page.route('**/api/seasons/partition?**',async route=>{if(!failed){failed=true;await route.fulfill({status:503,contentType:'application/json',body:'{}'});}else await route.continue();});
+npm notice run }
+npm notice run await leader.first().click();
+npm notice run if(mode!=='before'){
+npm notice run  busy=await page.getByRole('status').filter({hasText:'Chargement de la performance'}).count();
+npm notice run  keep=await board.isVisible();
+npm notice run  if(mode==='fault'){await page.getByRole('alert').filter({hasText:'HTTP 503'}).waitFor();retry=await page.getByRole('button',{name:'Réessayer'}).isVisible();await page.getByRole('button',{name:'Réessayer'}).click();}
+npm notice run }
+npm notice run await page.getByRole('dialog').getByRole('button',{name:'Comparer ce joueur'}).waitFor({timeout:40000});const dialog=page.getByRole('dialog');
+npm notice run const buttons=await dialog.getByRole('button').allTextContents();const player=await dialog.innerText();
+npm notice run await dialog.getByRole('button',{name:/Comparer ce joueur/i}).click();await page.keyboard.press('Escape');await leader.nth(1).click();await page.getByRole('dialog').getByRole('button',{name:/Comparer ce joueur/i}).click();await page.keyboard.press('Escape');
+npm notice run await page.getByRole('button',{name:/^Comparer/}).last().click();const comp=await page.getByRole('dialog').innerText();await page.keyboard.press('Escape');
+npm notice run const record={mode,keep,busy,retry,scoreboardMs,initial,events:EVENTS,summary:summary.slice(0,230),names,buttons,player:player.slice(0,250),comparison:comp.slice(0,350)};
+npm notice run return record;
+npm notice run }

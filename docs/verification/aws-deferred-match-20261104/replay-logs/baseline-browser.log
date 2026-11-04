@@ -1,0 +1,21 @@
+### Error
+TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('dialog').getByRole('button', { name: /comparaison/i })[22m
+
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-private-detail-baseline run-code async page=>{ const mode="baseline";const EVENTS=[],origin='http://127.0.0.1:18947',dest='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027&id=m_1HCdf3';
+npm notice run let phase='initial',responseStart=Date.now();
+npm notice run page.on('response',r=>{const u=new URL(r.url());if(u.origin===origin)EVENTS.push({phase,path:u.pathname,league:u.searchParams.get('league'),status:r.status(),ms:Date.now()-responseStart,bytes:Number(r.headers()['content-length']||0)});});
+npm notice run await page.goto(dest,{waitUntil:'domcontentloaded',timeout:70000});
+npm notice run const board=page.locator('.match-scoreboard'),leader=page.locator('.match-leaders-card .match-player-row');
+npm notice run await board.waitFor({timeout:60000});const scoreboardMs=Date.now()-responseStart;
+npm notice run await leader.first().waitFor({timeout:15000});await page.waitForTimeout(350);
+npm notice run const initial=EVENTS.filter(r=>r.phase==='initial'),summary=await board.innerText(),names=await leader.allInnerTexts();
+npm notice run phase='player';await leader.first().click();await page.getByRole('dialog').waitFor({timeout:40000});const dialog=page.getByRole('dialog');
+npm notice run const buttons=await dialog.getByRole('button').allTextContents();const player=await dialog.innerText();
+npm notice run await dialog.getByRole('button',{name:/comparaison/i}).click();await page.keyboard.press('Escape');await leader.nth(1).click();await page.getByRole('dialog').getByRole('button',{name:/comparaison/i}).click();await page.keyboard.press('Escape');
+npm notice run await page.getByRole('button',{name:/^Comparer/}).last().click();const comp=await page.getByRole('dialog').innerText();await page.keyboard.press('Escape');
+npm notice run const record={mode,scoreboardMs,initial,events:EVENTS,summary:summary.slice(0,230),names,buttons,player:player.slice(0,250),comparison:comp.slice(0,350)};
+npm notice run console.log('DETAIL_EVIDENCE '+JSON.stringify(record));
+npm notice run }

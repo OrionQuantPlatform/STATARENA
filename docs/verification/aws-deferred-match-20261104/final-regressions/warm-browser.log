@@ -1,0 +1,32 @@
+### Result
+{"mode":"warm","match":"Ligue 2\n2 nov. 2026 · 20:45\nRed Star — Nancy\nRS\nRed Star\nDomicile · 4-2-3-1\nTerminé\n1\n–\n4\nN\nNancy\nExtérieur · 4-2-3-1\nButs attendus · xG\n1,75\n–\n1,65\nTirs\n11\n–\n12\nTirs cadrés\n2\n–\n6\nPossession\n61 %\n–\n39 %","events":[{"phase":"cold","path":"/api/dashboard/manifest","status":200},{"phase":"cold","path":"/api/seasons/partition","status":200},{"phase":"cold","path":"/api/seasons/partition","status":200},{"phase":"cold","path":"/api/seasons/partition","status":200},{"phase":"cold","path":"/api/assets","status":200},{"phase":"cold","path":"/api/assets","status":200},{"phase":"cold","path":"/api/status","status":200},{"phase":"cold","path":"/api/pitchapi/leagues","status":404},{"phase":"match","path":"/api/assets","status":200}]}
+### Ran Playwright code
+```js
+await (async page=>{ const mode="warm";const events=[];let phase='cold';page.on('response',r=>{const u=new URL(r.url());if(u.origin==='http://127.0.0.1:18947')events.push({phase,path:u.pathname,status:r.status()});});const root='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027';
+if(mode==='warm'){
+ await page.goto(root+'&tab=results&league=l_0275VP',{waitUntil:'domcontentloaded',timeout:60000});const link=page.locator('a.match-row').first();try{await link.waitFor({timeout:15000});}catch(e){return {error:String(e),body:(await page.locator('body').innerText()).slice(-1500),events};}await page.waitForTimeout(650);phase='match';
+ await link.click();await page.locator('.match-scoreboard').waitFor({timeout:20000});await page.waitForTimeout(420);
+ return {mode,match:await page.locator('.match-scoreboard').innerText(),events};
+}
+await page.goto(root+'&id=m_1HCdf3',{waitUntil:'domcontentloaded',timeout:60000});await page.locator('.match-scoreboard').waitFor({timeout:35000});
+phase='bookmark';const mark=page.locator('.research-bookmark').first();await mark.click();const saved=await mark.getAttribute('aria-pressed');await page.waitForTimeout(200);
+phase='search';const search=page.getByRole('combobox').first();await search.fill('Yaya Fofana');const hit=page.getByRole('option').filter({hasText:'Yaya Fofana'}).first();await hit.waitFor({timeout:30000});return {mode,saved,hit:await hit.innerText(),events};
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:18948/matchs?season=2026%2F2027&focus=all&league=l_0275VP&tab=results&id=m_2coepq&competition=l_0275VP&sourceSeason=2026%2F2027
+- Page Title: Calendrier — STATARENA
+- Console: 1 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli/console-2026-11-04T05-02-03-694Z.log#L1-L10
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-private-detail-warm run-code async page=>{ const mode="warm";const events=[];let phase='cold';page.on('response',r=>{const u=new URL(r.url());if(u.origin==='http://127.0.0.1:18947')events.push({phase,path:u.pathname,status:r.status()});});const root='http://127.0.0.1:18948/matchs/?focus=all&season=2026%2F2027';
+npm notice run if(mode==='warm'){
+npm notice run  await page.goto(root+'&tab=results&league=l_0275VP',{waitUntil:'domcontentloaded',timeout:60000});const link=page.locator('a.match-row').first();try{await link.waitFor({timeout:15000});}catch(e){return {error:String(e),body:(await page.locator('body').innerText()).slice(-1500),events};}await page.waitForTimeout(650);phase='match';
+npm notice run  await link.click();await page.locator('.match-scoreboard').waitFor({timeout:20000});await page.waitForTimeout(420);
+npm notice run  return {mode,match:await page.locator('.match-scoreboard').innerText(),events};
+npm notice run }
+npm notice run await page.goto(root+'&id=m_1HCdf3',{waitUntil:'domcontentloaded',timeout:60000});await page.locator('.match-scoreboard').waitFor({timeout:35000});
+npm notice run phase='bookmark';const mark=page.locator('.research-bookmark').first();await mark.click();const saved=await mark.getAttribute('aria-pressed');await page.waitForTimeout(200);
+npm notice run phase='search';const search=page.getByRole('combobox').first();await search.fill('Yaya Fofana');const hit=page.getByRole('option').filter({hasText:'Yaya Fofana'}).first();await hit.waitFor({timeout:30000});return {mode,saved,hit:await hit.innerText(),events};
+npm notice run }

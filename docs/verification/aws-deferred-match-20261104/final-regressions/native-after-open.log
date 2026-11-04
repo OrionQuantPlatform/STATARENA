@@ -1,0 +1,11 @@
+### Browser `statarena-private-detail-native-after` opened with pid 36830.
+### Ran Playwright code
+```js
+await page.goto('about:blank');
+```
+### Page
+- Page URL: about:blank
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-04T05-02-15-999Z.yml)
+npm notice run npx
+npm notice run 'playwright-cli' -s=statarena-private-detail-native-after open about:blank --config /private/tmp/statarena-lazy-match-survey-20261104/playwright.json
