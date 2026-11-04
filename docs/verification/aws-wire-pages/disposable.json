@@ -1,0 +1,13 @@
+{
+  "command": "bun docs/verification/aws-wire-pages/disposable.mjs",
+  "checks": [
+    "All fixture, appearance, match membership, geometry, stats and missing fields identical",
+    "SQL integer 11 and SQL string 11 retain exact native types",
+    {
+      "sourceAbsentFields": [
+        "newObservedMetric"
+      ]
+    }
+  ],
+  "passed": true
+}
