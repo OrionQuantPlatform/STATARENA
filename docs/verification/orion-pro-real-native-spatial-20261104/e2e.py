@@ -15,6 +15,7 @@ NORMALIZER=REPO/'dashboard/scripts/orion_pro_normalize.py'
 MANIFEST=json.loads((DOC/'MANIFEST.json').read_text())
 FIELDS=json.loads((DOC/'FIELDS.json').read_text())['fields']
 ABSENT=object()
+WRITER_OPTIONS='-c statement_timeout=8000 -c lock_timeout=1000'
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def digest(v):return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),default=str).encode()).hexdigest()
@@ -254,31 +255,75 @@ def resource_error_guard(run,pg_bin):
         result['cleanup']=pg.cleanup();result['normalizerUnchanged']=sha(NORMALIZER)==normalizer_before;result['failedSourceBudgetUnchanged']=sha(DOC/'budget.json')==source_budget_before
         (evidence/'result.json').write_text(json.dumps(result,indent=2,default=str)+'\n')
 
+def local_writer_deadlines(conn,pg,run):
+    """Actual local settings, actual candidate gate and fresh exec worker."""
+    import psycopg
+    candidate=load('actual_candidate_deadline_gate',DOC/'candidate.py');before=fingerprint(conn);outcomes=[];mismatches=[]
+    sql="SELECT current_user,current_setting('statement_timeout'),current_setting('lock_timeout')"
+    actual=conn.execute(sql).fetchone();main_ok=actual==('orion_pro_ingest','8s','1s')
+    outcomes.append({'case':'main_writer','expected':['orion_pro_ingest','8s','1s'],'actual':actual,'passed':main_ok})
+    if not main_ok:mismatches.append('main_writer')
+    for statement,lock in [('0','1s'),('7s','1s'),('9s','1s'),('8s','0'),('8s','999ms'),('8s','2s')]:
+        with psycopg.connect(pg.dsn,options='-c statement_timeout='+statement+' -c lock_timeout='+lock,autocommit=True) as local:
+            local.execute('SET ROLE orion_pro_ingest');settings=local.execute(sql).fetchone();refused=False;reason=None
+            try:candidate.import_candidate(local,run,{})
+            except candidate.CandidateError as error:refused=True;reason=str(error)
+            ok=refused and reason=='Local candidate requires statement_timeout=8s and lock_timeout=1s before writes'
+            label='nonconforming:'+statement+':'+lock;outcomes.append({'case':label,'actual':settings,'refused':refused,'reason':reason,'passed':ok})
+            if not ok:mismatches.append(label)
+    with psycopg.connect(pg.dsn,options='-c statement_timeout=8000 -c lock_timeout=1000',autocommit=True) as local:
+        local.execute('SET ROLE orion_pro_ingest');reason=None
+        try:candidate.import_candidate(local,run,{})
+        except candidate.CandidateError as error:reason=str(error)
+        ok=reason=='Candidate source manifest/normalizer binding differs';outcomes.append({'case':'compliant_reaches_source_binding','actual':local.execute(sql).fetchone(),'reason':reason,'passed':ok})
+        if not ok:mismatches.append('compliant_reaches_source_binding')
+    with psycopg.connect(pg.dsn,options='-c statement_timeout=8000 -c lock_timeout=1000',autocommit=True) as local:
+        reason=None
+        try:candidate.import_candidate(local,run,{})
+        except candidate.CandidateError as error:reason=str(error)
+        ok=reason=='Candidate requires actual ingest role on an owned LOCAL PostgreSQL connection';outcomes.append({'case':'wrong_role_refused','actual':local.execute(sql).fetchone(),'reason':reason,'passed':ok})
+        if not ok:mismatches.append('wrong_role_refused')
+    command=[sys.executable,str(Path(__file__)),'--worker','--deadlines-only','--evidence',str(run)];env=os.environ.copy();env.update(ORION_PILOT_DATABASE_URL=pg.dsn,STATARENA_SOURCE_FORBIDDEN='1');worker=subprocess.run(command,text=True,capture_output=True,env=env,timeout=30)
+    (run/'deadline-worker.stdout.log').write_text(worker.stdout);(run/'deadline-worker.stderr.log').write_text(worker.stderr)
+    worker_value=json.loads(worker.stdout) if worker.returncode==0 else None;worker_ok=worker.returncode==0 and worker_value.get('writerSettings')=={'host':'127.0.0.1','role':'orion_pro_ingest','statementTimeout':'8s','lockTimeout':'1s'} and worker_value.get('sourceCalls')==0
+    outcomes.append({'case':'fresh_exec_worker','command':command,'exitCode':worker.returncode,'actual':worker_value,'passed':worker_ok})
+    if not worker_ok:mismatches.append('fresh_exec_worker')
+    after=fingerprint(conn);unchanged=before==after
+    if not unchanged:mismatches.append('candidate_tables_changed')
+    result={'scope':'owned LOCAL database,metadata/settings only; no source or synthetic sports rows','status':'pass' if not mismatches else 'fail','sql':sql,'outcomes':outcomes,'mismatches':mismatches,'before':before,'after':after,'unchanged':unchanged,'sourceCalls':0,'syntheticSportsRowsInserted':0}
+    (run/'local-deadlines-result.json').write_text(json.dumps(result,indent=2,default=str)+'\n');return result
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--label',default='prepare');p.add_argument('--prepare-only',action='store_true');p.add_argument('--source-socket',type=Path);p.add_argument('--worker',action='store_true');p.add_argument('--evidence',type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--label',default='prepare');p.add_argument('--prepare-only',action='store_true');p.add_argument('--source-socket',type=Path);p.add_argument('--worker',action='store_true');p.add_argument('--deadlines-only',action='store_true');p.add_argument('--evidence',type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));args=p.parse_args()
+    if args.deadlines_only and not args.worker:p.error('--deadlines-only requires --worker')
     if args.worker:
-        cap=load('real_capture_worker',DOC/'capture.py');candidate=load('real_candidate_worker',DOC/'candidate.py');snapshot=cap.fetch_snapshot(args.source_socket)
+        candidate=load('real_candidate_worker',DOC/'candidate.py')
         import psycopg
-        with psycopg.connect(os.environ['ORION_PILOT_DATABASE_URL'],autocommit=True) as conn:
-            conn.execute('SET ROLE orion_pro_ingest');result=candidate.import_candidate(conn,args.evidence,snapshot)
+        with psycopg.connect(os.environ['ORION_PILOT_DATABASE_URL'],options=WRITER_OPTIONS,autocommit=True) as conn:
+            conn.execute('SET ROLE orion_pro_ingest')
+            if args.deadlines_only:
+                print(json.dumps({'status':'pass','mode':'source_free_writer_deadlines','writerSettings':candidate.validate_local_writer(conn),'sourceCalls':0}));return 0
+            cap=load('real_capture_worker',DOC/'capture.py');snapshot=cap.fetch_snapshot(args.source_socket);result=candidate.import_candidate(conn,args.evidence,snapshot)
         print(json.dumps({'status':'pass','coreReused':result['core']['reused'],'spatialReused':result['spatial'].get('reused',False),'sourceCalls':0}));return 0
     if not args.prepare_only and args.source_socket is None:p.error('Explicit --prepare-only or --source-socket required; no source fallback')
     run=DOC/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')+'-'+args.label);run.mkdir(parents=True);(run/'inputs').mkdir()
-    for q in [Path(__file__),DOC/'PLAN.md',DOC/'PROTOCOL.md',DOC/'ERROR_GUARD_PROTOCOL.md',DOC/'MANIFEST.json',DOC/'FIELDS.json',DOC/'capture.py',DOC/'candidate.py',NORMALIZER,PILOT/'harness.py']:
+    for q in [Path(__file__),DOC/'PLAN.md',DOC/'PROTOCOL.md',DOC/'ERROR_GUARD_PROTOCOL.md',DOC/'LOCAL_DEADLINES_PROTOCOL.md',DOC/'MANIFEST.json',DOC/'FIELDS.json',DOC/'capture.py',DOC/'candidate.py',NORMALIZER,PILOT/'harness.py']:
         if q.exists():shutil.copy2(q,run/'inputs'/q.name)
     old_ledger=REPO/MANIFEST['oldLedger']['path'];before_old=sha(old_ledger);assert before_old==MANIFEST['oldLedger']['sha256'];failed_budget_before=sha(DOC/'budget.json');root_metadata=DOC/'neon-error-metadata/result.json';root_metadata_before=sha(root_metadata)
     sys.path.insert(0,str(PILOT));from harness import LocalPostgres
     import psycopg
     pg=LocalPostgres(args.pg_bin,run);conn=None;blocked=None;snapshot=None;parts=None
     report={'command':'PYTHONPATH=/tmp/statarena-publication-test-python '+shlex.join([sys.executable,*sys.argv]),'environment':'owned LOCAL PG18.6; real candidate has source-derived facts only','normalizerSha256':sha(NORMALIZER),'testSha256':sha(Path(__file__)),'manifestSha256':sha(DOC/'MANIFEST.json'),'fullAcceptance':False,'sourceCallsByTest':0,'realNativeStatesCompared':0,'realTripletsCompared':0,'cases':[]}
-    cases=['empty_local_bootstrap','source_startup_contract','future_captured_ledger_guard','capture_checkpoint_cli','global_budget_guards','profile_metadata_admission','private_origin_configuration','resource_error_null_contract','real_core_import','independent_native31','real_spatial_import_and_oracle','fresh_process_noop']
+    cases=['empty_local_bootstrap','local_writer_deadlines','source_startup_contract','future_captured_ledger_guard','capture_checkpoint_cli','global_budget_guards','profile_metadata_admission','private_origin_configuration','resource_error_null_contract','real_core_import','independent_native31','real_spatial_import_and_oracle','fresh_process_noop']
     try:
-        pg.start();pg.migration(REPO);conn=psycopg.connect(pg.dsn,autocommit=True);conn.execute('SET ROLE orion_pro_ingest')
+        pg.start();pg.migration(REPO);conn=psycopg.connect(pg.dsn,options=WRITER_OPTIONS,autocommit=True);conn.execute('SET ROLE orion_pro_ingest')
         for case in cases:
             if blocked or (args.prepare_only and case.startswith(('real_','independent_','fresh_'))):report['cases'].append({'case':case,'status':'unverified','reason':blocked or 'Awaiting separately approved single real capture'});continue
             try:
                 if case=='empty_local_bootstrap':
                     assert conn.execute('SELECT current_user').fetchone()[0]=='orion_pro_ingest';counts={t:conn.execute('SELECT count(*) FROM '+t).fetchone()[0] for t in ['football.players','football.teams','football.matches','football.player_match_stats','football.match_heatmaps']};assert not any(counts.values());actual={'role':'orion_pro_ingest','businessRows':counts,'syntheticSportsRowsInserted':0}
+                elif case=='local_writer_deadlines':
+                    actual=local_writer_deadlines(conn,pg,run);assert actual['status']=='pass',{'localDeadlineMismatches':actual['mismatches']}
                 elif case=='source_startup_contract':
                     cap=load('exact_startup_options',DOC/'capture.py')
                     with psycopg.connect(pg.dsn,options=cap.OPTIONS,autocommit=False) as local:

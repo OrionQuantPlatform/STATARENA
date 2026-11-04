@@ -14,6 +14,14 @@ sha=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
 
 class CandidateError(ValueError):pass
 
+def validate_local_writer(conn):
+    if conn.info.host not in ('127.0.0.1','localhost','::1'):
+        raise CandidateError('Candidate requires actual ingest role on an owned LOCAL PostgreSQL connection')
+    role,statement,lock=conn.execute("SELECT current_user,current_setting('statement_timeout'),current_setting('lock_timeout')").fetchone()
+    if role!='orion_pro_ingest':raise CandidateError('Candidate requires actual ingest role on an owned LOCAL PostgreSQL connection')
+    if (statement,lock)!=('8s','1s'):raise CandidateError('Local candidate requires statement_timeout=8s and lock_timeout=1s before writes')
+    return {'host':conn.info.host,'role':role,'statementTimeout':statement,'lockTimeout':lock}
+
 def module():
     if sha(NORMALIZER)!=MANIFEST['normalizerSha256']:raise CandidateError('Candidate normalizer is not the frozen approved code')
     spec=importlib.util.spec_from_file_location('frozen_genuine_source_normalizer',NORMALIZER);out=importlib.util.module_from_spec(spec);spec.loader.exec_module(out)
@@ -67,7 +75,7 @@ def spatial_phase(conn,actor,source,n):
     return {**report,'reused':False,'phaseReceipt':receipt}
 
 def import_candidate(conn,evidence,snapshot,*,core_only=False):
-    if conn.info.host not in ('127.0.0.1','localhost','::1') or conn.execute('SELECT current_user').fetchone()[0]!='orion_pro_ingest':raise CandidateError('Candidate requires actual ingest role on an owned LOCAL PostgreSQL connection')
+    validate_local_writer(conn)
     if snapshot.get('captureKind')!='orion_real_native_spatial_ram_v1' or snapshot.get('manifestSha256')!=sha(DOC/'MANIFEST.json') or snapshot.get('normalizerSha256')!=sha(NORMALIZER):raise CandidateError('Candidate source manifest/normalizer binding differs')
     n=module();source=n.MemorySource(snapshot);parts=parts_from_source(source,n);actor=n.TypedCore(conn,evidence,source);core=actor.import_core(parts)
     counts=Counter((table,path,state) for part in parts for table,rows in part['tables'].items() for row in rows for path,state in leaves(row))
