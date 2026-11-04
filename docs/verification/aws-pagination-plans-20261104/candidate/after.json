@@ -1,0 +1,222 @@
+{
+  "phase": "after",
+  "node": "v24.22.2",
+  "checks": [
+    "All actual HTTP bytes, native values, empty pages, closed cursor, reserved extras and metadata-only GET/HEAD/304 checks passed"
+  ],
+  "pages": {
+    "synthetic-ordinary": {
+      "sha": "b3a58fe3df89c3581ef33a794b8d28247aa6aaf42af2b79e4cdc1c392ea17d99",
+      "bytes": 9885,
+      "etag": "W/\"core-v1-84dcf5733f30cf936f1ccefa269f69b7941a19cd964cd87bba35f92bff73dd29\"",
+      "status": 200,
+      "shape": "array"
+    },
+    "synthetic-columns": {
+      "sha": "aea19c98f8b2725fc155cb7d4b990d223d483381111ecbd0c5808c24e024737b",
+      "bytes": 7875,
+      "etag": "W/\"core-v1-91f8d9b87867d39841d3548faea7944f4231d645ca860fb0182168a76b699fbb\"",
+      "status": 200,
+      "shape": "array"
+    },
+    "empty-ordinary": {
+      "sha": "92c2874dc9c4eb89f811e1476f956c962ed5137f9be2764c432513a1f156c0ba",
+      "bytes": 378,
+      "etag": "W/\"core-v1-1e59e6a5d0b24c8fd4cf20e78198560eb02f5430063b268455657723d4efb0b4\"",
+      "status": 200,
+      "shape": "empty"
+    },
+    "empty-columns": {
+      "sha": "aa3ae5aa00b2cce751c402fda3aa76025ce5e7391e183cab535d935ca983a42a",
+      "bytes": 809,
+      "etag": "W/\"core-v1-94548b034994590f925099316594d31449d4d032076141eadd8c2b6c08683b12\"",
+      "status": 200,
+      "shape": "empty"
+    },
+    "dense-ordinary": {
+      "sha": "06b3a7d60b3d85933168127f288c5adc0afa483ea39d02f3a6aceaf7578e3205",
+      "bytes": 76,
+      "etag": null,
+      "status": 413,
+      "shape": "array"
+    },
+    "dense-columns": {
+      "sha": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+      "bytes": 1973314,
+      "etag": "W/\"core-v1-01233eb9def8e588440b15f96a5eb42f6b713f499bd3375b7cb311426c2c667f\"",
+      "status": 200,
+      "shape": "array"
+    },
+    "drift-ordinary": {
+      "sha": "05bd829e3c0f264a1cdd0ec0ee3f1bb13381eec3221e216a1567e0dffad99ac5",
+      "bytes": 9932,
+      "etag": "W/\"core-v1-84dcf5733f30cf936f1ccefa269f69b7941a19cd964cd87bba35f92bff73dd29\"",
+      "status": 200,
+      "shape": "object"
+    },
+    "drift-columns": {
+      "sha": "6bab72c9f0c9784930b72fef6f582f7213c4d98f45c9efbd020de074e82df242",
+      "bytes": 7903,
+      "etag": "W/\"core-v1-91f8d9b87867d39841d3548faea7944f4231d645ca860fb0182168a76b699fbb\"",
+      "status": 200,
+      "shape": "object"
+    }
+  },
+  "runs": [
+    {
+      "round": 1,
+      "method": "candidate",
+      "ms": 135.5206250000001,
+      "cpuMs": 158.656
+    },
+    {
+      "round": 1,
+      "method": "reference",
+      "ms": 247.97249999999985,
+      "cpuMs": 256.386
+    },
+    {
+      "round": 2,
+      "method": "reference",
+      "ms": 235.81745899999987,
+      "cpuMs": 246.59
+    },
+    {
+      "round": 2,
+      "method": "candidate",
+      "ms": 136.35329099999944,
+      "cpuMs": 158.556
+    },
+    {
+      "round": 3,
+      "method": "candidate",
+      "ms": 126.80787499999951,
+      "cpuMs": 149.221
+    },
+    {
+      "round": 3,
+      "method": "reference",
+      "ms": 242.10079200000018,
+      "cpuMs": 253.114
+    },
+    {
+      "round": 4,
+      "method": "reference",
+      "ms": 240.90508299999965,
+      "cpuMs": 251.738
+    },
+    {
+      "round": 4,
+      "method": "candidate",
+      "ms": 134.87862500000028,
+      "cpuMs": 161.21
+    },
+    {
+      "round": 5,
+      "method": "candidate",
+      "ms": 143.839833,
+      "cpuMs": 227.81
+    },
+    {
+      "round": 5,
+      "method": "reference",
+      "ms": 253.9694580000005,
+      "cpuMs": 266.399
+    },
+    {
+      "round": 6,
+      "method": "reference",
+      "ms": 251.05166700000063,
+      "cpuMs": 258.965
+    },
+    {
+      "round": 6,
+      "method": "candidate",
+      "ms": 146.64166699999987,
+      "cpuMs": 167.451
+    },
+    {
+      "round": 7,
+      "method": "candidate",
+      "ms": 136.6498330000004,
+      "cpuMs": 154.457
+    },
+    {
+      "round": 7,
+      "method": "reference",
+      "ms": 241.53587499999958,
+      "cpuMs": 250.631
+    },
+    {
+      "round": 8,
+      "method": "reference",
+      "ms": 245.69966699999986,
+      "cpuMs": 254.845
+    },
+    {
+      "round": 8,
+      "method": "candidate",
+      "ms": 127.38554199999999,
+      "cpuMs": 146.69
+    },
+    {
+      "round": 9,
+      "method": "candidate",
+      "ms": 128.5018339999997,
+      "cpuMs": 146.436
+    },
+    {
+      "round": 9,
+      "method": "reference",
+      "ms": 239.38258300000052,
+      "cpuMs": 248.37
+    },
+    {
+      "round": 10,
+      "method": "reference",
+      "ms": 248.47320800000034,
+      "cpuMs": 255.295
+    },
+    {
+      "round": 10,
+      "method": "candidate",
+      "ms": 135.72083399999974,
+      "cpuMs": 158.741
+    },
+    {
+      "round": 11,
+      "method": "candidate",
+      "ms": 140.13520900000003,
+      "cpuMs": 163.39
+    },
+    {
+      "round": 11,
+      "method": "reference",
+      "ms": 236.5570000000007,
+      "cpuMs": 243.828
+    },
+    {
+      "round": 12,
+      "method": "reference",
+      "ms": 249.98591699999997,
+      "cpuMs": 256.975
+    },
+    {
+      "round": 12,
+      "method": "candidate",
+      "ms": 140.28412500000013,
+      "cpuMs": 161.332
+    }
+  ],
+  "captureSemanticEqual": true,
+  "denseSourceSha": "0d6bbe72588aa8df43b6d7933093a9d9cd8f028a1b53d61fc8c68bdc37f7d403",
+  "corpusAppearances": 4788,
+  "layoutScans": [
+    {
+      "loops": 1,
+      "rows": 87
+    }
+  ],
+  "hadCompactPgValues": true,
+  "passed": true
+}

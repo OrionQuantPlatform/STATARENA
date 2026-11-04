@@ -194,6 +194,51 @@ try {
       propertyChecks.every((c) => c.ok),
       "Dynamic SQL metric own-property parity failed",
     );
+
+    const originalQuery = Client.prototype.query;
+    const pgShapes = [];
+    Client.prototype.query = async function (sql, ...args) {
+      const result = await originalQuery.call(this, sql, ...args);
+      if (typeof sql === "string" && sql.startsWith("WITH candidates AS")) {
+        const row = result.rows[0]?.appearances?.[0];
+        pgShapes.push(Array.isArray(row) ? "array" : "object");
+      }
+      return result;
+    };
+    try {
+      await fetch(base);
+      assert.equal(pgShapes.at(-1), "array");
+      await writer.query(
+        "ALTER TABLE statarena_app.appearances ADD COLUMN future_typed_metric integer",
+      );
+      await writer.query(
+        "UPDATE statarena_app.appearances SET future_typed_metric=0 WHERE match_id='m_000001'",
+      );
+      const named = await (await fetch(base)).json();
+      const compact = await (await fetch(base + "&format=columns")).json();
+      assert.deepEqual(decodePartition(compact.data), named.data);
+      assert.equal(pgShapes.at(-1), "object");
+      const [first, second] = named.data.appearances;
+      assert.equal(first.futureTypedMetric, 0);
+      assert.ok(Object.hasOwn(second, "futureTypedMetric"));
+      assert.equal(second.futureTypedMetric, null);
+      await writer.query(
+        "ALTER TABLE statarena_app.appearances DROP COLUMN future_typed_metric",
+      );
+      const restored = await (await fetch(base)).json();
+      assert.equal(pgShapes.at(-1), "array");
+      assert.ok(
+        !Object.hasOwn(restored.data.appearances[0], "futureTypedMetric"),
+      );
+      report.checks.push({
+        pgAppearanceProtocol: pgShapes,
+        expected: ["array", "object", "object", "array"],
+        futureField: "zero/null preserved; dropped catalog slot ignored",
+      });
+      assert.deepEqual(pgShapes, ["array", "object", "object", "array"]);
+    } finally {
+      Client.prototype.query = originalQuery;
+    }
   } finally {
     await writer.end();
   }

@@ -1,6 +1,7 @@
 {
   "command": "bun docs/verification/aws-wire-pages/disposable.mjs",
   "checks": [
+    "Default and compact HEAD and conditional 304 preserve validators and empty bodies; unknown format returns 400",
     "All fixture, appearance, match membership, geometry, stats and missing fields identical",
     "SQL integer 11 and SQL string 11 retain exact native types",
     {
@@ -233,6 +234,21 @@
           "ok": true
         }
       ]
+    },
+    {
+      "pgAppearanceProtocol": [
+        "array",
+        "object",
+        "object",
+        "array"
+      ],
+      "expected": [
+        "array",
+        "object",
+        "object",
+        "array"
+      ],
+      "futureField": "zero/null preserved; dropped catalog slot ignored"
     }
   ],
   "passed": true
