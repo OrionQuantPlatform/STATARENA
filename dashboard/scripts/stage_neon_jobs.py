@@ -42,8 +42,9 @@ def stage(source, target, mode="plan", limit=None):
                 target.execute(migration.read_text())
                 target.execute("CREATE TEMP TABLE job_delta_input (LIKE statarena.jobs INCLUDING DEFAULTS) ON COMMIT DROP")
             with source.cursor(name="neon_job_snapshot") as read, target.cursor() as write:
-                read.execute("""SELECT endpoint,params,priority,state,attempts,available_at,lease_until,last_status,last_error
-                    FROM statarena.jobs""")
+                columns = ("endpoint,params" if mode == "plan" else
+                           "endpoint,params,priority,state,attempts,available_at,lease_until,last_status,last_error")
+                read.execute("SELECT " + columns + " FROM statarena.jobs")
 
                 def incoming(copy=None):
                     while batch := read.fetchmany(2000):
