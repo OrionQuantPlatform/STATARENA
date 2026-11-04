@@ -103,6 +103,7 @@ with psycopg.connect(os.environ['TEST_DATABASE_URL'],autocommit=True) as db:
     db.execute((root/'dashboard/backend/migrations/004_match_details.sql').read_text())
     db.execute((root/'dashboard/backend/migrations/007_match_source_fields.sql').read_text())
     db.execute((root/'dashboard/backend/migrations/008_match_player_position.sql').read_text())
+    db.execute((root/'dashboard/backend/migrations/009_compact_player_metrics.sql').read_text())
     def monitor(expect, offline=False):
         with tempfile.TemporaryDirectory() as d:
             output=pathlib.Path(d)/'output';output.touch()

@@ -1,6 +1,6 @@
 {
   "command": "PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-relational-core-20261104/integrated-api.mjs",
-  "setup": "Fresh local PG18.6; actual 003–007 install, typed match and catalog source captures; runtime SELECT-only role. AWS FunctionURL v2 adapter + real HTTP Bun server, loopback only.",
+  "setup": "Fresh local PG18.6; actual 003–009 install, typed match and catalog source captures; runtime SELECT-only role. AWS FunctionURL v2 adapter + real HTTP Bun server, loopback only.",
   "requests": [
     {
       "route": "/api/archive/matches/m_49qvGz",
