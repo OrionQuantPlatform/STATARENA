@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Complete pre-code owned-PG qualification; no remote/source/RAM client."""
 from __future__ import annotations
-import argparse, ast, copy, fcntl, hashlib, importlib.util, json, os, re, shutil, subprocess, sys, tempfile, threading, time, _thread
+import argparse, ast, copy, fcntl, hashlib, importlib.util, json, os, pwd, re, shutil, stat, subprocess, sys, tempfile, threading, time, _thread
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,6 +11,9 @@ BASE=Path(__file__).resolve().parent;ROOT=BASE.parents[2];SCRIPTS=ROOT/'dashboar
 DBS=['rds_policy_empty','rds_policy_populated'];ACTOR='statarena_admin'
 OPTIONS='-c default_transaction_read_only=on -c statement_timeout=8000 -c lock_timeout=1000 -c idle_in_transaction_session_timeout=15000 -c search_path=pg_catalog -c timezone=UTC -c datestyle=ISO,YMD -c extra_float_digits=3'
 CASES=['implementation_available','owned_tls_setup','prepare_composed_contract','offline_and_remote_boundary','owned_cli_and_route_pins','catalogue_and_equivalence','nonzero_roles_exact','native_catalogue_drift','native_acl_drift','journal_and_clocks','bootstrap_and_populated','sequence_state','leases_and_concurrency','atomic_failures','adoption_clock_and_preservation','lost_acknowledgement','fresh_process_noop','old_guards_stay_closed','bounded_queries_and_checkpoints','protected_inputs_and_cleanup']
+PARENT_SHA={'campaign':'3d65c2ca695bd261959c4831f0585b77a4050d7111257a923259924e884d3114','result':'520d42f7bccb0446e783e1d9bba40a6cde68d4055ae9ed6fd35a4e0bf966b7c3','manifest':'2a4dd3b91f9638feb19b70b480d9f2fa9e1741ce21366050640cde945b9b0706'}
+CLOSED_V2={'docs/verification/orion-pro-policy-rds-20261105/campaign-v2.json': '2484d620446bb59b194bb501b0d2d5742245ac91d9227f156cd2753dc7bc26d6', 'docs/verification/orion-pro-policy-rds-20261105/ROOT_LOCAL_CONTINUATION_V2.json': '1043584c7ac936b41c5f65c907b36d2fc15a2daae93d3321b5327ad94566a8d3', 'docs/verification/orion-pro-policy-rds-20261105/attempt-v2-closed/HASHES.json': 'f89d8e662979a15d35f92f67ccdeab112342339622f196664e42b8d660218376', 'docs/verification/orion-pro-policy-rds-20261105/runs/20261105T091322139014Z-root-owned-rds-adapter-continuation-v2-absolute/result.json': 'd50bfa01d840a72e12954c0fc09e3e025c4c45074d4dd6f1541ba52cc6f900d1'}
+LOCAL_LIMITS={'maximumPgStarts':1,'databases':2,'seconds':600,'statementTimeoutMs':8000,'lockTimeoutMs':1000,'diskHardBytes':8589934592,'diskSoftBytes':7516192768,'metadataBytes':33554432,'evidenceBytes':67108864,'tempBytesPerBackend':536870912}
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def save(p,x):Path(p).write_text(json.dumps(x,indent=2,ensure_ascii=False,default=str)+'\n')
 def hashed(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),default=str).encode()).hexdigest()
@@ -18,8 +21,26 @@ def q(x):assert re.fullmatch('[a-z_][a-z0-9_]*',x);return '"'+x+'"'
 def rel(x):return '.'.join(q(v) for v in x.split('.'))
 def load(p,name):
     spec=importlib.util.spec_from_file_location(name,p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
-def ledger_update(fn):
-    with (BASE/'campaign.json').open('r+') as f:
+def parent_exact():
+    if not all(sha(ROOT/path)==digest for path,digest in CLOSED_V2.items()):return False
+    return sha(BASE/'campaign.json')==PARENT_SHA['campaign'] and sha(BASE/'runs/20261105T023121117636Z-owned-rds-adapter-compact/result.json')==PARENT_SHA['result'] and sha(BASE/'ATTEMPT_1_HASHES.json')==PARENT_SHA['manifest']
+def continuation(args):
+    assert parent_exact(),'Original campaign/evidence changed'
+    assert args.continuation_release and args.expect_continuation_sha256 and args.ledger,'Separate ROOT continuation release/hash/ledger required'
+    release=Path(args.continuation_release);ledger=Path(args.ledger)
+    assert stat.S_ISREG(release.lstat().st_mode) and release.resolve()==BASE/'ROOT_LOCAL_CONTINUATION_V3.json'
+    assert stat.S_ISREG(ledger.lstat().st_mode) and ledger.resolve()==BASE/'campaign-v3.json'
+    assert sha(release)==args.expect_continuation_sha256
+    r=json.loads(release.read_text());auth_tree=ast.parse((BASE/'auth_guard_e2e.py').read_text());auth_cases=next(ast.literal_eval(n.value) for n in auth_tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='CASE_NAMES' for t in n.targets))
+    expected_code={str(p.relative_to(ROOT)):sha(p) for p in [Path(__file__),ADAPTER,BASE/'auth_guard_e2e.py']}
+    assert r.get('kind')=='rds_policy_owned_continuation_release_v3' and r.get('authorizedBy')=='ROOT' and r.get('scope')=='source_free_owned_only'
+    assert r.get('closedV2Sha256')==CLOSED_V2 and r.get('parentSha256')==PARENT_SHA and r.get('codeSha256')==expected_code and r.get('inputsSha256')==sha(BASE/'INPUTS.json')
+    assert r.get('expectedCases')==CASES and r.get('expectedAuthCases')==auth_cases and r.get('limits')==LOCAL_LIMITS and r.get('ledgerPath')==str((BASE/'campaign-v3.json').relative_to(ROOT))
+    x=json.loads(ledger.read_text());assert x=={'kind':'rds_policy_owned_campaign_v3','state':'unstarted','pgStarts':0,'maximumPgStarts':1,'releaseSha256':args.expect_continuation_sha256,'parentCampaignSha256':PARENT_SHA['campaign'],'limits':LOCAL_LIMITS},'Continuation ledger consumed/mismatched'
+    return ledger.resolve()
+def ledger_update(path,fn):
+    assert path==BASE/'campaign-v3.json' and parent_exact()
+    with path.open('r+') as f:
         fcntl.flock(f,fcntl.LOCK_EX);x=json.load(f);fn(x);f.seek(0);json.dump(x,f,indent=2);f.write('\n');f.truncate();return x
 
 class Watch:
@@ -42,11 +63,13 @@ def snapshot(conn):
     else:yield
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--label',required=True);parser.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));args=parser.parse_args();assert re.fullmatch('[A-Za-z0-9][A-Za-z0-9-]{0,70}',args.label)
+    parser=argparse.ArgumentParser();parser.add_argument('--label',required=True);parser.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));parser.add_argument('--continuation-release',type=Path);parser.add_argument('--expect-continuation-sha256');parser.add_argument('--ledger',type=Path);args=parser.parse_args();assert re.fullmatch('[A-Za-z0-9][A-Za-z0-9-]{0,70}',args.label)
+    try:ledger_path=continuation(args)
+    except Exception as error:print(json.dumps({'status':'refused','reason':'ROOT continuation inputs missing/mismatched/consumed','errorType':type(error).__name__,'postgresStarts':0}));return 2
     sys.path[:0]=[str(SCRIPTS),str(PILOT),'/tmp/statarena-publication-test-python']
     run=BASE/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')+'-'+args.label);(run/'inputs').mkdir(parents=True)
     pins=json.loads((BASE/'INPUTS.json').read_text())['files'];assert all(sha(ROOT/p)==h for p,h in pins.items())
-    for path in [Path(__file__),BASE/'ADAPTER_PROTOCOL.md',BASE/'INPUTS.json',ADAPTER,*[ROOT/p for p in pins]]:
+    for path in [Path(__file__),BASE/'ADAPTER_PROTOCOL.md',BASE/'PREPARATION_V2_PROTOCOL.md',BASE/'AUTH_GUARD_PROTOCOL.md',BASE/'auth_guard_e2e.py',BASE/'INPUTS.json',Path(args.continuation_release),ADAPTER,*[ROOT/p for p in pins]]:
         if path.is_file():
             dest=run/'inputs'/path.relative_to(ROOT);dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,dest)
     report={'kind':'source_free_rds_policy_adapter_e2e_v1','command':[sys.executable,str(Path(__file__)),*sys.argv[1:]],'startedAt':datetime.now(timezone.utc).isoformat(),'expected':str(BASE/'ADAPTER_PROTOCOL.md'),'cases':[],'protectedBefore':pins,'remoteCalls':0,'sourceOrRamReads':0,'fullAcceptance':False}
@@ -54,6 +77,15 @@ def main():
     model=json.loads((ROOT/'docs/architecture/orion-plan-20261104/target-schema.proposed.json').read_text());tables={t['qualified_name']:t for s in model['schemas'] for t in s['tables'] if t['phase']!='models'}
     def connect(db,actor=ACTOR):
         return psycopg.connect(host='127.0.0.1',hostaddr='127.0.0.1',port=pg.port,dbname=db,user=actor,sslmode='verify-full',sslrootcert=str(cert),autocommit=True,connect_timeout=5,options=OPTIONS,application_name='rds-policy-owned-e2e')
+    def verify_os_super(c):
+        r=c.execute("SELECT current_database(),current_user,rolsuper,current_setting('data_directory'),current_setting('statement_timeout'),current_setting('lock_timeout'),(SELECT ssl FROM pg_stat_ssl WHERE pid=pg_backend_pid()),current_setting('transaction_read_only') FROM pg_roles WHERE rolname=current_user").fetchone()
+        assert c.info.server_version==180006 and c.info.host=='127.0.0.1' and c.info.port==pg.port and r[1:3]==(pwd.getpwuid(os.getuid()).pw_name,True) and Path(r[3]).resolve()==pg.data.resolve() and r[4:]==('8s','1s',True,'on')
+    def super_sql(statement):
+        c=connect(DBS[0],pwd.getpwuid(os.getuid()).pw_name)
+        try:
+            verify_os_super(c)
+            with c.transaction():c.execute('SET TRANSACTION READ WRITE');c.execute(statement)
+        finally:c.close()
     def audit(conn):
         out={'native':{},'journal':None,'sequences':None,'catalogue':None}
         with snapshot(conn):
@@ -89,6 +121,9 @@ def main():
             owner.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ WRITE');owner.execute(sql,prepare=False)
             result=refuses(lambda:adp.verify_state(adp.observe(owner,contract()['rowCaps'],local_write=True),contract()),expected_codes)
         assert before==audit(owner);return result
+    def mutate_journal(sql,expected_codes):
+        # Owned owner-only corruption fixture; restore trigger metadata before inspection, then rollback all.
+        return mutate('ALTER TABLE ingest.schema_migrations DISABLE TRIGGER pro_typed_guard;'+sql+';ALTER TABLE ingest.schema_migrations ENABLE TRIGGER pro_typed_guard',expected_codes)
     def cli(flags,name,tripwire=False,env_add=None):
         folder=run/'cli'/name;folder.mkdir(parents=True);env={k:v for k,v in os.environ.items() if not k.startswith('PG')};env['PYTHONPATH']='/tmp/statarena-publication-test-python';env['PYTHONDONTWRITEBYTECODE']='1'
         if tripwire:
@@ -104,13 +139,12 @@ def main():
             try:
                 if name=='implementation_available':
                     if not ADAPTER.is_file():
-                        def missing(x):assert x['precodeRuns']==0;x['precodeRuns']=1;x['state']='missing_adapter_red'
-                        ledger_update(missing);raise AssertionError('New adapter absent before implementation')
+                        raise AssertionError('Adapter missing under reviewed continuation')
                     adp=load(ADAPTER,'new_rds_policy_adapter');adp.fixed_inputs();import orion_pro_policy as policy;import psycopg
                     actual={'adapterSha256':sha(ADAPTER),'testSha256':sha(Path(__file__)),'policySha256':sha(SCRIPTS/'orion_pro_policy.py')}
                 elif name=='owned_tls_setup':
-                    def claim(x):assert x['pgStarts']==0 and x['precodeRuns']==1;x['pgStarts']=1;x['state']='running';x['startedAt']=datetime.now(timezone.utc).isoformat();x['testSha256']=sha(Path(__file__));x['adapterSha256']=sha(ADAPTER)
-                    ledger_update(claim)
+                    def claim(x):assert x['kind']=='rds_policy_owned_campaign_v3' and x['pgStarts']==0 and x['state']=='unstarted';x['pgStarts']=1;x['state']='running';x['startedAt']=datetime.now(timezone.utc).isoformat();x['testSha256']=sha(Path(__file__));x['adapterSha256']=sha(ADAPTER)
+                    ledger_update(ledger_path,claim)
                     from harness import LocalPostgres
                     private=Path(tempfile.mkdtemp(prefix='orion-rds-policy-',dir='/tmp'));os.chmod(private,0o700);tempfile.tempdir=str(private)
                     pg=LocalPostgres(args.pg_bin,run);watch=Watch(pg);pg.command([pg.binaries/'initdb','-D',pg.data,'--auth=trust','--no-locale','--encoding=UTF8'],name='initdb')
@@ -118,6 +152,7 @@ def main():
                     pg.command(['/usr/bin/openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','2','-config',ssl_config,'-keyout',key,'-out',cert],name='owned-tls-cert');os.chmod(key,0o600);shutil.copy2(cert,run/'inputs/owned-server.crt');shutil.copy2(ssl_config,run/'inputs/owned-ssl.cnf')
                     with (pg.data/'postgresql.conf').open('a') as f:f.write("\nlog_error_verbosity=terse\nlog_min_error_statement=panic\nlog_parameter_max_length_on_error=0\nstatement_timeout=8000\nlock_timeout=1000\ntemp_file_limit=512MB\nssl=on\nssl_cert_file='"+str(cert)+"'\nssl_key_file='"+str(key)+"'\n")
                     pg.start();setup=connect('postgres',os.environ.get('USER','postgres'));assert setup.info.server_version==180006
+                    verify_os_super(setup);setup.execute('SET default_transaction_read_only=off') # Verified owned OS-superuser setup only; CREATE DATABASE needs autocommit.
                     for role in [ACTOR,'statarena_ingest','statarena_runtime']:setup.execute('CREATE ROLE '+q(role)+' LOGIN NOSUPERUSER '+('CREATEROLE CREATEDB' if role==ACTOR else 'NOCREATEROLE NOCREATEDB')+' NOREPLICATION NOBYPASSRLS')
                     for db in DBS:setup.execute('CREATE DATABASE '+q(db)+' OWNER '+q(ACTOR))
                     started=setup.execute('SELECT pg_postmaster_start_time()').fetchone()[0];setup.close();setup=None
@@ -145,29 +180,48 @@ def main():
                     for label,flags in [('remote-no-release',['--preflight-rds']),('remote-apply',['--apply-rds']),('arbitrary-host',['--host','external.invalid']),('unknown-policy',['--policy','latest']),('missing-checkpoint',['--preflight-rds','--release',str(run/'missing.json'),'--expect-release-sha256','0'*64])]:
                         r=cli(flags,label,True);assert r.returncode==2;checks.append(label)
                     actual={'offlineNoConnections':True,'refused':checks}
+                    auth=load(BASE/'auth_guard_e2e.py','same_precode_auth_guard_cases');actual['authGuard']=auth.run_cases(adp,run/'auth-guard');assert actual['authGuard']['status'] in {'pass','pass_with_uid_unisolated'}
                 elif name=='owned_cli_and_route_pins':
                     flags=['--owned-preflight','--marker',str(marker),'--database',DBS[0],'--contract',str(cpath(DBS[0])),'--expect-contract-sha256',sha(cpath(DBS[0]))];r=cli(flags,name);assert r.returncode==0;actual=json.loads(r.stdout);assert actual['settings']['statementTimeout']=='8s' and actual['settings']['lockTimeout']=='1s' and actual['settings']['ssl'] is True
                     poisoned=cli(flags,'owned-poison-route',True,{'PGHOSTADDR':'192.0.2.1'});assert poisoned.returncode==2
+                    alias=run/'contract-symlink.json';alias.symlink_to(cpath(DBS[0]));bad=list(flags);bad[bad.index('--contract')+1]=str(alias);r=cli(bad,'owned-contract-symlink',True);assert r.returncode==2 and json.loads(r.stdout)['code']=='INPUT'
+                    marker_alias=pg.root/'marker-symlink.json';marker_alias.symlink_to(marker);bad=list(flags);bad[bad.index('--marker')+1]=str(marker_alias);r=cli(bad,'owned-marker-symlink',True);assert r.returncode==2 and json.loads(r.stdout)['code']=='LOCAL';actual['rawSymlinkRefusals']=['contract','marker']
                 elif name=='catalogue_and_equivalence':
                     p=preflight();actual=p['counts'];assert actual['tables']==94 and actual['columns']==1709 and actual['foreignKeys']==431 and actual['views']==46 and actual['sequences']==67;assert policy.equivalence()=={'clauses':81,'changed':139,'retained':46,'exactReversal':True,'modelSha256':policy.MODEL_SHA}
                 elif name=='nonzero_roles_exact':
-                    p=preflight();flags=next(v for v in p['roleFlags'] if v['rolname']==ACTOR);assert flags['rolcreaterole'] and flags['rolcreatedb'] and not flags['rolsuper'];c=contract();wrong=copy.deepcopy(c);wrong['baseline']['security'][0]['roles']='[]'
-                    with snapshot(owner):actual=refuses(lambda:adp.verify_state(adp.observe(owner,c['rowCaps']),wrong),{'CATALOGUE','ROLE'})
-                    actual['nativeRoleFlags']=flags
+                    p=preflight();flags=next(v for v in p['roleFlags'] if v['rolname']==ACTOR);assert flags['rolcreaterole'] and flags['rolcreatedb'] and not flags['rolsuper'];before=audit(owner);actual={'nativeRoleFlags':flags}
+                    try:super_sql('ALTER ROLE statarena_admin NOCREATEDB');actual['oneNativeFlag']=refuses(lambda:preflight(),{'CATALOGUE','ROLE'})
+                    finally:super_sql('ALTER ROLE statarena_admin CREATEDB')
+                    assert before==audit(owner)
+                    try:super_sql('GRANT statarena_runtime TO statarena_ingest');actual['nativeMembership']=refuses(lambda:preflight(),{'CATALOGUE','ROLE'})
+                    finally:super_sql('REVOKE statarena_runtime FROM statarena_ingest')
+                    assert before==audit(owner)
                 elif name=='native_catalogue_drift':
-                    actual={'view':mutate('ALTER VIEW ingest.public_aliases_current SET (security_barrier=true)',{'CATALOGUE'}),'constraint':mutate("ALTER TABLE football.players ADD CONSTRAINT synthetic_rds_policy_check CHECK(public_key <> 'synthetic_reserved')",{'CATALOGUE','BOUND'}),'proc':mutate('ALTER FUNCTION ingest.validate_generation(bigint) STABLE',{'CATALOGUE'})}
+                    actual={'view':mutate('ALTER VIEW ingest.public_aliases_current SET (security_barrier=true)',{'CATALOGUE'}),'constraint':mutate("ALTER TABLE football.players ADD CONSTRAINT synthetic_rds_policy_check CHECK(display_name IS DISTINCT FROM 'synthetic_reserved')",{'CATALOGUE','BOUND'}),'proc':mutate('ALTER FUNCTION ingest.validate_generation(bigint) STABLE',{'CATALOGUE'})}
                     idx=next(x for x in contract()['baseline']['indexes'] if x['method']=='btree');actual['index']=mutate('ALTER INDEX '+rel(idx['relation'].split('.')[0]+'.'+idx['name'])+' SET (fillfactor=80)',{'CATALOGUE'})
                     trig=next(x for x in contract()['baseline']['guards'] if x['kind']=='trigger');schema,table,trigger=trig['name'].split('.');actual['trigger']=mutate('ALTER TABLE '+rel(schema+'.'+table)+' DISABLE TRIGGER '+q(trigger),{'CATALOGUE'})
                 elif name=='native_acl_drift':
                     actual={'schema':mutate('GRANT CREATE ON SCHEMA football TO statarena_runtime',{'CATALOGUE'}),'function':mutate('GRANT EXECUTE ON FUNCTION ingest.validate_generation(bigint) TO PUBLIC',{'CATALOGUE'}),'default':mutate('ALTER DEFAULT PRIVILEGES IN SCHEMA football GRANT SELECT ON TABLES TO PUBLIC',{'CATALOGUE'})}
                 elif name=='journal_and_clocks':
-                    actual={'clock':mutate("UPDATE ingest.schema_migrations SET applied_at=applied_at+interval '1 microsecond' WHERE version='012'",{'JOURNAL'}),'digest':mutate("UPDATE ingest.schema_migrations SET content_sha256=repeat('0',64) WHERE version='013'",{'JOURNAL'})}
+                    import psycopg
+                    try:
+                        with owner.transaction(force_rollback=True):owner.execute('SET TRANSACTION READ WRITE');owner.execute("UPDATE ingest.schema_migrations SET applied_at=applied_at+interval '1 microsecond' WHERE version='012'")
+                    except psycopg.Error as error:assert error.sqlstate=='55000'
+                    else:raise AssertionError('Native journal immutability must reject direct UPDATE')
+                    actual={'nativeUpdateSqlstate':'55000','clock':mutate_journal("UPDATE ingest.schema_migrations SET applied_at=applied_at+interval '1 microsecond' WHERE version='012'",{'JOURNAL'}),'digest':mutate_journal("UPDATE ingest.schema_migrations SET content_sha256=repeat('0',64) WHERE version='013'",{'JOURNAL'})}
+                    actual['nullOldClock']=mutate_journal("UPDATE ingest.schema_migrations SET applied_at=NULL WHERE version='012'",{'JOURNAL'})
+                    for version in ['777','099']:
+                        actual['chain'+version]=mutate_journal("INSERT INTO ingest.schema_migrations(version,content_sha256,applied_at,code_commit) VALUES('"+version+"',repeat('0',64),CURRENT_TIMESTAMP,'synthetic_unknown')",{'JOURNAL'})
+                    insert014="INSERT INTO ingest.schema_migrations(version,content_sha256,applied_at,code_commit) VALUES('014','"+adp.SQL14_SHA+"',CURRENT_TIMESTAMP,'local_rds_policy_e2e')"
+                    actual['p0BodyP1Journal']=mutate_journal(insert014,{'CATALOGUE'})
+                    actual['p1BodyP0Journal']=mutate_journal(adp.SQL14.read_text(),{'CATALOGUE'})
+                    actual['nullNewClock']=mutate_journal(adp.SQL14.read_text()+"\n"+insert014.replace('CURRENT_TIMESTAMP','NULL'),{'JOURNAL'})
                     rows=owner.execute('SELECT applied_at FROM ingest.schema_migrations ORDER BY version').fetchall();assert all(v[0] is not None and v[0].tzinfo is not None for v in rows)
                 elif name=='bootstrap_and_populated':
                     actual={'seed':mutate("ALTER TABLE football.periods DISABLE TRIGGER USER;UPDATE football.periods SET label='synthetic_drift' WHERE code='full_match';ALTER TABLE football.periods ENABLE TRIGGER USER",{'BOOTSTRAP'})}
                     before=audit(second)
                     with second.transaction(force_rollback=True):
-                        second.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ WRITE');second.execute("INSERT INTO football.players(public_key) VALUES('synthetic_rds_policy_unrelated')");foreign=audit(second);c=contract(DBS[1]);actual['populated']=refuses(lambda:adp.verify_state(adp.observe(second,c['rowCaps'],local_write=True),c),{'BUSINESS'});assert foreign==audit(second)
+                        second.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ WRITE');second.execute("INSERT INTO football.players(display_name) VALUES('synthetic_rds_policy_unrelated')");foreign=audit(second);c=contract(DBS[1]);actual['populated']=refuses(lambda:adp.verify_state(adp.observe(second,c['rowCaps'],local_write=True),c),{'BUSINESS'});assert foreign==audit(second)
                     # Rollback removes the deliberately uncommitted fixture; sequence allocation is restored explicitly.
                     with second.transaction():
                         second.execute('SET TRANSACTION READ WRITE')
@@ -233,11 +287,16 @@ def main():
         if watch:watch.close();save(run/'resources.json',watch.samples)
         try:report['cleanup']=pg.cleanup() if pg else {'pgStarted':False,'server_stopped':True,'owned_directory_removed':True}
         except Exception as e:report['cleanup']={'failed':True,'errorType':type(e).__name__}
-        if private and private.exists():shutil.rmtree(private)
-        report['protectedAfterExact']=all(sha(ROOT/p)==h for p,h in pins.items());report['counts']={s:sum(c['status']==s for c in report['cases']) for s in ['pass','fail','unverified']};report['status']='pass' if report['counts']=={'pass':20,'fail':0,'unverified':0} and report['protectedAfterExact'] and report['cleanup'].get('server_stopped') and report['cleanup'].get('owned_directory_removed') and (not watch or watch.reason is None) else 'fail';report['finishedAt']=datetime.now(timezone.utc).isoformat()
+        cleanup_proved=report['cleanup'].get('server_stopped') is True and report['cleanup'].get('owned_directory_removed') is True
+        report['privateRootRemoved']=private is None or not private.exists()
+        if private and private.exists() and cleanup_proved:
+            try:shutil.rmtree(private);report['privateRootRemoved']=not private.exists()
+            except Exception as error:report['privateCleanupErrorType']=type(error).__name__
+        elif private and private.exists():report['privateRootRetainedForROOT']=str(private)
+        report['originalCampaignEvidenceUnchanged']=parent_exact();report['protectedAfterExact']=all(sha(ROOT/p)==h for p,h in pins.items());report['counts']={s:sum(c['status']==s for c in report['cases']) for s in ['pass','fail','unverified']};report['status']='pass' if report['counts']=={'pass':20,'fail':0,'unverified':0} and report['protectedAfterExact'] and report['originalCampaignEvidenceUnchanged'] and report['privateRootRemoved'] and cleanup_proved and (not watch or watch.reason is None) else 'fail';report['finishedAt']=datetime.now(timezone.utc).isoformat()
         if pg:
             def finish(x):x.update(state='pass' if report['status']=='pass' else 'stop_for_ROOT',result=str(run/'result.json'),budgetStop=watch.reason if watch else None,elapsedSeconds=round(time.monotonic()-watch.start,3) if watch else None)
-            ledger_update(finish)
+            ledger_update(ledger_path,finish)
         save(run/'result.json',report);print(json.dumps({'status':report['status'],'counts':report['counts'],'evidence':str(run/'result.json')}),flush=True)
     return 0 if report['status']=='pass' else 1
 if __name__=='__main__':raise SystemExit(main())
