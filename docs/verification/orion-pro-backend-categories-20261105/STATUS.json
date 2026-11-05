@@ -1,0 +1,133 @@
+{
+  "kind": "exhaustive_remaining_backend_category_assignment",
+  "atUtc": "2026-11-05T15:54:41.926126+00:00",
+  "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
+  "routeMatrixSha256": "47d13b032429c77c6c1d0ff542d6532cd3a17d0f27c8b195de8f589c85e5e799",
+  "localQualifiedOtherForms": 19,
+  "remainingForms": 38,
+  "routeCountsAreNotWorkloadPercentages": true,
+  "maximumConcurrentAgentsIncludingRoot": 4,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "max",
+  "rdsOwner": "real_rds_transport",
+  "sharedFilesOwner": "ROOT",
+  "sharedScope": [
+    "router",
+    "common contracts",
+    "schema107",
+    "016 migration",
+    "publication",
+    "integration",
+    "main commits",
+    "deployments"
+  ],
+  "categories": [
+    {
+      "id": "match-details",
+      "owner": "backend_entities",
+      "status": "assigned",
+      "routes": [
+        "/api/pitchapi/matches/{match}",
+        "/api/pitchapi/matches/{match}/momentum",
+        "/api/pitchapi/matches/{match}/events",
+        "/api/pitchapi/matches/{match}/lineups",
+        "/api/pitchapi/matches/{match}/h2h",
+        "/api/pitchapi/matches/{match}/stats"
+      ],
+      "module": "dashboard/backend/services/orion-pro-match-details.js",
+      "testedLocally": false,
+      "pushed": false,
+      "deployed": false
+    },
+    {
+      "id": "player-statistics-advanced",
+      "owner": "backend_entities",
+      "status": "queued",
+      "routes": [
+        "/api/pitchapi/matches/{match}/players",
+        "/api/pitchapi/matches/{match}/players/halves",
+        "/api/pitchapi/matches/{match}/advanced",
+        "/api/pitchapi/matches/{match}/advanced/players",
+        "/api/pitchapi/matches/{match}/advanced/network",
+        "/api/pitchapi/matches/{match}/heatmaps",
+        "/api/pitchapi/matches/{match}/shots/{shot}",
+        "/api/pitchapi/matches/{match}/players/{player}",
+        "/api/pitchapi/matches/{match}/players/{player}/halves",
+        "/api/pitchapi/matches/{match}/players/{player}/shots",
+        "/api/pitchapi/matches/{match}/advanced/players/{player}"
+      ],
+      "module": "dashboard/backend/services/orion-pro-player-statistics.js",
+      "testedLocally": false,
+      "pushed": false,
+      "deployed": false
+    },
+    {
+      "id": "competitions-cups-standings",
+      "owner": "sql_publisher",
+      "status": "assigned",
+      "routes": [
+        "/api/standings",
+        "/api/open-cups",
+        "/api/openligadb",
+        "/api/nations-results",
+        "/api/cup-index",
+        "/api/cup-table",
+        "/api/cup-snapshot",
+        "/api/matchdays"
+      ],
+      "module": "dashboard/backend/services/orion-pro-competitions.js",
+      "testedLocally": false,
+      "pushed": false,
+      "deployed": false
+    },
+    {
+      "id": "archives",
+      "owner": "sql_publisher",
+      "status": "queued",
+      "routes": [
+        "/api/archives/index",
+        "/api/archives/season",
+        "/api/supplemental",
+        "/api/archive/matches/{match}"
+      ],
+      "module": "dashboard/backend/services/orion-pro-archives.js",
+      "testedLocally": false,
+      "pushed": false,
+      "deployed": false
+    },
+    {
+      "id": "fifa-uefa-rankings",
+      "owner": "backend_entities",
+      "status": "queued",
+      "routes": [
+        "/api/rankings/index",
+        "/api/rankings/edition",
+        "/api/rankings/associations",
+        "/api/rankings/club"
+      ],
+      "module": "dashboard/backend/services/orion-pro-rankings.js",
+      "testedLocally": false,
+      "pushed": false,
+      "deployed": false
+    },
+    {
+      "id": "enrichment-honours",
+      "owner": "sql_publisher",
+      "status": "queued",
+      "routes": [
+        "/api/club-wikidata",
+        "/api/coach-portrait",
+        "/api/stadium",
+        "/api/player-honours",
+        "/api/club-links"
+      ],
+      "module": "dashboard/backend/services/orion-pro-enrichment.js",
+      "testedLocally": false,
+      "pushed": false,
+      "deployed": false
+    }
+  ],
+  "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer.",
+  "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
+  "suggestedCommit": "docs: assign remaining backend routes by category and dependencies"
+}
