@@ -1,0 +1,92 @@
+{
+  "kind": "owned_native_target_overlay_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "tests/orion_pro_target_overlay_local.py",
+    "--precode-red",
+    "--label",
+    "missing-overlay-precode-red"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "product_available",
+      "status": "fail",
+      "error": "Missing approved target overlay product (pre-code RED)",
+      "type": "AssertionError",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_target_overlay_local.py\", line 74, in main\n    raise AssertionError('Missing approved target overlay product (pre-code RED)')\nAssertionError: Missing approved target overlay product (pre-code RED)\n"
+    },
+    {
+      "case": "source_target_native_setup",
+      "status": "unverified"
+    },
+    {
+      "case": "adoption_rollback",
+      "status": "unverified"
+    },
+    {
+      "case": "adoption_commit_and_noop",
+      "status": "unverified"
+    },
+    {
+      "case": "target_contract_drift_refused",
+      "status": "unverified"
+    },
+    {
+      "case": "source_float_loss_refused",
+      "status": "unverified"
+    },
+    {
+      "case": "preflight_and_copy",
+      "status": "unverified"
+    },
+    {
+      "case": "independent_committed_typed_parity",
+      "status": "unverified"
+    },
+    {
+      "case": "exact_replay",
+      "status": "unverified"
+    }
+  ],
+  "inputHashes": {
+    "tests/orion_pro_target_overlay_local.py": "db507104364d601e497353235e33d1cc79b8fa0be30d308d1b26cbd157b7f2a5",
+    "docs/verification/orion-pro-target-overlay-20261105/PROTOCOL.md": "3ca500aa2ceb3987d57b88c29a84e268019a440155c9e6689a59611fcc0b4387",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "docs/architecture/orion-native-details-107-20261105/target-schema.approved-107-core.json": "e06ba703bdebc3f8e7653521837f9e413b7147f4cb810fe1dc40f4668ea5f0e3",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/migrations/014_orion_pro_membership_nonnull.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "dashboard/backend/migrations/015_orion_pro_metric_membership_guard.sql": "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+    "dashboard/backend/migrations/016_orion_pro_native_match_details.sql": "12d63eaab6f4d610de3f2ff4efc0dcd71059c4d2e489a5f30d62d2a8498fd087",
+    "dashboard/backend/migrations/017_orion_pro_native_match_core_fields.sql": "87aac35a93b8b0455a7dcf13fde5bb0be468d1183a0bf4a96f36b04b4b770458",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-pilot-20261104/fixtures.py": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659",
+    "tests/orion_pro_bulk_local.py": "dc114f04fb53114d392d6feddc5aa690a2b666a4a6ebfee83b89f85bc0570b1c",
+    "tests/orion_pro_bulk_stream_local.py": "ee85dca178e6676e75bc0d2cca9790b159107eb9e13c2698ee621de0f1a3c3f2",
+    "dashboard/scripts/orion_pro_native_transport.py": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487",
+    "dashboard/scripts/orion_pro_bulk_stream_v2.py": "9f0d373847a0dc899bab5db55da11d0279f1445c1351bd8aa6fee8c6ecf8793b",
+    "dashboard/scripts/orion_pro_bulk.py": "2c530afc01be26c890ca923d0fa3416898234810e386e8140ba06ead8acb82dd",
+    "dashboard/scripts/orion_pro_policy.py": "354d285787327900971cb2a4efe2ead688c06fe57fdc84fb64c4f210c0ccecce",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85"
+  },
+  "pgStarts": 0,
+  "sourceCalls": 0,
+  "rdsCalls": 0,
+  "rawSourceWrites": 0,
+  "noOtherDatabaseAccepted": true,
+  "connectionsClosed": true,
+  "cleanup": {
+    "serverStarted": false
+  },
+  "inputsExact": true,
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 8
+  },
+  "elapsedSeconds": 0.054,
+  "status": "fail"
+}

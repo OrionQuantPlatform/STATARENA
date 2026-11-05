@@ -1,0 +1,59 @@
+[
+  {
+    "stage": "canonical_shape_built",
+    "atUtc": "2026-11-05T17:46:43.379390+00:00",
+    "scalarRows": 1240,
+    "appearances": 40,
+    "metrics": 31,
+    "matches": 4,
+    "allCanonical": true,
+    "variants": 1,
+    "scalarInsertMs": 127.469
+  },
+  {
+    "stage": "before_native_seal",
+    "atUtc": "2026-11-05T17:46:43.389944+00:00",
+    "phase": "core",
+    "generation": 2,
+    "scalarRows": 1240
+  },
+  {
+    "stage": "native_seal_passed",
+    "atUtc": "2026-11-05T17:46:43.482412+00:00",
+    "phase": "core",
+    "elapsedMs": 92.109
+  },
+  {
+    "stage": "native_commit_passed",
+    "atUtc": "2026-11-05T17:46:43.532681+00:00",
+    "phase": "core",
+    "elapsedMs": 49.954
+  },
+  {
+    "stage": "core_committed",
+    "atUtc": "2026-11-05T17:46:43.532958+00:00"
+  },
+  {
+    "stage": "before_native_seal",
+    "atUtc": "2026-11-05T17:46:43.549267+00:00",
+    "phase": "families",
+    "generation": 3,
+    "scalarRows": 1240
+  },
+  {
+    "stage": "native_seal_passed",
+    "atUtc": "2026-11-05T17:46:43.598871+00:00",
+    "phase": "families",
+    "elapsedMs": 49.352
+  },
+  {
+    "stage": "native_commit_passed",
+    "atUtc": "2026-11-05T17:46:43.648196+00:00",
+    "phase": "families",
+    "elapsedMs": 48.974
+  },
+  {
+    "stage": "families_committed",
+    "atUtc": "2026-11-05T17:46:43.648502+00:00"
+  }
+]

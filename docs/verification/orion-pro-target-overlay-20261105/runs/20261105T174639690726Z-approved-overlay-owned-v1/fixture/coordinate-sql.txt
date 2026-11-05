@@ -1,0 +1,7 @@
+INSERT INTO football.match_players(match_id,team_id,player_id,profile_version_id,match_team_revision_id,squad_status,played,participation_evidence,canonical_policy_version,
+                source_id,source_record_id,raw_position_code_state,shirt_number_state,recorded_from_gen,variant_key,is_canonical,contract_version,transform_version,transform_code_sha256,provenance_kind,raw_pitch_x,raw_pitch_y,coordinate_frame)
+                SELECT m.id,mt.team_id,p.player_id,p.id,mt.revision_id,CASE WHEN ((i-1)/%s)%%13<11 THEN 'starter' ELSE 'substitute' END,true,'native fixture',%s,
+                2,i,'absent','absent',%s,'stream:primary',true,%s,%s,%s,'provider',CASE WHEN i%%3=0 THEN 0.8200000000000001::float8 WHEN i%%3=1 THEN 0::float8 END, -25.01::float8, 'unknown'
+                FROM generate_series(%s::integer,%s::integer) i JOIN football.matches m ON m.id=200+(i-1)%%%s
+                JOIN football.match_teams mt ON mt.match_id=m.id AND mt.team_id=CASE WHEN (i-1)/%s<13 THEN 20 ELSE 30 END
+                JOIN football.player_profile_versions p ON p.player_id=(((i-1)/%s)+((i-1)%%%s)*29)%%%s+1
