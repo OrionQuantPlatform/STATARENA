@@ -1,8 +1,8 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T18:00:45.304062+00:00",
+  "atUtc": "2026-11-05T18:07:24.361578+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
-  "routeMatrixSha256": "0695d1886a2b5392d0683e0f7e7de37777d53d1c449cb5fe9d1d6b67cb5b898c",
+  "routeMatrixSha256": "e6d3c3d743b2461916f04d69a9532a0cfe03737494748c4a88811b4297b1890d",
   "localQualifiedOtherForms": 19,
   "remainingForms": 38,
   "routeCountsAreNotWorkloadPercentages": true,
@@ -69,7 +69,8 @@
       "shotEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_SHOT_ROUTER_REVIEW.json",
       "shotCommit": "2c95261e4c4a515d33039f9980c785d2ec4ff422",
       "shotCI": 42076456754,
-      "periodEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_PLAYER_PERIOD_REVIEW.json"
+      "periodEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_PLAYER_PERIOD_REVIEW.json",
+      "periodCommit": "c33a4ffdaad40dd3deb600823ddc626c406c8189"
     },
     {
       "id": "competitions-cups-standings",
@@ -132,7 +133,7 @@
     {
       "id": "enrichment-honours",
       "owner": "sql_publisher",
-      "status": "module_tested_router_integration_pending",
+      "status": "integrated_tested_locally",
       "routes": [
         "/api/club-wikidata",
         "/api/coach-portrait",
@@ -141,14 +142,15 @@
         "/api/club-links"
       ],
       "module": "dashboard/backend/services/orion-pro-enrichment.js",
-      "testedLocally": false,
+      "testedLocally": true,
       "pushed": false,
-      "deployed": false
+      "deployed": false,
+      "evidence": "docs/verification/orion-pro-enrichment-20261105/ROOT_ACTUAL_ENRICHMENT_REVIEW.json"
     }
   ],
   "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer. FIFA/UEFA moved from queue to sql_publisher after the enrichment module handoff; one owner per category.",
   "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
   "suggestedCommit": "docs: assign remaining backend routes by category and dependencies",
-  "currentLocalQualifiedForms": 43,
-  "currentRemainingForms": 14
+  "currentLocalQualifiedForms": 48,
+  "currentRemainingForms": 9
 }

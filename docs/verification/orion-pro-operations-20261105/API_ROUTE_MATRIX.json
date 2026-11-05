@@ -8,13 +8,14 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 14,
+    "reader-and-data-contract-required": 9,
     "local-fixture-aliases-v1-E2E-qualified": 2,
     "local-competitions-v1-E2E-qualified": 8,
     "local-native-match-details-v1-E2E-qualified": 6,
     "local-archives-v1-E2E-qualified": 4,
     "local-shot-detail-v1-E2E-qualified": 2,
-    "local-player-period-v1-E2E-qualified": 4
+    "local-player-period-v1-E2E-qualified": 4,
+    "local-enrichment-v1-E2E-qualified": 5
   },
   "rows": [
     {
@@ -246,14 +247,14 @@
         "name",
         "country"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-enrichment-v1-E2E-qualified",
       "defined103Destinations": [
         "football.team_profile_versions",
         "football.team_source_ids",
         "football.team_coach_tenures",
         "football.venues"
       ],
-      "actionOrGap": "Typed source IDs/profiles/venues/coaches/tenures/honours/media exist. Need exact support/enrichment mapping and accepted essential media. No runtime provider/source fallback."
+      "actionOrGap": "Typed identity, provenance and snapshot-qualified enrichment. Official home venue, unsupported location fields and real media/coverage are separate."
     },
     {
       "path": "/api/coach-portrait",
@@ -264,12 +265,12 @@
       "currentQueryNames": [
         "name"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-enrichment-v1-E2E-qualified",
       "defined103Destinations": [
         "football.coaches",
         "ingest.media_assets"
       ],
-      "actionOrGap": "Typed source IDs/profiles/venues/coaches/tenures/honours/media exist. Need exact support/enrichment mapping and accepted essential media. No runtime provider/source fallback."
+      "actionOrGap": "Typed identity, provenance and snapshot-qualified enrichment. Official home venue, unsupported location fields and real media/coverage are separate."
     },
     {
       "path": "/api/stadium",
@@ -280,12 +281,12 @@
       "currentQueryNames": [
         "id"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-enrichment-v1-E2E-qualified",
       "defined103Destinations": [
         "football.venues",
         "ingest.media_assets"
       ],
-      "actionOrGap": "Typed source IDs/profiles/venues/coaches/tenures/honours/media exist. Need exact support/enrichment mapping and accepted essential media. No runtime provider/source fallback."
+      "actionOrGap": "Typed identity, provenance and snapshot-qualified enrichment. Official home venue, unsupported location fields and real media/coverage are separate."
     },
     {
       "path": "/api/player-honours",
@@ -296,12 +297,12 @@
       "currentQueryNames": [
         "id"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-enrichment-v1-E2E-qualified",
       "defined103Destinations": [
         "football.player_honours",
         "football.honour_definitions"
       ],
-      "actionOrGap": "Typed source IDs/profiles/venues/coaches/tenures/honours/media exist. Need exact support/enrichment mapping and accepted essential media. No runtime provider/source fallback."
+      "actionOrGap": "Typed identity, provenance and snapshot-qualified enrichment. Official home venue, unsupported location fields and real media/coverage are separate."
     },
     {
       "path": "/api/archives/index",
@@ -411,11 +412,11 @@
       "currentQueryNames": [
         "club"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-enrichment-v1-E2E-qualified",
       "defined103Destinations": [
         "football.team_source_ids"
       ],
-      "actionOrGap": "Typed source IDs/profiles/venues/coaches/tenures/honours/media exist. Need exact support/enrichment mapping and accepted essential media. No runtime provider/source fallback."
+      "actionOrGap": "Typed identity, provenance and snapshot-qualified enrichment. Official home venue, unsupported location fields and real media/coverage are separate."
     },
     {
       "path": "/api/cup-index",
