@@ -1,0 +1,8 @@
+{
+  "elapsedSeconds": 30.736,
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Native migration release differs"
+  },
+  "status": "rejected"
+}
