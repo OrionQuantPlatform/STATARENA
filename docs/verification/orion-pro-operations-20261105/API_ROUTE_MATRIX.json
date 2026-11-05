@@ -8,14 +8,15 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 9,
+    "reader-and-data-contract-required": 4,
     "local-fixture-aliases-v1-E2E-qualified": 2,
     "local-competitions-v1-E2E-qualified": 8,
     "local-native-match-details-v1-E2E-qualified": 6,
     "local-archives-v1-E2E-qualified": 4,
     "local-shot-detail-v1-E2E-qualified": 2,
     "local-player-period-v1-E2E-qualified": 4,
-    "local-enrichment-v1-E2E-qualified": 5
+    "local-enrichment-v1-E2E-qualified": 5,
+    "local-spatial-advanced-v1-E2E-qualified": 5
   },
   "rows": [
     {
@@ -775,11 +776,11 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-spatial-advanced-v1-E2E-qualified",
       "defined103Destinations": [
         "football.team_match_advanced"
       ],
-      "actionOrGap": "103 destinations exist; implement typed native/normalized adapter only after exact field/type/state/order/scope qualification. No proven blanket schema blocker."
+      "actionOrGap": "Exact composite 017 publication; typed spatial and advanced projection with closed coverage/geometry. Real data and original raw layout remain unqualified."
     },
     {
       "path": "/api/pitchapi/matches/{match}/advanced/players",
@@ -788,11 +789,11 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-spatial-advanced-v1-E2E-qualified",
       "defined103Destinations": [
         "football.player_match_advanced"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Exact composite 017 publication; typed spatial and advanced projection with closed coverage/geometry. Real data and original raw layout remain unqualified."
     },
     {
       "path": "/api/pitchapi/matches/{match}/advanced/network",
@@ -801,13 +802,13 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-spatial-advanced-v1-E2E-qualified",
       "defined103Destinations": [
         "football.pass_networks",
         "football.pass_network_nodes",
         "football.pass_network_edges"
       ],
-      "actionOrGap": "103 destinations exist; implement typed native/normalized adapter only after exact field/type/state/order/scope qualification. No proven blanket schema blocker."
+      "actionOrGap": "Exact composite 017 publication; typed spatial and advanced projection with closed coverage/geometry. Real data and original raw layout remain unqualified."
     },
     {
       "path": "/api/pitchapi/matches/{match}/heatmaps",
@@ -818,12 +819,12 @@
       "currentQueryNames": [
         "frame"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-spatial-advanced-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_heatmaps",
         "football.match_heatmap_cells"
       ],
-      "actionOrGap": "103 holds grids/cells/frame; repeated actor occurrence/profile scope must be qualified; existing source failure is not fixed by a reader. No blanket107 dependency inferred."
+      "actionOrGap": "Exact composite 017 publication; typed spatial and advanced projection with closed coverage/geometry. Real data and original raw layout remain unqualified."
     },
     {
       "path": "/api/pitchapi/matches/{match}/shots/{shot}",
@@ -887,11 +888,11 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-spatial-advanced-v1-E2E-qualified",
       "defined103Destinations": [
         "football.player_match_advanced"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Exact composite 017 publication; typed spatial and advanced projection with closed coverage/geometry. Real data and original raw layout remain unqualified."
     }
   ],
   "evidence": "docs/verification/orion-pro-entities-20261105/runs/20261105T115323556411Z-actual-router-reviewed-fixture-v3/result.json",

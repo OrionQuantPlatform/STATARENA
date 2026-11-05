@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_spatial_advanced_local.py", line 116, in main
+    status = getattr(cases, name.lower())() or 'pass'
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/spatial_advanced_cases.py", line 189, in x07
+    self.rejected('network-frame', lambda: self.f.network('A', 'bad-frame', invalid=True), 'Unqualified network frame or window')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/spatial_advanced_cases.py", line 173, in rejected
+    setup()
+    ~~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/spatial_advanced_cases.py", line 189, in <lambda>
+    self.rejected('network-frame', lambda: self.f.network('A', 'bad-frame', invalid=True), 'Unqualified network frame or window')
+                                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/spatial_advanced_fixture.py", line 124, in network
+    self.close('football.pass_networks', match['id'], source, VARIANT)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/spatial_advanced_fixture.py", line 53, in close
+    self.conn.execute('UPDATE ' + table + ''' SET recorded_to_gen=%s
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        WHERE match_id=%s AND source_id=%s AND variant_key=%s AND recorded_to_gen IS NULL''',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (self.g, mid, source, variant))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_match_readers_local.py", line 70, in execute
+    return self.connection.execute(sql, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.ObjectNotInPrerequisiteState: Generation must be draft and owned by the current transaction
+CONTEXT:  PL/pgSQL function ingest.assert_draft_generation(bigint) line 5 at RAISE
+SQL statement "SELECT ingest.assert_draft_generation(NEW."recorded_to_gen")"
+PL/pgSQL function ingest.pro_guard_football_pass_networks() line 16 at PERFORM
