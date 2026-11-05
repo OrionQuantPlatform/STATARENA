@@ -1,6 +1,6 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T17:18:07.096936+00:00",
+  "atUtc": "2026-11-05T17:25:55.380589+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
   "routeMatrixSha256": "47d13b032429c77c6c1d0ff542d6532cd3a17d0f27c8b195de8f589c85e5e799",
   "localQualifiedOtherForms": 19,
@@ -25,7 +25,7 @@
     {
       "id": "match-details",
       "owner": "backend_entities",
-      "status": "integrated_tested_locally",
+      "status": "pushed_verified_locally_ci_rerun_pending",
       "routes": [
         "/api/pitchapi/matches/{match}",
         "/api/pitchapi/matches/{match}/momentum",
@@ -36,9 +36,12 @@
       ],
       "module": "dashboard/backend/services/orion-pro-match-details.js",
       "testedLocally": true,
-      "pushed": false,
+      "pushed": true,
       "deployed": false,
-      "evidence": "docs/verification/orion-pro-match-readers-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json"
+      "evidence": "docs/verification/orion-pro-match-readers-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json",
+      "commit": "7eb01f0aff3d937736769299d8f2d8911c85bd29",
+      "vercelFrontend": "READY dpl_Fm7SZyErxThCqCMxXUn5P7QgTdDe cle1",
+      "initialCiRun": 42073282469
     },
     {
       "id": "player-statistics-advanced",
@@ -88,7 +91,7 @@
     {
       "id": "archives",
       "owner": "sql_publisher",
-      "status": "in_development",
+      "status": "module_tested_router_integration_pending",
       "routes": [
         "/api/archives/index",
         "/api/archives/season",
@@ -118,7 +121,7 @@
     {
       "id": "enrichment-honours",
       "owner": "sql_publisher",
-      "status": "queued",
+      "status": "in_development",
       "routes": [
         "/api/club-wikidata",
         "/api/coach-portrait",
