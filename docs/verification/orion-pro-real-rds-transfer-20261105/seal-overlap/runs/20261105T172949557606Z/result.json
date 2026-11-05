@@ -1,0 +1,1097 @@
+{
+  "kind": "owned_fresh_copy_p2_overlap_e2e_v2",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/e2e_v2.py",
+    "--run-local",
+    "--release",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/ROOT_OWNED_OVERLAP_PLANNER_B.json",
+    "--release-sha256",
+    "d633b5dd1be79c46d261dd16fe6051f60b082c454cdffc2925e927457260009d"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "immutable_inputs",
+      "status": "pass",
+      "actual": {
+        "nativeChecksUnchanged": 264,
+        "capturedClause": {
+          "name": "variant",
+          "line": 155,
+          "sql": "SELECT EXISTS (SELECT 1 FROM \"football\".\"player_match_metric_values\" a JOIN \"football\".\"player_match_metric_values\" b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=g OR a.\"recorded_to_gen\"=g OR b.\"recorded_from_gen\"=g OR b.\"recorded_to_gen\"=g))"
+        },
+        "realPlannerSettings": {
+          "autovacuum": {
+            "setting": "on",
+            "unit": null
+          },
+          "cpu_index_tuple_cost": {
+            "setting": "0.005",
+            "unit": null
+          },
+          "cpu_tuple_cost": {
+            "setting": "0.01",
+            "unit": null
+          },
+          "effective_cache_size": {
+            "setting": "45874",
+            "unit": "8kB"
+          },
+          "effective_io_concurrency": {
+            "setting": "16",
+            "unit": null
+          },
+          "enable_hashjoin": {
+            "setting": "on",
+            "unit": null
+          },
+          "enable_mergejoin": {
+            "setting": "on",
+            "unit": null
+          },
+          "enable_nestloop": {
+            "setting": "on",
+            "unit": null
+          },
+          "jit": {
+            "setting": "off",
+            "unit": null
+          },
+          "join_collapse_limit": {
+            "setting": "8",
+            "unit": null
+          },
+          "max_parallel_workers_per_gather": {
+            "setting": "2",
+            "unit": null
+          },
+          "random_page_cost": {
+            "setting": "4",
+            "unit": null
+          },
+          "track_io_timing": {
+            "setting": "on",
+            "unit": null
+          },
+          "work_mem": {
+            "setting": "4096",
+            "unit": "kB"
+          }
+        },
+        "pinsSha256": "d24416c4932aad289fe255126144f4353e03eb0fdf02c45e1186a764ac37c0b8",
+        "fixtureMetricColumnCount": 25,
+        "fixtureMetricSqlSha256": "990337ce4ca8bc2361eaf0acfeaa9ae7da9136d80b33894cae81c6f26d744ba4",
+        "exactFixtureEmission": [
+          {
+            "shape": "compact",
+            "calls": 2,
+            "rows": 1240,
+            "allBoundArgumentsSha256": "76e884a83328a513f88354fd2e6a133193eac83c95b992fe2febe0dbf577e040",
+            "databaseCalls": 0
+          },
+          {
+            "shape": "dense",
+            "calls": 479,
+            "rows": 478547,
+            "allBoundArgumentsSha256": "3cb49f52cff2eb978d66c75e740e135e6866a3a7fba144c0b44b03553068ba63",
+            "databaseCalls": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "candidate_available",
+      "status": "pass",
+      "actual": {
+        "candidateSha256": "4be9589f6cb2b9f531badcf4eec6f1d858f7b642d27349f1a1d8b64640805cf7",
+        "setting": "SET LOCAL enable_nestloop=off"
+      }
+    },
+    {
+      "case": "separate_root_allocation",
+      "status": "pass",
+      "actual": {
+        "kind": "root_owned_fresh_p2_overlap_planner_v2",
+        "approvedBy": "ROOT",
+        "e2eSha256": "ac030d369b67d327c276cc7dbe9176372d5c3bac29609ffc490c262fa5778204",
+        "candidateSha256": "4be9589f6cb2b9f531badcf4eec6f1d858f7b642d27349f1a1d8b64640805cf7",
+        "protocolSha256": "43b991955c5270bc8bce015f5eec3c5f8ac1cf0f629d19c2a5260c0d1b653690",
+        "pinsSha256": "d24416c4932aad289fe255126144f4353e03eb0fdf02c45e1186a764ac37c0b8",
+        "maximumPgStarts": 1,
+        "maximumDatabaseConstructions": 2,
+        "maximumConnections": 5,
+        "maximumSeconds": 600,
+        "maximumOwnedBytes": 3221225472,
+        "maximumProofBytes": 100663296,
+        "maximumDenseMetricCopyRows": 957094,
+        "sourceCalls": 0,
+        "rdsCalls": 0
+      }
+    },
+    {
+      "case": "owned_exact_p2_tls_settings",
+      "status": "pass",
+      "actual": {
+        "databases": 2,
+        "pg": 180006,
+        "settingsExact": true,
+        "nativeTables": 94,
+        "sequenceRows": 67
+      }
+    },
+    {
+      "case": "compact_default_full_seal_and_commit",
+      "status": "pass",
+      "actual": {
+        "copyTrials": [
+          {
+            "rows": 1240,
+            "commands": 2,
+            "wireBytes": 346689,
+            "wireSha256": "a981a304f6e8551817a163e8ade73356a1a8f838ea29c1fd3c34c50c2e1ce5a2",
+            "largestBlockBytes": 279289,
+            "shape": "compact",
+            "catalogue": {
+              "relpages": 0,
+              "reltuples": -1.0,
+              "analyzeCount": 0,
+              "autoAnalyzeCount": 0,
+              "vacuumCount": 0,
+              "autoVacuumCount": 0,
+              "heapBytes": 524288,
+              "indexesBytes": 655360,
+              "totalBytes": 1212416
+            }
+          }
+        ],
+        "seal": [
+          {
+            "generation": 2,
+            "elapsedMs": 72.467
+          },
+          {
+            "generation": 3,
+            "elapsedMs": 36.763
+          }
+        ],
+        "deferredCommit": [
+          {
+            "elapsedMs": 44.026
+          },
+          {
+            "elapsedMs": 44.725
+          }
+        ],
+        "phases": [
+          {
+            "phase": "core",
+            "generation": 2,
+            "snapshotId": 2,
+            "runId": 7,
+            "manifest": "35a772a9bc4dafeb796a4bdcb9e9e2a7d554ac840ea5065658d23aaee94dde33"
+          },
+          {
+            "phase": "families",
+            "generation": 3,
+            "snapshotId": 3,
+            "runId": 13,
+            "manifest": "474bd3feceb3f58db7d13bf54c648d4d1ec09254700e163a8645883bb58e6550"
+          }
+        ],
+        "metricRows": 1240,
+        "appearances": 40,
+        "matches": 4
+      }
+    },
+    {
+      "case": "dense_fresh_and_bloated_copy_plans",
+      "status": "pass",
+      "actual": {
+        "copyTrials": [
+          {
+            "rows": 478547,
+            "commands": 479,
+            "wireBytes": 136642048,
+            "wireSha256": "53caca888732c1ed9cdcf8cb897700bb22083cffb5cc570d2521025f1e695bba",
+            "largestBlockBytes": 287086,
+            "shape": "fresh",
+            "catalogue": {
+              "relpages": 0,
+              "reltuples": -1.0,
+              "analyzeCount": 0,
+              "autoAnalyzeCount": 0,
+              "vacuumCount": 0,
+              "autoVacuumCount": 0,
+              "heapBytes": 186777600,
+              "indexesBytes": 253804544,
+              "totalBytes": 440655872
+            },
+            "afterRollbackCatalogue": {
+              "relpages": 0,
+              "reltuples": -1.0,
+              "analyzeCount": 0,
+              "autoAnalyzeCount": 0,
+              "vacuumCount": 0,
+              "autoVacuumCount": 0,
+              "heapBytes": 186777600,
+              "indexesBytes": 253804544,
+              "totalBytes": 440655872
+            }
+          },
+          {
+            "rows": 478547,
+            "commands": 479,
+            "wireBytes": 136642048,
+            "wireSha256": "53caca888732c1ed9cdcf8cb897700bb22083cffb5cc570d2521025f1e695bba",
+            "largestBlockBytes": 287086,
+            "shape": "prior_aborted_copy",
+            "catalogue": {
+              "relpages": 0,
+              "reltuples": -1.0,
+              "analyzeCount": 0,
+              "autoAnalyzeCount": 0,
+              "vacuumCount": 0,
+              "autoVacuumCount": 0,
+              "heapBytes": 373358592,
+              "indexesBytes": 269828096,
+              "totalBytes": 643309568
+            },
+            "physicalBytesAddedVsFirstTrial": 202653696
+          }
+        ],
+        "seal": [
+          {
+            "generation": 2,
+            "elapsedMs": 2066.15
+          },
+          {
+            "generation": 3,
+            "elapsedMs": 2108.656
+          }
+        ],
+        "deferredCommit": [
+          {
+            "elapsedMs": 1905.551
+          },
+          {
+            "elapsedMs": 2003.223
+          }
+        ],
+        "phases": [
+          {
+            "phase": "core",
+            "generation": 2,
+            "snapshotId": 2,
+            "runId": 7,
+            "manifest": "2f224abe7ad285b22076ae1638472e4eb80c310456c31eb91360a4b700804624"
+          },
+          {
+            "phase": "families",
+            "generation": 3,
+            "snapshotId": 3,
+            "runId": 13,
+            "manifest": "474bd3feceb3f58db7d13bf54c648d4d1ec09254700e163a8645883bb58e6550"
+          }
+        ],
+        "metricRows": 478547,
+        "appearances": 15437,
+        "matches": 612
+      }
+    },
+    {
+      "case": "dense_tuned_full_seal_and_commit",
+      "status": "pass",
+      "actual": {
+        "seal": [
+          {
+            "generation": 2,
+            "elapsedMs": 2066.15
+          },
+          {
+            "generation": 3,
+            "elapsedMs": 2108.656
+          }
+        ],
+        "deferredCommit": [
+          {
+            "elapsedMs": 1905.551
+          },
+          {
+            "elapsedMs": 2003.223
+          }
+        ],
+        "metricRows": 478547
+      }
+    },
+    {
+      "case": "adjacent_history_and_exact_rejections",
+      "status": "pass",
+      "actual": {
+        "compact": [
+          {
+            "mode": "default",
+            "case": "noop_successor",
+            "status": "rolled_back",
+            "sqlstate": "23514",
+            "message": "Identical typed reimport must reuse the retained version: football.player_match_metric_values",
+            "sealMs": 92.462
+          },
+          {
+            "mode": "default",
+            "case": "unselected_parent",
+            "status": "rolled_back",
+            "sqlstate": "23514",
+            "message": "Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f",
+            "sealMs": 47.941
+          },
+          {
+            "mode": "default",
+            "case": "valid_adjacent_correction",
+            "status": "committed",
+            "sealMs": 42.298,
+            "deferredCommitMs": 36.6
+          },
+          {
+            "mode": "no_nestloop",
+            "case": "noop_successor",
+            "status": "rolled_back",
+            "sqlstate": "23514",
+            "message": "Identical typed reimport must reuse the retained version: football.player_match_metric_values",
+            "sealMs": 47.366
+          },
+          {
+            "mode": "no_nestloop",
+            "case": "unselected_parent",
+            "status": "rolled_back",
+            "sqlstate": "23514",
+            "message": "Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f",
+            "sealMs": 42.084
+          },
+          {
+            "mode": "no_nestloop",
+            "case": "valid_adjacent_correction",
+            "status": "committed",
+            "sealMs": 44.726,
+            "deferredCommitMs": 55.818
+          }
+        ],
+        "dense": [
+          {
+            "mode": "no_nestloop",
+            "case": "noop_successor",
+            "status": "rolled_back",
+            "sqlstate": "23514",
+            "message": "Identical typed reimport must reuse the retained version: football.player_match_metric_values",
+            "sealMs": 2043.27
+          },
+          {
+            "mode": "no_nestloop",
+            "case": "unselected_parent",
+            "status": "rolled_back",
+            "sqlstate": "23514",
+            "message": "Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f",
+            "sealMs": 2061.391
+          },
+          {
+            "mode": "no_nestloop",
+            "case": "valid_adjacent_correction",
+            "status": "committed",
+            "sealMs": 2058.285,
+            "deferredCommitMs": 2044.179
+          }
+        ]
+      }
+    },
+    {
+      "case": "interval_truth_under_both_plans",
+      "status": "pass",
+      "actual": {
+        "witnesses": 12,
+        "matchedExactOverlapQueries": true
+      }
+    },
+    {
+      "case": "native_catalogue_acl_and_cleanup",
+      "status": "pass",
+      "actual": {
+        "nativeTables": 94,
+        "sequences": 67,
+        "ordinaryRuntimeDenials": [
+          {
+            "sql": "SELECT ingest.begin_generation('denied','x','x')",
+            "sqlstate": "42501"
+          },
+          {
+            "sql": "SELECT ingest.seal_generation(1,repeat('0',64))",
+            "sqlstate": "42501"
+          },
+          {
+            "sql": "SELECT ingest.validate_generation(1)",
+            "sqlstate": "42501"
+          },
+          {
+            "sql": "SELECT nextval('ingest.commit_generation_seq')",
+            "sqlstate": "42501"
+          },
+          {
+            "sql": "SELECT last_value FROM football.player_match_metric_values_revision_id_seq",
+            "sqlstate": "42501"
+          }
+        ],
+        "functionAndSchemaExact": true
+      }
+    }
+  ],
+  "inputSha256": {
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/e2e_v2.py": "ac030d369b67d327c276cc7dbe9176372d5c3bac29609ffc490c262fa5778204",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/PINS.json": "d24416c4932aad289fe255126144f4353e03eb0fdf02c45e1186a764ac37c0b8",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/PROTOCOL.md": "43b991955c5270bc8bce015f5eec3c5f8ac1cf0f629d19c2a5260c0d1b653690",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/real-core-operation-v4-p2/apply.result.json": "b8f27dd58f8ae81918195d2bd485df84513a523f8db271b9c8dbd8e91696d2da",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/failed-core-p2-readbacks/20261105T171021459489Z/result.json": "646bf19f37ca17a64bdcc130f239a876676d17864135b6ba776161717e03c0a1",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/failed-core-p2-readbacks/20261105T171021459489Z/native.json": "5421c7a3457c36d133785ad79185e3f54f8948edf58078d495258c4d105f1753",
+    "tests/orion_pro_bulk_stream_local.py": "ee85dca178e6676e75bc0d2cca9790b159107eb9e13c2698ee621de0f1a3c3f2",
+    "tests/orion_pro_bulk_local.py": "dc114f04fb53114d392d6feddc5aa690a2b666a4a6ebfee83b89f85bc0570b1c",
+    "tests/orion_e2e_process.py": "06bd176152361ab96f26930920c71d7a32fd9ddadde5bfc8bb02008e87174c04",
+    "docs/verification/orion-validator-membership-20261105/e2e.py": "4999e899d06f349693c30405c2789cef6b99cf22c82c3b611635f180eb266a96",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/migrations/014_orion_pro_membership_nonnull.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "dashboard/backend/migrations/015_orion_pro_metric_membership_guard.sql": "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/planner_scope.py": "4be9589f6cb2b9f531badcf4eec6f1d858f7b642d27349f1a1d8b64640805cf7",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/ROOT_OWNED_OVERLAP_PLANNER_B.json": "d633b5dd1be79c46d261dd16fe6051f60b082c454cdffc2925e927457260009d"
+  },
+  "commands": [
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+        "-D",
+        "/tmp/orion-pro-e2e-jcy4wqqi/data",
+        "--auth=trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exitCode": 0,
+      "stdout": "000-initdb.stdout.log",
+      "stderr": "000-initdb.stderr.log"
+    },
+    {
+      "command": [
+        "openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-sha256",
+        "-nodes",
+        "-days",
+        "2",
+        "-keyout",
+        "/tmp/orion-pro-e2e-jcy4wqqi/data/server.key",
+        "-out",
+        "/tmp/orion-pro-e2e-jcy4wqqi/data/server.crt",
+        "-subj",
+        "/CN=127.0.0.1",
+        "-addext",
+        "subjectAltName=IP:127.0.0.1"
+      ],
+      "exitCode": 0,
+      "stdout": "001-tls.stdout.log",
+      "stderr": "001-tls.stderr.log"
+    },
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/tmp/orion-pro-e2e-jcy4wqqi/data",
+        "-l",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/runs/20261105T172949557606Z/postgres.log",
+        "-o",
+        "-h 127.0.0.1 -p 56740 -k /tmp/orion-pro-e2e-jcy4wqqi/socket -c fsync=on",
+        "-w",
+        "start"
+      ],
+      "exitCode": 0,
+      "stdout": "002-postgres-start.stdout.log",
+      "stderr": "002-postgres-start.stderr.log"
+    },
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/tmp/orion-pro-e2e-jcy4wqqi/data",
+        "-m",
+        "fast",
+        "-w",
+        "stop"
+      ],
+      "exitCode": 0,
+      "stdout": "003-postgres-stop.stdout.log",
+      "stderr": "003-postgres-stop.stderr.log"
+    }
+  ],
+  "resources": [
+    {
+      "seconds": 2.328,
+      "ownedBytes": 76685312,
+      "proofBytes": 6463914
+    },
+    {
+      "seconds": 3.349,
+      "ownedBytes": 112353280,
+      "proofBytes": 6463914
+    },
+    {
+      "seconds": 4.365,
+      "ownedBytes": 148414464,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 5.385,
+      "ownedBytes": 181944320,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 6.402,
+      "ownedBytes": 213729280,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 7.416,
+      "ownedBytes": 243417088,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 8.433,
+      "ownedBytes": 271925248,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 9.45,
+      "ownedBytes": 303382528,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 10.467,
+      "ownedBytes": 333799424,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 11.486,
+      "ownedBytes": 362110976,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 12.505,
+      "ownedBytes": 393568256,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 13.527,
+      "ownedBytes": 425025536,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 14.549,
+      "ownedBytes": 453337088,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 15.568,
+      "ownedBytes": 482697216,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 16.587,
+      "ownedBytes": 533037056,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 17.607,
+      "ownedBytes": 556105728,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 18.625,
+      "ownedBytes": 581271552,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 19.644,
+      "ownedBytes": 623214592,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 20.665,
+      "ownedBytes": 647331840,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 21.684,
+      "ownedBytes": 671449088,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 22.701,
+      "ownedBytes": 731226112,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 23.721,
+      "ownedBytes": 757440512,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 24.739,
+      "ownedBytes": 782606336,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 25.758,
+      "ownedBytes": 823500800,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 26.778,
+      "ownedBytes": 849715200,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 27.798,
+      "ownedBytes": 873832448,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 28.816,
+      "ownedBytes": 916832256,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 29.833,
+      "ownedBytes": 941998080,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 30.852,
+      "ownedBytes": 965066752,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 31.875,
+      "ownedBytes": 1009106944,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 32.894,
+      "ownedBytes": 1031127040,
+      "proofBytes": 6645980
+    },
+    {
+      "seconds": 33.922,
+      "ownedBytes": 1073070080,
+      "proofBytes": 6646047
+    },
+    {
+      "seconds": 34.942,
+      "ownedBytes": 1112924160,
+      "proofBytes": 6646047
+    },
+    {
+      "seconds": 35.961,
+      "ownedBytes": 1152770048,
+      "proofBytes": 6646047
+    },
+    {
+      "seconds": 36.975,
+      "ownedBytes": 1174790144,
+      "proofBytes": 6646047
+    },
+    {
+      "seconds": 37.99,
+      "ownedBytes": 1214636032,
+      "proofBytes": 6646047
+    },
+    {
+      "seconds": 39.015,
+      "ownedBytes": 1404616704,
+      "proofBytes": 6646539
+    },
+    {
+      "seconds": 40.036,
+      "ownedBytes": 1316945920,
+      "proofBytes": 6670061
+    },
+    {
+      "seconds": 41.055,
+      "ownedBytes": 1404616704,
+      "proofBytes": 6693658
+    },
+    {
+      "seconds": 42.074,
+      "ownedBytes": 1231413248,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 43.094,
+      "ownedBytes": 1382408192,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 44.113,
+      "ownedBytes": 1399185408,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 45.129,
+      "ownedBytes": 1415962624,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 46.146,
+      "ownedBytes": 1433853952,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 47.182,
+      "ownedBytes": 1450631168,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 48.201,
+      "ownedBytes": 1467408384,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 49.234,
+      "ownedBytes": 1484185600,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 50.26,
+      "ownedBytes": 1518788608,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 51.298,
+      "ownedBytes": 1535565824,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 52.338,
+      "ownedBytes": 1552343040,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 53.361,
+      "ownedBytes": 1585897472,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 54.4,
+      "ownedBytes": 1603723264,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 55.419,
+      "ownedBytes": 1620500480,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 56.438,
+      "ownedBytes": 1654054912,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 57.47,
+      "ownedBytes": 1671880704,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 58.5,
+      "ownedBytes": 1688657920,
+      "proofBytes": 6740922
+    },
+    {
+      "seconds": 59.518,
+      "ownedBytes": 1688657920,
+      "proofBytes": 6741252
+    },
+    {
+      "seconds": 60.549,
+      "ownedBytes": 1705435136,
+      "proofBytes": 6741252
+    },
+    {
+      "seconds": 61.59,
+      "ownedBytes": 1706483712,
+      "proofBytes": 6741252
+    },
+    {
+      "seconds": 62.609,
+      "ownedBytes": 1706483712,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 63.643,
+      "ownedBytes": 1723260928,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 64.704,
+      "ownedBytes": 1723260928,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 65.721,
+      "ownedBytes": 1724309504,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 66.741,
+      "ownedBytes": 1724309504,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 67.775,
+      "ownedBytes": 1741086720,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 68.796,
+      "ownedBytes": 1741086720,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 69.827,
+      "ownedBytes": 1742135296,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 70.85,
+      "ownedBytes": 1758912512,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 71.874,
+      "ownedBytes": 1758912512,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 72.908,
+      "ownedBytes": 1759961088,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 73.947,
+      "ownedBytes": 1759961088,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 74.965,
+      "ownedBytes": 1776738304,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 75.986,
+      "ownedBytes": 1776738304,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 77.051,
+      "ownedBytes": 1778835456,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 78.07,
+      "ownedBytes": 1795612672,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 79.099,
+      "ownedBytes": 1797709824,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 80.147,
+      "ownedBytes": 1800855552,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 81.166,
+      "ownedBytes": 1817632768,
+      "proofBytes": 6741421
+    },
+    {
+      "seconds": 82.192,
+      "ownedBytes": 1888624640,
+      "proofBytes": 6742748
+    },
+    {
+      "seconds": 83.224,
+      "ownedBytes": 1883185152,
+      "proofBytes": 6766310
+    },
+    {
+      "seconds": 84.244,
+      "ownedBytes": 1925087232,
+      "proofBytes": 6789947
+    },
+    {
+      "seconds": 85.275,
+      "ownedBytes": 1916616704,
+      "proofBytes": 6813579
+    },
+    {
+      "seconds": 86.3,
+      "ownedBytes": 1884626944,
+      "proofBytes": 6837290
+    },
+    {
+      "seconds": 87.321,
+      "ownedBytes": 1973739520,
+      "proofBytes": 6837716
+    },
+    {
+      "seconds": 88.348,
+      "ownedBytes": 1944993792,
+      "proofBytes": 6837716
+    },
+    {
+      "seconds": 89.379,
+      "ownedBytes": 1990852608,
+      "proofBytes": 6837856
+    },
+    {
+      "seconds": 90.397,
+      "ownedBytes": 1817649152,
+      "proofBytes": 6837856
+    },
+    {
+      "seconds": 91.422,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6838086
+    },
+    {
+      "seconds": 92.455,
+      "ownedBytes": 1901494272,
+      "proofBytes": 6838250
+    },
+    {
+      "seconds": 93.476,
+      "ownedBytes": 1907703808,
+      "proofBytes": 6838250
+    },
+    {
+      "seconds": 94.503,
+      "ownedBytes": 1907318784,
+      "proofBytes": 6838394
+    },
+    {
+      "seconds": 95.531,
+      "ownedBytes": 1894793216,
+      "proofBytes": 6838394
+    },
+    {
+      "seconds": 96.547,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6854818
+    },
+    {
+      "seconds": 97.563,
+      "ownedBytes": 1946836992,
+      "proofBytes": 6854975
+    },
+    {
+      "seconds": 98.601,
+      "ownedBytes": 1936572416,
+      "proofBytes": 6854975
+    },
+    {
+      "seconds": 99.633,
+      "ownedBytes": 1943789568,
+      "proofBytes": 6855370
+    },
+    {
+      "seconds": 100.655,
+      "ownedBytes": 1925431296,
+      "proofBytes": 6855370
+    },
+    {
+      "seconds": 101.708,
+      "ownedBytes": 1934663680,
+      "proofBytes": 6855882
+    },
+    {
+      "seconds": 102.731,
+      "ownedBytes": 1923645440,
+      "proofBytes": 6855882
+    },
+    {
+      "seconds": 103.757,
+      "ownedBytes": 1925554176,
+      "proofBytes": 6855882
+    },
+    {
+      "seconds": 104.777,
+      "ownedBytes": 1917075456,
+      "proofBytes": 6855882
+    },
+    {
+      "seconds": 105.795,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6911710
+    },
+    {
+      "seconds": 106.824,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6911710
+    },
+    {
+      "seconds": 107.86,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6911710
+    },
+    {
+      "seconds": 108.88,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6911710
+    },
+    {
+      "seconds": 109.91,
+      "ownedBytes": 1818091520,
+      "proofBytes": 6911710
+    }
+  ],
+  "pgStarts": 1,
+  "fixtureDatabases": 2,
+  "fixtureConstructions": 2,
+  "maximumOpenConnections": 5,
+  "analyzeCommands": 0,
+  "manualVacuumCommands": 0,
+  "sourceReads": 0,
+  "ramGets": 0,
+  "rdsCalls": 0,
+  "providerCalls": 0,
+  "fullAcceptance": false,
+  "nativeOracleBufferPeakBytes": 1504882,
+  "clientsClosed": true,
+  "cleanup": {
+    "serverStopped": true,
+    "ownedRoot": "/tmp/orion-pro-e2e-jcy4wqqi",
+    "ownedRootRemoved": true,
+    "retainedForFailureInspection": false,
+    "realCorpusTouched": false
+  },
+  "inputHashesExact": true,
+  "elapsedSeconds": 111.061,
+  "counts": {
+    "pass": 10,
+    "fail": 0,
+    "unverified": 0
+  },
+  "status": "pass_owned_local_only"
+}

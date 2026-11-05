@@ -1,0 +1,3097 @@
+{
+  "kind": "owned_017_018_matched_cold_overlap_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py",
+    "--run-local",
+    "--release",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/ROOT_OWNED_MATCHED_018_A.json",
+    "--release-sha256",
+    "c9e310ee8748b0f24af1ec2c4b89bedd679864997767f7d056d52536896671ec"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/PROPOSAL.md",
+  "cases": [
+    {
+      "case": "exact_inputs_and_workflow",
+      "status": "pass",
+      "actual": {
+        "activeTables": 98,
+        "columns": 1829,
+        "coldOriginalChecks": [
+          "SELECT EXISTS (SELECT 1 FROM \"football\".\"player_match_metric_values\" a JOIN \"football\".\"player_match_metric_values\" b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=g OR a.\"recorded_to_gen\"=g OR b.\"recorded_from_gen\"=g OR b.\"recorded_to_gen\"=g))",
+          "SELECT EXISTS (SELECT 1 FROM \"football\".\"player_match_metric_values\" a JOIN \"football\".\"player_match_metric_values\" b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=g OR a.\"recorded_to_gen\"=g OR b.\"recorded_from_gen\"=g OR b.\"recorded_to_gen\"=g) AND a.is_canonical AND b.is_canonical)"
+        ]
+      }
+    },
+    {
+      "case": "candidate_available",
+      "status": "pass",
+      "actual": {
+        "candidateSha256": "a52d3330c5d1a588d348e1758ec6f889ba5fb5d85e0000d0eec6420a98879702",
+        "index": true,
+        "originalSqlExact": true
+      }
+    },
+    {
+      "case": "separate_allocation",
+      "status": "pass",
+      "actual": {
+        "kind": "root_owned_matched_018_overlap_v1",
+        "approvedBy": "ROOT",
+        "e2eSha256": "2f972ab499e77b882b9453bd0cfd79488b1cc2283b8b6278e7029a6ef81abffe",
+        "candidateSha256": "a52d3330c5d1a588d348e1758ec6f889ba5fb5d85e0000d0eec6420a98879702",
+        "protocolSha256": "a9bc8fb8002fd29a1a3a2c0ff764ed3efe1b74f126c4e2df0641791a2defbbd9",
+        "pinsSha256": "03cf000c7340c6e93d60dc98debff018f627d99089ec2409d6a17651fa61b194",
+        "actual017ProvenanceSha256": "ec5ebaf93e2875d693d0ff8fd20b341bc689f2b1299a251ebf912fc880971689",
+        "maximumPgStarts": 1,
+        "maximumDatabaseConstructions": 3,
+        "maximumConnections": 5,
+        "maximumSeconds": 600,
+        "maximumOwnedBytes": 3221225472,
+        "maximumProofBytes": 100663296,
+        "maximumDenseMetricCopyRows": 2871282,
+        "rdsCalls": 0,
+        "realSourceCalls": 0
+      }
+    },
+    {
+      "case": "owned_tls_cluster",
+      "status": "pass",
+      "actual": {
+        "onePrivateCluster": true,
+        "roles": {
+          "owner": "statarena_admin",
+          "writer": "statarena_ingest",
+          "reader": "statarena_runtime"
+        }
+      }
+    },
+    {
+      "case": "baseline017_two_aborts_and_native_copy",
+      "status": "fail",
+      "error": "Unexpected native SQL failure",
+      "sqlstate": null,
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_bulk_stream_local.py\", line 111, in phase_transaction\n    yield\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_bulk_stream_local.py\", line 212, in fixture\n    shape = conn.execute('SELECT count(*),count(DISTINCT(match_id,player_id,period_code,family_code,metric_code)),bool_and(is_canonical),count(DISTINCT variant_key) FROM football.player_match_metric_values').fetchone()\n            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py\", line 222, in execute\n    result['copy']=outer.copy_batches(c,self.batches);result['cold']=outer.cold(c)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/e2e_v2.py\", line 381, in copy_batches\n    with conn.cursor().copy('COPY ('+select+') TO STDOUT',params) as stream:\n         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py\", line 141, in __enter__\n    return next(self.gen)\n  File \"/tmp/statarena-publication-test-python/psycopg/cursor.py\", line 325, in copy\n    self._conn.wait(self._start_copy_gen(statement, params))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/statarena-publication-test-python/psycopg/connection.py\", line 495, in wait\n    return waiting.wait(\n           ~~~~~~~~~~~~^\n        gen, self.pgconn.socket, interval=interval, timeout=timeout\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"psycopg_binary/_psycopg/waiting.pyx\", line 236, in psycopg_binary._psycopg.wait_c\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py\", line 123, in alarm\n    def alarm(signum,frame):raise TimeoutError(self.stop_reason or 'Owned campaign deadline')\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: Owned campaign deadline\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py\", line 248, in fixture_attempt\n    result['phases']=fixture(Proxy(),self.model103,'a'*64,data)\n                     ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_bulk_stream_local.py\", line 149, in fixture\n    with phase_transaction('core'):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_bulk_stream_local.py\", line 119, in phase_transaction\n    conn.rollback(); raise\n    ~~~~~~~~~~~~~^^\n  File \"/tmp/statarena-publication-test-python/psycopg/connection.py\", line 314, in rollback\n    self.wait(self._rollback_gen())\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/statarena-publication-test-python/psycopg/connection.py\", line 495, in wait\n    return waiting.wait(\n           ~~~~~~~~~~~~^\n        gen, self.pgconn.socket, interval=interval, timeout=timeout\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"psycopg_binary/_psycopg/waiting.pyx\", line 227, in psycopg_binary._psycopg.wait_c\n  File \"/tmp/statarena-publication-test-python/psycopg/_connection_base.py\", line 617, in _rollback_gen\n    yield from self._exec_command(b\"ROLLBACK\")\n  File \"/tmp/statarena-publication-test-python/psycopg/_connection_base.py\", line 474, in _exec_command\n    self.pgconn.send_query(command)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"psycopg_binary/pq/pgconn.pyx\", line 310, in psycopg_binary.pq.PGconn.send_query\npsycopg.OperationalError: sending query failed: another command is already in progress\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py\", line 387, in main\n    try:c.report['cases'].append({'case':name,'status':'pass','actual':fn()})\n                                                                       ~~^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py\", line 296, in baseline\n    result=self.results[db]=self.fixture_attempt(db,'actual_default')\n                            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py\", line 258, in fixture_attempt\n    require(not abort and not compact and not candidate and error.sqlstate=='57014' and\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            len(result['seals'])==1 and 'player_match_metric_values' in ctx and 'recorded_to_gen' in ctx and\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            any(p['sql'][7:] in ctx for p in self.predicates),'Unexpected native SQL failure')\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/e2e_v2.py\", line 50, in require\n    raise AssertionError(message)\nAssertionError: Unexpected native SQL failure\n"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+        "-D",
+        "/tmp/orion-pro-e2e-msfur24e/data",
+        "--auth=trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exitCode": 0,
+      "stdout": "000-initdb.stdout.log",
+      "stderr": "000-initdb.stderr.log"
+    },
+    {
+      "command": [
+        "openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-sha256",
+        "-nodes",
+        "-days",
+        "2",
+        "-keyout",
+        "/tmp/orion-pro-e2e-msfur24e/data/server.key",
+        "-out",
+        "/tmp/orion-pro-e2e-msfur24e/data/server.crt",
+        "-subj",
+        "/CN=127.0.0.1",
+        "-addext",
+        "subjectAltName=IP:127.0.0.1"
+      ],
+      "exitCode": 0,
+      "stdout": "001-tls.stdout.log",
+      "stderr": "001-tls.stderr.log"
+    },
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/tmp/orion-pro-e2e-msfur24e/data",
+        "-l",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched-runs/20261105T180447204798Z/postgres.log",
+        "-o",
+        "-h 127.0.0.1 -p 61025 -k /tmp/orion-pro-e2e-msfur24e/socket -c fsync=on",
+        "-w",
+        "start"
+      ],
+      "exitCode": 0,
+      "stdout": "002-postgres-start.stdout.log",
+      "stderr": "002-postgres-start.stderr.log"
+    }
+  ],
+  "resources": [
+    {
+      "seconds": 2.442,
+      "ownedBytes": 77414400,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 3.461,
+      "ownedBytes": 113975296,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 4.479,
+      "ownedBytes": 146653184,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 5.495,
+      "ownedBytes": 177717248,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 6.513,
+      "ownedBytes": 206356480,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 7.53,
+      "ownedBytes": 234864640,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 8.546,
+      "ownedBytes": 265273344,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 9.565,
+      "ownedBytes": 296738816,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 10.582,
+      "ownedBytes": 327147520,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 11.601,
+      "ownedBytes": 356507648,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 12.619,
+      "ownedBytes": 385867776,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 13.639,
+      "ownedBytes": 417325056,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 14.665,
+      "ownedBytes": 444588032,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 15.687,
+      "ownedBytes": 470802432,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 16.703,
+      "ownedBytes": 515899392,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 17.715,
+      "ownedBytes": 541065216,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 18.736,
+      "ownedBytes": 565182464,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 19.752,
+      "ownedBytes": 606076928,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 20.779,
+      "ownedBytes": 630194176,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 21.794,
+      "ownedBytes": 656408576,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 22.809,
+      "ownedBytes": 699408384,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 23.826,
+      "ownedBytes": 725622784,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 24.84,
+      "ownedBytes": 748691456,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 25.857,
+      "ownedBytes": 791683072,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 26.874,
+      "ownedBytes": 813703168,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 27.89,
+      "ownedBytes": 839925760,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 28.907,
+      "ownedBytes": 883965952,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 29.919,
+      "ownedBytes": 923811840,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 30.938,
+      "ownedBytes": 966803456,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 31.953,
+      "ownedBytes": 991969280,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 32.97,
+      "ownedBytes": 1015037952,
+      "proofBytes": 12145167
+    },
+    {
+      "seconds": 33.986,
+      "ownedBytes": 1056989184,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 35.005,
+      "ownedBytes": 1112563712,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 36.035,
+      "ownedBytes": 1134583808,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 37.064,
+      "ownedBytes": 1155555328,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 38.126,
+      "ownedBytes": 1194352640,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 39.141,
+      "ownedBytes": 1244684288,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 40.158,
+      "ownedBytes": 1311793152,
+      "proofBytes": 12145234
+    },
+    {
+      "seconds": 41.176,
+      "ownedBytes": 1362124800,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 42.193,
+      "ownedBytes": 1384562688,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 43.212,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 44.229,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 45.247,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 46.28,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 47.297,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 48.327,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 49.369,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 50.392,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 51.413,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 52.435,
+      "ownedBytes": 1429528576,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 53.452,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 54.517,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 55.54,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 56.556,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 57.598,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 58.617,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 59.636,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 60.666,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 61.715,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 62.739,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 63.787,
+      "ownedBytes": 1446305792,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 64.817,
+      "ownedBytes": 1463083008,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 65.838,
+      "ownedBytes": 1463083008,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 66.87,
+      "ownedBytes": 1463083008,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 67.9,
+      "ownedBytes": 1463083008,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 68.928,
+      "ownedBytes": 1463148544,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 69.96,
+      "ownedBytes": 1463148544,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 70.991,
+      "ownedBytes": 1463148544,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 72.009,
+      "ownedBytes": 1480974336,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 73.033,
+      "ownedBytes": 1480974336,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 74.06,
+      "ownedBytes": 1480974336,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 75.077,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 76.112,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 77.147,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 78.165,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 79.265,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 80.283,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 81.297,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 82.314,
+      "ownedBytes": 1497751552,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 83.335,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 84.354,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 85.385,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 86.406,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 87.422,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 88.44,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 89.496,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 90.515,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 91.548,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 92.576,
+      "ownedBytes": 1514528768,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 93.593,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 94.623,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 95.672,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 96.694,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 97.719,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 98.756,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 99.774,
+      "ownedBytes": 1531305984,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 100.788,
+      "ownedBytes": 1548083200,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 101.832,
+      "ownedBytes": 1548083200,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 102.849,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 103.884,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 104.916,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 105.94,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 106.973,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 108.055,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 109.071,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 110.108,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 111.15,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 112.168,
+      "ownedBytes": 1565908992,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 113.215,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 114.236,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 115.255,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 116.276,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 117.336,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 118.442,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 119.459,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 120.476,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 121.493,
+      "ownedBytes": 1582686208,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 122.511,
+      "ownedBytes": 1599463424,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 123.528,
+      "ownedBytes": 1599463424,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 124.602,
+      "ownedBytes": 1599463424,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 125.617,
+      "ownedBytes": 1599463424,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 126.633,
+      "ownedBytes": 1599463424,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 127.651,
+      "ownedBytes": 1599463424,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 128.667,
+      "ownedBytes": 1616240640,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 129.681,
+      "ownedBytes": 1616240640,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 130.698,
+      "ownedBytes": 1616240640,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 131.714,
+      "ownedBytes": 1633017856,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 132.743,
+      "ownedBytes": 1633017856,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 133.759,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 134.789,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 135.829,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 136.845,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 137.874,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 138.968,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 139.993,
+      "ownedBytes": 1634066432,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 141.01,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 142.027,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 143.046,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 144.119,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 145.143,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 146.16,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 147.177,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 148.195,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 149.212,
+      "ownedBytes": 1650843648,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 150.242,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 151.269,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 152.288,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 153.317,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 154.364,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 155.401,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146103
+    },
+    {
+      "seconds": 156.423,
+      "ownedBytes": 1667620864,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 157.448,
+      "ownedBytes": 1684398080,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 158.467,
+      "ownedBytes": 1684398080,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 159.485,
+      "ownedBytes": 1684398080,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 160.535,
+      "ownedBytes": 1684398080,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 161.549,
+      "ownedBytes": 1684398080,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 162.573,
+      "ownedBytes": 1684398080,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 163.647,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 164.673,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 165.742,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 166.765,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 167.783,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 168.801,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 169.842,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 170.868,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 171.885,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 172.909,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 173.927,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 174.956,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 175.999,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 177.016,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 178.043,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 179.078,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 180.091,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 181.138,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 182.154,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 183.195,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 184.212,
+      "ownedBytes": 1685446656,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 185.234,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146436
+    },
+    {
+      "seconds": 186.251,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 187.274,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 188.3,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 189.314,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 190.331,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 191.376,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 192.393,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 193.418,
+      "ownedBytes": 1702223872,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 194.452,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 195.465,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 196.48,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 197.529,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 198.544,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 199.576,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 200.608,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 201.622,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 202.646,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 203.683,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 204.697,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 205.723,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 206.768,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 207.785,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 208.798,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 209.847,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 210.866,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 211.9,
+      "ownedBytes": 1703272448,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 212.931,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 213.945,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 214.972,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 216.007,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 217.026,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 218.049,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 219.095,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 220.109,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 221.141,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 222.18,
+      "ownedBytes": 1720049664,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 223.199,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 224.216,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 225.278,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 226.337,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 227.352,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 228.365,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 229.383,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 230.415,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 231.437,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 232.454,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 233.481,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 234.519,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 235.535,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 236.563,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 237.59,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 238.607,
+      "ownedBytes": 1721098240,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 239.637,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 240.674,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 241.755,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 242.772,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 243.788,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 244.804,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 245.821,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 246.835,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 247.849,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 248.869,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 249.899,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 250.914,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 251.948,
+      "ownedBytes": 1737875456,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 252.976,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 253.992,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 255.018,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 256.051,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 257.063,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 258.081,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 259.136,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 260.151,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 261.181,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 262.213,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 263.23,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 264.269,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 265.295,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 266.311,
+      "ownedBytes": 1738924032,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 267.34,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 268.369,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 269.381,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 270.411,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 271.447,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 272.463,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 273.485,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 274.521,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 275.535,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 276.562,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 277.607,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 278.623,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 279.656,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 280.68,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 281.699,
+      "ownedBytes": 1755701248,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 282.721,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 283.752,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 284.768,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 285.803,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 286.833,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 287.849,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 288.876,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 289.91,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 290.927,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 291.992,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 293.005,
+      "ownedBytes": 1756749824,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 294.023,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 295.039,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 296.062,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 297.08,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 298.098,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 299.124,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 300.14,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 301.156,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 302.205,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 303.219,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 304.291,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 305.307,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 306.325,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 307.342,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 308.364,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 309.376,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 310.405,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 311.441,
+      "ownedBytes": 1773527040,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 312.456,
+      "ownedBytes": 1774575616,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 313.482,
+      "ownedBytes": 1774575616,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 314.539,
+      "ownedBytes": 1774575616,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 315.556,
+      "ownedBytes": 1774575616,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 316.58,
+      "ownedBytes": 1774575616,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 317.597,
+      "ownedBytes": 1775624192,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 318.614,
+      "ownedBytes": 1775624192,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 319.634,
+      "ownedBytes": 1775624192,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 320.668,
+      "ownedBytes": 1775624192,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 321.685,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 322.705,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 323.737,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 324.75,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 325.772,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 326.875,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 327.892,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 328.909,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 329.925,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 330.941,
+      "ownedBytes": 1792401408,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 331.958,
+      "ownedBytes": 1793449984,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 332.975,
+      "ownedBytes": 1793449984,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 334.018,
+      "ownedBytes": 1794498560,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 335.036,
+      "ownedBytes": 1794498560,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 336.056,
+      "ownedBytes": 1794498560,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 337.072,
+      "ownedBytes": 1795547136,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 338.106,
+      "ownedBytes": 1795547136,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 339.145,
+      "ownedBytes": 1796595712,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 340.16,
+      "ownedBytes": 1796595712,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 341.178,
+      "ownedBytes": 1796595712,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 342.217,
+      "ownedBytes": 1797644288,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 343.231,
+      "ownedBytes": 1797644288,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 344.254,
+      "ownedBytes": 1797644288,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 345.29,
+      "ownedBytes": 1797644288,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 346.306,
+      "ownedBytes": 1797644288,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 347.332,
+      "ownedBytes": 1797644288,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 348.359,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 349.373,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 350.4,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 351.435,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 352.45,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 353.476,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 354.534,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 355.553,
+      "ownedBytes": 1814421504,
+      "proofBytes": 12146503
+    },
+    {
+      "seconds": 356.587,
+      "ownedBytes": 1820164096,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 357.62,
+      "ownedBytes": 1827700736,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 358.637,
+      "ownedBytes": 1830985728,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 359.661,
+      "ownedBytes": 1830985728,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 360.69,
+      "ownedBytes": 1832034304,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 361.708,
+      "ownedBytes": 1832034304,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 362.774,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 363.792,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12156777
+    },
+    {
+      "seconds": 364.808,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 365.827,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 366.843,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 367.859,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 368.882,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 369.909,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 370.925,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 371.948,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 372.984,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 374.002,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 375.031,
+      "ownedBytes": 1865588736,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 376.075,
+      "ownedBytes": 1866637312,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 377.093,
+      "ownedBytes": 1866637312,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 378.12,
+      "ownedBytes": 1866637312,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 379.15,
+      "ownedBytes": 1866637312,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 380.167,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 381.19,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 382.218,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 383.234,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 384.299,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 385.316,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 386.332,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 387.348,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157107
+    },
+    {
+      "seconds": 388.368,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 389.382,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 390.402,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 391.446,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 392.463,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 393.488,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 394.518,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 395.532,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 396.549,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 397.591,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 398.612,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 399.626,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 400.654,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 401.67,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 402.687,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 403.7,
+      "ownedBytes": 1883414528,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 404.716,
+      "ownedBytes": 1884463104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 405.732,
+      "ownedBytes": 1884463104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 406.745,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 407.761,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 408.773,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 409.786,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 410.802,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 411.816,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 412.828,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 413.841,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 414.857,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 415.868,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 416.88,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 417.896,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 418.91,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 419.925,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 420.94,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 421.955,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 422.971,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 423.985,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 425.001,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 426.028,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 427.048,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 428.066,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 429.082,
+      "ownedBytes": 1901240320,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 430.098,
+      "ownedBytes": 1918017536,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 431.115,
+      "ownedBytes": 1918017536,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 432.131,
+      "ownedBytes": 1918017536,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 433.145,
+      "ownedBytes": 1934794752,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 434.162,
+      "ownedBytes": 1935843328,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 435.182,
+      "ownedBytes": 1935843328,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 436.199,
+      "ownedBytes": 1935843328,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 437.216,
+      "ownedBytes": 1935843328,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 438.234,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 439.251,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 440.268,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 441.282,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 442.297,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 443.314,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 444.332,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 445.348,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 446.365,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 447.382,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 448.397,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 449.413,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 450.432,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 451.449,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 452.466,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 453.496,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 454.513,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 455.53,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 456.603,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 457.619,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 458.635,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 459.654,
+      "ownedBytes": 1952620544,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 460.677,
+      "ownedBytes": 1969397760,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 461.694,
+      "ownedBytes": 1969397760,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 462.718,
+      "ownedBytes": 1969397760,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 463.747,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 464.764,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 465.791,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 466.823,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 467.84,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 468.863,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 469.894,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 470.906,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 471.934,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 472.97,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 473.986,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 475.011,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 476.044,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 477.077,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 478.111,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 479.142,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 480.159,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 481.186,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 482.217,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 483.236,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 484.262,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 485.294,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 486.306,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 487.336,
+      "ownedBytes": 1970446336,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 488.368,
+      "ownedBytes": 1987223552,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 489.384,
+      "ownedBytes": 1987223552,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 490.401,
+      "ownedBytes": 1987223552,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 491.414,
+      "ownedBytes": 1987223552,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 492.428,
+      "ownedBytes": 1987223552,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 493.447,
+      "ownedBytes": 1988272128,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 494.463,
+      "ownedBytes": 1988272128,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 495.479,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 496.492,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 497.508,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 498.526,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 499.542,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 500.558,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 501.57,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 502.584,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 503.597,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 504.611,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 505.624,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 506.637,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 507.655,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 508.672,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 509.693,
+      "ownedBytes": 2005049344,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 510.71,
+      "ownedBytes": 2005114880,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 511.728,
+      "ownedBytes": 2005114880,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 512.748,
+      "ownedBytes": 2005114880,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 513.766,
+      "ownedBytes": 2005114880,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 514.784,
+      "ownedBytes": 2005114880,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 515.803,
+      "ownedBytes": 2005114880,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 516.822,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 517.836,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 518.858,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 519.875,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 520.891,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 521.91,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 522.927,
+      "ownedBytes": 2021892096,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 523.94,
+      "ownedBytes": 2022940672,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 524.956,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 525.973,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 526.991,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 528.008,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 529.025,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 530.048,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 531.065,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 532.081,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 533.097,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 534.115,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 535.137,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 536.2,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 537.217,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 538.233,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 539.253,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 540.269,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 541.292,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 542.334,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 543.354,
+      "ownedBytes": 2039717888,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 544.384,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 545.414,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 546.436,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 547.458,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 548.481,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 549.496,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 550.526,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 551.562,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 552.579,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 553.602,
+      "ownedBytes": 2056495104,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 554.633,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 555.648,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 556.668,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 557.722,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 558.739,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 559.773,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 560.805,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 561.822,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 562.838,
+      "ownedBytes": 2057543680,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 563.856,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 564.87,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 565.888,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 566.904,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 567.922,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 568.934,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 569.951,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 570.967,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 571.99,
+      "ownedBytes": 2074320896,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 573.004,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 574.021,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 575.039,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 576.055,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 577.069,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 578.082,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 579.096,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 580.113,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 581.127,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 582.15,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 583.165,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 584.185,
+      "ownedBytes": 2091098112,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 585.202,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 586.224,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 587.242,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 588.259,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157174
+    },
+    {
+      "seconds": 589.275,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 590.29,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 591.304,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 592.321,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 593.338,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 594.351,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 595.37,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 596.386,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 597.403,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 598.42,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    },
+    {
+      "seconds": 599.441,
+      "ownedBytes": 2092146688,
+      "proofBytes": 12157505
+    }
+  ],
+  "inputSha256": {
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/matched_e2e.py": "2f972ab499e77b882b9453bd0cfd79488b1cc2283b8b6278e7029a6ef81abffe",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/PINS.json": "03cf000c7340c6e93d60dc98debff018f627d99089ec2409d6a17651fa61b194",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/e2e_v2.py": "ac030d369b67d327c276cc7dbe9176372d5c3bac29609ffc490c262fa5778204",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/static_e2e.py": "3069410628a0c82289632bbfd446c074219d8a98c5338c19add29c5c8a23104d",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/TARGET017_PROVENANCE.json": "ec5ebaf93e2875d693d0ff8fd20b341bc689f2b1299a251ebf912fc880971689",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/PROPOSAL.md": "a9bc8fb8002fd29a1a3a2c0ff764ed3efe1b74f126c4e2df0641791a2defbbd9",
+    "dashboard/backend/migrations/015_orion_pro_metric_membership_guard.sql": "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+    "dashboard/backend/migrations/016_orion_pro_native_match_details.sql": "12d63eaab6f4d610de3f2ff4efc0dcd71059c4d2e489a5f30d62d2a8498fd087",
+    "dashboard/backend/migrations/017_orion_pro_native_match_core_fields.sql": "87aac35a93b8b0455a7dcf13fde5bb0be468d1183a0bf4a96f36b04b4b770458",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/real-core-operation-v4-p2/apply.result.json": "b8f27dd58f8ae81918195d2bd485df84513a523f8db271b9c8dbd8e91696d2da",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/failed-core-p2-readbacks/20261105T171021459489Z/native.json": "5421c7a3457c36d133785ad79185e3f54f8948edf58078d495258c4d105f1753",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/failed-core-p2-readbacks/20261105T171021459489Z/result.json": "646bf19f37ca17a64bdcc130f239a876676d17864135b6ba776161717e03c0a1",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/runs/20261105T172949557606Z/result.json": "78ddfcee79d9bc87a3632742bd8e35a9b39f0e908d0b578658e2770a4250a33a",
+    "docs/architecture/orion-native-details-107-20261105/target-schema.approved-107-core.json": "e06ba703bdebc3f8e7653521837f9e413b7147f4cb810fe1dc40f4668ea5f0e3",
+    "docs/verification/orion-pro-target-overlay-20261105/rds-runs/20261105T175742790601Z/after.native.json": "a40e1034ed73497f7494fb9e7957ff4c7e503cc383ed6966fd8d863f969bfa33",
+    "docs/verification/orion-pro-target-overlay-20261105/rds-runs/20261105T175742790601Z/result.json": "be6ca7bd8da9b8c86631d108e163f693e95aaffebb3517ba1fad80735ced1316",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/PROTOCOL.md": "43b991955c5270bc8bce015f5eec3c5f8ac1cf0f629d19c2a5260c0d1b653690",
+    "tests/orion_pro_bulk_stream_local.py": "ee85dca178e6676e75bc0d2cca9790b159107eb9e13c2698ee621de0f1a3c3f2",
+    "tests/orion_pro_bulk_local.py": "dc114f04fb53114d392d6feddc5aa690a2b666a4a6ebfee83b89f85bc0570b1c",
+    "tests/orion_e2e_process.py": "06bd176152361ab96f26930920c71d7a32fd9ddadde5bfc8bb02008e87174c04",
+    "docs/verification/orion-validator-membership-20261105/e2e.py": "4999e899d06f349693c30405c2789cef6b99cf22c82c3b611635f180eb266a96",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/migrations/014_orion_pro_membership_nonnull.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/candidate_018.sql": "a52d3330c5d1a588d348e1758ec6f889ba5fb5d85e0000d0eec6420a98879702",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/ROOT_OWNED_MATCHED_018_A.json": "c9e310ee8748b0f24af1ec2c4b89bedd679864997767f7d056d52536896671ec"
+  },
+  "pgStarts": 1,
+  "fixtureDatabases": 1,
+  "maximumOpenConnections": 3,
+  "realSourceCalls": 0,
+  "ramGets": 0,
+  "rdsCalls": 0,
+  "providerCalls": 0,
+  "analyzeCommands": 0,
+  "manualVacuumCommands": 0,
+  "fullAcceptance": false,
+  "nativeOracleBufferPeakBytes": 1054995
+}

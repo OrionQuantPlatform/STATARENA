@@ -1,0 +1,338 @@
+[
+  {
+    "mode": "default",
+    "case": "open_separate_variants",
+    "expected": [
+      false,
+      false
+    ],
+    "actual": [
+      false,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      5,
+      null,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "b",
+      false
+    ]
+  },
+  {
+    "mode": "default",
+    "case": "adjacent_half_open",
+    "expected": [
+      false,
+      false
+    ],
+    "actual": [
+      false,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      5,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "default",
+    "case": "closed_overlap",
+    "expected": [
+      true,
+      true
+    ],
+    "actual": [
+      true,
+      true
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "default",
+    "case": "untouched_overlap",
+    "expected": [
+      false,
+      false
+    ],
+    "actual": [
+      false,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      true,
+      2,
+      2,
+      8,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "default",
+    "case": "cross_variant_canonical",
+    "expected": [
+      false,
+      true
+    ],
+    "actual": [
+      false,
+      true
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "b",
+      true
+    ]
+  },
+  {
+    "mode": "default",
+    "case": "same_variant_noncanonical",
+    "expected": [
+      true,
+      false
+    ],
+    "actual": [
+      true,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      false,
+      2,
+      5,
+      null,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "open_separate_variants",
+    "expected": [
+      false,
+      false
+    ],
+    "actual": [
+      false,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      5,
+      null,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "b",
+      false
+    ]
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "adjacent_half_open",
+    "expected": [
+      false,
+      false
+    ],
+    "actual": [
+      false,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      5,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "closed_overlap",
+    "expected": [
+      true,
+      true
+    ],
+    "actual": [
+      true,
+      true
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "untouched_overlap",
+    "expected": [
+      false,
+      false
+    ],
+    "actual": [
+      false,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      true,
+      2,
+      2,
+      8,
+      "a",
+      true
+    ]
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "cross_variant_canonical",
+    "expected": [
+      false,
+      true
+    ],
+    "actual": [
+      false,
+      true
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      true,
+      2,
+      5,
+      null,
+      "b",
+      true
+    ]
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "same_variant_noncanonical",
+    "expected": [
+      true,
+      false
+    ],
+    "actual": [
+      true,
+      false
+    ],
+    "queries": [
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" AND a.\"variant_key\" = b.\"variant_key\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint))",
+      "WITH t(revision_id,recorded_from_gen,recorded_to_gen,variant_key,is_canonical,match_id,player_id,period_code,family_code,metric_code,numeric_value) AS (VALUES (%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric),(%s::bigint,%s::bigint,%s::bigint,%s::text,%s::boolean,1::bigint,2::bigint,'full_match','standard','m05',NULL::numeric)) SELECT EXISTS (SELECT 1 FROM t a JOIN t b ON a.\"match_id\" = b.\"match_id\" AND a.\"player_id\" = b.\"player_id\" AND a.\"period_code\" = b.\"period_code\" AND a.\"family_code\" = b.\"family_code\" AND a.\"metric_code\" = b.\"metric_code\" WHERE ROW(a.\"revision_id\") < ROW(b.\"revision_id\") AND a.\"recorded_from_gen\" < COALESCE(b.\"recorded_to_gen\",9223372036854775807) AND b.\"recorded_from_gen\" < COALESCE(a.\"recorded_to_gen\",9223372036854775807) AND (a.\"recorded_from_gen\"=5::bigint OR a.\"recorded_to_gen\"=5::bigint OR b.\"recorded_from_gen\"=5::bigint OR b.\"recorded_to_gen\"=5::bigint) AND a.is_canonical AND b.is_canonical)"
+    ],
+    "technicalParams": [
+      1,
+      1,
+      7,
+      "a",
+      false,
+      2,
+      5,
+      null,
+      "a",
+      true
+    ]
+  }
+]

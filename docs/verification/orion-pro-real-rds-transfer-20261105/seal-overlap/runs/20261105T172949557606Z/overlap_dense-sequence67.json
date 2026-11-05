@@ -1,0 +1,542 @@
+{
+  "before": {
+    "analytics.aggregation_builds_id_seq": [
+      1,
+      false
+    ],
+    "analytics.metric_totals_id_seq": [
+      1,
+      false
+    ],
+    "football.association_profile_versions_id_seq": [
+      1,
+      false
+    ],
+    "football.associations_id_seq": [
+      1,
+      false
+    ],
+    "football.coaches_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.coaches_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_groups_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_groups_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_seasons_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_seasons_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_stages_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_stages_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_teams_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competitions_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competitions_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.countries_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.countries_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.honour_definitions_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.honour_definitions_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_heatmaps_id_seq": [
+      1,
+      false
+    ],
+    "football.match_lineups_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_players_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_scores_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_teams_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.matches_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.matches_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.pass_networks_id_seq": [
+      1,
+      false
+    ],
+    "football.player_honours_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.player_honours_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_advanced_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_metric_values_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_stats_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_profile_versions_id_seq": [
+      1,
+      false
+    ],
+    "football.player_team_memberships_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.player_team_memberships_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.players_id_seq": [
+      1,
+      false
+    ],
+    "football.ranking_snapshots_id_seq": [
+      1,
+      false
+    ],
+    "football.ranking_systems_id_seq": [
+      1,
+      false
+    ],
+    "football.shots_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.shots_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.standing_snapshots_id_seq": [
+      1,
+      false
+    ],
+    "football.team_aliases_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_aliases_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_coach_tenures_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_coach_tenures_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_honours_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_honours_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_advanced_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_metric_values_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_stats_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_profile_versions_id_seq": [
+      1,
+      false
+    ],
+    "football.teams_id_seq": [
+      1,
+      false
+    ],
+    "football.venues_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.venues_revision_id_seq": [
+      1,
+      false
+    ],
+    "ingest.cleanup_items_id_seq": [
+      1,
+      false
+    ],
+    "ingest.commit_generation_seq": [
+      1,
+      true
+    ],
+    "ingest.dataset_snapshots_id_seq": [
+      1,
+      true
+    ],
+    "ingest.identity_candidates_id_seq": [
+      1,
+      false
+    ],
+    "ingest.import_runs_id_seq": [
+      1,
+      false
+    ],
+    "ingest.media_assets_id_seq": [
+      1,
+      false
+    ],
+    "ingest.quality_issues_id_seq": [
+      1,
+      false
+    ],
+    "ingest.reconciliation_runs_id_seq": [
+      1,
+      false
+    ],
+    "ingest.resource_fetches_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_datasets_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_documents_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_records_id_seq": [
+      1,
+      false
+    ],
+    "ingest.sources_id_seq": [
+      1,
+      false
+    ]
+  },
+  "after": {
+    "analytics.aggregation_builds_id_seq": [
+      1,
+      false
+    ],
+    "analytics.metric_totals_id_seq": [
+      1,
+      false
+    ],
+    "football.association_profile_versions_id_seq": [
+      1,
+      false
+    ],
+    "football.associations_id_seq": [
+      1,
+      false
+    ],
+    "football.coaches_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.coaches_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_groups_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_groups_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_seasons_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_seasons_revision_id_seq": [
+      1,
+      true
+    ],
+    "football.competition_stages_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_stages_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_teams_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competitions_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.competitions_revision_id_seq": [
+      1,
+      true
+    ],
+    "football.countries_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.countries_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.honour_definitions_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.honour_definitions_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_heatmaps_id_seq": [
+      1,
+      true
+    ],
+    "football.match_lineups_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_players_revision_id_seq": [
+      15437,
+      true
+    ],
+    "football.match_scores_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_teams_revision_id_seq": [
+      1224,
+      true
+    ],
+    "football.matches_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.matches_revision_id_seq": [
+      612,
+      true
+    ],
+    "football.pass_networks_id_seq": [
+      1,
+      true
+    ],
+    "football.player_honours_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.player_honours_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_advanced_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_metric_values_revision_id_seq": [
+      957096,
+      true
+    ],
+    "football.player_match_stats_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_profile_versions_id_seq": [
+      800,
+      true
+    ],
+    "football.player_team_memberships_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.player_team_memberships_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.players_id_seq": [
+      1,
+      false
+    ],
+    "football.ranking_snapshots_id_seq": [
+      1,
+      true
+    ],
+    "football.ranking_systems_id_seq": [
+      1,
+      true
+    ],
+    "football.shots_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.shots_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.standing_snapshots_id_seq": [
+      1,
+      true
+    ],
+    "football.team_aliases_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_aliases_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_coach_tenures_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_coach_tenures_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_honours_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_honours_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_advanced_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_metric_values_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_stats_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_profile_versions_id_seq": [
+      1,
+      false
+    ],
+    "football.teams_id_seq": [
+      1,
+      false
+    ],
+    "football.venues_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.venues_revision_id_seq": [
+      1,
+      false
+    ],
+    "ingest.cleanup_items_id_seq": [
+      1,
+      false
+    ],
+    "ingest.commit_generation_seq": [
+      6,
+      true
+    ],
+    "ingest.dataset_snapshots_id_seq": [
+      6,
+      true
+    ],
+    "ingest.identity_candidates_id_seq": [
+      1,
+      false
+    ],
+    "ingest.import_runs_id_seq": [
+      1,
+      false
+    ],
+    "ingest.media_assets_id_seq": [
+      1,
+      false
+    ],
+    "ingest.quality_issues_id_seq": [
+      1,
+      false
+    ],
+    "ingest.reconciliation_runs_id_seq": [
+      1,
+      false
+    ],
+    "ingest.resource_fetches_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_datasets_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_documents_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_records_id_seq": [
+      1,
+      false
+    ],
+    "ingest.sources_id_seq": [
+      1,
+      false
+    ]
+  }
+}

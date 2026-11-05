@@ -1,0 +1,25 @@
+[
+  {
+    "mode": "no_nestloop",
+    "case": "noop_successor",
+    "status": "rolled_back",
+    "sqlstate": "23514",
+    "message": "Identical typed reimport must reuse the retained version: football.player_match_metric_values",
+    "sealMs": 2043.27
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "unselected_parent",
+    "status": "rolled_back",
+    "sqlstate": "23514",
+    "message": "Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f",
+    "sealMs": 2061.391
+  },
+  {
+    "mode": "no_nestloop",
+    "case": "valid_adjacent_correction",
+    "status": "committed",
+    "sealMs": 2058.285,
+    "deferredCommitMs": 2044.179
+  }
+]

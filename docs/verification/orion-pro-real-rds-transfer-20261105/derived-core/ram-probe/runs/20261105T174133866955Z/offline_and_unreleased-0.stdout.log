@@ -1,0 +1,1 @@
+{"kind": "retained_ram_core_metadata_observation_v1", "status": "offline_plan", "connections": 0, "socketConnections": 0, "ramGets": 0, "providerCalls": 0, "postgresConnections": 0, "businessWrites": 0, "rawBodiesPersisted": false, "matchUtcOrScalarValuesPersisted": false, "businessIdentifiersPersisted": false, "fullAcceptance": false}

@@ -1,0 +1,28 @@
+2026-11-05 18:29:50.799 CET [73008] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-05 18:29:50.799 CET [73008] LOG:  listening on IPv4 address "127.0.0.1", port 56740
+2026-11-05 18:29:50.799 CET [73008] LOG:  listening on Unix socket "/tmp/orion-pro-e2e-jcy4wqqi/socket/.s.PGSQL.56740"
+2026-11-05 18:29:50.813 CET [73017] LOG:  database system was shut down at 2026-11-05 18:29:50 CET
+2026-11-05 18:29:50.815 CET [73008] LOG:  database system is ready to accept connections
+2026-11-05 18:30:22.751 CET [73014] LOG:  checkpoint starting: wal
+2026-11-05 18:30:48.650 CET [73014] LOG:  checkpoint complete: wrote 1180 buffers (7.2%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 33 recycled; write=25.694 s, sync=0.200 s, total=25.900 s; sync files=2000, longest=0.088 s, average=0.001 s; distance=534429 kB, estimate=534429 kB; lsn=0/3FF1A018, redo lsn=0/22170330
+2026-11-05 18:30:51.939 CET [73014] LOG:  checkpoints are occurring too frequently (29 seconds apart)
+2026-11-05 18:30:51.939 CET [73014] LOG:  checkpoint starting: wal
+2026-11-05 18:31:25.774 CET [74499] ERROR:  Identical typed reimport must reuse the retained version: football.player_match_metric_values
+2026-11-05 18:31:25.825 CET [74499] ERROR:  Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f
+2026-11-05 18:31:25.992 CET [74500] ERROR:  Identical typed reimport must reuse the retained version: football.player_match_metric_values
+2026-11-05 18:31:26.037 CET [74500] ERROR:  Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f
+2026-11-05 18:31:28.381 CET [74502] ERROR:  Identical typed reimport must reuse the retained version: football.player_match_metric_values
+2026-11-05 18:31:30.552 CET [74502] ERROR:  Selected parent membership differs at generation: football.player_match_metric_values / football_player_match_metric_values_match_id_player__ce4af89a9f
+2026-11-05 18:31:40.182 CET [74715] ERROR:  permission denied for function begin_generation
+2026-11-05 18:31:40.182 CET [74715] ERROR:  permission denied for function seal_generation
+2026-11-05 18:31:40.183 CET [74715] ERROR:  permission denied for function validate_generation
+2026-11-05 18:31:40.184 CET [74715] ERROR:  permission denied for sequence commit_generation_seq
+2026-11-05 18:31:40.184 CET [74715] ERROR:  permission denied for sequence player_match_metric_values_revision_id_seq
+2026-11-05 18:31:40.193 CET [73008] LOG:  received fast shutdown request
+2026-11-05 18:31:40.193 CET [73008] LOG:  aborting any active transactions
+2026-11-05 18:31:40.194 CET [73008] LOG:  background worker "logical replication launcher" (PID 73025) exited with exit code 1
+2026-11-05 18:31:40.249 CET [73014] LOG:  checkpoint complete: wrote 488 buffers (3.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 33 recycled; write=48.257 s, sync=0.037 s, total=48.310 s; sync files=160, longest=0.023 s, average=0.001 s; distance=539619 kB, estimate=539619 kB; lsn=0/5B54BF68, redo lsn=0/43069118
+2026-11-05 18:31:40.249 CET [73014] LOG:  shutting down
+2026-11-05 18:31:40.249 CET [73014] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 18:31:40.255 CET [73014] LOG:  checkpoint complete: wrote 25 buffers (0.2%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 24 recycled; write=0.001 s, sync=0.001 s, total=0.006 s; sync files=17, longest=0.001 s, average=0.001 s; distance=398219 kB, estimate=525479 kB; lsn=0/5B54BFE0, redo lsn=0/5B54BFE0
+2026-11-05 18:31:40.265 CET [73008] LOG:  database system is shut down

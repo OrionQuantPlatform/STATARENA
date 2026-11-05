@@ -1,0 +1,21 @@
+[
+  {
+    "rows": 1240,
+    "commands": 2,
+    "wireBytes": 346689,
+    "wireSha256": "a981a304f6e8551817a163e8ade73356a1a8f838ea29c1fd3c34c50c2e1ce5a2",
+    "largestBlockBytes": 279289,
+    "shape": "compact",
+    "catalogue": {
+      "relpages": 0,
+      "reltuples": -1.0,
+      "analyzeCount": 0,
+      "autoAnalyzeCount": 0,
+      "vacuumCount": 0,
+      "autoVacuumCount": 0,
+      "heapBytes": 524288,
+      "indexesBytes": 655360,
+      "totalBytes": 1212416
+    }
+  }
+]

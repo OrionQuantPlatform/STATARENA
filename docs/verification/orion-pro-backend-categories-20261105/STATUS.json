@@ -1,6 +1,6 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T18:20:36.587002+00:00",
+  "atUtc": "2026-11-05T18:23:26.776254+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
   "routeMatrixSha256": "c9ce13f85aafb97255c6870b728f3bd1b8714d28e227274dd9604c70bb439d65",
   "localQualifiedOtherForms": 19,
@@ -46,7 +46,7 @@
     {
       "id": "player-statistics-advanced",
       "owner": "backend_entities",
-      "status": "integrated_tested_locally",
+      "status": "pushed_verified_locally",
       "routes": [
         "/api/pitchapi/matches/{match}/players",
         "/api/pitchapi/matches/{match}/players/halves",
@@ -62,7 +62,7 @@
       ],
       "module": "dashboard/backend/services/orion-pro-player-statistics.js",
       "testedLocally": true,
-      "pushed": false,
+      "pushed": true,
       "deployed": false,
       "localQualifiedForms": 11,
       "remainingForms": 0,
@@ -72,7 +72,8 @@
       "periodEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_PLAYER_PERIOD_REVIEW.json",
       "periodCommit": "c33a4ffdaad40dd3deb600823ddc626c406c8189",
       "evidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_SPATIAL_ADVANCED_REVIEW.json",
-      "periodCI": 42080151480
+      "periodCI": 42080151480,
+      "commit": "85f2b5def7957cbddd810965f202463d03f8bc9e"
     },
     {
       "id": "competitions-cups-standings",
@@ -120,7 +121,7 @@
     {
       "id": "fifa-uefa-rankings",
       "owner": "sql_publisher",
-      "status": "in_development",
+      "status": "paused_module_tested_router_integration_pending",
       "routes": [
         "/api/rankings/index",
         "/api/rankings/edition",
@@ -129,8 +130,11 @@
       ],
       "module": "dashboard/backend/services/orion-pro-rankings.js",
       "testedLocally": false,
-      "pushed": false,
-      "deployed": false
+      "pushed": true,
+      "deployed": false,
+      "moduleLocalCases": 24,
+      "moduleCommit": "b6a308a9a5454f8167b1ca65967d8d196b2a96af",
+      "moduleEvidence": "docs/verification/orion-pro-rankings-20261105/runs/20261105T181959009168Z-rankings-product-v1/result.json"
     },
     {
       "id": "enrichment-honours",
@@ -156,5 +160,6 @@
   "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
   "suggestedCommit": "docs: assign remaining backend routes by category and dependencies",
   "currentLocalQualifiedForms": 53,
-  "currentRemainingForms": 4
+  "currentRemainingForms": 4,
+  "executionStatus": "paused_by_user"
 }

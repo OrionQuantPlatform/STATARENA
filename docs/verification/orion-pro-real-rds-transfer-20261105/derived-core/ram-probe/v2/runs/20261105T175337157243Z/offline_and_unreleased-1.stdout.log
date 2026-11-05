@@ -1,0 +1,17 @@
+{
+  "kind": "retained_ram_core_metadata_observation_v2",
+  "status": "refused",
+  "ramGets": 0,
+  "socketConnections": 0,
+  "postgresConnections": 0,
+  "providerCalls": 0,
+  "businessWrites": 0,
+  "rawBodiesPersisted": false,
+  "matchUtcOrScalarValuesPersisted": false,
+  "businessIdentifiersPersisted": false,
+  "fullAcceptance": false,
+  "failedStage": "pins",
+  "reasonCode": "RELEASE",
+  "elapsedSeconds": 0.0,
+  "observedPeakRssBytes": 30441472
+}

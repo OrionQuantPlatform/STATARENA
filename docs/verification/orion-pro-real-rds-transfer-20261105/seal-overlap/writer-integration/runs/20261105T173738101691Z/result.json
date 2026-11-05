@@ -1,0 +1,50 @@
+{
+  "kind": "scoped_apply_sequencing_precode_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/writer-integration/e2e.py"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/writer-integration/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "implementation_available",
+      "status": "fail",
+      "error": "Scoped apply candidate absent (expected precode RED)",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/writer-integration/e2e.py\", line 111, in main\n    assert MODULE.is_file(),'Scoped apply candidate absent (expected precode RED)'\n           ~~~~~~~~~~~~~~^^\nAssertionError: Scoped apply candidate absent (expected precode RED)\n"
+    },
+    {
+      "case": "offline_and_code_audit",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "scoped_success",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "noop_and_copy_rollback",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "seal_and_ack_failures",
+      "status": "unverified",
+      "reason": "implementation_available"
+    }
+  ],
+  "invocations": [],
+  "connections": 0,
+  "sourceReads": 0,
+  "providerCalls": 0,
+  "businessWrites": 0,
+  "fullAcceptance": false,
+  "privateTripwireRemoved": true,
+  "status": "fail",
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 4
+  },
+  "elapsedSeconds": 0.001
+}

@@ -1,0 +1,10 @@
+{
+  "label": "actual_default",
+  "abortBeforeSeal": false,
+  "seals": [],
+  "commits": [],
+  "candidate": false,
+  "status": "native_failure",
+  "sqlstate": null,
+  "context": ""
+}

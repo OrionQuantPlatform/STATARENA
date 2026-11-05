@@ -1,0 +1,85 @@
+{
+  "kind": "symbolic_ram_diagnostic_source_free_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/derived-core/ram-probe/diagnostic/e2e.py"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/derived-core/ram-probe/diagnostic/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "implementation_available",
+      "status": "pass",
+      "actual": {
+        "moduleSha256": "55c48e5f849dc6090bfc88215e9eb1b6fbfae12cd5ae27134c9167c8a390421b"
+      }
+    },
+    {
+      "case": "symbolic_wire_global_names",
+      "status": "pass",
+      "actual": {
+        "globals": [
+          {
+            "module": "builtins",
+            "name": "eval",
+            "globalOpcodes": 1,
+            "allowedInV2": false
+          },
+          {
+            "module": "datetime",
+            "name": "datetime",
+            "globalOpcodes": 1,
+            "allowedInV2": true
+          },
+          {
+            "module": "datetime",
+            "name": "timedelta",
+            "globalOpcodes": 1,
+            "allowedInV2": true
+          },
+          {
+            "module": "datetime",
+            "name": "timezone",
+            "globalOpcodes": 1,
+            "allowedInV2": true
+          },
+          {
+            "module": "decimal",
+            "name": "Decimal",
+            "globalOpcodes": 1,
+            "allowedInV2": true
+          }
+        ],
+        "unknownGlobalCount": 1,
+        "globalNameCount": 5,
+        "reductionsEncountered": 7,
+        "reductionsExecuted": 0,
+        "dataDecoded": false,
+        "wireBytes": 288,
+        "wireSha256": "61e442a17722176d8ec72f285026377bc5c9e0591734fa030f413ad287ee1700",
+        "pickleFrames": 1,
+        "pickleOpcodes": 93,
+        "memoSlots": 38,
+        "peakStackSlots": 14,
+        "peakRssBytes": 30375936,
+        "argumentsExamined": false
+      }
+    },
+    {
+      "case": "trailing_wire_refused",
+      "status": "pass",
+      "actual": {
+        "reasonCode": "WIRE_TRAILING"
+      }
+    }
+  ],
+  "sourceCalls": 0,
+  "ramGets": 0,
+  "reductionsExecuted": 0,
+  "fullAcceptance": false,
+  "status": "pass_source_free_only",
+  "counts": {
+    "pass": 3,
+    "fail": 0,
+    "unverified": 0
+  }
+}

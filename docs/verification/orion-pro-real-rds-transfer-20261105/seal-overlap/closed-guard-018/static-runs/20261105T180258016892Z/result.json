@@ -1,0 +1,61 @@
+{
+  "kind": "precode_metric_overlap018_static_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/static_e2e.py"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/seal-overlap/closed-guard-018/PROPOSAL.md",
+  "cases": [
+    {
+      "case": "exact017_parent_and_captured_overlap",
+      "status": "pass",
+      "actual": {
+        "oldPairSha256": "a3cb492226ac9f12798a1ff50488aa25b581a493e947550a80efa9c73b02f0cf",
+        "exact016ParentSha256": "f848cd85cfd4bd7899caf9f400893e48549071bded9c19467ffbb4acdfc05b93",
+        "optionalIndexNotYetInstalled": true,
+        "actualRollbackMetricRelationBytes": 711753728
+      }
+    },
+    {
+      "case": "implementation_available",
+      "status": "pass",
+      "actual": {
+        "candidateSha256": "a52d3330c5d1a588d348e1758ec6f889ba5fb5d85e0000d0eec6420a98879702"
+      }
+    },
+    {
+      "case": "sole_guard_and_optional_index_delta",
+      "status": "pass",
+      "actual": {
+        "oneGuard": true,
+        "candidateIndex": true,
+        "originalQueryTextRetained": true
+      }
+    },
+    {
+      "case": "preserved_original_sql_and_native107",
+      "status": "pass",
+      "actual": {
+        "parentByteIdenticalWithoutEnvelope": true,
+        "exactFallbackOrderAndMessages": true
+      }
+    },
+    {
+      "case": "matched_owned_runtime_not_executed",
+      "status": "unverified",
+      "reason": "Separate ROOT release required for owned PostgreSQL"
+    }
+  ],
+  "pgStarts": 0,
+  "sourceReads": 0,
+  "ramGets": 0,
+  "rdsCalls": 0,
+  "businessWrites": 0,
+  "fullAcceptance": false,
+  "status": "pass_static_only",
+  "counts": {
+    "pass": 4,
+    "fail": 0,
+    "unverified": 1
+  }
+}
