@@ -1,0 +1,1 @@
+{"connections":1,"error":{"code":"UNREADY_INPUT","message":"Native admission/publication could not qualify its released inputs","sqlstate":null,"type":"KeyError"},"status":"rejected"}

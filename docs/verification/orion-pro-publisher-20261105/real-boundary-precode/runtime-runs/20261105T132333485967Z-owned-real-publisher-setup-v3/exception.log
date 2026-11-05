@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_e2e.py", line 145, in main
+    streamed = context.fixture.stream_family()
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_fixture.py", line 197, in stream_family
+    with self._generation("streamed_family_over_old_cap") as g:
+         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 148, in __exit__
+    next(self.gen)
+    ~~~~^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/qualified-precode/typed_inputs.py", line 27, in _generation
+    with super()._generation(label) as g:yield g
+         ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 148, in __exit__
+    next(self.gen)
+    ~~~~^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/fixtures.py", line 77, in _generation
+    self.conn.execute("SELECT ingest.seal_generation(%s,%s)",(self.g,hashed({"label":label,"generation":self.g})))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/statarena-publication-test-python/psycopg/connection.py", line 304, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.CheckViolation: Shot count differs from selected source/variant coverage
+CONTEXT:  PL/pgSQL function ingest.validate_generation(bigint) line 273 at RAISE
+SQL statement "SELECT ingest.validate_generation(OLD.generation)"
+PL/pgSQL function ingest.pro_guard_dataset_snapshots() line 17 at PERFORM
+SQL statement "UPDATE ingest.dataset_snapshots SET status='sealed', manifest_sha256=manifest, sealed_at=CURRENT_TIMESTAMP WHERE generation=g"
+PL/pgSQL function ingest.seal_generation(bigint,text) line 7 at SQL statement

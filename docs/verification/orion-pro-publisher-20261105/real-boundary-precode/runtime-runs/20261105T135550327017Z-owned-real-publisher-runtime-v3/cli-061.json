@@ -1,0 +1,190 @@
+{
+  "changedEditionIds": [
+    1,
+    2,
+    3
+  ],
+  "codeCommit": "a15b467c6083232c5e8ea2f8b40819873c814afe",
+  "codeContentSha256": "6b6cd2ffd380d298429744a94cb0f587c653a990579518af2af4f2b90c80e38c",
+  "committedReadyBuildIds": [],
+  "connections": 1,
+  "dataOrigin": "owned_source_free_fixture",
+  "dependenciesSha256": {
+    "1": "1d2b3ef2e6d795f440326180eb094349c15d8a18ff224389f978522dc5fb71f8",
+    "2": "5ef20c3db8725186c18424dcdc14649257530ad8507c9d5c45cc44aaa60538fb",
+    "3": "98ae620906aceabd06171327663813b95db62696bad42b1092d5b2f6dd18e403"
+  },
+  "dependencyScheme": "orion-four-readers-dependencies-v1",
+  "dirtyWatermarksRetained": true,
+  "editions": [
+    {
+      "buildId": null,
+      "dependencySha256": "1d2b3ef2e6d795f440326180eb094349c15d8a18ff224389f978522dc5fb71f8",
+      "editionId": "1",
+      "effectiveSnapshotIds": null
+    },
+    {
+      "buildId": null,
+      "dependencySha256": "5ef20c3db8725186c18424dcdc14649257530ad8507c9d5c45cc44aaa60538fb",
+      "editionId": "2",
+      "effectiveSnapshotIds": null
+    },
+    {
+      "buildId": null,
+      "dependencySha256": "98ae620906aceabd06171327663813b95db62696bad42b1092d5b2f6dd18e403",
+      "editionId": "3",
+      "effectiveSnapshotIds": null
+    }
+  ],
+  "environmentBinding": "explicit released descriptor",
+  "environmentSha256": "406565f5d99f20d4d4188afa01009e58ed61bea19d82907970bca7381ad861da",
+  "fullAcceptance": false,
+  "kind": "orion_real_four_readers_publication_receipt_v1",
+  "matchProducts": [
+    {
+      "awayGoals": 0,
+      "homeGoals": 1,
+      "matchId": 1,
+      "scoreScope": "final_without_shootout"
+    },
+    {
+      "awayGoals": 0,
+      "homeGoals": 0,
+      "matchId": 2,
+      "scoreScope": "final_without_shootout"
+    },
+    {
+      "awayGoals": null,
+      "homeGoals": null,
+      "matchId": 3,
+      "scoreScope": null
+    },
+    {
+      "awayGoals": null,
+      "homeGoals": null,
+      "matchId": 6,
+      "scoreScope": null
+    },
+    {
+      "awayGoals": 0,
+      "homeGoals": 1,
+      "matchId": 4,
+      "scoreScope": "final_without_shootout"
+    },
+    {
+      "awayGoals": 0,
+      "homeGoals": 1,
+      "matchId": 5,
+      "scoreScope": "final_without_shootout"
+    }
+  ],
+  "maxBufferedRows": 143,
+  "omittedRows": 0,
+  "profileSelections": {
+    "1": [
+      {
+        "actor": 1,
+        "priority": 0,
+        "source": 1,
+        "table": "football.player_profile_versions",
+        "winnerIds": [
+          3
+        ]
+      },
+      {
+        "actor": 1,
+        "priority": 2,
+        "source": 1,
+        "table": "football.team_profile_versions",
+        "winnerIds": [
+          28
+        ]
+      },
+      {
+        "actor": 2,
+        "priority": null,
+        "source": 1,
+        "table": "football.team_profile_versions",
+        "winnerIds": []
+      },
+      {
+        "actor": 9007199254740993,
+        "priority": null,
+        "source": 1,
+        "table": "football.player_profile_versions",
+        "winnerIds": []
+      }
+    ],
+    "2": [
+      {
+        "actor": 1,
+        "priority": 0,
+        "source": 1,
+        "table": "football.player_profile_versions",
+        "winnerIds": [
+          3
+        ]
+      },
+      {
+        "actor": 1,
+        "priority": 2,
+        "source": 1,
+        "table": "football.team_profile_versions",
+        "winnerIds": [
+          28
+        ]
+      },
+      {
+        "actor": 2,
+        "priority": 1,
+        "source": 1,
+        "table": "football.player_profile_versions",
+        "winnerIds": [
+          6
+        ]
+      },
+      {
+        "actor": 3,
+        "priority": null,
+        "source": 1,
+        "table": "football.team_profile_versions",
+        "winnerIds": []
+      }
+    ],
+    "3": [
+      {
+        "actor": 3,
+        "priority": 2,
+        "source": 1,
+        "table": "football.player_profile_versions",
+        "winnerIds": [
+          8
+        ]
+      },
+      {
+        "actor": 4,
+        "priority": null,
+        "source": 1,
+        "table": "football.team_profile_versions",
+        "winnerIds": []
+      },
+      {
+        "actor": 5,
+        "priority": null,
+        "source": 1,
+        "table": "football.team_profile_versions",
+        "winnerIds": []
+      }
+    ]
+  },
+  "publicationGeneration": null,
+  "representationVersion": "summary-v1-shots-v1",
+  "requestedPair": {
+    "catalogGeneration": 21,
+    "datasetGeneration": 21
+  },
+  "selectedRows": 143,
+  "sourcePolicy": "real_source_core_v2_native31",
+  "stage": "planning",
+  "status": "planned"
+}

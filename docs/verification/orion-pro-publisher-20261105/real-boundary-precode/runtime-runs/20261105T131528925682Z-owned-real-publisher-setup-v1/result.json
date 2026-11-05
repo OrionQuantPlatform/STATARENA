@@ -1,0 +1,41 @@
+{
+  "allocationConsumed": true,
+  "businessWrites": 0,
+  "cleanup": {
+    "apiNeverStarted": true,
+    "pgNeverConstructed": true,
+    "workersNeverStarted": true
+  },
+  "cloudCalls": 0,
+  "command": [
+    "python3",
+    "docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_e2e.py",
+    "--run-owned",
+    "--qualify-setup-only",
+    "--release",
+    "docs/verification/orion-pro-publisher-20261105/real-boundary-precode/ROOT_SETUP_RELEASE_V1.json",
+    "--release-sha256",
+    "818d23deccb972317ef23b4f0b7d115ac58b09c284b5c47874ef396aefc26415",
+    "--label",
+    "owned-real-publisher-setup-v1"
+  ],
+  "databaseConnections": 0,
+  "error": {
+    "message": "ValueError: relative --release path could not be archived with path.relative_to(absolute ROOT); failed before Runtime construction/PG startup",
+    "type": "ValueError"
+  },
+  "expected": "One setup-only qualification of fixture/native31/streaming/TLS;31 runtime cases unverified",
+  "kind": "REAL_PUBLICATION_SETUP_V1_PRE_RUNTIME_FAILURE",
+  "originalFrozenRunnerSha256": "853adf2472bc4e73f367753e70d496cd94deaa1704cd814d998faa96310e487f",
+  "postgresStarts": 0,
+  "ramGets": 0,
+  "releaseSha256": "818d23deccb972317ef23b4f0b7d115ac58b09c284b5c47874ef396aefc26415",
+  "runtimeCaseCounts": {
+    "fail": 0,
+    "pass": 0,
+    "unverified": 31
+  },
+  "runtimeCasesExecuted": 0,
+  "status": "fail",
+  "suggestedCommit": "fix: resolve real-publication setup evidence paths before execution"
+}

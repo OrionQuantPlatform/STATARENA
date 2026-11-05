@@ -1,0 +1,14 @@
+{
+  "actor": "statarena_ingest",
+  "caPath": "/tmp/orion-pro-e2e-ay1ibmnz/data/server.crt",
+  "caSha256": "89925af0ad2a0f0458c77551f92d90cab77ffcf719f31920ea8c8dec8f7640dc",
+  "database": "postgres",
+  "environment": "owned_local_tls",
+  "host": "127.0.0.1",
+  "hostaddr": "127.0.0.1",
+  "hostname": "127.0.0.1",
+  "kind": "owned_real_publication_endpoint_v1",
+  "ownedRoot": "/tmp/orion-pro-e2e-ay1ibmnz",
+  "port": 1,
+  "postmasterStartedAt": "2026-11-05T14:05:27.375530+00:00"
+}

@@ -1,0 +1,37 @@
+{
+  "codeCommit": "7f3d4e692e8980bdedf72eb5793d40a7697c6df5",
+  "codeContentSha256": "0030eae7d08464ef3b9ebfdfe6485ab8db8aa1b1c732bf1d4629ce301b404fd0",
+  "committed": false,
+  "connections": 1,
+  "dataOrigin": "owned_source_free_fixture",
+  "dependenciesSha256": {
+    "1": "0a14b93d3bd37148be91cafb8fb147121117d4f2feb33aa3581e5b31730ecf68",
+    "2": "b2d0ddd3107f2fbd00b22bb106060aac1d119c4df82b72c57cf941a2eb8e8086",
+    "3": "7e68347ec94c94586a4a304680c7bc6aec0be4001f11592ffa5d74fdad8ca0a6"
+  },
+  "fullAcceptance": false,
+  "generation": 7,
+  "inputClosureSha256": "a4f442fe07c17b9a951b738afe2b28329ef9c2f5f1369584678ef5d70116f07c",
+  "kind": "orion_real_core_admission_receipt_v1",
+  "outputClosureSha256": "123f8613bfd7d530984acc7331504f457b7d13a8e7bc55361abb8168db37208d",
+  "qualifiedSnapshotPair": {
+    "catalogue": {
+      "generation": 7,
+      "manifestSha256": "5b5e65b5661bbf052ac1abb4dec56962defba16b18f6a5dce2513236c66d2e13",
+      "snapshotId": 7,
+      "sourcePriorityVersion": "real_source_core_v2_native31"
+    },
+    "dataset": {
+      "generation": 7,
+      "manifestSha256": "5b5e65b5661bbf052ac1abb4dec56962defba16b18f6a5dce2513236c66d2e13",
+      "snapshotId": 7,
+      "sourcePriorityVersion": "real_source_core_v2_native31"
+    }
+  },
+  "snapshotId": 7,
+  "sourceInputEpochSha256": "b5310cbe45d9ba8bea6a0fd48bebbb93b397ffac75129db8a8ddf728e95c5c14",
+  "sourcePolicy": "real_source_core_v2_native31",
+  "stage": "planning",
+  "status": "noop",
+  "transformVersion": "real_core_four_readers_admission_v1"
+}

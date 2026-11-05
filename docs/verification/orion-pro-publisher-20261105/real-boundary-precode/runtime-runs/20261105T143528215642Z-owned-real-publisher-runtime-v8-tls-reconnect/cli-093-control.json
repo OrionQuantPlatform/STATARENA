@@ -1,0 +1,6 @@
+{
+  "fault": null,
+  "phase": "after_first_pointer_write",
+  "releaseFile": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime-runs/20261105T143528215642Z-owned-real-publisher-runtime-v8-tls-reconnect/cli-093.release",
+  "timeoutSeconds": 3
+}

@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Endpoint differs from admitted target"
+  },
+  "status": "rejected"
+}

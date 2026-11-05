@@ -1,0 +1,6 @@
+{
+  "fault": null,
+  "phase": "before_ready_commit",
+  "releaseFile": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime-runs/20261105T141148876480Z-owned-real-publisher-runtime-v6-api-graph/cli-088.release",
+  "timeoutSeconds": 3
+}

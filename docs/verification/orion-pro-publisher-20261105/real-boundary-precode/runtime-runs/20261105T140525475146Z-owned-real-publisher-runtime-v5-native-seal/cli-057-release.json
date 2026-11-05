@@ -1,0 +1,14 @@
+{
+  "campaignReleaseSha256": "e53aeceaba84b27a42161b5073711b65f29368e051b6dea04eafbd128e609381",
+  "endpointSha256": "8b89102b4868270f16dad7923355eaf7b86aa06534a9d10c2c302cceb10dacdb",
+  "expiresAt": "2026-11-05T14:15:52.182213+00:00",
+  "fixtureSha256": "22765e470802e2b738f0c75792fa903bdbab7c8f2d49618d5f32149d94a8ad60",
+  "helperSha256": "6b6cd2ffd380d298429744a94cb0f587c653a990579518af2af4f2b90c80e38c",
+  "inputSha256": "042b30f752956111bcb83f30f0167b3baf5cbddbc0a0ab6e77386517cad2e259",
+  "kind": "real_publication_owned_operation_release_v1",
+  "mode": "plan",
+  "scope": "owned_source_free_fixture",
+  "sourceInputEpochSha256": "626782fac46ffab13512e3e161c0487bf826df096edf3dbacfbcda97e6dddc75",
+  "sourceReconciliationSha256": "19d0338c9019cbb2f6fd8ad5da6b682abea8b80a2ea94539bf1de55a6a9b84f4",
+  "stage": "publish"
+}

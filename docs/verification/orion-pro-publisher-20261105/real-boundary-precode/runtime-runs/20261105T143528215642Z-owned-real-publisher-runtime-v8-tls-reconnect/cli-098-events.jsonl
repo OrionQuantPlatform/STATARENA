@@ -1,0 +1,5 @@
+{"backendPid":10673,"buildIds":[6,7],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"after_plan"}
+{"backendPid":10673,"buildIds":[9],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"before_ready_commit"}
+{"backendPid":10673,"buildIds":[9],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"after_ready_commit"}
+{"backendPid":10673,"buildIds":[6,7,9],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"before_activation_recheck"}
+{"backendPid":10673,"buildIds":[9],"editionIds":[3],"globalGenerationLockHeld":true,"phase":"after_first_pointer_write"}

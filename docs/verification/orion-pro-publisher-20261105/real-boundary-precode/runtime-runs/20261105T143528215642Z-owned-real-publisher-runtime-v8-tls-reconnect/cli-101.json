@@ -1,0 +1,10 @@
+{
+  "connections": 1,
+  "error": {
+    "code": "COMMIT_ACK_UNKNOWN",
+    "message": "Commit completed but acknowledgment is deliberately withheld by the owned fault injection"
+  },
+  "outcome": "acknowledgment_unknown",
+  "stage": "committed",
+  "status": "retry"
+}

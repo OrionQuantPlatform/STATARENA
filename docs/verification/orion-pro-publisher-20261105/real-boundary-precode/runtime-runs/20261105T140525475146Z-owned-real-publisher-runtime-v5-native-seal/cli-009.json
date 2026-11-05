@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Nonfinite JSON number"
+  },
+  "status": "rejected"
+}

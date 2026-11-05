@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_e2e.py", line 145, in main
+    streamed = context.fixture.stream_family()
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_fixture.py", line 217, in stream_family
+    self.conn.execute("""INSERT INTO football.shots (match_id,team_id,match_team_revision_id,external_shot_id,source_ordinal,
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        source_id,source_record_id,recorded_from_gen,variant_key,is_canonical,contract_version,transform_version,transform_code_sha256,provenance_kind)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+            FIXTURE_VERSION,
+            ^^^^^^^^^^^^^^^^
+            self.at("football.matches", "id=%s", (match["id"],))[0]["transform_code_sha256"]))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/statarena-publication-test-python/psycopg/connection.py", line 304, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "canonical_policy_version" of relation "shots" violates not-null constraint
+DETAIL:  Failing row contains (4, 1, 1, null, owned_stream_1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, null, 1, {}, 2026-11-05 13:21:10.597982+00, null, null, null, null, null, null, null, 1, null, null, 9, 6, null, owned:streamed, t, f, football.shots, pilot_v1, owned_real_publication_fixture_v1, 39377ac47c5c09633e348b59bc0437e6101618aed524e2fd7249e431c37d3d9d, provider, 13, null).

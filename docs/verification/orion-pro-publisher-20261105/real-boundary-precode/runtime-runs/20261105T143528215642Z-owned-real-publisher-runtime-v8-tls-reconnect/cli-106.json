@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Operation release expired"
+  },
+  "status": "rejected"
+}

@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_context.py", line 617, in native_reject
+    self.db.execute("SET CONSTRAINTS ALL IMMEDIATE")
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/statarena-publication-test-python/psycopg/connection.py", line 304, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.ObjectNotInPrerequisiteState: A retained generation must be sealed before commit
+CONTEXT:  PL/pgSQL function ingest.pro_generation_commit() line 4 at RAISE
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_e2e.py", line 166, in main
+    case(context)
+    ~~~~^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_cases.py", line 161, in R14
+    c.native_reject("incompatible_team_anchor", {"23503", "23514"})
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_context.py", line 619, in native_reject
+    assert error.sqlstate in states
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

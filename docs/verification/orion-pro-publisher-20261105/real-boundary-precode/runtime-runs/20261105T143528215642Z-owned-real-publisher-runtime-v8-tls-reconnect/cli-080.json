@@ -1,0 +1,9 @@
+{
+  "connections": 1,
+  "error": {
+    "code": "COORDINATES_UNQUALIFIED",
+    "message": "Available unqualified coordinates cannot become observed NULL/metres"
+  },
+  "stage": "planning",
+  "status": "rejected"
+}

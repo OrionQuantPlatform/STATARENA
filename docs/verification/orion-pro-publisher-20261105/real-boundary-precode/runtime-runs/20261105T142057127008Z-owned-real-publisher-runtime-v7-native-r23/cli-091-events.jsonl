@@ -1,0 +1,4 @@
+{"backendPid":2640,"buildIds":[5,2,3],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"after_plan"}
+{"backendPid":2640,"buildIds":[],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"after_ready_commit"}
+{"backendPid":2640,"buildIds":[5,2,3],"editionIds":[1,2,3],"globalGenerationLockHeld":false,"phase":"before_activation_recheck"}
+{"backendPid":2640,"buildIds":[5],"editionIds":[1],"globalGenerationLockHeld":true,"phase":"after_first_pointer_write"}

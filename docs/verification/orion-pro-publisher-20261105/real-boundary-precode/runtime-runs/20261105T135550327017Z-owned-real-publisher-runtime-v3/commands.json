@@ -1,0 +1,65 @@
+[
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+      "-D",
+      "/tmp/orion-pro-e2e-4dgfegaw/data",
+      "--auth=trust",
+      "--no-locale",
+      "--encoding=UTF8"
+    ],
+    "exitCode": 0,
+    "prefix": "000-initdb"
+  },
+  {
+    "argv": [
+      "openssl",
+      "req",
+      "-x509",
+      "-newkey",
+      "rsa:2048",
+      "-sha256",
+      "-nodes",
+      "-days",
+      "2",
+      "-keyout",
+      "/tmp/orion-pro-e2e-4dgfegaw/data/server.key",
+      "-out",
+      "/tmp/orion-pro-e2e-4dgfegaw/data/server.crt",
+      "-subj",
+      "/CN=127.0.0.1",
+      "-addext",
+      "subjectAltName=IP:127.0.0.1"
+    ],
+    "exitCode": 0,
+    "prefix": "001-tls"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/tmp/orion-pro-e2e-4dgfegaw/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime-runs/20261105T135550327017Z-owned-real-publisher-runtime-v3/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 61362 -k /tmp/orion-pro-e2e-4dgfegaw/socket",
+      "-w",
+      "start"
+    ],
+    "exitCode": 0,
+    "prefix": "002-postgres-start"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/tmp/orion-pro-e2e-4dgfegaw/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exitCode": 0,
+    "prefix": "003-postgres-stop"
+  }
+]

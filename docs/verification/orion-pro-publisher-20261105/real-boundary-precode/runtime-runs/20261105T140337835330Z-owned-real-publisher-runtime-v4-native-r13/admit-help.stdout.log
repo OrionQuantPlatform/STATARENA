@@ -1,0 +1,34 @@
+usage: orion_pro_admit_real.py [-h] [--environment {owned_local_tls,rds}]
+                               [--mode {plan,apply}] [--input INPUT]
+                               [--input-sha256 INPUT_SHA256]
+                               [--endpoint ENDPOINT]
+                               [--endpoint-sha256 ENDPOINT_SHA256]
+                               [--release RELEASE]
+                               [--release-sha256 RELEASE_SHA256]
+                               [--receipt RECEIPT]
+                               [--credential-file CREDENTIAL_FILE]
+                               [--admission-receipt ADMISSION_RECEIPT]
+
+Qualify retained native SQL and apply explicit minimal publication
+derivations. The default is offline. Owned source-free qualification and
+actual RDS releases have distinct origins, endpoints and release kinds. Source
+bodies are never read.
+
+options:
+  -h, --help            show this help message and exit
+  --environment {owned_local_tls,rds}
+                        Explicit released native endpoint; omitted means
+                        offline
+  --mode {plan,apply}
+  --input INPUT
+  --input-sha256 INPUT_SHA256
+  --endpoint ENDPOINT
+  --endpoint-sha256 ENDPOINT_SHA256
+  --release RELEASE
+  --release-sha256 RELEASE_SHA256
+  --receipt RECEIPT     Inspectable operation receipt
+  --credential-file CREDENTIAL_FILE
+                        Explicit released mode0600 RDS credential file
+  --admission-receipt ADMISSION_RECEIPT
+                        Exact prior real admission receipt, never a source
+                        body

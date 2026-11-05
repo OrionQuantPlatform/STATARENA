@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "editionId must be a positive BIGINT"
+  },
+  "status": "rejected"
+}

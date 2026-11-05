@@ -1,0 +1,9 @@
+{
+  "connections": 1,
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Member source/revision/state differs"
+  },
+  "stage": "planning",
+  "status": "rejected"
+}

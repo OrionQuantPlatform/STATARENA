@@ -1,0 +1,9 @@
+{
+  "connections": 1,
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Same-ID source name proof differs"
+  },
+  "stage": "planning",
+  "status": "rejected"
+}

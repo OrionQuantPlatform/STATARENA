@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Repeated match in complete cohort"
+  },
+  "status": "rejected"
+}

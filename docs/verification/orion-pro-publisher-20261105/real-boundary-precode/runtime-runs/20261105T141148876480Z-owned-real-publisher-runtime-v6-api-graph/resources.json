@@ -1,0 +1,447 @@
+[
+  {
+    "evidenceBytes": 3730234,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 476.721
+  },
+  {
+    "evidenceBytes": 3786253,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 476.22
+  },
+  {
+    "evidenceBytes": 3987480,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 475.702
+  },
+  {
+    "evidenceBytes": 4112489,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 475.19
+  },
+  {
+    "evidenceBytes": 4362411,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 474.661
+  },
+  {
+    "evidenceBytes": 4475552,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 474.182
+  },
+  {
+    "evidenceBytes": 4588637,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 473.674
+  },
+  {
+    "evidenceBytes": 4713644,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 473.115
+  },
+  {
+    "evidenceBytes": 4838864,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 472.64
+  },
+  {
+    "evidenceBytes": 5088495,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 472.132
+  },
+  {
+    "evidenceBytes": 5213476,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 471.623
+  },
+  {
+    "evidenceBytes": 5338472,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 471.077
+  },
+  {
+    "evidenceBytes": 5588433,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 470.579
+  },
+  {
+    "evidenceBytes": 5810720,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 470.074
+  },
+  {
+    "evidenceBytes": 5963721,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 469.573
+  },
+  {
+    "evidenceBytes": 6213428,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 469.066
+  },
+  {
+    "evidenceBytes": 6463405,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 468.556
+  },
+  {
+    "evidenceBytes": 6588445,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 468.053
+  },
+  {
+    "evidenceBytes": 6713485,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 467.547
+  },
+  {
+    "evidenceBytes": 6963462,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 467.037
+  },
+  {
+    "evidenceBytes": 7088772,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 466.53
+  },
+  {
+    "evidenceBytes": 7338964,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 466.026
+  },
+  {
+    "evidenceBytes": 7513202,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 465.522
+  },
+  {
+    "evidenceBytes": 7715364,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 465.017
+  },
+  {
+    "evidenceBytes": 7968817,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 464.504
+  },
+  {
+    "evidenceBytes": 8218582,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 464.0
+  },
+  {
+    "evidenceBytes": 8470150,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 463.481
+  },
+  {
+    "evidenceBytes": 8648005,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 462.965
+  },
+  {
+    "evidenceBytes": 8977647,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 462.467
+  },
+  {
+    "evidenceBytes": 9182240,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 461.956
+  },
+  {
+    "evidenceBytes": 9438258,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 461.446
+  },
+  {
+    "evidenceBytes": 9724116,
+    "ownedDiskBytes": 72318976,
+    "remainingSeconds": 460.884
+  },
+  {
+    "evidenceBytes": 9940486,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 460.375
+  },
+  {
+    "evidenceBytes": 10129078,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 459.869
+  },
+  {
+    "evidenceBytes": 10320787,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 459.368
+  },
+  {
+    "evidenceBytes": 10512501,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 458.856
+  },
+  {
+    "evidenceBytes": 10794222,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 458.348
+  },
+  {
+    "evidenceBytes": 11041521,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 457.832
+  },
+  {
+    "evidenceBytes": 11293101,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 457.324
+  },
+  {
+    "evidenceBytes": 11511824,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 456.817
+  },
+  {
+    "evidenceBytes": 11794880,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 456.051
+  },
+  {
+    "evidenceBytes": 11913709,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 455.538
+  },
+  {
+    "evidenceBytes": 12133623,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 455.039
+  },
+  {
+    "evidenceBytes": 12284901,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 454.524
+  },
+  {
+    "evidenceBytes": 12536991,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 454.015
+  },
+  {
+    "evidenceBytes": 12669029,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 453.475
+  },
+  {
+    "evidenceBytes": 12801065,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 452.963
+  },
+  {
+    "evidenceBytes": 12937878,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 452.451
+  },
+  {
+    "evidenceBytes": 13147637,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 451.937
+  },
+  {
+    "evidenceBytes": 13312133,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 451.422
+  },
+  {
+    "evidenceBytes": 13591103,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 450.903
+  },
+  {
+    "evidenceBytes": 13898451,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 450.398
+  },
+  {
+    "evidenceBytes": 14126164,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 449.884
+  },
+  {
+    "evidenceBytes": 14453728,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 449.373
+  },
+  {
+    "evidenceBytes": 14659321,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 448.857
+  },
+  {
+    "evidenceBytes": 14938389,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 448.356
+  },
+  {
+    "evidenceBytes": 15192511,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 447.84
+  },
+  {
+    "evidenceBytes": 15426687,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 447.329
+  },
+  {
+    "evidenceBytes": 15762752,
+    "ownedDiskBytes": 72335360,
+    "remainingSeconds": 446.816
+  },
+  {
+    "evidenceBytes": 15936749,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 440.681
+  },
+  {
+    "evidenceBytes": 16064189,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 440.17
+  },
+  {
+    "evidenceBytes": 16118019,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 439.663
+  },
+  {
+    "evidenceBytes": 16170701,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 439.158
+  },
+  {
+    "evidenceBytes": 16222799,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 438.648
+  },
+  {
+    "evidenceBytes": 16223438,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 438.137
+  },
+  {
+    "evidenceBytes": 16280171,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 437.629
+  },
+  {
+    "evidenceBytes": 16290870,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 436.94
+  },
+  {
+    "evidenceBytes": 16418310,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 436.324
+  },
+  {
+    "evidenceBytes": 16472213,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 435.811
+  },
+  {
+    "evidenceBytes": 16519894,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 435.059
+  },
+  {
+    "evidenceBytes": 16647334,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 434.52
+  },
+  {
+    "evidenceBytes": 16701164,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 434.02
+  },
+  {
+    "evidenceBytes": 16701267,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 433.416
+  },
+  {
+    "evidenceBytes": 16711958,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 432.748
+  },
+  {
+    "evidenceBytes": 16839402,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 432.208
+  },
+  {
+    "evidenceBytes": 16893305,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 431.699
+  },
+  {
+    "evidenceBytes": 16946319,
+    "ownedDiskBytes": 77307904,
+    "remainingSeconds": 431.192
+  },
+  {
+    "evidenceBytes": 17059825,
+    "ownedDiskBytes": 77373440,
+    "remainingSeconds": 430.685
+  },
+  {
+    "evidenceBytes": 17113809,
+    "ownedDiskBytes": 77373440,
+    "remainingSeconds": 430.181
+  },
+  {
+    "evidenceBytes": 17211038,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 428.712
+  },
+  {
+    "evidenceBytes": 17476694,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 428.21
+  },
+  {
+    "evidenceBytes": 17698472,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 427.701
+  },
+  {
+    "evidenceBytes": 18054812,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 426.552
+  },
+  {
+    "evidenceBytes": 18182252,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 426.04
+  },
+  {
+    "evidenceBytes": 18236082,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 425.523
+  },
+  {
+    "evidenceBytes": 18246773,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 424.601
+  },
+  {
+    "evidenceBytes": 18423026,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 424.057
+  },
+  {
+    "evidenceBytes": 18476929,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 423.554
+  },
+  {
+    "evidenceBytes": 18632508,
+    "ownedDiskBytes": 77414400,
+    "remainingSeconds": 423.039
+  }
+]

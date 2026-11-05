@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Wrong source/model policy"
+  },
+  "status": "rejected"
+}
