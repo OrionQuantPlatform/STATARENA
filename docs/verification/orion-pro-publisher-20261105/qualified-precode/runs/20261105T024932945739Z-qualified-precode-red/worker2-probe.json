@@ -1,0 +1,22 @@
+{
+  "worker": "worker2",
+  "calibration": [
+    "sourceFile",
+    "externalNetwork"
+  ],
+  "backendPid": 21345,
+  "settings": [
+    "statarena_ingest",
+    "8s",
+    "1s",
+    "5s"
+  ],
+  "lockDeadline": {
+    "sqlstate": "55P03",
+    "elapsedSeconds": 1.005
+  },
+  "statementDeadline": {
+    "sqlstate": "57014",
+    "elapsedSeconds": 8.009
+  }
+}

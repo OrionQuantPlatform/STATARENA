@@ -1,0 +1,3 @@
+{"phase": "operational", "sql": "SELECT current_user,current_setting('statement_timeout'),current_setting('lock_timeout'),current_setting('idle_in_transaction_session_timeout')", "parameterTypes": "NoneType", "parametersSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b", "statementCalls": 1}
+{"phase": "operational", "sql": "SELECT pg_advisory_xact_lock(20261105,987)", "parameterTypes": "NoneType", "parametersSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b", "statementCalls": 1}
+{"phase": "operational", "sql": "SELECT pg_sleep(9)", "parameterTypes": "NoneType", "parametersSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b", "statementCalls": 1}
