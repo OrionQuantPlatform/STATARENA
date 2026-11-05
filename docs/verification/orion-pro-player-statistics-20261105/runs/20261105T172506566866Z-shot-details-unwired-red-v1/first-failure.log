@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_shot_details_local.py", line 126, in main
+    status = getattr(cases, name.lower())() or 'pass'
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/shot_cases.py", line 119, in s01
+    self.h.report['shotFixtureGeneration'] = self.seed()
+                                             ~~~~~~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-player-statistics-20261105/shot_cases.py", line 111, in seed
+    build = f.build('A', generation, generation)
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-readers-20261104/fixture.py", line 106, in build
+    with self.conn.transaction():
+         ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_match_readers_local.py", line 82, in __exit__
+    return txn.__exit__(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 148, in __exit__
+    next(self.gen)
+    ~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/connection.py", line 362, in transaction
+    with tx:
+         ^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/transaction.py", line 271, in __exit__
+    return self._conn.wait(self._exit_gen(exc_type, exc_val, exc_tb))
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/connection.py", line 484, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "psycopg_binary/_psycopg/waiting.pyx", line 241, in psycopg_binary._psycopg.wait_c
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/transaction.py", line 115, in _exit_gen
+    yield from self._commit_gen()
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/transaction.py", line 140, in _commit_gen
+    yield from self._conn._exec_command(command)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/psycopg/_connection_base.py", line 483, in _exec_command
+    raise e.error_from_result(result, encoding=self.pgconn._encoding)
+psycopg.errors.CheckViolation: Build summary counters must match the selected edition inputs
+CONTEXT:  PL/pgSQL function ingest.validate_aggregation_build(bigint) line 37 at RAISE
+SQL statement "SELECT ingest.validate_aggregation_build(NEW.id)"
+PL/pgSQL function ingest.pro_validate_ready_build() line 5 at PERFORM

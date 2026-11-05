@@ -8,11 +8,12 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 20,
+    "reader-and-data-contract-required": 18,
     "local-fixture-aliases-v1-E2E-qualified": 2,
     "local-competitions-v1-E2E-qualified": 8,
     "local-native-match-details-v1-E2E-qualified": 6,
-    "local-archives-v1-E2E-qualified": 4
+    "local-archives-v1-E2E-qualified": 4,
+    "local-shot-detail-v1-E2E-qualified": 2
   },
   "rows": [
     {
@@ -829,11 +830,11 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-shot-detail-v1-E2E-qualified",
       "defined103Destinations": [
         "football.shots"
       ],
-      "actionOrGap": "103 destinations exist; implement typed native/normalized adapter only after exact field/type/state/order/scope qualification. No proven blanket schema blocker."
+      "actionOrGap": "Typed projection of exact published match shots. Independent player-shot source observation and real data are separately unqualified."
     },
     {
       "path": "/api/pitchapi/matches/{match}/players/{player}",
@@ -871,11 +872,11 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-shot-detail-v1-E2E-qualified",
       "defined103Destinations": [
         "football.shots"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Typed projection of exact published match shots. Independent player-shot source observation and real data are separately unqualified."
     },
     {
       "path": "/api/pitchapi/matches/{match}/advanced/players/{player}",

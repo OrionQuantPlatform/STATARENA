@@ -1,8 +1,8 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T17:28:57.448707+00:00",
+  "atUtc": "2026-11-05T17:37:29.589551+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
-  "routeMatrixSha256": "45a0efe6123b4d09a7423cce649b707df4b334180fa3b01e8e40c2ffb0974545",
+  "routeMatrixSha256": "0df8574934483a7b7ae63276b8603202935a5a953605a9a5397b696ad0c1463a",
   "localQualifiedOtherForms": 19,
   "remainingForms": 38,
   "routeCountsAreNotWorkloadPercentages": true,
@@ -46,7 +46,7 @@
     {
       "id": "player-statistics-advanced",
       "owner": "backend_entities",
-      "status": "in_development",
+      "status": "two_shot_forms_integrated_nine_in_development",
       "routes": [
         "/api/pitchapi/matches/{match}/players",
         "/api/pitchapi/matches/{match}/players/halves",
@@ -63,7 +63,10 @@
       "module": "dashboard/backend/services/orion-pro-player-statistics.js",
       "testedLocally": false,
       "pushed": false,
-      "deployed": false
+      "deployed": false,
+      "localQualifiedForms": 2,
+      "remainingForms": 9,
+      "shotEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_SHOT_ROUTER_REVIEW.json"
     },
     {
       "id": "competitions-cups-standings",
@@ -91,7 +94,7 @@
     {
       "id": "archives",
       "owner": "sql_publisher",
-      "status": "integrated_tested_locally",
+      "status": "pushed_verified_locally_vercel_ready",
       "routes": [
         "/api/archives/index",
         "/api/archives/season",
@@ -100,9 +103,12 @@
       ],
       "module": "dashboard/backend/services/orion-pro-archives.js",
       "testedLocally": true,
-      "pushed": false,
+      "pushed": true,
       "deployed": false,
-      "evidence": "docs/verification/orion-pro-archives-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json"
+      "evidence": "docs/verification/orion-pro-archives-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json",
+      "commit": "1e6cd6c2e1f09245da55a5fe9cdb00336e02b638",
+      "vercelFrontend": "READY dpl_3z2TwDwKPDQS3Uzrhnj7uen3Tzpd cle1",
+      "initialCiRun": 42075049725
     },
     {
       "id": "fifa-uefa-rankings",
@@ -139,6 +145,6 @@
   "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer.",
   "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
   "suggestedCommit": "docs: assign remaining backend routes by category and dependencies",
-  "currentLocalQualifiedForms": 37,
-  "currentRemainingForms": 20
+  "currentLocalQualifiedForms": 39,
+  "currentRemainingForms": 18
 }
