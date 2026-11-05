@@ -1,0 +1,11 @@
+{
+  "allocatedPublicationGeneration": null,
+  "committedReadyBuildIds": [],
+  "error": {
+    "code": "COVERAGE_INVALID",
+    "message": "Shot source/revision/period/actor declaration differs"
+  },
+  "publicationOutcome": "not_activated",
+  "stage": "planning",
+  "status": "rejected"
+}

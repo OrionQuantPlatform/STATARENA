@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Unaccepted source selection policy"
+  },
+  "status": "rejected"
+}

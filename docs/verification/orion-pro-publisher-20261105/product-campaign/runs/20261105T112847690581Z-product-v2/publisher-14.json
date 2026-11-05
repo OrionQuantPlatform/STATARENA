@@ -1,0 +1,11 @@
+{
+  "allocatedPublicationGeneration": null,
+  "committedReadyBuildIds": [],
+  "error": {
+    "code": "COVERAGE_INVALID",
+    "message": "Coverage physical key is not selected at the declared snapshot"
+  },
+  "publicationOutcome": "not_activated",
+  "stage": "planning",
+  "status": "rejected"
+}

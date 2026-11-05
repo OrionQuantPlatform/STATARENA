@@ -1,0 +1,27 @@
+usage: orion_pro_publish.py [-h] [--local] [--mode {plan,publish}]
+                            [--admission ADMISSION]
+                            [--admission-sha256 ADMISSION_SHA256]
+                            [--dataset-generation DATASET_GENERATION]
+                            [--catalog-generation CATALOG_GENERATION]
+                            [--editions EDITIONS] [--receipt RECEIPT]
+
+Publish the existing four Pro V1 readers from admitted, retained typed SQL.
+This first execution boundary is deliberately an explicit owned-local mode. An
+admission document describes synthetic business scope; its digest provides
+integrity, never source acceptance or permission to publish real data. Neither
+source bodies nor providers are opened. Ready outputs and historical pointers
+remain immutable. Dirty rows are durable hints, not a queue to delete or
+reset.
+
+options:
+  -h, --help            show this help message and exit
+  --local               Require explicit owned local PostgreSQL; no remote
+                        mode exists
+  --mode {plan,publish}
+  --admission ADMISSION
+                        Explicit retained synthetic business admission JSON
+  --admission-sha256 ADMISSION_SHA256
+  --dataset-generation DATASET_GENERATION
+  --catalog-generation CATALOG_GENERATION
+  --editions EDITIONS   Comma-separated admitted edition BIGINT IDs
+  --receipt RECEIPT

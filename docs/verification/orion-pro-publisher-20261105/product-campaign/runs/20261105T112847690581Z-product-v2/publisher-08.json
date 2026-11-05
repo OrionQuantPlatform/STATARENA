@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Retained source reconciliation evidence is absent"
+  },
+  "status": "rejected"
+}

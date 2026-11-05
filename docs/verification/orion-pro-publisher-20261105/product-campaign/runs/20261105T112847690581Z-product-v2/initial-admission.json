@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "kind": "synthetic_declared_business_admission",
+  "fixtureOnly": true,
+  "businessDecision": "Explicit synthetic software-test scope; not authorization or evidence of real source acceptance",
+  "representationVersion": "summary-v1-shots-v1",
+  "sourcePolicy": "pilot_priority_v1",
+  "allowedSourceIds": [
+    1
+  ],
+  "dependencyScheme": "orion-four-readers-dependencies-v1",
+  "snapshotPolicyColumn": "source_priority_version",
+  "upstreamRowContracts": {
+    "contractVersion": "pilot_v1",
+    "transformVersion": "pilot_v1",
+    "canonicalPolicyVersion": "pilot_v1",
+    "transformCodeSha256": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659",
+    "bootstrapDefinitionVersion": "bootstrap_v1",
+    "bootstrapCodeSha256": "379ef1e6d9efe2e5ec9a4c78779892d9dda68015c4f91ec8e95a18990864e08f"
+  },
+  "sourceEvidence": [
+    {
+      "recordId": 1,
+      "sourceId": 1,
+      "documentId": 1,
+      "contentSha256": "b001a87e2ea784a8adefe073f2d1856d5a9f1c67464c58afefb357a4571347e0",
+      "locatorKind": "whole_document",
+      "locator": ""
+    },
+    {
+      "recordId": 2,
+      "sourceId": 1,
+      "documentId": 2,
+      "contentSha256": "1cb69b6d9b3ec35b73703a403fd535d4a7fd65faa45b9f2e326430ffdb3e40b2",
+      "locatorKind": "whole_document",
+      "locator": ""
+    }
+  ],
+  "datasetGeneration": 3,
+  "catalogGeneration": 2,
+  "editions": [
+    {
+      "fixtureKey": "A",
+      "editionId": 1,
+      "editionRevision": 1,
+      "season": "2024/2025",
+      "intendedMatches": [
+        {
+          "publicId": "m_000001",
+          "matchId": 1,
+          "matchRevision": 1,
+          "publicationState": "published",
+          "sourceId": 1,
+          "sourceRecordId": 1,
+          "declaredShotsState": "present",
+          "coverage": {
+            "key": {
+              "match_id": 1,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 2
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 1,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "available",
+            "collectionState": "present",
+            "observedRowCount": 1,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "selectedShotObservations": [
+            {
+              "shotId": 1,
+              "revision": 1,
+              "sourceId": 1,
+              "sourceRecordId": 1,
+              "externalShotId": "s_000001",
+              "period": "first_half",
+              "periodDefinitionVersion": "bootstrap_v1",
+              "playerId": 1,
+              "teamId": 1,
+              "variant": "pilot:primary"
+            }
+          ],
+          "finalScoreObservation": {
+            "present": true,
+            "scope": "final_without_shootout"
+          },
+          "declaredShotsCount": 1
+        },
+        {
+          "publicId": "m_000002",
+          "matchId": 2,
+          "matchRevision": 2,
+          "publicationState": "published",
+          "sourceId": 1,
+          "sourceRecordId": 1,
+          "declaredShotsState": "empty",
+          "coverage": {
+            "key": {
+              "match_id": 2,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 2
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 2,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "empty_response",
+            "collectionState": "empty",
+            "observedRowCount": 0,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "selectedShotObservations": [],
+          "finalScoreObservation": {
+            "present": true,
+            "scope": "final_without_shootout"
+          },
+          "declaredShotsCount": 0
+        },
+        {
+          "publicId": "m_000003",
+          "matchId": 3,
+          "matchRevision": 3,
+          "publicationState": "published",
+          "sourceId": 1,
+          "sourceRecordId": 1,
+          "declaredShotsState": "unavailable",
+          "coverage": {
+            "key": {
+              "match_id": 3,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 2
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 3,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "unavailable",
+            "collectionState": "unavailable",
+            "observedRowCount": null,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "selectedShotObservations": [],
+          "finalScoreObservation": {
+            "present": false,
+            "scope": null
+          },
+          "declaredShotsCount": null
+        }
+      ]
+    },
+    {
+      "fixtureKey": "B",
+      "editionId": 2,
+      "editionRevision": 2,
+      "season": "2025/2026",
+      "intendedMatches": [
+        {
+          "publicId": "m_000004",
+          "matchId": 4,
+          "matchRevision": 4,
+          "publicationState": "published",
+          "sourceId": 1,
+          "sourceRecordId": 1,
+          "declaredShotsState": "present",
+          "coverage": {
+            "key": {
+              "match_id": 4,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 3
+            },
+            "dataRevision": 2,
+            "matchRevisionId": 4,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "available",
+            "collectionState": "present",
+            "observedRowCount": 2,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "selectedShotObservations": [
+            {
+              "shotId": 2,
+              "revision": 4,
+              "sourceId": 1,
+              "sourceRecordId": 1,
+              "externalShotId": "s_000001",
+              "period": "first_half",
+              "periodDefinitionVersion": "bootstrap_v1",
+              "playerId": 1,
+              "teamId": 1,
+              "variant": "pilot:primary"
+            },
+            {
+              "shotId": 3,
+              "revision": 5,
+              "sourceId": 1,
+              "sourceRecordId": 1,
+              "externalShotId": "s_000002",
+              "period": "second_half",
+              "periodDefinitionVersion": "bootstrap_v1",
+              "playerId": 1,
+              "teamId": 1,
+              "variant": "pilot:primary"
+            }
+          ],
+          "finalScoreObservation": {
+            "present": true,
+            "scope": "final_without_shootout"
+          },
+          "declaredShotsCount": 2
+        }
+      ]
+    },
+    {
+      "fixtureKey": "C",
+      "editionId": 3,
+      "editionRevision": 3,
+      "season": "2026/2027",
+      "intendedMatches": [
+        {
+          "publicId": "m_000005",
+          "matchId": 5,
+          "matchRevision": 5,
+          "publicationState": "published",
+          "sourceId": 1,
+          "sourceRecordId": 1,
+          "declaredShotsState": "unknown",
+          "coverage": null,
+          "selectedShotObservations": [],
+          "finalScoreObservation": {
+            "present": true,
+            "scope": "final_without_shootout"
+          },
+          "declaredShotsCount": null
+        }
+      ]
+    }
+  ],
+  "declaredTypes": {
+    "match_date": [
+      "date",
+      "null"
+    ],
+    "score": [
+      "integer",
+      "null"
+    ],
+    "shot_expected_goals": [
+      "number",
+      "null"
+    ],
+    "source_event_type": [
+      "string",
+      "null"
+    ],
+    "is_goal": [
+      "boolean",
+      "null"
+    ],
+    "shots_state": [
+      "present",
+      "empty",
+      "unavailable",
+      "unknown",
+      "absent",
+      "null"
+    ]
+  },
+  "requirements": {
+    "noUsefulDraftOmission": true,
+    "explicitEngagements": true,
+    "exactSourceRevisionTypes": true,
+    "scoreScope": "final_without_shootout"
+  },
+  "oracleMetadataSha256": "9217b0f387d22052e2b120ca0624e987063978cae7fd25e21c60509665c2a1d7"
+}

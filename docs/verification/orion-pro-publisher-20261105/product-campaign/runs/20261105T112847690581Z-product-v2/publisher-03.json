@@ -1,0 +1,11 @@
+{
+  "allocatedPublicationGeneration": null,
+  "committedReadyBuildIds": [],
+  "error": {
+    "code": "DRAFT_NOT_ADMITTED",
+    "message": "Useful selected draft/quarantined match cannot be omitted"
+  },
+  "publicationOutcome": "not_activated",
+  "stage": "planning",
+  "status": "rejected"
+}

@@ -1,0 +1,3779 @@
+{
+  "editions": {
+    "A": {
+      "counters": [
+        3,
+        2,
+        2,
+        1
+      ],
+      "matches": {
+        "m_000001": {
+          "matchId": 1,
+          "revision": 1,
+          "finalScoreRows": 2,
+          "coverage": {
+            "key": {
+              "match_id": 1,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 2
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 1,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "available",
+            "collectionState": "present",
+            "observedRowCount": 1,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "shotNativeWitnesses": [
+            {
+              "external_shot_id": "s_000001",
+              "revision_id": 8,
+              "player_id": 1,
+              "period_code": "first_half",
+              "source_event_type": "",
+              "is_goal": true,
+              "is_own_goal": false,
+              "is_on_target": null,
+              "xg": 0.67,
+              "xgot": 0.0,
+              "x_m": 52.5,
+              "y_m": 34.0,
+              "coordinate_frame": "acting_ltr"
+            }
+          ]
+        },
+        "m_000002": {
+          "matchId": 2,
+          "revision": 2,
+          "finalScoreRows": 2,
+          "coverage": {
+            "key": {
+              "match_id": 2,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 2
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 2,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "empty_response",
+            "collectionState": "empty",
+            "observedRowCount": 0,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "shotNativeWitnesses": []
+        },
+        "m_000003": {
+          "matchId": 3,
+          "revision": 3,
+          "finalScoreRows": 2,
+          "coverage": {
+            "key": {
+              "match_id": 3,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 2
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 3,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "unavailable",
+            "collectionState": "unavailable",
+            "observedRowCount": null,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "shotNativeWitnesses": []
+        }
+      },
+      "closure": {
+        "sha256": "df2cea34526c6b2ab8ddf208b53346d624e56eb9fd49354aea2d37acfa5aa75f",
+        "manifest": {
+          "scheme": "orion-four-readers-dependencies-v1",
+          "representation": "summary-v1-shots-v1",
+          "editionId": "1",
+          "policies": {
+            "dataset": "pilot_priority_v1",
+            "catalogue": "pilot_priority_v1"
+          },
+          "profilePolicy": "same-source-provider-exact-normalized-manual-v1",
+          "tables": {
+            "football.competition_seasons": {
+              "columns": [
+                "competition_id",
+                "competition_revision_id",
+                "contract_version",
+                "end_date",
+                "id",
+                "is_canonical",
+                "is_deleted",
+                "label",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "season_key",
+                "source_id",
+                "source_record_id",
+                "start_date",
+                "status",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "359d433f2cced55c6a1e2b9c6cdbcb38e3dc595e47c46082c2a5a1381e21b815"
+                }
+              ]
+            },
+            "football.competition_teams": {
+              "columns": [
+                "competition_season_id",
+                "competition_season_revision_id",
+                "contract_version",
+                "entered_on",
+                "exited_on",
+                "is_canonical",
+                "is_deleted",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "source_id",
+                "source_record_id",
+                "status",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "c99c64397b35bb21e06acaa644dfb18fd5fd71c2692db571df0717c07ec0e50c"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "0e78911187e2d4995144d3dd56cc6e1933b914ef6a1e0ff4127d48f194478e63"
+                }
+              ]
+            },
+            "football.competitions": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "competition_type",
+                "contract_version",
+                "country_id",
+                "country_revision_id",
+                "gender",
+                "id",
+                "image_asset_id",
+                "is_canonical",
+                "is_deleted",
+                "name",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "slug",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "3f66501ac496077d13d8c46cedd864e0348d2651d029598796844c7e03859070"
+                }
+              ]
+            },
+            "football.match_players": {
+              "columns": [
+                "canonical_policy_version",
+                "contract_version",
+                "coordinate_frame",
+                "data_revision",
+                "is_canonical",
+                "is_captain",
+                "is_deleted",
+                "is_starter",
+                "match_id",
+                "match_team_revision_id",
+                "participation_evidence",
+                "played",
+                "player_id",
+                "position_code",
+                "position_definition_version",
+                "position_mapping_version",
+                "profile_version_id",
+                "provenance_kind",
+                "quality_flags",
+                "raw_pitch_x",
+                "raw_pitch_y",
+                "raw_position_code",
+                "raw_position_code_source_number",
+                "raw_position_code_state",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "shirt_number",
+                "shirt_number_source_number",
+                "shirt_number_state",
+                "source_id",
+                "source_record_id",
+                "squad_status",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "37e92820c9e7f47fce5cd07509fb86d7dd0c67d06500681f0b5a894533f93235"
+                }
+              ]
+            },
+            "football.match_scores": {
+              "columns": [
+                "canonical_policy_version",
+                "contract_version",
+                "data_revision",
+                "goals",
+                "is_canonical",
+                "is_deleted",
+                "match_id",
+                "match_team_revision_id",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "score_basis",
+                "score_scope",
+                "side",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "10"
+                    ]
+                  },
+                  "sha256": "4fcffd646c071e0ba89a4ea2fe1641fd1160be2df3247c01d69b28151cca383f"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "11"
+                    ]
+                  },
+                  "sha256": "c9634619a2b120bcf40dbc32df2ee5bd0d5bfd9e216decd4f3f4c5e09ff60010"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "12"
+                    ]
+                  },
+                  "sha256": "4e85c741e463584a64a14e125b66063aa8a8938ba210977900e1e407c66c0b63"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "13"
+                    ]
+                  },
+                  "sha256": "18e906c89e7ff5dc0218950204d81ac15151b0946aba6e9d66a00c8cfde2ec5c"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "8df32cbfa6c0c91051ed783e7d42e2b15facc1bea352fab78c489b39883293dd"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "ce00627666d2e5d6af956e35fd47f0dcf1410e61ee2d406dfc5da6a8c85a3f29"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "03a1b7184d2a54531cb378730122f0635adc034914b95f4592fbdd02667d52de"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "9"
+                    ]
+                  },
+                  "sha256": "7ee522d4771d7d580185e066bd660c98314c2774d59d75a2f0cc201ed71191cc"
+                }
+              ]
+            },
+            "football.match_teams": {
+              "columns": [
+                "canonical_policy_version",
+                "coach_id",
+                "coach_revision_id",
+                "contract_version",
+                "data_revision",
+                "is_canonical",
+                "is_deleted",
+                "match_id",
+                "match_revision_id",
+                "participant_label",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "side",
+                "source_id",
+                "source_record_id",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "155bc92cf0dbe7af142599fea08f5e712a4c4e8892d0fcb97c374707acd6afea"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "efeec6c328235a10e9470702890f2a17c88f44590d653942fde30ca2331ab408"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "5eac7b11b17d9402f92aab5926a16b182dfde8c5ae7c8962432fc686589cdc59"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "a6063cd5e6b18731bcf84ab9366faa971f227ddf79fd83a233c01abc7c8ecbe9"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "5"
+                    ]
+                  },
+                  "sha256": "7fd5813af8c90d51b3d92b78fb26123cb12a3886f18f07146d391665fcd23176"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "6"
+                    ]
+                  },
+                  "sha256": "6fd48e062cb9af223fa97ae51826cf48ef63d0f8aa2b4df3d57c9375b40959e6"
+                }
+              ]
+            },
+            "football.matches": {
+              "columns": [
+                "canonical_policy_version",
+                "competition_season_id",
+                "competition_season_revision_id",
+                "contract_version",
+                "data_revision",
+                "group_id",
+                "group_revision_id",
+                "id",
+                "is_canonical",
+                "is_deleted",
+                "kickoff_at",
+                "kickoff_precision",
+                "leg_number",
+                "match_date",
+                "neutral_venue",
+                "provenance_kind",
+                "publication_state",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "round_label",
+                "round_number",
+                "source_id",
+                "source_record_id",
+                "source_timezone",
+                "stage_id",
+                "stage_revision_id",
+                "status",
+                "tie_key",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key",
+                "venue_id",
+                "venue_revision_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "688d0c9da8b97a59cb4207ba7ddbbf91543d1cfff454dbb9a62c74fdebe0c41a"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "6c0b3578317570a1933d2f57654920e4518dd631917c9c9c3b23ac4b8ee00a54"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "23b4ea0a2c140cfbacd1ac985e6b609aa5a278cea52e351ef51b150b5f8c5060"
+                }
+              ]
+            },
+            "football.periods": {
+              "columns": [
+                "code",
+                "contract_version",
+                "definition",
+                "definition_version",
+                "is_aggregate",
+                "label",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "sequence_no",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "code": [
+                      "text",
+                      "first_half"
+                    ],
+                    "definition_version": [
+                      "text",
+                      "bootstrap_v1"
+                    ]
+                  },
+                  "sha256": "e01b6c19e1183cbcaeaab42e89dd1f0e21bc23e772f9345534c90f51a4bea929"
+                }
+              ]
+            },
+            "football.player_profile_versions": {
+              "columns": [
+                "birth_date",
+                "canonical_policy_version",
+                "contract_version",
+                "country_code_source",
+                "data_revision",
+                "display_name",
+                "dominant_foot",
+                "external_profile_version_id",
+                "height_cm",
+                "id",
+                "image_asset_id",
+                "is_canonical",
+                "is_deleted",
+                "nationality_country_id",
+                "nationality_country_revision_id",
+                "observed_at",
+                "player_id",
+                "primary_position_code",
+                "primary_position_definition_version",
+                "profile_content_sha256",
+                "profile_context",
+                "provenance_kind",
+                "quality_flags",
+                "raw_position_code",
+                "raw_position_code_source_number",
+                "raw_position_code_state",
+                "recorded_from_gen",
+                "relation_code",
+                "shirt_number",
+                "shirt_number_source_number",
+                "shirt_number_state",
+                "short_name",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "9"
+                    ]
+                  },
+                  "sha256": "f5a27b7cdd631d6673b38900fb78be964c64d887a09b0193bbf367d2fa18d697"
+                }
+              ]
+            },
+            "football.players": {
+              "columns": [
+                "birth_date",
+                "created_at",
+                "display_name",
+                "dominant_foot",
+                "height_cm",
+                "id",
+                "nationality_country_id",
+                "nationality_country_revision_id",
+                "primary_position_code",
+                "primary_position_definition_version"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "b23b75c46e0858e8bf2d4b80f28c6401c765dc2a5f464876ff76515e32e4d77e"
+                }
+              ]
+            },
+            "football.shots": {
+              "columns": [
+                "blocked_x",
+                "blocked_y",
+                "body_part",
+                "canonical_policy_version",
+                "contract_version",
+                "coordinate_frame",
+                "data_revision",
+                "external_shot_id",
+                "goal_crossed_y",
+                "goal_crossed_z",
+                "id",
+                "is_blocked",
+                "is_canonical",
+                "is_deleted",
+                "is_goal",
+                "is_inside_box",
+                "is_on_target",
+                "is_own_goal",
+                "is_saved_off_line",
+                "keeper_id",
+                "keeper_profile_version_id",
+                "match_id",
+                "match_team_revision_id",
+                "minute",
+                "minute_added",
+                "outcome",
+                "period_code",
+                "period_definition_version",
+                "pitch_length_m",
+                "pitch_width_m",
+                "player_id",
+                "player_profile_version_id",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "situation",
+                "source_event_type",
+                "source_id",
+                "source_ordinal",
+                "source_record_id",
+                "source_shot_type",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key",
+                "x_m",
+                "xg",
+                "xgot",
+                "y_m"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "8"
+                    ]
+                  },
+                  "sha256": "7ab4182577bdd54be8174d7a9687a1d954c0b38f6475ad0fd940a4d194b16d31"
+                }
+              ]
+            },
+            "football.team_profile_versions": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "contract_version",
+                "country_code_source",
+                "country_id",
+                "country_revision_id",
+                "display_name",
+                "founded_year",
+                "from_phases",
+                "from_year",
+                "gender",
+                "id",
+                "image_asset_id",
+                "inherit_team_external_id",
+                "international_name",
+                "is_canonical",
+                "is_deleted",
+                "is_national",
+                "is_placeholder",
+                "observed_at",
+                "official_name",
+                "profile_context",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "short_name",
+                "slug",
+                "source_id",
+                "source_record_id",
+                "team_code_source",
+                "team_id",
+                "team_type",
+                "to_phases",
+                "to_year",
+                "transform_code_sha256",
+                "transform_version",
+                "valid_from",
+                "valid_to",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "13"
+                    ]
+                  },
+                  "sha256": "7c3e2a7ce5b6eac0b55d2e31eb69f1c9eb69c19690f1ed6f76365075eeed762a"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "6"
+                    ]
+                  },
+                  "sha256": "1842bf701eed90c6b9ba411d4a44a924aa83fe5f00de39ef0fea9f9d023b52a1"
+                }
+              ]
+            },
+            "football.teams": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "country_id",
+                "country_revision_id",
+                "founded_year",
+                "gender",
+                "id",
+                "image_asset_id",
+                "name",
+                "short_name",
+                "slug",
+                "team_type"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "c5fae2bbe70693110867cdab2146482abfd9d5d9400081029278c4f417db00d3"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "b5ce204950db3fedf55a7d9e92d0b1fd92d5e84f4ef1e210eb0a7694f679d4d5"
+                }
+              ]
+            },
+            "ingest.match_coverage": {
+              "columns": [
+                "checked_at",
+                "collection_state",
+                "contract_version",
+                "coverage_state",
+                "data_revision",
+                "document_id",
+                "error_code",
+                "feature_code",
+                "http_status",
+                "is_canonical",
+                "is_stale",
+                "match_id",
+                "match_revision_id",
+                "observed_row_count",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "match_id": [
+                      "i64",
+                      "1"
+                    ],
+                    "source_id": [
+                      "i64",
+                      "1"
+                    ],
+                    "feature_code": [
+                      "text",
+                      "shots"
+                    ],
+                    "variant_key": [
+                      "text",
+                      "pilot:primary"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "8d9b83f414f2f9f7ab8c0ce67be8adf9eefe7b83a8fc9e576ac3304ee22ca376"
+                },
+                {
+                  "key": {
+                    "match_id": [
+                      "i64",
+                      "2"
+                    ],
+                    "source_id": [
+                      "i64",
+                      "1"
+                    ],
+                    "feature_code": [
+                      "text",
+                      "shots"
+                    ],
+                    "variant_key": [
+                      "text",
+                      "pilot:primary"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "59319055330366e14ab7bd11bedec6263d7c55aff36b020c969957fd95bf0339"
+                },
+                {
+                  "key": {
+                    "match_id": [
+                      "i64",
+                      "3"
+                    ],
+                    "source_id": [
+                      "i64",
+                      "1"
+                    ],
+                    "feature_code": [
+                      "text",
+                      "shots"
+                    ],
+                    "variant_key": [
+                      "text",
+                      "pilot:primary"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "4f61837cbca227b8e5b26478d71b456c3c11d61dd1296e9aada82b0503fcc555"
+                }
+              ]
+            },
+            "ingest.public_aliases": {
+              "columns": [
+                "association_id",
+                "coach_id",
+                "coach_revision_id",
+                "competition_id",
+                "competition_revision_id",
+                "contract_version",
+                "is_deleted",
+                "match_id",
+                "match_revision_id",
+                "player_id",
+                "profile_version_id",
+                "provenance_kind",
+                "public_key",
+                "recorded_from_gen",
+                "relation_code",
+                "route_kind",
+                "source_id",
+                "source_record_id",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "venue_id",
+                "venue_revision_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "competition"
+                    ],
+                    "public_key": [
+                      "text",
+                      "l_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "b81601eacd31fc3544a1c9b940ce2eb0c48a1c5a3137de20f161b69bd0b85e38"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "match"
+                    ],
+                    "public_key": [
+                      "text",
+                      "m_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "3643551f5150ea3d89f3e238bfeab6a7f78f12a7e81ed9ff6fbc228581393d26"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "match"
+                    ],
+                    "public_key": [
+                      "text",
+                      "m_000002"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "165b5b821bb6bd08a8c70946dbea3c13b561d1fc9a37f7adf33685ed85eb0ec4"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "match"
+                    ],
+                    "public_key": [
+                      "text",
+                      "m_000003"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "261b78325db0f12413a8c6d5a6a900b37aedd3beae53df94f23eb2d1efdd3174"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "player"
+                    ],
+                    "public_key": [
+                      "text",
+                      "p_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "bfa704eaf621dd63ec15971e2414e9aa30948763759f5d9cedc0a19f5ecfdb89"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "team"
+                    ],
+                    "public_key": [
+                      "text",
+                      "t_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "e766732de8f9329c89ef4c7dad5817223610099e82f1d2f76c9551fb83825cb2"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "team"
+                    ],
+                    "public_key": [
+                      "text",
+                      "t_000002"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "ef146b903ff838ca738c1d872c55e94d9deb6cf90f5dcd1b9f60c857ce01b201"
+                }
+              ]
+            },
+            "ingest.relation_contracts": {
+              "columns": [
+                "contract_version",
+                "grain_definition",
+                "relation_code",
+                "relation_name"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.periods"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "bootstrap_v1"
+                    ]
+                  },
+                  "sha256": "ff913035bd2551c5fafc07a338af57f71c7ff4d80eae7d11a9fbe19003182d83"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competition_seasons"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "3c1c117cf009999f4c275b8142e3929447d01e8005ab96247ae10e58c6eea642"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competition_teams"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "dc3ea39bfd4e3da512088865e50cf385e307329e1165715db723fd0166ebe162"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competitions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "0a79518faa0c09f15e91c5fc204be3cc66bd340e7ebe6d8b5c9dd275d65cd303"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_players"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "3ec4435531f0e419135a76389d6860ccc9e1c567b2dd39a87f3b8d6be932ab12"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_scores"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "b0dd59098aaff64896b730fdbafeedfd08a85565c4244fa30bd85a096f320ba7"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_teams"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "c9db6d0b4766c7ce82e7cb81e9883c4588fbae3c33e476006c0892b2352c3815"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.matches"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "58f13b3c33c2f0d7e37c85b54d81b2b2bd2781d848d1b359dee29f29d879188c"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.player_profile_versions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "005d7aa93b6c428847c4442b5d6d05328c5816b1a36aa5c064d4fafa0de7dff4"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.shots"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "e766ef5af16ae92e5752a096927d72b3da50bb45af4b7d0eb214d1afda515625"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.team_profile_versions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "9bff8154e233b1906be90dd88107ed72c9c37863d71e665ed4f3e86c7fda0923"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "ingest.match_coverage"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "92e9b3c8dc1a86831523ea8f77e175069610633f9a4b34654f6302d98b22fd26"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "ingest.public_aliases"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "7e9d4361105a37bead5c64b65fa324409f3d697e7effa9dd3212e4e1130195ed"
+                }
+              ]
+            },
+            "ingest.source_datasets": {
+              "columns": [
+                "contract_version",
+                "created_at",
+                "dataset_key",
+                "id",
+                "license_code",
+                "schema_description",
+                "source_id",
+                "source_url"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "7fd40b7224d76006a373b5c5618be3712b90c3fb1f7346c7ea367a859d332b7e"
+                }
+              ]
+            },
+            "ingest.source_documents": {
+              "columns": [
+                "byte_length",
+                "content_sha256",
+                "content_type",
+                "dataset_id",
+                "encoding",
+                "id",
+                "import_run_id",
+                "origin_kind",
+                "request_fingerprint",
+                "retrieved_at",
+                "source_id",
+                "source_published_at",
+                "source_updated_at",
+                "source_url"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "149d77c311d25b185c0f80f1583d873623ca12255dd8bfe8c53369de6b47d27e"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "681500a5f5ae53de166ec8b92660f0b44d6a5d770903457ea4fdcdff9f35f285"
+                }
+              ]
+            },
+            "ingest.source_records": {
+              "columns": [
+                "document_id",
+                "external_key",
+                "id",
+                "locator",
+                "locator_kind",
+                "ordinal",
+                "record_kind",
+                "source_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "db45783e3f1ea7818f54048c316fae1d0a2651910584a07f4fadae25bbb7821a"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "f1e22c050005272c66883af2bcdd1857f412aeb5b366fe202e8944ab52852a67"
+                }
+              ]
+            },
+            "ingest.sources": {
+              "columns": [
+                "base_url",
+                "code",
+                "created_at",
+                "id",
+                "name",
+                "upstream_source_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "3e33a6aaa339868b353cd6d1eb40f27a172bded47264c35604194640c78be9e9"
+                }
+              ]
+            }
+          },
+          "profileSelections": [
+            {
+              "table": "football.player_profile_versions",
+              "actor": 1,
+              "source": 1,
+              "priority": 0,
+              "winnerIds": [
+                9
+              ]
+            },
+            {
+              "table": "football.team_profile_versions",
+              "actor": 1,
+              "source": 1,
+              "priority": 0,
+              "winnerIds": [
+                13
+              ]
+            },
+            {
+              "table": "football.team_profile_versions",
+              "actor": 2,
+              "source": 1,
+              "priority": 1,
+              "winnerIds": [
+                6
+              ]
+            }
+          ]
+        },
+        "effectiveSnapshots": {
+          "dg": {
+            "id": 19,
+            "generation": 19,
+            "status": "sealed",
+            "sourcePriorityVersion": "pilot_priority_v1"
+          },
+          "cg": {
+            "id": 19,
+            "generation": 19,
+            "status": "sealed",
+            "sourcePriorityVersion": "pilot_priority_v1"
+          }
+        }
+      }
+    },
+    "B": {
+      "counters": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "matches": {
+        "m_000004": {
+          "matchId": 4,
+          "revision": 4,
+          "finalScoreRows": 2,
+          "coverage": {
+            "key": {
+              "match_id": 4,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 3
+            },
+            "dataRevision": 2,
+            "matchRevisionId": 4,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "available",
+            "collectionState": "present",
+            "observedRowCount": 2,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "shotNativeWitnesses": [
+            {
+              "external_shot_id": "s_000001",
+              "revision_id": 4,
+              "player_id": 1,
+              "period_code": "first_half",
+              "source_event_type": "Goal",
+              "is_goal": true,
+              "is_own_goal": false,
+              "is_on_target": null,
+              "xg": 0.99,
+              "xgot": 0.0,
+              "x_m": 52.5,
+              "y_m": 34.0,
+              "coordinate_frame": "home_ltr"
+            },
+            {
+              "external_shot_id": "s_000002",
+              "revision_id": 5,
+              "player_id": 1,
+              "period_code": "second_half",
+              "source_event_type": "",
+              "is_goal": false,
+              "is_own_goal": false,
+              "is_on_target": false,
+              "xg": 0.21,
+              "xgot": 0.0,
+              "x_m": 20.0,
+              "y_m": 10.0,
+              "coordinate_frame": "acting_ltr"
+            }
+          ]
+        }
+      },
+      "closure": {
+        "sha256": "915260e74662000f8330633c39f25210c6da1bf8cce6e48decd8279b54243679",
+        "manifest": {
+          "scheme": "orion-four-readers-dependencies-v1",
+          "representation": "summary-v1-shots-v1",
+          "editionId": "2",
+          "policies": {
+            "dataset": "pilot_priority_v1",
+            "catalogue": "pilot_priority_v1"
+          },
+          "profilePolicy": "same-source-provider-exact-normalized-manual-v1",
+          "tables": {
+            "football.competition_seasons": {
+              "columns": [
+                "competition_id",
+                "competition_revision_id",
+                "contract_version",
+                "end_date",
+                "id",
+                "is_canonical",
+                "is_deleted",
+                "label",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "season_key",
+                "source_id",
+                "source_record_id",
+                "start_date",
+                "status",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "73a0fb9ddd4583844ea6fffac103f7ca41f4f95829b38e75e034037fde09e742"
+                }
+              ]
+            },
+            "football.competition_teams": {
+              "columns": [
+                "competition_season_id",
+                "competition_season_revision_id",
+                "contract_version",
+                "entered_on",
+                "exited_on",
+                "is_canonical",
+                "is_deleted",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "source_id",
+                "source_record_id",
+                "status",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "b163ae9ae995157e8947dc7ef82b2407b173f3810949a2aadf82802188b84715"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "24e1acad18b8d00523f652c8789a5151052b8dd0e4a55fa621d02ad106b90af4"
+                }
+              ]
+            },
+            "football.competitions": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "competition_type",
+                "contract_version",
+                "country_id",
+                "country_revision_id",
+                "gender",
+                "id",
+                "image_asset_id",
+                "is_canonical",
+                "is_deleted",
+                "name",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "slug",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "3f66501ac496077d13d8c46cedd864e0348d2651d029598796844c7e03859070"
+                }
+              ]
+            },
+            "football.match_players": {
+              "columns": [
+                "canonical_policy_version",
+                "contract_version",
+                "coordinate_frame",
+                "data_revision",
+                "is_canonical",
+                "is_captain",
+                "is_deleted",
+                "is_starter",
+                "match_id",
+                "match_team_revision_id",
+                "participation_evidence",
+                "played",
+                "player_id",
+                "position_code",
+                "position_definition_version",
+                "position_mapping_version",
+                "profile_version_id",
+                "provenance_kind",
+                "quality_flags",
+                "raw_pitch_x",
+                "raw_pitch_y",
+                "raw_position_code",
+                "raw_position_code_source_number",
+                "raw_position_code_state",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "shirt_number",
+                "shirt_number_source_number",
+                "shirt_number_state",
+                "source_id",
+                "source_record_id",
+                "squad_status",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "c351619fbd21302611d0c9d46c4d086f6395ff58b602f2d5ad0ed2e0725eabc6"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "5"
+                    ]
+                  },
+                  "sha256": "ef88dcacea6ece3a2237869d454df5995fd5d110868110c5632f866cf0d99592"
+                }
+              ]
+            },
+            "football.match_scores": {
+              "columns": [
+                "canonical_policy_version",
+                "contract_version",
+                "data_revision",
+                "goals",
+                "is_canonical",
+                "is_deleted",
+                "match_id",
+                "match_team_revision_id",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "score_basis",
+                "score_scope",
+                "side",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "5"
+                    ]
+                  },
+                  "sha256": "4df563f3cbad622f87e9835841566162ff23062f60802247bc98c327a625aa8d"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "6"
+                    ]
+                  },
+                  "sha256": "2d59940a30b2c34acc5925230e06e718d05b526bdff308ee672824eb618ceeb1"
+                }
+              ]
+            },
+            "football.match_teams": {
+              "columns": [
+                "canonical_policy_version",
+                "coach_id",
+                "coach_revision_id",
+                "contract_version",
+                "data_revision",
+                "is_canonical",
+                "is_deleted",
+                "match_id",
+                "match_revision_id",
+                "participant_label",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "side",
+                "source_id",
+                "source_record_id",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "7"
+                    ]
+                  },
+                  "sha256": "3ffc228eb615635a1d1638e4f8ac31af1f7456d748f4a48efe66c8eede8fffd9"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "8"
+                    ]
+                  },
+                  "sha256": "e42bb5f6413f12e5f013fb62aea928a566cc8551aa6a80de0db48fa7e21c8da7"
+                }
+              ]
+            },
+            "football.matches": {
+              "columns": [
+                "canonical_policy_version",
+                "competition_season_id",
+                "competition_season_revision_id",
+                "contract_version",
+                "data_revision",
+                "group_id",
+                "group_revision_id",
+                "id",
+                "is_canonical",
+                "is_deleted",
+                "kickoff_at",
+                "kickoff_precision",
+                "leg_number",
+                "match_date",
+                "neutral_venue",
+                "provenance_kind",
+                "publication_state",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "round_label",
+                "round_number",
+                "source_id",
+                "source_record_id",
+                "source_timezone",
+                "stage_id",
+                "stage_revision_id",
+                "status",
+                "tie_key",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key",
+                "venue_id",
+                "venue_revision_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "7caf37135ce0703d9bcfe6f32be07c3e4f45f19677c8d48e73789b1fd421873c"
+                }
+              ]
+            },
+            "football.periods": {
+              "columns": [
+                "code",
+                "contract_version",
+                "definition",
+                "definition_version",
+                "is_aggregate",
+                "label",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "sequence_no",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "code": [
+                      "text",
+                      "first_half"
+                    ],
+                    "definition_version": [
+                      "text",
+                      "bootstrap_v1"
+                    ]
+                  },
+                  "sha256": "e01b6c19e1183cbcaeaab42e89dd1f0e21bc23e772f9345534c90f51a4bea929"
+                },
+                {
+                  "key": {
+                    "code": [
+                      "text",
+                      "second_half"
+                    ],
+                    "definition_version": [
+                      "text",
+                      "bootstrap_v1"
+                    ]
+                  },
+                  "sha256": "895a6138a7bdcb48fb32ded57ea00d1f69be2eb8a743730f9d81075f5efbd33d"
+                }
+              ]
+            },
+            "football.player_profile_versions": {
+              "columns": [
+                "birth_date",
+                "canonical_policy_version",
+                "contract_version",
+                "country_code_source",
+                "data_revision",
+                "display_name",
+                "dominant_foot",
+                "external_profile_version_id",
+                "height_cm",
+                "id",
+                "image_asset_id",
+                "is_canonical",
+                "is_deleted",
+                "nationality_country_id",
+                "nationality_country_revision_id",
+                "observed_at",
+                "player_id",
+                "primary_position_code",
+                "primary_position_definition_version",
+                "profile_content_sha256",
+                "profile_context",
+                "provenance_kind",
+                "quality_flags",
+                "raw_position_code",
+                "raw_position_code_source_number",
+                "raw_position_code_state",
+                "recorded_from_gen",
+                "relation_code",
+                "shirt_number",
+                "shirt_number_source_number",
+                "shirt_number_state",
+                "short_name",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "6"
+                    ]
+                  },
+                  "sha256": "08e91f2a313c553b7f706fb25d67b7f1926bdc41e381675f42883282980ac303"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "9"
+                    ]
+                  },
+                  "sha256": "f5a27b7cdd631d6673b38900fb78be964c64d887a09b0193bbf367d2fa18d697"
+                }
+              ]
+            },
+            "football.players": {
+              "columns": [
+                "birth_date",
+                "created_at",
+                "display_name",
+                "dominant_foot",
+                "height_cm",
+                "id",
+                "nationality_country_id",
+                "nationality_country_revision_id",
+                "primary_position_code",
+                "primary_position_definition_version"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "b23b75c46e0858e8bf2d4b80f28c6401c765dc2a5f464876ff76515e32e4d77e"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "8efa67ef259820b59708f439fe3a6996adbe3ce0b8a2c51ead9847ca1a912e09"
+                }
+              ]
+            },
+            "football.shots": {
+              "columns": [
+                "blocked_x",
+                "blocked_y",
+                "body_part",
+                "canonical_policy_version",
+                "contract_version",
+                "coordinate_frame",
+                "data_revision",
+                "external_shot_id",
+                "goal_crossed_y",
+                "goal_crossed_z",
+                "id",
+                "is_blocked",
+                "is_canonical",
+                "is_deleted",
+                "is_goal",
+                "is_inside_box",
+                "is_on_target",
+                "is_own_goal",
+                "is_saved_off_line",
+                "keeper_id",
+                "keeper_profile_version_id",
+                "match_id",
+                "match_team_revision_id",
+                "minute",
+                "minute_added",
+                "outcome",
+                "period_code",
+                "period_definition_version",
+                "pitch_length_m",
+                "pitch_width_m",
+                "player_id",
+                "player_profile_version_id",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "situation",
+                "source_event_type",
+                "source_id",
+                "source_ordinal",
+                "source_record_id",
+                "source_shot_type",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key",
+                "x_m",
+                "xg",
+                "xgot",
+                "y_m"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "d70ad99183691a65eb921bc08d3faed81e5c6456a26ae5db2345940b39c67d47"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "5"
+                    ]
+                  },
+                  "sha256": "9d7b16d42aa9f559dcad5799570936cef8d9f040f6fbb4bf5d09cff2ff46ee83"
+                }
+              ]
+            },
+            "football.team_profile_versions": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "contract_version",
+                "country_code_source",
+                "country_id",
+                "country_revision_id",
+                "display_name",
+                "founded_year",
+                "from_phases",
+                "from_year",
+                "gender",
+                "id",
+                "image_asset_id",
+                "inherit_team_external_id",
+                "international_name",
+                "is_canonical",
+                "is_deleted",
+                "is_national",
+                "is_placeholder",
+                "observed_at",
+                "official_name",
+                "profile_context",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "short_name",
+                "slug",
+                "source_id",
+                "source_record_id",
+                "team_code_source",
+                "team_id",
+                "team_type",
+                "to_phases",
+                "to_year",
+                "transform_code_sha256",
+                "transform_version",
+                "valid_from",
+                "valid_to",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "13"
+                    ]
+                  },
+                  "sha256": "7c3e2a7ce5b6eac0b55d2e31eb69f1c9eb69c19690f1ed6f76365075eeed762a"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "8"
+                    ]
+                  },
+                  "sha256": "6016dcbea54ff4919d3865f2feb21e3b7d1d30cc6f1a15babcfecad995a62e45"
+                }
+              ]
+            },
+            "football.teams": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "country_id",
+                "country_revision_id",
+                "founded_year",
+                "gender",
+                "id",
+                "image_asset_id",
+                "name",
+                "short_name",
+                "slug",
+                "team_type"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "c5fae2bbe70693110867cdab2146482abfd9d5d9400081029278c4f417db00d3"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "7d053b149d1d0ccba2054d9a1a98b01db5023cf5c238d759cae1a0ce90cdd85e"
+                }
+              ]
+            },
+            "ingest.match_coverage": {
+              "columns": [
+                "checked_at",
+                "collection_state",
+                "contract_version",
+                "coverage_state",
+                "data_revision",
+                "document_id",
+                "error_code",
+                "feature_code",
+                "http_status",
+                "is_canonical",
+                "is_stale",
+                "match_id",
+                "match_revision_id",
+                "observed_row_count",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "match_id": [
+                      "i64",
+                      "4"
+                    ],
+                    "source_id": [
+                      "i64",
+                      "1"
+                    ],
+                    "feature_code": [
+                      "text",
+                      "shots"
+                    ],
+                    "variant_key": [
+                      "text",
+                      "pilot:primary"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "79ffb780d8bfe998c9187b68ba50194e10be62580d22c6a5ac4e39dafafa32f5"
+                }
+              ]
+            },
+            "ingest.public_aliases": {
+              "columns": [
+                "association_id",
+                "coach_id",
+                "coach_revision_id",
+                "competition_id",
+                "competition_revision_id",
+                "contract_version",
+                "is_deleted",
+                "match_id",
+                "match_revision_id",
+                "player_id",
+                "profile_version_id",
+                "provenance_kind",
+                "public_key",
+                "recorded_from_gen",
+                "relation_code",
+                "route_kind",
+                "source_id",
+                "source_record_id",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "venue_id",
+                "venue_revision_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "competition"
+                    ],
+                    "public_key": [
+                      "text",
+                      "l_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "b81601eacd31fc3544a1c9b940ce2eb0c48a1c5a3137de20f161b69bd0b85e38"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "match"
+                    ],
+                    "public_key": [
+                      "text",
+                      "m_000004"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "7352c5e3c9db4f632c325ea55c5a678f3a6a557285d2025b827a870dc74df05b"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "player"
+                    ],
+                    "public_key": [
+                      "text",
+                      "p_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "bfa704eaf621dd63ec15971e2414e9aa30948763759f5d9cedc0a19f5ecfdb89"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "player"
+                    ],
+                    "public_key": [
+                      "text",
+                      "p_000002"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "b6ff09967045112fcad8a5b2fb510f81333e40d6e543e6ad3bdf2815791ab18e"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "team"
+                    ],
+                    "public_key": [
+                      "text",
+                      "t_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "e766732de8f9329c89ef4c7dad5817223610099e82f1d2f76c9551fb83825cb2"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "team"
+                    ],
+                    "public_key": [
+                      "text",
+                      "t_000003"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "8a03195566d6d14d014d3c7b2fccf24db580b7071de03b52b90f5b9eef32f022"
+                }
+              ]
+            },
+            "ingest.relation_contracts": {
+              "columns": [
+                "contract_version",
+                "grain_definition",
+                "relation_code",
+                "relation_name"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.periods"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "bootstrap_v1"
+                    ]
+                  },
+                  "sha256": "ff913035bd2551c5fafc07a338af57f71c7ff4d80eae7d11a9fbe19003182d83"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competition_seasons"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "3c1c117cf009999f4c275b8142e3929447d01e8005ab96247ae10e58c6eea642"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competition_teams"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "dc3ea39bfd4e3da512088865e50cf385e307329e1165715db723fd0166ebe162"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competitions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "0a79518faa0c09f15e91c5fc204be3cc66bd340e7ebe6d8b5c9dd275d65cd303"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_players"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "3ec4435531f0e419135a76389d6860ccc9e1c567b2dd39a87f3b8d6be932ab12"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_scores"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "b0dd59098aaff64896b730fdbafeedfd08a85565c4244fa30bd85a096f320ba7"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_teams"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "c9db6d0b4766c7ce82e7cb81e9883c4588fbae3c33e476006c0892b2352c3815"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.matches"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "58f13b3c33c2f0d7e37c85b54d81b2b2bd2781d848d1b359dee29f29d879188c"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.player_profile_versions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "005d7aa93b6c428847c4442b5d6d05328c5816b1a36aa5c064d4fafa0de7dff4"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.shots"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "e766ef5af16ae92e5752a096927d72b3da50bb45af4b7d0eb214d1afda515625"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.team_profile_versions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "9bff8154e233b1906be90dd88107ed72c9c37863d71e665ed4f3e86c7fda0923"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "ingest.match_coverage"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "92e9b3c8dc1a86831523ea8f77e175069610633f9a4b34654f6302d98b22fd26"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "ingest.public_aliases"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "7e9d4361105a37bead5c64b65fa324409f3d697e7effa9dd3212e4e1130195ed"
+                }
+              ]
+            },
+            "ingest.source_datasets": {
+              "columns": [
+                "contract_version",
+                "created_at",
+                "dataset_key",
+                "id",
+                "license_code",
+                "schema_description",
+                "source_id",
+                "source_url"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "7fd40b7224d76006a373b5c5618be3712b90c3fb1f7346c7ea367a859d332b7e"
+                }
+              ]
+            },
+            "ingest.source_documents": {
+              "columns": [
+                "byte_length",
+                "content_sha256",
+                "content_type",
+                "dataset_id",
+                "encoding",
+                "id",
+                "import_run_id",
+                "origin_kind",
+                "request_fingerprint",
+                "retrieved_at",
+                "source_id",
+                "source_published_at",
+                "source_updated_at",
+                "source_url"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "149d77c311d25b185c0f80f1583d873623ca12255dd8bfe8c53369de6b47d27e"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "681500a5f5ae53de166ec8b92660f0b44d6a5d770903457ea4fdcdff9f35f285"
+                }
+              ]
+            },
+            "ingest.source_records": {
+              "columns": [
+                "document_id",
+                "external_key",
+                "id",
+                "locator",
+                "locator_kind",
+                "ordinal",
+                "record_kind",
+                "source_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "db45783e3f1ea7818f54048c316fae1d0a2651910584a07f4fadae25bbb7821a"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "f1e22c050005272c66883af2bcdd1857f412aeb5b366fe202e8944ab52852a67"
+                }
+              ]
+            },
+            "ingest.sources": {
+              "columns": [
+                "base_url",
+                "code",
+                "created_at",
+                "id",
+                "name",
+                "upstream_source_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "3e33a6aaa339868b353cd6d1eb40f27a172bded47264c35604194640c78be9e9"
+                }
+              ]
+            }
+          },
+          "profileSelections": [
+            {
+              "table": "football.player_profile_versions",
+              "actor": 1,
+              "source": 1,
+              "priority": 0,
+              "winnerIds": [
+                9
+              ]
+            },
+            {
+              "table": "football.team_profile_versions",
+              "actor": 1,
+              "source": 1,
+              "priority": 0,
+              "winnerIds": [
+                13
+              ]
+            },
+            {
+              "table": "football.player_profile_versions",
+              "actor": 2,
+              "source": 1,
+              "priority": 1,
+              "winnerIds": [
+                6
+              ]
+            },
+            {
+              "table": "football.team_profile_versions",
+              "actor": 3,
+              "source": 1,
+              "priority": 2,
+              "winnerIds": [
+                8
+              ]
+            }
+          ]
+        },
+        "effectiveSnapshots": {
+          "dg": {
+            "id": 19,
+            "generation": 19,
+            "status": "sealed",
+            "sourcePriorityVersion": "pilot_priority_v1"
+          },
+          "cg": {
+            "id": 19,
+            "generation": 19,
+            "status": "sealed",
+            "sourcePriorityVersion": "pilot_priority_v1"
+          }
+        }
+      }
+    },
+    "C": {
+      "counters": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "matches": {
+        "m_000005": {
+          "matchId": 5,
+          "revision": 5,
+          "finalScoreRows": 2,
+          "coverage": {
+            "key": {
+              "match_id": 5,
+              "source_id": 1,
+              "feature_code": "shots",
+              "variant_key": "pilot:primary",
+              "recorded_from_gen": 19
+            },
+            "dataRevision": 1,
+            "matchRevisionId": 5,
+            "recordedToGeneration": null,
+            "sourceRecordId": 1,
+            "documentId": null,
+            "coverageState": "available",
+            "collectionState": "present",
+            "observedRowCount": 1,
+            "isCanonical": true,
+            "isStale": false
+          },
+          "shotNativeWitnesses": [
+            {
+              "external_shot_id": "s_000001",
+              "revision_id": 9,
+              "player_id": null,
+              "period_code": null,
+              "source_event_type": null,
+              "is_goal": null,
+              "is_own_goal": null,
+              "is_on_target": null,
+              "xg": null,
+              "xgot": null,
+              "x_m": null,
+              "y_m": null,
+              "coordinate_frame": null
+            }
+          ]
+        }
+      },
+      "closure": {
+        "sha256": "0a805e2004802c97cd0c233eb6c44c0465fb053b85d80233c506eb92f06ea49c",
+        "manifest": {
+          "scheme": "orion-four-readers-dependencies-v1",
+          "representation": "summary-v1-shots-v1",
+          "editionId": "3",
+          "policies": {
+            "dataset": "pilot_priority_v1",
+            "catalogue": "pilot_priority_v1"
+          },
+          "profilePolicy": "same-source-provider-exact-normalized-manual-v1",
+          "tables": {
+            "football.competition_seasons": {
+              "columns": [
+                "competition_id",
+                "competition_revision_id",
+                "contract_version",
+                "end_date",
+                "id",
+                "is_canonical",
+                "is_deleted",
+                "label",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "season_key",
+                "source_id",
+                "source_record_id",
+                "start_date",
+                "status",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "04d0830baa27b6531e8d5b0f275243c370e56839f6862e9ebe08afe81e72b204"
+                }
+              ]
+            },
+            "football.competition_teams": {
+              "columns": [
+                "competition_season_id",
+                "competition_season_revision_id",
+                "contract_version",
+                "entered_on",
+                "exited_on",
+                "is_canonical",
+                "is_deleted",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "source_id",
+                "source_record_id",
+                "status",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "6"
+                    ]
+                  },
+                  "sha256": "1e3f7d49fed92531b8fb15f383e4f22647edc7762d06fd67275d4753972f4375"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "8"
+                    ]
+                  },
+                  "sha256": "bcd1b8124865d8be7a03fc5b1266c0030575a340a046acd7c18221d48412cf53"
+                }
+              ]
+            },
+            "football.competitions": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "competition_type",
+                "contract_version",
+                "country_id",
+                "country_revision_id",
+                "gender",
+                "id",
+                "image_asset_id",
+                "is_canonical",
+                "is_deleted",
+                "name",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "slug",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "3f66501ac496077d13d8c46cedd864e0348d2651d029598796844c7e03859070"
+                }
+              ]
+            },
+            "football.match_players": {
+              "columns": [
+                "canonical_policy_version",
+                "contract_version",
+                "coordinate_frame",
+                "data_revision",
+                "is_canonical",
+                "is_captain",
+                "is_deleted",
+                "is_starter",
+                "match_id",
+                "match_team_revision_id",
+                "participation_evidence",
+                "played",
+                "player_id",
+                "position_code",
+                "position_definition_version",
+                "position_mapping_version",
+                "profile_version_id",
+                "provenance_kind",
+                "quality_flags",
+                "raw_pitch_x",
+                "raw_pitch_y",
+                "raw_position_code",
+                "raw_position_code_source_number",
+                "raw_position_code_state",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "shirt_number",
+                "shirt_number_source_number",
+                "shirt_number_state",
+                "source_id",
+                "source_record_id",
+                "squad_status",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "7d47a73221aa1dbddade0847de50bff1a94c175a62f897027de9ff22e23f9878"
+                }
+              ]
+            },
+            "football.match_scores": {
+              "columns": [
+                "canonical_policy_version",
+                "contract_version",
+                "data_revision",
+                "goals",
+                "is_canonical",
+                "is_deleted",
+                "match_id",
+                "match_team_revision_id",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "score_basis",
+                "score_scope",
+                "side",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "15"
+                    ]
+                  },
+                  "sha256": "5d2eb8070c49ff4f683da31ede6ef2973a43a53b65e6933b40d0760b58e464bb"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "8"
+                    ]
+                  },
+                  "sha256": "d1a82b0f455b052cc199f3cbc1eaa83579103e3074975df5378f05ab0df137b5"
+                }
+              ]
+            },
+            "football.match_teams": {
+              "columns": [
+                "canonical_policy_version",
+                "coach_id",
+                "coach_revision_id",
+                "contract_version",
+                "data_revision",
+                "is_canonical",
+                "is_deleted",
+                "match_id",
+                "match_revision_id",
+                "participant_label",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "side",
+                "source_id",
+                "source_record_id",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "10"
+                    ]
+                  },
+                  "sha256": "c3b2986f25fef11b491e5a69c76a9eb617a1b681d1ae87658366a5d2f9c6f96d"
+                },
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "9"
+                    ]
+                  },
+                  "sha256": "aab41f32fded41a05cf30c32319c8bd1b69c400039a3e82b68adbbb9813d7024"
+                }
+              ]
+            },
+            "football.matches": {
+              "columns": [
+                "canonical_policy_version",
+                "competition_season_id",
+                "competition_season_revision_id",
+                "contract_version",
+                "data_revision",
+                "group_id",
+                "group_revision_id",
+                "id",
+                "is_canonical",
+                "is_deleted",
+                "kickoff_at",
+                "kickoff_precision",
+                "leg_number",
+                "match_date",
+                "neutral_venue",
+                "provenance_kind",
+                "publication_state",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "round_label",
+                "round_number",
+                "source_id",
+                "source_record_id",
+                "source_timezone",
+                "stage_id",
+                "stage_revision_id",
+                "status",
+                "tie_key",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key",
+                "venue_id",
+                "venue_revision_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "5"
+                    ]
+                  },
+                  "sha256": "22b78f15342acaa5292c74d806019623df532abccf3f5bff8486dff6234a4de1"
+                }
+              ]
+            },
+            "football.player_profile_versions": {
+              "columns": [
+                "birth_date",
+                "canonical_policy_version",
+                "contract_version",
+                "country_code_source",
+                "data_revision",
+                "display_name",
+                "dominant_foot",
+                "external_profile_version_id",
+                "height_cm",
+                "id",
+                "image_asset_id",
+                "is_canonical",
+                "is_deleted",
+                "nationality_country_id",
+                "nationality_country_revision_id",
+                "observed_at",
+                "player_id",
+                "primary_position_code",
+                "primary_position_definition_version",
+                "profile_content_sha256",
+                "profile_context",
+                "provenance_kind",
+                "quality_flags",
+                "raw_position_code",
+                "raw_position_code_source_number",
+                "raw_position_code_state",
+                "recorded_from_gen",
+                "relation_code",
+                "shirt_number",
+                "shirt_number_source_number",
+                "shirt_number_state",
+                "short_name",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "8"
+                    ]
+                  },
+                  "sha256": "3102536d9e64599cdb7e4ac2b271a85f2ac4bddf06c1e1c751b311b9c71a0cc9"
+                }
+              ]
+            },
+            "football.players": {
+              "columns": [
+                "birth_date",
+                "created_at",
+                "display_name",
+                "dominant_foot",
+                "height_cm",
+                "id",
+                "nationality_country_id",
+                "nationality_country_revision_id",
+                "primary_position_code",
+                "primary_position_definition_version"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "3"
+                    ]
+                  },
+                  "sha256": "7b4d1ec5acf9e8d8f0ef3a8c71f9476413e5c0f30c79caddeb9d270ecc369632"
+                }
+              ]
+            },
+            "football.shots": {
+              "columns": [
+                "blocked_x",
+                "blocked_y",
+                "body_part",
+                "canonical_policy_version",
+                "contract_version",
+                "coordinate_frame",
+                "data_revision",
+                "external_shot_id",
+                "goal_crossed_y",
+                "goal_crossed_z",
+                "id",
+                "is_blocked",
+                "is_canonical",
+                "is_deleted",
+                "is_goal",
+                "is_inside_box",
+                "is_on_target",
+                "is_own_goal",
+                "is_saved_off_line",
+                "keeper_id",
+                "keeper_profile_version_id",
+                "match_id",
+                "match_team_revision_id",
+                "minute",
+                "minute_added",
+                "outcome",
+                "period_code",
+                "period_definition_version",
+                "pitch_length_m",
+                "pitch_width_m",
+                "player_id",
+                "player_profile_version_id",
+                "provenance_kind",
+                "quality_flags",
+                "recorded_from_gen",
+                "relation_code",
+                "revision_id",
+                "situation",
+                "source_event_type",
+                "source_id",
+                "source_ordinal",
+                "source_record_id",
+                "source_shot_type",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key",
+                "x_m",
+                "xg",
+                "xgot",
+                "y_m"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "revision_id": [
+                      "i64",
+                      "9"
+                    ]
+                  },
+                  "sha256": "67e43d1564baa99f58f35b748c250e96df3d57f59601a473b6610533da2f2fd5"
+                }
+              ]
+            },
+            "football.team_profile_versions": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "contract_version",
+                "country_code_source",
+                "country_id",
+                "country_revision_id",
+                "display_name",
+                "founded_year",
+                "from_phases",
+                "from_year",
+                "gender",
+                "id",
+                "image_asset_id",
+                "inherit_team_external_id",
+                "international_name",
+                "is_canonical",
+                "is_deleted",
+                "is_national",
+                "is_placeholder",
+                "observed_at",
+                "official_name",
+                "profile_context",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "short_name",
+                "slug",
+                "source_id",
+                "source_record_id",
+                "team_code_source",
+                "team_id",
+                "team_type",
+                "to_phases",
+                "to_year",
+                "transform_code_sha256",
+                "transform_version",
+                "valid_from",
+                "valid_to",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "10"
+                    ]
+                  },
+                  "sha256": "d801755b133bc688995d9d3ba90d47f34b043d329ca404d1c4ac904a53479089"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "14"
+                    ]
+                  },
+                  "sha256": "59db075c0a8bb62d4e359cee42ccfd5a7a69267cec600656bb62e99b08d75bf5"
+                }
+              ]
+            },
+            "football.teams": {
+              "columns": [
+                "age_category",
+                "association_id",
+                "country_id",
+                "country_revision_id",
+                "founded_year",
+                "gender",
+                "id",
+                "image_asset_id",
+                "name",
+                "short_name",
+                "slug",
+                "team_type"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "4"
+                    ]
+                  },
+                  "sha256": "39520a63baa4dab972da4f5ad3880823312fbdafda0a9ee8560e9fa7c5ed319d"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "5"
+                    ]
+                  },
+                  "sha256": "7506ab1e32d52fa28c2be0a316556bc2334f9ba34e4dc4ac6ffa752a5c95620b"
+                }
+              ]
+            },
+            "ingest.match_coverage": {
+              "columns": [
+                "checked_at",
+                "collection_state",
+                "contract_version",
+                "coverage_state",
+                "data_revision",
+                "document_id",
+                "error_code",
+                "feature_code",
+                "http_status",
+                "is_canonical",
+                "is_stale",
+                "match_id",
+                "match_revision_id",
+                "observed_row_count",
+                "provenance_kind",
+                "recorded_from_gen",
+                "relation_code",
+                "source_id",
+                "source_record_id",
+                "transform_code_sha256",
+                "transform_version",
+                "variant_key"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "match_id": [
+                      "i64",
+                      "5"
+                    ],
+                    "source_id": [
+                      "i64",
+                      "1"
+                    ],
+                    "feature_code": [
+                      "text",
+                      "shots"
+                    ],
+                    "variant_key": [
+                      "text",
+                      "pilot:primary"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "19"
+                    ]
+                  },
+                  "sha256": "892884980d175ecaa07c539b0aba6d75632927dd83c06188b44b5898964f739f"
+                }
+              ]
+            },
+            "ingest.public_aliases": {
+              "columns": [
+                "association_id",
+                "coach_id",
+                "coach_revision_id",
+                "competition_id",
+                "competition_revision_id",
+                "contract_version",
+                "is_deleted",
+                "match_id",
+                "match_revision_id",
+                "player_id",
+                "profile_version_id",
+                "provenance_kind",
+                "public_key",
+                "recorded_from_gen",
+                "relation_code",
+                "route_kind",
+                "source_id",
+                "source_record_id",
+                "team_id",
+                "transform_code_sha256",
+                "transform_version",
+                "venue_id",
+                "venue_revision_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "competition"
+                    ],
+                    "public_key": [
+                      "text",
+                      "l_000001"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "b81601eacd31fc3544a1c9b940ce2eb0c48a1c5a3137de20f161b69bd0b85e38"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "match"
+                    ],
+                    "public_key": [
+                      "text",
+                      "m_000005"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "328d42b17679a1f520554bf9ce756d7c528dff5da8b354e5b22cad32f963fab7"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "player"
+                    ],
+                    "public_key": [
+                      "text",
+                      "p_000003"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "f429ad59c2d426099455db238da7d33ad8fbfaedc8a43aa8b3dc03cd86a3208d"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "team"
+                    ],
+                    "public_key": [
+                      "text",
+                      "t_000004"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "71308f3228c5ad5dbccd5cf460b9ee7ac72b17177832fb3ae1a3c8aab29b0c9b"
+                },
+                {
+                  "key": {
+                    "route_kind": [
+                      "text",
+                      "team"
+                    ],
+                    "public_key": [
+                      "text",
+                      "t_000005"
+                    ],
+                    "recorded_from_gen": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "f16632df55ed4d8c8a8bb0879a23924e2f56caf8b98de8f8578bad09588486c2"
+                }
+              ]
+            },
+            "ingest.relation_contracts": {
+              "columns": [
+                "contract_version",
+                "grain_definition",
+                "relation_code",
+                "relation_name"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competition_seasons"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "3c1c117cf009999f4c275b8142e3929447d01e8005ab96247ae10e58c6eea642"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competition_teams"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "dc3ea39bfd4e3da512088865e50cf385e307329e1165715db723fd0166ebe162"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.competitions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "0a79518faa0c09f15e91c5fc204be3cc66bd340e7ebe6d8b5c9dd275d65cd303"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_players"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "3ec4435531f0e419135a76389d6860ccc9e1c567b2dd39a87f3b8d6be932ab12"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_scores"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "b0dd59098aaff64896b730fdbafeedfd08a85565c4244fa30bd85a096f320ba7"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.match_teams"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "c9db6d0b4766c7ce82e7cb81e9883c4588fbae3c33e476006c0892b2352c3815"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.matches"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "58f13b3c33c2f0d7e37c85b54d81b2b2bd2781d848d1b359dee29f29d879188c"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.player_profile_versions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "005d7aa93b6c428847c4442b5d6d05328c5816b1a36aa5c064d4fafa0de7dff4"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.shots"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "e766ef5af16ae92e5752a096927d72b3da50bb45af4b7d0eb214d1afda515625"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "football.team_profile_versions"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "9bff8154e233b1906be90dd88107ed72c9c37863d71e665ed4f3e86c7fda0923"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "ingest.match_coverage"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "92e9b3c8dc1a86831523ea8f77e175069610633f9a4b34654f6302d98b22fd26"
+                },
+                {
+                  "key": {
+                    "relation_code": [
+                      "text",
+                      "ingest.public_aliases"
+                    ],
+                    "contract_version": [
+                      "text",
+                      "pilot_v1"
+                    ]
+                  },
+                  "sha256": "7e9d4361105a37bead5c64b65fa324409f3d697e7effa9dd3212e4e1130195ed"
+                }
+              ]
+            },
+            "ingest.source_datasets": {
+              "columns": [
+                "contract_version",
+                "created_at",
+                "dataset_key",
+                "id",
+                "license_code",
+                "schema_description",
+                "source_id",
+                "source_url"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "7fd40b7224d76006a373b5c5618be3712b90c3fb1f7346c7ea367a859d332b7e"
+                }
+              ]
+            },
+            "ingest.source_documents": {
+              "columns": [
+                "byte_length",
+                "content_sha256",
+                "content_type",
+                "dataset_id",
+                "encoding",
+                "id",
+                "import_run_id",
+                "origin_kind",
+                "request_fingerprint",
+                "retrieved_at",
+                "source_id",
+                "source_published_at",
+                "source_updated_at",
+                "source_url"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "149d77c311d25b185c0f80f1583d873623ca12255dd8bfe8c53369de6b47d27e"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "681500a5f5ae53de166ec8b92660f0b44d6a5d770903457ea4fdcdff9f35f285"
+                }
+              ]
+            },
+            "ingest.source_records": {
+              "columns": [
+                "document_id",
+                "external_key",
+                "id",
+                "locator",
+                "locator_kind",
+                "ordinal",
+                "record_kind",
+                "source_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "db45783e3f1ea7818f54048c316fae1d0a2651910584a07f4fadae25bbb7821a"
+                },
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "2"
+                    ]
+                  },
+                  "sha256": "f1e22c050005272c66883af2bcdd1857f412aeb5b366fe202e8944ab52852a67"
+                }
+              ]
+            },
+            "ingest.sources": {
+              "columns": [
+                "base_url",
+                "code",
+                "created_at",
+                "id",
+                "name",
+                "upstream_source_id"
+              ],
+              "rows": [
+                {
+                  "key": {
+                    "id": [
+                      "i64",
+                      "1"
+                    ]
+                  },
+                  "sha256": "3e33a6aaa339868b353cd6d1eb40f27a172bded47264c35604194640c78be9e9"
+                }
+              ]
+            }
+          },
+          "profileSelections": [
+            {
+              "table": "football.player_profile_versions",
+              "actor": 3,
+              "source": 1,
+              "priority": 2,
+              "winnerIds": [
+                8
+              ]
+            },
+            {
+              "table": "football.team_profile_versions",
+              "actor": 4,
+              "source": 1,
+              "priority": 0,
+              "winnerIds": [
+                10
+              ]
+            },
+            {
+              "table": "football.team_profile_versions",
+              "actor": 5,
+              "source": 1,
+              "priority": 0,
+              "winnerIds": [
+                14
+              ]
+            }
+          ]
+        },
+        "effectiveSnapshots": {
+          "dg": {
+            "id": 19,
+            "generation": 19,
+            "status": "sealed",
+            "sourcePriorityVersion": "pilot_priority_v1"
+          },
+          "cg": {
+            "id": 19,
+            "generation": 19,
+            "status": "sealed",
+            "sourcePriorityVersion": "pilot_priority_v1"
+          }
+        }
+      }
+    }
+  },
+  "policies": {
+    "A": {
+      "dataset": "pilot_priority_v1",
+      "catalogue": "pilot_priority_v1"
+    },
+    "B": {
+      "dataset": "pilot_priority_v1",
+      "catalogue": "pilot_priority_v1"
+    },
+    "C": {
+      "dataset": "pilot_priority_v1",
+      "catalogue": "pilot_priority_v1"
+    }
+  },
+  "queriesUsed": 62,
+  "environmentBinding": {
+    "descriptor": {
+      "scheme": "orion-four-readers-dependencies-v1",
+      "postgresVersion": 180006,
+      "representationVersion": "summary-v1-shots-v1",
+      "transformVersion": "orion_pro_publish_v1",
+      "metricsContractVersion": "orion_pro_four_readers_v1",
+      "files": {
+        "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+        "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "dashboard/backend/services/orion-pro.js": "4815cdfb184fbae31fa501b50695b235c2ca14b85660db6e6aee8f5fef979616",
+        "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+        "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+        "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd"
+      }
+    },
+    "sha256": "d0fb32013747398b2c82e48f70e058bb368aecd0f3e382a36d8c24f475767770"
+  },
+  "futurePublisherCodeSha256": "222c4647a850eb3fe51dcc8c9ba71e35dafbfe28f69443c558675ebcca8faf59",
+  "upstreamFixtureCodeSha256": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659"
+}

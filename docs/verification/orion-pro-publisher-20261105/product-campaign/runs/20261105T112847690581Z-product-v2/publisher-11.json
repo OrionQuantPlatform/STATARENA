@@ -1,0 +1,11 @@
+{
+  "allocatedPublicationGeneration": null,
+  "committedReadyBuildIds": [],
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Intended match set differs from retained selected cohort"
+  },
+  "publicationOutcome": "not_activated",
+  "stage": "planning",
+  "status": "rejected"
+}

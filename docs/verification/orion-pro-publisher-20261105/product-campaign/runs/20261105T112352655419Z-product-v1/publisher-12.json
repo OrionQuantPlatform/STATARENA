@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Declared native types differ"
+  },
+  "status": "rejected"
+}

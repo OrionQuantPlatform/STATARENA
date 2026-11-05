@@ -1,0 +1,51 @@
+{
+  "changedEditionIds": [
+    1
+  ],
+  "codeCommit": "local-owned-e2e-v1",
+  "codeContentSha256": "222c4647a850eb3fe51dcc8c9ba71e35dafbfe28f69443c558675ebcca8faf59",
+  "committedReadyBuildIds": [
+    12
+  ],
+  "dependencyScheme": "orion-four-readers-dependencies-v1",
+  "dirtyWatermarksRetained": true,
+  "editions": [
+    {
+      "buildId": "12",
+      "dependencySha256": "65c443b0945362cbe94fdb21e1853f23ad9745b3769b99e724d22f8d36111007",
+      "editionId": "1",
+      "effectiveSnapshotIds": {
+        "catalogue": "19",
+        "dataset": "21"
+      }
+    },
+    {
+      "buildId": "9",
+      "dependencySha256": "915260e74662000f8330633c39f25210c6da1bf8cce6e48decd8279b54243679",
+      "editionId": "2",
+      "effectiveSnapshotIds": {
+        "catalogue": "15",
+        "dataset": "13"
+      }
+    },
+    {
+      "buildId": "11",
+      "dependencySha256": "0a805e2004802c97cd0c233eb6c44c0465fb053b85d80233c506eb92f06ea49c",
+      "editionId": "3",
+      "effectiveSnapshotIds": {
+        "catalogue": "19",
+        "dataset": "19"
+      }
+    }
+  ],
+  "environmentSha256": "d0fb32013747398b2c82e48f70e058bb368aecd0f3e382a36d8c24f475767770",
+  "publicationGeneration": 22,
+  "representationVersion": "summary-v1-shots-v1",
+  "requestedPair": {
+    "catalogGeneration": 19,
+    "datasetGeneration": 21
+  },
+  "scope": "owned-local-synthetic-only",
+  "stage": "activation_committed",
+  "status": "published"
+}

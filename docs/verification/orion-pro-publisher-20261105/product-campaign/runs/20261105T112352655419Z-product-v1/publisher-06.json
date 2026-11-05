@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "ADMISSION_MISMATCH",
+    "message": "Source evidence is outside admission"
+  },
+  "status": "rejected"
+}

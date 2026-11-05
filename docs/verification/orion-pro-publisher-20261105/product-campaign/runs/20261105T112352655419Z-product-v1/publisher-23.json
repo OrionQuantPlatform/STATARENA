@@ -1,0 +1,13 @@
+{
+  "allocatedPublicationGeneration": 11,
+  "committedReadyBuildIds": [],
+  "error": {
+    "code": "UNREADY_INPUT",
+    "message": "Publisher could not qualify its admitted SQL workflow",
+    "sqlstate": null,
+    "type": "LimitExceeded"
+  },
+  "publicationOutcome": "not_activated",
+  "stage": "activating",
+  "status": "rejected"
+}
