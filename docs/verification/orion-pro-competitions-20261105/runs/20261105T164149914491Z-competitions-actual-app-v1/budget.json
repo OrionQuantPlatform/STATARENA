@@ -1,0 +1,1 @@
+{"deadlineEpoch":1793897509.9351552,"limits":{"sql":15000,"http":200,"typedRows":20000,"builds":20,"matchSummaries":100,"editionSummaries":20,"generations":24,"publications":30,"matchIdentities":12,"editions":3,"seconds":600,"ownedDiskBytes":1073741824,"evidenceBytes":100663296,"connections":5,"workers":2},"counts":{"sql":843,"http":96},"violations":[]}

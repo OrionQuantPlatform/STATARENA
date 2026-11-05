@@ -1,0 +1,651 @@
+{
+  "tables": {
+    "ingest.sources": {
+      "rows": 2,
+      "sha256": "56280db78a54b68a85a667f7e13fc2910bb707913541b6c0d4326ba68ae39ea7"
+    },
+    "ingest.source_datasets": {
+      "rows": 2,
+      "sha256": "16419944bf411674b2473c5e5d5d248eccc4b4f878df00c9f040b5afda017358"
+    },
+    "ingest.import_runs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.source_documents": {
+      "rows": 2,
+      "sha256": "e915a11205f5d44e5b3d0f1455c591cfced84a8ee0311cc646180a974f2c9374"
+    },
+    "ingest.source_records": {
+      "rows": 2,
+      "sha256": "577a92ca26ecdb9fce3b59f7771e9e4d81ccd550ea21deb6b631bd6bba5d51c3"
+    },
+    "ingest.document_lineage": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.resource_fetches": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.media_assets": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.dataset_snapshots": {
+      "rows": 11,
+      "sha256": "3e40dd532115cb3bcd2172e00396723d33e5d2d9b49749355b763f2eea19d2c4"
+    },
+    "ingest.dataset_snapshot_documents": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.quality_issues": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.identity_candidates": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.match_coverage": {
+      "rows": 1,
+      "sha256": "f3912a24f29e4fb3ba4ba0752d5f6dfe757bf5d536b079a8dbd2fabd4315f4aa"
+    },
+    "ingest.relation_contracts": {
+      "rows": 50,
+      "sha256": "bcc3c403b84e07a83da8f3a678fff94eda59db9c074f7154ba2bed01fd1de73a"
+    },
+    "ingest.field_contracts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.reconciliation_runs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.document_reconciliations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.cleanup_items": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.collection_jobs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.asset_jobs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.dirty_editions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ingest.schema_migrations": {
+      "rows": 4,
+      "sha256": "3823f8338bc6255197ad52700e4f4763dc166f2449625ac5fc29b6404d32ab53"
+    },
+    "ingest.public_aliases": {
+      "rows": 18,
+      "sha256": "7ab752f3e90e59afa1733a110e38889f1e2e5c1d30973c83ab9ec9b4ff516858"
+    },
+    "football.countries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.associations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.positions": {
+      "rows": 4,
+      "sha256": "d42500885920653d39c6717444ca2335e59740697d73b84f3a99d0888de281fb"
+    },
+    "football.periods": {
+      "rows": 6,
+      "sha256": "df0488c7562c1c0df1169a472a2cb2db8baa8754a510425c493eaabb0ae059f2"
+    },
+    "football.venues": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.coaches": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.competitions": {
+      "rows": 4,
+      "sha256": "fef2c12db897e5c329e2027d99ee7b63f60efca5311e78a165d436a63fcea6d0"
+    },
+    "football.competition_seasons": {
+      "rows": 3,
+      "sha256": "865bb71ab220883ef0050247bdc5a5301e13b6f9e5396caba62afbc1d80613c9"
+    },
+    "football.competition_stages": {
+      "rows": 5,
+      "sha256": "b94caa0c3e7aeb5dd04341eb490d8099bbbd195b93d12e3a8c9f922569c13a5d"
+    },
+    "football.competition_groups": {
+      "rows": 4,
+      "sha256": "a657b288010ccbe735b0a9c02a665b1d33edf7c176b8826c6bf016e258821108"
+    },
+    "football.teams": {
+      "rows": 8,
+      "sha256": "82d40642351c7b88d58656f4823cdf7d7b60e456a5f6f967d5244677d5abfe93"
+    },
+    "football.competition_teams": {
+      "rows": 8,
+      "sha256": "489f11cb957df0bafa65a9cf8245441d33820c4eb5798e270ef828aaf21fcb5c"
+    },
+    "football.players": {
+      "rows": 1,
+      "sha256": "f518d6ecbaa4275340d22bdc2729c97febc1ae06d33a1fe0868168c0b698b66d"
+    },
+    "football.player_profile_versions": {
+      "rows": 1,
+      "sha256": "575f9b0e43a78384c28cbc1ef58dab9c8c130124b212947276e9729a0e96d4e6"
+    },
+    "football.position_mappings": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.player_team_memberships": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_aliases": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.competition_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.player_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.association_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.venue_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.coach_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.matches": {
+      "rows": 6,
+      "sha256": "6444034348246617b95342b4b60373cba0d30125524a61cad504847812c4d7c0"
+    },
+    "football.match_source_ids": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_teams": {
+      "rows": 12,
+      "sha256": "c7f2337be4380db81a36dce870ac5d5f3acef5a60f59e86eb89e80961ce2f7a4"
+    },
+    "football.match_scores": {
+      "rows": 18,
+      "sha256": "06ae068117d08df40b33867ed872ed92abfd1ded85b3395a6db2dbf4c0d5a65e"
+    },
+    "football.match_lineups": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_players": {
+      "rows": 1,
+      "sha256": "523c4ed5ceb2bb827d9a26a4aba6a26b5af9f7db95a5fdbd534f046d86229c71"
+    },
+    "football.metric_definitions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.source_metric_mappings": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.player_match_stats": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_match_stats": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.shots": {
+      "rows": 1,
+      "sha256": "b1c719e18d7e6a69f0d46d8b5730110c524502fa6e164af7010d29653c35f7c5"
+    },
+    "football.player_match_advanced": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_match_advanced": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_events": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_momentum": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.pass_networks": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.pass_network_nodes": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.pass_network_edges": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_heatmaps": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_coach_tenures": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.honour_definitions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.player_honours": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_honours": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.standing_snapshots": {
+      "rows": 5,
+      "sha256": "c56cd881fff21a692776b821f219a7f10ed1e45ee70c199cb9aa4d895e842ce4"
+    },
+    "football.standing_rows": {
+      "rows": 10,
+      "sha256": "65ef883486517808a2d9a6e309161b9342b6a69cec8c8dfde566b6eca9839004"
+    },
+    "football.ranking_systems": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.ranking_snapshots": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_ranking_entries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_ranking_components": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.association_ranking_entries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.association_ranking_components": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.player_match_metric_values": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_match_metric_values": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_heatmap_cells": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_h2h_entries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.match_observation_details": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "football.team_profile_versions": {
+      "rows": 8,
+      "sha256": "09281591b071516c7aa5a7bb20953743efd9edaeea7fa65c65d48f7f5630fc56"
+    },
+    "football.association_profile_versions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.aggregation_builds": {
+      "rows": 7,
+      "sha256": "4cbf21bbf9825af63fa892e8c98a0f24a87f2a7d30f0ba75c20388badd58fb79"
+    },
+    "analytics.publication_versions": {
+      "rows": 7,
+      "sha256": "31bf958cd5c5ad9290cdc700c7024f2a20b5ce199465937a93e356f356aafd3e"
+    },
+    "analytics.match_summary": {
+      "rows": 15,
+      "sha256": "36a32ff85476e0b2d12bb0f22d43266479a93ff51b9040aff62d60180df059cb"
+    },
+    "analytics.player_competition_team_stats": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.player_competition_stats": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.team_competition_stats": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.competition_summary": {
+      "rows": 7,
+      "sha256": "48a11f7d96d363d4b59ecb5623632ce007632d48f3a72d38d1d27e66482ba1e4"
+    },
+    "analytics.player_search": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.metric_totals": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.catalog_publication": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "sequences": {
+    "analytics.aggregation_builds_id_seq": [
+      7,
+      true
+    ],
+    "analytics.metric_totals_id_seq": [
+      1,
+      false
+    ],
+    "football.association_profile_versions_id_seq": [
+      1,
+      false
+    ],
+    "football.associations_id_seq": [
+      1,
+      false
+    ],
+    "football.coaches_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.coaches_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.competition_groups_logical_id_seq": [
+      4,
+      true
+    ],
+    "football.competition_groups_revision_id_seq": [
+      4,
+      true
+    ],
+    "football.competition_seasons_logical_id_seq": [
+      3,
+      true
+    ],
+    "football.competition_seasons_revision_id_seq": [
+      3,
+      true
+    ],
+    "football.competition_stages_logical_id_seq": [
+      5,
+      true
+    ],
+    "football.competition_stages_revision_id_seq": [
+      5,
+      true
+    ],
+    "football.competition_teams_revision_id_seq": [
+      8,
+      true
+    ],
+    "football.competitions_logical_id_seq": [
+      3,
+      true
+    ],
+    "football.competitions_revision_id_seq": [
+      4,
+      true
+    ],
+    "football.countries_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.countries_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.honour_definitions_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.honour_definitions_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_heatmaps_id_seq": [
+      1,
+      false
+    ],
+    "football.match_lineups_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.match_players_revision_id_seq": [
+      1,
+      true
+    ],
+    "football.match_scores_revision_id_seq": [
+      18,
+      true
+    ],
+    "football.match_teams_revision_id_seq": [
+      12,
+      true
+    ],
+    "football.matches_logical_id_seq": [
+      6,
+      true
+    ],
+    "football.matches_revision_id_seq": [
+      6,
+      true
+    ],
+    "football.pass_networks_id_seq": [
+      1,
+      false
+    ],
+    "football.player_honours_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.player_honours_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_advanced_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_metric_values_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_match_stats_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.player_profile_versions_id_seq": [
+      1,
+      true
+    ],
+    "football.player_team_memberships_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.player_team_memberships_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.players_id_seq": [
+      1,
+      true
+    ],
+    "football.ranking_snapshots_id_seq": [
+      1,
+      false
+    ],
+    "football.ranking_systems_id_seq": [
+      1,
+      false
+    ],
+    "football.shots_logical_id_seq": [
+      1,
+      true
+    ],
+    "football.shots_revision_id_seq": [
+      1,
+      true
+    ],
+    "football.standing_snapshots_id_seq": [
+      5,
+      true
+    ],
+    "football.team_aliases_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_aliases_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_coach_tenures_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_coach_tenures_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_honours_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.team_honours_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_advanced_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_metric_values_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_match_stats_revision_id_seq": [
+      1,
+      false
+    ],
+    "football.team_profile_versions_id_seq": [
+      8,
+      true
+    ],
+    "football.teams_id_seq": [
+      8,
+      true
+    ],
+    "football.venues_logical_id_seq": [
+      1,
+      false
+    ],
+    "football.venues_revision_id_seq": [
+      1,
+      false
+    ],
+    "ingest.cleanup_items_id_seq": [
+      1,
+      false
+    ],
+    "ingest.commit_generation_seq": [
+      11,
+      true
+    ],
+    "ingest.dataset_snapshots_id_seq": [
+      11,
+      true
+    ],
+    "ingest.identity_candidates_id_seq": [
+      1,
+      false
+    ],
+    "ingest.import_runs_id_seq": [
+      1,
+      false
+    ],
+    "ingest.media_assets_id_seq": [
+      1,
+      false
+    ],
+    "ingest.quality_issues_id_seq": [
+      1,
+      false
+    ],
+    "ingest.reconciliation_runs_id_seq": [
+      1,
+      false
+    ],
+    "ingest.resource_fetches_id_seq": [
+      1,
+      false
+    ],
+    "ingest.source_datasets_id_seq": [
+      2,
+      true
+    ],
+    "ingest.source_documents_id_seq": [
+      2,
+      true
+    ],
+    "ingest.source_records_id_seq": [
+      2,
+      true
+    ],
+    "ingest.sources_id_seq": [
+      2,
+      true
+    ]
+  },
+  "physicalRows": 233
+}

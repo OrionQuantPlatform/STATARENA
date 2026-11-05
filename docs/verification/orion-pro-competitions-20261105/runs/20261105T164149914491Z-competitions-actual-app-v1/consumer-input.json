@@ -1,0 +1,462 @@
+{
+  "open": {
+    "name": "Fixture Cup",
+    "season": "2026/2027",
+    "source": {
+      "name": "Synthetic cup source ",
+      "url": "https://fixture.invalid/cups",
+      "license": "fixture-license"
+    },
+    "matches": [
+      {
+        "id": "m_000001",
+        "date": "2026-11-01",
+        "team1": "Observed team 1",
+        "team2": "Observed team 2",
+        "round": "Semi-finals",
+        "group": null,
+        "score": {
+          "ft": [
+            1,
+            0
+          ]
+        },
+        "status": "finished",
+        "scoreState": "value",
+        "leg": 1,
+        "tieKey": "fixture-tie"
+      },
+      {
+        "id": "m_000002",
+        "date": "2026-11-08",
+        "team1": "Observed team 2",
+        "team2": "Observed team 1",
+        "round": "Semi-finals",
+        "group": null,
+        "score": {
+          "ft": [
+            1,
+            0
+          ],
+          "et": [
+            1,
+            0
+          ],
+          "p": [
+            3,
+            4
+          ]
+        },
+        "status": "finished",
+        "scoreState": "value",
+        "leg": 2,
+        "tieKey": "fixture-tie"
+      },
+      {
+        "id": "m_000003",
+        "date": null,
+        "team1": "Observed team 1",
+        "team2": "Observed team 2",
+        "round": "Final",
+        "group": null,
+        "status": "not_started",
+        "scoreState": "absent",
+        "leg": null,
+        "tieKey": null
+      }
+    ]
+  },
+  "liga": {
+    "competition": "ESP_CUP_fixture",
+    "season": "2026/2027",
+    "source": {
+      "name": "Synthetic cup source ",
+      "url": "https://fixture.invalid/cups",
+      "license": "fixture-license"
+    },
+    "matches": [
+      {
+        "key": "m_000001",
+        "date": "2026-11-01",
+        "home": "Observed team 1",
+        "away": "Observed team 2",
+        "homeId": "t_000001",
+        "awayId": "t_000002",
+        "score": [
+          1,
+          0
+        ],
+        "scoreState": "value",
+        "penalties": null,
+        "notes": [],
+        "status": "finished",
+        "matchStatus": "finished",
+        "roundName": "Semi-finals",
+        "round": "Semi-finals",
+        "leg": 1,
+        "tieKey": "fixture-tie",
+        "group": null
+      },
+      {
+        "key": "m_000002",
+        "date": "2026-11-08",
+        "home": "Observed team 2",
+        "away": "Observed team 1",
+        "homeId": "t_000002",
+        "awayId": "t_000001",
+        "score": [
+          1,
+          0
+        ],
+        "scoreState": "value",
+        "penalties": [
+          3,
+          4
+        ],
+        "notes": [
+          "après prolongation",
+          "tirs au but 3 – 4"
+        ],
+        "status": "finished",
+        "matchStatus": "finished",
+        "roundName": "Semi-finals",
+        "round": "Semi-finals",
+        "leg": 2,
+        "tieKey": "fixture-tie",
+        "group": null
+      },
+      {
+        "key": "m_000003",
+        "date": null,
+        "home": "Observed team 1",
+        "away": "Observed team 2",
+        "homeId": "t_000001",
+        "awayId": "t_000002",
+        "score": null,
+        "scoreState": "absent",
+        "penalties": null,
+        "notes": [],
+        "status": "scheduled",
+        "matchStatus": "not_started",
+        "roundName": "Final",
+        "round": "Final",
+        "leg": null,
+        "tieKey": null,
+        "group": null
+      }
+    ]
+  },
+  "nations": {
+    "competition": "nations-league",
+    "season": "2026/2027",
+    "source": {
+      "name": "Synthetic cup source ",
+      "url": "https://fixture.invalid/cups",
+      "license": "fixture-license"
+    },
+    "matches": [
+      {
+        "key": "m_000004",
+        "date": "2026-11-04",
+        "home": "Observed team 3",
+        "away": "Observed team 4",
+        "homeId": "t_000003",
+        "awayId": "t_000004",
+        "score": [
+          2,
+          0
+        ],
+        "scoreState": "value",
+        "penalties": null,
+        "notes": [],
+        "status": "finished",
+        "matchStatus": "finished",
+        "roundName": "League B",
+        "round": "League B",
+        "leg": null,
+        "tieKey": null,
+        "group": 1,
+        "league": "B"
+      }
+    ]
+  },
+  "days": {
+    "matches": {
+      "m_000001": {
+        "name": "Semi-finals",
+        "playoff": true
+      },
+      "m_000002": {
+        "name": "Semi-finals",
+        "playoff": true
+      },
+      "m_000003": {
+        "name": "Final",
+        "playoff": true
+      }
+    },
+    "unknownMatches": 0
+  },
+  "unknownDays": {
+    "matches": {},
+    "unknownMatches": 1
+  },
+  "native": {
+    "matches": [
+      {
+        "id": "m_000001",
+        "season": "2026/2027",
+        "date": "2026-11-01",
+        "time_utc": null,
+        "status": "finished",
+        "league": {
+          "id": "l_000001",
+          "name": "Fixture Cup",
+          "season": "2026/2027"
+        },
+        "home_team": {
+          "id": "t_000001",
+          "name": "Observed team 1",
+          "image_url": null
+        },
+        "away_team": {
+          "id": "t_000002",
+          "name": "Observed team 2",
+          "image_url": null
+        },
+        "score_home": 1,
+        "score_away": 0,
+        "scoreState": "value",
+        "round_name": "Semi-finals",
+        "has_playoff": true,
+        "leg": 1,
+        "tieKey": "fixture-tie"
+      },
+      {
+        "id": "m_000002",
+        "season": "2026/2027",
+        "date": "2026-11-08",
+        "time_utc": null,
+        "status": "finished",
+        "league": {
+          "id": "l_000001",
+          "name": "Fixture Cup",
+          "season": "2026/2027"
+        },
+        "home_team": {
+          "id": "t_000002",
+          "name": "Observed team 2",
+          "image_url": null
+        },
+        "away_team": {
+          "id": "t_000001",
+          "name": "Observed team 1",
+          "image_url": null
+        },
+        "score_home": 1,
+        "score_away": 0,
+        "scoreState": "value",
+        "round_name": "Semi-finals",
+        "has_playoff": true,
+        "leg": 2,
+        "tieKey": "fixture-tie"
+      },
+      {
+        "id": "m_000003",
+        "season": "2026/2027",
+        "date": null,
+        "time_utc": null,
+        "status": "not_started",
+        "league": {
+          "id": "l_000001",
+          "name": "Fixture Cup",
+          "season": "2026/2027"
+        },
+        "home_team": {
+          "id": "t_000001",
+          "name": "Observed team 1",
+          "image_url": null
+        },
+        "away_team": {
+          "id": "t_000002",
+          "name": "Observed team 2",
+          "image_url": null
+        },
+        "score_home": null,
+        "score_away": null,
+        "scoreState": "absent",
+        "round_name": "Final",
+        "has_playoff": true,
+        "leg": null,
+        "tieKey": null
+      }
+    ],
+    "rounds": {
+      "m_000001": {
+        "name": "Semi-finals",
+        "playoff": true
+      },
+      "m_000002": {
+        "name": "Semi-finals",
+        "playoff": true
+      },
+      "m_000003": {
+        "name": "Final",
+        "playoff": true
+      }
+    },
+    "source": {
+      "name": "Synthetic cup source ",
+      "url": "https://fixture.invalid/cups",
+      "license": "fixture-license"
+    }
+  },
+  "index": {
+    "schemaVersion": 1,
+    "meta": {
+      "source": "AWS"
+    },
+    "competitions": [
+      {
+        "name": "Fixture Cup",
+        "folder": "ESP_CUP_fixture",
+        "country_code": null,
+        "editions": {
+          "2026/2027": {
+            "results": {
+              "rows": 2
+            },
+            "fixtures": {
+              "rows": 1
+            }
+          }
+        },
+        "season": "2026/2027",
+        "tables": {
+          "results": {
+            "rows": 2
+          },
+          "fixtures": {
+            "rows": 1
+          }
+        }
+      },
+      {
+        "name": "Fixture Nations",
+        "folder": "nations-league",
+        "country_code": null,
+        "editions": {
+          "2026/2027": {
+            "results": {
+              "rows": 2
+            },
+            "fixtures": {
+              "rows": 0
+            }
+          }
+        },
+        "season": "2026/2027",
+        "tables": {
+          "results": {
+            "rows": 2
+          },
+          "fixtures": {
+            "rows": 0
+          }
+        }
+      }
+    ],
+    "native": [
+      {
+        "id": "l_000001",
+        "name": "Fixture Cup",
+        "country": null,
+        "seasons": [
+          "2026/2027"
+        ],
+        "cupWorker": true
+      },
+      {
+        "id": "l_000002",
+        "name": "Fixture Nations",
+        "country": null,
+        "seasons": [
+          "2026/2027"
+        ],
+        "cupWorker": true
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "m_000001",
+      "home": "Observed team 1",
+      "away": "Observed team 2",
+      "date": "2026-11-01",
+      "round_name": "Semi-finals",
+      "status": "finished",
+      "ft_home": 1,
+      "ft_away": 0,
+      "scoreState": "value"
+    },
+    {
+      "id": "m_000002",
+      "home": "Observed team 2",
+      "away": "Observed team 1",
+      "date": "2026-11-08",
+      "round_name": "Semi-finals",
+      "status": "finished",
+      "ft_home": 1,
+      "ft_away": 0,
+      "scoreState": "value"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "m_000003",
+      "home": "Observed team 1",
+      "away": "Observed team 2",
+      "date": null,
+      "round_name": "Final",
+      "status": "not_started"
+    }
+  ],
+  "unknown": {
+    "matches": [
+      {
+        "id": "m_000005",
+        "season": "2026/2027",
+        "date": "2026-11-04",
+        "time_utc": null,
+        "status": "finished",
+        "league": {
+          "id": "l_000003",
+          "name": "Fixture League",
+          "season": "2026/2027"
+        },
+        "home_team": {
+          "id": "t_000005",
+          "name": "Observed team 5",
+          "image_url": null
+        },
+        "away_team": {
+          "id": "t_000006",
+          "name": "Observed team 6",
+          "image_url": null
+        },
+        "score_home": null,
+        "score_away": null,
+        "scoreState": "null",
+        "round_name": null,
+        "leg": null,
+        "tieKey": null
+      }
+    ],
+    "rounds": {},
+    "source": {
+      "name": "Synthetic cup source ",
+      "url": "https://fixture.invalid/cups",
+      "license": "fixture-license"
+    }
+  }
+}

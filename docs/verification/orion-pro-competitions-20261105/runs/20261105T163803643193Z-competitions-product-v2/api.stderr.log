@@ -1,0 +1,15 @@
+file:///Users/lemonnierhugo/Desktop/Coding%20Project/Football_ranking/docs/verification/orion-pro-competitions-20261105/http_server.mjs:39
+  throw Error("Owned network tripwire: " + kind);
+        ^
+
+Error: Owned network tripwire: dns.lookup
+    at blocked (file:///Users/lemonnierhugo/Desktop/Coding%20Project/Football_ranking/docs/verification/orion-pro-competitions-20261105/http_server.mjs:39:9)
+    at dns.lookup (file:///Users/lemonnierhugo/Desktop/Coding%20Project/Football_ranking/docs/verification/orion-pro-competitions-20261105/http_server.mjs:52:20)
+    at lookupAndListen (node:net:2718:7)
+    at Server.listen (node:net:2620:7)
+    at console.log.JSON.stringify.event (file:///Users/lemonnierhugo/Desktop/Coding%20Project/Football_ranking/docs/verification/orion-pro-competitions-20261105/http_server.mjs:113:31)
+    at new Promise (<anonymous>)
+    at file:///Users/lemonnierhugo/Desktop/Coding%20Project/Football_ranking/docs/verification/orion-pro-competitions-20261105/http_server.mjs:113:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.22.2

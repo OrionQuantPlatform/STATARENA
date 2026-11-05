@@ -8,8 +8,9 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 38,
-    "local-fixture-aliases-v1-E2E-qualified": 2
+    "reader-and-data-contract-required": 30,
+    "local-fixture-aliases-v1-E2E-qualified": 2,
+    "local-competitions-v1-E2E-qualified": 8
   },
   "rows": [
     {
@@ -172,12 +173,12 @@
         "competition",
         "season"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.standing_snapshots",
         "football.standing_rows"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/open-cups",
@@ -189,13 +190,13 @@
         "competition",
         "season"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.competition_stages",
         "football.matches",
         "football.match_scores"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/openligadb",
@@ -207,12 +208,12 @@
         "competition",
         "season"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.match_scores"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/nations-results",
@@ -223,12 +224,12 @@
       "currentQueryNames": [
         "season"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.match_scores"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/club-wikidata",
@@ -421,12 +422,12 @@
       "currentQueryNames": [
         "kind"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.competitions",
         "football.competition_seasons"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/cup-table",
@@ -439,13 +440,13 @@
         "season",
         "kind"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.match_scores",
         "football.competition_stages"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/cup-snapshot",
@@ -458,13 +459,13 @@
         "season",
         "kind"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.match_scores",
         "football.standing_snapshots"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/matchdays",
@@ -476,12 +477,12 @@
         "competition",
         "season"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-competitions-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.competition_stages"
       ],
-      "actionOrGap": "Typed edition/stages/groups/matches/scores or standing snapshots/rows exist. Need source-qualified ordering/status/table/knockout scope contract and accepted data; do not infer standings from points aggregates."
+      "actionOrGap": "Actual Node24 AWS router26/26 on owned typed SQL; published DG/CG, complete scope and source cohort. Real standings/cups/Nations data and deployment still independent."
     },
     {
       "path": "/api/supplemental",
