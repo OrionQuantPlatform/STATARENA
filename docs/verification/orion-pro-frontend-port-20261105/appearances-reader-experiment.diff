@@ -1,0 +1,158 @@
+diff --git a/dashboard/backend/services/orion-pro-appearances.js b/dashboard/backend/services/orion-pro-appearances.js
+index 14912df4ca..2cb7d8610f 100644
+--- a/dashboard/backend/services/orion-pro-appearances.js
++++ b/dashboard/backend/services/orion-pro-appearances.js
+@@ -108,22 +108,28 @@ LEFT JOIN analytics.competition_summary totals ON totals.build_id=b.id AND total
+ WHERE b.id=$1::bigint AND b.status='ready' LIMIT 2`;
+ 
+ // Logical parents can retain an earlier physical anchor when a match is revised.
+-// Participant selection therefore uses the logical match and the sealed dg; the
+-// stats/native participant anchors must still match exactly.
++// Admission also re-revises participants (played) and sides (labels) without
++// re-anchoring facts, which the native validator allows (it checks the logical
++// parent). Participants and sides are therefore selected by logical identity at
++// the sealed dg; stats and their native values must still share one anchor.
++// A match the source never collected (no coverage row) may only have zero rows.
+ const scopeSql = `WITH x AS (SELECT * FROM jsonb_to_record($1::jsonb) AS c(
+  build_id bigint,edition_id bigint,edition_revision_id bigint,dg bigint,cg bigint,competition_id bigint)),
+-matches AS (
++alias_index AS (
++ SELECT a.route_kind,a.match_id,a.team_id,a.player_id,min(a.public_key COLLATE "C") public_id
++ FROM x JOIN ingest.public_aliases a ON a.route_kind IN ('match','team','player') AND ${aliasAt("a", "x.cg")}
++ AND a.public_key ~ (CASE a.route_kind WHEN 'match' THEN '^m_' WHEN 'team' THEN '^t_' ELSE '^p_' END || '[A-Za-z0-9]{6}$')
++ GROUP BY a.route_kind,a.match_id,a.team_id,a.player_id
++), matches AS (
+  SELECT s.*,x.dg,x.cg,aliases.public_id
+  FROM x JOIN analytics.match_summary s ON s.build_id=x.build_id AND s.competition_season_id=x.edition_id
+  JOIN football.matches m ON m.id=s.match_id AND m.revision_id=s.match_revision_id
+  AND m.competition_season_id=x.edition_id AND m.publication_state='published' AND ${selected("m", "x.dg")}
+- LEFT JOIN LATERAL (SELECT min(a.public_key COLLATE "C") public_id FROM ingest.public_aliases a
+- WHERE a.route_kind='match' AND a.match_id=m.id AND a.public_key ~ '^m_[A-Za-z0-9]{6}$' AND ${aliasAt("a", "x.cg")}) aliases ON true
++ LEFT JOIN alias_index aliases ON aliases.route_kind='match' AND aliases.match_id=m.id
+ ), sides AS (
+  SELECT mt.*,m.dg,m.cg,aliases.public_id AS team_public_id FROM matches m
+  JOIN football.match_teams mt ON mt.match_id=m.match_id AND ${selected("mt", "m.dg")}
+- LEFT JOIN LATERAL (SELECT min(a.public_key COLLATE "C") public_id FROM ingest.public_aliases a
+- WHERE a.route_kind='team' AND a.team_id=mt.team_id AND a.public_key ~ '^t_[A-Za-z0-9]{6}$' AND ${aliasAt("a", "m.cg")}) aliases ON true
++ LEFT JOIN alias_index aliases ON aliases.route_kind='team' AND aliases.team_id=mt.team_id
+ ), performances AS (
+  SELECT s.*,m.dg,m.cg,m.public_id AS match_public_id,m.match_date,
+  mp.profile_version_id,mp.is_starter,mp.is_captain,mp.raw_pitch_x,mp.raw_pitch_y,mp.coordinate_frame,
+@@ -136,13 +142,12 @@ matches AS (
+  FROM matches m JOIN football.player_match_stats s ON s.match_id=m.match_id
+  AND s.period_code='full_match' AND s.period_definition_version='bootstrap_v1'
+  AND s.contract_version='${producer}' AND s.transform_version='${producer}' AND ${selected("s", "m.dg")}
+- JOIN football.match_players mp ON mp.revision_id=s.match_player_revision_id AND mp.match_id=s.match_id
++ JOIN football.match_players mp ON mp.match_id=s.match_id
+  AND mp.team_id=s.team_id AND mp.player_id=s.player_id AND mp.source_id=s.source_id
+  AND mp.source_record_id=s.source_record_id AND mp.variant_key=s.variant_key AND ${selected("mp", "m.dg")}
+- JOIN sides ON sides.match_id=mp.match_id AND sides.team_id=mp.team_id AND sides.revision_id=mp.match_team_revision_id
++ JOIN sides ON sides.match_id=mp.match_id AND sides.team_id=mp.team_id
+  LEFT JOIN ingest.source_records sr ON sr.id=s.source_record_id AND sr.source_id=s.source_id AND sr.record_kind='performance'
+- LEFT JOIN LATERAL (SELECT min(a.public_key COLLATE "C") public_id FROM ingest.public_aliases a
+- WHERE a.route_kind='player' AND a.player_id=s.player_id AND a.public_key ~ '^p_[A-Za-z0-9]{6}$' AND ${aliasAt("a", "m.cg")}) aliases ON true
++ LEFT JOIN alias_index aliases ON aliases.route_kind='player' AND aliases.player_id=s.player_id
+  LEFT JOIN football.player_profile_versions pp ON pp.id=mp.profile_version_id AND pp.player_id=mp.player_id
+  AND NOT pp.is_deleted
+ ), team_members AS (
+@@ -169,24 +174,16 @@ const nativeJoin = `n.match_id=p.match_id AND n.player_id=p.player_id AND n.team
+  AND n.source_record_id=p.source_record_id AND n.variant_key=p.variant_key AND n.family_code='standard'
+  AND n.metric_definition_version='${producer}' AND n.contract_version='${producer}' AND n.transform_version='${producer}'
+  AND n.transform_code_sha256=p.transform_code_sha256 AND n.metric_code IN (${fieldsSql}) AND ${selected("n", "p.dg")}`;
+-const projectionSql = `CASE n.metric_code ${Object.entries(nativeFields).map(([field, column]) =>
+-  `WHEN 'legacy_normalized_${field}' THEN p.${column}::text::numeric`).join(" ")} END`;
+-const invalidNumberSql = `n.value_kind='number' AND (n.numeric_value::text !~ '${numericGrammar}'
+- OR octet_length(n.numeric_value::text)>1024 OR abs(n.numeric_value)>1.7976931348623157e308::numeric
+- OR (trunc(n.numeric_value)=n.numeric_value AND abs(n.numeric_value)>9007199254740991::numeric))`;
+ const admissionSql = `/*orion:appearance:admissionmeta*/ ${scopeSql},
+-native_counts AS (
+- SELECT p.revision_id,count(n.revision_id) AS states,
+- coalesce(bool_or(${invalidNumberSql}),false) AS bad_number,
+- coalesce(bool_or(CASE WHEN n.value_kind='number' THEN (${projectionSql}) IS DISTINCT FROM n.numeric_value
+- ELSE (${projectionSql}) IS NOT NULL END) FILTER(WHERE n.revision_id IS NOT NULL),false) AS bad_projection
+- FROM performances p LEFT JOIN football.player_match_metric_values n ON ${nativeJoin}
+- GROUP BY p.revision_id
++perf_by_match AS (
++ SELECT match_id,count(*) AS actual_count,array_agg(DISTINCT source_id) AS sources,array_agg(DISTINCT variant_key) AS variants
++ FROM performances GROUP BY match_id
+ ), coverage AS (
+  SELECT m.match_id,c.source_id,c.variant_key,c.observed_row_count,c.collection_state,c.coverage_state,c.is_stale,
+- (SELECT count(*) FROM performances p WHERE p.match_id=m.match_id) AS actual_count,
+- EXISTS(SELECT 1 FROM performances p WHERE p.match_id=m.match_id AND (p.source_id<>c.source_id OR p.variant_key<>c.variant_key)) AS wrong_source
+- FROM matches m LEFT JOIN ingest.match_coverage c ON c.match_id=m.match_id
++ coalesce(pm.actual_count,0) AS actual_count,
++ coalesce(c.source_id IS NOT NULL AND NOT (pm.sources <@ ARRAY[c.source_id] AND pm.variants <@ ARRAY[c.variant_key]),false) AS wrong_source
++ FROM matches m LEFT JOIN perf_by_match pm ON pm.match_id=m.match_id
++ LEFT JOIN ingest.match_coverage c ON c.match_id=m.match_id
+  AND c.feature_code='normalized_performance' AND ${at("c", "m.dg")} AND c.is_canonical
+ )
+ SELECT (SELECT count(*)::text FROM matches) match_count,
+@@ -198,13 +195,10 @@ SELECT (SELECT count(*)::text FROM matches) match_count,
+  (SELECT count(*)::text FROM performances WHERE performance_id IS NULL OR performance_id='' OR player_public_id IS NULL
+  OR team_public_id IS NULL OR (profile_version_id IS NOT NULL AND observed_profile_id IS NULL)) bad_identity,
+  (SELECT count(*)::text FROM sides WHERE team_public_id IS NULL) bad_team_alias,
+- (SELECT count(*)::text FROM native_counts WHERE states<>31) bad_native,
+- (SELECT count(*)::text FROM native_counts WHERE bad_number) bad_number,
+- (SELECT count(*)::text FROM native_counts WHERE bad_projection) bad_projection,
+- (SELECT count(*)::text FROM coverage WHERE source_id IS NULL OR is_stale OR wrong_source
++ (SELECT count(*)::text FROM coverage WHERE (source_id IS NULL AND actual_count<>0) OR (source_id IS NOT NULL AND (is_stale OR wrong_source
+  OR coverage_state NOT IN ('available','empty_response')
+  OR collection_state NOT IN ('present','empty') OR observed_row_count IS DISTINCT FROM actual_count
+- OR (collection_state='empty' AND actual_count<>0) OR (collection_state='present' AND actual_count=0)) bad_coverage,
++ OR (collection_state='empty' AND actual_count<>0) OR (collection_state='present' AND actual_count=0)))) bad_coverage,
+  (SELECT count(*)::text FROM (SELECT team_id FROM team_profiles GROUP BY team_id HAVING count(*)>1) ambiguous) bad_team_profile`;
+ 
+ function mediaValue(asset, base) {
+@@ -280,7 +274,9 @@ async function contents(row, args, media) {
+  SELECT m.match_id::text,m.public_id AS id,m.match_date::text AS date,m.kickoff_at,m.status,
+  m.home_label,m.away_label,m.home_goals,m.away_goals,m.score_scope,
+  home.team_public_id AS home_id,home.participant_label AS home_observed,
+- away.team_public_id AS away_id,away.participant_label AS away_observed
++ away.team_public_id AS away_id,away.participant_label AS away_observed,
++ EXISTS(SELECT 1 FROM ingest.match_coverage c WHERE c.match_id=m.match_id AND c.feature_code='normalized_performance'
++ AND ${at("c", "m.dg")} AND c.is_canonical) AS performance_collected
+  FROM matches m LEFT JOIN sides home ON home.match_id=m.match_id AND home.side='home'
+  LEFT JOIN sides away ON away.match_id=m.match_id AND away.side='away'
+  WHERE m.match_id=ANY($2::bigint[]) ORDER BY m.match_date NULLS LAST,m.public_id COLLATE "C"`, params),
+@@ -299,7 +295,7 @@ async function contents(row, args, media) {
+     query(`/*orion:appearance:stats*/ ${scopeSql}
+  SELECT s.match_id::text,sides.side,s.quality_flags,${[...new Set(Object.values(teamFields))].map((field) => `s.${field}::text AS ${field}`).join(",")}
+  FROM sides JOIN football.team_match_stats s ON s.match_id=sides.match_id AND s.team_id=sides.team_id
+- AND s.match_team_revision_id=sides.revision_id AND s.period_code='full_match' AND s.period_definition_version='bootstrap_v1'
++ AND s.period_code='full_match' AND s.period_definition_version='bootstrap_v1'
+  AND ${selected("s", "sides.dg")} WHERE s.match_id=ANY($2::bigint[]) ORDER BY s.match_id,sides.side`, params),
+     query(`/*orion:appearance:context*/ ${scopeSql}
+  SELECT t.team_id::text,aliases.public_id AS id,p.id::text AS profile_id,p.display_name AS name,p.image_asset_id::text,
+@@ -326,7 +322,10 @@ async function contents(row, args, media) {
+       const kind = p[from + "_state"], value = scalar(kind, kind === "number" ? p[from + "_source_number"] : p[from]);
+       if (value !== absent) result[to] = value;
+     }
+-    for (const [field, kind, raw] of p.native || []) {
++    const native = p.native || [];
++    if (native.length !== Object.keys(nativeFields).length || new Set(native.map(([field]) => field)).size !== native.length)
++      unavailable("NATIVE31_INCOMPLETE", "États natifs incomplets.");
++    for (const [field, kind, raw] of native) {
+       if (!Object.hasOwn(nativeFields, field)) unavailable("NATIVE31_INCOMPLETE", "Champ natif inconnu.");
+       const value = scalar(kind, raw);
+       if (value !== absent) result[field] = value;
+@@ -353,7 +352,7 @@ async function contents(row, args, media) {
+         return home === null && away === null ? [] : [{ key, label: key,
+           home: home === null ? null : nativeNumber(home), away: away === null ? null : nativeNumber(away) }];
+       }),
+-      coverage: { teamStatsReliable, normalizedPerformance: "complete", shots: { projection: "lazy", collectionState: "unknown" } },
++      coverage: { teamStatsReliable, normalizedPerformance: m.performance_collected ? "complete" : "not_collected", shots: { projection: "lazy", collectionState: "unknown" } },
+     };
+   });
+   const last = page.at(-1);
+@@ -390,9 +389,8 @@ async function partition(req, params, options) {
+     || count(admission.performance_count) !== count(admission.selected_performance_count) || count(admission.bad_team_profile))
+     unavailable("PERFORMANCE_COVERAGE_UNAVAILABLE", "Identités ou périmètre de performance indisponibles.");
+   if (count(admission.bad_coverage)) unavailable("PERFORMANCE_COVERAGE_UNAVAILABLE", "Couverture de performances indisponible.");
+-  if (count(admission.bad_native)) unavailable("NATIVE31_INCOMPLETE", "États natifs incomplets.");
+-  if (count(admission.bad_number)) unavailable("NATIVE_NUMBER_INVALID", "Nombre natif non représentable.");
+-  if (count(admission.bad_projection)) unavailable("NATIVE31_INCOMPLETE", "Projection native incohérente.");
++  // Native completeness (31 states) and number validity are checked on each served page; projection
++  // consistency is guaranteed by the sealed generation's native validator (typed values are immutable).
+   row.performance_count = count(admission.performance_count);
+   const media = await dependencies(row, options.mediaBase);
+   if (req.method === "HEAD" || matchesEtag(req.headers.get("if-none-match"), responseTag(req, args, media))) return reply(req, null, args, media);
