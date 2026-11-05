@@ -8,10 +8,11 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 24,
+    "reader-and-data-contract-required": 20,
     "local-fixture-aliases-v1-E2E-qualified": 2,
     "local-competitions-v1-E2E-qualified": 8,
-    "local-native-match-details-v1-E2E-qualified": 6
+    "local-native-match-details-v1-E2E-qualified": 6,
+    "local-archives-v1-E2E-qualified": 4
   },
   "rows": [
     {
@@ -309,12 +310,12 @@
       "currentQueryNames": [
         "kind"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-archives-v1-E2E-qualified",
       "defined103Destinations": [
         "football.competitions",
         "football.competition_seasons"
       ],
-      "actionOrGap": "Implement typed archive/observation result/event projection, sourceFields field-by-field and season/competition mapping. Exhaustive103 state/shape gap assessment still open."
+      "actionOrGap": "Typed archive cohort and provenance, exact selected DG/CG, bounded metadata revalidation. Real dataset admission, full original section coverage and hosted parity remain open."
     },
     {
       "path": "/api/archives/season",
@@ -326,14 +327,14 @@
         "kind",
         "season"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-archives-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_observation_details",
         "football.matches",
         "football.match_scores",
         "football.match_events"
       ],
-      "actionOrGap": "Implement typed archive/observation result/event projection, sourceFields field-by-field and season/competition mapping. Exhaustive103 state/shape gap assessment still open."
+      "actionOrGap": "Typed archive cohort and provenance, exact selected DG/CG, bounded metadata revalidation. Real dataset admission, full original section coverage and hosted parity remain open."
     },
     {
       "path": "/api/rankings/index",
@@ -492,12 +493,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-archives-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.match_observation_details"
       ],
-      "actionOrGap": "Implement typed archive/observation result/event projection, sourceFields field-by-field and season/competition mapping. Exhaustive103 state/shape gap assessment still open."
+      "actionOrGap": "Typed archive cohort and provenance, exact selected DG/CG, bounded metadata revalidation. Real dataset admission, full original section coverage and hosted parity remain open."
     },
     {
       "path": "/api/archive/matches/{match}",
@@ -506,12 +507,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-archives-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_observation_details",
         "football.matches"
       ],
-      "actionOrGap": "Implement typed archive/observation result/event projection, sourceFields field-by-field and season/competition mapping. Exhaustive103 state/shape gap assessment still open."
+      "actionOrGap": "Typed archive cohort and provenance, exact selected DG/CG, bounded metadata revalidation. Real dataset admission, full original section coverage and hosted parity remain open."
     },
     {
       "path": "/api/archive/profiles/leagues/{league}",

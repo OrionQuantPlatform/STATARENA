@@ -1,8 +1,8 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T17:25:55.380589+00:00",
+  "atUtc": "2026-11-05T17:28:57.448707+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
-  "routeMatrixSha256": "47d13b032429c77c6c1d0ff542d6532cd3a17d0f27c8b195de8f589c85e5e799",
+  "routeMatrixSha256": "45a0efe6123b4d09a7423cce649b707df4b334180fa3b01e8e40c2ffb0974545",
   "localQualifiedOtherForms": 19,
   "remainingForms": 38,
   "routeCountsAreNotWorkloadPercentages": true,
@@ -91,7 +91,7 @@
     {
       "id": "archives",
       "owner": "sql_publisher",
-      "status": "module_tested_router_integration_pending",
+      "status": "integrated_tested_locally",
       "routes": [
         "/api/archives/index",
         "/api/archives/season",
@@ -99,9 +99,10 @@
         "/api/archive/matches/{match}"
       ],
       "module": "dashboard/backend/services/orion-pro-archives.js",
-      "testedLocally": false,
+      "testedLocally": true,
       "pushed": false,
-      "deployed": false
+      "deployed": false,
+      "evidence": "docs/verification/orion-pro-archives-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json"
     },
     {
       "id": "fifa-uefa-rankings",
@@ -138,6 +139,6 @@
   "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer.",
   "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
   "suggestedCommit": "docs: assign remaining backend routes by category and dependencies",
-  "currentLocalQualifiedForms": 33,
-  "currentRemainingForms": 24
+  "currentLocalQualifiedForms": 37,
+  "currentRemainingForms": 20
 }
