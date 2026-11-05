@@ -1,0 +1,606 @@
+{
+  "kind": "independent_native_target_oracle_e2e_v1",
+  "command": [
+    "python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent_e2e.py",
+    "--run-local",
+    "--release",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/ROOT_INDEPENDENT_CAMPAIGN_V1.json",
+    "--release-sha256",
+    "ba1fb60ef93e0aae39b5b71043ea3eb64c4d7e44d3b4e5168936b7c9b7dae250",
+    "--label",
+    "root-independent-target-v1"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/INDEPENDENT_PROTOCOL.md",
+  "cases": [
+    {
+      "case": "frozen_contract_and_prior_receipt",
+      "status": "pass",
+      "actual": {
+        "componentCount": 106,
+        "componentContractSha256": "51da06293271ac48ac7ea9ea548fac46253ecb3e01d447582b30f9112ff3262e",
+        "priorReceiptSha256": "e3349a7a21a2ec1d9eb9afe3b026a8ebcc07ce7a2e3a5910372da117d9bf5694",
+        "writerUnchanged": true
+      }
+    },
+    {
+      "case": "allocation_required",
+      "status": "pass",
+      "actual": {
+        "kind": "root_native_transport_independent_campaign_v1",
+        "approvedBy": "ROOT",
+        "atUtc": "2026-11-05T11:26:53.838827+00:00",
+        "allocationId": "independent-target-v1",
+        "writerSha256": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487",
+        "testSha256": "fe88e658bad6217b7d0999d87ec2ded53fdd006dad88542d562cc363df9cdc79",
+        "componentContractSha256": "51da06293271ac48ac7ea9ea548fac46253ecb3e01d447582b30f9112ff3262e",
+        "protocolSha256": "95a77f47e3a30d31cfd92da4d85ef1fb2e1b8a6f3947bb9b628b56f7d7dec383",
+        "maximumPgStarts": 1,
+        "maximumFixtureConstructions": 1,
+        "maximumSeconds": 300,
+        "maximumOwnedBytes": 1073741824,
+        "maximumProofBytes": 67108864,
+        "scope": "Owned local target oracle and unequal G/SID only; no RDS/source/RAM. Prior21/21 remains unchanged; ROOT read independent106 SQL substitutions/control3 oracle.",
+        "stopAtFirstUnexpectedFailure": true,
+        "suggestedCommit": "test: independently verify native transport control remapping"
+      }
+    },
+    {
+      "case": "owned_tls_native_setup",
+      "status": "pass",
+      "actual": {
+        "serverVersion": 180006,
+        "fixtureConstructions": 1,
+        "nativeSourceSha256": "9178cc61dde94eae8f126c40f20396c0c23fba2a95768c12ab3facb51ff4c26b"
+      }
+    },
+    {
+      "case": "unequal_generation_snapshot",
+      "status": "pass",
+      "actual": {
+        "ordinaryIngestSnapshotReservation": 2,
+        "rolledBackGeneration": 2,
+        "sequenceValues": {
+          "analytics.aggregation_builds_id_seq": [
+            1,
+            false
+          ],
+          "analytics.metric_totals_id_seq": [
+            1,
+            false
+          ],
+          "football.association_profile_versions_id_seq": [
+            1,
+            false
+          ],
+          "football.associations_id_seq": [
+            1,
+            false
+          ],
+          "football.coaches_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.coaches_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_groups_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_groups_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_seasons_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_seasons_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_stages_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_stages_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.competition_teams_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.competitions_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.competitions_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.countries_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.countries_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.honour_definitions_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.honour_definitions_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.match_heatmaps_id_seq": [
+            1,
+            false
+          ],
+          "football.match_lineups_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.match_players_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.match_scores_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.match_teams_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.matches_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.matches_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.pass_networks_id_seq": [
+            1,
+            false
+          ],
+          "football.player_honours_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.player_honours_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.player_match_advanced_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.player_match_metric_values_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.player_match_stats_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.player_profile_versions_id_seq": [
+            1,
+            false
+          ],
+          "football.player_team_memberships_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.player_team_memberships_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.players_id_seq": [
+            1,
+            false
+          ],
+          "football.ranking_snapshots_id_seq": [
+            1,
+            false
+          ],
+          "football.ranking_systems_id_seq": [
+            1,
+            false
+          ],
+          "football.shots_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.shots_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.standing_snapshots_id_seq": [
+            1,
+            false
+          ],
+          "football.team_aliases_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.team_aliases_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.team_coach_tenures_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.team_coach_tenures_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.team_honours_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.team_honours_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.team_match_advanced_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.team_match_metric_values_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.team_match_stats_revision_id_seq": [
+            1,
+            false
+          ],
+          "football.team_profile_versions_id_seq": [
+            1,
+            false
+          ],
+          "football.teams_id_seq": [
+            1,
+            false
+          ],
+          "football.venues_logical_id_seq": [
+            1,
+            false
+          ],
+          "football.venues_revision_id_seq": [
+            1,
+            false
+          ],
+          "ingest.cleanup_items_id_seq": [
+            1,
+            false
+          ],
+          "ingest.commit_generation_seq": [
+            2,
+            true
+          ],
+          "ingest.dataset_snapshots_id_seq": [
+            3,
+            true
+          ],
+          "ingest.identity_candidates_id_seq": [
+            1,
+            false
+          ],
+          "ingest.import_runs_id_seq": [
+            1,
+            false
+          ],
+          "ingest.media_assets_id_seq": [
+            1,
+            false
+          ],
+          "ingest.quality_issues_id_seq": [
+            1,
+            false
+          ],
+          "ingest.reconciliation_runs_id_seq": [
+            1,
+            false
+          ],
+          "ingest.resource_fetches_id_seq": [
+            1,
+            false
+          ],
+          "ingest.source_datasets_id_seq": [
+            1,
+            false
+          ],
+          "ingest.source_documents_id_seq": [
+            1,
+            false
+          ],
+          "ingest.source_records_id_seq": [
+            1,
+            false
+          ],
+          "ingest.sources_id_seq": [
+            1,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "case": "ordinary_ingest_transport",
+      "status": "pass",
+      "actual": {
+        "copyCommands": 39,
+        "copiedRows": 1566,
+        "writerSha256": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487"
+      }
+    },
+    {
+      "case": "independent_native91",
+      "status": "pass",
+      "actual": {
+        "nativeBusinessRelations": 91,
+        "componentColumns": 106,
+        "unequalControls": true,
+        "oracle": "tests/orion_pro_bulk_local.py; frozen component contract; native destination control queries"
+      }
+    },
+    {
+      "case": "independent_control3",
+      "status": "pass",
+      "actual": {
+        "independentControlContracts": 3,
+        "allFourClocksExact": true,
+        "sourceDerivedCopiedRows": 1566
+      }
+    },
+    {
+      "case": "independent_noop",
+      "status": "pass",
+      "actual": {
+        "nativeTablesUnchanged": 94,
+        "sequencesUnchanged": 67,
+        "copyCommands": 0,
+        "nextvalCalls": 0,
+        "sourceExact": true
+      }
+    },
+    {
+      "case": "owned_cleanup",
+      "status": "pass",
+      "actual": {
+        "cleanupRequiredInFinally": true,
+        "sourceRamReads": 0,
+        "remoteCalls": 0
+      }
+    }
+  ],
+  "invocations": [
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+        "-D",
+        "/tmp/orion-pro-e2e-uqqruk_8/data",
+        "--auth=trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exitCode": 0,
+      "stdout": "000-initdb.stdout.log",
+      "stderr": "000-initdb.stderr.log"
+    },
+    {
+      "command": [
+        "openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-sha256",
+        "-nodes",
+        "-days",
+        "2",
+        "-keyout",
+        "/tmp/orion-pro-e2e-uqqruk_8/data/server.key",
+        "-out",
+        "/tmp/orion-pro-e2e-uqqruk_8/data/server.crt",
+        "-subj",
+        "/CN=127.0.0.1",
+        "-addext",
+        "subjectAltName=IP:127.0.0.1"
+      ],
+      "exitCode": 0,
+      "stdout": "001-owned-tls.stdout.log",
+      "stderr": "001-owned-tls.stderr.log"
+    },
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/tmp/orion-pro-e2e-uqqruk_8/data",
+        "-l",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/postgres.log",
+        "-o",
+        "-h 127.0.0.1 -p 55812 -k /tmp/orion-pro-e2e-uqqruk_8/socket -c fsync=on",
+        "-w",
+        "start"
+      ],
+      "exitCode": 0,
+      "stdout": "002-postgres-start.stdout.log",
+      "stderr": "002-postgres-start.stderr.log"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_native_transport.py",
+        "--apply-local",
+        "--source-marker",
+        "/tmp/orion-pro-e2e-uqqruk_8/native-marker.json",
+        "--pair",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/pair.json",
+        "--pair-sha256",
+        "e068e81ad5c3fbf4b5b1af89a9fef1a6de9d78ae8104f5cfac0026355fda1944",
+        "--acceptance",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/acceptance.json",
+        "--acceptance-sha256",
+        "e64e4f9caab31c87be017565a08c6e2a8a6117bae96c5144e8d7280c2ea495dc",
+        "--release",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/operation-3.json",
+        "--release-sha256",
+        "dc7d7b3efa6fc8b8642749c2860ac3b3cbf5cdf138e325a44eb72d7dbd6c8c8c"
+      ],
+      "exitCode": 0,
+      "stdout": "003-native-worker.stdout.log",
+      "stderr": "003-native-worker.stderr.log"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_native_transport.py",
+        "--apply-local",
+        "--source-marker",
+        "/tmp/orion-pro-e2e-uqqruk_8/native-marker.json",
+        "--pair",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/pair.json",
+        "--pair-sha256",
+        "e068e81ad5c3fbf4b5b1af89a9fef1a6de9d78ae8104f5cfac0026355fda1944",
+        "--acceptance",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/acceptance.json",
+        "--acceptance-sha256",
+        "e64e4f9caab31c87be017565a08c6e2a8a6117bae96c5144e8d7280c2ea495dc",
+        "--release",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent-runs/20261105T112725339867Z-root-independent-target-v1/operation-4.json",
+        "--release-sha256",
+        "5ffb58a889417b4ec46488c8ff344efc0eb7588ab56f7768fa0651cbe97be799"
+      ],
+      "exitCode": 0,
+      "stdout": "004-native-worker.stdout.log",
+      "stderr": "004-native-worker.stderr.log"
+    },
+    {
+      "command": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/tmp/orion-pro-e2e-uqqruk_8/data",
+        "-m",
+        "fast",
+        "-w",
+        "stop"
+      ],
+      "exitCode": 0,
+      "stdout": "005-postgres-stop.stdout.log",
+      "stderr": "005-postgres-stop.stderr.log"
+    }
+  ],
+  "inputSha256": {
+    "dashboard/scripts/orion_pro_native_transport.py": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487",
+    "tests/orion_pro_real_rds_transport_local.py": "945933c3ceec7cdb6361e7c3c84585d874fe92d668bdfe93700f90060c70a10f",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/BINDINGS.json": "f965f43e37e272be274e102ceda338e0f47dc94661c13f45537f0ff8483294b1",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/CONTROL_COMPONENTS.json": "51da06293271ac48ac7ea9ea548fac46253ecb3e01d447582b30f9112ff3262e",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/runs/20261105T110727916843Z-root-owned-tls-compact-v1-absolute/result.json": "e3349a7a21a2ec1d9eb9afe3b026a8ebcc07ce7a2e3a5910372da117d9bf5694",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/independent_e2e.py": "fe88e658bad6217b7d0999d87ec2ded53fdd006dad88542d562cc363df9cdc79",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/INDEPENDENT_PROTOCOL.md": "95a77f47e3a30d31cfd92da4d85ef1fb2e1b8a6f3947bb9b628b56f7d7dec383",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "tests/orion_pro_bulk_stream_local.py": "ee85dca178e6676e75bc0d2cca9790b159107eb9e13c2698ee621de0f1a3c3f2",
+    "tests/orion_pro_bulk_local.py": "dc114f04fb53114d392d6feddc5aa690a2b666a4a6ebfee83b89f85bc0570b1c",
+    "tests/orion_e2e_process.py": "06bd176152361ab96f26930920c71d7a32fd9ddadde5bfc8bb02008e87174c04",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/ROOT_INDEPENDENT_CAMPAIGN_V1.json": "ba1fb60ef93e0aae39b5b71043ea3eb64c4d7e44d3b4e5168936b7c9b7dae250"
+  },
+  "remoteCalls": 0,
+  "sourceRamReads": 0,
+  "fullAcceptance": false,
+  "pgStarts": 1,
+  "fixtureConstructions": 1,
+  "cleanup": {
+    "owned_root": "/tmp/orion-pro-e2e-uqqruk_8",
+    "server_stopped": true,
+    "owned_directory_removed": true
+  },
+  "elapsedSeconds": 9.673,
+  "resources": [
+    {
+      "seconds": 0.033,
+      "ownedBytes": 0,
+      "proofBytes": 1914589
+    },
+    {
+      "seconds": 0.563,
+      "ownedBytes": 23027712,
+      "proofBytes": 1914589
+    },
+    {
+      "seconds": 1.11,
+      "ownedBytes": 40824832,
+      "proofBytes": 1916366
+    },
+    {
+      "seconds": 3.708,
+      "ownedBytes": 114987008,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 4.225,
+      "ownedBytes": 114987008,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 4.749,
+      "ownedBytes": 114987008,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 5.272,
+      "ownedBytes": 114987008,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 5.798,
+      "ownedBytes": 115961856,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 6.321,
+      "ownedBytes": 116699136,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 6.847,
+      "ownedBytes": 117239808,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 7.37,
+      "ownedBytes": 117567488,
+      "proofBytes": 1938293
+    },
+    {
+      "seconds": 7.91,
+      "ownedBytes": 117682176,
+      "proofBytes": 2014125
+    },
+    {
+      "seconds": 8.458,
+      "ownedBytes": 117682176,
+      "proofBytes": 2014125
+    },
+    {
+      "seconds": 8.983,
+      "ownedBytes": 117682176,
+      "proofBytes": 2014125
+    }
+  ],
+  "inputHashesExact": true,
+  "status": "pass_owned_source_free_only",
+  "counts": {
+    "pass": 9,
+    "fail": 0,
+    "unverified": 0
+  }
+}

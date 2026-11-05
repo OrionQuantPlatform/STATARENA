@@ -1,0 +1,31 @@
+{
+  "kind": "native_transport_local_setup_failure_v1",
+  "status": "fail_before_pg",
+  "command": [
+    "python3",
+    "tests/orion_pro_real_rds_transport_local.py",
+    "--run-local",
+    "--release",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/ROOT_LOCAL_CAMPAIGN_V1.json",
+    "--release-sha256",
+    "aa4f38368e53957cbdb8530a4e50889c7b5129a1676cc7081547f2983eba548c",
+    "--label",
+    "root-owned-tls-compact-v1"
+  ],
+  "expected": "Archive exact release then execute approved owned campaign",
+  "actual": "ValueError: 'docs/verification/orion-pro-real-rds-transfer-20261105/transport/ROOT_LOCAL_CAMPAIGN_V1.json' is not in the subpath of '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking'",
+  "pgStarts": 0,
+  "fixtureConstructions": 0,
+  "allocationConsumed": false,
+  "remoteCalls": 0,
+  "sourceRamReads": 0,
+  "cleanup": {
+    "noOwnedPgCreated": true
+  },
+  "fullAcceptance": false,
+  "sourceSha256": {
+    "tests/orion_pro_real_rds_transport_local.py": "945933c3ceec7cdb6361e7c3c84585d874fe92d668bdfe93700f90060c70a10f",
+    "dashboard/scripts/orion_pro_native_transport.py": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport/ROOT_LOCAL_CAMPAIGN_V1.json": "aa4f38368e53957cbdb8530a4e50889c7b5129a1676cc7081547f2983eba548c"
+  }
+}

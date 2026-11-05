@@ -1,0 +1,108 @@
+{
+  "kind": "explicit_native_sql_transport_pair_v1",
+  "environment": "owned_local_tls",
+  "writerSha256": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487",
+  "bindingSha256": "f965f43e37e272be274e102ceda338e0f47dc94661c13f45537f0ff8483294b1",
+  "source": {
+    "kind": "typed_native_p1_overlay_v1",
+    "origin": "owned_source_free_fixture",
+    "roles": {
+      "owner": "orion_pro_owner",
+      "writer": "orion_pro_ingest",
+      "reader": "orion_pro_runtime"
+    },
+    "endpoint": {
+      "database": "native_source",
+      "actor": "orion_pro_runtime",
+      "serverVersion": 180006,
+      "postmasterStartedAt": "2026-11-05T00:00:00+00:00",
+      "tls": true
+    },
+    "catalogueSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "nativeCatalogueCounts": {
+      "table": 94,
+      "column": 1709,
+      "view": 46,
+      "sequence": 67
+    },
+    "functionProperties": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "journal": [
+      [
+        "012",
+        "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "2026-11-05 00:00:00+00",
+        "unobserved-boundary-only"
+      ],
+      [
+        "013",
+        "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "2026-11-05 00:00:00+00",
+        "unobserved-boundary-only"
+      ]
+    ],
+    "journalNativeSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "bootstrapNativeText": "UNOBSERVED_SOURCE_FREE_METADATA"
+  },
+  "target": {
+    "kind": "typed_native_p1_journal_v1",
+    "origin": "owned_local_tls_target",
+    "roles": {
+      "owner": "statarena_admin",
+      "writer": "statarena_ingest",
+      "reader": "statarena_runtime"
+    },
+    "endpoint": {
+      "database": "native_target",
+      "actor": "statarena_admin",
+      "serverVersion": 180006,
+      "postmasterStartedAt": "2026-11-05T00:00:00+00:00",
+      "tls": true
+    },
+    "catalogueSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "nativeCatalogueCounts": {
+      "table": 94,
+      "column": 1709,
+      "view": 46,
+      "sequence": 67
+    },
+    "functionProperties": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "journal": [
+      [
+        "012",
+        "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "2026-11-05 00:00:00+00",
+        "unobserved-boundary-only"
+      ],
+      [
+        "013",
+        "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "2026-11-05 00:00:00+00",
+        "unobserved-boundary-only"
+      ],
+      [
+        "014",
+        "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+        "2026-11-05 00:00:00+00",
+        "unobserved-boundary-only"
+      ]
+    ],
+    "journalNativeSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "bootstrapNativeText": "UNOBSERVED_SOURCE_FREE_METADATA"
+  }
+}

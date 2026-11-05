@@ -1,0 +1,2 @@
+ValueError: 'docs/verification/orion-pro-real-rds-transfer-20261105/transport/ROOT_LOCAL_CAMPAIGN_V1.json' is not in the subpath of '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking'
+Location: tests/orion_pro_real_rds_transport_local.py line86, path.relative_to(ROOT), before try/case loop/PG setup.

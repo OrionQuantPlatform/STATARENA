@@ -1,0 +1,11 @@
+{
+  "kind": "native_transport_operation_release_v1",
+  "scope": "owned_source_free_fixture",
+  "mode": "preflight-local",
+  "writerSha256": "9ec803b5caa6a5c5a47c2154256ea8199847281931fe73a538862c70fa371487",
+  "bindingSha256": "f965f43e37e272be274e102ceda338e0f47dc94661c13f45537f0ff8483294b1",
+  "pairSha256": "c85ef4cc7aee457e697db4672e8c3c3f28210d9e5e1f1d3bf696e8a1cfd25d63",
+  "acceptanceSha256": "7f557ab5b1c0192ac54f333f524e53c678f091355682700ce886114aee0d970d",
+  "expiresAt": "2026-11-05T11:17:29.095473+00:00",
+  "fullAcceptance": false
+}
