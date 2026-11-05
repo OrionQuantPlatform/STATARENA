@@ -35,8 +35,10 @@ Evidence so far:
 | Source `core-recovery-v5` | READY 7/7, then stopped cleanly: its recorded controller path was relative, so `operations/core-v1` preflight refused before any connection (`SOURCE_SERVICE`) |
 | Source `core-recovery-v6` | READY 7/7 (`runs-v2/20261105T192211685980Z`) |
 | `operations/core-v2` preflight | passed in 74.9 s: real source and RDS017 accepted, 553,545-row phase ownership, no COPY |
-| `operations/core-v2` apply | not run: needs explicit user approval for the production RDS write |
+| `operations/core-v2` apply (user-approved) | **committed**: 731 COPY, 553,545 rows (478,547 metric values), 22 nextvals; COPY 594.3 s, seal 70.1 s, deferred commit 73.6 s under 5min/64MB/1s; 985.2 s total; generation/snapshot 2→4 |
+| Independent readback (`operations/core-v2/independent-readback`) | **exact**: B0 + one sealed V4 snapshot, one run with 553,545 copied rows; all 91 business relations equal the frozen source native digests (553,557 rows incl. 12 B0 seeds, 106 control components remapped, coordinates cast to float8), 0 mismatches; new core defaults intact, 4 detail tables empty; 102.8 s, 1 RO connection |
+| Source `core-recovery-v6` | stopped cleanly after readback; typed root retained |
 
-A failed apply rolls back the whole transaction (as the two earlier attempts did).
-After a commit, an independent read-only readback must confirm the sealed snapshot,
-row counts and the 91 business relation digests before any publication.
+Seal took 70 s on RDS versus ~2 s locally, which confirms the 8 s budget, not the
+validator, caused the earlier failures. The data is committed but not yet published
+to the site: READY publication, frontend cohorts and the remaining families come next.
