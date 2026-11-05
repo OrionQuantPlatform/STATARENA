@@ -8,7 +8,6 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 4,
     "local-fixture-aliases-v1-E2E-qualified": 2,
     "local-competitions-v1-E2E-qualified": 8,
     "local-native-match-details-v1-E2E-qualified": 6,
@@ -16,7 +15,8 @@
     "local-shot-detail-v1-E2E-qualified": 2,
     "local-player-period-v1-E2E-qualified": 4,
     "local-enrichment-v1-E2E-qualified": 5,
-    "local-spatial-advanced-v1-E2E-qualified": 5
+    "local-spatial-advanced-v1-E2E-qualified": 5,
+    "local-rankings-v1-E2E-qualified": 4
   },
   "rows": [
     {
@@ -347,12 +347,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-rankings-v1-E2E-qualified",
       "defined103Destinations": [
         "football.ranking_systems",
         "football.ranking_snapshots"
       ],
-      "actionOrGap": "Implement observed ranking snapshots+entries/components with edition/provider/effective/knowledge time and source identity mapping. Not computed Orion/Ballon d\u2019Or scores."
+      "actionOrGap": "Published typed FIFA/UEFA ranking snapshots, entries and annual components with exact source identity. Real source reconciliation, SportsAPI legacy occurrences and the aggregate teams-still-playing field remain unqualified. Not computed Orion/Ballon d’Or scores."
     },
     {
       "path": "/api/rankings/edition",
@@ -364,13 +364,13 @@
         "kind",
         "edition"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-rankings-v1-E2E-qualified",
       "defined103Destinations": [
         "football.ranking_snapshots",
         "football.team_ranking_entries",
         "football.association_ranking_entries"
       ],
-      "actionOrGap": "Implement observed ranking snapshots+entries/components with edition/provider/effective/knowledge time and source identity mapping. Not computed Orion/Ballon d\u2019Or scores."
+      "actionOrGap": "Published typed FIFA/UEFA ranking snapshots, entries and annual components with exact source identity. Real source reconciliation, SportsAPI legacy occurrences and the aggregate teams-still-playing field remain unqualified. Not computed Orion/Ballon d’Or scores."
     },
     {
       "path": "/api/rankings/associations",
@@ -381,12 +381,12 @@
       "currentQueryNames": [
         "year"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-rankings-v1-E2E-qualified",
       "defined103Destinations": [
         "football.association_ranking_entries",
         "football.association_ranking_components"
       ],
-      "actionOrGap": "Implement observed ranking snapshots+entries/components with edition/provider/effective/knowledge time and source identity mapping. Not computed Orion/Ballon d\u2019Or scores."
+      "actionOrGap": "Published typed FIFA/UEFA ranking snapshots, entries and annual components with exact source identity. Real source reconciliation, SportsAPI legacy occurrences and the aggregate teams-still-playing field remain unqualified. Not computed Orion/Ballon d’Or scores."
     },
     {
       "path": "/api/rankings/club",
@@ -397,12 +397,12 @@
       "currentQueryNames": [
         "club"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-rankings-v1-E2E-qualified",
       "defined103Destinations": [
         "football.team_ranking_entries",
         "football.team_ranking_components"
       ],
-      "actionOrGap": "Implement observed ranking snapshots+entries/components with edition/provider/effective/knowledge time and source identity mapping. Not computed Orion/Ballon d\u2019Or scores."
+      "actionOrGap": "Published typed FIFA/UEFA ranking snapshots, entries and annual components with exact source identity. Real source reconciliation, SportsAPI legacy occurrences and the aggregate teams-still-playing field remain unqualified. Not computed Orion/Ballon d’Or scores."
     },
     {
       "path": "/api/club-links",

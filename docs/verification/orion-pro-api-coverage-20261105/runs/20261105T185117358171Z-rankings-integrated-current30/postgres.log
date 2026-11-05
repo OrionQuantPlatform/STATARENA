@@ -1,0 +1,14 @@
+2026-11-05 19:51:18.353 CET [661] LOG:  starting PostgreSQL 18.6 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2026-11-05 19:51:18.353 CET [661] LOG:  listening on IPv4 address "127.0.0.1", port 53919
+2026-11-05 19:51:18.355 CET [661] LOG:  listening on Unix socket "/tmp/orion-pro-e2e-_mulkgfk/socket/.s.PGSQL.53919"
+2026-11-05 19:51:18.359 CET [667] LOG:  database system was shut down at 2026-11-05 19:51:18 CET
+2026-11-05 19:51:18.362 CET [661] LOG:  database system is ready to accept connections
+2026-11-05 19:51:22.923 CET [693] ERROR:  permission denied for table players
+2026-11-05 19:51:22.923 CET [693] STATEMENT:  UPDATE football.players SET display_name='forbidden' WHERE false
+2026-11-05 19:51:22.949 CET [661] LOG:  received fast shutdown request
+2026-11-05 19:51:22.950 CET [661] LOG:  aborting any active transactions
+2026-11-05 19:51:22.951 CET [661] LOG:  background worker "logical replication launcher" (PID 670) exited with exit code 1
+2026-11-05 19:51:22.954 CET [665] LOG:  shutting down
+2026-11-05 19:51:22.955 CET [665] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 19:51:23.245 CET [665] LOG:  checkpoint complete: wrote 1922 buffers (11.7%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.027 s, sync=0.260 s, total=0.291 s; sync files=1485, longest=0.013 s, average=0.001 s; distance=17154 kB, estimate=17154 kB; lsn=0/280DDE8, redo lsn=0/280DDE8
+2026-11-05 19:51:23.257 CET [661] LOG:  database system is shut down
