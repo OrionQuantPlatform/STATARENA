@@ -1,0 +1,14 @@
+2026-11-05 14:37:17.797 CET [80948] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-05 14:37:17.798 CET [80948] LOG:  listening on IPv4 address "127.0.0.1", port 59956
+2026-11-05 14:37:17.798 CET [80948] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-xryad2vx/socket/.s.PGSQL.59956"
+2026-11-05 14:37:17.804 CET [80954] LOG:  database system was shut down at 2026-11-05 14:37:17 CET
+2026-11-05 14:37:17.806 CET [80948] LOG:  database system is ready to accept connections
+2026-11-05 14:37:19.179 CET [80973] ERROR:  cannot execute INSERT in a read-only transaction
+2026-11-05 14:37:19.179 CET [80973] STATEMENT:  INSERT INTO football.players(display_name) VALUES('forbidden')
+2026-11-05 14:37:19.201 CET [80948] LOG:  received fast shutdown request
+2026-11-05 14:37:19.201 CET [80948] LOG:  aborting any active transactions
+2026-11-05 14:37:19.202 CET [80948] LOG:  background worker "logical replication launcher" (PID 80957) exited with exit code 1
+2026-11-05 14:37:19.205 CET [80952] LOG:  shutting down
+2026-11-05 14:37:19.205 CET [80952] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 14:37:19.247 CET [80952] LOG:  checkpoint complete: wrote 1304 buffers (8.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.017 s, sync=0.026 s, total=0.043 s; sync files=768, longest=0.001 s, average=0.001 s; distance=11331 kB, estimate=11331 kB; lsn=0/2299B08, redo lsn=0/2299B08
+2026-11-05 14:37:19.252 CET [80948] LOG:  database system is shut down

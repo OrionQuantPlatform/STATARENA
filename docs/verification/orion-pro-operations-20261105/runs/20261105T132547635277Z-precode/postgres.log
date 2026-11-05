@@ -1,0 +1,14 @@
+2026-11-05 14:25:48.486 CET [76050] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-05 14:25:48.486 CET [76050] LOG:  listening on IPv4 address "127.0.0.1", port 59024
+2026-11-05 14:25:48.487 CET [76050] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-y8g0jea8/socket/.s.PGSQL.59024"
+2026-11-05 14:25:48.492 CET [76056] LOG:  database system was shut down at 2026-11-05 14:25:48 CET
+2026-11-05 14:25:48.493 CET [76050] LOG:  database system is ready to accept connections
+2026-11-05 14:25:49.524 CET [76075] ERROR:  relation "statarena_app.publications" does not exist at character 96
+2026-11-05 14:25:49.524 CET [76075] STATEMENT:  SELECT generation::text AS revision, EXISTS(SELECT 1 FROM statarena_app.partitions) ready FROM statarena_app.publications WHERE singleton
+2026-11-05 14:25:49.540 CET [76050] LOG:  received fast shutdown request
+2026-11-05 14:25:49.541 CET [76050] LOG:  aborting any active transactions
+2026-11-05 14:25:49.542 CET [76050] LOG:  background worker "logical replication launcher" (PID 76060) exited with exit code 1
+2026-11-05 14:25:49.542 CET [76054] LOG:  shutting down
+2026-11-05 14:25:49.542 CET [76054] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 14:25:49.575 CET [76054] LOG:  checkpoint complete: wrote 1051 buffers (6.4%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.010 s, sync=0.023 s, total=0.033 s; sync files=767, longest=0.002 s, average=0.001 s; distance=11164 kB, estimate=11164 kB; lsn=0/22700E8, redo lsn=0/22700E8
+2026-11-05 14:25:49.580 CET [76050] LOG:  database system is shut down

@@ -1,0 +1,1117 @@
+{
+  "kind": "typed_operations_actual_node24_http_e2e",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "tests/orion_pro_operations_local.py",
+    "--node",
+    "/tmp/statarena-node24-runtime/v24.22.2/node-v24.22.2-darwin-arm64/bin/node",
+    "--pg-bin",
+    "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin",
+    "--label",
+    "typed-operations-final-cli"
+  ],
+  "expected": "PROTOCOL.md pre-code failure matrix",
+  "setup": "Owned PG18.6 approved012/013/014 only; ordinary runtime, actual aws-app on Node24; no legacy schemas",
+  "sourceSha256": {
+    "tests/orion_pro_operations_local.py": "2aae5e8c424a6877c678da1f70cc25d0c48435114dbc168c5f641a040f01c7df",
+    "docs/verification/orion-pro-operations-20261105/PROTOCOL.md": "4ec647fdad6269c96ea06c680ce583503d2cc59c70860dabb5b17c0e2ed3631c",
+    "docs/verification/orion-pro-operations-20261105/http_server.mjs": "c6ec4d99200c423591197a73c9afe9a9e076e1bc7175c2bb3f742c89ce31d79d",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "dashboard/backend/aws-app.js": "90f4418b5811e2103b80ba4d1b5285285402e332aa1fcfa405cf46286f6ee5d5",
+    "dashboard/backend/services/orion-pro-operations.js": "a38f9e4fc33f7322488f9e89a895384e5f1015f32290362da63f2e15d919427c",
+    "docs/verification/orion-pro-readers-20261104/fixture.py": "573bfc5e8778ce2ec00655864c202b8f1431b1a5d52cabc2bb5ac5f33886cc1c",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-pilot-20261104/fixtures.py": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659",
+    "tests/orion_e2e_process.py": "06bd176152361ab96f26930920c71d7a32fd9ddadde5bfc8bb02008e87174c04",
+    "dashboard/backend/services/database.js": "6dc281ef2dde58f21eee28f3b71ce7a37c8f857a3cb3236b87f5c1c4f3ff1e8c",
+    "dashboard/backend/services/cache.js": "ffaacb7170316195b52e4473f6b158fc2387d8b37e73cf9cf939922155cfe627",
+    "dashboard/backend/services/relational-core.js": "37b79a6a3fc0e07e85a4d87684436e30f7e5411d82cc0c8b088cf453b6e0e82e",
+    "dashboard/backend/services/neon 2.js": "a413a7298e048e77ae0c267d618dc77fc78f67113641c8c2f47d38120f5b488a",
+    "dashboard/backend/services/files.js": "ff5eae017af26d8148f8313e36108853e401de0c05da2efaf5447a92956b0ad4",
+    "dashboard/backend/services/metrics.js": "65aa339f6123730ff9cb73c57bce6325a7df93d354168e74b43ded010a9fbb7f",
+    "dashboard/backend/services/data-store 2.js": "6895cff6bd574e3476b47e6b76d94bd383c8923e40eaf5bfd28644da93f75ce0",
+    "dashboard/backend/services/neon.js": "8b99389907c763350933b73055db4b86ffe13e26dca64aeaef2d7a5d1a4b5799",
+    "dashboard/backend/services/pitchapi 2.js": "0ac903eba6ee48a8d24eb793aa53adae9387a78129893d7073452be0d9ea8dba",
+    "dashboard/backend/services/orion-pro.js": "4815cdfb184fbae31fa501b50695b235c2ca14b85660db6e6aee8f5fef979616",
+    "dashboard/backend/services/cache-policy.js": "cb4692cdf1ef876d160e1ea2788e0ac1729e81f1ee5fa1e63606e9b74c79a0f0",
+    "dashboard/backend/services/pitchapi.js": "a8358d8b3aa786ee9402ae83f6608f4530445fdecde66a64b45585ca2cdc6a94",
+    "dashboard/backend/services/orion-pro-entities.js": "95021dedb122e90e2db946301813fed20f0601b7fa7b48c25b7ed26111c1351a",
+    "dashboard/backend/services/database-connection.js": "c9aae4dd39926e08f7f7df2031f895b62a5711f292765691653cdafd85912d5c",
+    "dashboard/backend/services/relational-catalog.js": "78febfd92fba64b8f2596670670d38596c44a4a46abd60cb4c3d9ebf88aa6913",
+    "dashboard/backend/services/data-store.js": "f5413483b667da8f0ebebeb705e620ff11fe5c3e318632ee91b0761d1a4632ac",
+    "dashboard/backend/services/partition-wire.js": "7f8f18945737813760d7c14463689aa6bf6ac1081edceb5b965e2caf9b6d6643",
+    "dashboard/backend/services/database 2.js": "f79c3b637415de4c79eb0cbd8924b4c51627a2c14740a46a884970367c0d9b5a",
+    "dashboard/backend/services/relational-match.js": "51b45d4492efedf18b5eb5fd6f2f94981d363c6962f5c42cb336c2149ae29ca8",
+    "dashboard/backend/services/files 2.js": "929025945be6b7914fddc2c48c75de61d0693ee6c3889d8bc2d01b19fbe9c61e",
+    "dashboard/backend/services/relational-support.js": "673618b2f5f8514f668548bc46c3c57519bc93c7f1d963e850d84283ee4d376b",
+    "dashboard/backend/services/postgres.js": "89e37fac508db973fe9a519cc903e54044590b9c574b4f60d43f6c1c6bfd7993",
+    "dashboard/backend/services/cdn.js": "409551e4a253bbd2350a6d0d3315b20d0932f1a34fea0e18a57de29d8fe4bf72",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/migrations/014_orion_pro_membership_nonnull.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6"
+  },
+  "missingSources": [],
+  "cases": [
+    {
+      "case": "O01_runtime",
+      "status": "pass",
+      "elapsedMs": 1.442
+    },
+    {
+      "case": "O02_pending",
+      "status": "pass",
+      "elapsedMs": 14.539
+    },
+    {
+      "case": "O03_status",
+      "status": "pass",
+      "elapsedMs": 1.603
+    },
+    {
+      "case": "O04_bad_input",
+      "status": "pass",
+      "elapsedMs": 12.108
+    },
+    {
+      "case": "O05_health_ready",
+      "status": "pass",
+      "elapsedMs": 258.5
+    },
+    {
+      "case": "O06_conditional",
+      "status": "pass",
+      "elapsedMs": 77.544
+    },
+    {
+      "case": "O07_settings",
+      "status": "pass",
+      "elapsedMs": 4.061
+    },
+    {
+      "case": "O08_settings_pages",
+      "status": "pass",
+      "elapsedMs": 1.663
+    },
+    {
+      "case": "O09_settings_head",
+      "status": "pass",
+      "elapsedMs": 0.853
+    },
+    {
+      "case": "O10_media",
+      "status": "pass",
+      "elapsedMs": 3.761
+    },
+    {
+      "case": "O11_media_correction",
+      "status": "pass",
+      "elapsedMs": 4.996
+    },
+    {
+      "case": "O12_media_invalid",
+      "status": "pass",
+      "elapsedMs": 6.694
+    },
+    {
+      "case": "O13_media_origin",
+      "status": "pass",
+      "elapsedMs": 15.385
+    },
+    {
+      "case": "O14_readonly_boundary",
+      "status": "pass",
+      "elapsedMs": 17.338
+    }
+  ],
+  "requests": [
+    {
+      "id": "1",
+      "path": "/api/health",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "50",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"source\":\"AWS\",\"status\":\"pending\",\"revision\":\"1\"}",
+      "elapsedMs": 14.422,
+      "sql": [
+        {
+          "sql": "/*orion:healthmeta*/\nSELECT (SELECT max(generation)::text FROM ingest.dataset_snapshots WHERE status='sealed') AS revision,\n EXISTS(SELECT 1 FROM analytics.publication_versions p\n JOIN analytics.aggregation_builds b ON b.id=p.build_id AND b.status='ready'\n  AND b.competition_season_id=p.competition_season_id AND b.catalog_snapshot_id=p.catalog_snapshot_id\n  AND b.representation_version=p.representation_version\n JOIN ingest.dataset_snapshots d ON d.id=b.dataset_snapshot_id AND d.status='sealed'\n JOIN ingest.dataset_snapshots c ON c.id=b.catalog_snapshot_id AND c.status='sealed'\n WHERE p.published_to_gen IS NULL LIMIT 1) AS ready",
+          "values": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "path": "/api/status",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "61",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"source\":\"AWS\",\"configured\":true,\"basePath\":\"/api/pitchapi\"}",
+      "elapsedMs": 1.594,
+      "sql": []
+    },
+    {
+      "id": "3",
+      "path": "/api/health?v=x",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Param\u00e8tres invalides.\"}}",
+      "elapsedMs": 1.355,
+      "sql": []
+    },
+    {
+      "id": "4",
+      "path": "/api/status?x=1",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Param\u00e8tres invalides.\"}}",
+      "elapsedMs": 1.122,
+      "sql": []
+    },
+    {
+      "id": "5",
+      "path": "/api/settings?x=1",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Param\u00e8tres invalides.\"}}",
+      "elapsedMs": 1.252,
+      "sql": []
+    },
+    {
+      "id": "6",
+      "path": "/api/settings?limit=0",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "100",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Pagination invalide.\"}}",
+      "elapsedMs": 1.179,
+      "sql": []
+    },
+    {
+      "id": "7",
+      "path": "/api/settings?limit=51",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "100",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Pagination invalide.\"}}",
+      "elapsedMs": 1.19,
+      "sql": []
+    },
+    {
+      "id": "8",
+      "path": "/api/settings?cursor=9223372036854775808",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "100",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Pagination invalide.\"}}",
+      "elapsedMs": 1.176,
+      "sql": []
+    },
+    {
+      "id": "9",
+      "path": "/api/settings?limit=1&limit=2",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Param\u00e8tres invalides.\"}}",
+      "elapsedMs": 1.371,
+      "sql": []
+    },
+    {
+      "id": "10",
+      "path": "/api/assets?url=bad",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "103",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"URL de m\u00e9dia invalide.\"}}",
+      "elapsedMs": 1.425,
+      "sql": []
+    },
+    {
+      "id": "11",
+      "path": "/api/assets?url=x&url=y",
+      "method": "GET",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"INVALID_PARAMETER\",\"message\":\"Param\u00e8tres invalides.\"}}",
+      "elapsedMs": 1.054,
+      "sql": []
+    },
+    {
+      "id": "12",
+      "path": "/api/settings",
+      "method": "POST",
+      "status": 405,
+      "headers": {
+        "allow": "GET, HEAD",
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "39",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:18 GMT",
+        "connection": "close"
+      },
+      "body": "{\"error\":{\"code\":\"METHOD_NOT_ALLOWED\"}}",
+      "elapsedMs": 0.89,
+      "sql": []
+    },
+    {
+      "id": "13",
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=5, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=5",
+        "content-length": "45",
+        "content-type": "application/json; charset=utf-8",
+        "etag": "W/\"orion-health1-6064713116d5b43864f3c59221df39b443ef371ece06fe9b2c6ffaac6e5f2540\"",
+        "vercel-cdn-cache-control": "public, s-maxage=5",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"source\":\"AWS\",\"status\":\"ok\",\"revision\":\"3\"}",
+      "elapsedMs": 2.579,
+      "sql": [
+        {
+          "sql": "/*orion:healthmeta*/\nSELECT (SELECT max(generation)::text FROM ingest.dataset_snapshots WHERE status='sealed') AS revision,\n EXISTS(SELECT 1 FROM analytics.publication_versions p\n JOIN analytics.aggregation_builds b ON b.id=p.build_id AND b.status='ready'\n  AND b.competition_season_id=p.competition_season_id AND b.catalog_snapshot_id=p.catalog_snapshot_id\n  AND b.representation_version=p.representation_version\n JOIN ingest.dataset_snapshots d ON d.id=b.dataset_snapshot_id AND d.status='sealed'\n JOIN ingest.dataset_snapshots c ON c.id=b.catalog_snapshot_id AND c.status='sealed'\n WHERE p.published_to_gen IS NULL LIMIT 1) AS ready",
+          "values": []
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "path": "/api/health",
+      "method": "GET",
+      "status": 304,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=5, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=5",
+        "content-type": "application/json; charset=utf-8",
+        "etag": "W/\"orion-health1-6064713116d5b43864f3c59221df39b443ef371ece06fe9b2c6ffaac6e5f2540\"",
+        "vercel-cdn-cache-control": "public, s-maxage=5",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "",
+      "elapsedMs": 1.874,
+      "sql": [
+        {
+          "sql": "/*orion:healthmeta*/\nSELECT (SELECT max(generation)::text FROM ingest.dataset_snapshots WHERE status='sealed') AS revision,\n EXISTS(SELECT 1 FROM analytics.publication_versions p\n JOIN analytics.aggregation_builds b ON b.id=p.build_id AND b.status='ready'\n  AND b.competition_season_id=p.competition_season_id AND b.catalog_snapshot_id=p.catalog_snapshot_id\n  AND b.representation_version=p.representation_version\n JOIN ingest.dataset_snapshots d ON d.id=b.dataset_snapshot_id AND d.status='sealed'\n JOIN ingest.dataset_snapshots c ON c.id=b.catalog_snapshot_id AND c.status='sealed'\n WHERE p.published_to_gen IS NULL LIMIT 1) AS ready",
+          "values": []
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "path": "/api/health",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=5, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=5",
+        "content-type": "application/json; charset=utf-8",
+        "etag": "W/\"orion-health1-6064713116d5b43864f3c59221df39b443ef371ece06fe9b2c6ffaac6e5f2540\"",
+        "vercel-cdn-cache-control": "public, s-maxage=5",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "",
+      "elapsedMs": 1.295,
+      "sql": [
+        {
+          "sql": "/*orion:healthmeta*/\nSELECT (SELECT max(generation)::text FROM ingest.dataset_snapshots WHERE status='sealed') AS revision,\n EXISTS(SELECT 1 FROM analytics.publication_versions p\n JOIN analytics.aggregation_builds b ON b.id=p.build_id AND b.status='ready'\n  AND b.competition_season_id=p.competition_season_id AND b.catalog_snapshot_id=p.catalog_snapshot_id\n  AND b.representation_version=p.representation_version\n JOIN ingest.dataset_snapshots d ON d.id=b.dataset_snapshot_id AND d.status='sealed'\n JOIN ingest.dataset_snapshots c ON c.id=b.catalog_snapshot_id AND c.status='sealed'\n WHERE p.published_to_gen IS NULL LIMIT 1) AS ready",
+          "values": []
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=5, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=5",
+        "content-length": "45",
+        "content-type": "application/json; charset=utf-8",
+        "etag": "W/\"orion-health1-a29def9523af917f1c7c38971b59a3051b21724dc799b534e22262d9e16af62a\"",
+        "vercel-cdn-cache-control": "public, s-maxage=5",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"source\":\"AWS\",\"status\":\"ok\",\"revision\":\"6\"}",
+      "elapsedMs": 2.6,
+      "sql": [
+        {
+          "sql": "/*orion:healthmeta*/\nSELECT (SELECT max(generation)::text FROM ingest.dataset_snapshots WHERE status='sealed') AS revision,\n EXISTS(SELECT 1 FROM analytics.publication_versions p\n JOIN analytics.aggregation_builds b ON b.id=p.build_id AND b.status='ready'\n  AND b.competition_season_id=p.competition_season_id AND b.catalog_snapshot_id=p.catalog_snapshot_id\n  AND b.representation_version=p.representation_version\n JOIN ingest.dataset_snapshots d ON d.id=b.dataset_snapshot_id AND d.status='sealed'\n JOIN ingest.dataset_snapshots c ON c.id=b.catalog_snapshot_id AND c.status='sealed'\n WHERE p.published_to_gen IS NULL LIMIT 1) AS ready",
+          "values": []
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "path": "/api/settings?limit=20",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "4966",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"provider\":\"AWS\",\"configured\":true,\"schedule\":{\"cron\":\"35 22 * * *\",\"crons\":[\"35 22 * * *\",\"10 6 * * *\",\"15 0,12 * * *\",\"50 6 * * *\",\"15 18 * * *\"],\"timezone\":\"UTC\",\"runner\":\"GitHub Actions\",\"activation\":\"unknown\"},\"sync\":[{\"name\":\"daily\",\"value\":{\"id\":\"31\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-31\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"30\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-30\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"29\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-29\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"28\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-28\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"27\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-27\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"26\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-26\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"25\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-25\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"24\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-24\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"23\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-23\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"22\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-22\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"21\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-21\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"20\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-20\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"19\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-19\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"18\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-18\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"17\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-17\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"16\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-16\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"15\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-15\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"14\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-14\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"13\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-13\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"12\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-12\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"}],\"workflowUrl\":\"https://github.com/OrionQuantPlatform/STATARENA/actions/workflows/collect-football.yml\",\"page\":{\"limit\":20,\"nextCursor\":\"12\"}}",
+      "elapsedMs": 2.868,
+      "sql": [
+        {
+          "sql": "/*orion:operationsruns*/\nSELECT id::text,mode,status,transform_version,code_commit,started_at,finished_at\nFROM ingest.import_runs r WHERE ($1::bigint IS NULL OR r.id<$1::bigint)\nORDER BY r.id DESC LIMIT $2",
+          "values": [
+            null,
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "path": "/api/settings?limit=20&cursor=12",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "2878",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"provider\":\"AWS\",\"configured\":true,\"schedule\":{\"cron\":\"35 22 * * *\",\"crons\":[\"35 22 * * *\",\"10 6 * * *\",\"15 0,12 * * *\",\"50 6 * * *\",\"15 18 * * *\"],\"timezone\":\"UTC\",\"runner\":\"GitHub Actions\",\"activation\":\"unknown\"},\"sync\":[{\"name\":\"daily\",\"value\":{\"id\":\"11\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-11\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"10\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-10\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"9\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-9\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"8\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-8\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"7\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-7\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"6\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-6\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"5\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-5\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"4\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-4\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"3\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-3\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"2\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-2\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"},{\"name\":\"daily\",\"value\":{\"id\":\"1\",\"mode\":\"daily\",\"status\":\"running\",\"transform_version\":\"owned-operation-1\",\"code_commit\":null,\"started_at\":\"2026-11-05T13:37:19.138Z\",\"finished_at\":null},\"updated_at\":\"2026-11-05T13:37:19.138Z\"}],\"workflowUrl\":\"https://github.com/OrionQuantPlatform/STATARENA/actions/workflows/collect-football.yml\",\"page\":{\"limit\":20,\"nextCursor\":null}}",
+      "elapsedMs": 1.573,
+      "sql": [
+        {
+          "sql": "/*orion:operationsruns*/\nSELECT id::text,mode,status,transform_version,code_commit,started_at,finished_at\nFROM ingest.import_runs r WHERE ($1::bigint IS NULL OR r.id<$1::bigint)\nORDER BY r.id DESC LIMIT $2",
+          "values": [
+            "12",
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "path": "/api/settings",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "",
+      "elapsedMs": 0.84,
+      "sql": []
+    },
+    {
+      "id": "20",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fplayer.png",
+      "method": "GET",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=15, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=15",
+        "location": "https://media.fixture.invalid/data/raw/neon/assets/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png",
+        "vercel-cdn-cache-control": "public, s-maxage=15",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close",
+        "transfer-encoding": "chunked"
+      },
+      "body": "",
+      "elapsedMs": 1.901,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/player.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fplayer.png",
+      "method": "HEAD",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=15, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=15",
+        "location": "https://media.fixture.invalid/data/raw/neon/assets/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png",
+        "vercel-cdn-cache-control": "public, s-maxage=15",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "",
+      "elapsedMs": 1.047,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/player.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fplayer.png",
+      "method": "GET",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=15, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=15",
+        "location": "https://media.fixture.invalid/data/raw/neon/assets/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.png",
+        "vercel-cdn-cache-control": "public, s-maxage=15",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close",
+        "transfer-encoding": "chunked"
+      },
+      "body": "",
+      "elapsedMs": 1.166,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/player.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fprovenance.png",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "101",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"RESOURCE_NOT_FOUND\",\"message\":\"M\u00e9dia indisponible.\"}}",
+      "elapsedMs": 1.377,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/provenance.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fplayer.png",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.424,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/player.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fpath",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.231,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/path"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fmime",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.014,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/mime"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fhash",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.333,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/hash"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fbody",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.111,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/body"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fmissing",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "101",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"RESOURCE_NOT_FOUND\",\"message\":\"M\u00e9dia indisponible.\"}}",
+      "elapsedMs": 0.875,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/missing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fvalid-again",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.377,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/valid-again"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fvalid-again",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.1,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/valid-again"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fvalid-again",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 0.982,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/valid-again"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fvalid-again",
+      "method": "GET",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close"
+      },
+      "body": "{\"ok\":false,\"available\":false,\"error\":{\"code\":\"DATA_UNAVAILABLE\",\"message\":\"Donn\u00e9es indisponibles.\"}}",
+      "elapsedMs": 1.478,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/valid-again"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "path": "/api/assets?url=https%3A%2F%2Ffixture.invalid%2Fvalid-again",
+      "method": "GET",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, s-maxage=15, must-revalidate",
+        "cdn-cache-control": "public, s-maxage=15",
+        "location": "https://media.fixture.invalid/data/raw/neon/assets/6666666666666666666666666666666666666666666666666666666666666666.png",
+        "vercel-cdn-cache-control": "public, s-maxage=15",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 13:37:19 GMT",
+        "connection": "close",
+        "transfer-encoding": "chunked"
+      },
+      "body": "",
+      "elapsedMs": 0.947,
+      "sql": [
+        {
+          "sql": "/*orion:assetmeta*/\nSELECT storage_key,content_sha256,content_type FROM ingest.media_assets\nWHERE legacy_asset_url=$1 ORDER BY id LIMIT 2",
+          "values": [
+            "https://fixture.invalid/valid-again"
+          ]
+        }
+      ]
+    }
+  ],
+  "cloudCalls": 0,
+  "sourceCalls": 0,
+  "bounds": {
+    "seconds": 180,
+    "typedRows": 5000,
+    "HTTP": 150,
+    "evidenceBytes": 100663296
+  },
+  "suggestedCommit": "feat: serve Pro health settings and media from typed SQL",
+  "bootstrap": {
+    "generation": 1,
+    "reused": false,
+    "seedRows": 10,
+    "codeSha256": "83b80a88dc20ea417ca0db7d2888960e509368095714bcf74647c2f454177515",
+    "artifact": {
+      "model": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+      "migrator": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+      "migrations": {
+        "012": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "013": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "014": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6"
+      }
+    },
+    "manifestSha256": "a729e790312ebc8c305c755217bf8503ebfe150b611468b0fe517499d078947d"
+  },
+  "environmentKeys": [
+    "DATABASE_URL",
+    "PATH",
+    "STATARENA_CLOUDFRONT_URL",
+    "STATARENA_DATA_PROVIDER",
+    "STATARENA_METRICS_SAMPLE_RATE",
+    "STATARENA_PRO_API",
+    "STATARENA_TEST_DATABASE"
+  ],
+  "nodeBinarySha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "runtime": {
+    "event": "ready",
+    "port": 59960,
+    "identity": [
+      {
+        "role": "statarena_runtime",
+        "readonly": "on",
+        "statement": "8s",
+        "lock": "1s"
+      }
+    ],
+    "node": "v24.22.2",
+    "arch": "arm64",
+    "platform": "darwin"
+  },
+  "fixture": {
+    "data1": 2,
+    "data2": null,
+    "catalog2": null,
+    "initialBuilds": {
+      "A": 1,
+      "B": 2,
+      "C": 3
+    },
+    "correctedBuilds": {},
+    "editions": {
+      "A": {
+        "id": 1,
+        "season": "2024/2025"
+      },
+      "B": {
+        "id": 2,
+        "season": "2025/2026"
+      },
+      "C": {
+        "id": 3,
+        "season": "2026/2027"
+      }
+    },
+    "matches": {
+      "m_000001": {
+        "id": 1,
+        "revision": 1,
+        "edition": "A"
+      },
+      "m_000002": {
+        "id": 2,
+        "revision": 2,
+        "edition": "A"
+      },
+      "m_000003": {
+        "id": 3,
+        "revision": 3,
+        "edition": "A"
+      },
+      "m_000004": {
+        "id": 4,
+        "revision": 4,
+        "edition": "B"
+      },
+      "m_000005": {
+        "id": 5,
+        "revision": 5,
+        "edition": "C"
+      }
+    }
+  },
+  "typedRowCount": 232,
+  "serverExitCode": 0,
+  "cleanup": {
+    "owned_root": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-xryad2vx",
+    "server_stopped": true,
+    "owned_directory_removed": true
+  },
+  "commands": [
+    {
+      "argv": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+        "-D",
+        "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-xryad2vx/data",
+        "--auth=trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 699.151
+    },
+    {
+      "argv": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-xryad2vx/data",
+        "-l",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-operations-20261105/runs/20261105T133717014989Z-typed-operations-final-cli/postgres.log",
+        "-o",
+        "-h 127.0.0.1 -p 59956 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-xryad2vx/socket -c fsync=on",
+        "-w",
+        "start"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 139.597
+    },
+    {
+      "argv": [
+        "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+        "-D",
+        "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-xryad2vx/data",
+        "-m",
+        "fast",
+        "-w",
+        "stop"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 109.249
+    }
+  ],
+  "elapsedSeconds": 2.4,
+  "status": "pass",
+  "summary": {
+    "pass": 14,
+    "fail": 0,
+    "unverified": 0
+  },
+  "inputsUnchanged": true
+}
