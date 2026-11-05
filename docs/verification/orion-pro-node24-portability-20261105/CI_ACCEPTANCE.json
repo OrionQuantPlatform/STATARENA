@@ -1,0 +1,68 @@
+{
+  "kind": "actual_linux_ci_archive_and_http_acceptance",
+  "runId": 42058338495,
+  "commit": "4ba1e8314f740e0492dadc111611a36f941e7424",
+  "url": "https://github.com/OrionQuantPlatform/STATARENA/actions/runs/42058338495",
+  "allThreeJobs": "success",
+  "qualifiedCases": 46,
+  "results": [
+    {
+      "sourceArtifactPath": "orion-pro-observed-profile-20261105/runs/20261105T154952460272Z-ci-42058338495/result.json",
+      "retainedResult": "docs/verification/orion-pro-node24-portability-20261105/ci-42058338495/orion-pro-observed-profile-20261105-result.json",
+      "sha256": "2bc8ac97b8f62d9307398570bc60f1da79ebc263ccdd3701ecabe2adaaaa719e",
+      "counts": {
+        "passed": 8,
+        "failed": 0,
+        "unverified": 0
+      },
+      "runtimeVerification": {
+        "archive": "/tmp/statarena-node24-runtime/v24.22.2/node-v24.22.2-linux-x64.tar.xz",
+        "archiveSha256": "48cc0e21e048790e54c0cf5749c2725005313d652651c40b7a21feb9697aaf75",
+        "binarySha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52",
+        "officialSumsSha256": "aec92ae945293821c22aed4c37b97741688254bac353b861fc9fb25b81ce4567",
+        "actualBinaryMatchesArchive": true
+      }
+    },
+    {
+      "sourceArtifactPath": "orion-pro-fixture-aliases-20261105/runs/20261105T155010751199Z-ci-42058338495/result.json",
+      "retainedResult": "docs/verification/orion-pro-node24-portability-20261105/ci-42058338495/orion-pro-fixture-aliases-20261105-result.json",
+      "sha256": "31056fcf00e22eba525cdf4b1748e90083a91774b11b9b556c6dec61aa5d3a2a",
+      "counts": {
+        "passed": 16,
+        "failed": 0,
+        "unverified": 0
+      },
+      "runtimeVerification": {
+        "archive": "/tmp/statarena-node24-runtime/v24.22.2/node-v24.22.2-linux-x64.tar.xz",
+        "archiveSha256": "48cc0e21e048790e54c0cf5749c2725005313d652651c40b7a21feb9697aaf75",
+        "binarySha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52",
+        "officialSumsSha256": "aec92ae945293821c22aed4c37b97741688254bac353b861fc9fb25b81ce4567",
+        "actualBinaryMatchesArchive": true
+      }
+    },
+    {
+      "sourceArtifactPath": "orion-pro-appearances-regression-20261105/runs/20261105T154926424765Z-ci-42058338495/result.json",
+      "retainedResult": "docs/verification/orion-pro-node24-portability-20261105/ci-42058338495/orion-pro-appearances-regression-20261105-result.json",
+      "sha256": "4b6ae4d69656d0cc96bef2384935438cd88fcdc08c5a9df6074c9d5e037c8cca",
+      "counts": {
+        "passed": 22,
+        "failed": 0,
+        "unverified": 0
+      },
+      "runtimeVerification": {
+        "archive": "/tmp/statarena-node24-runtime/v24.22.2/node-v24.22.2-linux-x64.tar.xz",
+        "archiveSha256": "48cc0e21e048790e54c0cf5749c2725005313d652651c40b7a21feb9697aaf75",
+        "binarySha256": "904a6d3484241d466989f9df9ba3aab822b1496191bdb28230eb491a55c32a52",
+        "officialSumsSha256": "aec92ae945293821c22aed4c37b97741688254bac353b861fc9fb25b81ce4567",
+        "actualBinaryMatchesArchive": true
+      }
+    }
+  ],
+  "artifactId": 13428954400,
+  "artifactName": "orion-pro-42058338495-1",
+  "downloadBytes": 9641839,
+  "fullDownloadedArtifactLocalPath": "/tmp/statarena-node24-linux-ci-42058338495",
+  "rerunCommand": "gh workflow run verify-ingestion.yml --ref main",
+  "limitations": "Local synthetic LinuxCI, not deployed AWS/real-data acceptance",
+  "suggestedCommit": "test: record portable Linux Node24 HTTP qualification"
+}
