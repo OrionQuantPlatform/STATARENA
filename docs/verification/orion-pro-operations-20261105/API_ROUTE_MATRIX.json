@@ -5,9 +5,10 @@
   "scope": "Local code/schema only. No assertion that defined tables have accepted real data. Existing functionality remains required.",
   "counts": {
     "existing-native-reader": 4,
+    "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 41
+    "reader-and-data-contract-required": 40
   },
   "rows": [
     {
@@ -79,13 +80,13 @@
         "cursor",
         "format"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-appearances-v1-E2E-qualified",
       "defined103Destinations": [
         "analytics.match_summary",
         "football.player_match_stats",
         "football.player_match_metric_values"
       ],
-      "actionOrGap": "Typed normalized appearances/metrics/position/profile projections with complete cohort and field-state mapping; bounded pages and version scope. Reader/data closure, not automatically new models."
+      "actionOrGap": "Versioned normalized-season-v1-native31 reader,22Node24E2E plus8physical-observed-profile cases. Requires exact normalized_performance coverage; no real source/RDS publication acceptance or server aggregates claimed."
     },
     {
       "path": "/api/fixtures",
@@ -888,5 +889,6 @@
   ],
   "evidence": "docs/verification/orion-pro-entities-20261105/runs/20261105T115323556411Z-actual-router-reviewed-fixture-v3/result.json",
   "evidenceSha256": "02bd5cee2ca8bf8bb73e9ba887a13ebbc9db12bb2f82f0c81208e2a7e19c2f21",
-  "operationsEvidence": "docs/verification/orion-pro-operations-20261105/runs/20261105T132804503055Z-typed-operations-v2-numeric-pagination/result.json"
+  "operationsEvidence": "docs/verification/orion-pro-operations-20261105/runs/20261105T132804503055Z-typed-operations-v2-numeric-pagination/result.json",
+  "appearanceEvidence": "docs/verification/orion-pro-appearances-regression-20261105/runs/20261105T144627298556Z-actual-node24-original22-after-profile-fix/result.json"
 }
