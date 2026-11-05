@@ -1,0 +1,106 @@
+{
+  "kind": "actual_node24_pro_runtime_origin_e2e",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "tests/orion_pro_runtime_origin_local.py",
+    "--node",
+    "/tmp/statarena-node24-runtime/v24.22.2/node-v24.22.2-darwin-arm64/bin/node",
+    "--label",
+    "pro-neon-only-precode"
+  ],
+  "expected": "PROTOCOL.md authored before changing runtime origin selection",
+  "sourceSha256": {
+    "tests/orion_pro_runtime_origin_local.py": "a78e896fe3f5b4e7b12f26aced7f267e2c452e9cc39cf856d0a46fc108ea7f61",
+    "docs/verification/orion-pro-runtime-origin-20261105/PROTOCOL.md": "580d324d812358b04aa839e1fe3f4b4ef2649e7c43cb6be21c4cbd4c8e053279",
+    "docs/verification/orion-pro-runtime-origin-20261105/http_server.mjs": "a75f2f30b271ddd2fe1d40b113baaabbcb81858f5554d5def8e539cc34604fc0",
+    "dashboard/backend/aws-app.js": "90f4418b5811e2103b80ba4d1b5285285402e332aa1fcfa405cf46286f6ee5d5",
+    "dashboard/backend/services/postgres.js": "89e37fac508db973fe9a519cc903e54044590b9c574b4f60d43f6c1c6bfd7993",
+    "dashboard/backend/services/orion-pro-operations.js": "a38f9e4fc33f7322488f9e89a895384e5f1015f32290362da63f2e15d919427c"
+  },
+  "cases": [
+    {
+      "case": "N01_neon_only_status",
+      "status": "fail",
+      "error": "{'path': '/api/status', 'method': 'GET', 'status': 200, 'headers': {'cache-control': 'no-store', 'cdn-cache-control': 'no-store', 'content-length': '61', 'content-type': 'application/json; charset=utf-8', 'vercel-cdn-cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'x-data-source': 'AWS', 'date': 'Thu, 05 Nov 2026 14:05:06 GMT', 'connection': 'close'}, 'body': '{\"source\":\"AWS\",\"configured\":true,\"basePath\":\"/api/pitchapi\"}', 'sql': [], 'driverAttempts': 0, 'externalAttempts': 0, 'mode': 'neon_only', 'value': {'source': 'AWS', 'configured': True, 'basePath': '/api/pitchapi'}}"
+    },
+    {
+      "case": "N02_neon_only_health",
+      "status": "unverified",
+      "reason": "N01_neon_only_status"
+    },
+    {
+      "case": "N03_native_no_fallback",
+      "status": "unverified",
+      "reason": "N01_neon_only_status"
+    },
+    {
+      "case": "N04_method",
+      "status": "unverified",
+      "reason": "N01_neon_only_status"
+    },
+    {
+      "case": "N05_non_rds",
+      "status": "unverified",
+      "reason": "N01_neon_only_status"
+    },
+    {
+      "case": "N06_legacy_off",
+      "status": "unverified",
+      "reason": "N01_neon_only_status"
+    },
+    {
+      "case": "N07_boundaries",
+      "status": "unverified",
+      "reason": "N01_neon_only_status"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/api/status",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "content-length": "61",
+        "content-type": "application/json; charset=utf-8",
+        "vercel-cdn-cache-control": "no-store",
+        "x-content-type-options": "nosniff",
+        "x-data-source": "AWS",
+        "date": "Thu, 05 Nov 2026 14:05:06 GMT",
+        "connection": "close"
+      },
+      "body": "{\"source\":\"AWS\",\"configured\":true,\"basePath\":\"/api/pitchapi\"}",
+      "sql": [],
+      "driverAttempts": 0,
+      "externalAttempts": 0,
+      "mode": "neon_only"
+    }
+  ],
+  "children": [
+    {
+      "mode": "neon_only",
+      "environmentKeys": [
+        "NEON_DATABASE_URL",
+        "PATH",
+        "STATARENA_PRO_API"
+      ],
+      "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "stopped": true,
+      "exitCode": 0
+    }
+  ],
+  "cloudCalls": 0,
+  "sourceCalls": 0,
+  "setup": "Actual AWS router on Node24 with DB-driver/fetch tripwires, minimal synthetic configuration",
+  "suggestedCommit": "fix: prevent Pro runtime from falling back to Neon configuration",
+  "elapsedSeconds": 0.344,
+  "inputsUnchanged": true,
+  "allOwnedChildrenStopped": true,
+  "status": "fail",
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 6
+  }
+}
