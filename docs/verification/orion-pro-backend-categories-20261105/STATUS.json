@@ -1,6 +1,6 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T16:49:08.970500+00:00",
+  "atUtc": "2026-11-05T17:18:07.096936+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
   "routeMatrixSha256": "47d13b032429c77c6c1d0ff542d6532cd3a17d0f27c8b195de8f589c85e5e799",
   "localQualifiedOtherForms": 19,
@@ -25,7 +25,7 @@
     {
       "id": "match-details",
       "owner": "backend_entities",
-      "status": "in_development",
+      "status": "integrated_tested_locally",
       "routes": [
         "/api/pitchapi/matches/{match}",
         "/api/pitchapi/matches/{match}/momentum",
@@ -35,14 +35,15 @@
         "/api/pitchapi/matches/{match}/stats"
       ],
       "module": "dashboard/backend/services/orion-pro-match-details.js",
-      "testedLocally": false,
+      "testedLocally": true,
       "pushed": false,
-      "deployed": false
+      "deployed": false,
+      "evidence": "docs/verification/orion-pro-match-readers-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json"
     },
     {
       "id": "player-statistics-advanced",
       "owner": "backend_entities",
-      "status": "queued",
+      "status": "in_development",
       "routes": [
         "/api/pitchapi/matches/{match}/players",
         "/api/pitchapi/matches/{match}/players/halves",
@@ -134,6 +135,6 @@
   "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer.",
   "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
   "suggestedCommit": "docs: assign remaining backend routes by category and dependencies",
-  "currentLocalQualifiedForms": 27,
-  "currentRemainingForms": 30
+  "currentLocalQualifiedForms": 33,
+  "currentRemainingForms": 24
 }

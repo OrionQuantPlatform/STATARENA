@@ -8,9 +8,10 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 30,
+    "reader-and-data-contract-required": 24,
     "local-fixture-aliases-v1-E2E-qualified": 2,
-    "local-competitions-v1-E2E-qualified": 8
+    "local-competitions-v1-E2E-qualified": 8,
+    "local-native-match-details-v1-E2E-qualified": 6
   },
   "rows": [
     {
@@ -641,12 +642,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-native-match-details-v1-E2E-qualified",
       "defined103Destinations": [
         "football.matches",
         "football.match_observation_details"
       ],
-      "actionOrGap": "Typed match/observation/venue/score fields exist; normalized root summary can reuse103. Full original native root field/state mapping remains separate."
+      "actionOrGap": "Exact published native cohort, actual Node24 AWS router32+23. Core requires017 binding; other five groups retain016 binding. Real publication/data and frontend parity remain independent."
     },
     {
       "path": "/api/pitchapi/matches/{match}/shots",
@@ -669,12 +670,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-native-match-details-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_momentum",
         "ingest.match_coverage"
       ],
-      "actionOrGap": "103 destinations exist; implement typed native/normalized adapter only after exact field/type/state/order/scope qualification. No proven blanket schema blocker."
+      "actionOrGap": "Exact published native cohort, actual Node24 AWS router32+23. Core requires017 binding; other five groups retain016 binding. Real publication/data and frontend parity remain independent."
     },
     {
       "path": "/api/pitchapi/matches/{match}/events",
@@ -683,12 +684,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-native-match-details-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_events",
         "ingest.match_coverage"
       ],
-      "actionOrGap": "103 holds event facts; exact native sub_in actor/profile, raw period, property/object/ID states and root observed team references absent (pending107 proposal). Normalized event view could be103-only."
+      "actionOrGap": "Exact published native cohort, actual Node24 AWS router32+23. Core requires017 binding; other five groups retain016 binding. Real publication/data and frontend parity remain independent."
     },
     {
       "path": "/api/pitchapi/matches/{match}/players",
@@ -727,12 +728,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-native-match-details-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_lineups",
         "football.match_players"
       ],
-      "actionOrGap": "103 holds sides/members/formation/placement; exact native standard label, coach-name-only object, array/object/property states and physical lineup-member ordered occurrence binding absent (pending107 proposal)."
+      "actionOrGap": "Exact published native cohort, actual Node24 AWS router32+23. Core requires017 binding; other five groups retain016 binding. Real publication/data and frontend parity remain independent."
     },
     {
       "path": "/api/pitchapi/matches/{match}/h2h",
@@ -741,12 +742,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-native-match-details-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_h2h_entries",
         "ingest.match_coverage"
       ],
-      "actionOrGap": "103 holds coverage/entries/labels/scores; native totals when recent=[] and source finished boolean/state absent. Pending107 proposes1 summary child and targeted fields."
+      "actionOrGap": "Exact published native cohort, actual Node24 AWS router32+23. Core requires017 binding; other five groups retain016 binding. Real publication/data and frontend parity remain independent."
     },
     {
       "path": "/api/pitchapi/matches/{match}/stats",
@@ -755,13 +756,13 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-native-match-details-v1-E2E-qualified",
       "defined103Destinations": [
         "football.team_match_stats",
         "football.team_match_metric_values",
         "football.periods"
       ],
-      "actionOrGap": "103 holds native scalar states/fractions; observed empty period/group/item layout, raw labels/formats/order and physical membership not represented. Pending107 proposes3 structural children."
+      "actionOrGap": "Exact published native cohort, actual Node24 AWS router32+23. Core requires017 binding; other five groups retain016 binding. Real publication/data and frontend parity remain independent."
     },
     {
       "path": "/api/pitchapi/matches/{match}/advanced",
