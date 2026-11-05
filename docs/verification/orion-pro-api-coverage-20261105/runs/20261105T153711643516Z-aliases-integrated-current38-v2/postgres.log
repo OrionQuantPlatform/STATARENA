@@ -1,0 +1,14 @@
+2026-11-05 16:37:12.630 CET [26959] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-05 16:37:12.632 CET [26959] LOG:  listening on IPv4 address "127.0.0.1", port 50085
+2026-11-05 16:37:12.633 CET [26959] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-btx6swia/socket/.s.PGSQL.50085"
+2026-11-05 16:37:12.648 CET [26969] LOG:  database system was shut down at 2026-11-05 16:37:12 CET
+2026-11-05 16:37:12.650 CET [26959] LOG:  database system is ready to accept connections
+2026-11-05 16:37:15.025 CET [27018] ERROR:  permission denied for table players
+2026-11-05 16:37:15.025 CET [27018] STATEMENT:  UPDATE football.players SET display_name='forbidden' WHERE false
+2026-11-05 16:37:15.044 CET [26959] LOG:  received fast shutdown request
+2026-11-05 16:37:15.044 CET [26959] LOG:  aborting any active transactions
+2026-11-05 16:37:15.045 CET [26959] LOG:  background worker "logical replication launcher" (PID 26972) exited with exit code 1
+2026-11-05 16:37:15.061 CET [26967] LOG:  shutting down
+2026-11-05 16:37:15.061 CET [26967] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 16:37:15.150 CET [26967] LOG:  checkpoint complete: wrote 1923 buffers (11.7%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.027 s, sync=0.061 s, total=0.089 s; sync files=1485, longest=0.002 s, average=0.001 s; distance=17153 kB, estimate=17153 kB; lsn=0/28492E0, redo lsn=0/28492E0
+2026-11-05 16:37:15.156 CET [26959] LOG:  database system is shut down

@@ -8,7 +8,8 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 40
+    "reader-and-data-contract-required": 38,
+    "local-fixture-aliases-v1-E2E-qualified": 2
   },
   "rows": [
     {
@@ -558,11 +559,11 @@
       "currentQueryNames": [
         "status"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-fixture-aliases-v1-E2E-qualified",
       "defined103Destinations": [
         "analytics.match_summary"
       ],
-      "actionOrGap": "Reuse bounded fixture reader with date/league filters; retain envelope, add explicit v. No103 schema addition established."
+      "actionOrGap": "Published V1 fixture wrapper,16actualNode24cases. Requires explicit one-edition v, bounded pagination and unchanged source reader. Global date traversal and real-data/hosted acceptance remain independent."
     },
     {
       "path": "/api/pitchapi/leagues/{league}/matches",
@@ -574,11 +575,11 @@
         "season",
         "status"
       ],
-      "status": "reader-and-data-contract-required",
+      "status": "local-fixture-aliases-v1-E2E-qualified",
       "defined103Destinations": [
         "analytics.match_summary"
       ],
-      "actionOrGap": "Reuse bounded fixture reader with date/league filters; retain envelope, add explicit v. No103 schema addition established."
+      "actionOrGap": "Published V1 fixture wrapper,16actualNode24cases. Requires explicit one-edition v, bounded pagination and unchanged source reader. Global date traversal and real-data/hosted acceptance remain independent."
     },
     {
       "path": "/api/pitchapi/leagues",
