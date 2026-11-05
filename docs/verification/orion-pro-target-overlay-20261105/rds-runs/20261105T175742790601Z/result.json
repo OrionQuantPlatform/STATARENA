@@ -1,0 +1,216 @@
+{
+  "kind": "root_actual_native017_adoption_v2",
+  "status": "applied_and_independently_verified_017",
+  "connections": 2,
+  "awsCalls": 2,
+  "sportSourceCalls": 0,
+  "businessWrites": 0,
+  "readStatements": 58,
+  "ddlAttempted": true,
+  "fullAcceptance": false,
+  "mode": "adopt",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/root_adopt_native017_v2.py",
+    "--adopt",
+    "--release",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/ROOT_ACTUAL_NATIVE017_ADOPT_V2.json",
+    "--release-sha256",
+    "8580faa5b07074eff05a5a2dedecda96f763f068c7cb807ff8f30484d48d6444"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/RDS_ADOPTION_PROTOCOL_V2.md",
+  "releaseSha256": "8580faa5b07074eff05a5a2dedecda96f763f068c7cb807ff8f30484d48d6444",
+  "operatorSha256": "3bf9393452e90e971ffad29f705258c5f6e420bf02c3baa28aac949bcf583db2",
+  "overlaySha256": "b07cf6d71e4bdc08b4d84c89a31c8c478104223e1e44aac8ad3920ad8e3be12d",
+  "codeCommit": "f8dae7c04bc4661e79245cba3453accd091529f1",
+  "nativeStateSha256": "ff1f3a336bfde1067b2b70e0fc6d3517f4d648631c2813374bca04cd4fddf189",
+  "beforeCatalogue": {
+    "version": "015",
+    "dimensions": [
+      94,
+      1709,
+      431
+    ],
+    "journal": [
+      [
+        "012",
+        "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "2026-11-04 19:37:43.823788+00",
+        "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+      ],
+      [
+        "013",
+        "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "2026-11-04 19:37:43.823788+00",
+        "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+      ],
+      [
+        "014",
+        "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+        "2026-11-05 10:19:36.362104+00",
+        "2c6f75dd511854e0e4d3d7aa94341bc88d43e11c"
+      ],
+      [
+        "015",
+        "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+        "2026-11-05 16:14:13.0428+00",
+        "d74663c27c01fbdc1a24e33d9d079d1a8df30479"
+      ]
+    ],
+    "coordinateView": [
+      [
+        258754,
+        "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+        "raw_pitch_x",
+        "double precision"
+      ],
+      [
+        258754,
+        "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+        "raw_pitch_y",
+        "double precision"
+      ]
+    ],
+    "catalogueSha256": "1d871b5d6027fcb2906266373b1c009bad21eb2f8eea46a9230cd3b35cc0efbc",
+    "catalogueEntries": 4924
+  },
+  "transition": {
+    "status": "applied",
+    "ddl": 2,
+    "journalInserts": 2,
+    "after": {
+      "version": "017",
+      "dimensions": [
+        98,
+        1829,
+        447
+      ],
+      "journal": [
+        [
+          "012",
+          "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+          "2026-11-04 19:37:43.823788+00",
+          "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+        ],
+        [
+          "013",
+          "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+          "2026-11-04 19:37:43.823788+00",
+          "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+        ],
+        [
+          "014",
+          "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+          "2026-11-05 10:19:36.362104+00",
+          "2c6f75dd511854e0e4d3d7aa94341bc88d43e11c"
+        ],
+        [
+          "015",
+          "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+          "2026-11-05 16:14:13.0428+00",
+          "d74663c27c01fbdc1a24e33d9d079d1a8df30479"
+        ],
+        [
+          "016",
+          "12d63eaab6f4d610de3f2ff4efc0dcd71059c4d2e489a5f30d62d2a8498fd087",
+          "2026-11-05 17:57:52.303585+00",
+          "f8dae7c04bc4661e79245cba3453accd091529f1"
+        ],
+        [
+          "017",
+          "87aac35a93b8b0455a7dcf13fde5bb0be468d1183a0bf4a96f36b04b4b770458",
+          "2026-11-05 17:57:52.303585+00",
+          "f8dae7c04bc4661e79245cba3453accd091529f1"
+        ]
+      ],
+      "coordinateView": [
+        [
+          258754,
+          "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+          "raw_pitch_x",
+          "double precision"
+        ],
+        [
+          258754,
+          "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+          "raw_pitch_y",
+          "double precision"
+        ]
+      ],
+      "catalogueSha256": "48f511ef92a554d4a567a8b8ab57a9dc18cb077e2b9c015818ab90d2799fa5c5",
+      "catalogueEntries": 5311
+    }
+  },
+  "afterCatalogue": {
+    "version": "017",
+    "dimensions": [
+      98,
+      1829,
+      447
+    ],
+    "journal": [
+      [
+        "012",
+        "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "2026-11-04 19:37:43.823788+00",
+        "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+      ],
+      [
+        "013",
+        "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "2026-11-04 19:37:43.823788+00",
+        "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+      ],
+      [
+        "014",
+        "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+        "2026-11-05 10:19:36.362104+00",
+        "2c6f75dd511854e0e4d3d7aa94341bc88d43e11c"
+      ],
+      [
+        "015",
+        "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+        "2026-11-05 16:14:13.0428+00",
+        "d74663c27c01fbdc1a24e33d9d079d1a8df30479"
+      ],
+      [
+        "016",
+        "12d63eaab6f4d610de3f2ff4efc0dcd71059c4d2e489a5f30d62d2a8498fd087",
+        "2026-11-05 17:57:52.303585+00",
+        "f8dae7c04bc4661e79245cba3453accd091529f1"
+      ],
+      [
+        "017",
+        "87aac35a93b8b0455a7dcf13fde5bb0be468d1183a0bf4a96f36b04b4b770458",
+        "2026-11-05 17:57:52.303585+00",
+        "f8dae7c04bc4661e79245cba3453accd091529f1"
+      ]
+    ],
+    "coordinateView": [
+      [
+        258754,
+        "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+        "raw_pitch_x",
+        "double precision"
+      ],
+      [
+        258754,
+        "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+        "raw_pitch_y",
+        "double precision"
+      ]
+    ],
+    "catalogueSha256": "48f511ef92a554d4a567a8b8ab57a9dc18cb077e2b9c015818ab90d2799fa5c5",
+    "catalogueEntries": 5311
+  },
+  "afterStateSha256": "1f029a70568cf0d7123919979811383f28101633ba7f5768cf315e6b3f9d008f",
+  "approvedCoreDefaults": {
+    "checkedSharedTables": 8,
+    "checkedAddedColumns": 71,
+    "emptyNewTables": 4,
+    "coordinatesRoundTripExact": true
+  },
+  "connectionsClosed": true,
+  "privateAuthRemoved": true,
+  "elapsedSeconds": 19.43
+}
