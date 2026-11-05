@@ -16,7 +16,9 @@
   },
   "historicalAliasReadback": {
     "alias": "orion-football-ranking.vercel.app",
-    "status": "API404_in_previous_and_current_team_scope_not_accepted_as_preserved"
+    "status": "API404_in_previous_and_current_team_scope_not_accepted_as_preserved",
+    "userClarification": "Alias deliberately deleted by user; closed, no restoration required",
+    "clarifiedAtUtc": "2026-11-05T15:43:20.811065+00:00"
   },
   "awsBackendLotDeployed": false,
   "notes": "Project now belongs to connected Orion team. Earlier Hugo team scope404 was refreshed through linked Git project. Vercel READY does not prove new AWS backend deployment or typed RDS activation.",
