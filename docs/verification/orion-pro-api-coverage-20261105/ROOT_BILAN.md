@@ -8,6 +8,8 @@ Ce chiffre mesure le travail évité sur des routes explicitement indisponibles 
 
 Les redirections de médias exigent une référence immuable et un MIME enregistré cohérent avec PNG/JPEG/WebP ; le cache Pro est séparé du cache historique. Le contenu binaire et le chemin Next/Vercel/CDN ne sont pas validés par ce lot.
 
-La CI ajoute ce même E2E, avec son reçu de référence pré-code, son graphe de sources explicite et ses artefacts. Son résultat sur main sera consigné après exécution. Aucun déploiement ni activation Pro n’est inclus ; le publisher, les autres routes et la parité complète restent à réaliser.
+La CI ajoute ce même E2E, avec son reçu de référence pré-code, son graphe de sources explicite et ses artefacts. Sur main, la CI41941088165 passe ses3jobs :13suites Pro/187cas de premier niveau, dont19pour la garde. Les4étapes de données réelles restent volontairement non exécutées en CI. Les logs et métadonnées sont conservés dans ci/. Aucun déploiement ni activation Pro n’est inclus ; le publisher, les autres routes et la parité complète restent à réaliser.
 
 Commit suggéré : `fix: close unversioned football fallbacks in Pro mode`.
+
+La première archive CI Pro mesure238214600B compressés. Les liens node_modules créés pour les serveurs locaux sont exclus des prochains uploads ; les sources canoniques et les preuves restent incluses. La taille corrigée sera mesurée après la prochaine CI, sans annoncer de gain anticipé.
