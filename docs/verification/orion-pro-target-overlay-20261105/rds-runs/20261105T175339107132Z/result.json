@@ -1,0 +1,80 @@
+{
+  "kind": "root_actual_native017_adoption_v1",
+  "status": "verified_readonly_015",
+  "connections": 1,
+  "awsCalls": 2,
+  "sportSourceCalls": 0,
+  "businessWrites": 0,
+  "readStatements": 19,
+  "ddlAttempted": false,
+  "fullAcceptance": false,
+  "mode": "preflight",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/root_adopt_native017.py",
+    "--preflight",
+    "--release",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/ROOT_ACTUAL_NATIVE017_PREFLIGHT_V1.json",
+    "--release-sha256",
+    "8d2dd3e6a5a54f96e598e45f12a416d77795bfda125e17c61eaf732d958ce7f3"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-target-overlay-20261105/RDS_ADOPTION_PROTOCOL.md",
+  "releaseSha256": "8d2dd3e6a5a54f96e598e45f12a416d77795bfda125e17c61eaf732d958ce7f3",
+  "operatorSha256": "0d73e1f9bfa30f70d34aa3ab8cb951afd45b3c689689b83f7e5f21057fc58799",
+  "overlaySha256": "b07cf6d71e4bdc08b4d84c89a31c8c478104223e1e44aac8ad3920ad8e3be12d",
+  "codeCommit": "068c20f84734cd2951f99f96436970e084701484",
+  "nativeStateSha256": "ff1f3a336bfde1067b2b70e0fc6d3517f4d648631c2813374bca04cd4fddf189",
+  "beforeCatalogue": {
+    "version": "015",
+    "dimensions": [
+      94,
+      1709,
+      431
+    ],
+    "journal": [
+      [
+        "012",
+        "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "2026-11-04 19:37:43.823788+00",
+        "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+      ],
+      [
+        "013",
+        "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+        "2026-11-04 19:37:43.823788+00",
+        "c66e03652184c19fcaf9ccd055ea293d9adc4bbb"
+      ],
+      [
+        "014",
+        "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+        "2026-11-05 10:19:36.362104+00",
+        "2c6f75dd511854e0e4d3d7aa94341bc88d43e11c"
+      ],
+      [
+        "015",
+        "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+        "2026-11-05 16:14:13.0428+00",
+        "d74663c27c01fbdc1a24e33d9d079d1a8df30479"
+      ]
+    ],
+    "coordinateView": [
+      [
+        258754,
+        "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+        "raw_pitch_x",
+        "double precision"
+      ],
+      [
+        258754,
+        "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+        "raw_pitch_y",
+        "double precision"
+      ]
+    ],
+    "catalogueSha256": "1d871b5d6027fcb2906266373b1c009bad21eb2f8eea46a9230cd3b35cc0efbc",
+    "catalogueEntries": 4924
+  },
+  "connectionsClosed": true,
+  "privateAuthRemoved": true,
+  "elapsedSeconds": 7.747
+}
