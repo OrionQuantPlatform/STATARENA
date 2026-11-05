@@ -1,0 +1,369 @@
+{
+  "kind": "PRECODE_OWNED_PG18_REAL_HTTP_PUBLISHER_WORKFLOW",
+  "command": [
+    "python3",
+    "docs/verification/orion-pro-publisher-20261105/publisher_workflow.py",
+    "--label",
+    "owned-pg-precode-red-third-final"
+  ],
+  "requiredEnvironment": "PYTHONPATH=/tmp/statarena-publication-test-python",
+  "expected": "E2E_WORKFLOW_PROTOCOL.md and frozen30-case matrix",
+  "sourceSha256": {
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/aws-app.js": "f53f3ff72d92704ebaedf44a38beae10cc22499ecd01b2aa577003fbeb4a0724",
+    "dashboard/package.json": "18d60711017319c4b99438731f9c54025dffbb6af8aaae8883ca9b12f9cb65f7",
+    "dashboard/backend/services/orion-pro.js": "4815cdfb184fbae31fa501b50695b235c2ca14b85660db6e6aee8f5fef979616",
+    "dashboard/backend/services/postgres.js": "89e37fac508db973fe9a519cc903e54044590b9c574b4f60d43f6c1c6bfd7993",
+    "dashboard/backend/services/database-connection.js": "c9aae4dd39926e08f7f7df2031f895b62a5711f292765691653cdafd85912d5c",
+    "dashboard/backend/services/metrics.js": "65aa339f6123730ff9cb73c57bce6325a7df93d354168e74b43ded010a9fbb7f",
+    "dashboard/backend/services/cache-policy.js": "cb4692cdf1ef876d160e1ea2788e0ac1729e81f1ee5fa1e63606e9b74c79a0f0",
+    "dashboard/backend/services/cache.js": "ffaacb7170316195b52e4473f6b158fc2387d8b37e73cf9cf939922155cfe627",
+    "dashboard/backend/services/relational-match.js": "51b45d4492efedf18b5eb5fd6f2f94981d363c6962f5c42cb336c2149ae29ca8",
+    "dashboard/backend/services/relational-support.js": "673618b2f5f8514f668548bc46c3c57519bc93c7f1d963e850d84283ee4d376b",
+    "dashboard/backend/services/relational-catalog.js": "78febfd92fba64b8f2596670670d38596c44a4a46abd60cb4c3d9ebf88aa6913",
+    "dashboard/backend/services/cdn.js": "409551e4a253bbd2350a6d0d3315b20d0932f1a34fea0e18a57de29d8fe4bf72",
+    "dashboard/backend/services/relational-core.js": "37b79a6a3fc0e07e85a4d87684436e30f7e5411d82cc0c8b088cf453b6e0e82e",
+    "dashboard/backend/services/partition-wire.js": "7f8f18945737813760d7c14463689aa6bf6ac1081edceb5b965e2caf9b6d6643",
+    "dashboard/backend/services/catalog-model.json": "2e7727263581ecd5d05e65745906e16596c70b41def6de9df36c7e728713b4e6",
+    "dashboard/backend/services/support-model.json": "5f2fc5ba9e2e1ff99ffd03f218c2dffb7d79e68502763a724041e870714e5af0",
+    "docs/verification/orion-pro-readers-20261104/fixture.py": "573bfc5e8778ce2ec00655864c202b8f1431b1a5d52cabc2bb5ac5f33886cc1c",
+    "docs/verification/orion-pro-pilot-20261104/fixtures.py": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "docs/verification/orion-pro-publisher-20261105/E2E_WORKFLOW_PROTOCOL.md": "f52adac49fc1a9d0413cdda3692df08675860f121424845a9c833bb2c7e52362",
+    "docs/verification/orion-pro-publisher-20261105/FAILURE_MATRIX.json": "3566ea9e066022f87b1908e70ae1c4715166a7b62a8180295f0f0417b4a14c8f",
+    "docs/verification/orion-pro-publisher-20261105/publisher_workflow.py": "ae6b9a6f7a0b4e1f058019033fe254b0ae3dd71c87720d16d3083000a1aded86",
+    "docs/verification/orion-pro-publisher-20261105/workflow_budget.py": "412b84d0275de3c6e81073d5baf5415ba9eb7b5356a15a615bbaa7dfb3a06ed9",
+    "docs/verification/orion-pro-publisher-20261105/typed_inputs.py": "8f9dd84324c30ef835ece00594b8e0f622c5f791974f3b9e2a90d7f0e0d282c7",
+    "docs/verification/orion-pro-publisher-20261105/publisher_driver.py": "e1a21a57304536ec6f379df9ccb68e9e28392b388b72411534dc753bb7736700",
+    "docs/verification/orion-pro-publisher-20261105/publisher_worker.py": "dbe499cf4da1d914e2463db42b01f7d1c589d20d6b227689f1d22c4f1cb0dd0f",
+    "docs/verification/orion-pro-publisher-20261105/publisher_oracles.py": "0c3950e4d278f75dd1868685509c94519d752b9d6de6f133b6d2feb0c3cb94ec",
+    "docs/verification/orion-pro-publisher-20261105/publisher_http_server.mjs": "b2cae43715dc7551a46cb4cb0111a6e94b733459fd34337f767cbace0af6c724"
+  },
+  "remoteActions": [],
+  "publisherImplemented": false,
+  "model107Used": false,
+  "setupChecks": [],
+  "workflowCases": [
+    {
+      "id": "P00",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P01",
+      "status": "pass",
+      "schemaTables": 94,
+      "inputSetupSha256": "8b413f8892c4c0eacd14789563df88c0cafb2ffa1f91f1f4f793ee442f9fca58",
+      "noAnalyticalOutputs": true
+    },
+    {
+      "id": "P02",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P03",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P04",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P05",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P06",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P07",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P08",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P09",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P10",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P11",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P12",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P13",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P14",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P15",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P16",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P17",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P18",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P19",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P20",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P21",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P22",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P23",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P24",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P25",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P26",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P27",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P28",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    },
+    {
+      "id": "P29",
+      "status": "unverified",
+      "blockedBy": "setup-or-prior-workflow-failure"
+    }
+  ],
+  "bootstrap": {
+    "generation": 1,
+    "reused": false,
+    "seedRows": 10,
+    "codeSha256": "379ef1e6d9efe2e5ec9a4c78779892d9dda68015c4f91ec8e95a18990864e08f",
+    "artifact": {
+      "model": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+      "migrator": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+      "migrations": {
+        "012": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+        "013": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968"
+      }
+    },
+    "manifestSha256": "2158706bd7c2ee638b6b178c2b45cc673755b315fdd5f1e846d60567650e9c88"
+  },
+  "schemaIdentity": {
+    "serverVersion": 180006,
+    "journal": [
+      [
+        "012",
+        "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65"
+      ],
+      [
+        "013",
+        "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968"
+      ]
+    ]
+  },
+  "inputOracle": {
+    "suppressedHooks": [
+      {
+        "hook": "build",
+        "args": [
+          "A",
+          2,
+          2
+        ]
+      },
+      {
+        "hook": "build",
+        "args": [
+          "B",
+          2,
+          2
+        ]
+      },
+      {
+        "hook": "build",
+        "args": [
+          "C",
+          2,
+          2
+        ]
+      },
+      {
+        "hook": "publish",
+        "builds": {
+          "A": null,
+          "B": null,
+          "C": null
+        }
+      }
+    ],
+    "noAnalyticalOutputs": true,
+    "matches": {
+      "m_000001": {
+        "matchId": 1,
+        "revision": 1,
+        "expectedSha256": "e2c0d39884cee64b9276594911671a88c3ef2f2f651645f09820f3de5e835cfc"
+      },
+      "m_000002": {
+        "matchId": 2,
+        "revision": 2,
+        "expectedSha256": "f38d942e3d5de76ec0c6700632c03be849364992cad6051031851fd134d1c17e"
+      },
+      "m_000003": {
+        "matchId": 3,
+        "revision": 3,
+        "expectedSha256": "f96ede207b14c13c641e7942c55fa5549380084914450fb473da9ffc806a8f4a"
+      },
+      "m_000004": {
+        "matchId": 4,
+        "revision": 4,
+        "expectedSha256": "badc17d237b1e3abc9dbbafb71f1e5bcc6cd96abcebc69c9a6de38600c2d6e89"
+      },
+      "m_000005": {
+        "matchId": 5,
+        "revision": 5,
+        "expectedSha256": "3c20e799b6035185561e31681e57986dbc688ed85c001f9d1e2a9b62d75a65f6"
+      }
+    },
+    "expectedCounters": {
+      "A": {
+        "matches": 3,
+        "finished": 2,
+        "teams": 2,
+        "players": 1
+      },
+      "B": {
+        "matches": 1,
+        "finished": 1,
+        "teams": 2,
+        "players": 2
+      },
+      "C": {
+        "matches": 1,
+        "finished": 1,
+        "teams": 2,
+        "players": 1
+      }
+    },
+    "dataGeneration": 3,
+    "catalogGeneration": 2,
+    "expectedStateSha256": "aaf09cfcc231c71b0d361ed3eb28eb0a91a9901598c31314640cf09e11ac2de3"
+  },
+  "error": {
+    "type": "KeyError",
+    "message": "'revision_id'"
+  },
+  "cleanup": {
+    "owned_root": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-paw8gc84",
+    "server_stopped": true,
+    "owned_directory_removed": true,
+    "apiStopped": true,
+    "workersStopped": true
+  },
+  "httpRequests": [],
+  "publisherInvocations": [],
+  "budget": {
+    "deadlineEpoch": 1793841516.7268622,
+    "limits": {
+      "sql": 1500,
+      "http": 200,
+      "typedRows": 5000,
+      "builds": 20,
+      "matchSummaries": 100,
+      "editionSummaries": 20,
+      "generations": 24,
+      "publications": 30
+    },
+    "counts": {
+      "sql": 7,
+      "http": 0
+    },
+    "violations": []
+  },
+  "sourceChangesDuringRun": [],
+  "sqlAccounting": {
+    "reservedOperationalCalls": 7,
+    "serverLoggedOperationalStatements": 6,
+    "serverLoggedClientCommandsByApplication": {
+      "publisher_fixture_setup": 213,
+      "publisher_harness_main": 6
+    },
+    "internalTransactionCommandsReserved": true
+  },
+  "counts": {
+    "pass": 1,
+    "fail": 0,
+    "unverified": 29
+  },
+  "setupPassCount": 0,
+  "status": "fail",
+  "finishedAt": "2026-11-05T01:08:38.782220+00:00"
+}

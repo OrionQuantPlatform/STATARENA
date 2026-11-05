@@ -1,0 +1,45 @@
+[
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-e3mmi7al/data",
+      "--auth=trust",
+      "--no-locale",
+      "--encoding=UTF8"
+    ],
+    "exit_code": 0,
+    "stdout": "001-initdb.stdout.log",
+    "stderr": "001-initdb.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-e3mmi7al/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/runs/20261105T010437283112Z-owned-pg-precode-red/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 55173 -k /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-e3mmi7al/socket -c fsync=on -c max_connections=5 -c superuser_reserved_connections=0 -c max_locks_per_transaction=1024 -c statement_timeout=8000 -c lock_timeout=1000 -c idle_in_transaction_session_timeout=5000 -c log_statement=all -c log_parameter_max_length=0 -c log_parameter_max_length_on_error=0 -c log_line_prefix='[%p] app=%a '",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "stdout": "002-postgres-start.stdout.log",
+    "stderr": "002-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-e3mmi7al/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "stdout": "003-postgres-stop.stdout.log",
+    "stderr": "003-postgres-stop.stderr.log"
+  }
+]
