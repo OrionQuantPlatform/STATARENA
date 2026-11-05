@@ -194,7 +194,7 @@ def main():
             command = [str(x) for x in argv]
             cleanup = command[-1] == 'stop'
             r = run_bounded(command, cwd=ROOT, env=env, deadline=time.monotonic()+15 if cleanup else deadline,
-                            stop_reason=None if cleanup else resource_reason)
+                            stop_reason=(lambda: None) if cleanup else resource_reason)
             number = len(pg.commands)+1
             entry = {'argv': command, 'exitCode': r.returncode, 'stdout': f'{number:03d}-{name}.stdout.log', 'stderr': f'{number:03d}-{name}.stderr.log'}
             pg.commands.append(entry)
