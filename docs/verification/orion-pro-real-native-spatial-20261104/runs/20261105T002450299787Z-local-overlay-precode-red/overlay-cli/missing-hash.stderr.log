@@ -1,0 +1,4 @@
+usage: e2e.py [-h] [--label LABEL] [--prepare-only]
+              [--source-socket SOURCE_SOCKET] [--worker] [--deadlines-only]
+              [--evidence EVIDENCE] [--pg-bin PG_BIN]
+e2e.py: error: unrecognized arguments: --overlay-probe-only --local-validator-overlay /Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-validator-membership-20261105/candidate.sql

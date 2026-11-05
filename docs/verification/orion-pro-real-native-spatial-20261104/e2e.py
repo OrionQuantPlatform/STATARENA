@@ -16,6 +16,111 @@ MANIFEST=json.loads((DOC/'MANIFEST.json').read_text())
 FIELDS=json.loads((DOC/'FIELDS.json').read_text())['fields']
 ABSENT=object()
 WRITER_OPTIONS='-c statement_timeout=8000 -c lock_timeout=1000'
+OVERLAY_PATH=REPO/'docs/verification/orion-validator-membership-20261105/candidate.sql'
+OVERLAY_SHA='e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6'
+OVERLAY_APPLIED_SHA='30f86fa262fd4cf10307e78431350f25b9d7a5b353d0c76abc0594340edb5d20'
+MODEL_PATH=REPO/'docs/architecture/orion-plan-20261104/target-schema.proposed.json'
+MODEL_SHA='18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08'
+SEALED_013_PATH=REPO/'dashboard/backend/migrations/013_orion_pro_integrity.sql'
+SEALED_013_SHA='85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968'
+OWNED_LOGGING_CONFIG="log_error_verbosity = 'terse'\nlog_min_error_statement = 'panic'\nlog_parameter_max_length_on_error = 0\n"
+
+class LocalOverlayError(ValueError):pass
+class LocalWorkerDSNError(ValueError):pass
+
+def start_owned_local_postgres(pg):
+    if pg.started or pg.data.exists():raise LocalOverlayError('Expected a fresh owned PostgreSQL data directory before logging setup')
+    pg.command([pg.binaries/'initdb','-D',pg.data,'--auth=trust','--no-locale','--encoding=UTF8'],name='initdb')
+    config=pg.data/'postgresql.auto.conf'
+    if config.is_symlink():raise LocalOverlayError('Owned PostgreSQL config must not be a symlink')
+    with config.open('a') as handle:handle.write(OWNED_LOGGING_CONFIG)
+    inputs=pg.evidence/'inputs';inputs.mkdir(exist_ok=True);(inputs/'owned-postgres-logging.conf').write_text(OWNED_LOGGING_CONFIG)
+    (pg.evidence/'owned-postgres-logging-setup.json').write_text(json.dumps({'stage':'initialized_before_server_start','configPath':str(config),'configSha256':hashlib.sha256(OWNED_LOGGING_CONFIG.encode()).hexdigest(),'sharedHarnessModified':False},indent=2)+'\n')
+    pg.start()
+
+def local_worker_parameters(dsn):
+    from psycopg.conninfo import conninfo_to_dict
+    try:params=conninfo_to_dict(dsn)
+    except Exception:raise LocalWorkerDSNError() from None
+    host=params.get('host');loopback={'127.0.0.1','::1'}
+    if host not in loopback|{'localhost'}:raise LocalWorkerDSNError()
+    address=params['hostaddr'] if 'hostaddr' in params else os.environ.get('PGHOSTADDR')
+    if address is not None and address not in loopback:raise LocalWorkerDSNError()
+    if host in loopback and address is not None and address!=host:raise LocalWorkerDSNError()
+    # Pin the effective address as well as the name; libpq environment/service
+    # defaults must not route an allowed localhost name to an external address.
+    params['hostaddr']=address if address is not None else '127.0.0.1' if host=='localhost' else host
+    params['options']=WRITER_OPTIONS
+    return params
+
+def validator_body(sql):
+    prefix='CREATE OR REPLACE FUNCTION "ingest"."validate_generation"(g bigint) RETURNS void'
+    start=sql.find(prefix)
+    if start<0:raise LocalOverlayError('Known validator signature is absent')
+    tail=sql[start:];marker='$orion_pro$';parts=tail.split(marker,2)
+    if len(parts)!=3:raise LocalOverlayError('Known validator body delimiter is absent')
+    return parts[1]
+
+def local_overlay_choice(path,expected_sha):
+    if path is None and expected_sha is None:return None
+    if path is None or expected_sha is None:raise LocalOverlayError('Explicit local overlay requires both exact path and SHA')
+    supplied=path if path.is_absolute() else REPO/path
+    if supplied!=OVERLAY_PATH or supplied.is_symlink():raise LocalOverlayError('Only the exact approved local validator path is allowed')
+    if expected_sha!=OVERLAY_SHA:raise LocalOverlayError('Local validator supplied SHA is not the approved candidate')
+    raw=supplied.read_bytes()
+    if hashlib.sha256(raw).hexdigest()!=OVERLAY_SHA:raise LocalOverlayError('Local validator file differs from the approved candidate')
+    if sha(MODEL_PATH)!=MODEL_SHA:raise LocalOverlayError('Model differs from the frozen18da contract')
+    if sha(SEALED_013_PATH)!=SEALED_013_SHA:raise LocalOverlayError('Sealed013file differs from its approved bytes')
+    sql=raw.decode().strip()
+    if hashlib.sha256(sql.encode()).hexdigest()!=OVERLAY_APPLIED_SHA:raise LocalOverlayError('Applied local validator text differs from its approved SHA')
+    return {'policy':'local_candidate_membership_e0810f','path':str(supplied),'fileSha256':OVERLAY_SHA,'appliedSqlSha256':OVERLAY_APPLIED_SHA,'bodySha256':hashlib.sha256(validator_body(sql).encode()).hexdigest(),'baselineBodySha256':hashlib.sha256(validator_body(SEALED_013_PATH.read_text()).encode()).hexdigest(),'raw':raw,'sql':sql}
+
+def validator_metadata(conn):
+    sql="""SELECT p.oid::bigint,p.proowner::bigint,pg_get_userbyid(p.proowner),p.proacl::text,p.prosecdef,p.proconfig,
+    pg_get_function_identity_arguments(p.oid),pg_get_function_result(p.oid),l.lanname,
+    encode(sha256(convert_to(p::text,'UTF8')),'hex'),encode(sha256(convert_to(pg_get_functiondef(p.oid),'UTF8')),'hex'),encode(sha256(convert_to(p.prosrc,'UTF8')),'hex')
+    FROM pg_proc p JOIN pg_language l ON l.oid=p.prolang WHERE p.oid='ingest.validate_generation(bigint)'::regprocedure"""
+    row=conn.execute(sql).fetchone()
+    if row is None:raise LocalOverlayError('Fresh database has no expected validator')
+    keys=['oid','ownerOid','owner','acl','securityDefiner','config','identityArguments','resultType','language','pgProcRowSha256','definitionSha256','bodySha256']
+    return dict(zip(keys,row))
+
+def other_validator_functions(conn):
+    return conn.execute("SELECT count(*),encode(sha256(convert_to(coalesce(string_agg(h,'' ORDER BY oid),''),'UTF8')),'hex') FROM (SELECT p.oid,encode(sha256(convert_to(p::text,'UTF8')),'hex') h FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname IN ('ingest','football','analytics') AND p.oid<>'ingest.validate_generation(bigint)'::regprocedure) x").fetchone()
+
+def overlay_protected(meta):return {k:meta[k] for k in ['oid','ownerOid','owner','acl','securityDefiner','config','identityArguments','resultType','language']}
+
+def verify_local_overlay_installed(conn,spec,expected=None):
+    if conn.info.host not in ('127.0.0.1','localhost','::1'):raise LocalOverlayError('Validator overlay requires owned LOCAL PostgreSQL')
+    version=conn.execute("SELECT current_setting('server_version_num'),current_setting('statement_timeout'),current_setting('lock_timeout')").fetchone()
+    if version!=('180006','8s','1s'):raise LocalOverlayError('Validator candidate requires localPG18.6 and exact8s/1s')
+    checksum=conn.execute("SELECT content_sha256 FROM ingest.schema_migrations WHERE version='013'").fetchone()
+    if checksum!=(SEALED_013_SHA,):raise LocalOverlayError('Database sealed013receipt differs')
+    actual=validator_metadata(conn)
+    if actual['bodySha256']!=spec['bodySha256'] or actual['securityDefiner'] is not True or actual['config']!=['search_path=pg_catalog']:
+        raise LocalOverlayError('Installed local validator body/security context differs from the explicit candidate')
+    if expected is not None and actual!=expected:raise LocalOverlayError('Fresh worker validator pg_proc metadata differs from the main receipt')
+    return actual
+
+def apply_local_overlay(conn,spec,run):
+    if conn.info.host not in ('127.0.0.1','localhost','::1'):raise LocalOverlayError('Validator overlay requires owned LOCAL PostgreSQL')
+    settings=conn.execute("SELECT current_setting('server_version_num'),current_setting('statement_timeout'),current_setting('lock_timeout'),(SELECT rolsuper FROM pg_roles WHERE rolname=current_user)").fetchone()
+    if settings!=('180006','8s','1s',True):raise LocalOverlayError('Overlay requires localPG18.6 administrator with8s/1s')
+    if conn.execute("SELECT content_sha256 FROM ingest.schema_migrations WHERE version='013'").fetchone()!=(SEALED_013_SHA,):raise LocalOverlayError('Database sealed013receipt differs')
+    before=validator_metadata(conn)
+    if before['bodySha256']!=spec['baselineBodySha256']:raise LocalOverlayError('Fresh database validator is not the sealed013baseline')
+    other_before=other_validator_functions(conn);facts_before=fingerprint(conn)
+    with conn.transaction():
+        conn.execute(spec['sql']);after=verify_local_overlay_installed(conn,spec)
+        other_after=other_validator_functions(conn);facts_after=fingerprint(conn)
+        if overlay_protected(before)!=overlay_protected(after):raise LocalOverlayError('Candidate replacement changed protected pg_proc metadata')
+        if other_before!=other_after:raise LocalOverlayError('Candidate replacement changed another function')
+        if facts_before!=facts_after:raise LocalOverlayError('Candidate replacement changed a business table or sequence')
+    report={k:spec[k] for k in ['policy','path','fileSha256','appliedSqlSha256','bodySha256']}
+    report.update(overlayApplied=True,localOnly=True,modelSha256=MODEL_SHA,sealed013Sha256=SEALED_013_SHA,before=before,after=after,protectedMetadataPreserved=True,otherFunctionsUnchanged=True,otherFunctionsBefore=other_before,otherFunctionsAfter=other_after,businessTablesUnchanged=True,businessFingerprintBefore=facts_before['sha256'],businessFingerprintAfter=facts_after['sha256'])
+    (run/'local-validator-overlay.json').write_text(json.dumps(report,indent=2)+'\n');return report
+
+def overlay_flags(spec):return ['--local-validator-overlay',spec['path'],'--local-validator-overlay-sha256',spec['fileSha256']] if spec else []
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def digest(v):return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),default=str).encode()).hexdigest()
@@ -204,7 +309,7 @@ def resource_error_guard(run,pg_bin):
     cap=load('actual_capture_resource_error',DOC/'capture.py');normalizer_before=sha(NORMALIZER);source_budget_before=sha(DOC/'budget.json')
     result={'scope':'separate owned LOCAL PostgreSQL metadata fixtures; no real source or sports candidate writes','sourceCalls':0,'httpRequests':0,'captureSha256':sha(DOC/'capture.py'),'neonSql':cap.NEON_SQL,'neonSqlSha256':hashlib.sha256(cap.NEON_SQL.encode()).hexdigest(),'cases':[]}
     try:
-        pg.start();pg.migration(REPO);admin=psycopg.connect(pg.dsn,autocommit=True)
+        start_owned_local_postgres(pg);pg.migration(REPO);admin=psycopg.connect(pg.dsn,autocommit=True)
         admin.execute('CREATE SCHEMA statarena')
         admin.execute('CREATE TABLE statarena.objects(path text PRIMARY KEY,size bigint NOT NULL,sha256 bytea NOT NULL,updated_at timestamptz NOT NULL)')
         admin.execute("CREATE TABLE statarena.resources(endpoint text NOT NULL,params text NOT NULL,status smallint NOT NULL,ref jsonb,error jsonb,updated_at timestamptz NOT NULL,PRIMARY KEY(endpoint,params))")
@@ -293,35 +398,101 @@ def local_writer_deadlines(conn,pg,run):
     result={'scope':'owned LOCAL database,metadata/settings only; no source or synthetic sports rows','status':'pass' if not mismatches else 'fail','sql':sql,'outcomes':outcomes,'mismatches':mismatches,'before':before,'after':after,'unchanged':unchanged,'sourceCalls':0,'syntheticSportsRowsInserted':0}
     (run/'local-deadlines-result.json').write_text(json.dumps(result,indent=2,default=str)+'\n');return result
 
+def local_overlay_contract(run,pg_bin):
+    allowed=REPO/'docs/verification/orion-validator-membership-20261105/candidate.sql';expected='e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6';folder=run/'overlay-cli';folder.mkdir();copy=folder/'arbitrary-copy.sql';shutil.copy2(allowed,copy);alias=folder/'alias.sql';alias.symlink_to(allowed)
+    base=[sys.executable,str(Path(__file__)),'--prepare-only','--overlay-probe-only','--pg-bin',str(pg_bin)];outcomes=[];mismatches=[];values={}
+    cases=[('default',[],True),('allowed',['--local-validator-overlay',str(allowed),'--local-validator-overlay-sha256',expected],True),('arbitrary-copy',['--local-validator-overlay',str(copy),'--local-validator-overlay-sha256',expected],False),('symlink-alias',['--local-validator-overlay',str(alias),'--local-validator-overlay-sha256',expected],False),('wrong-hash',['--local-validator-overlay',str(allowed),'--local-validator-overlay-sha256','0'*64],False),('missing-hash',['--local-validator-overlay',str(allowed)],False),('missing-path',['--local-validator-overlay-sha256',expected],False)]
+    for label,flags,positive in cases:
+        command=base+['--label','local-overlay-probe-'+label]+flags;env=os.environ.copy();env['STATARENA_SOURCE_FORBIDDEN']='1';result=subprocess.run(command,text=True,capture_output=True,env=env,timeout=120);(folder/(label+'.stdout.log')).write_text(result.stdout);(folder/(label+'.stderr.log')).write_text(result.stderr);actual=None;ok=result.returncode==0 if positive else result.returncode==2
+        result_evidence=None
+        if positive and result.returncode==0:
+            final=json.loads(result.stdout.strip().splitlines()[-1]);result_evidence=str(Path(final['evidence'])/'result.json');actual=json.loads(Path(result_evidence).read_text());values[label]=actual;policy=actual['validatorPolicy'];probe=next(c['actual'] for c in actual['cases'] if c['case']=='local_overlay_probe');ok=actual['counts']=={'pass':1,'fail':0,'unverified':0} and not any(probe['businessRows'].values()) and probe['sourceCalls']==0
+            ok=ok and policy['policy']==('sealed_013' if label=='default' else 'local_candidate_membership_e0810f') and policy['overlayApplied']==(label=='allowed')
+            if label=='allowed':ok=ok and policy['protectedMetadataPreserved'] and policy['otherFunctionsUnchanged'] and policy['businessTablesUnchanged'] and policy['before']['pgProcRowSha256']!=policy['after']['pgProcRowSha256'] and probe.get('overlayWorkerVerified') is True
+        elif not positive and result.returncode==2:
+            try:refusal=json.loads(result.stdout.strip());ok=refusal.get('status')=='local_overlay_refused' and refusal.get('pgStarted') is False
+            except (ValueError,AttributeError):ok=False
+        if not ok:mismatches.append(label)
+        outcomes.append({'case':label,'command':command,'expectedAccepted':positive,'exitCode':result.returncode,'passed':ok,'resultEvidence':result_evidence})
+    report={'scope':'source-free CLI and owned PG overlay policy only','status':'pass' if not mismatches else 'fail','cases':outcomes,'mismatches':mismatches,'newSourceCalls':0};(run/'local-overlay-contract.json').write_text(json.dumps(report,indent=2)+'\n');return report
+
+def worker_dsn_preconnect_boundary(run):
+    folder=run/'worker-dsn-tripwire';folder.mkdir();site=folder/'sitecustomize.py'
+    site.write_text("import os\nfrom pathlib import Path\nimport psycopg\ndef no_network_connect(*args,**kwargs):\n    Path(os.environ['ORION_CONNECT_TRIPWIRE']).write_text('driver_connect_attempted\\n')\n    raise RuntimeError('local_worker_connect_tripwire_no_network')\npsycopg.connect=no_network_connect\n")
+    secret='explicit_synthetic_dsn_secret';suffix=' dbname=unconnected user=synthetic_worker password='+secret
+    cases=[('external_uri','postgresql://synthetic_worker:'+secret+'@remote.invalid/unconnected',None),('missing_host','dbname=unconnected user=synthetic_worker password='+secret,None),('empty_host',"host=''"+suffix,None),('multihost','host=127.0.0.1,remote.invalid'+suffix,None),('all_loopback_multihost','host=127.0.0.1,localhost'+suffix,None),('external_hostaddr','host=localhost hostaddr=192.0.2.10'+suffix,None),('mismatched_v4_v6','host=127.0.0.1 hostaddr=::1'+suffix,None),('mismatched_v6_v4','host=::1 hostaddr=127.0.0.1'+suffix,None),('multihostaddr','host=localhost hostaddr=127.0.0.1,::1'+suffix,None),('empty_hostaddr',"host=localhost hostaddr=''"+suffix,None),('external_env_hostaddr','host=127.0.0.1'+suffix,'198.51.100.10'),('unix_socket','host=/tmp/unconnected-local-socket'+suffix,None),('malformed_uri','postgresql://%'+secret,None)]
+    outcomes=[];mismatches=[]
+    for label,dsn,env_addr in cases:
+        marker=folder/(label+'.marker');env=os.environ.copy();env.update(PYTHONPATH=str(folder)+os.pathsep+env.get('PYTHONPATH',''),PYTHONDONTWRITEBYTECODE='1',ORION_PILOT_DATABASE_URL=dsn,ORION_CONNECT_TRIPWIRE=str(marker),STATARENA_SOURCE_FORBIDDEN='1');env.pop('PGHOSTADDR',None)
+        if env_addr is not None:env['PGHOSTADDR']=env_addr
+        command=[sys.executable,str(Path(__file__)),'--worker','--deadlines-only','--evidence',str(run)];result=subprocess.run(command,text=True,capture_output=True,env=env,timeout=20);no_secret=secret not in result.stdout and secret not in result.stderr
+        if no_secret:(folder/(label+'.stdout.log')).write_text(result.stdout);(folder/(label+'.stderr.log')).write_text(result.stderr)
+        else:(folder/(label+'.output-redacted.json')).write_text(json.dumps({'stdoutBytes':len(result.stdout.encode()),'stderrBytes':len(result.stderr.encode()),'stdoutSha256':hashlib.sha256(result.stdout.encode()).hexdigest(),'stderrSha256':hashlib.sha256(result.stderr.encode()).hexdigest(),'secretFound':True})+'\n')
+        try:refusal=json.loads(result.stdout.strip())
+        except ValueError:refusal={}
+        ok=result.returncode==2 and refusal.get('status')=='local_worker_dsn_refused' and refusal.get('driverConnectAttempted') is False and not marker.exists() and no_secret
+        if not ok:mismatches.append(label)
+        outcomes.append({'case':label,'command':command,'exitCode':result.returncode,'driverConnectTripwireReached':marker.exists(),'secretAbsentFromOutput':no_secret,'passed':ok,'actualNetworkAttempts':0})
+    report={'status':'pass' if not mismatches else 'fail','scope':'genuine worker CLI subprocess + driver tripwire; no external connection','cases':outcomes,'mismatches':mismatches,'actualNetworkAttempts':0,'sourceCalls':0};(run/'worker-dsn-boundary.json').write_text(json.dumps(report,indent=2)+'\n');return report
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--label',default='prepare');p.add_argument('--prepare-only',action='store_true');p.add_argument('--source-socket',type=Path);p.add_argument('--worker',action='store_true');p.add_argument('--deadlines-only',action='store_true');p.add_argument('--evidence',type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--label',default='prepare');p.add_argument('--prepare-only',action='store_true');p.add_argument('--source-socket',type=Path);p.add_argument('--worker',action='store_true');p.add_argument('--deadlines-only',action='store_true');p.add_argument('--evidence',type=Path);p.add_argument('--local-validator-overlay',type=Path);p.add_argument('--local-validator-overlay-sha256');p.add_argument('--overlay-probe-only',action='store_true');p.add_argument('--pg-bin',type=Path,default=Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin'));args=p.parse_args()
     if args.deadlines_only and not args.worker:p.error('--deadlines-only requires --worker')
+    if args.overlay_probe_only and (not args.prepare_only or args.worker):p.error('--overlay-probe-only requires source-free preparation')
+    try:overlay=local_overlay_choice(args.local_validator_overlay,args.local_validator_overlay_sha256)
+    except (LocalOverlayError,OSError,UnicodeError) as error:
+        print(json.dumps({'status':'local_overlay_refused','reason':str(error) if isinstance(error,LocalOverlayError) else type(error).__name__,'pgStarted':False}));return 2
     if args.worker:
         candidate=load('real_candidate_worker',DOC/'candidate.py')
         import psycopg
-        with psycopg.connect(os.environ['ORION_PILOT_DATABASE_URL'],options=WRITER_OPTIONS,autocommit=True) as conn:
+        try:worker_params=local_worker_parameters(os.environ.get('ORION_PILOT_DATABASE_URL',''))
+        except LocalWorkerDSNError:
+            print(json.dumps({'status':'local_worker_dsn_refused','reason':'Worker requires one explicit coherent loopback host/address','driverConnectAttempted':False,'sourceCalls':0}));return 2
+        with psycopg.connect(**worker_params,autocommit=True) as conn:
             conn.execute('SET ROLE orion_pro_ingest')
+            validator_policy={'policy':'sealed_013','overlayApplied':False}
+            if overlay:
+                expected=json.loads((args.evidence/'local-validator-overlay.json').read_text())['after'];installed=verify_local_overlay_installed(conn,overlay,expected);validator_policy={'policy':overlay['policy'],'overlayApplied':True,'installed':installed,'fileSha256':overlay['fileSha256'],'appliedSqlSha256':overlay['appliedSqlSha256']}
             if args.deadlines_only:
-                print(json.dumps({'status':'pass','mode':'source_free_writer_deadlines','writerSettings':candidate.validate_local_writer(conn),'sourceCalls':0}));return 0
+                result={'status':'pass','mode':'source_free_writer_deadlines','writerSettings':candidate.validate_local_writer(conn),'sourceCalls':0}
+                if overlay:result['validatorPolicy']=validator_policy
+                print(json.dumps(result));return 0
             cap=load('real_capture_worker',DOC/'capture.py');snapshot=cap.fetch_snapshot(args.source_socket);result=candidate.import_candidate(conn,args.evidence,snapshot)
-        print(json.dumps({'status':'pass','coreReused':result['core']['reused'],'spatialReused':result['spatial'].get('reused',False),'sourceCalls':0}));return 0
+        print(json.dumps({'status':'pass','coreReused':result['core']['reused'],'spatialReused':result['spatial'].get('reused',False),'sourceCalls':0,'validatorPolicy':validator_policy}));return 0
     if not args.prepare_only and args.source_socket is None:p.error('Explicit --prepare-only or --source-socket required; no source fallback')
     run=DOC/'runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')+'-'+args.label);run.mkdir(parents=True);(run/'inputs').mkdir()
-    for q in [Path(__file__),DOC/'PLAN.md',DOC/'PROTOCOL.md',DOC/'ERROR_GUARD_PROTOCOL.md',DOC/'LOCAL_DEADLINES_PROTOCOL.md',DOC/'MANIFEST.json',DOC/'FIELDS.json',DOC/'capture.py',DOC/'candidate.py',NORMALIZER,PILOT/'harness.py']:
+    for q in [Path(__file__),DOC/'PLAN.md',DOC/'PROTOCOL.md',DOC/'ERROR_GUARD_PROTOCOL.md',DOC/'LOCAL_DEADLINES_PROTOCOL.md',DOC/'LOCAL_VALIDATOR_OVERLAY_PROTOCOL.md',DOC/'LOCAL_LOGGING_PROTOCOL.md',DOC/'MANIFEST.json',DOC/'FIELDS.json',DOC/'capture.py',DOC/'candidate.py',NORMALIZER,PILOT/'harness.py']:
         if q.exists():shutil.copy2(q,run/'inputs'/q.name)
+    if overlay:(run/'inputs/local-validator-overlay.sql').write_bytes(overlay['raw'])
     old_ledger=REPO/MANIFEST['oldLedger']['path'];before_old=sha(old_ledger);assert before_old==MANIFEST['oldLedger']['sha256'];failed_budget_before=sha(DOC/'budget.json');root_metadata=DOC/'neon-error-metadata/result.json';root_metadata_before=sha(root_metadata)
     sys.path.insert(0,str(PILOT));from harness import LocalPostgres
     import psycopg
     pg=LocalPostgres(args.pg_bin,run);conn=None;blocked=None;snapshot=None;parts=None
     report={'command':'PYTHONPATH=/tmp/statarena-publication-test-python '+shlex.join([sys.executable,*sys.argv]),'environment':'owned LOCAL PG18.6; real candidate has source-derived facts only','normalizerSha256':sha(NORMALIZER),'testSha256':sha(Path(__file__)),'manifestSha256':sha(DOC/'MANIFEST.json'),'fullAcceptance':False,'sourceCallsByTest':0,'realNativeStatesCompared':0,'realTripletsCompared':0,'cases':[]}
-    cases=['empty_local_bootstrap','local_writer_deadlines','source_startup_contract','future_captured_ledger_guard','capture_checkpoint_cli','global_budget_guards','profile_metadata_admission','private_origin_configuration','resource_error_null_contract','real_core_import','independent_native31','real_spatial_import_and_oracle','fresh_process_noop']
+    cases=['empty_local_bootstrap','worker_dsn_preconnect_boundary','local_validator_overlay_contract','local_writer_deadlines','source_startup_contract','future_captured_ledger_guard','capture_checkpoint_cli','global_budget_guards','profile_metadata_admission','private_origin_configuration','resource_error_null_contract','real_core_import','independent_native31','real_spatial_import_and_oracle','fresh_process_noop']
+    if args.overlay_probe_only:cases=['local_overlay_probe']
     try:
-        pg.start();pg.migration(REPO);conn=psycopg.connect(pg.dsn,options=WRITER_OPTIONS,autocommit=True);conn.execute('SET ROLE orion_pro_ingest')
+        start_owned_local_postgres(pg);pg.migration(REPO);report['validatorPolicy']={'policy':'sealed_013','overlayApplied':False}
+        if overlay:
+            with psycopg.connect(pg.dsn,options=WRITER_OPTIONS,autocommit=True) as admin:report['validatorPolicy']=apply_local_overlay(admin,overlay,run)
+        conn=psycopg.connect(pg.dsn,options=WRITER_OPTIONS,autocommit=True);conn.execute('SET ROLE orion_pro_ingest')
+        logging_rows=list(conn.execute("SELECT name,setting,source FROM pg_settings WHERE name IN ('log_error_verbosity','log_min_error_statement','log_parameter_max_length_on_error') ORDER BY name"));expected_logging={'log_error_verbosity':'terse','log_min_error_statement':'panic','log_parameter_max_length_on_error':'0'};logging_ok={row[0]:row[1] for row in logging_rows}==expected_logging and all(row[2]=='configuration file' for row in logging_rows);report['localPostgresLogging']={'expected':expected_logging,'actual':logging_rows,'passed':logging_ok};(run/'local-logging-settings.json').write_text(json.dumps(report['localPostgresLogging'],indent=2)+'\n')
         for case in cases:
             if blocked or (args.prepare_only and case.startswith(('real_','independent_','fresh_'))):report['cases'].append({'case':case,'status':'unverified','reason':blocked or 'Awaiting separately approved single real capture'});continue
             try:
                 if case=='empty_local_bootstrap':
+                    assert logging_ok,'Owned PostgreSQL log configuration is not active before facts'
                     assert conn.execute('SELECT current_user').fetchone()[0]=='orion_pro_ingest';counts={t:conn.execute('SELECT count(*) FROM '+t).fetchone()[0] for t in ['football.players','football.teams','football.matches','football.player_match_stats','football.match_heatmaps']};assert not any(counts.values());actual={'role':'orion_pro_ingest','businessRows':counts,'syntheticSportsRowsInserted':0}
+                elif case=='worker_dsn_preconnect_boundary':
+                    actual=worker_dsn_preconnect_boundary(run);assert actual['status']=='pass',{'preconnectDsnMismatches':actual['mismatches']}
+                elif case=='local_overlay_probe':
+                    assert logging_ok,'Owned PostgreSQL log configuration is not active before facts'
+                    counts={t:conn.execute('SELECT count(*) FROM '+t).fetchone()[0] for t in ['football.players','football.teams','football.matches','football.player_match_stats','football.match_heatmaps']};assert not any(counts.values());actual={'validatorMetadata':validator_metadata(conn),'businessRows':counts,'sourceCalls':0,'writerSettings':load('probe_candidate_deadline',DOC/'candidate.py').validate_local_writer(conn)}
+                    if overlay:
+                        verify_local_overlay_installed(conn,overlay,report['validatorPolicy']['after']);command=[sys.executable,str(Path(__file__)),'--worker','--deadlines-only','--evidence',str(run),*overlay_flags(overlay)];env=os.environ.copy();env.update(ORION_PILOT_DATABASE_URL=pg.dsn,STATARENA_SOURCE_FORBIDDEN='1');worker=subprocess.run(command,text=True,capture_output=True,env=env,timeout=30);(run/'overlay-worker.stdout.log').write_text(worker.stdout);(run/'overlay-worker.stderr.log').write_text(worker.stderr);assert worker.returncode==0,'Overlay worker refused the installed candidate';value=json.loads(worker.stdout);assert value['validatorPolicy']['installed']==report['validatorPolicy']['after'] and value['validatorPolicy']['policy']==overlay['policy'] and value['writerSettings']=={'host':'127.0.0.1','role':'orion_pro_ingest','statementTimeout':'8s','lockTimeout':'1s'} and value['sourceCalls']==0
+                        actual.update(overlayWorkerVerified=True,overlayWorker=value,workerCommand=command)
+                elif case=='local_validator_overlay_contract':
+                    actual=local_overlay_contract(run,args.pg_bin);assert actual['status']=='pass',{'localOverlayMismatches':actual['mismatches']}
                 elif case=='local_writer_deadlines':
                     actual=local_writer_deadlines(conn,pg,run);assert actual['status']=='pass',{'localDeadlineMismatches':actual['mismatches']}
                 elif case=='source_startup_contract':
@@ -361,7 +532,7 @@ def main():
                 elif case=='real_spatial_import_and_oracle':
                     result=candidate.import_candidate(conn,run,snapshot);actual,ok=spatial_oracle(conn,snapshot);actual['phaseReceipt']=result['spatial'];report['realTripletsCompared']=actual['typedCells'];assert ok,actual['errors']
                 else:
-                    before=fingerprint(conn);command=[sys.executable,str(Path(__file__)),'--worker','--source-socket',str(args.source_socket),'--evidence',str(run)];env=os.environ.copy();env['ORION_PILOT_DATABASE_URL']=pg.dsn
+                    before=fingerprint(conn);command=[sys.executable,str(Path(__file__)),'--worker','--source-socket',str(args.source_socket),'--evidence',str(run),*overlay_flags(overlay)];env=os.environ.copy();env['ORION_PILOT_DATABASE_URL']=pg.dsn
                     result=subprocess.run(command,text=True,capture_output=True,env=env,timeout=600);(run/'fresh-worker.stdout.log').write_text(result.stdout);(run/'fresh-worker.stderr.log').write_text(result.stderr);after=fingerprint(conn);assert result.returncode==0 and before==after;worker=json.loads(result.stdout);assert worker['coreReused'] and worker['spatialReused'];actual={'command':command,'worker':worker,'before':before,'after':after,'unchanged':True}
                 report['cases'].append({'case':case,'status':'pass','actual':actual});print('PASS '+case,flush=True)
             except Exception as error:

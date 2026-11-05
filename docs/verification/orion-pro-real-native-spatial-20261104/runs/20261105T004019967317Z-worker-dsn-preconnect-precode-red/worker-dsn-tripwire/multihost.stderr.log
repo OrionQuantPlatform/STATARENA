@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py", line 511, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py", line 421, in main
+    with psycopg.connect(os.environ['ORION_PILOT_DATABASE_URL'],options=WRITER_OPTIONS,autocommit=True) as conn:
+         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red/worker-dsn-tripwire/sitecustomize.py", line 6, in no_network_connect
+    raise RuntimeError('local_worker_connect_tripwire_no_network')
+RuntimeError: local_worker_connect_tripwire_no_network

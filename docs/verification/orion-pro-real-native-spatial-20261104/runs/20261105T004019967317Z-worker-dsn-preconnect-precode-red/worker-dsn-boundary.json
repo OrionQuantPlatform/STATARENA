@@ -1,0 +1,231 @@
+{
+  "status": "fail",
+  "scope": "genuine worker CLI subprocess + driver tripwire; no external connection",
+  "cases": [
+    {
+      "case": "external_uri",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "missing_host",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "empty_host",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "multihost",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "all_loopback_multihost",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "external_hostaddr",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "mismatched_v4_v6",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "mismatched_v6_v4",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "multihostaddr",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "empty_hostaddr",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "external_env_hostaddr",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "unix_socket",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    },
+    {
+      "case": "malformed_uri",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py",
+        "--worker",
+        "--deadlines-only",
+        "--evidence",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T004019967317Z-worker-dsn-preconnect-precode-red"
+      ],
+      "exitCode": 1,
+      "driverConnectTripwireReached": true,
+      "secretAbsentFromOutput": true,
+      "passed": false,
+      "actualNetworkAttempts": 0
+    }
+  ],
+  "mismatches": [
+    "external_uri",
+    "missing_host",
+    "empty_host",
+    "multihost",
+    "all_loopback_multihost",
+    "external_hostaddr",
+    "mismatched_v4_v6",
+    "mismatched_v6_v4",
+    "multihostaddr",
+    "empty_hostaddr",
+    "external_env_hostaddr",
+    "unix_socket",
+    "malformed_uri"
+  ],
+  "actualNetworkAttempts": 0,
+  "sourceCalls": 0
+}
