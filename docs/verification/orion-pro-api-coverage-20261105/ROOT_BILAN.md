@@ -13,3 +13,5 @@ La CI ajoute ce même E2E, avec son reçu de référence pré-code, son graphe d
 Commit suggéré : `fix: close unversioned football fallbacks in Pro mode`.
 
 La première archive CI Pro mesure238214600B compressés. Les liens node_modules créés pour les serveurs locaux sont exclus des prochains uploads ; les sources canoniques et les preuves restent incluses. La taille corrigée sera mesurée après la prochaine CI, sans annoncer de gain anticipé.
+
+La CI41942233218 confirme3jobs verts et la même couverture13suites/187cas. L’archive Pro passe de238214600à7194175B compressés (**−96,97996%**,231020425B de moins par nouveau run). L’inspection de la nouvelleZIP vérifie son SHA256, tous les CRC,878entrées,0entrée node_modules et les13espaces de résultats requis, dont19/19pour la garde. Les anciennes archives restent conservées ; aucun espace RDS/S3 récupéré n’est déduit de ce chiffre. Preuves : ci/artifact-policy-41942233218.json et ci/ARCHIVE_INSPECTION_41942233218.json.
