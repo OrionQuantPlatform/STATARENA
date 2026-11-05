@@ -1,0 +1,3 @@
+usage: supervise_real.py [-h] [--run] [--mode {real,smoke}]
+                         [--release RELEASE] [--release-sha256 RELEASE_SHA256]
+supervise_real.py: error: unrecognized arguments: --attempt v2

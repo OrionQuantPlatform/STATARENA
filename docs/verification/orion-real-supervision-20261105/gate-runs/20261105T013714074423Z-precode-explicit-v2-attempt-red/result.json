@@ -1,0 +1,84 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/monitor_gate.py",
+    "--label",
+    "precode-explicit-v2-attempt-red"
+  ],
+  "expected": "PROTOCOL.md pre-code matrix",
+  "launcherPresentAtStart": true,
+  "cases": [
+    {
+      "case": "offline_plan",
+      "status": "pass",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/supervise_real.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "actual": {
+        "status": "offline_plan",
+        "mode": "real",
+        "childStarted": false,
+        "bounds": {
+          "wallSeconds": 1800,
+          "interruptSeconds": 1770,
+          "diskBytes": 4294967296,
+          "softDiskBytes": 3758096384,
+          "heartbeatSeconds": 15,
+          "sampleSeconds": 1,
+          "cleanupSeconds": 30,
+          "statementTimeoutMs": 8000,
+          "lockTimeoutMs": 1000
+        },
+        "sourceBodiesRead": 0,
+        "remoteActions": []
+      }
+    },
+    {
+      "case": "offline_attempt_v2",
+      "status": "fail",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/supervise_real.py",
+        "--mode",
+        "real",
+        "--attempt",
+        "v2"
+      ],
+      "exitCode": 2,
+      "expectedExitCode": 0,
+      "actual": {}
+    },
+    {
+      "case": "unsigned_real_refused",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    },
+    {
+      "case": "malformed_release_refused",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    },
+    {
+      "case": "unsigned_attempt_v2_refused",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    },
+    {
+      "case": "owned_source_free_smoke",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    }
+  ],
+  "sourceAccessAuthorized": false,
+  "counts": {
+    "pass": 1,
+    "fail": 1,
+    "unverified": 4
+  },
+  "status": "fail",
+  "expectedPreCodeRedObserved": false,
+  "gateSha256": "926a09fda0ab953b0088ddce51d717dcdfc5d484c7d09a48de80e6da885deec4"
+}

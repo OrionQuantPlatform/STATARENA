@@ -1,0 +1,11 @@
+{
+  "atUtc": "2026-11-05T01:56:09.404189+00:00",
+  "profile": "statarena",
+  "account": "361769570630",
+  "arn": "arn:aws:iam::361769570630:user/hugo.lemonnier",
+  "awsCli": "2.39.3",
+  "method": "Previously authorized aws login --profile statarena; selected existing browser session for the same account, verified CLI completion, visible success and STS.",
+  "authorization": "Existing user approval to reconnect AWS; no new role/policy/resource or expanded permissions.",
+  "signedUrlsOrCredentialsPersisted": false,
+  "suggestedCommit": "chore: record verified AWS session renewal"
+}

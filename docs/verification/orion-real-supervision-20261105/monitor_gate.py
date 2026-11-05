@@ -11,7 +11,8 @@ import sys
 BASE = Path(__file__).resolve().parent
 ROOT = BASE.parents[2]
 TARGET = BASE / 'supervise_real.py'
-CASES = ['offline_plan', 'unsigned_real_refused', 'malformed_release_refused', 'owned_source_free_smoke']
+CASES = ['offline_plan', 'offline_attempt_v2', 'unsigned_real_refused', 'malformed_release_refused',
+         'unsigned_attempt_v2_refused', 'owned_source_free_smoke']
 
 
 def main():
@@ -27,9 +28,10 @@ def main():
     env = {k: os.environ[k] for k in ['PATH', 'HOME', 'TMPDIR', 'USER', 'LANG', 'LC_ALL'] if k in os.environ}
     env['PYTHONPATH'] = '/tmp/statarena-publication-test-python'
     env['PYTHONDONTWRITEBYTECODE'] = '1'
-    calls = [([], 0), (['--run', '--mode', 'real'], 2),
+    calls = [([], 0), (['--mode', 'real', '--attempt', 'v2'], 0), (['--run', '--mode', 'real'], 2),
              (['--run', '--mode', 'real', '--release', str(malformed)], 2),
-             (['--run', '--mode', 'smoke'], 0)]
+             (['--run', '--mode', 'real', '--attempt', 'v2'], 2),
+             (['--run', '--mode', 'smoke', '--attempt', 'v2'], 0)]
     blocked = False
     for case, (flags, expected_exit) in zip(CASES, calls):
         if blocked:
@@ -44,8 +46,9 @@ def main():
         except (ValueError, IndexError):
             actual = {}
         passed = result.returncode == expected_exit
-        if case == 'offline_plan':
+        if case in ['offline_plan', 'offline_attempt_v2']:
             passed = passed and actual.get('status') == 'offline_plan' and actual.get('childStarted') is False
+            if case == 'offline_attempt_v2':passed = passed and actual.get('attempt') == 'v2'
         elif case.endswith('_refused'):
             passed = passed and actual.get('status') == 'real_release_refused' and actual.get('childStarted') is False
         else:
@@ -56,7 +59,7 @@ def main():
                                 'exitCode': result.returncode, 'expectedExitCode': expected_exit, 'actual': actual})
         blocked = not passed
     report['counts'] = {s: sum(c['status'] == s for c in report['cases']) for s in ['pass', 'fail', 'unverified']}
-    report['status'] = 'pass' if report['counts'] == {'pass': 4, 'fail': 0, 'unverified': 0} else 'fail'
+    report['status'] = 'pass' if report['counts'] == {'pass': len(CASES), 'fail': 0, 'unverified': 0} else 'fail'
     report['expectedPreCodeRedObserved'] = not report['launcherPresentAtStart'] and report['counts']['fail'] == 1
     report['gateSha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     (run / 'result.json').write_text(json.dumps(report, indent=2) + '\n')

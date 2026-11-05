@@ -1,0 +1,51 @@
+{
+  "kind": "ROOT_ONE_LOCAL_RAM_RECONCILIATION_RELEASE_V2",
+  "atUtc": "2026-11-05T01:49:37.902669+00:00",
+  "rootDecision": "reviewed_exact_one_run",
+  "mode": "real",
+  "attempt": "v2",
+  "oneRunOnly": true,
+  "label": "real-native-spatial-overlay-e0810f-v2",
+  "sourceSocket": "/tmp/orion-real-native-spatial-20261105-v2/source.sock",
+  "capturePid": 54737,
+  "sourceCounters": {
+    "selects": 4,
+    "decodedBytes": 9682314,
+    "objectHttpRequests": 3,
+    "physicalHttpBytes": 3961
+  },
+  "bounds": {
+    "wallSeconds": 1800,
+    "interruptSeconds": 1770,
+    "diskBytes": 4294967296,
+    "softDiskBytes": 3758096384,
+    "heartbeatSeconds": 15,
+    "sampleSeconds": 1,
+    "cleanupSeconds": 30,
+    "statementTimeoutMs": 8000,
+    "lockTimeoutMs": 1000
+  },
+  "pinnedFiles": {
+    "docs/verification/orion-real-supervision-20261105/supervise_real.py": "3bc1d19527d7b673ec3cc39003fc839d14fb03e1dab18ac36e7415224f2251e6",
+    "docs/verification/orion-pro-real-native-spatial-20261104/e2e.py": "2a57aa266921bd12f2f5372469132ad1f130366afa6426102b53c402248f3eed",
+    "docs/verification/orion-pro-real-native-spatial-20261104/candidate.py": "218f378b599cd166f747fbacf6f79148220150fbc2bede4f81bef535eca553bc",
+    "docs/verification/orion-pro-real-native-spatial-20261104/capture.py": "1498d36da2f83ea548db8a3433dd4d78f08add0e0bd6a5c90ef68b60851f7fe9",
+    "docs/verification/orion-pro-real-native-spatial-20261104/MANIFEST.json": "654993cac446a9aa81cc2079a6b9fafd6ddef3a3188ff54ea5297b1677f5aaa9",
+    "docs/verification/orion-pro-real-native-spatial-20261104/FIELDS.json": "3db1f87b86183aed7550dbf258b528b78f4293e3c6253cfece6f6d7bb46adbae",
+    "docs/verification/orion-pro-real-native-spatial-20261104/capture-v2/ready-snapshot.json": "4d2ac59a6815eb02850ea78f74cae8fc22d33f17d082688676a1925744a01d2b",
+    "docs/verification/orion-pro-real-native-spatial-20261104/neon-error-metadata/result.json": "5e1369ee600b2785cf7f758d1eb9a9f1283364a426a4efd4bc59000287936ac9",
+    "dashboard/scripts/orion_pro_normalize.py": "4b98a829bc7e32e11a7e66381ffecae6248ce536d17771aa080502374fe844bc",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "docs/verification/orion-validator-membership-20261105/candidate.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "docs/verification/orion-pro-pilot-20261104/real-source-budget.json": "d539243f7ff612ee3819d8023d95c6ef186848873e511e226e49b1c71d152d6b",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget.json": "58266b444de46a8c957e2f5b480f5dfcb2f9bddba83402615723c16d5cca7281",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget-v2.json": "30cd865d10da6d2dc28e53f0f741756549c576bfa35a90e050062a462dc078ac",
+    "docs/verification/orion-real-spatial-digest-20261105/spatial_native.py": "f7e13a24c2b34561ad19e6a6bfb03bc3942df97505080996ed2206ce6218f69c",
+    "docs/verification/orion-real-supervision-20261105/real_execution_ledger.json": "871f6458ed07f26393599312c42d69550e735e7ed079ec66d6ab70fa9b6b86d3"
+  },
+  "sourceFreeGateReceipt": "docs/verification/orion-real-supervision-20261105/gate-runs/20261105T013810490777Z-explicit-v2-offline-and-owned-smoke/result.json",
+  "sourceFreeGateSha256": "27d6d2bd714a23e4e0ed5e768c373ff600a2aafefdaf8750df34915cc705dab7",
+  "suggestedCommit": "test: reconcile exact native spatial values and fresh replay from existing RAM"
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/initdb",
+      "-D",
+      "/tmp/orion-owned-ndx9_cyo/orion-pro-e2e-z6bri6xm/data",
+      "--auth=trust",
+      "--no-locale",
+      "--encoding=UTF8"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 594.811,
+    "stdout": "001-initdb.stdout.log",
+    "stderr": "001-initdb.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/tmp/orion-owned-ndx9_cyo/orion-pro-e2e-z6bri6xm/data",
+      "-l",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/runs/20261105T011606456493Z-local-overlay-probe-allowed/postgres.log",
+      "-o",
+      "-h 127.0.0.1 -p 55813 -k /tmp/orion-owned-ndx9_cyo/orion-pro-e2e-z6bri6xm/socket -c fsync=on",
+      "-w",
+      "start"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 140.081,
+    "stdout": "002-postgres-start.stdout.log",
+    "stderr": "002-postgres-start.stderr.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_migrate.py",
+      "--local",
+      "--target",
+      "013"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 761.08,
+    "stdout": "003-migration.stdout.log",
+    "stderr": "003-migration.stderr.log"
+  },
+  {
+    "argv": [
+      "/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin/pg_ctl",
+      "-D",
+      "/tmp/orion-owned-ndx9_cyo/orion-pro-e2e-z6bri6xm/data",
+      "-m",
+      "fast",
+      "-w",
+      "stop"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 114.894,
+    "stdout": "004-postgres-stop.stdout.log",
+    "stderr": "004-postgres-stop.stderr.log"
+  }
+]

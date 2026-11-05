@@ -25,7 +25,9 @@ HELPER = SOURCE / 'e2e.py'
 PG_BIN = Path('/tmp/statarena-cache-test-tools/node_modules/@embedded-postgres/darwin-arm64/native/bin')
 SOCKET = Path('/tmp/orion-real-native-spatial-20261105-v2/source.sock')
 RAM_PID = 54737
-REAL_LABEL = 'real-native-spatial-overlay-e0810f-v1'
+REAL_LABEL = 'real-native-spatial-overlay-e0810f-v2'
+RELEASE_PATH = BASE / 'ROOT_REAL_RELEASE_V2.json'
+REAL_LEDGER = BASE / 'real_execution_ledger_v2.json'
 SQL_PATH = 'docs/verification/orion-validator-membership-20261105/candidate.sql'
 SQL_SHA = 'e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6'
 CASES = ['empty_local_bootstrap', 'worker_dsn_preconnect_boundary', 'local_validator_overlay_contract',
@@ -47,7 +49,9 @@ PIN_PATHS = [str(Path(__file__).resolve().relative_to(ROOT)),
              'dashboard/scripts/orion_pro_normalize.py',
              'docs/architecture/orion-plan-20261104/target-schema.proposed.json',
              'dashboard/backend/migrations/012_orion_pro_domain.sql',
-             'dashboard/backend/migrations/013_orion_pro_integrity.sql', SQL_PATH, *LEDGERS]
+             'dashboard/backend/migrations/013_orion_pro_integrity.sql', SQL_PATH, *LEDGERS,
+             'docs/verification/orion-real-spatial-digest-20261105/spatial_native.py',
+             'docs/verification/orion-real-supervision-20261105/real_execution_ledger.json']
 COUNTERS = {'selects': 4, 'decodedBytes': 9682314, 'objectHttpRequests': 3, 'physicalHttpBytes': 3961}
 BOUNDS = {'wallSeconds': 1800, 'interruptSeconds': 1770, 'diskBytes': 4 * 1024**3,
           'softDiskBytes': 7 * 1024**3 // 2, 'heartbeatSeconds': 15, 'sampleSeconds': 1,
@@ -65,7 +69,7 @@ def save(path, value):
 def release_valid(path, supplied_sha):
     if path is None or supplied_sha is None:
         return False
-    if path.resolve() != BASE / 'ROOT_REAL_RELEASE.json' or path.is_symlink():
+    if path.resolve() != RELEASE_PATH or path.is_symlink():
         return False
     try:
         if sha(path) != supplied_sha:
@@ -73,10 +77,10 @@ def release_valid(path, supplied_sha):
         release = json.loads(path.read_text())
         expected = {'kind', 'atUtc', 'rootDecision', 'mode', 'oneRunOnly', 'label', 'sourceSocket', 'capturePid',
                     'sourceCounters', 'bounds', 'pinnedFiles', 'sourceFreeGateReceipt', 'sourceFreeGateSha256',
-                    'suggestedCommit'}
+                    'suggestedCommit', 'attempt'}
         if set(release) != expected:
             return False
-        if release['kind'] != 'ROOT_ONE_LOCAL_RAM_RECONCILIATION_RELEASE_V1' or release['rootDecision'] != 'reviewed_exact_one_run':
+        if release['kind'] != 'ROOT_ONE_LOCAL_RAM_RECONCILIATION_RELEASE_V2' or release['rootDecision'] != 'reviewed_exact_one_run' or release['attempt'] != 'v2':
             return False
         if (release['mode'], release['oneRunOnly'], release['label'], release['sourceSocket'], release['capturePid']) != ('real', True, REAL_LABEL, str(SOCKET), RAM_PID):
             return False
@@ -89,7 +93,7 @@ def release_valid(path, supplied_sha):
         gate = ROOT / release['sourceFreeGateReceipt']
         if not gate.resolve().is_relative_to(BASE / 'gate-runs') or sha(gate) != release['sourceFreeGateSha256']:
             return False
-        if json.loads(gate.read_text())['counts'] != {'pass': 4, 'fail': 0, 'unverified': 0}:
+        if json.loads(gate.read_text())['counts'] != {'pass': 6, 'fail': 0, 'unverified': 0}:
             return False
         os.kill(RAM_PID, 0)
         if not stat.S_ISSOCK(SOCKET.lstat().st_mode) or SOCKET.lstat().st_uid != os.getuid():
@@ -247,7 +251,7 @@ def execute(mode, release_sha):
     evidence = BASE / 'runs' / (stamp + '-' + mode)
     evidence.mkdir(parents=True)
     if mode == 'real':
-        with (BASE / 'real_execution_ledger.json').open('x') as stream:
+        with REAL_LEDGER.open('x') as stream:
             json.dump({'state': 'started', 'releaseSha256': release_sha, 'label': label, 'evidence': str(evidence), 'atUtc': stamp}, stream, indent=2)
             stream.write('\n')
     # Keep nested PG Unix socket paths within macOS sockaddr_un bounds.
@@ -261,7 +265,7 @@ def execute(mode, release_sha):
     env.update(TMPDIR=str(private_tmp), PYTHONPATH='/tmp/statarena-publication-test-python',
                PYTHONDONTWRITEBYTECODE='1', AWS_EC2_METADATA_DISABLED='true', STATARENA_SOURCE_FORBIDDEN='1')
     start, launch_epoch = time.monotonic(), time.time()
-    report = {'kind': 'ROOT_OWNED_LOCAL_RECONCILIATION_SUPERVISION', 'mode': mode, 'command': command,
+    report = {'kind': 'ROOT_OWNED_LOCAL_RECONCILIATION_SUPERVISION', 'mode': mode, 'attempt': 'v2', 'command': command,
               'releaseSha256': release_sha, 'pinnedFiles': {p: sha(ROOT / p) for p in PIN_PATHS},
               'sourceLedgersBefore': before_ledgers, 'bounds': BOUNDS, 'sourceBodiesReadBySupervisor': 0,
               'remoteActions': [], 'fullAcceptance': False, 'expectedCases': expected,
@@ -404,9 +408,9 @@ def execute(mode, release_sha):
                       streams={n: {'bytes': v['bytes'], 'sha256': v['hash'].hexdigest()} for n, v in stream_stats.items()},
                       unexercisedBranches=['Budget interrupt/force-stop and fallback postmaster cleanup are not exercised by a normally completing smoke.'])
         if mode == 'real':
-            ledger = json.loads((BASE / 'real_execution_ledger.json').read_text())
+            ledger = json.loads(REAL_LEDGER.read_text())
             ledger.update(state=report['status'], elapsedSeconds=report['elapsedSeconds'])
-            save(BASE / 'real_execution_ledger.json', ledger)
+            save(REAL_LEDGER, ledger)
         save(evidence / 'result.json', report)
         events.close()
     print(json.dumps({'status': report['status'], 'mode': mode, 'innerCounts': report.get('innerCounts'),
@@ -419,11 +423,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--run', action='store_true')
     parser.add_argument('--mode', choices=['real', 'smoke'], default='real')
+    parser.add_argument('--attempt', choices=['v2'], default='v2')
     parser.add_argument('--release', type=Path)
     parser.add_argument('--release-sha256')
     args = parser.parse_args()
     if not args.run:
-        print(json.dumps({'status': 'offline_plan', 'mode': args.mode, 'childStarted': False,
+        print(json.dumps({'status': 'offline_plan', 'mode': args.mode, 'attempt': args.attempt, 'childStarted': False,
                           'bounds': BOUNDS, 'sourceBodiesRead': 0, 'remoteActions': []}))
         return 0
     if args.mode == 'real' and not release_valid(args.release, args.release_sha256):
