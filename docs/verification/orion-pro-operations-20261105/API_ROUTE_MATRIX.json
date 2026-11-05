@@ -8,12 +8,13 @@
     "local-appearances-v1-E2E-qualified": 1,
     "local-entities-v1-E2E-qualified": 8,
     "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 18,
+    "reader-and-data-contract-required": 14,
     "local-fixture-aliases-v1-E2E-qualified": 2,
     "local-competitions-v1-E2E-qualified": 8,
     "local-native-match-details-v1-E2E-qualified": 6,
     "local-archives-v1-E2E-qualified": 4,
-    "local-shot-detail-v1-E2E-qualified": 2
+    "local-shot-detail-v1-E2E-qualified": 2,
+    "local-player-period-v1-E2E-qualified": 4
   },
   "rows": [
     {
@@ -700,13 +701,13 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-player-period-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_players",
         "football.player_match_stats",
         "football.player_match_metric_values"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Published normalized typed players and periods with exact composite 017 dependency admission. Source raw layout and real dataset coverage remain separate."
     },
     {
       "path": "/api/pitchapi/matches/{match}/players/halves",
@@ -715,13 +716,13 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-player-period-v1-E2E-qualified",
       "defined103Destinations": [
         "football.player_match_stats",
         "football.player_match_metric_values",
         "football.periods"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Published normalized typed players and periods with exact composite 017 dependency admission. Source raw layout and real dataset coverage remain separate."
     },
     {
       "path": "/api/pitchapi/matches/{match}/lineups",
@@ -843,13 +844,13 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-player-period-v1-E2E-qualified",
       "defined103Destinations": [
         "football.match_players",
         "football.player_match_stats",
         "football.player_match_metric_values"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Published normalized typed players and periods with exact composite 017 dependency admission. Source raw layout and real dataset coverage remain separate."
     },
     {
       "path": "/api/pitchapi/matches/{match}/players/{player}/halves",
@@ -858,12 +859,12 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "reader-and-data-contract-required",
+      "status": "local-player-period-v1-E2E-qualified",
       "defined103Destinations": [
         "football.player_match_stats",
         "football.player_match_metric_values"
       ],
-      "actionOrGap": "103 holds participants, period metrics/native31 values; exact provider group/layout/profile/image/ID states and source occurrence mapping still require field reconciliation. Preserve normalized performance/cohort products using existing facts."
+      "actionOrGap": "Published normalized typed players and periods with exact composite 017 dependency admission. Source raw layout and real dataset coverage remain separate."
     },
     {
       "path": "/api/pitchapi/matches/{match}/players/{player}/shots",

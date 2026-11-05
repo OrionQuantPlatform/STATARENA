@@ -1,8 +1,8 @@
 {
   "kind": "exhaustive_remaining_backend_category_assignment",
-  "atUtc": "2026-11-05T17:37:29.589551+00:00",
+  "atUtc": "2026-11-05T18:00:45.304062+00:00",
   "routeMatrixPath": "docs/verification/orion-pro-operations-20261105/API_ROUTE_MATRIX.json",
-  "routeMatrixSha256": "0df8574934483a7b7ae63276b8603202935a5a953605a9a5397b696ad0c1463a",
+  "routeMatrixSha256": "0695d1886a2b5392d0683e0f7e7de37777d53d1c449cb5fe9d1d6b67cb5b898c",
   "localQualifiedOtherForms": 19,
   "remainingForms": 38,
   "routeCountsAreNotWorkloadPercentages": true,
@@ -46,7 +46,7 @@
     {
       "id": "player-statistics-advanced",
       "owner": "backend_entities",
-      "status": "two_shot_forms_integrated_nine_in_development",
+      "status": "six_forms_integrated_five_in_development",
       "routes": [
         "/api/pitchapi/matches/{match}/players",
         "/api/pitchapi/matches/{match}/players/halves",
@@ -64,9 +64,12 @@
       "testedLocally": false,
       "pushed": false,
       "deployed": false,
-      "localQualifiedForms": 2,
-      "remainingForms": 9,
-      "shotEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_SHOT_ROUTER_REVIEW.json"
+      "localQualifiedForms": 6,
+      "remainingForms": 5,
+      "shotEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_SHOT_ROUTER_REVIEW.json",
+      "shotCommit": "2c95261e4c4a515d33039f9980c785d2ec4ff422",
+      "shotCI": 42076456754,
+      "periodEvidence": "docs/verification/orion-pro-player-statistics-20261105/ROOT_PLAYER_PERIOD_REVIEW.json"
     },
     {
       "id": "competitions-cups-standings",
@@ -108,12 +111,13 @@
       "evidence": "docs/verification/orion-pro-archives-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json",
       "commit": "1e6cd6c2e1f09245da55a5fe9cdb00336e02b638",
       "vercelFrontend": "READY dpl_3z2TwDwKPDQS3Uzrhnj7uen3Tzpd cle1",
-      "initialCiRun": 42075049725
+      "initialCiRun": 42075049725,
+      "verifiedOnSuccessorCi": 42076456754
     },
     {
       "id": "fifa-uefa-rankings",
-      "owner": "backend_entities",
-      "status": "queued",
+      "owner": "sql_publisher",
+      "status": "in_development",
       "routes": [
         "/api/rankings/index",
         "/api/rankings/edition",
@@ -128,7 +132,7 @@
     {
       "id": "enrichment-honours",
       "owner": "sql_publisher",
-      "status": "in_development",
+      "status": "module_tested_router_integration_pending",
       "routes": [
         "/api/club-wikidata",
         "/api/coach-portrait",
@@ -142,9 +146,9 @@
       "deployed": false
     }
   ],
-  "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer.",
+  "scheduling": "One active category per backend agent; queued categories start when its current category is integrated. RDS slot remains independent. No wait for exhaustive source transfer. FIFA/UEFA moved from queue to sql_publisher after the enrichment module handoff; one owner per category.",
   "dataPolicy": "Uncollected/unknown/rejected data remains explicit; no empty substitute or Neon/provider fallback",
   "suggestedCommit": "docs: assign remaining backend routes by category and dependencies",
-  "currentLocalQualifiedForms": 39,
-  "currentRemainingForms": 18
+  "currentLocalQualifiedForms": 43,
+  "currentRemainingForms": 14
 }

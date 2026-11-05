@@ -1,0 +1,12 @@
+2026-11-05 18:40:56.825 CET [78034] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-05 18:40:56.825 CET [78034] LOG:  listening on IPv4 address "127.0.0.1", port 57891
+2026-11-05 18:40:56.826 CET [78034] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-n5537nog/socket/.s.PGSQL.57891"
+2026-11-05 18:40:56.835 CET [78040] LOG:  database system was shut down at 2026-11-05 18:40:56 CET
+2026-11-05 18:40:56.837 CET [78034] LOG:  database system is ready to accept connections
+2026-11-05 18:40:59.072 CET [78034] LOG:  received fast shutdown request
+2026-11-05 18:40:59.072 CET [78034] LOG:  aborting any active transactions
+2026-11-05 18:40:59.073 CET [78034] LOG:  background worker "logical replication launcher" (PID 78043) exited with exit code 1
+2026-11-05 18:40:59.073 CET [78038] LOG:  shutting down
+2026-11-05 18:40:59.073 CET [78038] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 18:40:59.153 CET [78038] LOG:  checkpoint complete: wrote 2304 buffers (14.1%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.046 s, sync=0.032 s, total=0.080 s; sync files=1048, longest=0.001 s, average=0.001 s; distance=16940 kB, estimate=16940 kB; lsn=0/2813F10, redo lsn=0/2813F10
+2026-11-05 18:40:59.158 CET [78034] LOG:  database system is shut down
