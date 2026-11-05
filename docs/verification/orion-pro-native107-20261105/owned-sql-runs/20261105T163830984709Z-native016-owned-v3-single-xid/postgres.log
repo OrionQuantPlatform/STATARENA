@@ -1,0 +1,17 @@
+2026-11-05 17:38:32.125 CET [44251] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.0.13.5), 64-bit
+2026-11-05 17:38:32.125 CET [44251] LOG:  listening on IPv4 address "127.0.0.1", port 52293
+2026-11-05 17:38:32.126 CET [44251] LOG:  listening on Unix socket "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-pro-e2e-wwemhtou/socket/.s.PGSQL.52293"
+2026-11-05 17:38:32.131 CET [44257] LOG:  database system was shut down at 2026-11-05 17:38:32 CET
+2026-11-05 17:38:32.133 CET [44251] LOG:  database system is ready to accept connections
+2026-11-05 17:38:33.213 CET [44262] ERROR:  column "source_object_state" does not exist at character 8
+2026-11-05 17:38:33.213 CET [44262] STATEMENT:  SELECT source_object_state FROM football.match_lineups LIMIT 0
+2026-11-05 17:38:33.771 CET [44265] ERROR:  new row for relation "team_match_metric_values" violates check constraint "football_team_match_metric_values_family_ck"
+2026-11-05 17:38:33.771 CET [44265] DETAIL:  Failing row contains (1, 1, first_half, native107, native107_stats_exact, number, 9007199254740993, null, null, null, null, null, 29, 1, 7, null, native:item:0, f, f, football.team_match_metric_values, match-native-v1, native107_fixture_v1, edb305c233e7b068001d52f7b122b9bf610906f0884bac7f69b7cc82aa1bfde9, 1, provider, stats_exact, bootstrap_v1, 1).
+2026-11-05 17:38:33.771 CET [44265] STATEMENT:  INSERT INTO football.team_match_metric_values (contract_version,transform_version,transform_code_sha256,variant_key,is_canonical,provenance_kind,recorded_from_gen,match_id,team_id,match_team_revision_id,source_id,source_record_id,period_code,period_definition_version,family_code,metric_code,metric_definition_version,value_kind,numeric_value,text_value) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) RETURNING *
+2026-11-05 17:38:33.780 CET [44251] LOG:  received fast shutdown request
+2026-11-05 17:38:33.780 CET [44251] LOG:  aborting any active transactions
+2026-11-05 17:38:33.781 CET [44251] LOG:  background worker "logical replication launcher" (PID 44260) exited with exit code 1
+2026-11-05 17:38:33.782 CET [44255] LOG:  shutting down
+2026-11-05 17:38:33.782 CET [44255] LOG:  checkpoint starting: shutdown immediate
+2026-11-05 17:38:33.875 CET [44255] LOG:  checkpoint complete: wrote 2263 buffers (13.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.051 s, sync=0.040 s, total=0.094 s; sync files=1088, longest=0.002 s, average=0.001 s; distance=16871 kB, estimate=16871 kB; lsn=0/2802B98, redo lsn=0/2802B98
+2026-11-05 17:38:33.887 CET [44251] LOG:  database system is shut down

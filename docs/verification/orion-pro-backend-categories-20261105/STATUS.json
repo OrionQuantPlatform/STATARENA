@@ -64,7 +64,7 @@
     {
       "id": "competitions-cups-standings",
       "owner": "sql_publisher",
-      "status": "integrated_tested_locally",
+      "status": "pushed_verified_local_ci",
       "routes": [
         "/api/standings",
         "/api/open-cups",
@@ -77,9 +77,12 @@
       ],
       "module": "dashboard/backend/services/orion-pro-competitions.js",
       "testedLocally": true,
-      "pushed": false,
+      "pushed": true,
       "deployed": false,
-      "evidence": "docs/verification/orion-pro-competitions-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json"
+      "evidence": "docs/verification/orion-pro-competitions-20261105/ROOT_ACTUAL_ROUTER_REVIEW.json",
+      "commit": "0c26244f204d1ce09ed64af2c70ef3eb5579a1f2",
+      "ciRun": 42068372359,
+      "vercelFrontend": "READY dpl_44bW9W66wXGR85jM1QQFtmLe9RHf cle1"
     },
     {
       "id": "archives",

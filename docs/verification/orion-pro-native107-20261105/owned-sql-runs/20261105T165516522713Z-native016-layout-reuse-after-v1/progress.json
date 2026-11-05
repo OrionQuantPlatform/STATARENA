@@ -1,0 +1,393 @@
+{
+  "kind": "owned_016_native_sql_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "tests/orion_pro_native107_sql_local.py",
+    "--run-owned",
+    "--layout-reuse",
+    "--label",
+    "native016-layout-reuse-after-v1"
+  ],
+  "expected": "OWNED_SQL_PROTOCOL.md and frozen owned_cases.py D00\u2013D22",
+  "cases": [
+    {
+      "case": "D00",
+      "status": "pass",
+      "seconds": 0.004,
+      "actual": {
+        "sqlstate": "42703",
+        "message": "column \"source_object_state\" does not exist"
+      }
+    },
+    {
+      "case": "D01",
+      "status": "pass",
+      "seconds": 0.264,
+      "actual": {
+        "rowsExact": true,
+        "catalogueExact": true,
+        "tables": 94
+      }
+    },
+    {
+      "case": "D02",
+      "status": "pass",
+      "seconds": 0.187,
+      "actual": {
+        "nativeTotals": [
+          98,
+          1823,
+          447
+        ],
+        "unchangedOldRows": 179,
+        "coordinateText": "0.8200000000000001",
+        "oldViewShape": [
+          21793,
+          "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+          "double precision"
+        ],
+        "journalNoop": true
+      }
+    },
+    {
+      "case": "D03",
+      "status": "pass",
+      "seconds": 0.097,
+      "actual": {
+        "generation": 5,
+        "typedGraphRows": 16,
+        "actual": {
+          "events": [
+            [
+              "",
+              "value",
+              "",
+              false
+            ],
+            [
+              null,
+              "null",
+              null,
+              false
+            ]
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D04",
+      "status": "pass",
+      "seconds": 0.087,
+      "actual": {
+        "generation": 6,
+        "typedGraphRows": 16,
+        "actual": {
+          "members": [
+            [
+              "0.8200000000000000001",
+              null,
+              false
+            ],
+            [
+              "0.8200000000000000001",
+              null,
+              false
+            ]
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D05",
+      "status": "pass",
+      "seconds": 0.084,
+      "actual": {
+        "generation": 7,
+        "typedGraphRows": 26,
+        "actual": {
+          "items": [
+            [
+              "repeated",
+              "",
+              null,
+              "9007199254740993",
+              ""
+            ],
+            [
+              "repeated",
+              "",
+              null,
+              "9007199254740993",
+              ""
+            ]
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D06",
+      "status": "pass",
+      "seconds": 0.012,
+      "actual": {
+        "generation": 8,
+        "typedGraphRows": 7,
+        "actual": {
+          "totals": [
+            "9007199254740993",
+            null,
+            "0",
+            "9007199254740993"
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D07",
+      "status": "pass",
+      "seconds": 0.011,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: admission unrecorded event field"
+      }
+    },
+    {
+      "case": "D08",
+      "status": "pass",
+      "seconds": 0.01,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: locator event order or record differs"
+      }
+    },
+    {
+      "case": "D09",
+      "status": "pass",
+      "seconds": 0.01,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: profile event actor observation differs"
+      }
+    },
+    {
+      "case": "D10",
+      "status": "pass",
+      "seconds": 0.011,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: profile event actor observation differs"
+      }
+    },
+    {
+      "case": "D11",
+      "status": "pass",
+      "seconds": 0.012,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: lineup member list has a gap or wrong count"
+      }
+    },
+    {
+      "case": "D12",
+      "status": "pass",
+      "seconds": 0.01,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: lineup member, physical profile or scalar differs"
+      }
+    },
+    {
+      "case": "D13",
+      "status": "pass",
+      "seconds": 0.013,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: stats item records or order differ"
+      }
+    },
+    {
+      "case": "D14",
+      "status": "pass",
+      "seconds": 0.013,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: stats scalar side, period, mapping, source or numeric state differs"
+      }
+    },
+    {
+      "case": "D15",
+      "status": "pass",
+      "seconds": 0.023,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: stats scalar side, period, mapping, source or numeric state differs"
+      }
+    },
+    {
+      "case": "D16",
+      "status": "pass",
+      "seconds": 0.009,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: h2h summary or entry order differs"
+      }
+    },
+    {
+      "case": "D17",
+      "status": "pass",
+      "seconds": 0.009,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: h2h summary or entry order differs"
+      }
+    },
+    {
+      "case": "D18",
+      "status": "pass",
+      "seconds": 0.01,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: identity root record or ID state differs"
+      }
+    },
+    {
+      "case": "D19",
+      "status": "pass",
+      "seconds": 0.035,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: identity event field witness differs"
+      }
+    },
+    {
+      "case": "D20",
+      "status": "pass",
+      "seconds": 0.028,
+      "actual": {
+        "owner_update": {
+          "sqlstate": "55000",
+          "message": "Retained typed observations and collection children are immutable"
+        },
+        "ingest_update": {
+          "sqlstate": "42501",
+          "message": "permission denied for table match_team_stat_items"
+        },
+        "runtime_insert": {
+          "sqlstate": "42501",
+          "message": "permission denied for table match_team_stat_items"
+        },
+        "late_child": {
+          "sqlstate": "55000",
+          "message": "Generation must be draft and owned by the current transaction"
+        }
+      }
+    },
+    {
+      "case": "D21",
+      "status": "pass",
+      "seconds": 0.015,
+      "actual": {
+        "generation": 23,
+        "typedGraphRows": 16,
+        "actual": {
+          "events": [
+            [
+              "",
+              "value",
+              "",
+              false
+            ],
+            [
+              null,
+              "null",
+              null,
+              false
+            ]
+          ]
+        },
+        "committed": true,
+        "ordinaryRuntimeReadback": true
+      }
+    },
+    {
+      "case": "D22",
+      "status": "pass",
+      "seconds": 0.037,
+      "actual": {
+        "retainedPhysicalProfile": 3,
+        "closedAt": 25,
+        "allNonNoop015LinesExact": true,
+        "httpQualification": false
+      }
+    },
+    {
+      "case": "D23",
+      "status": "pass",
+      "seconds": 0.026,
+      "actual": {
+        "previousDocument": 21,
+        "newDocument": 24,
+        "generation": 28,
+        "reversedPhysicalRefs": [
+          [
+            19,
+            20
+          ],
+          [
+            17,
+            18
+          ]
+        ],
+        "scalarRowsBeforeAfter": [
+          4,
+          4
+        ],
+        "newScalars": 0,
+        "retainedOldLayoutItems": 2,
+        "wrongSideRefusal": {
+          "sqlstate": "23514",
+          "message": "native107: stats scalar side, period, mapping, source or numeric state differs"
+        }
+      }
+    }
+  ],
+  "sourceCalls": 0,
+  "cloudCalls": 0,
+  "rdsWrites": [],
+  "externalSqlCalls": 1222,
+  "inputSha256": {
+    "tests/orion_pro_native107_sql_local.py": "bd9151fbe46ae4e2d29bcf72904fedcda06200de6bda16affa4059c85d0faeca",
+    "docs/verification/orion-pro-native107-20261105/OWNED_SQL_PROTOCOL.md": "0e6314dfb7ed8bdb81eb415b5f0d0b730d22d94860f94e068151b96850e1b1cc",
+    "docs/verification/orion-pro-native107-20261105/owned_cases.py": "5873adf1f3833ceb70c75875d8b06cc3ae8b9e39851251cc26517375c4ad3e0c",
+    "docs/verification/orion-pro-native107-20261105/owned_fixture.py": "edb305c233e7b068001d52f7b122b9bf610906f0884bac7f69b7cc82aa1bfde9",
+    "docs/verification/orion-pro-native107-20261105/layout_reuse_case.py": "fec1635a7028e2e13a7827b2339be47f424bbe9403c8c9fe712e51f3820ca489",
+    "docs/verification/orion-pro-native107-20261105/PROTOCOL.md": "b37829fbafe7373a0e51a32c124f10002bcb9eeae6426a17daf6cf276803deb7",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "docs/architecture/orion-native-details-107-20261105/target-schema.approved-107.json": "f516804f6e2381b5e55763860b6470127b88a567006973afa79c0a9f5f0d9ae3",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/migrations/014_orion_pro_membership_nonnull.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "dashboard/backend/migrations/015_orion_pro_metric_membership_guard.sql": "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+    "dashboard/backend/migrations/016_orion_pro_native_match_details.sql": "12d63eaab6f4d610de3f2ff4efc0dcd71059c4d2e489a5f30d62d2a8498fd087",
+    "dashboard/scripts/orion_pro_native107_schema.py": "91c08961d519a3dba00e5e3b68a9eccd1f3e49f9d702caef39ee412d763533f6",
+    "dashboard/scripts/orion_pro_native107_delta.py": "8df1c6e77d52d407e8d029e886f182f5aeb5eeb7467f69c994db40d677d0f3a7",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/sql/orion_pro_native107_validation.sql": "ee5109ddc9938900b20f2faa92d919a223f4f4523a5593574d10a505c76e2ec7",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-pilot-20261104/fixtures.py": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659",
+    "docs/verification/orion-pro-readers-20261104/fixture.py": "573bfc5e8778ce2ec00655864c202b8f1431b1a5d52cabc2bb5ac5f33886cc1c"
+  },
+  "bounds": {
+    "seconds": 600,
+    "sqlCalls": 15000,
+    "ownedPg": 1,
+    "connections": 4,
+    "diskBytes": 1073741824,
+    "evidenceBytes": 100663296
+  }
+}

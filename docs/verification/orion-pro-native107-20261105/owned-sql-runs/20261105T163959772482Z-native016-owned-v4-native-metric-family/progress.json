@@ -1,0 +1,209 @@
+{
+  "kind": "owned_016_native_sql_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "tests/orion_pro_native107_sql_local.py",
+    "--run-owned",
+    "--label",
+    "native016-owned-v4-native-metric-family"
+  ],
+  "expected": "OWNED_SQL_PROTOCOL.md and frozen owned_cases.py D00\u2013D22",
+  "cases": [
+    {
+      "case": "D00",
+      "status": "pass",
+      "seconds": 0.001,
+      "actual": {
+        "sqlstate": "42703",
+        "message": "column \"source_object_state\" does not exist"
+      }
+    },
+    {
+      "case": "D01",
+      "status": "pass",
+      "seconds": 0.197,
+      "actual": {
+        "rowsExact": true,
+        "catalogueExact": true,
+        "tables": 94
+      }
+    },
+    {
+      "case": "D02",
+      "status": "pass",
+      "seconds": 0.169,
+      "actual": {
+        "nativeTotals": [
+          98,
+          1823,
+          447
+        ],
+        "unchangedOldRows": 179,
+        "coordinateText": "0.8200000000000001",
+        "oldViewShape": [
+          21793,
+          "{statarena_admin=arwdDxtm/statarena_admin,statarena_ingest=r/statarena_admin,statarena_runtime=r/statarena_admin}",
+          "double precision"
+        ],
+        "journalNoop": true
+      }
+    },
+    {
+      "case": "D03",
+      "status": "pass",
+      "seconds": 0.099,
+      "actual": {
+        "generation": 5,
+        "typedGraphRows": 16,
+        "actual": {
+          "events": [
+            [
+              "",
+              "value",
+              "",
+              false
+            ],
+            [
+              null,
+              "null",
+              null,
+              false
+            ]
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D04",
+      "status": "pass",
+      "seconds": 0.074,
+      "actual": {
+        "generation": 6,
+        "typedGraphRows": 16,
+        "actual": {
+          "members": [
+            [
+              "0.8200000000000000001",
+              null,
+              false
+            ],
+            [
+              "0.8200000000000000001",
+              null,
+              false
+            ]
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D05",
+      "status": "pass",
+      "seconds": 0.081,
+      "actual": {
+        "generation": 7,
+        "typedGraphRows": 26,
+        "actual": {
+          "items": [
+            [
+              "repeated",
+              "",
+              null,
+              "9007199254740993",
+              ""
+            ],
+            [
+              "repeated",
+              "",
+              null,
+              "9007199254740993",
+              ""
+            ]
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D06",
+      "status": "pass",
+      "seconds": 0.013,
+      "actual": {
+        "generation": 8,
+        "typedGraphRows": 7,
+        "actual": {
+          "totals": [
+            "9007199254740993",
+            null,
+            "0",
+            "9007199254740993"
+          ]
+        },
+        "committed": false
+      }
+    },
+    {
+      "case": "D07",
+      "status": "pass",
+      "seconds": 0.013,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: admission unrecorded event field"
+      }
+    },
+    {
+      "case": "D08",
+      "status": "pass",
+      "seconds": 0.011,
+      "actual": {
+        "sqlstate": "23514",
+        "message": "native107: locator event order or record differs"
+      }
+    },
+    {
+      "case": "D09",
+      "status": "fail",
+      "errorType": "AssertionError",
+      "error": "('event_profile_global', '23505', 'duplicate key value violates unique constraint \"football_player_profile_versions_sv_canonical_current_idx\"\\nDETAIL:  Key (player_id, profile_context)=(1, provider_global) already exists.')",
+      "sqlstate": null,
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 67, in expect_sqlstate\n    action()\n    ~~~~~~^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 149, in operation\n    graph=self.fx.family(feature,label,overrides,empty=empty)\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-native107-20261105/owned_fixture.py\", line 73, in family\n    profile=self.profile('event_profile_'+str(index),actor_record,self.ids['players'][0],True,name=None if index else '')\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-native107-20261105/owned_fixture.py\", line 49, in profile\n    return self.put('football.player_profile_versions' if player else 'football.team_profile_versions',tag,**common)\n           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 55, in put\n    return super().put(table,tag,**values)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-native107-20261105/owned_fixture.py\", line 34, in put\n    row=self._insert(table,**values);self.observed[tag]=row\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-pilot-20261104/fixtures.py\", line 61, in _insert\n    cur = self.conn.execute(sql,parameters)\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 236, in execute\n    return self.conn.execute(*a,**kw)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/tmp/statarena-publication-test-python/psycopg/connection.py\", line 304, in execute\n    raise ex.with_traceback(None)\npsycopg.errors.UniqueViolation: duplicate key value violates unique constraint \"football_player_profile_versions_sv_canonical_current_idx\"\nDETAIL:  Key (player_id, profile_context)=(1, provider_global) already exists.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 271, in main\n    actual=case(workflow);report['cases'].append({'case':case.__name__,'status':'pass','seconds':round(time.monotonic()-start,3),'actual':actual})\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-native107-20261105/owned_cases.py\", line 36, in D09\n    return c.native_workflow('events','event_profile_global',overrides={'event_profile_0':{'profile_context':'provider_global'}},reject='native107: profile')\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 178, in native_workflow\n    return self.expect_sqlstate(label,operation,{'23514'},reject,self.ingest)\n           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/tests/orion_pro_native107_sql_local.py\", line 69, in expect_sqlstate\n    assert error.sqlstate in codes,(label,error.sqlstate,str(error))\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('event_profile_global', '23505', 'duplicate key value violates unique constraint \"football_player_profile_versions_sv_canonical_current_idx\"\\nDETAIL:  Key (player_id, profile_context)=(1, provider_global) already exists.')\n"
+    }
+  ],
+  "sourceCalls": 0,
+  "cloudCalls": 0,
+  "rdsWrites": [],
+  "externalSqlCalls": 828,
+  "inputSha256": {
+    "tests/orion_pro_native107_sql_local.py": "507a42d81f2b5cf60e4046474409d153c63e182b0051485ce7ef51e675093edd",
+    "docs/verification/orion-pro-native107-20261105/OWNED_SQL_PROTOCOL.md": "0e6314dfb7ed8bdb81eb415b5f0d0b730d22d94860f94e068151b96850e1b1cc",
+    "docs/verification/orion-pro-native107-20261105/owned_cases.py": "5873adf1f3833ceb70c75875d8b06cc3ae8b9e39851251cc26517375c4ad3e0c",
+    "docs/verification/orion-pro-native107-20261105/owned_fixture.py": "edb305c233e7b068001d52f7b122b9bf610906f0884bac7f69b7cc82aa1bfde9",
+    "docs/verification/orion-pro-native107-20261105/PROTOCOL.md": "b37829fbafe7373a0e51a32c124f10002bcb9eeae6426a17daf6cf276803deb7",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "docs/architecture/orion-native-details-107-20261105/target-schema.approved-107.json": "f516804f6e2381b5e55763860b6470127b88a567006973afa79c0a9f5f0d9ae3",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "dashboard/backend/migrations/014_orion_pro_membership_nonnull.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "dashboard/backend/migrations/015_orion_pro_metric_membership_guard.sql": "3b85fcb4fe9380cc5f96238620ff3f4bedee7485ed52c98fef0bddfac1092bd7",
+    "dashboard/backend/migrations/016_orion_pro_native_match_details.sql": "06c1328a79171727fc57b39a4b6b96f5d6acdb6eb719fbd230a5e025af39101a",
+    "dashboard/scripts/orion_pro_native107_schema.py": "91c08961d519a3dba00e5e3b68a9eccd1f3e49f9d702caef39ee412d763533f6",
+    "dashboard/scripts/orion_pro_native107_delta.py": "8df1c6e77d52d407e8d029e886f182f5aeb5eeb7467f69c994db40d677d0f3a7",
+    "dashboard/scripts/orion_pro_schema.py": "6f4578b10c2344885bbf79ab0853fe0f0fd7fffa0663ee74600f5c6ebbe544c3",
+    "dashboard/scripts/orion_pro_integrity.py": "32aa1c84cbf3900b28fe2c1e186e4ba56695f83aeea17d5d1336882fec9aae85",
+    "dashboard/scripts/orion_pro_migrate.py": "d9bdf60ef48a527276499fedb82a435c26b42653432d3a1a3c94cc2db02ee2dd",
+    "dashboard/scripts/sql/orion_pro_native107_validation.sql": "90b01c694c596c24b03e197bb29850befc0c351c6654619b6e51ce368ded691e",
+    "docs/verification/orion-pro-pilot-20261104/harness.py": "02346b7c1a5ca64899f5140d22588e12188c0ed5fe0dd735761d50a067e10b28",
+    "docs/verification/orion-pro-pilot-20261104/fixtures.py": "8c6db19b12d226fbfbcfd743ee3b406904afe022f588dd3c82665849ff45c659",
+    "docs/verification/orion-pro-readers-20261104/fixture.py": "573bfc5e8778ce2ec00655864c202b8f1431b1a5d52cabc2bb5ac5f33886cc1c"
+  },
+  "bounds": {
+    "seconds": 600,
+    "sqlCalls": 15000,
+    "ownedPg": 1,
+    "connections": 4,
+    "diskBytes": 1073741824,
+    "evidenceBytes": 100663296
+  }
+}
