@@ -1,0 +1,20 @@
+usage: orion_pro_native_transport_real_v3.py [-h] [--preflight-rds |
+                                             --apply-rds |
+                                             --check-local-structure |
+                                             --audit-qualified-core]
+                                             [--structure STRUCTURE]
+                                             [--structure-sha256 STRUCTURE_SHA256]
+                                             [--pair PAIR]
+                                             [--pair-sha256 PAIR_SHA256]
+                                             [--acceptance ACCEPTANCE]
+                                             [--acceptance-sha256 ACCEPTANCE_SHA256]
+                                             [--source-service-checkpoint SOURCE_SERVICE_CHECKPOINT]
+                                             [--source-service-checkpoint-sha256 SOURCE_SERVICE_CHECKPOINT_SHA256]
+                                             [--target-readback TARGET_READBACK]
+                                             [--target-readback-sha256 TARGET_READBACK_SHA256]
+                                             [--release RELEASE]
+                                             [--release-sha256 RELEASE_SHA256]
+                                             [--source-marker SOURCE_MARKER]
+                                             [--target-passfile TARGET_PASSFILE]
+                                             [--report REPORT]
+orion_pro_native_transport_real_v3.py: error: unrecognized arguments: --host external.invalid
