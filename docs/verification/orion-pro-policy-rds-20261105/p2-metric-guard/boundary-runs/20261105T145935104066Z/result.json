@@ -1,0 +1,94 @@
+{
+  "kind": "isolated_p2_adoption_cli_boundary_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/boundary_e2e.py"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "implementation_available",
+      "status": "fail",
+      "error": "Isolated native015 operator absent (expected precode RED)",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/boundary_e2e.py\", line 27, in main\n    assert OPERATOR.is_file(),'Isolated native015 operator absent (expected precode RED)'\n           ~~~~~~~~~~~~~~~~^^\nAssertionError: Isolated native015 operator absent (expected precode RED)\n"
+    },
+    {
+      "case": "offline_poisoned",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "offline_exact_plan",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "missing_release",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "wrong_target",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "wrong_code",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "historical_sequence_baseline",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "wrong_policy_alias",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "local_contract_as_real",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "consumed_ledger",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "pg_route_poison",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "unknown_host_option",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "missing_private_auth",
+      "status": "unverified",
+      "reason": "implementation_available"
+    },
+    {
+      "case": "real_fault_injection",
+      "status": "unverified",
+      "reason": "implementation_available"
+    }
+  ],
+  "pgStarts": 0,
+  "connections": 0,
+  "cloudCalls": 0,
+  "sourceCalls": 0,
+  "fullAcceptance": false,
+  "structuralMetadataOnly": true,
+  "privateMirrorRemoved": true,
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 13
+  },
+  "status": "fail"
+}

@@ -1,0 +1,123 @@
+{
+  "kind": "isolated_native015_owned_operational_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/local_e2e.py",
+    "--check-only"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "implementation_available",
+      "status": "fail",
+      "errorType": "AssertionError",
+      "error": "Isolated015 implementation absent (expected precode RED)",
+      "sqlstate": null,
+      "databaseContext": null,
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/local_e2e.py\", line 70, in main\n    if case=='implementation_available':assert OPERATOR.is_file(),'Isolated015 implementation absent (expected precode RED)';operator=load(OPERATOR,'isolated015_operator');actual={'operatorSha256':sha(OPERATOR)}\n                                               ~~~~~~~~~~~~~~~~^^\nAssertionError: Isolated015 implementation absent (expected precode RED)\n"
+    },
+    {
+      "case": "isolated_scope",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "released_owned_tls_setup",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "prepare_rollback_templates",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "origin_boundaries",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "foreign_business_refusal",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "lease_and_concurrency_refusals",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "atomic_failures",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "adoption_clock_and_preservation",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "lost_ack_independent_readback",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "fresh_cli_noop",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "native_catalogue_acl_refusals",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "journal_and_privilege_guards",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "sequence_drift_no_reset",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "bounded_observer",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    },
+    {
+      "case": "protected_inputs_and_cleanup",
+      "status": "unverified",
+      "reason": "First unexpected failure: implementation_available"
+    }
+  ],
+  "inputSha256": {
+    "docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/local_e2e.py": "c169d2c4363794e7ebfe08617a37e7ea337c76ee409b9545b1d470cb81bc071a",
+    "docs/verification/orion-pro-policy-rds-20261105/p2-metric-guard/PROTOCOL.md": "64d9a40471594665b470b7605772f35e09d4737a28aa9e2e431108c9684bcbfb"
+  },
+  "invocations": [],
+  "pgStarts": 0,
+  "databases": 0,
+  "maximumOpenConnections": 0,
+  "remoteCalls": 0,
+  "sourceCalls": 0,
+  "sourceRamReads": 0,
+  "setvalCalls": 0,
+  "productionMigrationInstalled": false,
+  "fullAcceptance": false,
+  "connectionsClosed": true,
+  "cleanup": {
+    "serverStarted": false,
+    "ownedRootCreated": false
+  },
+  "resources": [],
+  "elapsedSeconds": 0.004,
+  "inputHashesExact": true,
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 15
+  },
+  "status": "fail"
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "independent_real_core_readback_cli_e2e_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/real-core-independent/e2e.py"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/real-core-independent/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "implementation_available",
+      "status": "fail",
+      "error": "Independent readback implementation is absent (expected precode RED)",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/real-core-independent/e2e.py\", line 50, in main\n    assert TARGET.is_file(),'Independent readback implementation is absent (expected precode RED)'\n           ~~~~~~~~~~~~~~^^\nAssertionError: Independent readback implementation is absent (expected precode RED)\n"
+    },
+    {
+      "case": "offline_plan",
+      "status": "unverified",
+      "reason": "implementation_available: Independent readback implementation is absent (expected precode RED)"
+    },
+    {
+      "case": "offline_connection_tripwires",
+      "status": "unverified",
+      "reason": "implementation_available: Independent readback implementation is absent (expected precode RED)"
+    },
+    {
+      "case": "root_connection_interface",
+      "status": "unverified",
+      "reason": "implementation_available: Independent readback implementation is absent (expected precode RED)"
+    }
+  ],
+  "connections": 0,
+  "sourceCalls": 0,
+  "businessWrites": [],
+  "fullAcceptance": false,
+  "realTargetReadbackExecuted": false,
+  "inputs": {
+    "docs/verification/orion-pro-real-rds-transfer-20261105/real-core-independent/e2e.py": "b373a5fc2290127d30067afbb2d1968f1b94f0e6fb1bf1622a4a8e0892a37fc9",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/real-core-independent/PROTOCOL.md": "25e6b71d71f18720b5630dbe59bdeeb9d47982200424895860e07be6dc7b6309",
+    "tests/orion_e2e_process.py": "06bd176152361ab96f26930920c71d7a32fd9ddadde5bfc8bb02008e87174c04"
+  },
+  "elapsedSeconds": 0.0,
+  "status": "fail",
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 3
+  },
+  "cleanup": {
+    "ownedTripwireDirectoryRemoved": true,
+    "pgStarted": false
+  }
+}
