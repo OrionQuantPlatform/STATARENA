@@ -1,0 +1,47 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/monitor_gate.py",
+    "--label",
+    "precode-missing-launcher-red"
+  ],
+  "expected": "PROTOCOL.md pre-code matrix",
+  "launcherPresentAtStart": false,
+  "cases": [
+    {
+      "case": "offline_plan",
+      "status": "fail",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/supervise_real.py"
+      ],
+      "exitCode": 2,
+      "expectedExitCode": 0,
+      "actual": {}
+    },
+    {
+      "case": "unsigned_real_refused",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    },
+    {
+      "case": "malformed_release_refused",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    },
+    {
+      "case": "owned_source_free_smoke",
+      "status": "unverified",
+      "reason": "Prerequisite failed"
+    }
+  ],
+  "sourceAccessAuthorized": false,
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 3
+  },
+  "status": "fail",
+  "expectedPreCodeRedObserved": true,
+  "gateSha256": "f443c72a642b5584d98be0ed33024be33b72ca02b6ae266feff26143149fad25"
+}

@@ -1,0 +1,45 @@
+{
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/fault_gate.py",
+    "--label",
+    "final-short-private-root-faults"
+  ],
+  "cases": [
+    {
+      "case": "initdb_orphan",
+      "status": "pass",
+      "supervisorExitCode": 1,
+      "actual": {
+        "ownedRoot": "/tmp/orion-owned-ytufvwh4/orion-pro-e2e-i_jr4q47",
+        "actualRootRemoved": true,
+        "reportedCleanupVerified": true,
+        "killedBeforePostmaster": true
+      },
+      "outerReceipt": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T011159713706Z-smoke/result.json",
+      "fixtureCleanupComplete": true
+    },
+    {
+      "case": "exited_parent_pipe_holder",
+      "status": "pass",
+      "supervisorExitCode": 1,
+      "actual": {
+        "elapsedSeconds": 2.319,
+        "holderStillActive": false,
+        "expectedMaximumSeconds": 4
+      },
+      "outerReceipt": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T011159830241Z-smoke/result.json",
+      "fixtureCleanupComplete": true
+    }
+  ],
+  "supervisorSha256": "fc86b05021aebc85b6c1a3b5ee577eccbec60dd870a370934b9a1368042c1aa8",
+  "sourceBodiesRead": 0,
+  "sqlConnections": 0,
+  "remoteActions": [],
+  "fullAcceptance": false,
+  "counts": {
+    "pass": 2,
+    "fail": 0
+  },
+  "status": "pass"
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "ROOT_SUPERVISOR_FINAL_REVIEW",
+  "atUtc": "2026-11-05T01:14:53.829712+00:00",
+  "scriptSha256": "fc86b05021aebc85b6c1a3b5ee577eccbec60dd870a370934b9a1368042c1aa8",
+  "sourceFreeCliCounts": {
+    "pass": 4,
+    "fail": 0,
+    "unverified": 0
+  },
+  "faultCounts": {
+    "pass": 2,
+    "fail": 0
+  },
+  "sourceFreeGate": "docs/verification/orion-real-supervision-20261105/gate-runs/20261105T011202164664Z-final-short-private-root-smoke/result.json",
+  "sourceFreeGateSha256": "7532d9cdb85d2bebc9792af02061d8b8fc2ffd0ab0697bb1bb3b33e17a512796",
+  "faultReceipt": "docs/verification/orion-real-supervision-20261105/fault-runs/20261105T011159658371Z-final-short-private-root-faults/result.json",
+  "faultReceiptSha256": "22f2849924000831fcaadec6cfc1844274010e92897c2cd23634898743270463",
+  "reviewFindingsClosed": [
+    "Pre-Popen private0700TMPDIR captures orphan roots before initdb writes a journal.",
+    "Shared probe labels require a private-temp command binding, excluding other jobs.",
+    "Two-second pipe drain after parent exit is independent of parent liveness; owned holder is killed.",
+    "STATARENA_SOURCE_FORBIDDEN=1 and no inheritedPG/cloud environment.",
+    "Short/tmp prefix avoids the actual103-byte macOS Unix socket bound."
+  ],
+  "actualFaultBefore": {
+    "orphanRemoved": false,
+    "reportedCleanupVerified": true,
+    "pipeHolderElapsedSeconds": 10.166
+  },
+  "actualFaultAfter": [
+    {
+      "case": "initdb_orphan",
+      "status": "pass",
+      "supervisorExitCode": 1,
+      "actual": {
+        "ownedRoot": "/tmp/orion-owned-ytufvwh4/orion-pro-e2e-i_jr4q47",
+        "actualRootRemoved": true,
+        "reportedCleanupVerified": true,
+        "killedBeforePostmaster": true
+      },
+      "outerReceipt": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T011159713706Z-smoke/result.json",
+      "fixtureCleanupComplete": true
+    },
+    {
+      "case": "exited_parent_pipe_holder",
+      "status": "pass",
+      "supervisorExitCode": 1,
+      "actual": {
+        "elapsedSeconds": 2.319,
+        "holderStillActive": false,
+        "expectedMaximumSeconds": 4
+      },
+      "outerReceipt": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T011159830241Z-smoke/result.json",
+      "fixtureCleanupComplete": true
+    }
+  ],
+  "scope": "Only synthetic OS/process faults and emptyPG overlay smoke. No real source read/import yet.",
+  "limits": [
+    "Wall/disk threshold firing and fallback shutdown of a live postmaster were not exercised by these cases.",
+    "Disk monitor is not an OS filesystem quota.",
+    "Only exit0/all15cases/native478547/spatial1344/digests/fresh94tables67seq/cleanup can accept the real run."
+  ],
+  "decision": "accept launcher for separately hash-bound one real local execution",
+  "suggestedCommit": "test: supervise native source reconciliation within fixed local bounds"
+}

@@ -1,0 +1,99 @@
+{
+  "kind": "ROOT_OWNED_LOCAL_RECONCILIATION_SUPERVISION",
+  "mode": "smoke",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/fault-runs/20261105T011159658371Z-final-short-private-root-faults/exited_parent_pipe_holder/child.py",
+    "--label",
+    "root-supervision-smoke-20261105T011159830241Z",
+    "--local-validator-overlay",
+    "docs/verification/orion-validator-membership-20261105/candidate.sql",
+    "--local-validator-overlay-sha256",
+    "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "--prepare-only",
+    "--overlay-probe-only"
+  ],
+  "releaseSha256": null,
+  "pinnedFiles": {
+    "docs/verification/orion-real-supervision-20261105/supervise_real.py": "fc86b05021aebc85b6c1a3b5ee577eccbec60dd870a370934b9a1368042c1aa8",
+    "docs/verification/orion-pro-real-native-spatial-20261104/e2e.py": "7ab6cd06852bf56186c29d26e7654cbd3a2d26546cefa12cc6065b1fbcf40ddd",
+    "docs/verification/orion-pro-real-native-spatial-20261104/candidate.py": "218f378b599cd166f747fbacf6f79148220150fbc2bede4f81bef535eca553bc",
+    "docs/verification/orion-pro-real-native-spatial-20261104/capture.py": "1498d36da2f83ea548db8a3433dd4d78f08add0e0bd6a5c90ef68b60851f7fe9",
+    "docs/verification/orion-pro-real-native-spatial-20261104/MANIFEST.json": "654993cac446a9aa81cc2079a6b9fafd6ddef3a3188ff54ea5297b1677f5aaa9",
+    "docs/verification/orion-pro-real-native-spatial-20261104/FIELDS.json": "3db1f87b86183aed7550dbf258b528b78f4293e3c6253cfece6f6d7bb46adbae",
+    "docs/verification/orion-pro-real-native-spatial-20261104/capture-v2/ready-snapshot.json": "4d2ac59a6815eb02850ea78f74cae8fc22d33f17d082688676a1925744a01d2b",
+    "docs/verification/orion-pro-real-native-spatial-20261104/neon-error-metadata/result.json": "5e1369ee600b2785cf7f758d1eb9a9f1283364a426a4efd4bc59000287936ac9",
+    "dashboard/scripts/orion_pro_normalize.py": "4b98a829bc7e32e11a7e66381ffecae6248ce536d17771aa080502374fe844bc",
+    "docs/architecture/orion-plan-20261104/target-schema.proposed.json": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+    "dashboard/backend/migrations/012_orion_pro_domain.sql": "f255868599c72d69f40f575a919045325ea1093a00fe4f5a6b96eae9f2c49f65",
+    "dashboard/backend/migrations/013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968",
+    "docs/verification/orion-validator-membership-20261105/candidate.sql": "e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6",
+    "docs/verification/orion-pro-pilot-20261104/real-source-budget.json": "d539243f7ff612ee3819d8023d95c6ef186848873e511e226e49b1c71d152d6b",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget.json": "58266b444de46a8c957e2f5b480f5dfcb2f9bddba83402615723c16d5cca7281",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget-v2.json": "30cd865d10da6d2dc28e53f0f741756549c576bfa35a90e050062a462dc078ac"
+  },
+  "sourceLedgersBefore": {
+    "docs/verification/orion-pro-pilot-20261104/real-source-budget.json": "d539243f7ff612ee3819d8023d95c6ef186848873e511e226e49b1c71d152d6b",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget.json": "58266b444de46a8c957e2f5b480f5dfcb2f9bddba83402615723c16d5cca7281",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget-v2.json": "30cd865d10da6d2dc28e53f0f741756549c576bfa35a90e050062a462dc078ac"
+  },
+  "bounds": {
+    "wallSeconds": 1800,
+    "interruptSeconds": 1770,
+    "diskBytes": 4294967296,
+    "softDiskBytes": 3758096384,
+    "heartbeatSeconds": 15,
+    "sampleSeconds": 1,
+    "cleanupSeconds": 30,
+    "statementTimeoutMs": 8000,
+    "lockTimeoutMs": 1000
+  },
+  "sourceBodiesReadBySupervisor": 0,
+  "remoteActions": [],
+  "fullAcceptance": false,
+  "expectedCases": [
+    "local_overlay_probe"
+  ],
+  "privateTemporaryRoot": "/tmp/orion-owned-lutbupe9",
+  "privateTemporaryUidInode": [
+    501,
+    143584111
+  ],
+  "privateTemporaryMode": "0700",
+  "sourceForbiddenEnvironment": true,
+  "suggestedCommit": "test: supervise the real native source reconciliation within fixed bounds",
+  "childPid": 86072,
+  "childExitCode": 0,
+  "status": "fail",
+  "errorType": "RuntimeError",
+  "budgetStop": null,
+  "elapsedSeconds": 2.244,
+  "observedPeakAllocatedBytes": 12288,
+  "sourceLedgersAfter": {
+    "docs/verification/orion-pro-pilot-20261104/real-source-budget.json": "d539243f7ff612ee3819d8023d95c6ef186848873e511e226e49b1c71d152d6b",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget.json": "58266b444de46a8c957e2f5b480f5dfcb2f9bddba83402615723c16d5cca7281",
+    "docs/verification/orion-pro-real-native-spatial-20261104/budget-v2.json": "30cd865d10da6d2dc28e53f0f741756549c576bfa35a90e050062a462dc078ac"
+  },
+  "sourceLedgersUnchanged": true,
+  "cleanup": [],
+  "cleanupVerified": true,
+  "pinnedFilesUnchanged": true,
+  "privateTemporaryRootRemoved": true,
+  "observedCaseBoundaries": [],
+  "unverifiedCases": [
+    "local_overlay_probe"
+  ],
+  "streams": {
+    "stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "unexercisedBranches": [
+    "Budget interrupt/force-stop and fallback postmaster cleanup are not exercised by a normally completing smoke."
+  ]
+}

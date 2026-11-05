@@ -1,0 +1,2 @@
+{"elapsedSeconds": 0.008, "event": "child_started", "mode": "smoke", "pid": 86069}
+{"elapsedSeconds": 0.009, "event": "heartbeat", "ownedAllocatedBytes": 12288, "registeredPostgresRoots": 0, "completedCases": 0, "activeCaseInferred": "local_overlay_probe"}

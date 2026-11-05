@@ -1,0 +1,26 @@
+{
+  "command": "PYTHONPATH=/tmp/statarena-publication-test-python /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 '/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-native-spatial-20261104/e2e.py' --label root-supervision-smoke-20261105T010841331603Z --local-validator-overlay docs/verification/orion-validator-membership-20261105/candidate.sql --local-validator-overlay-sha256 e0810f8670b2cb627ade2c76e3c8eb527ab31fd595d5cf939fd63bfc5cf649d6 --prepare-only --overlay-probe-only",
+  "environment": "owned LOCAL PG18.6; real candidate has source-derived facts only",
+  "normalizerSha256": "4b98a829bc7e32e11a7e66381ffecae6248ce536d17771aa080502374fe844bc",
+  "testSha256": "7ab6cd06852bf56186c29d26e7654cbd3a2d26546cefa12cc6065b1fbcf40ddd",
+  "manifestSha256": "654993cac446a9aa81cc2079a6b9fafd6ddef3a3188ff54ea5297b1677f5aaa9",
+  "fullAcceptance": false,
+  "sourceCallsByTest": 0,
+  "realNativeStatesCompared": 0,
+  "realTripletsCompared": 0,
+  "cases": [],
+  "cleanup": {
+    "owned_root": "/var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/orion-reconcile-owned-t01tdxok/orion-pro-e2e-ek29f1fe",
+    "server_stopped": true,
+    "owned_directory_removed": true
+  },
+  "oldLedgerByteIdentical": true,
+  "failedSourceBudgetByteIdentical": true,
+  "rootMetadataReceiptByteIdentical": true,
+  "counts": {
+    "pass": 0,
+    "fail": 0,
+    "unverified": 0
+  },
+  "status": "prepared_real_unverified"
+}

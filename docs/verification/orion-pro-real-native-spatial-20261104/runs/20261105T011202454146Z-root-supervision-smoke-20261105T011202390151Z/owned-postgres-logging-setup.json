@@ -1,0 +1,6 @@
+{
+  "stage": "initialized_before_server_start",
+  "configPath": "/tmp/orion-owned-codxindz/orion-pro-e2e-ras9yxio/data/postgresql.auto.conf",
+  "configSha256": "81f3193aeedd1873899f847196ad207bdc083697281d890ca7959bc2f55acac5",
+  "sharedHarnessModified": false
+}

@@ -1,0 +1,4 @@
+{"elapsedSeconds": 0.005, "event": "child_started", "mode": "smoke", "pid": 86072}
+{"elapsedSeconds": 0.005, "event": "heartbeat", "ownedAllocatedBytes": 12288, "registeredPostgresRoots": 0, "completedCases": 0, "activeCaseInferred": "local_overlay_probe"}
+{"elapsedSeconds": 2.231, "event": "pipe_drain_stopped", "reason": "PipeDrainDeadline"}
+{"status": "fail", "mode": "smoke", "innerCounts": null, "cleanupVerified": true, "sourceLedgersUnchanged": true, "evidence": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T011159830241Z-smoke"}
