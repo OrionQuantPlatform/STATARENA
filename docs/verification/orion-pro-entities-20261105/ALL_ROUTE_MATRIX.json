@@ -4,10 +4,10 @@
   "sourceInventory": "docs/verification/orion-pro-api-coverage-20261105/API_ROUTE_MATRIX.json",
   "scope": "Local code/schema only. No assertion that defined tables have accepted real data. Existing functionality remains required.",
   "counts": {
+    "existing-operational-or-media": 3,
+    "reader-and-data-contract-required": 42,
     "existing-native-reader": 4,
-    "local-entities-v1-E2E-qualified": 8,
-    "local-operations-v1-E2E-qualified": 4,
-    "reader-and-data-contract-required": 41
+    "local-entities-v1-E2E-qualified": 8
   },
   "rows": [
     {
@@ -17,13 +17,9 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "local-operations-v1-E2E-qualified",
-      "defined103Destinations": [
-        "ingest.dataset_snapshots",
-        "analytics.publication_versions",
-        "analytics.aggregation_builds"
-      ],
-      "actionOrGap": "Typed operational metadata/media, actual Node24 HTTP14/14; no legacy serving lookup. Full binary media/real production acceptance remains independent."
+      "status": "existing-operational-or-media",
+      "defined103Destinations": [],
+      "actionOrGap": "Existing implemented reader/operational exception; real-data/deployed acceptance remains independent."
     },
     {
       "path": "/api/status",
@@ -32,9 +28,9 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "local-operations-v1-E2E-qualified",
+      "status": "existing-operational-or-media",
       "defined103Destinations": [],
-      "actionOrGap": "Typed operational metadata/media, actual Node24 HTTP14/14; no legacy serving lookup. Full binary media/real production acceptance remains independent."
+      "actionOrGap": "Existing implemented reader/operational exception; real-data/deployed acceptance remains independent."
     },
     {
       "path": "/api/settings",
@@ -43,11 +39,9 @@
         "HEAD"
       ],
       "currentQueryNames": [],
-      "status": "local-operations-v1-E2E-qualified",
-      "defined103Destinations": [
-        "ingest.import_runs"
-      ],
-      "actionOrGap": "Typed operational metadata/media, actual Node24 HTTP14/14; no legacy serving lookup. Full binary media/real production acceptance remains independent."
+      "status": "reader-and-data-contract-required",
+      "defined103Destinations": [],
+      "actionOrGap": "Read typed ingest run/queue/schema/publication metadata; retain explicit operational state. No sports-source dependency needed."
     },
     {
       "path": "/api/dashboard/manifest",
@@ -154,11 +148,11 @@
       "currentQueryNames": [
         "url"
       ],
-      "status": "local-operations-v1-E2E-qualified",
+      "status": "existing-operational-or-media",
       "defined103Destinations": [
         "ingest.media_assets"
       ],
-      "actionOrGap": "Typed operational metadata/media, actual Node24 HTTP14/14; no legacy serving lookup. Full binary media/real production acceptance remains independent."
+      "actionOrGap": "Existing implemented reader/operational exception; real-data/deployed acceptance remains independent."
     },
     {
       "path": "/api/standings",
@@ -887,6 +881,5 @@
     }
   ],
   "evidence": "docs/verification/orion-pro-entities-20261105/runs/20261105T115323556411Z-actual-router-reviewed-fixture-v3/result.json",
-  "evidenceSha256": "02bd5cee2ca8bf8bb73e9ba887a13ebbc9db12bb2f82f0c81208e2a7e19c2f21",
-  "operationsEvidence": "docs/verification/orion-pro-operations-20261105/runs/20261105T132804503055Z-typed-operations-v2-numeric-pagination/result.json"
+  "evidenceSha256": "02bd5cee2ca8bf8bb73e9ba887a13ebbc9db12bb2f82f0c81208e2a7e19c2f21"
 }
