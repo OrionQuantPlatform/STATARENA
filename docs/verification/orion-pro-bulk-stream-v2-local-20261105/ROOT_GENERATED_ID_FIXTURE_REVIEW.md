@@ -1,0 +1,7 @@
+# Let native ALWAYS identity allocate the retained correction revision
+
+The third attempt passed20cases, including all five exact control-corruption refusals, the bootstrap-aware2576row count, and lost-ack prefix resume. Its legal closed-history setup stopped before the intended rejection: it explicitly inserted nextval into GENERATED ALWAYS revision_id without OVERRIDING SYSTEM VALUE. Native428C9 correctly rejected it. This is a fixture SQL error; closed-history rejection and dense cases remain unverified for that attempt.
+
+The correction excludes revision_id from the INSERT column/projection list so PostgreSQL itself supplies its normal default. The frozen producer already generated the1240scalar revisions natively, so its sequence is correctly advanced; no setval/guard/identity override is needed. The intended retained correction and CLOSED_HISTORY expectation are unchanged. Source bounds check closed intervals before phase receipt inspection, so the deliberately additional closed-history generation needs no fabricated source receipt. All earlier20/1/8receipts, inputs and exhausted counter remain exact. Dense constructions/core copies still0; owned PG was cleaned.
+
+ROOT authorizes one distinct fourth campaign with unchanged writer/model/SQL/guards and the original resource caps, all prior attempt pins, and one dense construction/core COPY. No automatic retry or old-counter reset. Suggested commit: `fix: bound streaming workers and verify exact resume controls`.
