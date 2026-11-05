@@ -1,0 +1,8 @@
+{
+  "state": "fail",
+  "releaseSha256": "602da08d6ad339a222dec2f08a4c58b6e4ed11fd7437845b783f075fcc964d6a",
+  "label": "real-native-spatial-overlay-e0810f-v1",
+  "evidence": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T011600637430Z-real",
+  "atUtc": "20261105T011600637430Z",
+  "elapsedSeconds": 176.41
+}
