@@ -1,0 +1,1 @@
+{"kind": "committed_core_readonly_recovery_v1", "pgStarts": 0, "connections": 0, "sourceRamReads": 0, "sourceConstructions": 0, "businessWrites": 0, "remoteCalls": 0, "fullAcceptance": false, "status": "refused", "reasonCode": "RELEASE", "errorType": "Refusal"}

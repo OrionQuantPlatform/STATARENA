@@ -1,0 +1,117 @@
+{
+  "kind": "local_receipt_structure_fixture_v2",
+  "origin": "owned_local_receipt_metadata",
+  "realProducerExecuted": false,
+  "contract": {
+    "phase": {
+      "phase": "core",
+      "generation": 2,
+      "snapshotId": 2,
+      "runId": 1
+    },
+    "binding": {
+      "kind": "orion_pro_phase_receipt_v2",
+      "phase": "core",
+      "transform_sha256": "4b98a829bc7e32e11a7e66381ffecae6248ce536d17771aa080502374fe844bc",
+      "transform_version": "real_source_core_v2_native31",
+      "model_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+      "source_document_count": 2,
+      "source_document_manifest_sha256": "6317f851898ee83e3caae388bbaca83ae991fe127f8eb5cc0562d99765314399",
+      "selector_manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "input_manifest_sha256": "f916bf887d888363a2ed0220f3463c06cd70d2df90132b885fbab13f62fd86d1"
+    },
+    "report": {
+      "generation": 2,
+      "reused": false,
+      "facts": {
+        "fixtures": 4,
+        "performances": 40
+      },
+      "manifestSha256": "f916bf887d888363a2ed0220f3463c06cd70d2df90132b885fbab13f62fd86d1"
+    },
+    "documents": [
+      [
+        "fixture:part-a",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      [
+        "fixture:part-b",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ]
+    ],
+    "parameters": {},
+    "counters": {
+      "full_acceptance": false,
+      "local_only": true,
+      "source_document_count": 2
+    }
+  },
+  "run": {
+    "id": 1,
+    "mode": "rebuild",
+    "status": "partial",
+    "transform_version": "real_source_core_v2_native31",
+    "code_commit": "4b98a829bc7e32e11a7e66381ffecae6248ce536d17771aa080502374fe844bc",
+    "started_at": "2026-11-05T00:00:00+00:00",
+    "finished_at": "2026-11-05T00:00:00+00:00",
+    "parameters": {},
+    "counters": {
+      "full_acceptance": false,
+      "local_only": true,
+      "source_document_count": 2
+    },
+    "checkpoint": {
+      "kind": "orion_pro_phase_receipt_v2",
+      "phase": "core",
+      "receipt_key": "real-source-v2:core:f916bf887d888363a2ed0220f3463c06cd70d2df90132b885fbab13f62fd86d1",
+      "binding": {
+        "kind": "orion_pro_phase_receipt_v2",
+        "phase": "core",
+        "transform_sha256": "4b98a829bc7e32e11a7e66381ffecae6248ce536d17771aa080502374fe844bc",
+        "transform_version": "real_source_core_v2_native31",
+        "model_sha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08",
+        "source_document_count": 2,
+        "source_document_manifest_sha256": "6317f851898ee83e3caae388bbaca83ae991fe127f8eb5cc0562d99765314399",
+        "selector_manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "input_manifest_sha256": "f916bf887d888363a2ed0220f3463c06cd70d2df90132b885fbab13f62fd86d1"
+      },
+      "generation": 2,
+      "snapshot_id": 2,
+      "report": {
+        "generation": 2,
+        "reused": false,
+        "facts": {
+          "fixtures": 4,
+          "performances": 40
+        },
+        "manifestSha256": "f916bf887d888363a2ed0220f3463c06cd70d2df90132b885fbab13f62fd86d1",
+        "extra": 1
+      },
+      "report_sha256": "174fee4425f8c4c18ca5339583b0c8278a225d5adb414fb8d1c6df2825e6ae97"
+    },
+    "error": null,
+    "error_is_sql_null": true
+  },
+  "snapshot": {
+    "id": 2,
+    "generation": 2,
+    "status": "sealed",
+    "manifest_sha256": "73864e3405abba6a8bedac43ddaaf991cbc06570fb74b24ee3286042a64eca56",
+    "snapshot_key": "real-source-v2:core:f916bf887d888363a2ed0220f3463c06cd70d2df90132b885fbab13f62fd86d1",
+    "transform_version": "real_source_core_v2_native31",
+    "source_priority_version": "real_source_core_v2_native31",
+    "knowledge_cutoff_at": null,
+    "created_at": "2026-11-05T00:00:00+00:00",
+    "sealed_at": "2026-11-05T00:00:00+00:00"
+  },
+  "documents": [
+    [
+      "fixture:part-a",
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    ],
+    [
+      "fixture:part-b",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    ]
+  ]
+}

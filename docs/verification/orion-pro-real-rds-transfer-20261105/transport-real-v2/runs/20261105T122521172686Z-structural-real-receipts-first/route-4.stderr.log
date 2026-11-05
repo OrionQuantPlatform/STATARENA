@@ -1,0 +1,16 @@
+usage: orion_pro_native_transport_real_v2.py [-h] [--preflight-rds |
+                                             --apply-rds |
+                                             --check-local-structure]
+                                             [--receipt RECEIPT]
+                                             [--receipt-sha256 RECEIPT_SHA256]
+                                             [--source-marker SOURCE_MARKER]
+                                             [--pair PAIR]
+                                             [--pair-sha256 PAIR_SHA256]
+                                             [--acceptance ACCEPTANCE]
+                                             [--acceptance-sha256 ACCEPTANCE_SHA256]
+                                             [--release RELEASE]
+                                             [--release-sha256 RELEASE_SHA256]
+                                             [--target-passfile TARGET_PASSFILE]
+                                             [--fault {after-commit-ack,after-copy-batches:2,after-core-commit,before-seal-timeout,corrupt-first-fact,during-families-after-copy,wrong-generation-map}]
+                                             [--report REPORT]
+orion_pro_native_transport_real_v2.py: error: unrecognized arguments: --dsn postgresql://external.invalid/x

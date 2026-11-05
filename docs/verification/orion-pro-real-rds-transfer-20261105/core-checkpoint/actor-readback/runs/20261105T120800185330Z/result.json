@@ -1,0 +1,447 @@
+{
+  "kind": "four_shot_actor_global_core_readback_v1",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/core-checkpoint/actor-readback/readback_v1.py"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/core-checkpoint/actor-readback/PROTOCOL.md",
+  "witnesses": [
+    [
+      "m_0Dz3Fs",
+      "p_4D4L8O",
+      "t_38NVJO",
+      "s_2T49C6",
+      "/tables/shots/rows/531",
+      "3ba4b34e9037956d5443efbf7ce9b72d7bca02d6bc088e0d6f4107b95557ebcc"
+    ],
+    [
+      "m_1GY5OE",
+      "p_2mYiIC",
+      "t_4BCeSu",
+      "s_0KideU",
+      "/tables/shots/rows/4207",
+      "f1b42942439701874ac922eafad46779cb187412028b30a3439ea8573fe06e12"
+    ],
+    [
+      "m_1GY5OE",
+      "p_2mYiIC",
+      "t_4BCeSu",
+      "s_32KbQY",
+      "/tables/shots/rows/4208",
+      "de2e055c638ca4c4f7cec4c1afa56ca22e1bba14b2c6ff8d70978df7d7a212ba"
+    ],
+    [
+      "m_2c4ZLn",
+      "p_2mYiIC",
+      "t_0xMlRV",
+      "s_4RmCm9",
+      "/tables/shots/rows/4832",
+      "a5da8b40c13536a1d9429f7a80aa4ea20df963f02bcb5d57aa4bbdc073334c3b"
+    ]
+  ],
+  "sourceDocument": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+  "sourceDocumentSha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6",
+  "selects": 4,
+  "decodedBytes": 3420,
+  "queries": [
+    {
+      "name": "identity",
+      "sql": "WITH raw AS MATERIALIZED (SELECT current_database() db,current_user actor,session_user session_actor,current_setting('server_version_num') version,current_setting('transaction_read_only') ro,current_setting('transaction_isolation') isolation,current_setting('statement_timeout') statement,current_setting('lock_timeout') lock,(SELECT ssl FROM pg_stat_ssl WHERE pid=pg_backend_pid()) tls,pg_postmaster_start_time()::text started),encoded AS MATERIALIZED (SELECT row_to_json(raw)::text v,row_number() OVER() ordinal FROM raw),measured AS (SELECT count(*) n,coalesce(sum(octet_length(v)),0)+greatest(count(*)-1,0)+2 bytes FROM encoded) SELECT CASE WHEN n<=%s AND bytes<=%s THEN (SELECT '['||coalesce(string_agg(v,',' ORDER BY ordinal),'')||']' FROM encoded) END,n,bytes FROM measured",
+      "params": [
+        1,
+        8000
+      ],
+      "rowCount": 1,
+      "serverBytes": 224,
+      "decodedBytes": 260,
+      "elapsedMs": 37.536,
+      "rows": [
+        {
+          "db": "postgres",
+          "actor": "orion_pro_runtime",
+          "session_actor": "orion_pro_runtime",
+          "version": "180006",
+          "ro": "on",
+          "isolation": "repeatable read",
+          "statement": "8s",
+          "lock": "1s",
+          "tls": true,
+          "started": "2026-11-05 11:57:32.613263+00"
+        }
+      ]
+    },
+    {
+      "name": "global_player_profile_identity",
+      "sql": "WITH raw AS MATERIALIZED (WITH wanted(actor) AS (VALUES('p_4D4L8O'),('p_2mYiIC'))\nSELECT w.actor,a.player_id,p.id IS NOT NULL player_exists,\n (SELECT coalesce(json_agg(row_to_json(x)),'[]'::json) FROM (SELECT v.id profile_id,v.player_id,v.external_profile_version_id,v.profile_context,v.recorded_from_gen,r.locator,d.legacy_object_path,d.content_sha256,\n   (SELECT coalesce(json_agg(z.public_key ORDER BY z.public_key),'[]'::json) FROM ingest.public_aliases_current z WHERE z.route_kind='profile' AND z.profile_version_id=v.id) profile_public_keys\n   FROM football.player_profile_versions v LEFT JOIN ingest.source_records r ON r.id=v.source_record_id LEFT JOIN ingest.source_documents d ON d.id=r.document_id\n   WHERE v.player_id=p.id ORDER BY v.id LIMIT 8) x) profiles,\n (SELECT coalesce(json_agg(row_to_json(x)),'[]'::json) FROM (SELECT d.legacy_object_path,d.content_sha256,count(*) rows,min(r.locator) minimum_locator\n   FROM football.player_match_stats s JOIN ingest.source_records r ON r.id=s.source_record_id JOIN ingest.source_documents d ON d.id=r.document_id\n   WHERE s.player_id=p.id GROUP BY d.legacy_object_path,d.content_sha256 ORDER BY d.legacy_object_path) x) performance_source_documents\nFROM wanted w LEFT JOIN ingest.public_aliases_current a ON a.route_kind='player' AND a.public_key=w.actor LEFT JOIN football.players p ON p.id=a.player_id ORDER BY w.actor),encoded AS MATERIALIZED (SELECT row_to_json(raw)::text v,row_number() OVER() ordinal FROM raw),measured AS (SELECT count(*) n,coalesce(sum(octet_length(v)),0)+greatest(count(*)-1,0)+2 bytes FROM encoded) SELECT CASE WHEN n<=%s AND bytes<=%s THEN (SELECT '['||coalesce(string_agg(v,',' ORDER BY ordinal),'')||']' FROM encoded) END,n,bytes FROM measured",
+      "params": [
+        2,
+        8000
+      ],
+      "rowCount": 2,
+      "serverBytes": 217,
+      "decodedBytes": 253,
+      "elapsedMs": 11.075,
+      "rows": [
+        {
+          "actor": "p_2mYiIC",
+          "player_id": null,
+          "player_exists": false,
+          "profiles": [],
+          "performance_source_documents": []
+        },
+        {
+          "actor": "p_4D4L8O",
+          "player_id": null,
+          "player_exists": false,
+          "profiles": [],
+          "performance_source_documents": []
+        }
+      ]
+    },
+    {
+      "name": "exact_requested_participant_cohorts",
+      "sql": "WITH raw AS MATERIALIZED (WITH wanted(match_key,actor,team_key,shot_key,locator) AS (VALUES (%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s)) SELECT w.*,ma.match_id,pa.player_id,ta.team_id,\n (SELECT coalesce(json_agg(row_to_json(x)),'[]'::json) FROM (SELECT p.revision_id,p.profile_version_id,p.match_team_revision_id,p.participation_evidence,p.recorded_from_gen,r.locator,d.legacy_object_path,d.content_sha256\n   FROM football.match_players_current p LEFT JOIN ingest.source_records r ON r.id=p.source_record_id LEFT JOIN ingest.source_documents d ON d.id=r.document_id\n   WHERE p.match_id=ma.match_id AND p.player_id=pa.player_id AND p.team_id=ta.team_id ORDER BY p.revision_id LIMIT 4) x) exact_cohort\n FROM wanted w LEFT JOIN ingest.public_aliases_current ma ON ma.route_kind='match' AND ma.public_key=w.match_key\n LEFT JOIN ingest.public_aliases_current pa ON pa.route_kind='player' AND pa.public_key=w.actor\n LEFT JOIN ingest.public_aliases_current ta ON ta.route_kind='team' AND ta.public_key=w.team_key ORDER BY w.shot_key),encoded AS MATERIALIZED (SELECT row_to_json(raw)::text v,row_number() OVER() ordinal FROM raw),measured AS (SELECT count(*) n,coalesce(sum(octet_length(v)),0)+greatest(count(*)-1,0)+2 bytes FROM encoded) SELECT CASE WHEN n<=%s AND bytes<=%s THEN (SELECT '['||coalesce(string_agg(v,',' ORDER BY ordinal),'')||']' FROM encoded) END,n,bytes FROM measured",
+      "params": [
+        "m_0Dz3Fs",
+        "p_4D4L8O",
+        "t_38NVJO",
+        "s_2T49C6",
+        "/tables/shots/rows/531",
+        "m_1GY5OE",
+        "p_2mYiIC",
+        "t_4BCeSu",
+        "s_0KideU",
+        "/tables/shots/rows/4207",
+        "m_1GY5OE",
+        "p_2mYiIC",
+        "t_4BCeSu",
+        "s_32KbQY",
+        "/tables/shots/rows/4208",
+        "m_2c4ZLn",
+        "p_2mYiIC",
+        "t_0xMlRV",
+        "s_4RmCm9",
+        "/tables/shots/rows/4832",
+        4,
+        8000
+      ],
+      "rowCount": 4,
+      "serverBytes": 747,
+      "decodedBytes": 783,
+      "elapsedMs": 24.784,
+      "rows": [
+        {
+          "match_key": "m_1GY5OE",
+          "actor": "p_2mYiIC",
+          "team_key": "t_4BCeSu",
+          "shot_key": "s_0KideU",
+          "locator": "/tables/shots/rows/4207",
+          "match_id": 140,
+          "player_id": null,
+          "team_id": 20,
+          "exact_cohort": []
+        },
+        {
+          "match_key": "m_0Dz3Fs",
+          "actor": "p_4D4L8O",
+          "team_key": "t_38NVJO",
+          "shot_key": "s_2T49C6",
+          "locator": "/tables/shots/rows/531",
+          "match_id": 287,
+          "player_id": null,
+          "team_id": 16,
+          "exact_cohort": []
+        },
+        {
+          "match_key": "m_1GY5OE",
+          "actor": "p_2mYiIC",
+          "team_key": "t_4BCeSu",
+          "shot_key": "s_32KbQY",
+          "locator": "/tables/shots/rows/4208",
+          "match_id": 140,
+          "player_id": null,
+          "team_id": 20,
+          "exact_cohort": []
+        },
+        {
+          "match_key": "m_2c4ZLn",
+          "actor": "p_2mYiIC",
+          "team_key": "t_0xMlRV",
+          "shot_key": "s_4RmCm9",
+          "locator": "/tables/shots/rows/4832",
+          "match_id": 113,
+          "player_id": null,
+          "team_id": 9,
+          "exact_cohort": []
+        }
+      ]
+    },
+    {
+      "name": "exact_shot_identity_and_source_locator",
+      "sql": "WITH raw AS MATERIALIZED (WITH wanted(match_key,actor,team_key,shot_key,locator) AS (VALUES (%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s)) SELECT w.*,s.id shot_id,s.revision_id,s.match_id,s.team_id,s.player_id,s.player_profile_version_id,s.source_record_id,s.source_ordinal,s.recorded_from_gen,r.locator sql_locator,d.legacy_object_path,d.content_sha256\n FROM wanted w LEFT JOIN LATERAL (SELECT s.* FROM football.shots s JOIN ingest.source_records r ON r.id=s.source_record_id JOIN ingest.source_documents d ON d.id=r.document_id\n  WHERE s.external_shot_id=w.shot_key AND r.locator=w.locator AND d.legacy_object_path=%s AND d.content_sha256=%s ORDER BY s.id LIMIT 2) s ON true\n LEFT JOIN ingest.source_records r ON r.id=s.source_record_id LEFT JOIN ingest.source_documents d ON d.id=r.document_id ORDER BY w.shot_key),encoded AS MATERIALIZED (SELECT row_to_json(raw)::text v,row_number() OVER() ordinal FROM raw),measured AS (SELECT count(*) n,coalesce(sum(octet_length(v)),0)+greatest(count(*)-1,0)+2 bytes FROM encoded) SELECT CASE WHEN n<=%s AND bytes<=%s THEN (SELECT '['||coalesce(string_agg(v,',' ORDER BY ordinal),'')||']' FROM encoded) END,n,bytes FROM measured",
+      "params": [
+        "m_0Dz3Fs",
+        "p_4D4L8O",
+        "t_38NVJO",
+        "s_2T49C6",
+        "/tables/shots/rows/531",
+        "m_1GY5OE",
+        "p_2mYiIC",
+        "t_4BCeSu",
+        "s_0KideU",
+        "/tables/shots/rows/4207",
+        "m_1GY5OE",
+        "p_2mYiIC",
+        "t_4BCeSu",
+        "s_32KbQY",
+        "/tables/shots/rows/4208",
+        "m_2c4ZLn",
+        "p_2mYiIC",
+        "t_0xMlRV",
+        "s_4RmCm9",
+        "/tables/shots/rows/4832",
+        "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+        "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6",
+        4,
+        8000
+      ],
+      "rowCount": 4,
+      "serverBytes": 2087,
+      "decodedBytes": 2124,
+      "elapsedMs": 26.712,
+      "rows": [
+        {
+          "match_key": "m_1GY5OE",
+          "actor": "p_2mYiIC",
+          "team_key": "t_4BCeSu",
+          "shot_key": "s_0KideU",
+          "locator": "/tables/shots/rows/4207",
+          "shot_id": 4208,
+          "revision_id": 4208,
+          "match_id": 140,
+          "team_id": 20,
+          "player_id": null,
+          "player_profile_version_id": null,
+          "source_record_id": 17382,
+          "source_ordinal": 4207,
+          "recorded_from_gen": 2,
+          "sql_locator": "/tables/shots/rows/4207",
+          "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+          "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+        },
+        {
+          "match_key": "m_0Dz3Fs",
+          "actor": "p_4D4L8O",
+          "team_key": "t_38NVJO",
+          "shot_key": "s_2T49C6",
+          "locator": "/tables/shots/rows/531",
+          "shot_id": 532,
+          "revision_id": 532,
+          "match_id": 287,
+          "team_id": 16,
+          "player_id": null,
+          "player_profile_version_id": null,
+          "source_record_id": 13706,
+          "source_ordinal": 531,
+          "recorded_from_gen": 2,
+          "sql_locator": "/tables/shots/rows/531",
+          "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+          "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+        },
+        {
+          "match_key": "m_1GY5OE",
+          "actor": "p_2mYiIC",
+          "team_key": "t_4BCeSu",
+          "shot_key": "s_32KbQY",
+          "locator": "/tables/shots/rows/4208",
+          "shot_id": 4209,
+          "revision_id": 4209,
+          "match_id": 140,
+          "team_id": 20,
+          "player_id": null,
+          "player_profile_version_id": null,
+          "source_record_id": 17383,
+          "source_ordinal": 4208,
+          "recorded_from_gen": 2,
+          "sql_locator": "/tables/shots/rows/4208",
+          "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+          "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+        },
+        {
+          "match_key": "m_2c4ZLn",
+          "actor": "p_2mYiIC",
+          "team_key": "t_0xMlRV",
+          "shot_key": "s_4RmCm9",
+          "locator": "/tables/shots/rows/4832",
+          "shot_id": 4833,
+          "revision_id": 4833,
+          "match_id": 113,
+          "team_id": 9,
+          "player_id": null,
+          "player_profile_version_id": null,
+          "source_record_id": 18007,
+          "source_ordinal": 4832,
+          "recorded_from_gen": 2,
+          "sql_locator": "/tables/shots/rows/4832",
+          "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+          "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+        }
+      ]
+    }
+  ],
+  "sourceRamReads": 0,
+  "remoteCalls": 0,
+  "businessWrites": 0,
+  "fullAcceptance": false,
+  "status": "pass_metadata_readback",
+  "globalActors": [
+    {
+      "actor": "p_2mYiIC",
+      "player_id": null,
+      "player_exists": false,
+      "profiles": [],
+      "performance_source_documents": []
+    },
+    {
+      "actor": "p_4D4L8O",
+      "player_id": null,
+      "player_exists": false,
+      "profiles": [],
+      "performance_source_documents": []
+    }
+  ],
+  "exactCohorts": [
+    {
+      "match_key": "m_1GY5OE",
+      "actor": "p_2mYiIC",
+      "team_key": "t_4BCeSu",
+      "shot_key": "s_0KideU",
+      "locator": "/tables/shots/rows/4207",
+      "match_id": 140,
+      "player_id": null,
+      "team_id": 20,
+      "exact_cohort": []
+    },
+    {
+      "match_key": "m_0Dz3Fs",
+      "actor": "p_4D4L8O",
+      "team_key": "t_38NVJO",
+      "shot_key": "s_2T49C6",
+      "locator": "/tables/shots/rows/531",
+      "match_id": 287,
+      "player_id": null,
+      "team_id": 16,
+      "exact_cohort": []
+    },
+    {
+      "match_key": "m_1GY5OE",
+      "actor": "p_2mYiIC",
+      "team_key": "t_4BCeSu",
+      "shot_key": "s_32KbQY",
+      "locator": "/tables/shots/rows/4208",
+      "match_id": 140,
+      "player_id": null,
+      "team_id": 20,
+      "exact_cohort": []
+    },
+    {
+      "match_key": "m_2c4ZLn",
+      "actor": "p_2mYiIC",
+      "team_key": "t_0xMlRV",
+      "shot_key": "s_4RmCm9",
+      "locator": "/tables/shots/rows/4832",
+      "match_id": 113,
+      "player_id": null,
+      "team_id": 9,
+      "exact_cohort": []
+    }
+  ],
+  "exactShots": [
+    {
+      "match_key": "m_1GY5OE",
+      "actor": "p_2mYiIC",
+      "team_key": "t_4BCeSu",
+      "shot_key": "s_0KideU",
+      "locator": "/tables/shots/rows/4207",
+      "shot_id": 4208,
+      "revision_id": 4208,
+      "match_id": 140,
+      "team_id": 20,
+      "player_id": null,
+      "player_profile_version_id": null,
+      "source_record_id": 17382,
+      "source_ordinal": 4207,
+      "recorded_from_gen": 2,
+      "sql_locator": "/tables/shots/rows/4207",
+      "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+    },
+    {
+      "match_key": "m_0Dz3Fs",
+      "actor": "p_4D4L8O",
+      "team_key": "t_38NVJO",
+      "shot_key": "s_2T49C6",
+      "locator": "/tables/shots/rows/531",
+      "shot_id": 532,
+      "revision_id": 532,
+      "match_id": 287,
+      "team_id": 16,
+      "player_id": null,
+      "player_profile_version_id": null,
+      "source_record_id": 13706,
+      "source_ordinal": 531,
+      "recorded_from_gen": 2,
+      "sql_locator": "/tables/shots/rows/531",
+      "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+    },
+    {
+      "match_key": "m_1GY5OE",
+      "actor": "p_2mYiIC",
+      "team_key": "t_4BCeSu",
+      "shot_key": "s_32KbQY",
+      "locator": "/tables/shots/rows/4208",
+      "shot_id": 4209,
+      "revision_id": 4209,
+      "match_id": 140,
+      "team_id": 20,
+      "player_id": null,
+      "player_profile_version_id": null,
+      "source_record_id": 17383,
+      "source_ordinal": 4208,
+      "recorded_from_gen": 2,
+      "sql_locator": "/tables/shots/rows/4208",
+      "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+    },
+    {
+      "match_key": "m_2c4ZLn",
+      "actor": "p_2mYiIC",
+      "team_key": "t_0xMlRV",
+      "shot_key": "s_4RmCm9",
+      "locator": "/tables/shots/rows/4832",
+      "shot_id": 4833,
+      "revision_id": 4833,
+      "match_id": 113,
+      "team_id": 9,
+      "player_id": null,
+      "player_profile_version_id": null,
+      "source_record_id": 18007,
+      "source_ordinal": 4832,
+      "recorded_from_gen": 2,
+      "sql_locator": "/tables/shots/rows/4832",
+      "legacy_object_path": "computed/dashboard/2025-2026/l_3FJFUl-1f2cbed49d570024ea3a0ee7.json.gz",
+      "content_sha256": "08ca2af5bbc78703da76839a7d332a7a40f4dd18486972b363af49bd17ffeaa6"
+    }
+  ],
+  "sourceRowDigestRecomputed": false,
+  "limits": [
+    "Exact cohort absence does not imply global identity absence",
+    "Supplied raw-row digest is a witness, not recomputed by these SQL metadata reads"
+  ],
+  "connectionClosed": true,
+  "elapsedMs": 170.929,
+  "sourceCheckpointSha256": "35dba5b977335c957d39472ca85dbfc6c2ce0074a94a558badbec32f82fb73cc",
+  "sourceNativeEvidenceSha256": "e0ba27c04c2d0936c9447c2a2aa74c1cfa8733d1062b855794cdf69032e6db79",
+  "scriptSha256": "2732655cc98a17338ed122887449dbbc1f9c39857e39fc16504f16cc654262a0"
+}

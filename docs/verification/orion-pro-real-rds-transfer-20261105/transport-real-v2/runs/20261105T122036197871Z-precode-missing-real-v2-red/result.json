@@ -1,0 +1,55 @@
+{
+  "kind": "source_free_real_receipt_adapter_cli_e2e_v2",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport-real-v2/e2e.py",
+    "--precode-only",
+    "--label",
+    "precode-missing-real-v2-red"
+  ],
+  "expected": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport-real-v2/PROTOCOL.md",
+  "cases": [
+    {
+      "case": "implementation_available",
+      "status": "fail",
+      "error": "Real normalizer receipt adapter v2 is absent",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-real-rds-transfer-20261105/transport-real-v2/e2e.py\", line 63, in main\n    if case=='implementation_available':assert WRITER.is_file(),'Real normalizer receipt adapter v2 is absent';actual={'writerSha256':sha(WRITER)}\n                                               ~~~~~~~~~~~~~~^^\nAssertionError: Real normalizer receipt adapter v2 is absent\n"
+    },
+    {
+      "case": "offline_default",
+      "status": "unverified",
+      "reason": "Real normalizer receipt adapter v2 is absent"
+    },
+    {
+      "case": "local_structural_receipts",
+      "status": "unverified",
+      "reason": "Real normalizer receipt adapter v2 is absent"
+    },
+    {
+      "case": "production_route_refusals",
+      "status": "unverified",
+      "reason": "Real normalizer receipt adapter v2 is absent"
+    }
+  ],
+  "invocations": [],
+  "inputSha256": {
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport-real-v2/e2e.py": "a5540c823eb6d3a6c6835981b03ab38ef174655562063c71db67603d1efa82ab",
+    "docs/verification/orion-pro-real-rds-transfer-20261105/transport-real-v2/PROTOCOL.md": "a4bab65ceedb6f72cb632e5d27bb501ad97e3213c154e37149309a6d68f58777",
+    "tests/orion_e2e_process.py": "06bd176152361ab96f26930920c71d7a32fd9ddadde5bfc8bb02008e87174c04"
+  },
+  "pgStarts": 0,
+  "sourceRamReads": 0,
+  "remoteCalls": 0,
+  "fullAcceptance": false,
+  "status": "fail",
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "unverified": 3
+  },
+  "inputHashesExact": true,
+  "cleanup": {
+    "pgStarted": false,
+    "connections": 0
+  }
+}
