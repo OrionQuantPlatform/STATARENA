@@ -305,6 +305,72 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("batched input spool preserves values and rejects changed versions", prefetch_integrity)
 
+    def streamed_input_contract():
+        import sqlite3
+        from relational_materialize import Inputs
+
+        calls = []
+
+        class CountedCursor:
+            def __init__(self):
+                self.cursor = db.cursor()
+
+            def __enter__(self):
+                self.cursor.__enter__()
+                return self
+
+            def __exit__(self, *args):
+                return self.cursor.__exit__(*args)
+
+            def stream(self, statement, params):
+                calls.append(len(params[0]))
+                return self.cursor.stream(statement, params)
+
+        class CountedConnection:
+            def cursor(self):
+                return CountedCursor()
+
+            def __getattr__(self, key):
+                return getattr(db, key)
+
+        with db.transaction(force_rollback=True):
+            expected = {}
+            for index in range(257):
+                path = f"raw/stream-verification/{index:04d}.json"
+                expected[path] = {"index": index, "zero": 0, "flag": False,
+                                  "missing_value": None, "shirt": "00", "name": "Léa"}
+                input_(path, expected[path], indexed=index != 7)
+            reader = Inputs(store)
+            reader.db = CountedConnection()
+            with sqlite3.connect(":memory:") as scratch:
+                scratch.execute("CREATE TABLE body_cache(path text,sha text,body text,PRIMARY KEY(path,sha))")
+                reader.prefetch([(path, None) for path in expected], scratch)
+                actual = {path: json.loads(body) for path, body in scratch.execute("SELECT path,body FROM body_cache")}
+                check(actual == expected, "Streamed inputs changed values or omitted a chunk")
+                check(len(calls) <= 3 and max(calls) <= 128, "Input stream requires too many round trips or an unbounded statement")
+                check(store.reads["raw/stream-verification/0007.json"] == 1, "Missing indexed document did not use its verified source")
+                scratch.execute("DELETE FROM body_cache")
+                try:
+                    with db.transaction():
+                        reader.prefetch([(path, "0" * 64 if index == 3 else None)
+                                         for index, path in enumerate(expected)], scratch)
+                except ValueError:
+                    pass
+                else:
+                    raise AssertionError("Streamed input accepted an invalid source checksum")
+                check(sql1("SELECT 1") == 1, "Early stream rejection left the SQL connection busy")
+                scratch.execute("DELETE FROM body_cache")
+                try:
+                    reader.prefetch([("raw/stream-verification/absent.json", None)], scratch)
+                except FileNotFoundError:
+                    pass
+                else:
+                    raise AssertionError("Stream silently omitted an absent source")
+        return {"documents": 257, "read_statements": 3,
+                "fallback_verified": True, "connection_recovered_after_rejection": True}
+
+    case("streamed inputs stay complete, bounded and recoverable after rejection", streamed_input_contract)
+
     def bulk_insert_contract():
         from relational_core import _many
 
