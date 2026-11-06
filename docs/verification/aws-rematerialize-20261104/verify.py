@@ -322,7 +322,7 @@ with psycopg.connect(url, autocommit=True) as db:
                 pass
             else:
                 raise AssertionError("Bulk insertion bypassed the target constraint")
-            check(sql1("SELECT count(*) FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-invalid-%'") == 0, "Failed bulk insert leaked partial rows")
+            check(sql1("SELECT count(*) FROM statarena_app.metric_definitions WHERE metric_key LIKE %s", ("copy-invalid-%",)) == 0, "Failed bulk insert leaked partial rows")
             db.execute("DELETE FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-check-%'")
         return {"rows": len(rows), "conflicts_preserved": True, "constraint_failure_atomic": True}
 
