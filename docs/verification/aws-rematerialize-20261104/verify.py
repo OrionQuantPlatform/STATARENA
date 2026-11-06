@@ -328,6 +328,64 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("bulk fact insertion retains conflicts, constraints and rollback", bulk_insert_contract)
 
+    def catalog_bulk_contract():
+        from relational_catalog import publish_catalog
+
+        class Counted:
+            def __init__(self, connection):
+                self.connection = connection
+                self.calls = 0
+
+            def execute(self, *args, **kwargs):
+                self.calls += 1
+                return self.connection.execute(*args, **kwargs)
+
+            def cursor(self, *args, **kwargs):
+                self.calls += 1
+                return self.connection.cursor(*args, **kwargs)
+
+            def transaction(self, *args, **kwargs):
+                return self.connection.transaction(*args, **kwargs)
+
+        def profile(pid):
+            return {"status": 200, "data": {"id": pid, "name": "Joueur é " + pid,
+                    "shirt_number": "00", "position_id": 0, "image_url": None}, "error": None}
+
+        expected = {f"p_B{i:05d}": profile(f"p_B{i:05d}") for i in range(100)}
+        records = [("/players/" + pid, body) for pid, body in expected.items()]
+        with db.transaction(force_rollback=True):
+            counted = Counted(db)
+            check(publish_catalog(counted, records) == {"changed": 100, "unchanged": 0}, "Batch omitted a profile")
+            initial_calls = counted.calls
+            check(initial_calls <= 16, "Profile publication retained per-profile SQL round trips")
+            actual = dict(db.execute("""SELECT c.edition,statarena_app.read_cat_profile_players(p)
+                FROM statarena_app.catalog_editions c JOIN statarena_app.cat_profile_players p USING(resource_id)
+                WHERE c.catalog='profile' AND c.scope='players' AND c.edition=ANY(%s)""", (list(expected),)))
+            check(actual == expected, "Bulk profile publication changed missing, null or scalar values")
+            check(publish_catalog(db, records) == {"changed": 0, "unchanged": 100}, "Identical replay changed profiles")
+            updated = copy.deepcopy(records[0][1])
+            updated["data"]["name"] = "Corrected name"
+            correction = (records[0][0], updated)
+            check(publish_catalog(db, [records[0], correction, correction]) == {"changed": 1, "unchanged": 2},
+                  "Duplicate keys lost sequential correction or idempotency")
+            check(sql1("""SELECT statarena_app.read_cat_profile_players(p) FROM statarena_app.cat_profile_players p
+                JOIN statarena_app.catalog_editions c USING(resource_id) WHERE c.catalog='profile'
+                AND c.scope='players' AND c.edition=%s""", ("p_B00000",)) == updated, "Last duplicate did not win")
+            invalid = [(f"/players/p_T{i:05d}", profile(f"p_T{i:05d}")) for i in range(100)]
+            invalid.append(("/players/p_TZZ999", {"status": 200, "data": {"unknown_field": True}}))
+            try:
+                publish_catalog(db, invalid)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Unknown catalog field was silently accepted")
+            check(sql1("SELECT count(*) FROM statarena_app.catalog_editions WHERE catalog='profile' AND scope='players' AND edition=ANY(%s)",
+                       ([f"p_T{i:05d}" for i in range(100)],)) == 0, "Late invalid input leaked an earlier committed group")
+        return {"profiles": 100, "initial_database_calls": initial_calls, "duplicates_preserved": True,
+                "native_values_exact": True, "late_failure_atomic": True}
+
+    case("catalog batches preserve values, corrections and atomic failure", catalog_bulk_contract)
+
     def staging_reconciliation():
         from reconcile_aws_staging import SPECS, stage_rows, apply_staged, verified
 
