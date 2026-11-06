@@ -271,6 +271,63 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("first construction records actual bootstrap source", bootstrap_receipt)
 
+    def prefetch_integrity():
+        import sqlite3
+        from relational_materialize import Inputs, compact
+
+        value = {"status": 200, "data": {"value": 0, "nullable": None}}
+        path = "raw/prefetch-verification.json"
+        input_(path, value)
+        physical = sql1("select encode(sha256,'hex') from statarena.objects where path=%s", (path,))
+        logical = hashlib.sha256(compact(value).encode()).hexdigest()
+        world_path = f"raw/pitchapi-world/blobs/{logical}.json.gz"
+        input_(world_path, value)
+        with sqlite3.connect(":memory:") as scratch:
+            scratch.execute("CREATE TABLE body_cache(path text,sha text,body text,PRIMARY KEY(path,sha))")
+            reader = Inputs(store)
+            reader.prefetch([(path, None), (path, physical), (world_path, logical)], scratch)
+            bodies = scratch.execute("SELECT body FROM body_cache").fetchall()
+            check(len(bodies) == 3 and all(json.loads(row[0]) == value for row in bodies), "Prefetch changed native values or lost a reference")
+            try:
+                reader.prefetch([(path, "0" * 64)], scratch)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Prefetch accepted a stale physical digest")
+            input_(world_path, {"status": 200, "data": {"value": 1}})
+            try:
+                reader.prefetch([(world_path, logical)], scratch)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Prefetch accepted altered logical content")
+        return {"native_values_preserved": True, "physical_and_logical_pins_checked": True}
+
+    case("batched input spool preserves values and rejects changed versions", prefetch_integrity)
+
+    def bulk_insert_contract():
+        from relational_core import _many
+
+        rows = [dict(metric_key=f"copy-check-{i}", label='é\\"' + str(i), unit=None, decimals=i % 5) for i in range(120)]
+        with db.transaction():
+            _many(db, "metric_definitions", rows)
+            _many(db, "metric_definitions", [dict(row, label="must not replace") for row in rows])
+            actual = db.execute("SELECT metric_key,label,unit,decimals FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-check-%' ORDER BY metric_key").fetchall()
+            expected = sorted((row['metric_key'], row['label'], row['unit'], row['decimals']) for row in rows)
+            check(actual == expected, "Bulk insertion changed values or conflict behavior")
+            try:
+                with db.transaction():
+                    _many(db, "metric_definitions", [dict(row, metric_key=None if i == 119 else f"copy-invalid-{i}") for i, row in enumerate(rows)])
+            except psycopg.errors.NotNullViolation:
+                pass
+            else:
+                raise AssertionError("Bulk insertion bypassed the target constraint")
+            check(sql1("SELECT count(*) FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-invalid-%'") == 0, "Failed bulk insert leaked partial rows")
+            db.execute("DELETE FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-check-%'")
+        return {"rows": len(rows), "conflicts_preserved": True, "constraint_failure_atomic": True}
+
+    case("bulk fact insertion retains conflicts, constraints and rollback", bulk_insert_contract)
+
     def manifest_only(bad_pin=False):
         new_league = 'l_ZZ8811' if bad_pin else 'l_ZZ8812'
         new_season = '1888/1889'
