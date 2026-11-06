@@ -1,9 +1,0 @@
-{
-  "setup": "Complete homepage in an isolated Chromium tab with browser-only controlled packed Neon responses. Source and production records are untouched.",
-  "command": "python3 output/playwright/page-seasons-layout-20261103/run_cli.py personal-fixtures",
-  "expected": "Saved clubs and current clubs of saved players lead. On the same Paris day: Champions, Europa, Conference, domestic. Old/national clubs, duplicates, outside-scope and out-of-horizon fixtures must not leak into priorities; no preferences retains editorial fallback.",
-  "checks": [],
-  "status": "failed",
-  "error": "A dynamic import callback was not specified.",
-  "text": ""
-}

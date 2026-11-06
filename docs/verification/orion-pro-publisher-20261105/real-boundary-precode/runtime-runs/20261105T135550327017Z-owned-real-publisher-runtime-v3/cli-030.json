@@ -1,7 +1,0 @@
-{
-  "error": {
-    "code": "AMBIENT_CONNECTION_FORBIDDEN",
-    "message": "Ambient libpq/DSN settings are forbidden"
-  },
-  "status": "rejected"
-}

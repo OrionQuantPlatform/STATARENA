@@ -1,8 +1,0 @@
-{
-  "setup": "Extracted immutable source files used only for migration bootstrap. Exact original inventory already verified in Neon.",
-  "command": "Compare each extracted source path/size/SHA-256 against verified progress.sqlite; delete this owned temporary extraction only after every member matches.",
-  "deletedFiles": 460,
-  "deletedBytes": 171042130,
-  "deletedAllocatedBytes": 171962368,
-  "status": "passed"
-}

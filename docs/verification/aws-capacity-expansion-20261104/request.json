@@ -1,5 +1,0 @@
-{
-  "DBInstanceIdentifier": "statarena-postgres",
-  "AllocatedStorage": 64,
-  "ApplyImmediately": true
-}

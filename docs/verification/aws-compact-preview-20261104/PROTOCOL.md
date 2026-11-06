@@ -1,3 +1,0 @@
-# Final compact preview acceptance
-
-Request exactly one Git-source Vercel preview on the existing team and project at d5df4c5a9a31ee7954dc9403f2fdccb8736371e9. Record the returned status, quota details or deployment ID. If Vercel cannot deploy, run the same browser fixture from the exact Git commit in a private local checkout with a production Next build pointed at the live AWS API. Require the prior desktop/mobile score, on-demand stats and shots, season player figures and direct API-origin checks. Record partition format, HTTP response count per view, generation where available, sizes and status. Distinguish hosted versus local evidence. No changes to quotas, protection or billing.

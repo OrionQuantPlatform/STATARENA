@@ -1,7 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/neon_materialize.py", line 437, in <module>
-    main()
-    ~~~~^^
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/neon_materialize.py", line 411, in main
-    raise RuntimeError("Materialization writes to Neon and must run in GitHub Actions")
-RuntimeError: Materialization writes to Neon and must run in GitHub Actions

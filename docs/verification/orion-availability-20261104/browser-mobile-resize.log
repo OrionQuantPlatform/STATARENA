@@ -1,6 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' -s=orion-old-availability resize 390 844
-### Ran Playwright code
-```js
-await page.setViewportSize({ width: 390, height: 844 });
-```

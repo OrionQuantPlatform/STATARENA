@@ -1,4 +1,0 @@
-Starting country ARG
-{"country": "ARG", "state": "complete_with_errors", "requestsVisited": 4, "failures": 2, "failedRequests": [{"endpoint": "/players/p_ARG000", "params": {}, "status": 403, "state": "blocked", "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "Fixture refusal"}}, {"endpoint": "/players/p_DENIED", "params": {}, "status": 403, "state": "blocked", "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "Fixture refusal"}}], "updatedAt": "2026-11-03T08:28:00Z", "globalCheckpointRequests": 5, "networkRequests": 4}
-Starting country BRA
-{"country": "BRA", "state": "complete", "requestsVisited": 3, "failures": 0, "failedRequests": [], "updatedAt": "2026-11-03T08:28:01Z", "globalCheckpointRequests": 8, "networkRequests": 7}

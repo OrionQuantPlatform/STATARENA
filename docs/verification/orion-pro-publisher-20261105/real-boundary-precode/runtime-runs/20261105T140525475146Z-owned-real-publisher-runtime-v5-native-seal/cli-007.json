@@ -1,7 +1,0 @@
-{
-  "error": {
-    "code": "ADMISSION_MISMATCH",
-    "message": "Owned transport reconciliation differs"
-  },
-  "status": "rejected"
-}

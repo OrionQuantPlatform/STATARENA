@@ -1,6 +1,0 @@
-{
-  "command": "python3 dashboard/outputs/player-ranking/verify_browser.py",
-  "setup": "Next.js dev :3000 / Bun :8765, canonical JSON unchanged; placeholder page uses catalog-only provider mode",
-  "status": "failed",
-  "checks": []
-}

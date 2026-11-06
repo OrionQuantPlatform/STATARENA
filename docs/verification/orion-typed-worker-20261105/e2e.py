@@ -25,7 +25,7 @@ SCENARIOS = [('typed_success', 'typed-ingest', ''), ('foreign_host', 'typed-inge
              ('foreign_database', 'typed-ingest', 'database'), ('foreign_port', 'typed-ingest', 'port'),
              ('foreign_actor', 'typed-ingest', 'actor'), ('ssm_denied', 'typed-ingest', 'denied'),
              ('non_secure', 'typed-ingest', 'type'), ('unknown_mode', 'typed-ingest-unknown', 'unknown'),
-             ('legacy_ingest_control', 'ingest', ''), ('runtime_control', 'runtime', '')]
+             ('aws_staging_ingest_control', 'ingest', ''), ('runtime_control', 'runtime', '')]
 
 
 def parse_env(path):
@@ -113,6 +113,7 @@ def scenario(name, mode, fault):
             else:
                 assert got.returncode == 0, 'NEW_MODE_OR_CONTROL_NOT_AVAILABLE'
                 exported = parse_env(env_file)
+                assert not any(key.startswith('NEON_') for key in exported), 'NO_NEON_CONFIGURATION'
                 actual['exportedKeys'] = sorted(exported)
                 parsed = urllib.parse.urlsplit(exported['DATABASE_URL'])
                 assert parsed.hostname == HOST and parsed.port == 5432 and parsed.path == '/statarena_prod', 'TARGET_TUPLE'
@@ -126,7 +127,9 @@ def scenario(name, mode, fault):
                 elif mode == 'runtime':
                     assert set(exported) == KEYS, 'RUNTIME_EXPORT_BOUNDARY'
                 else:
-                    assert exported['NEON_STORAGE_SECRET_ACCESS_KEY'] == storage_secret and exported['NEON_DATABASE_URL'] == exported['DATABASE_URL'], 'LEGACY_CONTROL'
+                    assert exported['STATARENA_S3_SECRET_ACCESS_KEY'] == storage_secret, 'AWS_STAGING_CREDENTIAL'
+                    assert exported['STATARENA_S3_BUCKET'] == 'statarena-football-333rosky-70db6e5f', 'AWS_STAGING_BUCKET'
+                    assert exported['STATARENA_EXTERNAL_STORAGE'] == '1' and exported['STATARENA_SQL_DOCUMENTS'] == '1', 'AWS_STAGING_MODE'
     assert not Path(temp).exists(), 'OWNED_TEMP_NOT_REMOVED'
     actual['privateTempRemoved'] = True
     return actual
@@ -170,3 +173,4 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
+

@@ -1,8 +1,0 @@
-{
-  "key": "NEXT_PUBLIC_API_ORIGIN",
-  "value": "https://d317dq37z1tacb.cloudfront.net",
-  "type": "plain",
-  "target": ["preview"],
-  "gitBranch": "codex/aws-backend-20261104",
-  "comment": "Direct read-only relational AWS backend; branch acceptance before production cutover."
-}

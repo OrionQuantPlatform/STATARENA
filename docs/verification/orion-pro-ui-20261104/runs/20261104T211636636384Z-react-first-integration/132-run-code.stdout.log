@@ -1,6 +1,0 @@
-### Result
-{"ready":true}
-### Ran Playwright code
-```js
-await (async (page) => { await page.waitForFunction(() => (document.querySelector('.shot-xg')?.textContent.includes('0,67') || document.querySelector('.shot-xg')?.textContent.includes('0.67')), null, { timeout: 15000 }); return { ready: true }; })(page);
-```

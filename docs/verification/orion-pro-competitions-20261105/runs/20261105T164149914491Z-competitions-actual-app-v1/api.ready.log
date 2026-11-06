@@ -1,1 +1,0 @@
-{"event":"ready","port":52581,"identity":{"role":"statarena_runtime","readonly":"on","statement":"8s","locks":"1s","idle":"5s","ssl":true},"calibration":["fetch","socket","dns.lookup","dns.resolve","dns.promises.lookup","http.request","https.request","https.get"],"node":"v24.22.2","handler":"actual-aws-app"}

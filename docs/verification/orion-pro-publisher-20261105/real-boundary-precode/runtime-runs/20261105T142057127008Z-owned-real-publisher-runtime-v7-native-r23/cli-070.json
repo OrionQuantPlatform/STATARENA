@@ -1,9 +1,0 @@
-{
-  "connections": 1,
-  "error": {
-    "code": "ADMISSION_MISMATCH",
-    "message": "Final score scope differs"
-  },
-  "stage": "planning",
-  "status": "rejected"
-}

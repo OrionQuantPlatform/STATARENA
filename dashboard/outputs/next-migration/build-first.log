@@ -1,9 +1,0 @@
-$ NEXT_TELEMETRY_DISABLED=1 bun --bun next build frontend
-▲ Next.js 16.4.3 (Turbopack)
-✓ Running next.config.mjs took 20ms
-
-> Build error occurred
-Error: > `pages` and `app` directories should be under the same folder
-    at ignore-listed frames
-error: "next" exited with code 1
-error: script "build" exited with code 1

@@ -1,4 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' -s=statarena-seasons close
-Browser 'statarena-seasons' closed
-

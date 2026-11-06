@@ -1,1 +1,0 @@
-{"event":"ready","port":59607,"identity":[{"role":"statarena_runtime","readonly":"on","statement_timeout":"8s","lock_timeout":"1s"}],"calibration":["provider_or_object_fetch","Bun.file","fs.readFileSync","non_owned_network_connect"]}

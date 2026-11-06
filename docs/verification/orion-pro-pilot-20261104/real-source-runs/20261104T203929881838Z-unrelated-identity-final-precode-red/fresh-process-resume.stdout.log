@@ -1,1 +1,0 @@
-{"pid": 73177, "mode": "synthetic-resume-after-core", "awsReads": 0, "status": "fail", "errorType": "MappingError", "reason": "SQL rehydration identity membership differs: people", "sqlstate": null}

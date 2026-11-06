@@ -1,8 +1,0 @@
-{
-  "dashboard/frontend/src/theme.css": true,
-  "dashboard/frontend/src/brand-tokens.css": true,
-  "dashboard/frontend/src/fonts.css": true,
-  "dashboard/frontend/src/components/Charts.jsx": true,
-  "dashboard/frontend/src/components/ThemeToggle.jsx": true,
-  "dashboard/frontend/public/branding/green/manifest.json": true
-}

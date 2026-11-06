@@ -1,2 +1,0 @@
-{"kind": "path_read_or_write", "targetKind": "PosixPath"}
-{"kind": "network_connect", "targetKind": "tuple"}

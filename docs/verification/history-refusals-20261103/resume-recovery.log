@@ -1,9 +1,0 @@
-Starting country ARG
-{"country": "ARG", "state": "complete_with_errors", "requestsVisited": 4, "failures": 1, "failedRequests": [{"endpoint": "/players/p_DENIED", "params": {}, "status": 403, "state": "blocked", "error": {"code": "PLAN_UPGRADE_REQUIRED", "message": "Fixture refusal"}}], "updatedAt": "2026-11-03T08:27:59Z", "globalCheckpointRequests": 8, "networkRequests": 1}
-[main a2cd9af] data: finish PitchAPI collection for ARG [skip ci]
- 2 files changed, 1 insertion(+), 1 deletion(-)
-From /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/history-refusal-e2e-295798b3/normal-remote
- * branch            main       -> FETCH_HEAD
-Current branch main is up to date.
-To /var/folders/8z/mp96_9353w79bsgv7kftgk2h0000gn/T/history-refusal-e2e-295798b3/normal-remote.git
-   463a33e..a2cd9af  HEAD -> main

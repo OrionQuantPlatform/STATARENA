@@ -1,6 +1,0 @@
-### Result
-{"scrollX":0,"scrollY":0}
-### Ran Playwright code
-```js
-await (async (page) => page.evaluate(() => { window.scrollTo(0, 0); return { scrollX, scrollY }; }))(page);
-```

@@ -1,3 +1,0 @@
-$ prettier --check frontend/src backend shared scripts/*.mjs vite.config.js package.json
-Checking formatting...
-All matched files use Prettier code style!

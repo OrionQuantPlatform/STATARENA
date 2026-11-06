@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/outputs/upcoming-week/verify_browser.py", line 67, in <module>
-    kickoff = dt.datetime.fromisoformat(row["time_utc"].replace("Z", "+00:00"))
-                                        ^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'replace'

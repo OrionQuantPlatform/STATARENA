@@ -1,1 +1,0 @@
-[{"name":"STATARENA_AWS_INGEST_ROLE_ARN","value":"arn:aws:iam::361769570630:role/StatArenaGitHubIngest"},{"name":"STATARENA_AWS_MONITOR_ROLE_ARN","value":"arn:aws:iam::361769570630:role/StatArenaGitHubMonitor"},{"name":"STATARENA_SQL_LIMIT_BYTES","value":"16000000000"}]

@@ -1,3 +1,0 @@
-{"elapsedSeconds": 0.005, "event": "child_started", "mode": "smoke", "pid": 86072}
-{"elapsedSeconds": 0.005, "event": "heartbeat", "ownedAllocatedBytes": 12288, "registeredPostgresRoots": 0, "completedCases": 0, "activeCaseInferred": "local_overlay_probe"}
-{"elapsedSeconds": 2.231, "event": "pipe_drain_stopped", "reason": "PipeDrainDeadline"}

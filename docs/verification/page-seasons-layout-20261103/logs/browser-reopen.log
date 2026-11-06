@@ -1,8 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' -s=statarena-seasons open http://127.0.0.1:3000/?focus=europe --config cli-headless.config.json
-### Browser `statarena-seasons` opened with pid 3062.
-### Error
-Error: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/?focus=europe
-Call log:
-[2m  - navigating to "http://127.0.0.1:3000/?focus=europe", waiting until "domcontentloaded"[22m
-

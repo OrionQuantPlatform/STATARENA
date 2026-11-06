@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_e2e.py", line 162, in main
-    case(context)
-    ~~~~^^^^^^^^^
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-pro-publisher-20261105/real-boundary-precode/runtime_cases.py", line 17, in R00
-    assert result.returncode == 0 and "receipt" in result.stdout and "environment" in result.stdout
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError

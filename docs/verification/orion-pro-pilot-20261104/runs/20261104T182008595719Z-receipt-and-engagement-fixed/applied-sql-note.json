@@ -1,9 +1,0 @@
-{
-  "capture_after_run": true,
-  "original_result_preserved": true,
-  "actual_applied_sql_sha256_matches_original_journal": {
-    "012_orion_pro_domain.sql": "975af8daced50365a3906f906a78ecc53724350ffec3130369e98312fdbcc7d4",
-    "013_orion_pro_integrity.sql": "85525221cad51b32aff79a777098211b4112f9f00ea7161ac93945654eeb6968"
-  },
-  "runtime_sha256_in_result_phase": "Inputs were captured before runner recompilation. Its013SQL hash is preexistingcheckedSQL; use original runner_available migration_versions and this matching applied-sql capture for actually executed SQL. Compiler/runner/integrity source snapshot hashes remain correct."
-}

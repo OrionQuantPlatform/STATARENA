@@ -271,6 +271,328 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("first construction records actual bootstrap source", bootstrap_receipt)
 
+    def season_aliases():
+        from relational_materialize import Inputs, prepare, publish_partition, queue_dirty
+        year = season.split('/')[0]
+        calendar, populated, provenance = 'l_CAL026', 'l_SAFE26', 'l_REC026'
+        manifest = copy.deepcopy(store.inputs[index])
+        manifest['seasons'].append({'id': year, 'chunks': [{'leagueId': calendar, 'path': 'old-packed'}]})
+        manifest['seasons'][0]['chunks'].extend(
+            {'leagueId': key, 'path': 'old-packed'} for key in (populated, provenance))
+        with db.transaction(force_rollback=True):
+            db.execute('UPDATE statarena.fixtures SET season=%s WHERE league_id=%s', (year, league))
+            for label in (year, season):
+                db.execute('INSERT INTO statarena.dirty_partitions(season,league_id) VALUES(%s,%s)', (label, league))
+            db.execute('INSERT INTO statarena_app.publication_jobs(season,league_id) VALUES(%s,%s)', (year, league))
+            for key in (league, calendar, populated, provenance):
+                db.execute('INSERT INTO statarena_app.competitions(id,latest_season) VALUES(%s,%s) ON CONFLICT DO NOTHING', (key, year))
+                db.execute('INSERT INTO statarena_app.partitions(season,league_id,source_digest) VALUES(%s,%s,%s)', (year, key, 'empty-shell'))
+                db.execute('INSERT INTO statarena_app.competition_seasons(competition_id,season) VALUES(%s,%s)', (key, year))
+            db.execute("INSERT INTO statarena_app.fixtures(id,season,league_id) VALUES('m_SF0026',%s,%s)", (year, populated))
+            db.execute('INSERT INTO statarena_app.partition_bootstrap_sources(season,league_id,source_path,sha256) VALUES(%s,%s,%s,%s)', (year, provenance, 'old-packed', initial_bootstrap_sha))
+            db.execute("INSERT INTO statarena.fixtures(id,league_id,season,status,body) VALUES('m_CA0026',%s,%s,'scheduled','{}')", (calendar, year))
+            db.execute('INSERT INTO statarena.dirty_partitions(season,league_id) VALUES(%s,%s)', (year, calendar))
+            inputs = Inputs(store)
+            prepare(inputs, manifest, False)
+            check(sql1('SELECT count(*) FROM work_dirty WHERE season=%s AND league_id=%s', (season, league)) == 2, 'Year aliases did not retain both exact source markers')
+            check(sql1('SELECT count(*) FROM statarena_app.publication_jobs WHERE season=%s AND league_id=%s', (year, league)) == 0, 'Native-year duplicate still queued')
+            check(sql1('SELECT count(*) FROM statarena_app.partitions WHERE season=%s AND league_id=%s', (year, league)) == 0, 'Empty derived alias survived')
+            check(sql1('SELECT count(*) FROM statarena_app.competition_seasons WHERE season=%s AND competition_id=%s', (year, league)) == 0, 'Empty competition alias survived')
+            check(sql1('SELECT count(*) FROM statarena_app.partitions WHERE season=%s AND league_id=ANY(%s)', (year, [calendar, populated, provenance])) == 3, 'A real calendar year, business row, or bootstrap was deleted')
+            check(sql1("SELECT season FROM work_matches WHERE id='m_CA0026'") == year, 'Known calendar-year fixture was relabelled')
+            check(sql1('SELECT season FROM work_dirty WHERE league_id=%s', (calendar,)) == year, 'Known calendar-year marker was relabelled')
+            # A newer raw-year marker must survive publication of the captured
+            # snapshot and be requeued under the same canonical season.
+            db.execute("UPDATE statarena.dirty_partitions SET changed_at=changed_at+interval '1 second' WHERE season=%s AND league_id=%s", (year, league))
+            marked = sql1('SELECT changed_at FROM statarena_app.publication_jobs WHERE season=%s AND league_id=%s', (season, league))
+            publish_partition(inputs, manifest, season, league, marked)
+            check(sql1('SELECT count(*) FROM statarena.dirty_partitions WHERE season=%s AND league_id=%s', (year, league)) == 1, 'Newer native-year marker was acknowledged')
+            check(sql1('SELECT count(*) FROM statarena.dirty_partitions WHERE season=%s AND league_id=%s', (season, league)) == 0, 'Unchanged canonical marker was not acknowledged')
+            queue_dirty(db)
+            check(db.execute('SELECT season FROM statarena_app.publication_jobs WHERE league_id=%s', (league,)).fetchall() == [(season,)], 'Late native-year update was not canonically queued')
+            return {'canonical_markers': 2, 'empty_alias_removed': True, 'calendar_and_populated_scopes_preserved': True, 'late_marker_preserved': True}
+
+    case("native-year queue aliases preserve data and exact dirty acknowledgements", season_aliases)
+
+    def prefetch_integrity():
+        import sqlite3
+        from relational_materialize import Inputs, compact
+
+        value = {"status": 200, "data": {"value": 0, "nullable": None}}
+        path = "raw/prefetch-verification.json"
+        input_(path, value)
+        physical = sql1("select encode(sha256,'hex') from statarena.objects where path=%s", (path,))
+        logical = hashlib.sha256(compact(value).encode()).hexdigest()
+        world_path = f"raw/pitchapi-world/blobs/{logical}.json.gz"
+        input_(world_path, value)
+        with sqlite3.connect(":memory:") as scratch:
+            scratch.execute("CREATE TABLE body_cache(path text,sha text,body text,PRIMARY KEY(path,sha))")
+            reader = Inputs(store)
+            reader.prefetch([(path, None), (path, physical), (world_path, logical)], scratch)
+            bodies = scratch.execute("SELECT body FROM body_cache").fetchall()
+            check(len(bodies) == 3 and all(json.loads(row[0]) == value for row in bodies), "Prefetch changed native values or lost a reference")
+            try:
+                reader.prefetch([(path, "0" * 64)], scratch)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Prefetch accepted a stale physical digest")
+            input_(world_path, {"status": 200, "data": {"value": 1}})
+            try:
+                reader.prefetch([(world_path, logical)], scratch)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Prefetch accepted altered logical content")
+        return {"native_values_preserved": True, "physical_and_logical_pins_checked": True}
+
+    case("batched input spool preserves values and rejects changed versions", prefetch_integrity)
+
+    def streamed_input_contract():
+        import sqlite3
+        from relational_materialize import Inputs
+
+        calls = []
+
+        class CountedCursor:
+            def __init__(self):
+                self.cursor = db.cursor()
+
+            def __enter__(self):
+                self.cursor.__enter__()
+                return self
+
+            def __exit__(self, *args):
+                return self.cursor.__exit__(*args)
+
+            def stream(self, statement, params):
+                calls.append(len(params[0]))
+                return self.cursor.stream(statement, params)
+
+        class CountedConnection:
+            def cursor(self):
+                return CountedCursor()
+
+            def __getattr__(self, key):
+                return getattr(db, key)
+
+        with db.transaction(force_rollback=True):
+            expected = {}
+            for index in range(257):
+                path = f"raw/stream-verification/{index:04d}.json"
+                expected[path] = {"index": index, "zero": 0, "flag": False,
+                                  "missing_value": None, "shirt": "00", "name": "Léa"}
+                input_(path, expected[path], indexed=index != 7)
+            reader = Inputs(store)
+            reader.db = CountedConnection()
+            with sqlite3.connect(":memory:") as scratch:
+                scratch.execute("CREATE TABLE body_cache(path text,sha text,body text,PRIMARY KEY(path,sha))")
+                reader.prefetch([(path, None) for path in expected], scratch)
+                actual = {path: json.loads(body) for path, body in scratch.execute("SELECT path,body FROM body_cache")}
+                check(actual == expected, "Streamed inputs changed values or omitted a chunk")
+                check(len(calls) <= 3 and max(calls) <= 128, "Input stream requires too many round trips or an unbounded statement")
+                check(store.reads["raw/stream-verification/0007.json"] == 1, "Missing indexed document did not use its verified source")
+                scratch.execute("DELETE FROM body_cache")
+                try:
+                    with db.transaction():
+                        reader.prefetch([(path, "0" * 64 if index == 3 else None)
+                                         for index, path in enumerate(expected)], scratch)
+                except ValueError:
+                    pass
+                else:
+                    raise AssertionError("Streamed input accepted an invalid source checksum")
+                check(sql1("SELECT 1") == 1, "Early stream rejection left the SQL connection busy")
+                scratch.execute("DELETE FROM body_cache")
+                try:
+                    reader.prefetch([("raw/stream-verification/absent.json", None)], scratch)
+                except FileNotFoundError:
+                    pass
+                else:
+                    raise AssertionError("Stream silently omitted an absent source")
+        return {"documents": 257, "read_statements": 3,
+                "fallback_verified": True, "connection_recovered_after_rejection": True}
+
+    case("streamed inputs stay complete, bounded and recoverable after rejection", streamed_input_contract)
+
+    def bulk_insert_contract():
+        from relational_core import _many
+
+        rows = [dict(metric_key=f"copy-check-{i}", label='é\\"' + str(i), unit=None, decimals=i % 5) for i in range(120)]
+        with db.transaction():
+            _many(db, "metric_definitions", rows)
+            _many(db, "metric_definitions", [dict(row, label="must not replace") for row in rows])
+            actual = db.execute("SELECT metric_key,label,unit,decimals FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-check-%' ORDER BY metric_key").fetchall()
+            expected = sorted((row['metric_key'], row['label'], row['unit'], row['decimals']) for row in rows)
+            check(actual == expected, "Bulk insertion changed values or conflict behavior")
+            try:
+                with db.transaction():
+                    _many(db, "metric_definitions", [dict(row, metric_key=None if i == 119 else f"copy-invalid-{i}") for i, row in enumerate(rows)])
+            except psycopg.errors.NotNullViolation:
+                pass
+            else:
+                raise AssertionError("Bulk insertion bypassed the target constraint")
+            check(sql1("SELECT count(*) FROM statarena_app.metric_definitions WHERE metric_key LIKE %s", ("copy-invalid-%",)) == 0, "Failed bulk insert leaked partial rows")
+            db.execute("DELETE FROM statarena_app.metric_definitions WHERE metric_key LIKE 'copy-check-%'")
+        return {"rows": len(rows), "conflicts_preserved": True, "constraint_failure_atomic": True}
+
+    case("bulk fact insertion retains conflicts, constraints and rollback", bulk_insert_contract)
+
+    def catalog_bulk_contract():
+        from relational_catalog import publish_catalog
+
+        class Counted:
+            def __init__(self, connection):
+                self.connection = connection
+                self.calls = 0
+
+            def execute(self, *args, **kwargs):
+                self.calls += 1
+                return self.connection.execute(*args, **kwargs)
+
+            def cursor(self, *args, **kwargs):
+                self.calls += 1
+                return self.connection.cursor(*args, **kwargs)
+
+            def transaction(self, *args, **kwargs):
+                return self.connection.transaction(*args, **kwargs)
+
+        def profile(pid):
+            return {"status": 200, "data": {"id": pid, "name": "Joueur é " + pid,
+                    "shirt_number": "00", "position_id": 0, "image_url": None}, "error": None}
+
+        expected = {f"p_B{i:05d}": profile(f"p_B{i:05d}") for i in range(100)}
+        records = [("/players/" + pid, body) for pid, body in expected.items()]
+        with db.transaction(force_rollback=True):
+            counted = Counted(db)
+            check(publish_catalog(counted, records) == {"changed": 100, "unchanged": 0}, "Batch omitted a profile")
+            initial_calls = counted.calls
+            check(initial_calls <= 16, "Profile publication retained per-profile SQL round trips")
+            actual = dict(db.execute("""SELECT c.edition,statarena_app.read_cat_profile_players(p)
+                FROM statarena_app.catalog_editions c JOIN statarena_app.cat_profile_players p USING(resource_id)
+                WHERE c.catalog='profile' AND c.scope='players' AND c.edition=ANY(%s)""", (list(expected),)))
+            check(actual == expected, "Bulk profile publication changed missing, null or scalar values")
+            check(publish_catalog(db, records) == {"changed": 0, "unchanged": 100}, "Identical replay changed profiles")
+            updated = copy.deepcopy(records[0][1])
+            updated["data"]["name"] = "Corrected name"
+            correction = (records[0][0], updated)
+            check(publish_catalog(db, [records[0], correction, correction]) == {"changed": 1, "unchanged": 2},
+                  "Duplicate keys lost sequential correction or idempotency")
+            check(sql1("""SELECT statarena_app.read_cat_profile_players(p) FROM statarena_app.cat_profile_players p
+                JOIN statarena_app.catalog_editions c USING(resource_id) WHERE c.catalog='profile'
+                AND c.scope='players' AND c.edition=%s""", ("p_B00000",)) == updated, "Last duplicate did not win")
+            invalid = [(f"/players/p_T{i:05d}", profile(f"p_T{i:05d}")) for i in range(100)]
+            invalid.append(("/players/p_TZZ999", {"status": 200, "data": {"unknown_field": True}}))
+            try:
+                publish_catalog(db, invalid)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Unknown catalog field was silently accepted")
+            check(sql1("SELECT count(*) FROM statarena_app.catalog_editions WHERE catalog='profile' AND scope='players' AND edition=ANY(%s)",
+                       ([f"p_T{i:05d}" for i in range(100)],)) == 0, "Late invalid input leaked an earlier committed group")
+        return {"profiles": 100, "initial_database_calls": initial_calls, "duplicates_preserved": True,
+                "native_values_exact": True, "late_failure_atomic": True}
+
+    case("catalog batches preserve values, corrections and atomic failure", catalog_bulk_contract)
+
+    def match_bulk_contract():
+        from relational_match import publish_match_batch
+
+        class Counted:
+            def __init__(self, connection):
+                self.connection, self.copies = connection, 0
+            def execute(self, *args, **kwargs):
+                return self.connection.execute(*args, **kwargs)
+            def cursor(self, *args, **kwargs):
+                self.copies += 1
+                return self.connection.cursor(*args, **kwargs)
+            def transaction(self, *args, **kwargs):
+                return self.connection.transaction(*args, **kwargs)
+
+        ids = [f'm_B{i:05d}' for i in range(64)]
+        with db.transaction(force_rollback=True):
+            counted = Counted(db)
+            rows = [(key, {'players': endpoints['players']}, None, []) for key in ids]
+            publish_match_batch(counted, rows)
+            check(counted.copies == 4, 'Compact player families retained per-match COPY round trips')
+            actual = db.execute("SELECT match_id,statarena_app.detail_response(f) FROM statarena_app.match_families f WHERE match_id=ANY(%s) AND family='players'", (ids,)).fetchall()
+            check(len(actual) == 64 and all(body == endpoints['players'] for _, body in actual), 'Batched native player responses changed')
+            counted.copies = 0
+            publish_match_batch(counted, rows)
+            check(counted.copies == 0, 'Identical replay rewrote typed details')
+            failed_ids = [f'm_C{i:05d}' for i in range(64)]
+            bigger = [(key, {k: endpoints[k] for k in ('players', 'player_halves')}, None, []) for key in failed_ids]
+            bigger[-1][1]['players'] = {'status': 200, 'data': {'unknown_field': True}}
+            try:
+                publish_match_batch(counted, bigger)
+            except (ValueError, TypeError):
+                pass
+            else:
+                raise AssertionError('Invalid final match was accepted')
+            check(counted.copies > 0, 'Failure did not exercise rollback after a flushed 8 MiB group')
+            check(sql1('SELECT count(*) FROM statarena_app.match_details WHERE match_id=ANY(%s)', (failed_ids,)) == 0, 'Late failed group leaked partial match details')
+            try:
+                publish_match_batch(counted, rows + [('m_B99999', {}, None, [])])
+            except ValueError:
+                pass
+            else:
+                raise AssertionError('Unbounded match batch was accepted')
+            return {'matches': 64, 'player_table_copies': 4, 'exact_responses': True, 'late_failure_atomic': True}
+
+    case("remote match batches preserve exact values, byte bounds and atomic replay", match_bulk_contract)
+
+    def staging_reconciliation():
+        from reconcile_aws_staging import SPECS, stage_rows, apply_staged, verified
+
+        columns = SPECS["fixtures"][1]
+        before = db.execute("SELECT id,league_id,season,day,status,body,updated_at FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()
+        original = dict(zip(columns, before))
+        changed = dict(original, body=dict(original["body"], round_name="Captured source round"))
+        inputs = {"fixtures": [changed], "resources": [], "projections": [],
+            "assets": [{"url": "https://example.test/reconciliation", "path": "raw/absent-reconciliation-object", "content_type": "image/png"}]}
+        try:
+            plans = {kind: stage_rows(db, kind, inputs[kind]) for kind in SPECS}
+            check(plans["fixtures"]["changed"] == 1, "Dry run failed to detect a changed fixture")
+            check(db.execute("SELECT body FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()[0] == original["body"], "Dry run wrote fixture data")
+            try:
+                with db.transaction():
+                    apply_staged(db, "2999-01-01T00:00:00Z")
+            except psycopg.errors.ForeignKeyViolation:
+                pass
+            else:
+                raise AssertionError("Captured asset bypassed its object foreign key")
+            check(db.execute("SELECT body FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()[0] == original["body"], "Failed reconciliation partially committed")
+            db.execute("DELETE FROM _statarena_delta_assets")
+            try:
+                with db.transaction():
+                    apply_staged(db, "1900-01-01T00:00:00Z")
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Reconciliation overwrote a source newer than the capture")
+            try:
+                with db.transaction():
+                    result = apply_staged(db, "2999-01-01T00:00:00Z")
+                    check(result["fixtures"] == 1, "Captured fixture was not applied")
+                    check(db.execute("SELECT body FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()[0] == changed["body"], "Captured JSON values changed")
+                    check(not any(apply_staged(db, "2999-01-01T00:00:00Z").values()), "Reconciliation was not idempotent")
+                    raise RuntimeError("rollback verification fixture")
+            except RuntimeError as error:
+                if str(error) != "rollback verification fixture":
+                    raise
+            try:
+                verified(b"altered capture", "0" * 64)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Altered capture passed its checksum")
+            return {"dry_run_read_only": True, "foreign_key_rollback": True, "newer_aws_source_protected": True, "repeat_is_noop": True}
+        finally:
+            for kind in SPECS:
+                db.execute("DROP TABLE IF EXISTS pg_temp._statarena_delta_" + kind)
+
+    case("source reconciliation is atomic, pinned and repeatable", staging_reconciliation)
+
     def manifest_only(bad_pin=False):
         new_league = 'l_ZZ8811' if bad_pin else 'l_ZZ8812'
         new_season = '1888/1889'

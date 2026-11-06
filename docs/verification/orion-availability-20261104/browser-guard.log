@@ -1,8 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' -s=orion-old-availability run-code async page => { await page.route("**/*", route => { const u = new URL(route.request().url()); return u.hostname === "statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app" ? route.continue() : route.abort(); }); return "Allowed only the old immutable Vercel host"; }
-### Result
-"Allowed only the old immutable Vercel host"
-### Ran Playwright code
-```js
-await (async page => { await page.route("**/*", route => { const u = new URL(route.request().url()); return u.hostname === "statarena-analytics-jumo9il0b-hlemonniers-projects.vercel.app" ? route.continue() : route.abort(); }); return "Allowed only the old immutable Vercel host"; })(page);
-```

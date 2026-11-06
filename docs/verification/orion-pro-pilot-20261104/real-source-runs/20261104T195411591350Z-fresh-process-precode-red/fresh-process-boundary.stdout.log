@@ -1,1 +1,0 @@
-{"pid": 59954, "mode": "synthetic-fresh-process", "awsReads": 0, "status": "fail", "errorType": "AssertionError", "reason": "Fresh core retry did not rehydrate its source/run/identity maps", "sqlstate": null}

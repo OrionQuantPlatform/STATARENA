@@ -1,3 +1,0 @@
-{"elapsedSeconds": 0.01, "event": "child_started", "mode": "smoke", "pid": 95965}
-{"elapsedSeconds": 0.011, "event": "heartbeat", "ownedAllocatedBytes": 12288, "registeredPostgresRoots": 0, "completedCases": 0, "activeCaseInferred": "local_overlay_probe"}
-{"elapsedSeconds": 2.179, "event": "case_boundary", "case": "local_overlay_probe", "status": "pass"}

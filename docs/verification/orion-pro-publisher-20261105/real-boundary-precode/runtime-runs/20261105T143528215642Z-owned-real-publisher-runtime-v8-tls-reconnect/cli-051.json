@@ -1,9 +1,0 @@
-{
-  "connections": 1,
-  "error": {
-    "code": "ACTOR_UNRESOLVED",
-    "message": "Declared source actors remain unresolved"
-  },
-  "stage": "planning",
-  "status": "rejected"
-}
