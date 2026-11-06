@@ -271,6 +271,49 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("first construction records actual bootstrap source", bootstrap_receipt)
 
+    def season_aliases():
+        from relational_materialize import Inputs, prepare, publish_partition, queue_dirty
+        year = season.split('/')[0]
+        calendar, populated, provenance = 'l_CAL026', 'l_SAFE26', 'l_REC026'
+        manifest = copy.deepcopy(store.inputs[index])
+        manifest['seasons'].append({'id': year, 'chunks': [{'leagueId': calendar, 'path': 'old-packed'}]})
+        manifest['seasons'][0]['chunks'].extend(
+            {'leagueId': key, 'path': 'old-packed'} for key in (populated, provenance))
+        with db.transaction(force_rollback=True):
+            db.execute('UPDATE statarena.fixtures SET season=%s WHERE league_id=%s', (year, league))
+            for label in (year, season):
+                db.execute('INSERT INTO statarena.dirty_partitions(season,league_id) VALUES(%s,%s)', (label, league))
+            db.execute('INSERT INTO statarena_app.publication_jobs(season,league_id) VALUES(%s,%s)', (year, league))
+            for key in (league, calendar, populated, provenance):
+                db.execute('INSERT INTO statarena_app.competitions(id,latest_season) VALUES(%s,%s) ON CONFLICT DO NOTHING', (key, year))
+                db.execute('INSERT INTO statarena_app.partitions(season,league_id,source_digest) VALUES(%s,%s,%s)', (year, key, 'empty-shell'))
+                db.execute('INSERT INTO statarena_app.competition_seasons(competition_id,season) VALUES(%s,%s)', (key, year))
+            db.execute("INSERT INTO statarena_app.fixtures(id,season,league_id) VALUES('m_SF0026',%s,%s)", (year, populated))
+            db.execute('INSERT INTO statarena_app.partition_bootstrap_sources(season,league_id,source_path,sha256) VALUES(%s,%s,%s,%s)', (year, provenance, 'old-packed', initial_bootstrap_sha))
+            db.execute("INSERT INTO statarena.fixtures(id,league_id,season,status,body) VALUES('m_CA0026',%s,%s,'scheduled','{}')", (calendar, year))
+            db.execute('INSERT INTO statarena.dirty_partitions(season,league_id) VALUES(%s,%s)', (year, calendar))
+            inputs = Inputs(store)
+            prepare(inputs, manifest, False)
+            check(sql1('SELECT count(*) FROM work_dirty WHERE season=%s AND league_id=%s', (season, league)) == 2, 'Year aliases did not retain both exact source markers')
+            check(sql1('SELECT count(*) FROM statarena_app.publication_jobs WHERE season=%s AND league_id=%s', (year, league)) == 0, 'Native-year duplicate still queued')
+            check(sql1('SELECT count(*) FROM statarena_app.partitions WHERE season=%s AND league_id=%s', (year, league)) == 0, 'Empty derived alias survived')
+            check(sql1('SELECT count(*) FROM statarena_app.competition_seasons WHERE season=%s AND competition_id=%s', (year, league)) == 0, 'Empty competition alias survived')
+            check(sql1('SELECT count(*) FROM statarena_app.partitions WHERE season=%s AND league_id=ANY(%s)', (year, [calendar, populated, provenance])) == 3, 'A real calendar year, business row, or bootstrap was deleted')
+            check(sql1("SELECT season FROM work_matches WHERE id='m_CA0026'") == year, 'Known calendar-year fixture was relabelled')
+            check(sql1('SELECT season FROM work_dirty WHERE league_id=%s', (calendar,)) == year, 'Known calendar-year marker was relabelled')
+            # A newer raw-year marker must survive publication of the captured
+            # snapshot and be requeued under the same canonical season.
+            db.execute("UPDATE statarena.dirty_partitions SET changed_at=changed_at+interval '1 second' WHERE season=%s AND league_id=%s", (year, league))
+            marked = sql1('SELECT changed_at FROM statarena_app.publication_jobs WHERE season=%s AND league_id=%s', (season, league))
+            publish_partition(inputs, manifest, season, league, marked)
+            check(sql1('SELECT count(*) FROM statarena.dirty_partitions WHERE season=%s AND league_id=%s', (year, league)) == 1, 'Newer native-year marker was acknowledged')
+            check(sql1('SELECT count(*) FROM statarena.dirty_partitions WHERE season=%s AND league_id=%s', (season, league)) == 0, 'Unchanged canonical marker was not acknowledged')
+            queue_dirty(db)
+            check(db.execute('SELECT season FROM statarena_app.publication_jobs WHERE league_id=%s', (league,)).fetchall() == [(season,)], 'Late native-year update was not canonically queued')
+            return {'canonical_markers': 2, 'empty_alias_removed': True, 'calendar_and_populated_scopes_preserved': True, 'late_marker_preserved': True}
+
+    case("native-year queue aliases preserve data and exact dirty acknowledgements", season_aliases)
+
     def prefetch_integrity():
         import sqlite3
         from relational_materialize import Inputs, compact
