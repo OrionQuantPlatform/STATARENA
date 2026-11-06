@@ -69,9 +69,10 @@ def setup(mode, fault=''):
             check(urllib.parse.unquote(url.password)==password and url.path=='/statarena_prod' and urllib.parse.parse_qs(url.query)['sslmode']==['verify-full'],'wrong DSN')
             check('BEGIN CERTIFICATE' in result['DATABASE_CA_PEM'] and pathlib.Path(result['PGSSLROOTCERT']).is_file(),'missing CA')
             check(result['DATABASE_POOL_MAX']=='1' and result['STATARENA_DATA_PROVIDER']=='aws','missing AWS defaults')
+            check(not any(key.startswith('NEON_') for key in result),'legacy configuration exported')
             expected=['rds-runtime'] if mode=='runtime' else ['rds-ingest','s3-ingest']
             check(calls==expected,'unexpected parameter reads')
-            check((result.get('NEON_STORAGE_SECRET_ACCESS_KEY')==storage)==(mode=='ingest'),'wrong credential scope')
+            check((result.get('STATARENA_S3_SECRET_ACCESS_KEY')==storage)==(mode=='ingest'),'wrong credential scope')
         return {'parameter_reads':calls,'exit':p.returncode,'env_written':bool(path.read_bytes()),'plain_log_secret_count':0}
 for mode,fault in [('ingest',''),('runtime',''),('ingest','host'),('runtime','database'),('ingest','denied')]:
     case('bootstrap '+mode+' '+(fault or 'success'),lambda m=mode,f=fault:setup(m,f))
