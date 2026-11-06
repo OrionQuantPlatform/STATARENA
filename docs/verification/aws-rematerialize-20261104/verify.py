@@ -328,6 +328,58 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("bulk fact insertion retains conflicts, constraints and rollback", bulk_insert_contract)
 
+    def staging_reconciliation():
+        from reconcile_aws_staging import SPECS, stage_rows, apply_staged, verified
+
+        columns = SPECS["fixtures"][1]
+        before = db.execute("SELECT id,league_id,season,day,status,body,updated_at FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()
+        original = dict(zip(columns, before))
+        changed = dict(original, body=dict(original["body"], round_name="Captured source round"))
+        inputs = {"fixtures": [changed], "resources": [], "projections": [],
+            "assets": [{"url": "https://example.test/reconciliation", "path": "raw/absent-reconciliation-object", "content_type": "image/png"}]}
+        try:
+            plans = {kind: stage_rows(db, kind, inputs[kind]) for kind in SPECS}
+            check(plans["fixtures"]["changed"] == 1, "Dry run failed to detect a changed fixture")
+            check(db.execute("SELECT body FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()[0] == original["body"], "Dry run wrote fixture data")
+            try:
+                with db.transaction():
+                    apply_staged(db, "2999-01-01T00:00:00Z")
+            except psycopg.errors.ForeignKeyViolation:
+                pass
+            else:
+                raise AssertionError("Captured asset bypassed its object foreign key")
+            check(db.execute("SELECT body FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()[0] == original["body"], "Failed reconciliation partially committed")
+            db.execute("DELETE FROM _statarena_delta_assets")
+            try:
+                with db.transaction():
+                    apply_staged(db, "1900-01-01T00:00:00Z")
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Reconciliation overwrote a source newer than the capture")
+            try:
+                with db.transaction():
+                    result = apply_staged(db, "2999-01-01T00:00:00Z")
+                    check(result["fixtures"] == 1, "Captured fixture was not applied")
+                    check(db.execute("SELECT body FROM statarena.fixtures WHERE id=%s", (mid,)).fetchone()[0] == changed["body"], "Captured JSON values changed")
+                    check(not any(apply_staged(db, "2999-01-01T00:00:00Z").values()), "Reconciliation was not idempotent")
+                    raise RuntimeError("rollback verification fixture")
+            except RuntimeError as error:
+                if str(error) != "rollback verification fixture":
+                    raise
+            try:
+                verified(b"altered capture", "0" * 64)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Altered capture passed its checksum")
+            return {"dry_run_read_only": True, "foreign_key_rollback": True, "newer_aws_source_protected": True, "repeat_is_noop": True}
+        finally:
+            for kind in SPECS:
+                db.execute("DROP TABLE IF EXISTS pg_temp._statarena_delta_" + kind)
+
+    case("source reconciliation is atomic, pinned and repeatable", staging_reconciliation)
+
     def manifest_only(bad_pin=False):
         new_league = 'l_ZZ8811' if bad_pin else 'l_ZZ8812'
         new_season = '1888/1889'
