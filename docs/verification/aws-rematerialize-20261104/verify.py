@@ -495,6 +495,52 @@ with psycopg.connect(url, autocommit=True) as db:
 
     case("catalog batches preserve values, corrections and atomic failure", catalog_bulk_contract)
 
+    def match_bulk_contract():
+        from relational_match import publish_match_batch
+
+        class Counted:
+            def __init__(self, connection):
+                self.connection, self.copies = connection, 0
+            def execute(self, *args, **kwargs):
+                return self.connection.execute(*args, **kwargs)
+            def cursor(self, *args, **kwargs):
+                self.copies += 1
+                return self.connection.cursor(*args, **kwargs)
+            def transaction(self, *args, **kwargs):
+                return self.connection.transaction(*args, **kwargs)
+
+        ids = [f'm_B{i:05d}' for i in range(64)]
+        with db.transaction(force_rollback=True):
+            counted = Counted(db)
+            rows = [(key, {'players': endpoints['players']}, None, []) for key in ids]
+            publish_match_batch(counted, rows)
+            check(counted.copies == 4, 'Compact player families retained per-match COPY round trips')
+            actual = db.execute("SELECT match_id,statarena_app.detail_response(f) FROM statarena_app.match_families f WHERE match_id=ANY(%s) AND family='players'", (ids,)).fetchall()
+            check(len(actual) == 64 and all(body == endpoints['players'] for _, body in actual), 'Batched native player responses changed')
+            counted.copies = 0
+            publish_match_batch(counted, rows)
+            check(counted.copies == 0, 'Identical replay rewrote typed details')
+            failed_ids = [f'm_C{i:05d}' for i in range(64)]
+            bigger = [(key, {k: endpoints[k] for k in ('players', 'player_halves')}, None, []) for key in failed_ids]
+            bigger[-1][1]['players'] = {'status': 200, 'data': {'unknown_field': True}}
+            try:
+                publish_match_batch(counted, bigger)
+            except (ValueError, TypeError):
+                pass
+            else:
+                raise AssertionError('Invalid final match was accepted')
+            check(counted.copies > 0, 'Failure did not exercise rollback after a flushed 8 MiB group')
+            check(sql1('SELECT count(*) FROM statarena_app.match_details WHERE match_id=ANY(%s)', (failed_ids,)) == 0, 'Late failed group leaked partial match details')
+            try:
+                publish_match_batch(counted, rows + [('m_B99999', {}, None, [])])
+            except ValueError:
+                pass
+            else:
+                raise AssertionError('Unbounded match batch was accepted')
+            return {'matches': 64, 'player_table_copies': 4, 'exact_responses': True, 'late_failure_atomic': True}
+
+    case("remote match batches preserve exact values, byte bounds and atomic replay", match_bulk_contract)
+
     def staging_reconciliation():
         from reconcile_aws_staging import SPECS, stage_rows, apply_staged, verified
 
