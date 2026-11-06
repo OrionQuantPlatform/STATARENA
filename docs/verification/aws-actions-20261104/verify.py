@@ -81,6 +81,17 @@ def workflow(name):
     check('secrets.NEON' not in text,'legacy repository secret references')
     if name=='verify-ingestion':
         check('postgres:18' in text and 'id-token: write' not in text and all(step.get('uses') != './.github/actions/aws-database' for job in obj['jobs'].values() for step in job.get('steps',[])),'test job must be isolated on PG18')
+    elif name=='production-validation':
+        # Public HTTP smoke tests must not obtain database or provider credentials.
+        check('id-token: write' not in text and 'secrets.' not in text,
+              'public site validation must not receive cloud/provider credentials')
+        check(all(step.get('uses') != './.github/actions/aws-database'
+                  for job in obj['jobs'].values() for step in job.get('steps',[])),
+              'public site validation must use HTTP, not database bootstrap')
+        check('verify_aws_runtime.mjs' in text and 'https://statarena-analytics.vercel.app' in text,
+              'public site validation must exercise the production AWS API')
+        check(obj['jobs']['validate_site'].get('permissions', obj.get('permissions')) == {'contents':'read'},
+              'public site checks need only repository read access')
     else:
         check('./.github/actions/aws-database' in text and 'id-token: write' in text,'missing OIDC bootstrap')
         if name.startswith('pitchapi-'):
