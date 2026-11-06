@@ -86,7 +86,7 @@ def workflow(name):
         check(all(step.get('uses') != './.github/actions/aws-database'
                   for job in obj['jobs'].values() for step in job.get('steps',[])),
               'public site validation must use HTTP, not database bootstrap')
-        check('verify_aws_runtime.mjs' in text and 'https://statarena-analytics.vercel.app' in text,
+        check('verify_aws_runtime.mjs' in text and 'https://vegasport.vercel.app' in text,
               'public site validation must exercise the production AWS API')
         check(obj['jobs']['validate_site'].get('permissions', obj.get('permissions')) == {'contents':'read'},
               'public site checks need only repository read access')
