@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
         <script
           id="vega-theme"
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("statarena.theme")==="light"?"light":"dark";document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",t==="light"?"#F6F8FB":"#0E0F12")}catch{}`,
+            __html: `try{var t=localStorage.getItem("statarena.theme")==="light"?"light":"dark";document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]')?.setAttribute("content",t==="light"?"#F6F8FB":"#0E0F12");window.__vegaSetFavicon=function(theme){document.querySelectorAll('link[rel="icon"]').forEach(function(link){if(link.href.includes("/branding/vega/"))link.href=theme==="light"?"/branding/vega/icon-light.svg":"/branding/vega/icon-dark.svg"})};document.addEventListener("DOMContentLoaded",function(){window.__vegaSetFavicon(t)},{once:true})}catch{}`,
           }}
         />
       </head>
