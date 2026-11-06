@@ -1,7 +1,0 @@
-{
-  "file": "aws-replay.tar.gz",
-  "bytes": 907855,
-  "sha256": "1c889d231b3eca99507722f8854c53875a406cb2326af0182c9a6b505772986b",
-  "contents": "Public AWS API response bytes and status/path/content-type metadata from the recorded source hashes. No credentials or authorization cookies.",
-  "extract": "tar -xzf docs/verification/aws-deferred-match-20261104/inputs/aws-replay.tar.gz -C docs/verification/aws-deferred-match-20261104"
-}

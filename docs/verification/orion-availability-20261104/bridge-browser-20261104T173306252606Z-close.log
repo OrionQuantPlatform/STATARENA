@@ -1,4 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' -s=orion-bridge-ui close
-Browser 'orion-bridge-ui' closed
-

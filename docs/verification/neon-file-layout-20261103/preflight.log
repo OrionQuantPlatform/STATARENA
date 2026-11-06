@@ -1,4 +1,0 @@
-{"stage": "start-part", "part": "part-0001.tar.gz", "files": 331, "alreadyUploaded": 0}
-{"stage": "upload", "files": 331, "elapsedSeconds": 6}
-{"stage": "part-complete", "part": "part-0001.tar.gz", "files": 331, "partFiles": 331, "downloadSamples": 3}
-{"stage": "preflight-complete", "files": 331, "parts": 1}

@@ -1,2 +1,0 @@
-Neon object unavailable Error
-{"passed":true,"artifact":"/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-availability-20261104/transport-20261104T165815892Z.json","checks":[{"name":"local upstream API and data proxy","passed":true},{"name":"AWS preview wins and data stays retired","passed":true},{"name":"legacy mode without Neon configuration fails closed","passed":true}]}

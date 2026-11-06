@@ -1,4 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' -s=orion-availability-e2e close
-Browser 'orion-availability-e2e' closed
-
