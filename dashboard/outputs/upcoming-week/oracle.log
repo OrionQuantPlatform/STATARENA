@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/outputs/upcoming-week/verify_browser.py", line 82, in <module>
-    assert [r["id"] for r in actual] == [r[0]["id"] for r in expected], case["name"]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: calendar-next-europe-page1

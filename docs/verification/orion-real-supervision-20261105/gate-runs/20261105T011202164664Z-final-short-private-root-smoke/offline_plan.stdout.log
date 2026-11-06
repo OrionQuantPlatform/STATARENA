@@ -1,1 +1,0 @@
-{"status": "offline_plan", "mode": "real", "childStarted": false, "bounds": {"wallSeconds": 1800, "interruptSeconds": 1770, "diskBytes": 4294967296, "softDiskBytes": 3758096384, "heartbeatSeconds": 15, "sampleSeconds": 1, "cleanupSeconds": 30, "statementTimeoutMs": 8000, "lockTimeoutMs": 1000}, "sourceBodiesRead": 0, "remoteActions": []}

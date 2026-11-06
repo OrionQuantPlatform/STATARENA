@@ -1,7 +1,0 @@
-{
-  "setup": "Node.js, real FootballDataClient and local HTTP provider fixture matching PitchAPI league/matches response (league held at envelope level). No credentials.",
-  "command": "cd dashboard && node scripts/verify_competition_fixtures.mjs",
-  "expected": "Every match from a league schedule carries its league identity and exact source season for filtering and links; date responses retain per-match identities and null future scores.",
-  "status": "failed",
-  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ undefined\n- {\n-   id: 'l_3FJFUl',\n-   name: 'Ligue 1'\n- }\n\n    at file:///Users/lemonnierhugo/Desktop/Coding%20Project/Football_ranking/dashboard/scripts/verify_competition_fixtures.mjs:14:182\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
-}

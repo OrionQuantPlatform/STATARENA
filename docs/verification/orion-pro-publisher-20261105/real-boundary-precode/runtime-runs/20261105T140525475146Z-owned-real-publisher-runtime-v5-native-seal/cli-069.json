@@ -1,9 +1,0 @@
-{
-  "connections": 1,
-  "error": {
-    "code": "ADMISSION_MISMATCH",
-    "message": "Available shootout was ignored or invented"
-  },
-  "stage": "planning",
-  "status": "rejected"
-}

@@ -1,8 +1,0 @@
-[
-  {
-    "level": "error",
-    "message": "ReferenceError: useMemo is not defined\n    at http://127.0.0.1:3016/_next/static/chunks/1v6jbmt60lku9.js:1:29409\n    at ax (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:74452)\n    at o4 (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:94745)\n    at ih (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:106434)\n    at sw (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:150739)\n    at http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:150584\n    at sb (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:150592)\n    at su (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:146542)\n    at sJ (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:172302)\n    at MessagePort.z (http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js:1:225241)",
-    "timestamp": "2026-11-02T14:25:09.634Z",
-    "url": "http://127.0.0.1:3016/_next/static/chunks/0d2dnrylzzgor.js"
-  }
-]

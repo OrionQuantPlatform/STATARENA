@@ -1,5 +1,0 @@
-$ prettier --check frontend/src frontend/app frontend/next.config.mjs backend shared scripts/*.mjs package.json
-Checking formatting...
-[warn] frontend/src/analysis.css
-[warn] Code style issues found in the above file. Run Prettier with --write to fix.
-error: script "format:check" exited with code 1

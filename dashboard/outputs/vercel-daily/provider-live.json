@@ -1,7 +1,0 @@
-{
-  "setup": "Production gateway with server-side secret",
-  "command": "GET https://orion-football-ranking.vercel.app/api/pitchapi/leagues",
-  "httpStatus": 200,
-  "leagues": 77,
-  "status": "passed"
-}

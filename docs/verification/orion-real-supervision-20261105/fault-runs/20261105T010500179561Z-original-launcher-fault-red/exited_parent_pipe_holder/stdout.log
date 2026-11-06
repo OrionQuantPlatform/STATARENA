@@ -1,3 +1,0 @@
-{"elapsedSeconds": 0.005, "event": "child_started", "mode": "smoke", "pid": 82944}
-{"elapsedSeconds": 0.005, "event": "heartbeat", "ownedAllocatedBytes": 8192, "registeredPostgresRoots": 0, "completedCases": 0, "activeCaseInferred": "local_overlay_probe"}
-{"status": "fail", "mode": "smoke", "innerCounts": null, "cleanupVerified": true, "sourceLedgersUnchanged": true, "evidence": "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/docs/verification/orion-real-supervision-20261105/runs/20261105T010500371710Z-smoke"}

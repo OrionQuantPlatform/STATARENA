@@ -1,9 +1,0 @@
-$ bun scripts/dev.mjs
-Dashboard: http://127.0.0.1:8765
-1:42:45 PM [vite] (client) Re-optimizing dependencies because lockfile has changed
-
-  VITE v7.3.7  ready in 124 ms
-
-  ➜  Local:   http://127.0.0.1:5173/
-1:48:01 PM [vite] (client) hmr update /src/App.jsx
-1:48:01 PM [vite] (client) hmr update /src/App.jsx

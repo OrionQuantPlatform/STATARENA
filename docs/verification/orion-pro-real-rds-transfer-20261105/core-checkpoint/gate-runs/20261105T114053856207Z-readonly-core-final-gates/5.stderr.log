@@ -1,4 +1,0 @@
-usage: controller.py [-h] [--recover | --noop-worker] [--release RELEASE]
-                     [--release-sha256 RELEASE_SHA256] [--marker MARKER]
-                     [--evidence EVIDENCE]
-controller.py: error: unrecognized arguments: --host external.invalid

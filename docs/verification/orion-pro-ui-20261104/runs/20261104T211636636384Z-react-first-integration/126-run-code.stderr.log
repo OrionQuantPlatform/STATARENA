@@ -1,2 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' --session=orion-ui-20261104t211636 run-code async (page) => { await page.waitForFunction(() => ([...document.querySelectorAll('.match-row')].some(row => new URL(row.href).searchParams.get('v') === "pro1.7.908f8e246ce38c2d89adec96709dc78fddbf2f71e3893717f5471b8d54c2c28c")), null, { timeout: 15000 }); return { ready: true }; }

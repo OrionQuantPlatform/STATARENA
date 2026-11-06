@@ -1,9 +1,0 @@
-Paid widget inventory, reviewed 2026-11-01 through visible labels/descriptions.
-Role assessment: multiple compatible-role scores and relative league standing.
-Skill summary: technical dimensions plus separate physical dimensions.
-Physical analysis: tracking-based speed, running volume and high-intensity effort.
-Similar players: statistical-style alternatives with profile filters.
-League/club projection: contextual estimates and target-squad comparison.
-Historical performance: longitudinal score view.
-Full percentile table: category-level metric distributions.
-Descriptions observed; private calculation settings remain untested.

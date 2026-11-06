@@ -1,5 +1,0 @@
-{
-  "request": "http://127.0.0.1:3000/calendrier?season=2026%2F2027&focus=europe&week=2026-11-02&league=l_0bfbkO&q=paris",
-  "status": 200,
-  "location": null
-}

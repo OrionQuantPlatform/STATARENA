@@ -1,9 +1,0 @@
-{
-  "connections": 1,
-  "error": {
-    "code": "ADMISSION_MISMATCH",
-    "message": "Complete useful cohort differs"
-  },
-  "stage": "planning",
-  "status": "rejected"
-}

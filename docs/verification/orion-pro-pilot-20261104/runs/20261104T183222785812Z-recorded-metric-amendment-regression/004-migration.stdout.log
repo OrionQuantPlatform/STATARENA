@@ -1,1 +1,0 @@
-{"mode": "owned_disposable_local", "target": "013", "modelSha256": "18da43f940870b7a3a3cb49323c847dd5e5174e5eea1f8ff0c8a159cf373cb08", "rollbackTo": null, "applied": [], "reused": ["012", "013"], "remoteActions": [], "bootstrap": {"generation": 1, "reused": true, "seedRows": 10}, "localRoles": ["orion_pro_ingest", "orion_pro_web"], "status": "applied"}

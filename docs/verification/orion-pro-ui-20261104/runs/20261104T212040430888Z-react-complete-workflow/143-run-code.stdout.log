@@ -1,6 +1,0 @@
-### Result
-{"ready":true}
-### Ran Playwright code
-```js
-await (async (page) => { await page.waitForFunction(() => (document.querySelector('.match-scoreboard')?.textContent.includes('Team 3 v1')), null, { timeout: 15000 }); return { ready: true }; })(page);
-```

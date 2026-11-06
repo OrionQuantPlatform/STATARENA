@@ -1,6 +1,0 @@
-▲ Next.js 16.4.3
-- Local:         http://127.0.0.1:3001
-- Network:       http://127.0.0.1:3001
-✓ Ready in 103ms
-✓ Running next.config.mjs took 11ms
-error: Failed to run "next" due to exit code 130

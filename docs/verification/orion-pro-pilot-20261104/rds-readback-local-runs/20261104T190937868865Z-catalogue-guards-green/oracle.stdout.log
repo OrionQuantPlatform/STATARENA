@@ -1,1 +1,0 @@
-{"status": "complete", "catalogue": "docs/verification/orion-pro-pilot-20261104/expected-catalogues/20261104T190938014223Z-catalogue-guards-green-oracle/expected-catalogue.json", "sha256": "b6adf85ed582866c435b6e64f01c59cc271488a2df1ba21958131961f8546610", "counts": {"relations": 207, "columns": 1709, "constraints": 1476, "indexes": 352, "guards": 174}}

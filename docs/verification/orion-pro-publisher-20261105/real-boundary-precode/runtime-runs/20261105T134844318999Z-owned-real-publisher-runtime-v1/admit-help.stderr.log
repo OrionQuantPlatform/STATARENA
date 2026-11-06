@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/orion_pro_admit_real.py", line 21, in <module>
-    from orion_pro_publish import (ROOT, MODEL_PATH, SCHEME, REPRESENTATION, METRICS,
-        PROFILE_POLICY, POSTGRES_VERSION, RELEASE_FILES, Refused, require, sha, compact,
-        tagged, positive_id, identifier, relation, decode_sql, SqlInputs, products)
-ModuleNotFoundError: No module named 'orion_pro_publish'

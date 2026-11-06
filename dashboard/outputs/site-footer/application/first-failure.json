@@ -1,8 +1,0 @@
-{
-  "command": "cd dashboard && bun run build && ORION_EVIDENCE_DIR=outputs/site-footer/application bun run verify",
-  "setup": "Production Next.js build and local canonical JSON data; native Bun API on ephemeral port; no provider key required",
-  "expected": "8 Next routes, 404 unknown route, real data/archive proxy, no private files or exposed credentials",
-  "status": "failed",
-  "checks": [],
-  "error": "Error: Dashboard: http://127.0.0.1:49476\n▲ Next.js 16.4.3\n- Local:         http://127.0.0.1:49477\n- Network:       http://127.0.0.1:49477\n✓ Ready in 62ms\n✓ Running next.config.mjs took 8ms\nError: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id\n    at ignore-listed frames\n\n    at ready (/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/verify_application.mjs:57:44)"
-}

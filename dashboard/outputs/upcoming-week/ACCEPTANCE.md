@@ -1,9 +1,0 @@
-# Weekly upcoming fixtures
-
-Written before implementation. Use the existing canonical fixture tables, Next.js/Bun architecture and Europe focus; do not change raw data or start another collection.
-
-- Overview: visible “À venir cette semaine” section, chronological real fixtures, club crests/names, competition, Paris kickoff time and link to the match. Show at most six and link to the calendar. No invented 0–0 scores.
-- Calendar: genuine /calendrier route/nav item, Monday–Sunday calendar weeks in Europe/Paris, previous/next/current week navigation, day groups, all selected fixtures reachable. Today starts at the current instant; past kickoff times, finished/postponed/cancelled games are excluded. Missing kickoff with a valid future date shows a time-to-be-confirmed state, never midnight. Deduplicate IDs.
-- Apply current competition, club/competition text search, season and Top 7 + UEFA scope. Playing-time filters and appearance export must not appear on the calendar. Historical seasons and empty weeks have a clear empty state/current-season or next-week action. A fixture detail returns to the selected calendar week.
-- Failure cases: Sunday/Monday and year boundaries, DST, ambiguous/missing dates, stale not_started rows with elapsed kickoff, duplicate fixtures, search accents, excluded lower divisions, time becoming past while the page stays open, mobile overflow and keyboard navigation.
-- E2E: compare visible fixtures/times with an independent Python zoneinfo oracle from canonical tables at run time. Exercise home preview → calendar → next/current week → competition/search/focus → fixture detail/back; check an old-season empty state. Inspect desktop/390px and keyboard, save screenshots/logs, exact setup/commands and expected/actual outcomes. Build and run existing affected regressions. Publish through the established GitHub→Vercel path and verify live. No new unit tests after implementation.

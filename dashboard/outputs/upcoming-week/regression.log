@@ -1,3 +1,0 @@
-$ bun run build && cd .. && python3 -m unittest discover -s tests && node --test tests/*.test.mjs
-/bin/bash: bun: command not found
-error: script "test" exited with code 127

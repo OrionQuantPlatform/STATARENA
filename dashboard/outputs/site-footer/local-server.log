@@ -1,8 +1,0 @@
-$ bun scripts/dev.mjs --production
-Dashboard: http://127.0.0.1:8773
-▲ Next.js 16.4.3
-- Local:         http://127.0.0.1:3013
-- Network:       http://127.0.0.1:3013
-✓ Ready in 113ms
-✓ Running next.config.mjs took 7ms
-error: script "start" exited with code 143

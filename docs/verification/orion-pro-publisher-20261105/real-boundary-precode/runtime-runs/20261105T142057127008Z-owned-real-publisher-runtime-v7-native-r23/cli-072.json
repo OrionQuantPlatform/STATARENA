@@ -1,9 +1,0 @@
-{
-  "connections": 1,
-  "error": {
-    "code": "FIELD_STATE_MISMATCH",
-    "message": "Known UTC time was lost or invented"
-  },
-  "stage": "planning",
-  "status": "rejected"
-}

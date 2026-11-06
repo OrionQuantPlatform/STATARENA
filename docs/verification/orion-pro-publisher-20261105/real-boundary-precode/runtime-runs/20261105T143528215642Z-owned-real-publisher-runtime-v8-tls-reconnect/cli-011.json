@@ -1,7 +1,0 @@
-{
-  "error": {
-    "code": "ADMISSION_MISMATCH",
-    "message": "Wrong owned origin"
-  },
-  "status": "rejected"
-}

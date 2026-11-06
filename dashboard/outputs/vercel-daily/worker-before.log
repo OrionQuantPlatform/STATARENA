@@ -1,8 +1,0 @@
-{
-  "command": "cd dashboard && bun scripts/verify_daily_refresh.mjs",
-  "setup": "Bun worker process + local HTTP fixture + temporary canonical JSON; no real provider/key",
-  "expected": "13 families and normalized rows, deduplication, unchanged history, 401 prevents publication, 429 retries",
-  "status": "failed",
-  "checks": [],
-  "error": "AssertionError [ERR_ASSERTION]: first collection process\n\n1 !== 0\n\n    at /Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/scripts/verify_daily_refresh.mjs:45:10"
-}

@@ -1,7 +1,0 @@
-{
-  "error": {
-    "code": "ADMISSION_MISMATCH",
-    "message": "This local boundary requires explicit synthetic business admission"
-  },
-  "status": "rejected"
-}

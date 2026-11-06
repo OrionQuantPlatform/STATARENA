@@ -1,5 +1,0 @@
-# Application restructuring acceptance
-
-Preserve every tracked data file byte-for-byte. Keep all seven views, season filters, player comparison, match detail, club history and FIFA/UEFA ranking exploration. React must own the rendered interface; no raw frontend source or backend credentials exposed by the production server. Bun backend must retain archive, gateway, protected data and traversal contracts. All operational code and outputs live in dashboard; root keeps data, docs and tests plus repository metadata.
-
-Run existing regression checks with updated import/fixture paths, production build and actual HTTP/browser workflow. Save exact commands, outcomes, limitations and screenshots here. No new unit tests after implementation. Failure cases: moved script resolves wrong data root, bundled browser data URLs target a source filename instead of /data, missing worker assets, stale documentation commands, exposed .env or backend, duplicate React event dispatch, lost filters/focus or incomplete season/club history.

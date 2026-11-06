@@ -1,2 +1,0 @@
-npm notice run npx
-npm notice run 'playwright-cli' --session=orion-ui-20261104t214821 run-code async (page) => { await page.waitForFunction(() => (!document.querySelector('circle.shot-point')), null, { timeout: 15000 }); return { ready: true }; }

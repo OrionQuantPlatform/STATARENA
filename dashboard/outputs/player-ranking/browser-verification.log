@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/lemonnierhugo/Desktop/Coding Project/Football_ranking/dashboard/outputs/player-ranking/verify_browser.py", line 29, in <module>
-    assert page["scripts"] == 2
-           ^^^^^^^^^^^^^^^^^^^^
-AssertionError

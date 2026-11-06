@@ -1,9 +1,0 @@
-### Browser `orion-ui-20261104t211636` opened with pid 86860.
-### Ran Playwright code
-```js
-await page.goto('about:blank');
-```
-### Page
-- Page URL: about:blank
-### Snapshot
-- [Snapshot](output/playwright/20261104T211636636384Z-react-first-integration/page-2026-11-04T21-16-42-502Z.yml)
