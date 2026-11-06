@@ -8,7 +8,6 @@ wf = root/'.github/workflows'
 phase = sys.argv[1]
 out = folder/phase
 if phase.startswith(("before", "baseline")):
-    # Keep current fixtures/schema, exercise the immutable original workflow tree.
     baseline = tempfile.TemporaryDirectory()
     wf = pathlib.Path(baseline.name)/'.github/workflows'
     wf.mkdir(parents=True)
@@ -82,7 +81,6 @@ def workflow(name):
     if name=='verify-ingestion':
         check('postgres:18' in text and 'id-token: write' not in text and all(step.get('uses') != './.github/actions/aws-database' for job in obj['jobs'].values() for step in job.get('steps',[])),'test job must be isolated on PG18')
     elif name=='production-validation':
-        # Public HTTP smoke tests must not obtain database or provider credentials.
         check('id-token: write' not in text and 'secrets.' not in text,
               'public site validation must not receive cloud/provider credentials')
         check(all(step.get('uses') != './.github/actions/aws-database'
@@ -92,9 +90,19 @@ def workflow(name):
               'public site validation must exercise the production AWS API')
         check(obj['jobs']['validate_site'].get('permissions', obj.get('permissions')) == {'contents':'read'},
               'public site checks need only repository read access')
+        check('actions: write' not in text and '/dispatches' not in text and '/enable' not in text,
+              'public validation must not mutate other workflows')
     else:
         check('./.github/actions/aws-database' in text and 'id-token: write' in text,'missing OIDC bootstrap')
-        if name.startswith('pitchapi-'):
+        if name=='database-schema':
+            check('secrets.' not in text and 'actions: write' not in text and 'inventory.py' in text,
+                  'schema inspection must not access provider secrets or mutate workflows')
+            check('schedule' not in obj.get('on',obj.get(True,{})), 'schema inspection must not run periodically')
+            for job in obj['jobs'].values():
+                for step in job.get('steps',[]):
+                    if step.get('uses')=='./.github/actions/aws-database':
+                        check(step['with']['mode']=='runtime','schema inspection must use read-only runtime role')
+        elif name.startswith('pitchapi-'):
             check('secrets.PITCHAPI' not in text and 'monitor.py' in text,'monitor must inspect published AWS rows')
         else:
             check('relational_materialize.py' in text,'no relational publication')
