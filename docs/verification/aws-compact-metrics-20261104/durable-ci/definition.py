@@ -1,4 +1,5 @@
 import json, sys
+from fnmatch import fnmatchcase
 from pathlib import Path
 import yaml
 
@@ -11,7 +12,8 @@ job = workflow["jobs"]["relational"]
 steps = job["steps"]
 checks = {
     "both events trigger on suite": all(
-        suite + "/**" in events[k]["paths"] for k in ("push", "pull_request")
+        any(fnmatchcase(suite + "/run.mjs", pattern) for pattern in events[k]["paths"])
+        for k in ("push", "pull_request")
     ),
     "suite captured by sparse checkout": any(
         suite in s.get("with", {}).get("sparse-checkout", "").splitlines()
@@ -49,3 +51,4 @@ r = {
 (here / (sys.argv[1] + ".json")).write_text(json.dumps(r, indent=2) + "\n")
 print(r["passed"], r["total"])
 sys.exit(not all(checks.values()))
+
