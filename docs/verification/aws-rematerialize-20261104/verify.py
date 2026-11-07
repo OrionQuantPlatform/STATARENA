@@ -910,16 +910,22 @@ with psycopg.connect(url, autocommit=True) as db:
 
     def capacity():
         mark()
+        prior = {key: os.environ.get(key) for key in ("STATARENA_SQL_LIMIT_BYTES", "STATARENA_SQL_RESERVE_BYTES")}
         os.environ["STATARENA_SQL_LIMIT_BYTES"] = "1"
+        os.environ["STATARENA_SQL_RESERVE_BYTES"] = "0"
         try:
             try:
                 worker()
-            except RuntimeError:
-                pass
+            except RuntimeError as error:
+                check("RDS publication capacity exceeded" in str(error), "unexpected refusal: " + str(error))
             else:
                 raise AssertionError("capacity exceeded")
         finally:
-            os.environ.pop("STATARENA_SQL_LIMIT_BYTES")
+            for key, value in prior.items():
+                if value is None:
+                    os.environ.pop(key, None)
+                else:
+                    os.environ[key] = value
         check(
             sql1("select count(*) from statarena.dirty_partitions") > 0,
             "capacity refusal acknowledged input",
@@ -1058,17 +1064,22 @@ with psycopg.connect(url, autocommit=True) as db:
     case("partial refresh preserves native appearance position types", scalar_positions)
 
     def least_privilege(owns=True):
-        db.execute("DROP SCHEMA statarena_app CASCADE")
+        schemas = ("statarena_app", "statarena_next", "statarena_retired_v1")
+        for schema in schemas:
+            db.execute("DROP SCHEMA IF EXISTS " + schema + " CASCADE")
         if owns:
             db.execute("CREATE ROLE worker_limited")
         db.execute(
             "REVOKE CREATE ON DATABASE publication_fixture FROM PUBLIC,worker_limited"
         )
-        if owns:
-            db.execute("CREATE SCHEMA statarena_app AUTHORIZATION worker_limited")
-        else:
-            db.execute("CREATE SCHEMA statarena_app")
-            db.execute("GRANT USAGE, CREATE ON SCHEMA statarena_app TO worker_limited")
+        # Bootstrap receives all application namespaces from the administrator;
+        # no database-level CREATE or access to another owner's old schemas.
+        for schema in schemas:
+            if owns:
+                db.execute("CREATE SCHEMA " + schema + " AUTHORIZATION worker_limited")
+            else:
+                db.execute("CREATE SCHEMA " + schema)
+                db.execute("GRANT USAGE, CREATE ON SCHEMA " + schema + " TO worker_limited")
         db.execute("GRANT USAGE ON SCHEMA statarena TO worker_limited")
         db.execute("GRANT SELECT ON ALL TABLES IN SCHEMA statarena TO worker_limited")
         db.execute("GRANT DELETE ON statarena.dirty_partitions TO worker_limited")
@@ -1092,11 +1103,12 @@ with psycopg.connect(url, autocommit=True) as db:
                     "fixture unexpectedly owns database",
                 )
                 r = worker(queue_all=True)
-                actual = limited.execute(
-                    "select nspowner=current_user::regrole::oid from pg_namespace where nspname='statarena_app'"
-                ).fetchone()[0]
-                check(actual == owns, "unexpected namespace owner")
-                return {"db_create": False, "owns_schema": actual, "publication": r}
+                actual = dict(limited.execute(
+                    "select nspname,nspowner=current_user::regrole::oid from pg_namespace where nspname=any(%s)",
+                    (list(schemas),),
+                ).fetchall())
+                check(set(actual) == set(schemas) and all(value == owns for value in actual.values()), "unexpected namespace owner")
+                return {"db_create": False, "owns_schema": actual["statarena_app"], "namespace_ownership": actual, "publication": r}
             finally:
                 store.db = db
 
