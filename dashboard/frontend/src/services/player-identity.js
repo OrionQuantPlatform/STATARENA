@@ -5,14 +5,26 @@ export const MESSI_PORTRAIT =
 /** Accept only an appearance belonging to the requested relational actor. */
 export function identityFromPlayerSummary(id, data) {
   if (data?.meta?.actor?.id !== id) return null;
-  const row = data.appearances?.find((item) => item.playerId === id && item.name && item.name !== "Joueur");
+  const row = data.appearances?.find(
+    (item) => item.playerId === id && item.name && item.name !== "Joueur",
+  );
   return row ? { name: row.name, imageUrl: row.imageUrl || "" } : null;
 }
 
-export async function loadSummaryIdentity(id, seasons, generation, read, signal) {
+export async function loadSummaryIdentity(
+  id,
+  seasons,
+  generation,
+  read,
+  signal,
+) {
   for (const season of seasons) {
     try {
-      const response = await read("player", { player: id, season, detail: "summary", limit: 1, generation }, { signal });
+      const response = await read(
+        "player",
+        { player: id, season, detail: "summary", limit: 1, generation },
+        { signal },
+      );
       const found = identityFromPlayerSummary(id, response.data);
       if (found) return found;
     } catch (error) {

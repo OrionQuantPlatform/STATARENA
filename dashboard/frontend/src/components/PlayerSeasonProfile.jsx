@@ -291,23 +291,36 @@ export default function PlayerSeasonProfile({
   const record = publishedProfile.value;
   const storedIdentity = cachedResource(identityKey);
   const generation = compactGeneration(f.manifest);
-  const seasons = [f.season, ...(f.manifest?.seasons || []).map((s) => s.id)]
-    .filter((season, index, all) => season && all.indexOf(season) === index);
+  const seasons = [
+    f.season,
+    ...(f.manifest?.seasons || []).map((s) => s.id),
+  ].filter((season, index, all) => season && all.indexOf(season) === index);
   const relationalIdentity = useResource(
     `player-summary-identity:${id}:${seasons.join(",")}:${generation}`,
-    ({ signal }) => loadSummaryIdentity(id, seasons, generation, readCompact, signal),
-    Boolean(!knownIdentity.name && !record?.name && !storedIdentity?.name && seasons.length && /^p_[A-Za-z0-9]{6}$/.test(id || "")),
+    ({ signal }) =>
+      loadSummaryIdentity(id, seasons, generation, readCompact, signal),
+    Boolean(
+      !knownIdentity.name &&
+      !record?.name &&
+      !storedIdentity?.name &&
+      seasons.length &&
+      /^p_[A-Za-z0-9]{6}$/.test(id || ""),
+    ),
   );
   const summaryIdentity = relationalIdentity.value;
   useEffect(() => {
-    if (summaryIdentity?.name) void primeResource(identityKey, () => summaryIdentity);
+    if (summaryIdentity?.name)
+      void primeResource(identityKey, () => summaryIdentity);
   }, [identityKey, summaryIdentity]);
   const identity = useMemo(
     () =>
       resolvePlayerIdentity(id, profile, f.data?.appearances, {
         name: record?.name || storedIdentity?.name || summaryIdentity?.name,
         image_url:
-          record?.image_url || record?.imageUrl || storedIdentity?.imageUrl || summaryIdentity?.imageUrl,
+          record?.image_url ||
+          record?.imageUrl ||
+          storedIdentity?.imageUrl ||
+          summaryIdentity?.imageUrl,
       }),
     [id, profile, f.data?.appearances, record, storedIdentity, summaryIdentity],
   );
@@ -430,7 +443,9 @@ export default function PlayerSeasonProfile({
             role={role}
             honours={honours}
           />
-        ) : <PlayerHonours key={id} result={honours} />}
+        ) : (
+          <PlayerHonours key={id} result={honours} />
+        )}
         <PlayerBio profile={record} />
         <ResearchTabs
           label="Analyse du joueur"
