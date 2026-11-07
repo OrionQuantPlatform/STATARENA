@@ -113,6 +113,18 @@ test("Messi keeps his portrait and published trophies when filters leave no matc
   assert.doesNotMatch(html, /Voir les statistiques détaillées/);
 });
 
+test("published trophies remain visible without a player name and an empty result stays empty", async () => {
+  const id = "p_123456";
+  await seedPlayerHonours(id, "", { available: true, honours: [{ category: "team", name: "FIFA World Cup", team: "Argentina", seasons: ["2022"] }] });
+  const html = renderSeasonProfile([], [], id);
+  assert.equal((html.match(/class="player-trophy-shelf"/g) || []).length, 1);
+  assert.match(html, /aria-label="Palmarès"/);
+  assert.match(html, /Coupe du monde/);
+  const emptyId = "p_654321";
+  await seedPlayerHonours(emptyId, "", { available: false });
+  assert.doesNotMatch(renderSeasonProfile([], [], emptyId), /class="player-trophy-shelf"/);
+});
+
 test("Yamal's Liga and Euro artwork remain clickable", async () => {
   const id = "p_2e0FPo";
   const name = "Lamine Yamal";

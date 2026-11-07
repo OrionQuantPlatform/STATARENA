@@ -7,9 +7,9 @@ import Icon from "./Icon.jsx";
 
 export function usePlayerHonours(id, name) {
   return useResource(
-    `player-honours:${id}:${name}`,
+    `player-honours:${id}`,
     () => loadPlayerHonours(id, name),
-    Boolean(id && name),
+    /^p_[A-Za-z0-9]{6}$/.test(id || ""),
   );
 }
 
@@ -36,7 +36,7 @@ export default function PlayerHonours({ name, result }) {
   }
   const current = trophies.find((item) => item.key === selected) || trophies[0];
   return (
-    <section className="player-trophy-shelf" aria-label={`Palmarès de ${name}`}>
+    <section className="player-trophy-shelf" aria-label={name ? `Palmarès de ${name}` : "Palmarès"}>
       <span className="player-trophy-label">Palmarès</span>
       <div className="player-trophy-grid">
         {trophies.map((item) => (
