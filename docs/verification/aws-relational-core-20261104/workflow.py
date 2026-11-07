@@ -36,7 +36,12 @@ with psycopg.connect(os.environ['TEST_DATABASE_URL'], autocommit=True) as db:
         check('detail completeness persisted', db.execute("select count(*) from information_schema.columns where table_schema='statarena_app' and table_name='matches' and column_name='detail_collected'").fetchone()[0] == 1, 'nullable detail_collected')
         check('numeric position identifiers retain native type', db.execute("select count(*) from information_schema.columns where table_schema='statarena_app' and table_name='appearances' and column_name='position_id_type'").fetchone()[0] == 1, 'native identifier type metadata')
         check('source shot ordinals persisted', db.execute("select count(*) from information_schema.columns where table_schema='statarena_app' and table_name='shots' and column_name='ordinal'").fetchone()[0] == 1, 'typed shot ordinal')
-        check('no JSON or document columns', not db.execute("select table_name,column_name from information_schema.columns where table_schema='statarena_app' and (data_type in ('json','jsonb') or column_name in ('body','payload','document'))").fetchall(), 'typed columns only')
+        document_columns = set(db.execute("select table_name,column_name from information_schema.columns where table_schema='statarena_app' and (data_type in ('json','jsonb') or column_name in ('body','payload','document'))").fetchall())
+        derived_columns = {('player_season_rollups', column) for column in ('identity','latest','teams','leagues','roles','metrics')}
+        check('canonical facts contain no JSON or document columns', not document_columns-derived_columns, sorted(document_columns-derived_columns))
+        check('derived player projection has only declared document fields', document_columns == derived_columns, sorted(document_columns))
+        rollup = db.execute("select p.player_rollup_digest=p.source_digest, count(r.player_id) from statarena_app.partitions p join statarena_app.player_season_rollups r using(season,league_id) where p.season=%s and p.league_id=%s group by p.source_digest,p.player_rollup_digest", ('2026/2027','l_000001')).fetchone()
+        check('derived projection shares the canonical publication digest', rollup is not None and rollup[0] and rollup[1]>0, list(rollup) if rollup else None)
         counts = db.execute("select (select count(*) from statarena_app.matches),(select count(*) from statarena_app.appearances),(select count(*) from statarena_app.shots)").fetchone()
         check('match, appearance and shot counts', counts == (2,2,1), list(counts))
         row = db.execute("select goals,minutes,passes_accurate,passes_attempted from statarena_app.appearances where match_id='m_000001'").fetchone()

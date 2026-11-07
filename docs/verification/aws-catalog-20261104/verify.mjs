@@ -31,7 +31,7 @@ const report = {
     "PYTHONPATH=/tmp/statarena-archive-remat-pg/python bun docs/verification/aws-catalog-20261104/verify.mjs " +
     phase,
   setup:
-    "PROTOCOL.md; PostgreSQL 18, verified local TLS, migration 006; seed.py, PROTOCOL.md and source archive captures",
+    "PROTOCOL.md; PostgreSQL 18, verified local TLS, migrations 006/032; seed.py, PROTOCOL.md and source archive captures",
   requests: [],
 };
 const telemetry = [];
@@ -105,12 +105,22 @@ try {
   report.inputHashes = {};
   for (const name of [
     "dashboard/backend/migrations/006_catalog_models.sql",
+    "dashboard/backend/migrations/032_archive_read_projection.sql",
     "dashboard/backend/services/relational-catalog.js",
     "dashboard/backend/services/catalog-model.json",
+    "dashboard/backend/services/archive-projection-model.json",
     "dashboard/scripts/relational_catalog.py",
     "dashboard/scripts/relational_catalog_keys.py",
     "dashboard/scripts/relational_match.py",
     "dashboard/scripts/relational_match_ddl.py",
+    "dashboard/scripts/consolidated_storage.py",
+    "dashboard/scripts/consolidated_model.py",
+    "dashboard/scripts/archive_projection.py",
+    "dashboard/scripts/archive_projection.mjs",
+    "dashboard/shared/archive-projection.js",
+    "dashboard/shared/archive.js",
+    "dashboard/shared/archive-text.js",
+    "dashboard/shared/openfootball-history.js",
     "docs/verification/aws-catalog-20261104/supplemental-full.json.gz",
   ]) {
     report.inputHashes[name] = createHash("sha256")
@@ -124,6 +134,15 @@ try {
       "utf8",
     ),
   );
+  await admin.query(
+    await readFile(
+      path.join(
+        root,
+        "dashboard/backend/migrations/032_archive_read_projection.sql",
+      ),
+      "utf8",
+    ),
+  );
   const conn = new URL(url);
   conn.searchParams.set("sslmode", "verify-full");
   conn.searchParams.set("sslrootcert", cert);
@@ -134,10 +153,38 @@ try {
   );
   const columns = (
     await admin.query(
-      "SELECT table_name,column_name,data_type FROM information_schema.columns WHERE table_schema='statarena_app' AND data_type IN ('json','jsonb','bytea')",
+      "SELECT table_name,column_name,data_type FROM information_schema.columns WHERE table_schema='statarena_app' AND data_type IN ('json','jsonb','bytea') ORDER BY table_name,column_name",
     )
   ).rows;
-  assert.deepEqual(columns, []);
+  // Only these explicit derived read columns may be JSON. Canonical catalogue
+  // facts must keep the original typed-column contract; no blanket exception.
+  assert.deepEqual(columns, [
+    {
+      table_name: "archive_read_editions",
+      column_name: "competitions",
+      data_type: "jsonb",
+    },
+    {
+      table_name: "archive_read_editions",
+      column_name: "source_fence",
+      data_type: "jsonb",
+    },
+    {
+      table_name: "archive_read_editions",
+      column_name: "summary",
+      data_type: "jsonb",
+    },
+    {
+      table_name: "archive_read_matches",
+      column_name: "goals",
+      data_type: "jsonb",
+    },
+    {
+      table_name: "archive_read_matches",
+      column_name: "listing",
+      data_type: "jsonb",
+    },
+  ]);
   report.jsonOrByteaColumns = columns;
   report.tableCount = (
     await admin.query(
