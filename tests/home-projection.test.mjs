@@ -38,11 +38,17 @@ test("publisher writes both default scopes from one fenced snapshot and rolls ba
         return { rows: [{ season: "2025/2026" }] };
       if (sql.includes("SELECT * FROM statarena_app.competitions"))
         return { rows: [{ id: "l_999999", name: "FA Cup", country: "ENG" }] };
-      if (sql.includes("/*vega:home:cache-fence*/"))
-        return { rows: [{ ...metadata, next_change: new Date(now + 10000) }] };
       if (sql.includes("/*vega:compact:home*/")) {
         if (fail) throw Error("projection failed");
-        return { rows: [{ ...metadata, result_count: 4 }] };
+        return {
+          rows: [
+            {
+              ...metadata,
+              next_change: new Date(now + 10000),
+              result_count: 4,
+            },
+          ],
+        };
       }
       if (sql.includes("INSERT INTO statarena_app.home_projection"))
         inserts.push(values);

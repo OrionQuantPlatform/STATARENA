@@ -339,6 +339,12 @@ champions_games AS (
  SELECT s.* FROM statarena_app.shots s JOIN featured f ON f.id=s.match_id ORDER BY s.ordinal,s.id LIMIT 1001
 )
 SELECT publication.*,
+ (SELECT min(change_at) FROM (
+   SELECT kickoff AS change_at FROM matches
+   UNION ALL SELECT kickoff FROM fixtures
+   UNION ALL SELECT kickoff - interval '7 days' FROM fixtures
+   UNION ALL SELECT (((${instant} AT TIME ZONE 'Europe/Paris')::date+1)::timestamp AT TIME ZONE 'Europe/Paris')
+ ) changes WHERE change_at > ${instant}) AS next_change,
  (SELECT CASE WHEN start_day IS NULL THEN null ELSE jsonb_build_object('start',start_day,'end',end_day,'current',${!filters.archive},'asOf',${b(now)}::float8,'asOfDay',as_of_day) END FROM period) period,
  (SELECT count(*)::int FROM weekly) result_count,
  ${jsonRows("SELECT * FROM ticker_ordered WHERE day_number<=4 AND daily_number<=8 ORDER BY kickoff DESC,id")} results,
@@ -427,28 +433,6 @@ export function homeReadRecord(snapshot) {
     hasSeasonPlayers: snapshot.has_season_players,
     raceOpen: Boolean(snapshot.race_open),
     competitions: (snapshot.competitions || []).map(competition),
-  };
-}
-
-// Metadata and the next time at which any temporal predicate can change.
-// All scoped rows participate, including rows omitted from the final top-N.
-export function homeCacheFenceQuery(scope, now) {
-  const values = [];
-  const publication = publicationSql(scope, values);
-  const matches = scopeWhere("m", scope, values);
-  const fixtures = scopeWhere("f", scope, values);
-  const instant = `${bindValue(values, new Date(now).toISOString())}::timestamptz`;
-  return {
-    values,
-    sql: `/*vega:home:cache-fence*/ WITH publication AS MATERIALIZED (${publication}),
-    match_times AS (SELECT coalesce(${explicitTime("m")},(${safeDate("left(m.date,10)")}+time '12:00') AT TIME ZONE 'UTC') kickoff FROM statarena_app.matches m WHERE ${matches}),
-    fixture_times AS (SELECT coalesce(${explicitTime("f")},(f.day+time '12:00') AT TIME ZONE 'UTC') kickoff
-      FROM statarena_app.fixtures f WHERE ${fixtures}),
-    changes AS (
-      SELECT kickoff AS change_at FROM match_times UNION ALL SELECT kickoff FROM fixture_times
-      UNION ALL SELECT kickoff-interval '7 days' FROM fixture_times
-      UNION ALL SELECT (((${instant} AT TIME ZONE 'Europe/Paris')::date+1)::timestamp AT TIME ZONE 'Europe/Paris')
-    ) SELECT publication.*, (SELECT min(change_at) FROM changes WHERE change_at>${instant}) AS next_change FROM publication`,
   };
 }
 
@@ -541,13 +525,10 @@ export function createHomeReadRoute(read = query, clock = Date.now) {
       let pending = inflight.get(flightKey);
       if (!pending) {
         pending = (async () => {
-          const fenceQuery = homeCacheFenceQuery(filters.scope, now);
-          const [fence] = await read(fenceQuery.sql, fenceQuery.values);
-          checkReadGeneration(params, fence?.generation);
-          const boundary = new Date(fence.next_change).getTime();
           const { sql, values } = homeReadQuery(filters, params, now);
           const [snapshot] = await read(sql, values);
           checkReadGeneration(params, snapshot?.generation);
+          const boundary = new Date(snapshot.next_change).getTime();
           const result = {
             snapshot,
             data: homeReadRecord(snapshot),
@@ -556,8 +537,7 @@ export function createHomeReadRoute(read = query, clock = Date.now) {
           };
           // A publication racing the aggregation is never cached under the old fence.
           if (
-            homeStamp(snapshot) === homeStamp(fence) &&
-            homeStamp(fence) === homeStamp(meta) &&
+            homeStamp(snapshot) === homeStamp(meta) &&
             Number.isFinite(boundary) &&
             boundary > now
           ) {

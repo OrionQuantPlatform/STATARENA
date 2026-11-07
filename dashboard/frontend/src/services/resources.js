@@ -83,7 +83,9 @@ export function useResource(key, loader, enabled = true) {
     ...(enabled && result.key === key
       ? result
       : enabled && seeded
-        ? seeded
+        ? (typeof window !== "undefined" &&
+            cache.peekSince(key, bootstrap.createdAt)) ||
+          seeded
         : enabled && cache.peek(key)
           ? cache.peek(key)
           : { loading: true }),

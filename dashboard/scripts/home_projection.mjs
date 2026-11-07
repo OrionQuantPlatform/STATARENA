@@ -5,7 +5,6 @@ import { pathToFileURL } from "node:url";
 import { databaseConnectionOptions } from "../backend/services/database-connection.js";
 import { competition } from "../backend/services/relational-core.js";
 import {
-  homeCacheFenceQuery,
   homeReadQuery,
   homeStamp,
 } from "../backend/services/relational-home.js";
@@ -62,13 +61,11 @@ export async function refreshHomeProjections(client, clock = Date.now) {
       };
       const params = new URLSearchParams({ season });
       if (leagueIds) params.set("leagues", leagueIds.join(","));
-      const fence = homeCacheFenceQuery(filters.scope, now);
-      const [metadata] = (await client.query(fence.sql, fence.values)).rows;
       const query = homeReadQuery(filters, params, now);
       const [snapshot] = (await client.query(query.sql, query.values)).rows;
-      if (!snapshot || homeStamp(snapshot) !== homeStamp(metadata))
-        throw new Error("Publication changed during home projection");
-      const until = new Date(metadata.next_change);
+      if (!snapshot?.generation)
+        throw new Error("Publication unavailable during home projection");
+      const until = new Date(snapshot.next_change);
       if (!(until.getTime() > now))
         throw new Error("Invalid home projection time boundary");
       receipts.push({

@@ -9,8 +9,10 @@ test("home cache shares concurrent work, fences publication and exact temporal b
     watermark = "A",
     calls = 0;
   let fail = false;
+  const sqlCalls = [];
   const route = createHomeReadRoute(
     async (sql) => {
+      sqlCalls.push(sql);
       const meta = {
         generation,
         published_at: "2026-11-01",
@@ -19,14 +21,18 @@ test("home cache shares concurrent work, fences publication and exact temporal b
       };
       if (sql.includes("to_regclass")) return [{ available: true }];
       if (sql.includes("statarena_app.home_projection")) return [];
-      if (sql.includes("/*vega:home:cache-fence*/"))
-        return [{ ...meta, next_change: new Date(boundary).toISOString() }];
       if (sql.includes("/*vega:compact:home*/")) {
         calls++;
         await new Promise((resolve) => setTimeout(resolve, 5));
         if (fail) throw Error("unavailable");
         return [
-          { ...meta, period: { asOf: now }, leaders: {}, result_count: 3 },
+          {
+            ...meta,
+            next_change: new Date(boundary).toISOString(),
+            period: { asOf: now },
+            leaders: {},
+            result_count: 3,
+          },
         ];
       }
       return [meta];
@@ -39,6 +45,7 @@ test("home cache shares concurrent work, fences publication and exact temporal b
   };
   const [a, b] = await Promise.all([request(), request()]);
   assert.equal(calls, 1);
+  assert.ok(!sqlCalls.some(sql => sql.includes("/*vega:home:cache-fence*/")), "cold fill must not issue a separate fact-table scan");
   assert.deepEqual((await a.json()).data, (await b.json()).data);
   now += 2000;
   assert.equal((await (await request()).json()).data.period.asOf, now);
@@ -95,11 +102,11 @@ test("persistent home projection is used only with matching publication and unex
             },
           },
         ];
-      if (sql.includes("/*vega:home:cache-fence*/"))
-        return [{ ...meta, next_change: new Date(now + 5000) }];
       if (sql.includes("/*vega:compact:home*/")) {
         queries++;
-        return [{ ...meta, result_count: 8 }];
+        return [
+          { ...meta, next_change: new Date(now + 5000), result_count: 8 },
+        ];
       }
       return [meta];
     },
@@ -118,8 +125,15 @@ test("persistent home projection is used only with matching publication and unex
   assert.equal(queries, 1);
 });
 
-test('unsupported methods return the correct French error text', async () => {
+test("unsupported methods return the correct French error text", async () => {
   const route = createHomeReadRoute(async () => []);
-  const request = new Request('https://api.test/api/read/home?season=2025', { method: 'POST' });
-  await assert.rejects(route(request, '/api/read/home', new URL(request.url).searchParams), error => error.status === 405 && error.message === 'M\u00e9thode non autoris\u00e9e.');
+  const request = new Request("https://api.test/api/read/home?season=2025", {
+    method: "POST",
+  });
+  await assert.rejects(
+    route(request, "/api/read/home", new URL(request.url).searchParams),
+    (error) =>
+      error.status === 405 &&
+      error.message === "M\u00e9thode non autoris\u00e9e.",
+  );
 });
