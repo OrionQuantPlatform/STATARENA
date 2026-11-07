@@ -10,6 +10,7 @@ import {
 import { scoreSql } from "./relational-clubs.js";
 import {
   bindValue,
+  checkReadGeneration,
   finiteSql,
   normalizedSql,
   parseReadScope,
@@ -429,11 +430,50 @@ export function homeReadRecord(snapshot) {
   };
 }
 
+// Metadata and the next time at which any temporal predicate can change.
+// All scoped rows participate, including rows omitted from the final top-N.
+export function homeCacheFenceQuery(scope, now) {
+  const values = [];
+  const publication = publicationSql(scope, values);
+  const matches = scopeWhere("m", scope, values);
+  const fixtures = scopeWhere("f", scope, values);
+  const instant = `${bindValue(values, new Date(now).toISOString())}::timestamptz`;
+  return {
+    values,
+    sql: `/*vega:home:cache-fence*/ WITH publication AS MATERIALIZED (${publication}),
+    match_times AS (SELECT coalesce(${explicitTime("m")},(${safeDate("left(m.date,10)")}+time '12:00') AT TIME ZONE 'UTC') kickoff FROM statarena_app.matches m WHERE ${matches}),
+    fixture_times AS (SELECT coalesce(${explicitTime("f")},(f.day+time '12:00') AT TIME ZONE 'UTC') kickoff
+      FROM statarena_app.fixtures f WHERE ${fixtures}),
+    changes AS (
+      SELECT kickoff AS change_at FROM match_times UNION ALL SELECT kickoff FROM fixture_times
+      UNION ALL SELECT kickoff-interval '7 days' FROM fixture_times
+      UNION ALL SELECT (((${instant} AT TIME ZONE 'Europe/Paris')::date+1)::timestamp AT TIME ZONE 'Europe/Paris')
+    ) SELECT publication.*, (SELECT min(change_at) FROM changes WHERE change_at>${instant}) AS next_change FROM publication`,
+  };
+}
+
+export const homeStamp = (row) =>
+  JSON.stringify([
+    "home-projection-v1",
+    String(row?.generation),
+    row?.published_at,
+    row?.source_retrieved_at,
+    row?.latest_source_retrieved_at,
+    row?.start_date,
+    row?.end_date,
+    Number(row?.partition_count || 0),
+    Number(row?.missing_watermarks || 0),
+  ]);
+
 export function createHomeReadRoute(read = query, clock = Date.now) {
+  // A process-local bounded cache: SQL remains the authority, and each request
+  // checks publication metadata and every time boundary before reusing a result.
+  const cache = new Map(),
+    inflight = new Map();
   return async (req, path, params) => {
     if (path !== "/api/read/home") return null;
     if (!["GET", "HEAD"].includes(req.method))
-      reject(405, "Méthode non autorisée.");
+      reject(405, "M\u00e9thode non autoris\u00e9e.");
     const filters = parseHomeRead(params),
       now = clock(),
       periodKey = Math.floor(now / 60_000);
@@ -441,17 +481,111 @@ export function createHomeReadRoute(read = query, clock = Date.now) {
       periodKey,
     });
     if (validated) return validated;
-    const { sql, values } = homeReadQuery(filters, params, now);
-    const [snapshot] = await read(sql, values);
-    // The epoch minute changes the ETag even when a midnight boundary or kickoff
-    // occurs without a new publication. Shared caches expire within 30 seconds.
-    return readResponse(
-      req,
-      params,
-      snapshot,
-      snapshot ? homeReadRecord(snapshot) : {},
-      { periodKey, maxBytes: 1024 * 1024 },
+    // A conditional miss retains the existing one-statement payload snapshot.
+    if (req.headers.get("if-none-match")) {
+      const { sql, values } = homeReadQuery(filters, params, now);
+      const [snapshot] = await read(sql, values);
+      return readResponse(
+        req,
+        params,
+        snapshot,
+        snapshot ? homeReadRecord(snapshot) : {},
+        { periodKey, maxBytes: 1024 * 1024 },
+      );
+    }
+    const metaValues = [];
+    const [meta] = await read(
+      publicationSql(filters.scope, metaValues),
+      metaValues,
     );
+    checkReadGeneration(params, meta?.generation);
+    const key = JSON.stringify([
+      filters,
+      params.get("generation"),
+      homeStamp(meta),
+    ]);
+    let entry = cache.get(key);
+    if (!entry || !(now >= entry.from && now < entry.until)) {
+      // Both cold workers and arbitrary scopes fall back when a projection is unavailable.
+      try {
+        const [capability] = await read(
+          "SELECT CASE WHEN to_regclass('statarena_app.home_projection') IS NULL THEN false ELSE has_table_privilege(to_regclass('statarena_app.home_projection'),'SELECT') END AS available",
+        );
+        const [projection] = capability?.available
+          ? await read(
+              "SELECT stamp,computed_at,valid_until,snapshot FROM statarena_app.home_projection WHERE scope_key=$1",
+              [JSON.stringify(filters)],
+            )
+          : [];
+        if (
+          projection &&
+          projection.stamp === homeStamp(meta) &&
+          now >= new Date(projection.computed_at).getTime() &&
+          now < new Date(projection.valid_until).getTime()
+        ) {
+          entry = {
+            snapshot: projection.snapshot,
+            data: homeReadRecord(projection.snapshot),
+            from: new Date(projection.computed_at).getTime(),
+            until: new Date(projection.valid_until).getTime(),
+          };
+          cache.set(key, entry);
+          while (cache.size > 64) cache.delete(cache.keys().next().value);
+        }
+      } catch (error) {
+        if (!["42P01", "42501"].includes(error.code)) throw error;
+      }
+    }
+    if (!entry || !(now >= entry.from && now < entry.until)) {
+      const flightKey = key;
+      let pending = inflight.get(flightKey);
+      if (!pending) {
+        pending = (async () => {
+          const fenceQuery = homeCacheFenceQuery(filters.scope, now);
+          const [fence] = await read(fenceQuery.sql, fenceQuery.values);
+          checkReadGeneration(params, fence?.generation);
+          const boundary = new Date(fence.next_change).getTime();
+          const { sql, values } = homeReadQuery(filters, params, now);
+          const [snapshot] = await read(sql, values);
+          checkReadGeneration(params, snapshot?.generation);
+          const result = {
+            snapshot,
+            data: homeReadRecord(snapshot),
+            from: now,
+            until: boundary,
+          };
+          // A publication racing the aggregation is never cached under the old fence.
+          if (
+            homeStamp(snapshot) === homeStamp(fence) &&
+            homeStamp(fence) === homeStamp(meta) &&
+            Number.isFinite(boundary) &&
+            boundary > now
+          ) {
+            cache.delete(key);
+            cache.set(key, result);
+            while (cache.size > 64) cache.delete(cache.keys().next().value);
+          }
+          return result;
+        })();
+        inflight.set(flightKey, pending);
+        pending.finally(() => inflight.delete(flightKey)).catch(() => {});
+      }
+      entry = await pending;
+      // A request that crossed the flight's boundary needs a fresh read.
+      if (!(now >= entry.from && now < entry.until) && now !== entry.from) {
+        const { sql, values } = homeReadQuery(filters, params, now);
+        const [snapshot] = await read(sql, values);
+        checkReadGeneration(params, snapshot?.generation);
+        entry = { snapshot, data: homeReadRecord(snapshot) };
+      }
+    }
+    const data = entry.data.period
+      ? { ...entry.data, period: { ...entry.data.period, asOf: now } }
+      : entry.data;
+    return readResponse(req, params, entry.snapshot, data, {
+      periodKey,
+      maxBytes: 1024 * 1024,
+    });
   };
 }
 export const relationalHomeReadRoute = createHomeReadRoute();

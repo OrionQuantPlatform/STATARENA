@@ -98,6 +98,15 @@ export function createResourceCache({
     return pending;
   }
   const cache = {
+    seed(key, value, { updatedAt = now() } = {}) {
+      const item = entry(key);
+      // A navigation already in flight owns its result; hydration cannot replace it.
+      if (item.pending || (item.hasValue && item.updatedAt >= updatedAt)) return;
+      item.hasValue = true;
+      item.updatedAt = updatedAt;
+      publish(item, { key, value, loading: false, refreshing: false });
+      trim();
+    },
     load,
     peek: (key) => entries.get(key)?.snapshot,
     value: (key, { age = maxAge } = {}) => {
