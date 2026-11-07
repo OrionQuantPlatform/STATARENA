@@ -148,6 +148,31 @@ def worker(**kwargs):
     return worker.run(store, minutes=4, batch=2, **kwargs)
 
 
+def published_state(label, competition):
+    """Capture facts and receipts, excluding the retry bookkeeping under test."""
+    scope = (label, competition)
+    state = {
+        table: db.execute(
+            f"SELECT to_jsonb(t) FROM statarena_app.{table} t "
+            "WHERE season=%s AND league_id=%s ORDER BY id", scope,
+        ).fetchall()
+        for table in ("matches", "fixtures", "appearances")
+    }
+    state["partition"] = db.execute(
+        "SELECT to_jsonb(p) FROM statarena_app.partitions p WHERE season=%s AND league_id=%s", scope,
+    ).fetchall()
+    state["details"] = db.execute("""SELECT to_jsonb(r),statarena_app.detail_response(r)
+        FROM statarena_app.match_families r JOIN statarena_app.fixtures f ON f.id=r.match_id
+        WHERE f.season=%s AND f.league_id=%s ORDER BY r.resource_id""", scope).fetchall()
+    state["receipts"] = db.execute("""SELECT kind,key,digest FROM statarena_app.worker_inputs
+        WHERE kind IN ('partition','partition-facts-v1') AND key=%s ORDER BY kind""",
+        (label + ":" + competition,)).fetchall()
+    state["bootstrap"] = db.execute("""SELECT to_jsonb(b)
+        FROM statarena_app.partition_bootstrap_sources b WHERE season=%s AND league_id=%s""",
+        scope).fetchall()
+    return state
+
+
 with psycopg.connect(url, autocommit=True) as db:
     store = Store(db)
     db.execute((root / "dashboard/backend/migrations/001_neon.sql").read_text())
@@ -604,15 +629,22 @@ with psycopg.connect(url, autocommit=True) as db:
         new['seasons'].append({'id': new_season, 'chunks': [{'leagueId': new_league, 'path': path, 'sha256': '0' * 64 if bad_pin else physical}]})
         input_(index, new)
         try:
-            try:
-                r = worker()
-            except ValueError:
-                check(bad_pin, 'Valid bootstrap failed')
+            before_generation = sql1('select generation from statarena_app.publications')
+            before_state = published_state(new_season, new_league)
+            r = worker()
+            if bad_pin:
+                check(r['failed_partitions'] == 1 and r['deferred_partitions'] == 1 and r['partitions'] == 0,
+                      'Bad pinned source did not report a deferred failure')
+                check(sql1('select generation from statarena_app.publications') == before_generation
+                      and published_state(new_season, new_league) == before_state,
+                      'Bad pin changed committed facts, generation or receipts')
                 check(sql1('select count(*) from statarena_app.partitions where season=%s and league_id=%s', (new_season, new_league)) == 0, 'Bad pin published a partition')
                 check(sql1('select count(*) from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (new_season, new_league)) == 0, 'Bad pin committed a receipt')
                 check(sql1('select count(*) from statarena_app.publication_jobs where season=%s and league_id=%s', (new_season, new_league)) == 1, 'Bad pin lost queued work')
-                return {'bad_pin_rejected': True, 'partition_and_receipt_rolled_back': True, 'queue_retained': True}
-            check(not bad_pin, 'Bad pinned source was ignored or accepted')
+                retry = db.execute('select attempts,last_error_code,next_attempt_at>clock_timestamp() from statarena_app.publication_jobs where season=%s and league_id=%s', (new_season, new_league)).fetchone()
+                check(retry == (1, 'ValueError', True), 'Bad pin lost its failure code or bounded retry delay')
+                return {'bad_pin_rejected': True, 'partition_and_receipt_rolled_back': True, 'queue_retained': True, 'receipt': r}
+            check(r['failed_partitions'] == 0, 'Valid bootstrap failed')
             check(r['partitions'] == 1, 'New manifest-only scope missed without --all')
             row = db.execute('select source_path,sha256,recorded_at from statarena_app.partition_bootstrap_sources where season=%s and league_id=%s', (new_season, new_league)).fetchone()
             check(row and row[:2] == (path, physical), 'Manifest-only bootstrap receipt missing/wrong')
@@ -749,24 +781,39 @@ with psycopg.connect(url, autocommit=True) as db:
 
     def rollback():
         before = sql1("select generation from statarena_app.publications")
+        before_state = published_state(season, league)
         bad = copy.deepcopy(endpoints["events"])
         bad["data"]["unmapped_test_field"] = 1
         resource("/matches/" + mid + "/events", bad)
         mark()
+        repaired = False
         try:
-            worker()
-        except (ValueError, TypeError):
-            pass
-        else:
-            raise AssertionError("bad typed value published")
-        check(
-            before == sql1("select generation from statarena_app.publications")
-            and sql1("select count(*) from statarena.dirty_partitions") > 0,
-            "partial publication or premature acknowledgment",
-        )
-        resource("/matches/" + mid + "/events", endpoints["events"])
-        worker()
-        return {"generation_unchanged_on_failure": before}
+            failed = worker()
+            check(failed['failed_partitions'] == 1 and failed['deferred_partitions'] == 1
+                  and failed['partitions'] == 0, 'Bad typed value was not reported as a deferred failure')
+            check(before == sql1("select generation from statarena_app.publications")
+                  and published_state(season, league) == before_state,
+                  'Failed partition changed committed facts, generation or receipts')
+            check(sql1("select count(*) from statarena.dirty_partitions where season=%s and league_id=%s", (season, league)) == 1,
+                  'Failed partition prematurely acknowledged its source')
+            retry = db.execute('select attempts,last_error_code,next_attempt_at>clock_timestamp() from statarena_app.publication_jobs where season=%s and league_id=%s', (season, league)).fetchone()
+            check(retry == (1, 'ValueError', True), 'Failed partition lost its queued error or retry delay')
+            resource("/matches/" + mid + "/events", endpoints["events"])
+            repaired = True
+            corrected = worker()
+            check(corrected['failed_partitions'] == 0 and corrected['deferred_partitions'] == 0
+                  and corrected['partitions'] == 1, 'Corrected source did not retry without --all')
+            check(sql1("select count(*) from statarena.dirty_partitions where season=%s and league_id=%s", (season, league)) == 0
+                  and sql1("select count(*) from statarena_app.publication_jobs where season=%s and league_id=%s", (season, league)) == 0,
+                  'Corrected publication left its completed source or retry queued')
+            actual = sql1("select statarena_app.detail_response(r) from statarena_app.match_families r where match_id=%s and family='events' and subject_id='' and params='{}'", (mid,))
+            check(actual == endpoints['events'], 'Corrected retry changed the native event response')
+            return {"generation_unchanged_on_failure": before, "failed": failed, "corrected": corrected}
+        finally:
+            # An assertion failure must not leave the deliberately invalid input
+            # behind and make later calendar/partial-refresh cases fail by cascade.
+            if not repaired:
+                resource("/matches/" + mid + "/events", endpoints["events"])
 
     case("rollback then corrected retry", rollback)
 

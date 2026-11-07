@@ -84,11 +84,13 @@ for cron, mode, minutes, requests, assets in [
     check('scheduled plan ' + cron, lambda c=cron, m=mode, t=minutes, r=requests, a=assets: plan({'EVENT_NAME': 'schedule', 'SCHEDULE': c}, expected(m, t, r, a)))
 for cron in ['15 0,12 * * *', '50 6 * * *', '15 18 * * *']:
     check('reject retired historical schedule ' + cron, lambda c=cron: plan({'EVENT_NAME': 'schedule', 'SCHEDULE': c}, rejected=True))
-for mode, minutes, requests, assets in [('daily', 60, 20000, '3000'), ('pulse', 25, 20000, '1000'), ('historical', 280, 100000, '3000')]:
+for mode, minutes, requests, assets in [('daily', 60, 20000, '3000'), ('pulse', 25, 20000, '1000'), ('historical', 240, 100000, '3000')]:
     check('manual ' + mode, lambda m=mode, t=minutes, r=requests, a=assets: plan({'MODE_INPUT': m}, expected(m, t, r, a)))
 check('bounded historical run', lambda: plan({'MODE_INPUT': 'historical', 'MINUTES_INPUT': '1', 'REQUESTS_INPUT': '1', 'ASSETS_INPUT': 'false', 'PRIORITY_INPUT': 'l_123456'}, expected('historical', 1, 1, '0', 'l_123456')))
+check('maximum collection budget preserves publication time', lambda: plan({'MODE_INPUT': 'historical', 'MINUTES_INPUT': '240'}, expected('historical', 240, 100000)))
 for bad in [
-    {'MODE_INPUT': 'oops'}, {'MINUTES_INPUT': '0'}, {'MINUTES_INPUT': '301'},
+    {'MODE_INPUT': 'oops'}, {'MINUTES_INPUT': '0'}, {'MINUTES_INPUT': '241'},
+    {'MINUTES_INPUT': '300'}, {'MINUTES_INPUT': '301'},
     {'MINUTES_INPUT': '1; touch /tmp/unexpected-plan'}, {'REQUESTS_INPUT': '-1'},
     {'REQUESTS_INPUT': '100001'}, {'PRIORITY_INPUT': 'l_123456\nmode=daily'},
     {'ASSETS_INPUT': 'maybe'}, {'EVENT_NAME': 'schedule', 'SCHEDULE': 'unknown'},
